@@ -1,21 +1,22 @@
 # VGT
 
-<small>Work in Progress</small>
+A [Gtk4](https://www.gtk.org) UI toolkit for [Vlang](https://vlang.io).
 
-A [Gtk4]() UI toolkit for [V](https://vlang.io).
+<small>Work in Progress, but usable</small>
 
-Currently, most of the Gtk4 widgets can be used as V structs and mapped 1x1 to C struct names, so `GtkWindow*` is `&GtkWindow`.
 
-All widget related functions are accessible as methods, so `gtk_window_set_title(W *, const char*)` becomes `&GtkWindow(w).set_title(c'Title')`
+Most of the Gtk4 widgets can be used as V structs and mapped 1x1 to C struct names, so `GtkWindow*` is `&GtkWindow`.
 
-All constructor methods are mapped as V struct factory methods, so `GtkWidgetName *gtk_widget_name_new() ` becomes `fn GtkWidgetName.new() &GtkWidgetName`.
+All widget related functions are accessible as methods so `gtk_window_set_title(W *, const char*)` becomes `&GtkWindow(w).set_title(c'Title')`
+
+All constructor methods are mapped as V struct factory methods so `GtkWidgetName *gtk_widget_name_new() ` becomes `fn GtkWidgetName.new() &GtkWidgetName`.
 
 ## Example
 
 ```v
 module main
 
-import gtk { Gtk, AppFlags, GtkApplication, GtkBuilder, GtkAlign, GtkWidget, GtkWindow }
+import vgt.gtk { Gtk, AppFlags, GtkApplication, GtkBuilder, GtkAlign, GtkWidget, GtkWindow }
 import vgt { View, Signal }
 
 fn main() {
