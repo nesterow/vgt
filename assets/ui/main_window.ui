@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<interface>
+  <requires lib="gtk" version="4.0" />
+  <object class="GtkWindow" id="MainWindow">
+    <property name="title" translatable="1">MyApp</property>
+    <property name="default-width">440</property>
+    <property name="default-height">250</property>
+    <signal name="destroy" handler="exit_app" swapped="no" />
+    <property name="child">
+      <object class="GtkBox">
+        <property name="visible">0</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <placeholder />
+        </child>
+        <child>
+          <object class="GtkButton" id="Button">
+            <property name="visible">0</property>
+            <property name="label" translatable="1">button</property>
+            <property name="focusable">1</property>
+            <property name="receives-default">1</property>
+          </object>
+        </child>
+      </object>
+    </property>
+  </object>
+</interface>
