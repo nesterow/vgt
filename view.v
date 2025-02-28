@@ -7,10 +7,10 @@ import gtk { Gtk, GtkBuilder }
 /**
 * View for GTK4 XML Builder
 *
-* Note: 
+* Note:
 *	Declaring local signals in xml views isn't fully supported,
 *	you can use @[export:'name'] directive, but it's rather a hack.
-*	
+*
 *   Use `Signal` struct to bind signals:
 *	```
 *    window := View{'<xml...', [
@@ -32,7 +32,7 @@ pub mut:
 pub struct Signal {
 pub:
 	path string
-	call fn (b voidptr) = unsafe { nil }
+	call fn (b voidptr, a voidptr) = unsafe { nil }
 }
 
 pub struct ViewContext {
@@ -62,10 +62,10 @@ pub fn (ui View) to_builder() &GtkBuilder {
 fn (ui View) bind_signals(builder &GtkBuilder) {
 	for signal in ui.signals {
 		path := signal.path.split('.')
-		obj := builder.get_object(&char(path[0].str))
+		obj := builder.get_object(path[0].str)
 		if obj != unsafe { nil } {
-			sig := fn [signal, builder] () {
-				signal.call(builder)
+			sig := fn [signal, builder, obj] () {
+				signal.call(builder, obj)
 			}
 			Gtk.signal_connect(obj, path[1], sig, &builder)
 		}

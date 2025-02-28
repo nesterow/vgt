@@ -11,13 +11,28 @@ All widget related functions are accessible as methods so `gtk_window_set_title(
 
 All constructor methods are mapped as V struct factory methods so `GtkWidgetName *gtk_widget_name_new() ` becomes `fn GtkWidgetName.new() &GtkWidgetName`.
 
+## Running and compilation
+
+Use `-gc none`, but don't free the widgets or any GObject using standard `free`.
+On MacOS or other backends GC might not work. On Linux it works, but be aware.
+
+```bash
+v -gc none run .
+```
+
+On MacOS:
+
+```bash
+brew install gtk4
+```
+
 ## Example
 
 ```v
 module main
 
-import vgt.gtk { Gtk, AppFlags, GtkApplication, GtkBuilder, GtkAlign, GtkWidget, GtkWindow }
 import vgt { View, Signal }
+import gtk { Gtk, AppFlags, GtkApplication, GtkBuilder, GtkAlign, GtkWidget, GtkWindow }
 
 fn main() {
 	Gtk.init()
@@ -34,7 +49,7 @@ fn main() {
 	app := GtkApplication.new(c'org.gnome.MyApp', AppFlags.handles_open)
 
 	window := &GtkWindow(ctx.builder.get_object(c'MainWindow'))
-	
+
 
 	Gtk.signal_connect(app, 'startup', fn [window, app] () {
 		app.add_window(window)
