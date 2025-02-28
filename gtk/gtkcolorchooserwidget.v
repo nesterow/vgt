@@ -1,7 +1,7 @@
 module gtk
 
-fn C.gtk_color_chooser_widget_get_type() int
-fn C.gtk_color_chooser_widget_new() &C.GtkWidget
+pub fn C.gtk_color_chooser_widget_get_type() int
+pub fn C.gtk_color_chooser_widget_new() &GtkWidget
 
 @[noinit; typedef]
 pub struct C.GtkColorChooserWidget {}

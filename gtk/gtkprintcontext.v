@@ -1,17 +1,17 @@
 module gtk
 
-fn C.gtk_print_context_get_type() int
-fn C.gtk_print_context_get_cairo_context(a &C.GtkPrintContext) voidptr
-fn C.gtk_print_context_get_page_setup(a &C.GtkPrintContext) &C.GtkPageSetup
-fn C.gtk_print_context_get_width(a &C.GtkPrintContext) f32
-fn C.gtk_print_context_get_height(a &C.GtkPrintContext) f32
-fn C.gtk_print_context_get_dpi_x(a &C.GtkPrintContext) f32
-fn C.gtk_print_context_get_dpi_y(a &C.GtkPrintContext) f32
-fn C.gtk_print_context_get_hard_margins(a &C.GtkPrintContext, b voidptr, c voidptr, d voidptr, e voidptr) bool
-fn C.gtk_print_context_get_pango_fontmap(a &C.GtkPrintContext) voidptr
-fn C.gtk_print_context_create_pango_context(a &C.GtkPrintContext) voidptr
-fn C.gtk_print_context_create_pango_layout(a &C.GtkPrintContext) voidptr
-fn C.gtk_print_context_set_cairo_context(a &C.GtkPrintContext, b voidptr, c f32, d f32)
+pub fn C.gtk_print_context_get_type() int
+pub fn C.gtk_print_context_get_cairo_context(context &GtkPrintContext) voidptr
+pub fn C.gtk_print_context_get_page_setup(context &GtkPrintContext) &GtkPageSetup
+pub fn C.gtk_print_context_get_width(context &GtkPrintContext) f32
+pub fn C.gtk_print_context_get_height(context &GtkPrintContext) f32
+pub fn C.gtk_print_context_get_dpi_x(context &GtkPrintContext) f32
+pub fn C.gtk_print_context_get_dpi_y(context &GtkPrintContext) f32
+pub fn C.gtk_print_context_get_hard_margins(context &GtkPrintContext, top voidptr, bottom voidptr, left voidptr, right voidptr) bool
+pub fn C.gtk_print_context_get_pango_fontmap(context &GtkPrintContext) voidptr
+pub fn C.gtk_print_context_create_pango_context(context &GtkPrintContext) voidptr
+pub fn C.gtk_print_context_create_pango_layout(context &GtkPrintContext) voidptr
+pub fn C.gtk_print_context_set_cairo_context(context &GtkPrintContext, cr voidptr, dpi_x f32, dpi_y f32)
 
 @[noinit; typedef]
 pub struct C.GtkPrintContext {}
@@ -26,7 +26,7 @@ pub fn (self &GtkPrintContext) get_cairo_context() voidptr {
 	return C.gtk_print_context_get_cairo_context(self)
 }
 
-pub fn (self &GtkPrintContext) get_page_setup() &C.GtkPageSetup {
+pub fn (self &GtkPrintContext) get_page_setup() &GtkPageSetup {
 	return C.gtk_print_context_get_page_setup(self)
 }
 
@@ -46,8 +46,8 @@ pub fn (self &GtkPrintContext) get_dpi_y() f32 {
 	return C.gtk_print_context_get_dpi_y(self)
 }
 
-pub fn (self &GtkPrintContext) get_hard_margins(b voidptr, c voidptr, d voidptr, e voidptr) bool {
-	return C.gtk_print_context_get_hard_margins(self, b, c, d, e)
+pub fn (self &GtkPrintContext) get_hard_margins(top voidptr, bottom voidptr, left voidptr, right voidptr) bool {
+	return C.gtk_print_context_get_hard_margins(self, top, bottom, left, right)
 }
 
 pub fn (self &GtkPrintContext) get_pango_fontmap() voidptr {
@@ -62,6 +62,6 @@ pub fn (self &GtkPrintContext) create_pango_layout() voidptr {
 	return C.gtk_print_context_create_pango_layout(self)
 }
 
-pub fn (self &GtkPrintContext) set_cairo_context(b voidptr, c f32, d f32) {
-	C.gtk_print_context_set_cairo_context(self, b, c, d)
+pub fn (self &GtkPrintContext) set_cairo_context(cr voidptr, dpi_x f32, dpi_y f32) {
+	C.gtk_print_context_set_cairo_context(self, cr, dpi_x, dpi_y)
 }

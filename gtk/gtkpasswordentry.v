@@ -5,12 +5,12 @@ pub struct C.GtkPasswordEntryClass {}
 
 pub type GtkPasswordEntryClass = C.GtkPasswordEntryClass
 
-fn C.gtk_password_entry_get_type() int
-fn C.gtk_password_entry_new() &C.GtkWidget
-fn C.gtk_password_entry_set_show_peek_icon(a &C.GtkPasswordEntry, b bool)
-fn C.gtk_password_entry_get_show_peek_icon(a &C.GtkPasswordEntry) bool
-fn C.gtk_password_entry_set_extra_menu(a &C.GtkPasswordEntry, b voidptr)
-fn C.gtk_password_entry_get_extra_menu(a &C.GtkPasswordEntry) voidptr
+pub fn C.gtk_password_entry_get_type() int
+pub fn C.gtk_password_entry_new() &GtkWidget
+pub fn C.gtk_password_entry_set_show_peek_icon(entry &GtkPasswordEntry, show_peek_icon bool)
+pub fn C.gtk_password_entry_get_show_peek_icon(entry &GtkPasswordEntry) bool
+pub fn C.gtk_password_entry_set_extra_menu(entry &GtkPasswordEntry, model voidptr)
+pub fn C.gtk_password_entry_get_extra_menu(entry &GtkPasswordEntry) voidptr
 
 @[noinit; typedef]
 pub struct C.GtkPasswordEntry {}
@@ -25,16 +25,16 @@ pub fn GtkPasswordEntry.new() &GtkWidget {
 	return C.gtk_password_entry_new()
 }
 
-pub fn (self &GtkPasswordEntry) set_show_peek_icon(b bool) {
-	C.gtk_password_entry_set_show_peek_icon(self, b)
+pub fn (self &GtkPasswordEntry) set_show_peek_icon(show_peek_icon bool) {
+	C.gtk_password_entry_set_show_peek_icon(self, show_peek_icon)
 }
 
 pub fn (self &GtkPasswordEntry) get_show_peek_icon() bool {
 	return C.gtk_password_entry_get_show_peek_icon(self)
 }
 
-pub fn (self &GtkPasswordEntry) set_extra_menu(b voidptr) {
-	C.gtk_password_entry_set_extra_menu(self, b)
+pub fn (self &GtkPasswordEntry) set_extra_menu(model voidptr) {
+	C.gtk_password_entry_set_extra_menu(self, model)
 }
 
 pub fn (self &GtkPasswordEntry) get_extra_menu() voidptr {

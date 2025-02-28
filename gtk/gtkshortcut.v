@@ -15,15 +15,15 @@ pub struct C.GtkShortcutClass {}
 
 pub type GtkShortcutClass = C.GtkShortcutClass
 
-fn C.gtk_shortcut_get_type() int
-fn C.gtk_shortcut_new(a &C.GtkShortcutTrigger, b &C.GtkShortcutAction) &C.GtkShortcut
-fn C.gtk_shortcut_new_with_arguments(a &C.GtkShortcutTrigger, b &C.GtkShortcutAction, c &char, d voidptr) &C.GtkShortcut
-fn C.gtk_shortcut_get_trigger(a &C.GtkShortcut) &C.GtkShortcutTrigger
-fn C.gtk_shortcut_set_trigger(a &C.GtkShortcut, b &C.GtkShortcutTrigger)
-fn C.gtk_shortcut_get_action(a &C.GtkShortcut) &C.GtkShortcutAction
-fn C.gtk_shortcut_set_action(a &C.GtkShortcut, b &C.GtkShortcutAction)
-fn C.gtk_shortcut_get_arguments(a &C.GtkShortcut) voidptr
-fn C.gtk_shortcut_set_arguments(a &C.GtkShortcut, b voidptr)
+pub fn C.gtk_shortcut_get_type() int
+pub fn C.gtk_shortcut_new(trigger &GtkShortcutTrigger, action &GtkShortcutAction) &GtkShortcut
+pub fn C.gtk_shortcut_new_with_arguments(trigger &GtkShortcutTrigger, action &GtkShortcutAction, format_str &char) &GtkShortcut
+pub fn C.gtk_shortcut_get_trigger(self &GtkShortcut) &GtkShortcutTrigger
+pub fn C.gtk_shortcut_set_trigger(self &GtkShortcut, trigger &GtkShortcutTrigger)
+pub fn C.gtk_shortcut_get_action(self &GtkShortcut) &GtkShortcutAction
+pub fn C.gtk_shortcut_set_action(self &GtkShortcut, action &GtkShortcutAction)
+pub fn C.gtk_shortcut_get_arguments(self &GtkShortcut) voidptr
+pub fn C.gtk_shortcut_set_arguments(self &GtkShortcut, args voidptr)
 
 @[noinit; typedef]
 pub struct C.GtkShortcut {}
@@ -34,34 +34,34 @@ pub fn (self &GtkShortcut) get_type() int {
 	return C.gtk_shortcut_get_type()
 }
 
-pub fn GtkShortcut.new(a &C.GtkShortcutTrigger, b &C.GtkShortcutAction) &GtkShortcut {
-	return C.gtk_shortcut_new(a, b)
+pub fn GtkShortcut.new(trigger &GtkShortcutTrigger, action &GtkShortcutAction) &GtkShortcut {
+	return C.gtk_shortcut_new(trigger, action)
 }
 
-pub fn GtkShortcut.new_with_arguments(a &C.GtkShortcutTrigger, b &C.GtkShortcutAction, c &char, d voidptr) &GtkShortcut {
-	return C.gtk_shortcut_new_with_arguments(a, b, c, d)
+pub fn GtkShortcut.new_with_arguments(trigger &GtkShortcutTrigger, action &GtkShortcutAction, format_str &char) &GtkShortcut {
+	return C.gtk_shortcut_new_with_arguments(trigger, action, format_str)
 }
 
-pub fn (self &GtkShortcut) get_trigger() &C.GtkShortcutTrigger {
+pub fn (self &GtkShortcut) get_trigger() &GtkShortcutTrigger {
 	return C.gtk_shortcut_get_trigger(self)
 }
 
-pub fn (self &GtkShortcut) set_trigger(b &C.GtkShortcutTrigger) {
-	C.gtk_shortcut_set_trigger(self, b)
+pub fn (self &GtkShortcut) set_trigger(trigger &GtkShortcutTrigger) {
+	C.gtk_shortcut_set_trigger(self, trigger)
 }
 
-pub fn (self &GtkShortcut) get_action() &C.GtkShortcutAction {
+pub fn (self &GtkShortcut) get_action() &GtkShortcutAction {
 	return C.gtk_shortcut_get_action(self)
 }
 
-pub fn (self &GtkShortcut) set_action(b &C.GtkShortcutAction) {
-	C.gtk_shortcut_set_action(self, b)
+pub fn (self &GtkShortcut) set_action(action &GtkShortcutAction) {
+	C.gtk_shortcut_set_action(self, action)
 }
 
 pub fn (self &GtkShortcut) get_arguments() voidptr {
 	return C.gtk_shortcut_get_arguments(self)
 }
 
-pub fn (self &GtkShortcut) set_arguments(b voidptr) {
-	C.gtk_shortcut_set_arguments(self, b)
+pub fn (self &GtkShortcut) set_arguments(args voidptr) {
+	C.gtk_shortcut_set_arguments(self, args)
 }

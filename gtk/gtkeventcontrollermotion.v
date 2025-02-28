@@ -5,10 +5,10 @@ pub struct C.GtkEventControllerMotionClass {}
 
 pub type GtkEventControllerMotionClass = C.GtkEventControllerMotionClass
 
-fn C.gtk_event_controller_motion_get_type() int
-fn C.gtk_event_controller_motion_new() &C.GtkEventController
-fn C.gtk_event_controller_motion_contains_pointer(a &C.GtkEventControllerMotion) bool
-fn C.gtk_event_controller_motion_is_pointer(a &C.GtkEventControllerMotion) bool
+pub fn C.gtk_event_controller_motion_get_type() int
+pub fn C.gtk_event_controller_motion_new() &GtkEventController
+pub fn C.gtk_event_controller_motion_contains_pointer(self &GtkEventControllerMotion) bool
+pub fn C.gtk_event_controller_motion_is_pointer(self &GtkEventControllerMotion) bool
 
 @[noinit; typedef]
 pub struct C.GtkEventControllerMotion {}

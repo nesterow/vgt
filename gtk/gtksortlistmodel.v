@@ -5,15 +5,15 @@ pub struct C.GtkSortListModelClass {}
 
 pub type GtkSortListModelClass = C.GtkSortListModelClass
 
-fn C.gtk_sort_list_model_get_type() int
-fn C.gtk_sort_list_model_new(a voidptr, b &C.GtkSorter) &C.GtkSortListModel
-fn C.gtk_sort_list_model_set_sorter(a &C.GtkSortListModel, b &C.GtkSorter)
-fn C.gtk_sort_list_model_get_sorter(a &C.GtkSortListModel) &C.GtkSorter
-fn C.gtk_sort_list_model_set_model(a &C.GtkSortListModel, b voidptr)
-fn C.gtk_sort_list_model_get_model(a &C.GtkSortListModel) voidptr
-fn C.gtk_sort_list_model_set_incremental(a &C.GtkSortListModel, b bool)
-fn C.gtk_sort_list_model_get_incremental(a &C.GtkSortListModel) bool
-fn C.gtk_sort_list_model_get_pending(a &C.GtkSortListModel) u64
+pub fn C.gtk_sort_list_model_get_type() int
+pub fn C.gtk_sort_list_model_new(model voidptr, sorter &GtkSorter) &GtkSortListModel
+pub fn C.gtk_sort_list_model_set_sorter(self &GtkSortListModel, sorter &GtkSorter)
+pub fn C.gtk_sort_list_model_get_sorter(self &GtkSortListModel) &GtkSorter
+pub fn C.gtk_sort_list_model_set_model(self &GtkSortListModel, model voidptr)
+pub fn C.gtk_sort_list_model_get_model(self &GtkSortListModel) voidptr
+pub fn C.gtk_sort_list_model_set_incremental(self &GtkSortListModel, incremental bool)
+pub fn C.gtk_sort_list_model_get_incremental(self &GtkSortListModel) bool
+pub fn C.gtk_sort_list_model_get_pending(self &GtkSortListModel) u64
 
 @[noinit; typedef]
 pub struct C.GtkSortListModel {}
@@ -24,28 +24,28 @@ pub fn (self &GtkSortListModel) get_type() int {
 	return C.gtk_sort_list_model_get_type()
 }
 
-pub fn GtkSortListModel.new(a voidptr, b &C.GtkSorter) &GtkSortListModel {
-	return C.gtk_sort_list_model_new(a, b)
+pub fn GtkSortListModel.new(model voidptr, sorter &GtkSorter) &GtkSortListModel {
+	return C.gtk_sort_list_model_new(model, sorter)
 }
 
-pub fn (self &GtkSortListModel) set_sorter(b &C.GtkSorter) {
-	C.gtk_sort_list_model_set_sorter(self, b)
+pub fn (self &GtkSortListModel) set_sorter(sorter &GtkSorter) {
+	C.gtk_sort_list_model_set_sorter(self, sorter)
 }
 
-pub fn (self &GtkSortListModel) get_sorter() &C.GtkSorter {
+pub fn (self &GtkSortListModel) get_sorter() &GtkSorter {
 	return C.gtk_sort_list_model_get_sorter(self)
 }
 
-pub fn (self &GtkSortListModel) set_model(b voidptr) {
-	C.gtk_sort_list_model_set_model(self, b)
+pub fn (self &GtkSortListModel) set_model(model voidptr) {
+	C.gtk_sort_list_model_set_model(self, model)
 }
 
 pub fn (self &GtkSortListModel) get_model() voidptr {
 	return C.gtk_sort_list_model_get_model(self)
 }
 
-pub fn (self &GtkSortListModel) set_incremental(b bool) {
-	C.gtk_sort_list_model_set_incremental(self, b)
+pub fn (self &GtkSortListModel) set_incremental(incremental bool) {
+	C.gtk_sort_list_model_set_incremental(self, incremental)
 }
 
 pub fn (self &GtkSortListModel) get_incremental() bool {

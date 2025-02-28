@@ -1,14 +1,50 @@
 module gtk
 
 @[noinit; typedef]
+pub struct C.GtkFlowBoxChildClass {}
+
+pub type GtkFlowBoxChildClass = C.GtkFlowBoxChildClass
+
+pub fn C.gtk_flow_box_child_get_type() int
+pub fn C.gtk_flow_box_child_new() &GtkWidget
+pub fn C.gtk_flow_box_child_set_child(self &GtkFlowBoxChild, child &GtkWidget)
+pub fn C.gtk_flow_box_child_get_child(self &GtkFlowBoxChild) &GtkWidget
+pub fn C.gtk_flow_box_child_get_index(child &GtkFlowBoxChild) int
+pub fn C.gtk_flow_box_child_is_selected(child &GtkFlowBoxChild) bool
+pub fn C.gtk_flow_box_child_changed(child &GtkFlowBoxChild)
+
+@[noinit; typedef]
 pub struct C.GtkFlowBoxChild {}
 
 pub type GtkFlowBoxChild = C.GtkFlowBoxChild
 
-@[noinit; typedef]
-pub struct C.GtkFlowBoxChildClass {}
+pub fn (self &GtkFlowBoxChild) get_type() int {
+	return C.gtk_flow_box_child_get_type()
+}
 
-pub type GtkFlowBoxChildClass = C.GtkFlowBoxChildClass
+pub fn GtkFlowBoxChild.new() &GtkWidget {
+	return C.gtk_flow_box_child_new()
+}
+
+pub fn (self &GtkFlowBoxChild) set_child(child &GtkWidget) {
+	C.gtk_flow_box_child_set_child(self, child)
+}
+
+pub fn (self &GtkFlowBoxChild) get_child() &GtkWidget {
+	return C.gtk_flow_box_child_get_child(self)
+}
+
+pub fn (self &GtkFlowBoxChild) get_index() int {
+	return C.gtk_flow_box_child_get_index(self)
+}
+
+pub fn (self &GtkFlowBoxChild) is_selected() bool {
+	return C.gtk_flow_box_child_is_selected(self)
+}
+
+pub fn (self &GtkFlowBoxChild) changed() {
+	C.gtk_flow_box_child_changed(self)
+}
 
 @[noinit; typedef]
 pub struct C.GtkFlowBoxCreateWidgetFunc {}
@@ -30,81 +66,46 @@ pub struct C.GtkFlowBoxSortFunc {}
 
 pub type GtkFlowBoxSortFunc = C.GtkFlowBoxSortFunc
 
-fn C.gtk_flow_box_child_get_type() int
-fn C.gtk_flow_box_child_new() &C.GtkWidget
-fn C.gtk_flow_box_child_set_child(a &C.GtkFlowBoxChild, b &C.GtkWidget)
-fn C.gtk_flow_box_child_get_child(a &C.GtkFlowBoxChild) &C.GtkWidget
-fn C.gtk_flow_box_child_get_index(a &C.GtkFlowBoxChild) int
-fn C.gtk_flow_box_child_is_selected(a &C.GtkFlowBoxChild) bool
-fn C.gtk_flow_box_child_changed(a &C.GtkFlowBoxChild)
-fn C.gtk_flow_box_get_type() int
-fn C.gtk_flow_box_new() &C.GtkWidget
-fn C.gtk_flow_box_bind_model(a &C.GtkFlowBox, b voidptr, c int, d voidptr, e voidptr)
-fn C.gtk_flow_box_set_homogeneous(a &C.GtkFlowBox, b bool)
-fn C.gtk_flow_box_get_homogeneous(a &C.GtkFlowBox) bool
-fn C.gtk_flow_box_set_row_spacing(a &C.GtkFlowBox, b u64)
-fn C.gtk_flow_box_get_row_spacing(a &C.GtkFlowBox) u64
-fn C.gtk_flow_box_set_column_spacing(a &C.GtkFlowBox, b u64)
-fn C.gtk_flow_box_get_column_spacing(a &C.GtkFlowBox) u64
-fn C.gtk_flow_box_set_min_children_per_line(a &C.GtkFlowBox, b u64)
-fn C.gtk_flow_box_get_min_children_per_line(a &C.GtkFlowBox) u64
-fn C.gtk_flow_box_set_max_children_per_line(a &C.GtkFlowBox, b u64)
-fn C.gtk_flow_box_get_max_children_per_line(a &C.GtkFlowBox) u64
-fn C.gtk_flow_box_set_activate_on_single_click(a &C.GtkFlowBox, b bool)
-fn C.gtk_flow_box_get_activate_on_single_click(a &C.GtkFlowBox) bool
-fn C.gtk_flow_box_prepend(a &C.GtkFlowBox, b &C.GtkWidget)
-fn C.gtk_flow_box_append(a &C.GtkFlowBox, b &C.GtkWidget)
-fn C.gtk_flow_box_insert(a &C.GtkFlowBox, b &C.GtkWidget, c int)
-fn C.gtk_flow_box_remove(a &C.GtkFlowBox, b &C.GtkWidget)
-fn C.gtk_flow_box_get_child_at_index(a &C.GtkFlowBox, b int) &C.GtkFlowBoxChild
-fn C.gtk_flow_box_get_child_at_pos(a &C.GtkFlowBox, b int, c int) &C.GtkFlowBoxChild
-fn C.gtk_flow_box_selected_foreach(a &C.GtkFlowBox, b int, c voidptr)
-fn C.gtk_flow_box_get_selected_children(a &C.GtkFlowBox) voidptr
-fn C.gtk_flow_box_select_child(a &C.GtkFlowBox, b &C.GtkFlowBoxChild)
-fn C.gtk_flow_box_unselect_child(a &C.GtkFlowBox, b &C.GtkFlowBoxChild)
-fn C.gtk_flow_box_select_all(a &C.GtkFlowBox)
-fn C.gtk_flow_box_unselect_all(a &C.GtkFlowBox)
-fn C.gtk_flow_box_set_selection_mode(a &C.GtkFlowBox, b GtkSelectionMode)
-fn C.gtk_flow_box_get_selection_mode(a &C.GtkFlowBox) GtkSelectionMode
-fn C.gtk_flow_box_set_hadjustment(a &C.GtkFlowBox, b &C.GtkAdjustment)
-fn C.gtk_flow_box_set_vadjustment(a &C.GtkFlowBox, b &C.GtkAdjustment)
-fn C.gtk_flow_box_set_filter_func(a &C.GtkFlowBox, b int, c voidptr, d voidptr)
-fn C.gtk_flow_box_invalidate_filter(a &C.GtkFlowBox)
-fn C.gtk_flow_box_set_sort_func(a &C.GtkFlowBox, b int, c voidptr, d voidptr)
-fn C.gtk_flow_box_invalidate_sort(a &C.GtkFlowBox)
+pub fn C.gtk_flow_box_get_type() int
+pub fn C.gtk_flow_box_new() &GtkWidget
+pub fn C.gtk_flow_box_bind_model(box &GtkFlowBox, model voidptr, create_widget_func voidptr, user_data voidptr, user_data_free_func voidptr)
+pub fn C.gtk_flow_box_set_homogeneous(box &GtkFlowBox, homogeneous bool)
+pub fn C.gtk_flow_box_get_homogeneous(box &GtkFlowBox) bool
+pub fn C.gtk_flow_box_set_row_spacing(box &GtkFlowBox, spacing u64)
+pub fn C.gtk_flow_box_get_row_spacing(box &GtkFlowBox) u64
+pub fn C.gtk_flow_box_set_column_spacing(box &GtkFlowBox, spacing u64)
+pub fn C.gtk_flow_box_get_column_spacing(box &GtkFlowBox) u64
+pub fn C.gtk_flow_box_set_min_children_per_line(box &GtkFlowBox, n_children u64)
+pub fn C.gtk_flow_box_get_min_children_per_line(box &GtkFlowBox) u64
+pub fn C.gtk_flow_box_set_max_children_per_line(box &GtkFlowBox, n_children u64)
+pub fn C.gtk_flow_box_get_max_children_per_line(box &GtkFlowBox) u64
+pub fn C.gtk_flow_box_set_activate_on_single_click(box &GtkFlowBox, single bool)
+pub fn C.gtk_flow_box_get_activate_on_single_click(box &GtkFlowBox) bool
+pub fn C.gtk_flow_box_prepend(self &GtkFlowBox, child &GtkWidget)
+pub fn C.gtk_flow_box_append(self &GtkFlowBox, child &GtkWidget)
+pub fn C.gtk_flow_box_insert(box &GtkFlowBox, widget &GtkWidget, position int)
+pub fn C.gtk_flow_box_remove(box &GtkFlowBox, widget &GtkWidget)
+pub fn C.gtk_flow_box_get_child_at_index(box &GtkFlowBox, idx int) &GtkFlowBoxChild
+pub fn C.gtk_flow_box_get_child_at_pos(box &GtkFlowBox, x int, y int) &GtkFlowBoxChild
+pub fn C.gtk_flow_box_selected_foreach(box &GtkFlowBox, func voidptr, data voidptr)
+pub fn C.gtk_flow_box_get_selected_children(box &GtkFlowBox) voidptr
+pub fn C.gtk_flow_box_select_child(box &GtkFlowBox, child &GtkFlowBoxChild)
+pub fn C.gtk_flow_box_unselect_child(box &GtkFlowBox, child &GtkFlowBoxChild)
+pub fn C.gtk_flow_box_select_all(box &GtkFlowBox)
+pub fn C.gtk_flow_box_unselect_all(box &GtkFlowBox)
+pub fn C.gtk_flow_box_set_selection_mode(box &GtkFlowBox, mode GtkSelectionMode)
+pub fn C.gtk_flow_box_get_selection_mode(box &GtkFlowBox) GtkSelectionMode
+pub fn C.gtk_flow_box_set_hadjustment(box &GtkFlowBox, adjustment &GtkAdjustment)
+pub fn C.gtk_flow_box_set_vadjustment(box &GtkFlowBox, adjustment &GtkAdjustment)
+pub fn C.gtk_flow_box_set_filter_func(box &GtkFlowBox, filter_func voidptr, user_data voidptr, destroy voidptr)
+pub fn C.gtk_flow_box_invalidate_filter(box &GtkFlowBox)
+pub fn C.gtk_flow_box_set_sort_func(box &GtkFlowBox, sort_func voidptr, user_data voidptr, destroy voidptr)
+pub fn C.gtk_flow_box_invalidate_sort(box &GtkFlowBox)
 
 @[noinit; typedef]
 pub struct C.GtkFlowBox {}
 
 pub type GtkFlowBox = C.GtkFlowBox
-
-pub fn (self &GtkFlowBox) child_get_type() int {
-	return C.gtk_flow_box_child_get_type()
-}
-
-pub fn GtkFlowBox.child_new() &GtkWidget {
-	return C.gtk_flow_box_child_new()
-}
-
-pub fn (self &GtkFlowBox) child_set_child(a &C.GtkFlowBoxChild, b &C.GtkWidget) {
-	C.gtk_flow_box_child_set_child(a, b)
-}
-
-pub fn (self &GtkFlowBox) child_get_child(a &C.GtkFlowBoxChild) &C.GtkWidget {
-	return C.gtk_flow_box_child_get_child(a)
-}
-
-pub fn (self &GtkFlowBox) child_get_index(a &C.GtkFlowBoxChild) int {
-	return C.gtk_flow_box_child_get_index(a)
-}
-
-pub fn (self &GtkFlowBox) child_is_selected(a &C.GtkFlowBoxChild) bool {
-	return C.gtk_flow_box_child_is_selected(a)
-}
-
-pub fn (self &GtkFlowBox) child_changed(a &C.GtkFlowBoxChild) {
-	C.gtk_flow_box_child_changed(a)
-}
 
 pub fn (self &GtkFlowBox) get_type() int {
 	return C.gtk_flow_box_get_type()
@@ -114,96 +115,96 @@ pub fn GtkFlowBox.new() &GtkWidget {
 	return C.gtk_flow_box_new()
 }
 
-pub fn (self &GtkFlowBox) bind_model(b voidptr, c int, d voidptr, e voidptr) {
-	C.gtk_flow_box_bind_model(self, b, c, d, e)
+pub fn (self &GtkFlowBox) bind_model(model voidptr, create_widget_func voidptr, user_data voidptr, user_data_free_func voidptr) {
+	C.gtk_flow_box_bind_model(self, model, create_widget_func, user_data, user_data_free_func)
 }
 
-pub fn (self &GtkFlowBox) set_homogeneous(b bool) {
-	C.gtk_flow_box_set_homogeneous(self, b)
+pub fn (self &GtkFlowBox) set_homogeneous(homogeneous bool) {
+	C.gtk_flow_box_set_homogeneous(self, homogeneous)
 }
 
 pub fn (self &GtkFlowBox) get_homogeneous() bool {
 	return C.gtk_flow_box_get_homogeneous(self)
 }
 
-pub fn (self &GtkFlowBox) set_row_spacing(b u64) {
-	C.gtk_flow_box_set_row_spacing(self, b)
+pub fn (self &GtkFlowBox) set_row_spacing(spacing u64) {
+	C.gtk_flow_box_set_row_spacing(self, spacing)
 }
 
 pub fn (self &GtkFlowBox) get_row_spacing() u64 {
 	return C.gtk_flow_box_get_row_spacing(self)
 }
 
-pub fn (self &GtkFlowBox) set_column_spacing(b u64) {
-	C.gtk_flow_box_set_column_spacing(self, b)
+pub fn (self &GtkFlowBox) set_column_spacing(spacing u64) {
+	C.gtk_flow_box_set_column_spacing(self, spacing)
 }
 
 pub fn (self &GtkFlowBox) get_column_spacing() u64 {
 	return C.gtk_flow_box_get_column_spacing(self)
 }
 
-pub fn (self &GtkFlowBox) set_min_children_per_line(b u64) {
-	C.gtk_flow_box_set_min_children_per_line(self, b)
+pub fn (self &GtkFlowBox) set_min_children_per_line(n_children u64) {
+	C.gtk_flow_box_set_min_children_per_line(self, n_children)
 }
 
 pub fn (self &GtkFlowBox) get_min_children_per_line() u64 {
 	return C.gtk_flow_box_get_min_children_per_line(self)
 }
 
-pub fn (self &GtkFlowBox) set_max_children_per_line(b u64) {
-	C.gtk_flow_box_set_max_children_per_line(self, b)
+pub fn (self &GtkFlowBox) set_max_children_per_line(n_children u64) {
+	C.gtk_flow_box_set_max_children_per_line(self, n_children)
 }
 
 pub fn (self &GtkFlowBox) get_max_children_per_line() u64 {
 	return C.gtk_flow_box_get_max_children_per_line(self)
 }
 
-pub fn (self &GtkFlowBox) set_activate_on_single_click(b bool) {
-	C.gtk_flow_box_set_activate_on_single_click(self, b)
+pub fn (self &GtkFlowBox) set_activate_on_single_click(single bool) {
+	C.gtk_flow_box_set_activate_on_single_click(self, single)
 }
 
 pub fn (self &GtkFlowBox) get_activate_on_single_click() bool {
 	return C.gtk_flow_box_get_activate_on_single_click(self)
 }
 
-pub fn (self &GtkFlowBox) prepend(b &C.GtkWidget) {
-	C.gtk_flow_box_prepend(self, b)
+pub fn (self &GtkFlowBox) prepend(child &GtkWidget) {
+	C.gtk_flow_box_prepend(self, child)
 }
 
-pub fn (self &GtkFlowBox) append(b &C.GtkWidget) {
-	C.gtk_flow_box_append(self, b)
+pub fn (self &GtkFlowBox) append(child &GtkWidget) {
+	C.gtk_flow_box_append(self, child)
 }
 
-pub fn (self &GtkFlowBox) insert(b &C.GtkWidget, c int) {
-	C.gtk_flow_box_insert(self, b, c)
+pub fn (self &GtkFlowBox) insert(widget &GtkWidget, position int) {
+	C.gtk_flow_box_insert(self, widget, position)
 }
 
-pub fn (self &GtkFlowBox) remove(b &C.GtkWidget) {
-	C.gtk_flow_box_remove(self, b)
+pub fn (self &GtkFlowBox) remove(widget &GtkWidget) {
+	C.gtk_flow_box_remove(self, widget)
 }
 
-pub fn (self &GtkFlowBox) get_child_at_index(b int) &C.GtkFlowBoxChild {
-	return C.gtk_flow_box_get_child_at_index(self, b)
+pub fn (self &GtkFlowBox) get_child_at_index(idx int) &GtkFlowBoxChild {
+	return C.gtk_flow_box_get_child_at_index(self, idx)
 }
 
-pub fn (self &GtkFlowBox) get_child_at_pos(b int, c int) &C.GtkFlowBoxChild {
-	return C.gtk_flow_box_get_child_at_pos(self, b, c)
+pub fn (self &GtkFlowBox) get_child_at_pos(x int, y int) &GtkFlowBoxChild {
+	return C.gtk_flow_box_get_child_at_pos(self, x, y)
 }
 
-pub fn (self &GtkFlowBox) selected_foreach(b int, c voidptr) {
-	C.gtk_flow_box_selected_foreach(self, b, c)
+pub fn (self &GtkFlowBox) selected_foreach(func voidptr, data voidptr) {
+	C.gtk_flow_box_selected_foreach(self, func, data)
 }
 
 pub fn (self &GtkFlowBox) get_selected_children() voidptr {
 	return C.gtk_flow_box_get_selected_children(self)
 }
 
-pub fn (self &GtkFlowBox) select_child(b &C.GtkFlowBoxChild) {
-	C.gtk_flow_box_select_child(self, b)
+pub fn (self &GtkFlowBox) select_child(child &GtkFlowBoxChild) {
+	C.gtk_flow_box_select_child(self, child)
 }
 
-pub fn (self &GtkFlowBox) unselect_child(b &C.GtkFlowBoxChild) {
-	C.gtk_flow_box_unselect_child(self, b)
+pub fn (self &GtkFlowBox) unselect_child(child &GtkFlowBoxChild) {
+	C.gtk_flow_box_unselect_child(self, child)
 }
 
 pub fn (self &GtkFlowBox) select_all() {
@@ -214,32 +215,32 @@ pub fn (self &GtkFlowBox) unselect_all() {
 	C.gtk_flow_box_unselect_all(self)
 }
 
-pub fn (self &GtkFlowBox) set_selection_mode(b GtkSelectionMode) {
-	C.gtk_flow_box_set_selection_mode(self, b)
+pub fn (self &GtkFlowBox) set_selection_mode(mode GtkSelectionMode) {
+	C.gtk_flow_box_set_selection_mode(self, mode)
 }
 
 pub fn (self &GtkFlowBox) get_selection_mode() GtkSelectionMode {
 	return C.gtk_flow_box_get_selection_mode(self)
 }
 
-pub fn (self &GtkFlowBox) set_hadjustment(b &C.GtkAdjustment) {
-	C.gtk_flow_box_set_hadjustment(self, b)
+pub fn (self &GtkFlowBox) set_hadjustment(adjustment &GtkAdjustment) {
+	C.gtk_flow_box_set_hadjustment(self, adjustment)
 }
 
-pub fn (self &GtkFlowBox) set_vadjustment(b &C.GtkAdjustment) {
-	C.gtk_flow_box_set_vadjustment(self, b)
+pub fn (self &GtkFlowBox) set_vadjustment(adjustment &GtkAdjustment) {
+	C.gtk_flow_box_set_vadjustment(self, adjustment)
 }
 
-pub fn (self &GtkFlowBox) set_filter_func(b int, c voidptr, d voidptr) {
-	C.gtk_flow_box_set_filter_func(self, b, c, d)
+pub fn (self &GtkFlowBox) set_filter_func(filter_func voidptr, user_data voidptr, destroy voidptr) {
+	C.gtk_flow_box_set_filter_func(self, filter_func, user_data, destroy)
 }
 
 pub fn (self &GtkFlowBox) invalidate_filter() {
 	C.gtk_flow_box_invalidate_filter(self)
 }
 
-pub fn (self &GtkFlowBox) set_sort_func(b int, c voidptr, d voidptr) {
-	C.gtk_flow_box_set_sort_func(self, b, c, d)
+pub fn (self &GtkFlowBox) set_sort_func(sort_func voidptr, user_data voidptr, destroy voidptr) {
+	C.gtk_flow_box_set_sort_func(self, sort_func, user_data, destroy)
 }
 
 pub fn (self &GtkFlowBox) invalidate_sort() {

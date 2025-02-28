@@ -5,7 +5,7 @@ pub struct C.GtkShortcutsGroupClass {}
 
 pub type GtkShortcutsGroupClass = C.GtkShortcutsGroupClass
 
-fn C.gtk_shortcuts_group_get_type() int
+pub fn C.gtk_shortcuts_group_get_type() int
 
 @[noinit; typedef]
 pub struct C.GtkShortcutsGroup {}

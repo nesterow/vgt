@@ -7,265 +7,265 @@ pub enum GtkTextSearchFlags {
 	// possible future plans: search_regexp ///
 }
 
-fn C.gtk_text_iter_get_buffer(a voidptr) &C.GtkTextBuffer
-fn C.gtk_text_iter_copy(a voidptr) &C.GtkTextIter
-fn C.gtk_text_iter_free(a &C.GtkTextIter)
-fn C.gtk_text_iter_assign(a &C.GtkTextIter, b voidptr)
-fn C.gtk_text_iter_get_type() int
-fn C.gtk_text_iter_get_offset(a voidptr) int
-fn C.gtk_text_iter_get_line(a voidptr) int
-fn C.gtk_text_iter_get_line_offset(a voidptr) int
-fn C.gtk_text_iter_get_line_index(a voidptr) int
-fn C.gtk_text_iter_get_visible_line_offset(a voidptr) int
-fn C.gtk_text_iter_get_visible_line_index(a voidptr) int
-fn C.gtk_text_iter_get_char(a voidptr) voidptr
-fn C.gtk_text_iter_get_slice(a voidptr, b voidptr) voidptr
-fn C.gtk_text_iter_get_text(a voidptr, b voidptr) voidptr
-fn C.gtk_text_iter_get_visible_slice(a voidptr, b voidptr) voidptr
-fn C.gtk_text_iter_get_visible_text(a voidptr, b voidptr) voidptr
-fn C.gtk_text_iter_get_paintable(a voidptr) voidptr
-fn C.gtk_text_iter_get_marks(a voidptr) voidptr
-fn C.gtk_text_iter_get_child_anchor(a voidptr) &C.GtkTextChildAnchor
-fn C.gtk_text_iter_get_toggled_tags(a voidptr, b bool) voidptr
-fn C.gtk_text_iter_starts_tag(a voidptr, b &C.GtkTextTag) bool
-fn C.gtk_text_iter_ends_tag(a voidptr, b &C.GtkTextTag) bool
-fn C.gtk_text_iter_toggles_tag(a voidptr, b &C.GtkTextTag) bool
-fn C.gtk_text_iter_has_tag(a voidptr, b &C.GtkTextTag) bool
-fn C.gtk_text_iter_get_tags(a voidptr) voidptr
-fn C.gtk_text_iter_editable(a voidptr, b bool) bool
-fn C.gtk_text_iter_can_insert(a voidptr, b bool) bool
-fn C.gtk_text_iter_starts_word(a voidptr) bool
-fn C.gtk_text_iter_ends_word(a voidptr) bool
-fn C.gtk_text_iter_inside_word(a voidptr) bool
-fn C.gtk_text_iter_starts_sentence(a voidptr) bool
-fn C.gtk_text_iter_ends_sentence(a voidptr) bool
-fn C.gtk_text_iter_inside_sentence(a voidptr) bool
-fn C.gtk_text_iter_starts_line(a voidptr) bool
-fn C.gtk_text_iter_ends_line(a voidptr) bool
-fn C.gtk_text_iter_is_cursor_position(a voidptr) bool
-fn C.gtk_text_iter_get_chars_in_line(a voidptr) int
-fn C.gtk_text_iter_get_bytes_in_line(a voidptr) int
-fn C.gtk_text_iter_get_language(a voidptr) voidptr
-fn C.gtk_text_iter_is_end(a voidptr) bool
-fn C.gtk_text_iter_is_start(a voidptr) bool
-fn C.gtk_text_iter_forward_char(a &C.GtkTextIter) bool
-fn C.gtk_text_iter_backward_char(a &C.GtkTextIter) bool
-fn C.gtk_text_iter_forward_chars(a &C.GtkTextIter, b int) bool
-fn C.gtk_text_iter_backward_chars(a &C.GtkTextIter, b int) bool
-fn C.gtk_text_iter_forward_line(a &C.GtkTextIter) bool
-fn C.gtk_text_iter_backward_line(a &C.GtkTextIter) bool
-fn C.gtk_text_iter_forward_lines(a &C.GtkTextIter, b int) bool
-fn C.gtk_text_iter_backward_lines(a &C.GtkTextIter, b int) bool
-fn C.gtk_text_iter_forward_word_end(a &C.GtkTextIter) bool
-fn C.gtk_text_iter_backward_word_start(a &C.GtkTextIter) bool
-fn C.gtk_text_iter_forward_word_ends(a &C.GtkTextIter, b int) bool
-fn C.gtk_text_iter_backward_word_starts(a &C.GtkTextIter, b int) bool
-fn C.gtk_text_iter_forward_visible_line(a &C.GtkTextIter) bool
-fn C.gtk_text_iter_backward_visible_line(a &C.GtkTextIter) bool
-fn C.gtk_text_iter_forward_visible_lines(a &C.GtkTextIter, b int) bool
-fn C.gtk_text_iter_backward_visible_lines(a &C.GtkTextIter, b int) bool
-fn C.gtk_text_iter_forward_visible_word_end(a &C.GtkTextIter) bool
-fn C.gtk_text_iter_backward_visible_word_start(a &C.GtkTextIter) bool
-fn C.gtk_text_iter_forward_visible_word_ends(a &C.GtkTextIter, b int) bool
-fn C.gtk_text_iter_backward_visible_word_starts(a &C.GtkTextIter, b int) bool
-fn C.gtk_text_iter_forward_sentence_end(a &C.GtkTextIter) bool
-fn C.gtk_text_iter_backward_sentence_start(a &C.GtkTextIter) bool
-fn C.gtk_text_iter_forward_sentence_ends(a &C.GtkTextIter, b int) bool
-fn C.gtk_text_iter_backward_sentence_starts(a &C.GtkTextIter, b int) bool
-fn C.gtk_text_iter_forward_cursor_position(a &C.GtkTextIter) bool
-fn C.gtk_text_iter_backward_cursor_position(a &C.GtkTextIter) bool
-fn C.gtk_text_iter_forward_cursor_positions(a &C.GtkTextIter, b int) bool
-fn C.gtk_text_iter_backward_cursor_positions(a &C.GtkTextIter, b int) bool
-fn C.gtk_text_iter_forward_visible_cursor_position(a &C.GtkTextIter) bool
-fn C.gtk_text_iter_backward_visible_cursor_position(a &C.GtkTextIter) bool
-fn C.gtk_text_iter_forward_visible_cursor_positions(a &C.GtkTextIter, b int) bool
-fn C.gtk_text_iter_backward_visible_cursor_positions(a &C.GtkTextIter, b int) bool
-fn C.gtk_text_iter_set_offset(a &C.GtkTextIter, b int)
-fn C.gtk_text_iter_set_line(a &C.GtkTextIter, b int)
-fn C.gtk_text_iter_set_line_offset(a &C.GtkTextIter, b int)
-fn C.gtk_text_iter_set_line_index(a &C.GtkTextIter, b int)
-fn C.gtk_text_iter_forward_to_end(a &C.GtkTextIter)
-fn C.gtk_text_iter_forward_to_line_end(a &C.GtkTextIter) bool
-fn C.gtk_text_iter_set_visible_line_offset(a &C.GtkTextIter, b int)
-fn C.gtk_text_iter_set_visible_line_index(a &C.GtkTextIter, b int)
-fn C.gtk_text_iter_forward_to_tag_toggle(a &C.GtkTextIter, b &C.GtkTextTag) bool
-fn C.gtk_text_iter_backward_to_tag_toggle(a &C.GtkTextIter, b &C.GtkTextTag) bool
-fn C.gtk_text_iter_forward_find_char(a &C.GtkTextIter, b int, c voidptr, d voidptr) bool
-fn C.gtk_text_iter_backward_find_char(a &C.GtkTextIter, b int, c voidptr, d voidptr) bool
-fn C.gtk_text_iter_forward_search(a voidptr, b &char, c GtkTextSearchFlags, d &C.GtkTextIter, e &C.GtkTextIter, f voidptr) bool
-fn C.gtk_text_iter_backward_search(a voidptr, b &char, c GtkTextSearchFlags, d &C.GtkTextIter, e &C.GtkTextIter, f voidptr) bool
-fn C.gtk_text_iter_equal(a voidptr, b voidptr) bool
-fn C.gtk_text_iter_compare(a voidptr, b voidptr) int
-fn C.gtk_text_iter_in_range(a voidptr, b voidptr, c voidptr) bool
-fn C.gtk_text_iter_order(a &C.GtkTextIter, b &C.GtkTextIter)
+pub fn C.gtk_text_iter_get_buffer(iter &GtkTextIter) &GtkTextBuffer
+pub fn C.gtk_text_iter_copy(iter &GtkTextIter) &GtkTextIter
+pub fn C.gtk_text_iter_free(iter &GtkTextIter)
+pub fn C.gtk_text_iter_assign(iter &GtkTextIter, other &GtkTextIter)
+pub fn C.gtk_text_iter_get_type() int
+pub fn C.gtk_text_iter_get_offset(iter &GtkTextIter) int
+pub fn C.gtk_text_iter_get_line(iter &GtkTextIter) int
+pub fn C.gtk_text_iter_get_line_offset(iter &GtkTextIter) int
+pub fn C.gtk_text_iter_get_line_index(iter &GtkTextIter) int
+pub fn C.gtk_text_iter_get_visible_line_offset(iter &GtkTextIter) int
+pub fn C.gtk_text_iter_get_visible_line_index(iter &GtkTextIter) int
+pub fn C.gtk_text_iter_get_char(iter &GtkTextIter) voidptr
+pub fn C.gtk_text_iter_get_slice(start &GtkTextIter, end &GtkTextIter) voidptr
+pub fn C.gtk_text_iter_get_text(start &GtkTextIter, end &GtkTextIter) voidptr
+pub fn C.gtk_text_iter_get_visible_slice(start &GtkTextIter, end &GtkTextIter) voidptr
+pub fn C.gtk_text_iter_get_visible_text(start &GtkTextIter, end &GtkTextIter) voidptr
+pub fn C.gtk_text_iter_get_paintable(iter &GtkTextIter) voidptr
+pub fn C.gtk_text_iter_get_marks(iter &GtkTextIter) voidptr
+pub fn C.gtk_text_iter_get_child_anchor(iter &GtkTextIter) &GtkTextChildAnchor
+pub fn C.gtk_text_iter_get_toggled_tags(iter &GtkTextIter, toggled_on bool) voidptr
+pub fn C.gtk_text_iter_starts_tag(iter &GtkTextIter, tag &GtkTextTag) bool
+pub fn C.gtk_text_iter_ends_tag(iter &GtkTextIter, tag &GtkTextTag) bool
+pub fn C.gtk_text_iter_toggles_tag(iter &GtkTextIter, tag &GtkTextTag) bool
+pub fn C.gtk_text_iter_has_tag(iter &GtkTextIter, tag &GtkTextTag) bool
+pub fn C.gtk_text_iter_get_tags(iter &GtkTextIter) voidptr
+pub fn C.gtk_text_iter_editable(iter &GtkTextIter, default_setting bool) bool
+pub fn C.gtk_text_iter_can_insert(iter &GtkTextIter, default_editability bool) bool
+pub fn C.gtk_text_iter_starts_word(iter &GtkTextIter) bool
+pub fn C.gtk_text_iter_ends_word(iter &GtkTextIter) bool
+pub fn C.gtk_text_iter_inside_word(iter &GtkTextIter) bool
+pub fn C.gtk_text_iter_starts_sentence(iter &GtkTextIter) bool
+pub fn C.gtk_text_iter_ends_sentence(iter &GtkTextIter) bool
+pub fn C.gtk_text_iter_inside_sentence(iter &GtkTextIter) bool
+pub fn C.gtk_text_iter_starts_line(iter &GtkTextIter) bool
+pub fn C.gtk_text_iter_ends_line(iter &GtkTextIter) bool
+pub fn C.gtk_text_iter_is_cursor_position(iter &GtkTextIter) bool
+pub fn C.gtk_text_iter_get_chars_in_line(iter &GtkTextIter) int
+pub fn C.gtk_text_iter_get_bytes_in_line(iter &GtkTextIter) int
+pub fn C.gtk_text_iter_get_language(iter &GtkTextIter) voidptr
+pub fn C.gtk_text_iter_is_end(iter &GtkTextIter) bool
+pub fn C.gtk_text_iter_is_start(iter &GtkTextIter) bool
+pub fn C.gtk_text_iter_forward_char(iter &GtkTextIter) bool
+pub fn C.gtk_text_iter_backward_char(iter &GtkTextIter) bool
+pub fn C.gtk_text_iter_forward_chars(iter &GtkTextIter, count int) bool
+pub fn C.gtk_text_iter_backward_chars(iter &GtkTextIter, count int) bool
+pub fn C.gtk_text_iter_forward_line(iter &GtkTextIter) bool
+pub fn C.gtk_text_iter_backward_line(iter &GtkTextIter) bool
+pub fn C.gtk_text_iter_forward_lines(iter &GtkTextIter, count int) bool
+pub fn C.gtk_text_iter_backward_lines(iter &GtkTextIter, count int) bool
+pub fn C.gtk_text_iter_forward_word_end(iter &GtkTextIter) bool
+pub fn C.gtk_text_iter_backward_word_start(iter &GtkTextIter) bool
+pub fn C.gtk_text_iter_forward_word_ends(iter &GtkTextIter, count int) bool
+pub fn C.gtk_text_iter_backward_word_starts(iter &GtkTextIter, count int) bool
+pub fn C.gtk_text_iter_forward_visible_line(iter &GtkTextIter) bool
+pub fn C.gtk_text_iter_backward_visible_line(iter &GtkTextIter) bool
+pub fn C.gtk_text_iter_forward_visible_lines(iter &GtkTextIter, count int) bool
+pub fn C.gtk_text_iter_backward_visible_lines(iter &GtkTextIter, count int) bool
+pub fn C.gtk_text_iter_forward_visible_word_end(iter &GtkTextIter) bool
+pub fn C.gtk_text_iter_backward_visible_word_start(iter &GtkTextIter) bool
+pub fn C.gtk_text_iter_forward_visible_word_ends(iter &GtkTextIter, count int) bool
+pub fn C.gtk_text_iter_backward_visible_word_starts(iter &GtkTextIter, count int) bool
+pub fn C.gtk_text_iter_forward_sentence_end(iter &GtkTextIter) bool
+pub fn C.gtk_text_iter_backward_sentence_start(iter &GtkTextIter) bool
+pub fn C.gtk_text_iter_forward_sentence_ends(iter &GtkTextIter, count int) bool
+pub fn C.gtk_text_iter_backward_sentence_starts(iter &GtkTextIter, count int) bool
+pub fn C.gtk_text_iter_forward_cursor_position(iter &GtkTextIter) bool
+pub fn C.gtk_text_iter_backward_cursor_position(iter &GtkTextIter) bool
+pub fn C.gtk_text_iter_forward_cursor_positions(iter &GtkTextIter, count int) bool
+pub fn C.gtk_text_iter_backward_cursor_positions(iter &GtkTextIter, count int) bool
+pub fn C.gtk_text_iter_forward_visible_cursor_position(iter &GtkTextIter) bool
+pub fn C.gtk_text_iter_backward_visible_cursor_position(iter &GtkTextIter) bool
+pub fn C.gtk_text_iter_forward_visible_cursor_positions(iter &GtkTextIter, count int) bool
+pub fn C.gtk_text_iter_backward_visible_cursor_positions(iter &GtkTextIter, count int) bool
+pub fn C.gtk_text_iter_set_offset(iter &GtkTextIter, char_offset int)
+pub fn C.gtk_text_iter_set_line(iter &GtkTextIter, line_number int)
+pub fn C.gtk_text_iter_set_line_offset(iter &GtkTextIter, char_on_line int)
+pub fn C.gtk_text_iter_set_line_index(iter &GtkTextIter, byte_on_line int)
+pub fn C.gtk_text_iter_forward_to_end(iter &GtkTextIter)
+pub fn C.gtk_text_iter_forward_to_line_end(iter &GtkTextIter) bool
+pub fn C.gtk_text_iter_set_visible_line_offset(iter &GtkTextIter, char_on_line int)
+pub fn C.gtk_text_iter_set_visible_line_index(iter &GtkTextIter, byte_on_line int)
+pub fn C.gtk_text_iter_forward_to_tag_toggle(iter &GtkTextIter, tag &GtkTextTag) bool
+pub fn C.gtk_text_iter_backward_to_tag_toggle(iter &GtkTextIter, tag &GtkTextTag) bool
+pub fn C.gtk_text_iter_forward_find_char(iter &GtkTextIter, pred voidptr, user_data voidptr, limit &GtkTextIter) bool
+pub fn C.gtk_text_iter_backward_find_char(iter &GtkTextIter, pred voidptr, user_data voidptr, limit &GtkTextIter) bool
+pub fn C.gtk_text_iter_forward_search(iter &GtkTextIter, str &char, flags GtkTextSearchFlags, match_start &GtkTextIter, match_end &GtkTextIter, limit &GtkTextIter) bool
+pub fn C.gtk_text_iter_backward_search(iter &GtkTextIter, str &char, flags GtkTextSearchFlags, match_start &GtkTextIter, match_end &GtkTextIter, limit &GtkTextIter) bool
+pub fn C.gtk_text_iter_equal(lhs &GtkTextIter, rhs &GtkTextIter) bool
+pub fn C.gtk_text_iter_compare(lhs &GtkTextIter, rhs &GtkTextIter) int
+pub fn C.gtk_text_iter_in_range(iter &GtkTextIter, start &GtkTextIter, end &GtkTextIter) bool
+pub fn C.gtk_text_iter_order(first &GtkTextIter, second &GtkTextIter)
 
 @[noinit; typedef]
 pub struct C.GtkTextIter {}
 
 pub type GtkTextIter = C.GtkTextIter
 
-pub fn (self &GtkTextIter) get_buffer(a voidptr) &C.GtkTextBuffer {
-	return C.gtk_text_iter_get_buffer(a)
+pub fn (self &GtkTextIter) get_buffer() &GtkTextBuffer {
+	return C.gtk_text_iter_get_buffer(self)
 }
 
-pub fn (self &GtkTextIter) copy(a voidptr) &C.GtkTextIter {
-	return C.gtk_text_iter_copy(a)
+pub fn (self &GtkTextIter) copy() &GtkTextIter {
+	return C.gtk_text_iter_copy(self)
 }
 
 pub fn (self &GtkTextIter) free() {
 	C.gtk_text_iter_free(self)
 }
 
-pub fn (self &GtkTextIter) assign(b voidptr) {
-	C.gtk_text_iter_assign(self, b)
+pub fn (self &GtkTextIter) assign(other &GtkTextIter) {
+	C.gtk_text_iter_assign(self, other)
 }
 
 pub fn (self &GtkTextIter) get_type() int {
 	return C.gtk_text_iter_get_type()
 }
 
-pub fn (self &GtkTextIter) get_offset(a voidptr) int {
-	return C.gtk_text_iter_get_offset(a)
+pub fn (self &GtkTextIter) get_offset() int {
+	return C.gtk_text_iter_get_offset(self)
 }
 
-pub fn (self &GtkTextIter) get_line(a voidptr) int {
-	return C.gtk_text_iter_get_line(a)
+pub fn (self &GtkTextIter) get_line() int {
+	return C.gtk_text_iter_get_line(self)
 }
 
-pub fn (self &GtkTextIter) get_line_offset(a voidptr) int {
-	return C.gtk_text_iter_get_line_offset(a)
+pub fn (self &GtkTextIter) get_line_offset() int {
+	return C.gtk_text_iter_get_line_offset(self)
 }
 
-pub fn (self &GtkTextIter) get_line_index(a voidptr) int {
-	return C.gtk_text_iter_get_line_index(a)
+pub fn (self &GtkTextIter) get_line_index() int {
+	return C.gtk_text_iter_get_line_index(self)
 }
 
-pub fn (self &GtkTextIter) get_visible_line_offset(a voidptr) int {
-	return C.gtk_text_iter_get_visible_line_offset(a)
+pub fn (self &GtkTextIter) get_visible_line_offset() int {
+	return C.gtk_text_iter_get_visible_line_offset(self)
 }
 
-pub fn (self &GtkTextIter) get_visible_line_index(a voidptr) int {
-	return C.gtk_text_iter_get_visible_line_index(a)
+pub fn (self &GtkTextIter) get_visible_line_index() int {
+	return C.gtk_text_iter_get_visible_line_index(self)
 }
 
-pub fn (self &GtkTextIter) get_char(a voidptr) voidptr {
-	return C.gtk_text_iter_get_char(a)
+pub fn (self &GtkTextIter) get_char() voidptr {
+	return C.gtk_text_iter_get_char(self)
 }
 
-pub fn (self &GtkTextIter) get_slice(a voidptr, b voidptr) voidptr {
-	return C.gtk_text_iter_get_slice(a, b)
+pub fn (self &GtkTextIter) get_slice(end &GtkTextIter) voidptr {
+	return C.gtk_text_iter_get_slice(self, end)
 }
 
-pub fn (self &GtkTextIter) get_text(a voidptr, b voidptr) voidptr {
-	return C.gtk_text_iter_get_text(a, b)
+pub fn (self &GtkTextIter) get_text(end &GtkTextIter) voidptr {
+	return C.gtk_text_iter_get_text(self, end)
 }
 
-pub fn (self &GtkTextIter) get_visible_slice(a voidptr, b voidptr) voidptr {
-	return C.gtk_text_iter_get_visible_slice(a, b)
+pub fn (self &GtkTextIter) get_visible_slice(end &GtkTextIter) voidptr {
+	return C.gtk_text_iter_get_visible_slice(self, end)
 }
 
-pub fn (self &GtkTextIter) get_visible_text(a voidptr, b voidptr) voidptr {
-	return C.gtk_text_iter_get_visible_text(a, b)
+pub fn (self &GtkTextIter) get_visible_text(end &GtkTextIter) voidptr {
+	return C.gtk_text_iter_get_visible_text(self, end)
 }
 
-pub fn (self &GtkTextIter) get_paintable(a voidptr) voidptr {
-	return C.gtk_text_iter_get_paintable(a)
+pub fn (self &GtkTextIter) get_paintable() voidptr {
+	return C.gtk_text_iter_get_paintable(self)
 }
 
-pub fn (self &GtkTextIter) get_marks(a voidptr) voidptr {
-	return C.gtk_text_iter_get_marks(a)
+pub fn (self &GtkTextIter) get_marks() voidptr {
+	return C.gtk_text_iter_get_marks(self)
 }
 
-pub fn (self &GtkTextIter) get_child_anchor(a voidptr) &C.GtkTextChildAnchor {
-	return C.gtk_text_iter_get_child_anchor(a)
+pub fn (self &GtkTextIter) get_child_anchor() &GtkTextChildAnchor {
+	return C.gtk_text_iter_get_child_anchor(self)
 }
 
-pub fn (self &GtkTextIter) get_toggled_tags(a voidptr, b bool) voidptr {
-	return C.gtk_text_iter_get_toggled_tags(a, b)
+pub fn (self &GtkTextIter) get_toggled_tags(toggled_on bool) voidptr {
+	return C.gtk_text_iter_get_toggled_tags(self, toggled_on)
 }
 
-pub fn (self &GtkTextIter) starts_tag(a voidptr, b &C.GtkTextTag) bool {
-	return C.gtk_text_iter_starts_tag(a, b)
+pub fn (self &GtkTextIter) starts_tag(tag &GtkTextTag) bool {
+	return C.gtk_text_iter_starts_tag(self, tag)
 }
 
-pub fn (self &GtkTextIter) ends_tag(a voidptr, b &C.GtkTextTag) bool {
-	return C.gtk_text_iter_ends_tag(a, b)
+pub fn (self &GtkTextIter) ends_tag(tag &GtkTextTag) bool {
+	return C.gtk_text_iter_ends_tag(self, tag)
 }
 
-pub fn (self &GtkTextIter) toggles_tag(a voidptr, b &C.GtkTextTag) bool {
-	return C.gtk_text_iter_toggles_tag(a, b)
+pub fn (self &GtkTextIter) toggles_tag(tag &GtkTextTag) bool {
+	return C.gtk_text_iter_toggles_tag(self, tag)
 }
 
-pub fn (self &GtkTextIter) has_tag(a voidptr, b &C.GtkTextTag) bool {
-	return C.gtk_text_iter_has_tag(a, b)
+pub fn (self &GtkTextIter) has_tag(tag &GtkTextTag) bool {
+	return C.gtk_text_iter_has_tag(self, tag)
 }
 
-pub fn (self &GtkTextIter) get_tags(a voidptr) voidptr {
-	return C.gtk_text_iter_get_tags(a)
+pub fn (self &GtkTextIter) get_tags() voidptr {
+	return C.gtk_text_iter_get_tags(self)
 }
 
-pub fn (self &GtkTextIter) editable(a voidptr, b bool) bool {
-	return C.gtk_text_iter_editable(a, b)
+pub fn (self &GtkTextIter) editable(default_setting bool) bool {
+	return C.gtk_text_iter_editable(self, default_setting)
 }
 
-pub fn (self &GtkTextIter) can_insert(a voidptr, b bool) bool {
-	return C.gtk_text_iter_can_insert(a, b)
+pub fn (self &GtkTextIter) can_insert(default_editability bool) bool {
+	return C.gtk_text_iter_can_insert(self, default_editability)
 }
 
-pub fn (self &GtkTextIter) starts_word(a voidptr) bool {
-	return C.gtk_text_iter_starts_word(a)
+pub fn (self &GtkTextIter) starts_word() bool {
+	return C.gtk_text_iter_starts_word(self)
 }
 
-pub fn (self &GtkTextIter) ends_word(a voidptr) bool {
-	return C.gtk_text_iter_ends_word(a)
+pub fn (self &GtkTextIter) ends_word() bool {
+	return C.gtk_text_iter_ends_word(self)
 }
 
-pub fn (self &GtkTextIter) inside_word(a voidptr) bool {
-	return C.gtk_text_iter_inside_word(a)
+pub fn (self &GtkTextIter) inside_word() bool {
+	return C.gtk_text_iter_inside_word(self)
 }
 
-pub fn (self &GtkTextIter) starts_sentence(a voidptr) bool {
-	return C.gtk_text_iter_starts_sentence(a)
+pub fn (self &GtkTextIter) starts_sentence() bool {
+	return C.gtk_text_iter_starts_sentence(self)
 }
 
-pub fn (self &GtkTextIter) ends_sentence(a voidptr) bool {
-	return C.gtk_text_iter_ends_sentence(a)
+pub fn (self &GtkTextIter) ends_sentence() bool {
+	return C.gtk_text_iter_ends_sentence(self)
 }
 
-pub fn (self &GtkTextIter) inside_sentence(a voidptr) bool {
-	return C.gtk_text_iter_inside_sentence(a)
+pub fn (self &GtkTextIter) inside_sentence() bool {
+	return C.gtk_text_iter_inside_sentence(self)
 }
 
-pub fn (self &GtkTextIter) starts_line(a voidptr) bool {
-	return C.gtk_text_iter_starts_line(a)
+pub fn (self &GtkTextIter) starts_line() bool {
+	return C.gtk_text_iter_starts_line(self)
 }
 
-pub fn (self &GtkTextIter) ends_line(a voidptr) bool {
-	return C.gtk_text_iter_ends_line(a)
+pub fn (self &GtkTextIter) ends_line() bool {
+	return C.gtk_text_iter_ends_line(self)
 }
 
-pub fn (self &GtkTextIter) is_cursor_position(a voidptr) bool {
-	return C.gtk_text_iter_is_cursor_position(a)
+pub fn (self &GtkTextIter) is_cursor_position() bool {
+	return C.gtk_text_iter_is_cursor_position(self)
 }
 
-pub fn (self &GtkTextIter) get_chars_in_line(a voidptr) int {
-	return C.gtk_text_iter_get_chars_in_line(a)
+pub fn (self &GtkTextIter) get_chars_in_line() int {
+	return C.gtk_text_iter_get_chars_in_line(self)
 }
 
-pub fn (self &GtkTextIter) get_bytes_in_line(a voidptr) int {
-	return C.gtk_text_iter_get_bytes_in_line(a)
+pub fn (self &GtkTextIter) get_bytes_in_line() int {
+	return C.gtk_text_iter_get_bytes_in_line(self)
 }
 
-pub fn (self &GtkTextIter) get_language(a voidptr) voidptr {
-	return C.gtk_text_iter_get_language(a)
+pub fn (self &GtkTextIter) get_language() voidptr {
+	return C.gtk_text_iter_get_language(self)
 }
 
-pub fn (self &GtkTextIter) is_end(a voidptr) bool {
-	return C.gtk_text_iter_is_end(a)
+pub fn (self &GtkTextIter) is_end() bool {
+	return C.gtk_text_iter_is_end(self)
 }
 
-pub fn (self &GtkTextIter) is_start(a voidptr) bool {
-	return C.gtk_text_iter_is_start(a)
+pub fn (self &GtkTextIter) is_start() bool {
+	return C.gtk_text_iter_is_start(self)
 }
 
 pub fn (self &GtkTextIter) forward_char() bool {
@@ -276,12 +276,12 @@ pub fn (self &GtkTextIter) backward_char() bool {
 	return C.gtk_text_iter_backward_char(self)
 }
 
-pub fn (self &GtkTextIter) forward_chars(b int) bool {
-	return C.gtk_text_iter_forward_chars(self, b)
+pub fn (self &GtkTextIter) forward_chars(count int) bool {
+	return C.gtk_text_iter_forward_chars(self, count)
 }
 
-pub fn (self &GtkTextIter) backward_chars(b int) bool {
-	return C.gtk_text_iter_backward_chars(self, b)
+pub fn (self &GtkTextIter) backward_chars(count int) bool {
+	return C.gtk_text_iter_backward_chars(self, count)
 }
 
 pub fn (self &GtkTextIter) forward_line() bool {
@@ -292,12 +292,12 @@ pub fn (self &GtkTextIter) backward_line() bool {
 	return C.gtk_text_iter_backward_line(self)
 }
 
-pub fn (self &GtkTextIter) forward_lines(b int) bool {
-	return C.gtk_text_iter_forward_lines(self, b)
+pub fn (self &GtkTextIter) forward_lines(count int) bool {
+	return C.gtk_text_iter_forward_lines(self, count)
 }
 
-pub fn (self &GtkTextIter) backward_lines(b int) bool {
-	return C.gtk_text_iter_backward_lines(self, b)
+pub fn (self &GtkTextIter) backward_lines(count int) bool {
+	return C.gtk_text_iter_backward_lines(self, count)
 }
 
 pub fn (self &GtkTextIter) forward_word_end() bool {
@@ -308,12 +308,12 @@ pub fn (self &GtkTextIter) backward_word_start() bool {
 	return C.gtk_text_iter_backward_word_start(self)
 }
 
-pub fn (self &GtkTextIter) forward_word_ends(b int) bool {
-	return C.gtk_text_iter_forward_word_ends(self, b)
+pub fn (self &GtkTextIter) forward_word_ends(count int) bool {
+	return C.gtk_text_iter_forward_word_ends(self, count)
 }
 
-pub fn (self &GtkTextIter) backward_word_starts(b int) bool {
-	return C.gtk_text_iter_backward_word_starts(self, b)
+pub fn (self &GtkTextIter) backward_word_starts(count int) bool {
+	return C.gtk_text_iter_backward_word_starts(self, count)
 }
 
 pub fn (self &GtkTextIter) forward_visible_line() bool {
@@ -324,12 +324,12 @@ pub fn (self &GtkTextIter) backward_visible_line() bool {
 	return C.gtk_text_iter_backward_visible_line(self)
 }
 
-pub fn (self &GtkTextIter) forward_visible_lines(b int) bool {
-	return C.gtk_text_iter_forward_visible_lines(self, b)
+pub fn (self &GtkTextIter) forward_visible_lines(count int) bool {
+	return C.gtk_text_iter_forward_visible_lines(self, count)
 }
 
-pub fn (self &GtkTextIter) backward_visible_lines(b int) bool {
-	return C.gtk_text_iter_backward_visible_lines(self, b)
+pub fn (self &GtkTextIter) backward_visible_lines(count int) bool {
+	return C.gtk_text_iter_backward_visible_lines(self, count)
 }
 
 pub fn (self &GtkTextIter) forward_visible_word_end() bool {
@@ -340,12 +340,12 @@ pub fn (self &GtkTextIter) backward_visible_word_start() bool {
 	return C.gtk_text_iter_backward_visible_word_start(self)
 }
 
-pub fn (self &GtkTextIter) forward_visible_word_ends(b int) bool {
-	return C.gtk_text_iter_forward_visible_word_ends(self, b)
+pub fn (self &GtkTextIter) forward_visible_word_ends(count int) bool {
+	return C.gtk_text_iter_forward_visible_word_ends(self, count)
 }
 
-pub fn (self &GtkTextIter) backward_visible_word_starts(b int) bool {
-	return C.gtk_text_iter_backward_visible_word_starts(self, b)
+pub fn (self &GtkTextIter) backward_visible_word_starts(count int) bool {
+	return C.gtk_text_iter_backward_visible_word_starts(self, count)
 }
 
 pub fn (self &GtkTextIter) forward_sentence_end() bool {
@@ -356,12 +356,12 @@ pub fn (self &GtkTextIter) backward_sentence_start() bool {
 	return C.gtk_text_iter_backward_sentence_start(self)
 }
 
-pub fn (self &GtkTextIter) forward_sentence_ends(b int) bool {
-	return C.gtk_text_iter_forward_sentence_ends(self, b)
+pub fn (self &GtkTextIter) forward_sentence_ends(count int) bool {
+	return C.gtk_text_iter_forward_sentence_ends(self, count)
 }
 
-pub fn (self &GtkTextIter) backward_sentence_starts(b int) bool {
-	return C.gtk_text_iter_backward_sentence_starts(self, b)
+pub fn (self &GtkTextIter) backward_sentence_starts(count int) bool {
+	return C.gtk_text_iter_backward_sentence_starts(self, count)
 }
 
 pub fn (self &GtkTextIter) forward_cursor_position() bool {
@@ -372,12 +372,12 @@ pub fn (self &GtkTextIter) backward_cursor_position() bool {
 	return C.gtk_text_iter_backward_cursor_position(self)
 }
 
-pub fn (self &GtkTextIter) forward_cursor_positions(b int) bool {
-	return C.gtk_text_iter_forward_cursor_positions(self, b)
+pub fn (self &GtkTextIter) forward_cursor_positions(count int) bool {
+	return C.gtk_text_iter_forward_cursor_positions(self, count)
 }
 
-pub fn (self &GtkTextIter) backward_cursor_positions(b int) bool {
-	return C.gtk_text_iter_backward_cursor_positions(self, b)
+pub fn (self &GtkTextIter) backward_cursor_positions(count int) bool {
+	return C.gtk_text_iter_backward_cursor_positions(self, count)
 }
 
 pub fn (self &GtkTextIter) forward_visible_cursor_position() bool {
@@ -388,28 +388,28 @@ pub fn (self &GtkTextIter) backward_visible_cursor_position() bool {
 	return C.gtk_text_iter_backward_visible_cursor_position(self)
 }
 
-pub fn (self &GtkTextIter) forward_visible_cursor_positions(b int) bool {
-	return C.gtk_text_iter_forward_visible_cursor_positions(self, b)
+pub fn (self &GtkTextIter) forward_visible_cursor_positions(count int) bool {
+	return C.gtk_text_iter_forward_visible_cursor_positions(self, count)
 }
 
-pub fn (self &GtkTextIter) backward_visible_cursor_positions(b int) bool {
-	return C.gtk_text_iter_backward_visible_cursor_positions(self, b)
+pub fn (self &GtkTextIter) backward_visible_cursor_positions(count int) bool {
+	return C.gtk_text_iter_backward_visible_cursor_positions(self, count)
 }
 
-pub fn (self &GtkTextIter) set_offset(b int) {
-	C.gtk_text_iter_set_offset(self, b)
+pub fn (self &GtkTextIter) set_offset(char_offset int) {
+	C.gtk_text_iter_set_offset(self, char_offset)
 }
 
-pub fn (self &GtkTextIter) set_line(b int) {
-	C.gtk_text_iter_set_line(self, b)
+pub fn (self &GtkTextIter) set_line(line_number int) {
+	C.gtk_text_iter_set_line(self, line_number)
 }
 
-pub fn (self &GtkTextIter) set_line_offset(b int) {
-	C.gtk_text_iter_set_line_offset(self, b)
+pub fn (self &GtkTextIter) set_line_offset(char_on_line int) {
+	C.gtk_text_iter_set_line_offset(self, char_on_line)
 }
 
-pub fn (self &GtkTextIter) set_line_index(b int) {
-	C.gtk_text_iter_set_line_index(self, b)
+pub fn (self &GtkTextIter) set_line_index(byte_on_line int) {
+	C.gtk_text_iter_set_line_index(self, byte_on_line)
 }
 
 pub fn (self &GtkTextIter) forward_to_end() {
@@ -420,50 +420,50 @@ pub fn (self &GtkTextIter) forward_to_line_end() bool {
 	return C.gtk_text_iter_forward_to_line_end(self)
 }
 
-pub fn (self &GtkTextIter) set_visible_line_offset(b int) {
-	C.gtk_text_iter_set_visible_line_offset(self, b)
+pub fn (self &GtkTextIter) set_visible_line_offset(char_on_line int) {
+	C.gtk_text_iter_set_visible_line_offset(self, char_on_line)
 }
 
-pub fn (self &GtkTextIter) set_visible_line_index(b int) {
-	C.gtk_text_iter_set_visible_line_index(self, b)
+pub fn (self &GtkTextIter) set_visible_line_index(byte_on_line int) {
+	C.gtk_text_iter_set_visible_line_index(self, byte_on_line)
 }
 
-pub fn (self &GtkTextIter) forward_to_tag_toggle(b &C.GtkTextTag) bool {
-	return C.gtk_text_iter_forward_to_tag_toggle(self, b)
+pub fn (self &GtkTextIter) forward_to_tag_toggle(tag &GtkTextTag) bool {
+	return C.gtk_text_iter_forward_to_tag_toggle(self, tag)
 }
 
-pub fn (self &GtkTextIter) backward_to_tag_toggle(b &C.GtkTextTag) bool {
-	return C.gtk_text_iter_backward_to_tag_toggle(self, b)
+pub fn (self &GtkTextIter) backward_to_tag_toggle(tag &GtkTextTag) bool {
+	return C.gtk_text_iter_backward_to_tag_toggle(self, tag)
 }
 
-pub fn (self &GtkTextIter) forward_find_char(b int, c voidptr, d voidptr) bool {
-	return C.gtk_text_iter_forward_find_char(self, b, c, d)
+pub fn (self &GtkTextIter) forward_find_char(pred voidptr, user_data voidptr, limit &GtkTextIter) bool {
+	return C.gtk_text_iter_forward_find_char(self, pred, user_data, limit)
 }
 
-pub fn (self &GtkTextIter) backward_find_char(b int, c voidptr, d voidptr) bool {
-	return C.gtk_text_iter_backward_find_char(self, b, c, d)
+pub fn (self &GtkTextIter) backward_find_char(pred voidptr, user_data voidptr, limit &GtkTextIter) bool {
+	return C.gtk_text_iter_backward_find_char(self, pred, user_data, limit)
 }
 
-pub fn (self &GtkTextIter) forward_search(a voidptr, b &char, c GtkTextSearchFlags, d &C.GtkTextIter, e &C.GtkTextIter, f voidptr) bool {
-	return C.gtk_text_iter_forward_search(a, b, c, d, e, f)
+pub fn (self &GtkTextIter) forward_search(str &char, flags GtkTextSearchFlags, match_start &GtkTextIter, match_end &GtkTextIter, limit &GtkTextIter) bool {
+	return C.gtk_text_iter_forward_search(self, str, flags, match_start, match_end, limit)
 }
 
-pub fn (self &GtkTextIter) backward_search(a voidptr, b &char, c GtkTextSearchFlags, d &C.GtkTextIter, e &C.GtkTextIter, f voidptr) bool {
-	return C.gtk_text_iter_backward_search(a, b, c, d, e, f)
+pub fn (self &GtkTextIter) backward_search(str &char, flags GtkTextSearchFlags, match_start &GtkTextIter, match_end &GtkTextIter, limit &GtkTextIter) bool {
+	return C.gtk_text_iter_backward_search(self, str, flags, match_start, match_end, limit)
 }
 
-pub fn (self &GtkTextIter) equal(a voidptr, b voidptr) bool {
-	return C.gtk_text_iter_equal(a, b)
+pub fn (self &GtkTextIter) equal(rhs &GtkTextIter) bool {
+	return C.gtk_text_iter_equal(self, rhs)
 }
 
-pub fn (self &GtkTextIter) compare(a voidptr, b voidptr) int {
-	return C.gtk_text_iter_compare(a, b)
+pub fn (self &GtkTextIter) compare(rhs &GtkTextIter) int {
+	return C.gtk_text_iter_compare(self, rhs)
 }
 
-pub fn (self &GtkTextIter) in_range(a voidptr, b voidptr, c voidptr) bool {
-	return C.gtk_text_iter_in_range(a, b, c)
+pub fn (self &GtkTextIter) in_range(start &GtkTextIter, end &GtkTextIter) bool {
+	return C.gtk_text_iter_in_range(self, start, end)
 }
 
-pub fn (self &GtkTextIter) order(b &C.GtkTextIter) {
-	C.gtk_text_iter_order(self, b)
+pub fn (self &GtkTextIter) order(second &GtkTextIter) {
+	C.gtk_text_iter_order(self, second)
 }

@@ -1,9 +1,9 @@
 module gtk
 
-fn C.gtk_app_chooser_get_type() int
-fn C.gtk_app_chooser_get_app_info(a &C.GtkAppChooser) voidptr
-fn C.gtk_app_chooser_get_content_type(a &C.GtkAppChooser) voidptr
-fn C.gtk_app_chooser_refresh(a &C.GtkAppChooser)
+pub fn C.gtk_app_chooser_get_type() int
+pub fn C.gtk_app_chooser_get_app_info(self &GtkAppChooser) voidptr
+pub fn C.gtk_app_chooser_get_content_type(self &GtkAppChooser) voidptr
+pub fn C.gtk_app_chooser_refresh(self &GtkAppChooser)
 
 @[noinit; typedef]
 pub struct C.GtkAppChooser {}

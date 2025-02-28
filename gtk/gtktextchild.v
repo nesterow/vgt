@@ -5,11 +5,11 @@ pub struct C.GtkTextChildAnchorClass {}
 
 pub type GtkTextChildAnchorClass = C.GtkTextChildAnchorClass
 
-fn C.gtk_text_child_anchor_get_type() int
-fn C.gtk_text_child_anchor_new() &C.GtkTextChildAnchor
-fn C.gtk_text_child_anchor_new_with_replacement(a &char) &C.GtkTextChildAnchor
-fn C.gtk_text_child_anchor_get_widgets(a &C.GtkTextChildAnchor, b voidptr) &C.GtkWidget
-fn C.gtk_text_child_anchor_get_deleted(a &C.GtkTextChildAnchor) bool
+pub fn C.gtk_text_child_anchor_get_type() int
+pub fn C.gtk_text_child_anchor_new() &GtkTextChildAnchor
+pub fn C.gtk_text_child_anchor_new_with_replacement(character &char) &GtkTextChildAnchor
+pub fn C.gtk_text_child_anchor_get_widgets(anchor &GtkTextChildAnchor, out_len voidptr) &GtkWidget
+pub fn C.gtk_text_child_anchor_get_deleted(anchor &GtkTextChildAnchor) bool
 
 @[noinit; typedef]
 pub struct C.GtkTextChildAnchor {}
@@ -24,12 +24,12 @@ pub fn GtkTextChildAnchor.anchor_new() &GtkTextChildAnchor {
 	return C.gtk_text_child_anchor_new()
 }
 
-pub fn GtkTextChildAnchor.anchor_new_with_replacement(a &char) &GtkTextChildAnchor {
-	return C.gtk_text_child_anchor_new_with_replacement(a)
+pub fn GtkTextChildAnchor.anchor_new_with_replacement(character &char) &GtkTextChildAnchor {
+	return C.gtk_text_child_anchor_new_with_replacement(character)
 }
 
-pub fn (self &GtkTextChildAnchor) anchor_get_widgets(b voidptr) &C.GtkWidget {
-	return C.gtk_text_child_anchor_get_widgets(self, b)
+pub fn (self &GtkTextChildAnchor) anchor_get_widgets(out_len voidptr) &GtkWidget {
+	return C.gtk_text_child_anchor_get_widgets(self, out_len)
 }
 
 pub fn (self &GtkTextChildAnchor) anchor_get_deleted() bool {

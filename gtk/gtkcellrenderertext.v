@@ -5,9 +5,9 @@ pub struct C.GtkCellRendererTextClass {}
 
 pub type GtkCellRendererTextClass = C.GtkCellRendererTextClass
 
-fn C.gtk_cell_renderer_text_get_type() int
-fn C.gtk_cell_renderer_text_new() &C.GtkCellRenderer
-fn C.gtk_cell_renderer_text_set_fixed_height_from_font(a &C.GtkCellRendererText, b int)
+pub fn C.gtk_cell_renderer_text_get_type() int
+pub fn C.gtk_cell_renderer_text_new() &GtkCellRenderer
+pub fn C.gtk_cell_renderer_text_set_fixed_height_from_font(renderer &GtkCellRendererText, number_of_rows int)
 
 @[noinit; typedef]
 pub struct C.GtkCellRendererText {}
@@ -22,6 +22,6 @@ pub fn GtkCellRendererText.new() &GtkCellRenderer {
 	return C.gtk_cell_renderer_text_new()
 }
 
-pub fn (self &GtkCellRendererText) set_fixed_height_from_font(b int) {
-	C.gtk_cell_renderer_text_set_fixed_height_from_font(self, b)
+pub fn (self &GtkCellRendererText) set_fixed_height_from_font(number_of_rows int) {
+	C.gtk_cell_renderer_text_set_fixed_height_from_font(self, number_of_rows)
 }

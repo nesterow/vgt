@@ -12,22 +12,22 @@ pub enum GtkApplicationInhibitFlags {
 	gtk_application_inhibit_idle    = (1 << 3)
 }
 
-fn C.gtk_application_get_type() int
-fn C.gtk_application_new(a &char, b AppFlags) &C.GtkApplication
-fn C.gtk_application_add_window(a &C.GtkApplication, b &C.GtkWindow)
-fn C.gtk_application_remove_window(a &C.GtkApplication, b &C.GtkWindow)
-fn C.gtk_application_get_windows(a &C.GtkApplication) voidptr
-fn C.gtk_application_get_menubar(a &C.GtkApplication) voidptr
-fn C.gtk_application_set_menubar(a &C.GtkApplication, b voidptr)
-fn C.gtk_application_inhibit(a &C.GtkApplication, b &C.GtkWindow, c GtkApplicationInhibitFlags, d &char) u64
-fn C.gtk_application_uninhibit(a &C.GtkApplication, b u64)
-fn C.gtk_application_get_window_by_id(a &C.GtkApplication, b u64) &C.GtkWindow
-fn C.gtk_application_get_active_window(a &C.GtkApplication) &C.GtkWindow
-fn C.gtk_application_list_action_descriptions(a &C.GtkApplication) voidptr
-fn C.gtk_application_get_accels_for_action(a &C.GtkApplication, b &char) voidptr
-fn C.gtk_application_get_actions_for_accel(a &C.GtkApplication, b &char) voidptr
-fn C.gtk_application_set_accels_for_action(a &C.GtkApplication, b &char, c voidptr)
-fn C.gtk_application_get_menu_by_id(a &C.GtkApplication, b &char) voidptr
+pub fn C.gtk_application_get_type() int
+pub fn C.gtk_application_new(application_id &char, flags AppFlags) &GtkApplication
+pub fn C.gtk_application_add_window(application &GtkApplication, window &GtkWindow)
+pub fn C.gtk_application_remove_window(application &GtkApplication, window &GtkWindow)
+pub fn C.gtk_application_get_windows(application &GtkApplication) voidptr
+pub fn C.gtk_application_get_menubar(application &GtkApplication) voidptr
+pub fn C.gtk_application_set_menubar(application &GtkApplication, menubar voidptr)
+pub fn C.gtk_application_inhibit(application &GtkApplication, window &GtkWindow, flags GtkApplicationInhibitFlags, reason &char) u64
+pub fn C.gtk_application_uninhibit(application &GtkApplication, cookie u64)
+pub fn C.gtk_application_get_window_by_id(application &GtkApplication, id u64) &GtkWindow
+pub fn C.gtk_application_get_active_window(application &GtkApplication) &GtkWindow
+pub fn C.gtk_application_list_action_descriptions(application &GtkApplication) voidptr
+pub fn C.gtk_application_get_accels_for_action(application &GtkApplication, detailed_action_name &char) voidptr
+pub fn C.gtk_application_get_actions_for_accel(application &GtkApplication, accel &char) voidptr
+pub fn C.gtk_application_set_accels_for_action(application &GtkApplication, detailed_action_name &char, accels voidptr)
+pub fn C.gtk_application_get_menu_by_id(application &GtkApplication, id &char) voidptr
 
 @[noinit; typedef]
 pub struct C.GtkApplication {}
@@ -38,16 +38,16 @@ pub fn (self &GtkApplication) get_type() int {
 	return C.gtk_application_get_type()
 }
 
-pub fn GtkApplication.new(a &char, b AppFlags) &GtkApplication {
-	return C.gtk_application_new(a, b)
+pub fn GtkApplication.new(application_id &char, flags AppFlags) &GtkApplication {
+	return C.gtk_application_new(application_id, flags)
 }
 
-pub fn (self &GtkApplication) add_window(b &C.GtkWindow) {
-	C.gtk_application_add_window(self, b)
+pub fn (self &GtkApplication) add_window(window &GtkWindow) {
+	C.gtk_application_add_window(self, window)
 }
 
-pub fn (self &GtkApplication) remove_window(b &C.GtkWindow) {
-	C.gtk_application_remove_window(self, b)
+pub fn (self &GtkApplication) remove_window(window &GtkWindow) {
+	C.gtk_application_remove_window(self, window)
 }
 
 pub fn (self &GtkApplication) get_windows() voidptr {
@@ -58,23 +58,23 @@ pub fn (self &GtkApplication) get_menubar() voidptr {
 	return C.gtk_application_get_menubar(self)
 }
 
-pub fn (self &GtkApplication) set_menubar(b voidptr) {
-	C.gtk_application_set_menubar(self, b)
+pub fn (self &GtkApplication) set_menubar(menubar voidptr) {
+	C.gtk_application_set_menubar(self, menubar)
 }
 
-pub fn (self &GtkApplication) inhibit(b &C.GtkWindow, c GtkApplicationInhibitFlags, d &char) u64 {
-	return C.gtk_application_inhibit(self, b, c, d)
+pub fn (self &GtkApplication) inhibit(window &GtkWindow, flags GtkApplicationInhibitFlags, reason &char) u64 {
+	return C.gtk_application_inhibit(self, window, flags, reason)
 }
 
-pub fn (self &GtkApplication) uninhibit(b u64) {
-	C.gtk_application_uninhibit(self, b)
+pub fn (self &GtkApplication) uninhibit(cookie u64) {
+	C.gtk_application_uninhibit(self, cookie)
 }
 
-pub fn (self &GtkApplication) get_window_by_id(b u64) &C.GtkWindow {
-	return C.gtk_application_get_window_by_id(self, b)
+pub fn (self &GtkApplication) get_window_by_id(id u64) &GtkWindow {
+	return C.gtk_application_get_window_by_id(self, id)
 }
 
-pub fn (self &GtkApplication) get_active_window() &C.GtkWindow {
+pub fn (self &GtkApplication) get_active_window() &GtkWindow {
 	return C.gtk_application_get_active_window(self)
 }
 
@@ -82,18 +82,18 @@ pub fn (self &GtkApplication) list_action_descriptions() voidptr {
 	return C.gtk_application_list_action_descriptions(self)
 }
 
-pub fn (self &GtkApplication) get_accels_for_action(b &char) voidptr {
-	return C.gtk_application_get_accels_for_action(self, b)
+pub fn (self &GtkApplication) get_accels_for_action(detailed_action_name &char) voidptr {
+	return C.gtk_application_get_accels_for_action(self, detailed_action_name)
 }
 
-pub fn (self &GtkApplication) get_actions_for_accel(b &char) voidptr {
-	return C.gtk_application_get_actions_for_accel(self, b)
+pub fn (self &GtkApplication) get_actions_for_accel(accel &char) voidptr {
+	return C.gtk_application_get_actions_for_accel(self, accel)
 }
 
-pub fn (self &GtkApplication) set_accels_for_action(b &char, c voidptr) {
-	C.gtk_application_set_accels_for_action(self, b, c)
+pub fn (self &GtkApplication) set_accels_for_action(detailed_action_name &char, accels voidptr) {
+	C.gtk_application_set_accels_for_action(self, detailed_action_name, accels)
 }
 
-pub fn (self &GtkApplication) get_menu_by_id(b &char) voidptr {
-	return C.gtk_application_get_menu_by_id(self, b)
+pub fn (self &GtkApplication) get_menu_by_id(id &char) voidptr {
+	return C.gtk_application_get_menu_by_id(self, id)
 }

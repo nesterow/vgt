@@ -5,12 +5,12 @@ pub struct C.GtkEventControllerKeyClass {}
 
 pub type GtkEventControllerKeyClass = C.GtkEventControllerKeyClass
 
-fn C.gtk_event_controller_key_get_type() int
-fn C.gtk_event_controller_key_new() &C.GtkEventController
-fn C.gtk_event_controller_key_set_im_context(a &C.GtkEventControllerKey, b &C.GtkIMContext)
-fn C.gtk_event_controller_key_get_im_context(a &C.GtkEventControllerKey) &C.GtkIMContext
-fn C.gtk_event_controller_key_forward(a &C.GtkEventControllerKey, b &C.GtkWidget) bool
-fn C.gtk_event_controller_key_get_group(a &C.GtkEventControllerKey) u64
+pub fn C.gtk_event_controller_key_get_type() int
+pub fn C.gtk_event_controller_key_new() &GtkEventController
+pub fn C.gtk_event_controller_key_set_im_context(controller &GtkEventControllerKey, im_context &GtkIMContext)
+pub fn C.gtk_event_controller_key_get_im_context(controller &GtkEventControllerKey) &GtkIMContext
+pub fn C.gtk_event_controller_key_forward(controller &GtkEventControllerKey, widget &GtkWidget) bool
+pub fn C.gtk_event_controller_key_get_group(controller &GtkEventControllerKey) u64
 
 @[noinit; typedef]
 pub struct C.GtkEventControllerKey {}
@@ -25,16 +25,16 @@ pub fn GtkEventControllerKey.new() &GtkEventController {
 	return C.gtk_event_controller_key_new()
 }
 
-pub fn (self &GtkEventControllerKey) set_im_context(b &C.GtkIMContext) {
-	C.gtk_event_controller_key_set_im_context(self, b)
+pub fn (self &GtkEventControllerKey) set_im_context(im_context &GtkIMContext) {
+	C.gtk_event_controller_key_set_im_context(self, im_context)
 }
 
-pub fn (self &GtkEventControllerKey) get_im_context() &C.GtkIMContext {
+pub fn (self &GtkEventControllerKey) get_im_context() &GtkIMContext {
 	return C.gtk_event_controller_key_get_im_context(self)
 }
 
-pub fn (self &GtkEventControllerKey) forward(b &C.GtkWidget) bool {
-	return C.gtk_event_controller_key_forward(self, b)
+pub fn (self &GtkEventControllerKey) forward(widget &GtkWidget) bool {
+	return C.gtk_event_controller_key_forward(self, widget)
 }
 
 pub fn (self &GtkEventControllerKey) get_group() u64 {

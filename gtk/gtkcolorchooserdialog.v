@@ -1,7 +1,7 @@
 module gtk
 
-fn C.gtk_color_chooser_dialog_get_type() int
-fn C.gtk_color_chooser_dialog_new(a &char, b &C.GtkWindow) &C.GtkWidget
+pub fn C.gtk_color_chooser_dialog_get_type() int
+pub fn C.gtk_color_chooser_dialog_new(title &char, parent &GtkWindow) &GtkWidget
 
 @[noinit; typedef]
 pub struct C.GtkColorChooserDialog {}
@@ -12,6 +12,6 @@ pub fn (self &GtkColorChooserDialog) get_type() int {
 	return C.gtk_color_chooser_dialog_get_type()
 }
 
-pub fn GtkColorChooserDialog.new(a &char, b &C.GtkWindow) &GtkWidget {
-	return C.gtk_color_chooser_dialog_new(a, b)
+pub fn GtkColorChooserDialog.new(title &char, parent &GtkWindow) &GtkWidget {
+	return C.gtk_color_chooser_dialog_new(title, parent)
 }

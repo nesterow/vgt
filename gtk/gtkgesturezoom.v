@@ -5,9 +5,9 @@ pub struct C.GtkGestureZoomClass {}
 
 pub type GtkGestureZoomClass = C.GtkGestureZoomClass
 
-fn C.gtk_gesture_zoom_get_type() int
-fn C.gtk_gesture_zoom_new() &C.GtkGesture
-fn C.gtk_gesture_zoom_get_scale_delta(a &C.GtkGestureZoom) f32
+pub fn C.gtk_gesture_zoom_get_type() int
+pub fn C.gtk_gesture_zoom_new() &GtkGesture
+pub fn C.gtk_gesture_zoom_get_scale_delta(gesture &GtkGestureZoom) f32
 
 @[noinit; typedef]
 pub struct C.GtkGestureZoom {}

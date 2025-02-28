@@ -5,8 +5,8 @@ pub struct C.GtkEmojiChooserClass {}
 
 pub type GtkEmojiChooserClass = C.GtkEmojiChooserClass
 
-fn C.gtk_emoji_chooser_get_type() int
-fn C.gtk_emoji_chooser_new() &C.GtkWidget
+pub fn C.gtk_emoji_chooser_get_type() int
+pub fn C.gtk_emoji_chooser_new() &GtkWidget
 
 @[noinit; typedef]
 pub struct C.GtkEmojiChooser {}

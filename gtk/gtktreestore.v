@@ -5,30 +5,30 @@ pub struct C.GtkTreeStoreClass {}
 
 pub type GtkTreeStoreClass = C.GtkTreeStoreClass
 
-fn C.gtk_tree_store_get_type() int
-fn C.gtk_tree_store_new(a int, b voidptr) &C.GtkTreeStore
-fn C.gtk_tree_store_newv(a int, b voidptr) &C.GtkTreeStore
-fn C.gtk_tree_store_set_column_types(a &C.GtkTreeStore, b int, c voidptr)
-fn C.gtk_tree_store_set_value(a &C.GtkTreeStore, b &C.GtkTreeIter, c int, d voidptr)
-fn C.gtk_tree_store_set(a &C.GtkTreeStore, b &C.GtkTreeIter, c voidptr)
-fn C.gtk_tree_store_set_valuesv(a &C.GtkTreeStore, b &C.GtkTreeIter, c voidptr, d voidptr, e int)
-fn C.gtk_tree_store_set_valist(a &C.GtkTreeStore, b &C.GtkTreeIter, c voidptr)
-fn C.gtk_tree_store_remove(a &C.GtkTreeStore, b &C.GtkTreeIter) bool
-fn C.gtk_tree_store_insert(a &C.GtkTreeStore, b &C.GtkTreeIter, c &C.GtkTreeIter, d int)
-fn C.gtk_tree_store_insert_before(a &C.GtkTreeStore, b &C.GtkTreeIter, c &C.GtkTreeIter, d &C.GtkTreeIter)
-fn C.gtk_tree_store_insert_after(a &C.GtkTreeStore, b &C.GtkTreeIter, c &C.GtkTreeIter, d &C.GtkTreeIter)
-fn C.gtk_tree_store_insert_with_values(a &C.GtkTreeStore, b &C.GtkTreeIter, c &C.GtkTreeIter, d int, e voidptr)
-fn C.gtk_tree_store_insert_with_valuesv(a &C.GtkTreeStore, b &C.GtkTreeIter, c &C.GtkTreeIter, d int, e voidptr, f voidptr, g int)
-fn C.gtk_tree_store_prepend(a &C.GtkTreeStore, b &C.GtkTreeIter, c &C.GtkTreeIter)
-fn C.gtk_tree_store_append(a &C.GtkTreeStore, b &C.GtkTreeIter, c &C.GtkTreeIter)
-fn C.gtk_tree_store_is_ancestor(a &C.GtkTreeStore, b &C.GtkTreeIter, c &C.GtkTreeIter) bool
-fn C.gtk_tree_store_iter_depth(a &C.GtkTreeStore, b &C.GtkTreeIter) int
-fn C.gtk_tree_store_clear(a &C.GtkTreeStore)
-fn C.gtk_tree_store_iter_is_valid(a &C.GtkTreeStore, b &C.GtkTreeIter) bool
-fn C.gtk_tree_store_reorder(a &C.GtkTreeStore, b &C.GtkTreeIter, c voidptr)
-fn C.gtk_tree_store_swap(a &C.GtkTreeStore, b &C.GtkTreeIter, c &C.GtkTreeIter)
-fn C.gtk_tree_store_move_before(a &C.GtkTreeStore, b &C.GtkTreeIter, c &C.GtkTreeIter)
-fn C.gtk_tree_store_move_after(a &C.GtkTreeStore, b &C.GtkTreeIter, c &C.GtkTreeIter)
+pub fn C.gtk_tree_store_get_type() int
+pub fn C.gtk_tree_store_new(n_columns int) &GtkTreeStore
+pub fn C.gtk_tree_store_newv(n_columns int, typs voidptr) &GtkTreeStore
+pub fn C.gtk_tree_store_set_column_types(tree_store &GtkTreeStore, n_columns int, typs voidptr)
+pub fn C.gtk_tree_store_set_value(tree_store &GtkTreeStore, iter &GtkTreeIter, column int, value voidptr)
+pub fn C.gtk_tree_store_set(tree_store &GtkTreeStore, iter &GtkTreeIter)
+pub fn C.gtk_tree_store_set_valuesv(tree_store &GtkTreeStore, iter &GtkTreeIter, columns voidptr, values voidptr, n_values int)
+pub fn C.gtk_tree_store_set_valist(tree_store &GtkTreeStore, iter &GtkTreeIter, var_args voidptr)
+pub fn C.gtk_tree_store_remove(tree_store &GtkTreeStore, iter &GtkTreeIter) bool
+pub fn C.gtk_tree_store_insert(tree_store &GtkTreeStore, iter &GtkTreeIter, parent &GtkTreeIter, position int)
+pub fn C.gtk_tree_store_insert_before(tree_store &GtkTreeStore, iter &GtkTreeIter, parent &GtkTreeIter, sibling &GtkTreeIter)
+pub fn C.gtk_tree_store_insert_after(tree_store &GtkTreeStore, iter &GtkTreeIter, parent &GtkTreeIter, sibling &GtkTreeIter)
+pub fn C.gtk_tree_store_insert_with_values(tree_store &GtkTreeStore, iter &GtkTreeIter, parent &GtkTreeIter, position int)
+pub fn C.gtk_tree_store_insert_with_valuesv(tree_store &GtkTreeStore, iter &GtkTreeIter, parent &GtkTreeIter, position int, columns voidptr, values voidptr, n_values int)
+pub fn C.gtk_tree_store_prepend(tree_store &GtkTreeStore, iter &GtkTreeIter, parent &GtkTreeIter)
+pub fn C.gtk_tree_store_append(tree_store &GtkTreeStore, iter &GtkTreeIter, parent &GtkTreeIter)
+pub fn C.gtk_tree_store_is_ancestor(tree_store &GtkTreeStore, iter &GtkTreeIter, descendant &GtkTreeIter) bool
+pub fn C.gtk_tree_store_iter_depth(tree_store &GtkTreeStore, iter &GtkTreeIter) int
+pub fn C.gtk_tree_store_clear(tree_store &GtkTreeStore)
+pub fn C.gtk_tree_store_iter_is_valid(tree_store &GtkTreeStore, iter &GtkTreeIter) bool
+pub fn C.gtk_tree_store_reorder(tree_store &GtkTreeStore, parent &GtkTreeIter, new_order voidptr)
+pub fn C.gtk_tree_store_swap(tree_store &GtkTreeStore, a &GtkTreeIter, b &GtkTreeIter)
+pub fn C.gtk_tree_store_move_before(tree_store &GtkTreeStore, iter &GtkTreeIter, position &GtkTreeIter)
+pub fn C.gtk_tree_store_move_after(tree_store &GtkTreeStore, iter &GtkTreeIter, position &GtkTreeIter)
 
 @[noinit; typedef]
 pub struct C.GtkTreeStore {}
@@ -39,94 +39,95 @@ pub fn (self &GtkTreeStore) get_type() int {
 	return C.gtk_tree_store_get_type()
 }
 
-pub fn GtkTreeStore.new(a int, b voidptr) &GtkTreeStore {
-	return C.gtk_tree_store_new(a, b)
+pub fn GtkTreeStore.new(n_columns int) &GtkTreeStore {
+	return C.gtk_tree_store_new(n_columns)
 }
 
-pub fn GtkTreeStore.newv(a int, b voidptr) &GtkTreeStore {
-	return C.gtk_tree_store_newv(a, b)
+pub fn GtkTreeStore.newv(n_columns int, typs voidptr) &GtkTreeStore {
+	return C.gtk_tree_store_newv(n_columns, typs)
 }
 
-pub fn (self &GtkTreeStore) set_column_types(b int, c voidptr) {
-	C.gtk_tree_store_set_column_types(self, b, c)
+pub fn (self &GtkTreeStore) set_column_types(n_columns int, typs voidptr) {
+	C.gtk_tree_store_set_column_types(self, n_columns, typs)
 }
 
-pub fn (self &GtkTreeStore) set_value(b &C.GtkTreeIter, c int, d voidptr) {
-	C.gtk_tree_store_set_value(self, b, c, d)
+pub fn (self &GtkTreeStore) set_value(iter &GtkTreeIter, column int, value voidptr) {
+	C.gtk_tree_store_set_value(self, iter, column, value)
 }
 
-pub fn (self &GtkTreeStore) set(b &C.GtkTreeIter, c voidptr) {
-	C.gtk_tree_store_set(self, b, c)
+pub fn (self &GtkTreeStore) set(iter &GtkTreeIter) {
+	C.gtk_tree_store_set(self, iter)
 }
 
-pub fn (self &GtkTreeStore) set_valuesv(b &C.GtkTreeIter, c voidptr, d voidptr, e int) {
-	C.gtk_tree_store_set_valuesv(self, b, c, d, e)
+pub fn (self &GtkTreeStore) set_valuesv(iter &GtkTreeIter, columns voidptr, values voidptr, n_values int) {
+	C.gtk_tree_store_set_valuesv(self, iter, columns, values, n_values)
 }
 
-pub fn (self &GtkTreeStore) set_valist(b &C.GtkTreeIter, c voidptr) {
-	C.gtk_tree_store_set_valist(self, b, c)
+pub fn (self &GtkTreeStore) set_valist(iter &GtkTreeIter, var_args voidptr) {
+	C.gtk_tree_store_set_valist(self, iter, var_args)
 }
 
-pub fn (self &GtkTreeStore) remove(b &C.GtkTreeIter) bool {
-	return C.gtk_tree_store_remove(self, b)
+pub fn (self &GtkTreeStore) remove(iter &GtkTreeIter) bool {
+	return C.gtk_tree_store_remove(self, iter)
 }
 
-pub fn (self &GtkTreeStore) insert(b &C.GtkTreeIter, c &C.GtkTreeIter, d int) {
-	C.gtk_tree_store_insert(self, b, c, d)
+pub fn (self &GtkTreeStore) insert(iter &GtkTreeIter, parent &GtkTreeIter, position int) {
+	C.gtk_tree_store_insert(self, iter, parent, position)
 }
 
-pub fn (self &GtkTreeStore) insert_before(b &C.GtkTreeIter, c &C.GtkTreeIter, d &C.GtkTreeIter) {
-	C.gtk_tree_store_insert_before(self, b, c, d)
+pub fn (self &GtkTreeStore) insert_before(iter &GtkTreeIter, parent &GtkTreeIter, sibling &GtkTreeIter) {
+	C.gtk_tree_store_insert_before(self, iter, parent, sibling)
 }
 
-pub fn (self &GtkTreeStore) insert_after(b &C.GtkTreeIter, c &C.GtkTreeIter, d &C.GtkTreeIter) {
-	C.gtk_tree_store_insert_after(self, b, c, d)
+pub fn (self &GtkTreeStore) insert_after(iter &GtkTreeIter, parent &GtkTreeIter, sibling &GtkTreeIter) {
+	C.gtk_tree_store_insert_after(self, iter, parent, sibling)
 }
 
-pub fn (self &GtkTreeStore) insert_with_values(b &C.GtkTreeIter, c &C.GtkTreeIter, d int, e voidptr) {
-	C.gtk_tree_store_insert_with_values(self, b, c, d, e)
+pub fn (self &GtkTreeStore) insert_with_values(iter &GtkTreeIter, parent &GtkTreeIter, position int) {
+	C.gtk_tree_store_insert_with_values(self, iter, parent, position)
 }
 
-pub fn (self &GtkTreeStore) insert_with_valuesv(b &C.GtkTreeIter, c &C.GtkTreeIter, d int, e voidptr, f voidptr, g int) {
-	C.gtk_tree_store_insert_with_valuesv(self, b, c, d, e, f, g)
+pub fn (self &GtkTreeStore) insert_with_valuesv(iter &GtkTreeIter, parent &GtkTreeIter, position int, columns voidptr, values voidptr, n_values int) {
+	C.gtk_tree_store_insert_with_valuesv(self, iter, parent, position, columns, values,
+		n_values)
 }
 
-pub fn (self &GtkTreeStore) prepend(b &C.GtkTreeIter, c &C.GtkTreeIter) {
-	C.gtk_tree_store_prepend(self, b, c)
+pub fn (self &GtkTreeStore) prepend(iter &GtkTreeIter, parent &GtkTreeIter) {
+	C.gtk_tree_store_prepend(self, iter, parent)
 }
 
-pub fn (self &GtkTreeStore) append(b &C.GtkTreeIter, c &C.GtkTreeIter) {
-	C.gtk_tree_store_append(self, b, c)
+pub fn (self &GtkTreeStore) append(iter &GtkTreeIter, parent &GtkTreeIter) {
+	C.gtk_tree_store_append(self, iter, parent)
 }
 
-pub fn (self &GtkTreeStore) is_ancestor(b &C.GtkTreeIter, c &C.GtkTreeIter) bool {
-	return C.gtk_tree_store_is_ancestor(self, b, c)
+pub fn (self &GtkTreeStore) is_ancestor(iter &GtkTreeIter, descendant &GtkTreeIter) bool {
+	return C.gtk_tree_store_is_ancestor(self, iter, descendant)
 }
 
-pub fn (self &GtkTreeStore) iter_depth(b &C.GtkTreeIter) int {
-	return C.gtk_tree_store_iter_depth(self, b)
+pub fn (self &GtkTreeStore) iter_depth(iter &GtkTreeIter) int {
+	return C.gtk_tree_store_iter_depth(self, iter)
 }
 
 pub fn (self &GtkTreeStore) clear() {
 	C.gtk_tree_store_clear(self)
 }
 
-pub fn (self &GtkTreeStore) iter_is_valid(b &C.GtkTreeIter) bool {
-	return C.gtk_tree_store_iter_is_valid(self, b)
+pub fn (self &GtkTreeStore) iter_is_valid(iter &GtkTreeIter) bool {
+	return C.gtk_tree_store_iter_is_valid(self, iter)
 }
 
-pub fn (self &GtkTreeStore) reorder(b &C.GtkTreeIter, c voidptr) {
-	C.gtk_tree_store_reorder(self, b, c)
+pub fn (self &GtkTreeStore) reorder(parent &GtkTreeIter, new_order voidptr) {
+	C.gtk_tree_store_reorder(self, parent, new_order)
 }
 
-pub fn (self &GtkTreeStore) swap(b &C.GtkTreeIter, c &C.GtkTreeIter) {
-	C.gtk_tree_store_swap(self, b, c)
+pub fn (self &GtkTreeStore) swap(a &GtkTreeIter, b &GtkTreeIter) {
+	C.gtk_tree_store_swap(self, a, b)
 }
 
-pub fn (self &GtkTreeStore) move_before(b &C.GtkTreeIter, c &C.GtkTreeIter) {
-	C.gtk_tree_store_move_before(self, b, c)
+pub fn (self &GtkTreeStore) move_before(iter &GtkTreeIter, position &GtkTreeIter) {
+	C.gtk_tree_store_move_before(self, iter, position)
 }
 
-pub fn (self &GtkTreeStore) move_after(b &C.GtkTreeIter, c &C.GtkTreeIter) {
-	C.gtk_tree_store_move_after(self, b, c)
+pub fn (self &GtkTreeStore) move_after(iter &GtkTreeIter, position &GtkTreeIter) {
+	C.gtk_tree_store_move_after(self, iter, position)
 }

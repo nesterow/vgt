@@ -1,13 +1,13 @@
 module gtk
 
-fn C.gtk_tooltip_get_type() int
-fn C.gtk_tooltip_set_markup(a &C.GtkTooltip, b &char)
-fn C.gtk_tooltip_set_text(a &C.GtkTooltip, b &char)
-fn C.gtk_tooltip_set_icon(a &C.GtkTooltip, b voidptr)
-fn C.gtk_tooltip_set_icon_from_icon_name(a &C.GtkTooltip, b &char)
-fn C.gtk_tooltip_set_icon_from_gicon(a &C.GtkTooltip, b voidptr)
-fn C.gtk_tooltip_set_custom(a &C.GtkTooltip, b &C.GtkWidget)
-fn C.gtk_tooltip_set_tip_area(a &C.GtkTooltip, b voidptr)
+pub fn C.gtk_tooltip_get_type() int
+pub fn C.gtk_tooltip_set_markup(tooltip &GtkTooltip, markup &char)
+pub fn C.gtk_tooltip_set_text(tooltip &GtkTooltip, text &char)
+pub fn C.gtk_tooltip_set_icon(tooltip &GtkTooltip, paintable voidptr)
+pub fn C.gtk_tooltip_set_icon_from_icon_name(tooltip &GtkTooltip, icon_name &char)
+pub fn C.gtk_tooltip_set_icon_from_gicon(tooltip &GtkTooltip, gicon voidptr)
+pub fn C.gtk_tooltip_set_custom(tooltip &GtkTooltip, custom_widget &GtkWidget)
+pub fn C.gtk_tooltip_set_tip_area(tooltip &GtkTooltip, rect voidptr)
 
 @[noinit; typedef]
 pub struct C.GtkTooltip {}
@@ -18,30 +18,30 @@ pub fn (self &GtkTooltip) get_type() int {
 	return C.gtk_tooltip_get_type()
 }
 
-pub fn (self &GtkTooltip) set_markup(b &char) {
-	C.gtk_tooltip_set_markup(self, b)
+pub fn (self &GtkTooltip) set_markup(markup &char) {
+	C.gtk_tooltip_set_markup(self, markup)
 }
 
-pub fn (self &GtkTooltip) set_text(b &char) {
-	C.gtk_tooltip_set_text(self, b)
+pub fn (self &GtkTooltip) set_text(text &char) {
+	C.gtk_tooltip_set_text(self, text)
 }
 
-pub fn (self &GtkTooltip) set_icon(b voidptr) {
-	C.gtk_tooltip_set_icon(self, b)
+pub fn (self &GtkTooltip) set_icon(paintable voidptr) {
+	C.gtk_tooltip_set_icon(self, paintable)
 }
 
-pub fn (self &GtkTooltip) set_icon_from_icon_name(b &char) {
-	C.gtk_tooltip_set_icon_from_icon_name(self, b)
+pub fn (self &GtkTooltip) set_icon_from_icon_name(icon_name &char) {
+	C.gtk_tooltip_set_icon_from_icon_name(self, icon_name)
 }
 
-pub fn (self &GtkTooltip) set_icon_from_gicon(b voidptr) {
-	C.gtk_tooltip_set_icon_from_gicon(self, b)
+pub fn (self &GtkTooltip) set_icon_from_gicon(gicon voidptr) {
+	C.gtk_tooltip_set_icon_from_gicon(self, gicon)
 }
 
-pub fn (self &GtkTooltip) set_custom(b &C.GtkWidget) {
-	C.gtk_tooltip_set_custom(self, b)
+pub fn (self &GtkTooltip) set_custom(custom_widget &GtkWidget) {
+	C.gtk_tooltip_set_custom(self, custom_widget)
 }
 
-pub fn (self &GtkTooltip) set_tip_area(b voidptr) {
-	C.gtk_tooltip_set_tip_area(self, b)
+pub fn (self &GtkTooltip) set_tip_area(rect voidptr) {
+	C.gtk_tooltip_set_tip_area(self, rect)
 }

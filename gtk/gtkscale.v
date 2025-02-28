@@ -10,22 +10,22 @@ pub struct C.GtkScaleFormatValueFunc {}
 
 pub type GtkScaleFormatValueFunc = C.GtkScaleFormatValueFunc
 
-fn C.gtk_scale_get_type() int
-fn C.gtk_scale_new(a GtkOrientation, b &C.GtkAdjustment) &C.GtkWidget
-fn C.gtk_scale_new_with_range(a GtkOrientation, b f32, c f32, d f32) &C.GtkWidget
-fn C.gtk_scale_set_digits(a &C.GtkScale, b int)
-fn C.gtk_scale_get_digits(a &C.GtkScale) int
-fn C.gtk_scale_set_draw_value(a &C.GtkScale, b bool)
-fn C.gtk_scale_get_draw_value(a &C.GtkScale) bool
-fn C.gtk_scale_set_has_origin(a &C.GtkScale, b bool)
-fn C.gtk_scale_get_has_origin(a &C.GtkScale) bool
-fn C.gtk_scale_set_value_pos(a &C.GtkScale, b GtkPositionType)
-fn C.gtk_scale_get_value_pos(a &C.GtkScale) GtkPositionType
-fn C.gtk_scale_get_layout(a &C.GtkScale) voidptr
-fn C.gtk_scale_get_layout_offsets(a &C.GtkScale, b voidptr, c voidptr)
-fn C.gtk_scale_add_mark(a &C.GtkScale, b f32, c GtkPositionType, d &char)
-fn C.gtk_scale_clear_marks(a &C.GtkScale)
-fn C.gtk_scale_set_format_value_func(a &C.GtkScale, b int, c voidptr, d voidptr)
+pub fn C.gtk_scale_get_type() int
+pub fn C.gtk_scale_new(orientation GtkOrientation, adjustment &GtkAdjustment) &GtkWidget
+pub fn C.gtk_scale_new_with_range(orientation GtkOrientation, min f32, max f32, step f32) &GtkWidget
+pub fn C.gtk_scale_set_digits(scale &GtkScale, digits int)
+pub fn C.gtk_scale_get_digits(scale &GtkScale) int
+pub fn C.gtk_scale_set_draw_value(scale &GtkScale, draw_value bool)
+pub fn C.gtk_scale_get_draw_value(scale &GtkScale) bool
+pub fn C.gtk_scale_set_has_origin(scale &GtkScale, has_origin bool)
+pub fn C.gtk_scale_get_has_origin(scale &GtkScale) bool
+pub fn C.gtk_scale_set_value_pos(scale &GtkScale, pos GtkPositionType)
+pub fn C.gtk_scale_get_value_pos(scale &GtkScale) GtkPositionType
+pub fn C.gtk_scale_get_layout(scale &GtkScale) voidptr
+pub fn C.gtk_scale_get_layout_offsets(scale &GtkScale, x voidptr, y voidptr)
+pub fn C.gtk_scale_add_mark(scale &GtkScale, value f32, position GtkPositionType, markup &char)
+pub fn C.gtk_scale_clear_marks(scale &GtkScale)
+pub fn C.gtk_scale_set_format_value_func(scale &GtkScale, func voidptr, user_data voidptr, destroy_notify voidptr)
 
 @[noinit; typedef]
 pub struct C.GtkScale {}
@@ -36,40 +36,40 @@ pub fn (self &GtkScale) get_type() int {
 	return C.gtk_scale_get_type()
 }
 
-pub fn GtkScale.new(a GtkOrientation, b &C.GtkAdjustment) &GtkWidget {
-	return C.gtk_scale_new(a, b)
+pub fn GtkScale.new(orientation GtkOrientation, adjustment &GtkAdjustment) &GtkWidget {
+	return C.gtk_scale_new(orientation, adjustment)
 }
 
-pub fn GtkScale.new_with_range(a GtkOrientation, b f32, c f32, d f32) &GtkWidget {
-	return C.gtk_scale_new_with_range(a, b, c, d)
+pub fn GtkScale.new_with_range(orientation GtkOrientation, min f32, max f32, step f32) &GtkWidget {
+	return C.gtk_scale_new_with_range(orientation, min, max, step)
 }
 
-pub fn (self &GtkScale) set_digits(b int) {
-	C.gtk_scale_set_digits(self, b)
+pub fn (self &GtkScale) set_digits(digits int) {
+	C.gtk_scale_set_digits(self, digits)
 }
 
 pub fn (self &GtkScale) get_digits() int {
 	return C.gtk_scale_get_digits(self)
 }
 
-pub fn (self &GtkScale) set_draw_value(b bool) {
-	C.gtk_scale_set_draw_value(self, b)
+pub fn (self &GtkScale) set_draw_value(draw_value bool) {
+	C.gtk_scale_set_draw_value(self, draw_value)
 }
 
 pub fn (self &GtkScale) get_draw_value() bool {
 	return C.gtk_scale_get_draw_value(self)
 }
 
-pub fn (self &GtkScale) set_has_origin(b bool) {
-	C.gtk_scale_set_has_origin(self, b)
+pub fn (self &GtkScale) set_has_origin(has_origin bool) {
+	C.gtk_scale_set_has_origin(self, has_origin)
 }
 
 pub fn (self &GtkScale) get_has_origin() bool {
 	return C.gtk_scale_get_has_origin(self)
 }
 
-pub fn (self &GtkScale) set_value_pos(b GtkPositionType) {
-	C.gtk_scale_set_value_pos(self, b)
+pub fn (self &GtkScale) set_value_pos(pos GtkPositionType) {
+	C.gtk_scale_set_value_pos(self, pos)
 }
 
 pub fn (self &GtkScale) get_value_pos() GtkPositionType {
@@ -80,18 +80,18 @@ pub fn (self &GtkScale) get_layout() voidptr {
 	return C.gtk_scale_get_layout(self)
 }
 
-pub fn (self &GtkScale) get_layout_offsets(b voidptr, c voidptr) {
-	C.gtk_scale_get_layout_offsets(self, b, c)
+pub fn (self &GtkScale) get_layout_offsets(x voidptr, y voidptr) {
+	C.gtk_scale_get_layout_offsets(self, x, y)
 }
 
-pub fn (self &GtkScale) add_mark(b f32, c GtkPositionType, d &char) {
-	C.gtk_scale_add_mark(self, b, c, d)
+pub fn (self &GtkScale) add_mark(value f32, position GtkPositionType, markup &char) {
+	C.gtk_scale_add_mark(self, value, position, markup)
 }
 
 pub fn (self &GtkScale) clear_marks() {
 	C.gtk_scale_clear_marks(self)
 }
 
-pub fn (self &GtkScale) set_format_value_func(b int, c voidptr, d voidptr) {
-	C.gtk_scale_set_format_value_func(self, b, c, d)
+pub fn (self &GtkScale) set_format_value_func(func voidptr, user_data voidptr, destroy_notify voidptr) {
+	C.gtk_scale_set_format_value_func(self, func, user_data, destroy_notify)
 }

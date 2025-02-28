@@ -15,68 +15,68 @@ pub struct C.GtkWindowGroupClass {}
 
 pub type GtkWindowGroupClass = C.GtkWindowGroupClass
 
-fn C.gtk_window_get_type() int
-fn C.gtk_window_new() &C.GtkWidget
-fn C.gtk_window_set_title(a &C.GtkWindow, b &char)
-fn C.gtk_window_get_title(a &C.GtkWindow) &char
-fn C.gtk_window_set_startup_id(a &C.GtkWindow, b &char)
-fn C.gtk_window_set_focus(a &C.GtkWindow, b &C.GtkWidget)
-fn C.gtk_window_get_focus(a &C.GtkWindow) &C.GtkWidget
-fn C.gtk_window_set_default_widget(a &C.GtkWindow, b &C.GtkWidget)
-fn C.gtk_window_get_default_widget(a &C.GtkWindow) &C.GtkWidget
-fn C.gtk_window_set_transient_for(a &C.GtkWindow, b &C.GtkWindow)
-fn C.gtk_window_get_transient_for(a &C.GtkWindow) &C.GtkWindow
-fn C.gtk_window_set_destroy_with_parent(a &C.GtkWindow, b bool)
-fn C.gtk_window_get_destroy_with_parent(a &C.GtkWindow) bool
-fn C.gtk_window_set_hide_on_close(a &C.GtkWindow, b bool)
-fn C.gtk_window_get_hide_on_close(a &C.GtkWindow) bool
-fn C.gtk_window_set_mnemonics_visible(a &C.GtkWindow, b bool)
-fn C.gtk_window_get_mnemonics_visible(a &C.GtkWindow) bool
-fn C.gtk_window_set_focus_visible(a &C.GtkWindow, b bool)
-fn C.gtk_window_get_focus_visible(a &C.GtkWindow) bool
-fn C.gtk_window_set_resizable(a &C.GtkWindow, b bool)
-fn C.gtk_window_get_resizable(a &C.GtkWindow) bool
-fn C.gtk_window_set_display(a &C.GtkWindow, b voidptr)
-fn C.gtk_window_is_active(a &C.GtkWindow) bool
-fn C.gtk_window_set_decorated(a &C.GtkWindow, b bool)
-fn C.gtk_window_get_decorated(a &C.GtkWindow) bool
-fn C.gtk_window_set_deletable(a &C.GtkWindow, b bool)
-fn C.gtk_window_get_deletable(a &C.GtkWindow) bool
-fn C.gtk_window_set_icon_name(a &C.GtkWindow, b &char)
-fn C.gtk_window_get_icon_name(a &C.GtkWindow) &char
-fn C.gtk_window_set_default_icon_name(a &char)
-fn C.gtk_window_get_default_icon_name() &char
-fn C.gtk_window_set_auto_startup_notification(a bool)
-fn C.gtk_window_set_modal(a &C.GtkWindow, b bool)
-fn C.gtk_window_get_modal(a &C.GtkWindow) bool
-fn C.gtk_window_get_toplevels() voidptr
-fn C.gtk_window_list_toplevels() voidptr
-fn C.gtk_window_present(a &C.GtkWindow)
-fn C.gtk_window_present_with_time(a &C.GtkWindow, b int)
-fn C.gtk_window_minimize(a &C.GtkWindow)
-fn C.gtk_window_unminimize(a &C.GtkWindow)
-fn C.gtk_window_maximize(a &C.GtkWindow)
-fn C.gtk_window_unmaximize(a &C.GtkWindow)
-fn C.gtk_window_fullscreen(a &C.GtkWindow)
-fn C.gtk_window_unfullscreen(a &C.GtkWindow)
-fn C.gtk_window_fullscreen_on_monitor(a &C.GtkWindow, b voidptr)
-fn C.gtk_window_close(a &C.GtkWindow)
-fn C.gtk_window_set_default_size(a &C.GtkWindow, b int, c int)
-fn C.gtk_window_get_default_size(a &C.GtkWindow, b voidptr, c voidptr)
-fn C.gtk_window_get_group(a &C.GtkWindow) &C.GtkWindowGroup
-fn C.gtk_window_has_group(a &C.GtkWindow) bool
-fn C.gtk_window_get_application(a &C.GtkWindow) &C.GtkApplication
-fn C.gtk_window_set_application(a &C.GtkWindow, b &C.GtkApplication)
-fn C.gtk_window_set_child(a &C.GtkWindow, b &C.GtkWidget)
-fn C.gtk_window_get_child(a &C.GtkWindow) &C.GtkWidget
-fn C.gtk_window_set_titlebar(a &C.GtkWindow, b &C.GtkWidget)
-fn C.gtk_window_get_titlebar(a &C.GtkWindow) &C.GtkWidget
-fn C.gtk_window_is_maximized(a &C.GtkWindow) bool
-fn C.gtk_window_is_fullscreen(a &C.GtkWindow) bool
-fn C.gtk_window_destroy(a &C.GtkWindow)
-fn C.gtk_window_set_interactive_debugging(a bool)
-fn C.gtk_window_set_handle_menubar_accel(a &C.GtkWindow, b bool)
-fn C.gtk_window_get_handle_menubar_accel(a &C.GtkWindow) bool
+pub fn C.gtk_window_get_type() int
+pub fn C.gtk_window_new() &GtkWidget
+pub fn C.gtk_window_set_title(window &GtkWindow, title &char)
+pub fn C.gtk_window_get_title(window &GtkWindow) &char
+pub fn C.gtk_window_set_startup_id(window &GtkWindow, startup_id &char)
+pub fn C.gtk_window_set_focus(window &GtkWindow, focus &GtkWidget)
+pub fn C.gtk_window_get_focus(window &GtkWindow) &GtkWidget
+pub fn C.gtk_window_set_default_widget(window &GtkWindow, default_widget &GtkWidget)
+pub fn C.gtk_window_get_default_widget(window &GtkWindow) &GtkWidget
+pub fn C.gtk_window_set_transient_for(window &GtkWindow, parent &GtkWindow)
+pub fn C.gtk_window_get_transient_for(window &GtkWindow) &GtkWindow
+pub fn C.gtk_window_set_destroy_with_parent(window &GtkWindow, setting bool)
+pub fn C.gtk_window_get_destroy_with_parent(window &GtkWindow) bool
+pub fn C.gtk_window_set_hide_on_close(window &GtkWindow, setting bool)
+pub fn C.gtk_window_get_hide_on_close(window &GtkWindow) bool
+pub fn C.gtk_window_set_mnemonics_visible(window &GtkWindow, setting bool)
+pub fn C.gtk_window_get_mnemonics_visible(window &GtkWindow) bool
+pub fn C.gtk_window_set_focus_visible(window &GtkWindow, setting bool)
+pub fn C.gtk_window_get_focus_visible(window &GtkWindow) bool
+pub fn C.gtk_window_set_resizable(window &GtkWindow, resizable bool)
+pub fn C.gtk_window_get_resizable(window &GtkWindow) bool
+pub fn C.gtk_window_set_display(window &GtkWindow, display voidptr)
+pub fn C.gtk_window_is_active(window &GtkWindow) bool
+pub fn C.gtk_window_set_decorated(window &GtkWindow, setting bool)
+pub fn C.gtk_window_get_decorated(window &GtkWindow) bool
+pub fn C.gtk_window_set_deletable(window &GtkWindow, setting bool)
+pub fn C.gtk_window_get_deletable(window &GtkWindow) bool
+pub fn C.gtk_window_set_icon_name(window &GtkWindow, name &char)
+pub fn C.gtk_window_get_icon_name(window &GtkWindow) &char
+pub fn C.gtk_window_set_default_icon_name(name &char)
+pub fn C.gtk_window_get_default_icon_name() &char
+pub fn C.gtk_window_set_auto_startup_notification(setting bool)
+pub fn C.gtk_window_set_modal(window &GtkWindow, modal bool)
+pub fn C.gtk_window_get_modal(window &GtkWindow) bool
+pub fn C.gtk_window_get_toplevels() voidptr
+pub fn C.gtk_window_list_toplevels() voidptr
+pub fn C.gtk_window_present(window &GtkWindow)
+pub fn C.gtk_window_present_with_time(window &GtkWindow, timestamp int)
+pub fn C.gtk_window_minimize(window &GtkWindow)
+pub fn C.gtk_window_unminimize(window &GtkWindow)
+pub fn C.gtk_window_maximize(window &GtkWindow)
+pub fn C.gtk_window_unmaximize(window &GtkWindow)
+pub fn C.gtk_window_fullscreen(window &GtkWindow)
+pub fn C.gtk_window_unfullscreen(window &GtkWindow)
+pub fn C.gtk_window_fullscreen_on_monitor(window &GtkWindow, monitor voidptr)
+pub fn C.gtk_window_close(window &GtkWindow)
+pub fn C.gtk_window_set_default_size(window &GtkWindow, width int, height int)
+pub fn C.gtk_window_get_default_size(window &GtkWindow, width voidptr, height voidptr)
+pub fn C.gtk_window_get_group(window &GtkWindow) &GtkWindowGroup
+pub fn C.gtk_window_has_group(window &GtkWindow) bool
+pub fn C.gtk_window_get_application(window &GtkWindow) &GtkApplication
+pub fn C.gtk_window_set_application(window &GtkWindow, application &GtkApplication)
+pub fn C.gtk_window_set_child(window &GtkWindow, child &GtkWidget)
+pub fn C.gtk_window_get_child(window &GtkWindow) &GtkWidget
+pub fn C.gtk_window_set_titlebar(window &GtkWindow, titlebar &GtkWidget)
+pub fn C.gtk_window_get_titlebar(window &GtkWindow) &GtkWidget
+pub fn C.gtk_window_is_maximized(window &GtkWindow) bool
+pub fn C.gtk_window_is_fullscreen(window &GtkWindow) bool
+pub fn C.gtk_window_destroy(window &GtkWindow)
+pub fn C.gtk_window_set_interactive_debugging(enable bool)
+pub fn C.gtk_window_set_handle_menubar_accel(window &GtkWindow, handle_menubar_accel bool)
+pub fn C.gtk_window_get_handle_menubar_accel(window &GtkWindow) bool
 
 @[noinit; typedef]
 pub struct C.GtkWindow {}
@@ -91,128 +91,128 @@ pub fn GtkWindow.new() &GtkWidget {
 	return C.gtk_window_new()
 }
 
-pub fn (self &GtkWindow) set_title(b &char) {
-	C.gtk_window_set_title(self, b)
+pub fn (self &GtkWindow) set_title(title &char) {
+	C.gtk_window_set_title(self, title)
 }
 
 pub fn (self &GtkWindow) get_title() &char {
 	return C.gtk_window_get_title(self)
 }
 
-pub fn (self &GtkWindow) set_startup_id(b &char) {
-	C.gtk_window_set_startup_id(self, b)
+pub fn (self &GtkWindow) set_startup_id(startup_id &char) {
+	C.gtk_window_set_startup_id(self, startup_id)
 }
 
-pub fn (self &GtkWindow) set_focus(b &C.GtkWidget) {
-	C.gtk_window_set_focus(self, b)
+pub fn (self &GtkWindow) set_focus(focus &GtkWidget) {
+	C.gtk_window_set_focus(self, focus)
 }
 
-pub fn (self &GtkWindow) get_focus() &C.GtkWidget {
+pub fn (self &GtkWindow) get_focus() &GtkWidget {
 	return C.gtk_window_get_focus(self)
 }
 
-pub fn (self &GtkWindow) set_default_widget(b &C.GtkWidget) {
-	C.gtk_window_set_default_widget(self, b)
+pub fn (self &GtkWindow) set_default_widget(default_widget &GtkWidget) {
+	C.gtk_window_set_default_widget(self, default_widget)
 }
 
-pub fn (self &GtkWindow) get_default_widget() &C.GtkWidget {
+pub fn (self &GtkWindow) get_default_widget() &GtkWidget {
 	return C.gtk_window_get_default_widget(self)
 }
 
-pub fn (self &GtkWindow) set_transient_for(b &C.GtkWindow) {
-	C.gtk_window_set_transient_for(self, b)
+pub fn (self &GtkWindow) set_transient_for(parent &GtkWindow) {
+	C.gtk_window_set_transient_for(self, parent)
 }
 
-pub fn (self &GtkWindow) get_transient_for() &C.GtkWindow {
+pub fn (self &GtkWindow) get_transient_for() &GtkWindow {
 	return C.gtk_window_get_transient_for(self)
 }
 
-pub fn (self &GtkWindow) set_destroy_with_parent(b bool) {
-	C.gtk_window_set_destroy_with_parent(self, b)
+pub fn (self &GtkWindow) set_destroy_with_parent(setting bool) {
+	C.gtk_window_set_destroy_with_parent(self, setting)
 }
 
 pub fn (self &GtkWindow) get_destroy_with_parent() bool {
 	return C.gtk_window_get_destroy_with_parent(self)
 }
 
-pub fn (self &GtkWindow) set_hide_on_close(b bool) {
-	C.gtk_window_set_hide_on_close(self, b)
+pub fn (self &GtkWindow) set_hide_on_close(setting bool) {
+	C.gtk_window_set_hide_on_close(self, setting)
 }
 
 pub fn (self &GtkWindow) get_hide_on_close() bool {
 	return C.gtk_window_get_hide_on_close(self)
 }
 
-pub fn (self &GtkWindow) set_mnemonics_visible(b bool) {
-	C.gtk_window_set_mnemonics_visible(self, b)
+pub fn (self &GtkWindow) set_mnemonics_visible(setting bool) {
+	C.gtk_window_set_mnemonics_visible(self, setting)
 }
 
 pub fn (self &GtkWindow) get_mnemonics_visible() bool {
 	return C.gtk_window_get_mnemonics_visible(self)
 }
 
-pub fn (self &GtkWindow) set_focus_visible(b bool) {
-	C.gtk_window_set_focus_visible(self, b)
+pub fn (self &GtkWindow) set_focus_visible(setting bool) {
+	C.gtk_window_set_focus_visible(self, setting)
 }
 
 pub fn (self &GtkWindow) get_focus_visible() bool {
 	return C.gtk_window_get_focus_visible(self)
 }
 
-pub fn (self &GtkWindow) set_resizable(b bool) {
-	C.gtk_window_set_resizable(self, b)
+pub fn (self &GtkWindow) set_resizable(resizable bool) {
+	C.gtk_window_set_resizable(self, resizable)
 }
 
 pub fn (self &GtkWindow) get_resizable() bool {
 	return C.gtk_window_get_resizable(self)
 }
 
-pub fn (self &GtkWindow) set_display(b voidptr) {
-	C.gtk_window_set_display(self, b)
+pub fn (self &GtkWindow) set_display(display voidptr) {
+	C.gtk_window_set_display(self, display)
 }
 
 pub fn (self &GtkWindow) is_active() bool {
 	return C.gtk_window_is_active(self)
 }
 
-pub fn (self &GtkWindow) set_decorated(b bool) {
-	C.gtk_window_set_decorated(self, b)
+pub fn (self &GtkWindow) set_decorated(setting bool) {
+	C.gtk_window_set_decorated(self, setting)
 }
 
 pub fn (self &GtkWindow) get_decorated() bool {
 	return C.gtk_window_get_decorated(self)
 }
 
-pub fn (self &GtkWindow) set_deletable(b bool) {
-	C.gtk_window_set_deletable(self, b)
+pub fn (self &GtkWindow) set_deletable(setting bool) {
+	C.gtk_window_set_deletable(self, setting)
 }
 
 pub fn (self &GtkWindow) get_deletable() bool {
 	return C.gtk_window_get_deletable(self)
 }
 
-pub fn (self &GtkWindow) set_icon_name(b &char) {
-	C.gtk_window_set_icon_name(self, b)
+pub fn (self &GtkWindow) set_icon_name(name &char) {
+	C.gtk_window_set_icon_name(self, name)
 }
 
 pub fn (self &GtkWindow) get_icon_name() &char {
 	return C.gtk_window_get_icon_name(self)
 }
 
-pub fn (self &GtkWindow) set_default_icon_name(a &char) {
-	C.gtk_window_set_default_icon_name(a)
+pub fn (self &GtkWindow) set_default_icon_name(name &char) {
+	C.gtk_window_set_default_icon_name(name)
 }
 
 pub fn (self &GtkWindow) get_default_icon_name() &char {
 	return C.gtk_window_get_default_icon_name()
 }
 
-pub fn (self &GtkWindow) set_auto_startup_notification(a bool) {
-	C.gtk_window_set_auto_startup_notification(a)
+pub fn (self &GtkWindow) set_auto_startup_notification(setting bool) {
+	C.gtk_window_set_auto_startup_notification(setting)
 }
 
-pub fn (self &GtkWindow) set_modal(b bool) {
-	C.gtk_window_set_modal(self, b)
+pub fn (self &GtkWindow) set_modal(modal bool) {
+	C.gtk_window_set_modal(self, modal)
 }
 
 pub fn (self &GtkWindow) get_modal() bool {
@@ -231,8 +231,8 @@ pub fn (self &GtkWindow) present() {
 	C.gtk_window_present(self)
 }
 
-pub fn (self &GtkWindow) present_with_time(b int) {
-	C.gtk_window_present_with_time(self, b)
+pub fn (self &GtkWindow) present_with_time(timestamp int) {
+	C.gtk_window_present_with_time(self, timestamp)
 }
 
 pub fn (self &GtkWindow) minimize() {
@@ -259,23 +259,23 @@ pub fn (self &GtkWindow) unfullscreen() {
 	C.gtk_window_unfullscreen(self)
 }
 
-pub fn (self &GtkWindow) fullscreen_on_monitor(b voidptr) {
-	C.gtk_window_fullscreen_on_monitor(self, b)
+pub fn (self &GtkWindow) fullscreen_on_monitor(monitor voidptr) {
+	C.gtk_window_fullscreen_on_monitor(self, monitor)
 }
 
 pub fn (self &GtkWindow) close() {
 	C.gtk_window_close(self)
 }
 
-pub fn (self &GtkWindow) set_default_size(b int, c int) {
-	C.gtk_window_set_default_size(self, b, c)
+pub fn (self &GtkWindow) set_default_size(width int, height int) {
+	C.gtk_window_set_default_size(self, width, height)
 }
 
-pub fn (self &GtkWindow) get_default_size(b voidptr, c voidptr) {
-	C.gtk_window_get_default_size(self, b, c)
+pub fn (self &GtkWindow) get_default_size(width voidptr, height voidptr) {
+	C.gtk_window_get_default_size(self, width, height)
 }
 
-pub fn (self &GtkWindow) get_group() &C.GtkWindowGroup {
+pub fn (self &GtkWindow) get_group() &GtkWindowGroup {
 	return C.gtk_window_get_group(self)
 }
 
@@ -283,27 +283,27 @@ pub fn (self &GtkWindow) has_group() bool {
 	return C.gtk_window_has_group(self)
 }
 
-pub fn (self &GtkWindow) get_application() &C.GtkApplication {
+pub fn (self &GtkWindow) get_application() &GtkApplication {
 	return C.gtk_window_get_application(self)
 }
 
-pub fn (self &GtkWindow) set_application(b &C.GtkApplication) {
-	C.gtk_window_set_application(self, b)
+pub fn (self &GtkWindow) set_application(application &GtkApplication) {
+	C.gtk_window_set_application(self, application)
 }
 
-pub fn (self &GtkWindow) set_child(b &C.GtkWidget) {
-	C.gtk_window_set_child(self, b)
+pub fn (self &GtkWindow) set_child(child &GtkWidget) {
+	C.gtk_window_set_child(self, child)
 }
 
-pub fn (self &GtkWindow) get_child() &C.GtkWidget {
+pub fn (self &GtkWindow) get_child() &GtkWidget {
 	return C.gtk_window_get_child(self)
 }
 
-pub fn (self &GtkWindow) set_titlebar(b &C.GtkWidget) {
-	C.gtk_window_set_titlebar(self, b)
+pub fn (self &GtkWindow) set_titlebar(titlebar &GtkWidget) {
+	C.gtk_window_set_titlebar(self, titlebar)
 }
 
-pub fn (self &GtkWindow) get_titlebar() &C.GtkWidget {
+pub fn (self &GtkWindow) get_titlebar() &GtkWidget {
 	return C.gtk_window_get_titlebar(self)
 }
 
@@ -319,12 +319,12 @@ pub fn (self &GtkWindow) destroy() {
 	C.gtk_window_destroy(self)
 }
 
-pub fn (self &GtkWindow) set_interactive_debugging(a bool) {
-	C.gtk_window_set_interactive_debugging(a)
+pub fn (self &GtkWindow) set_interactive_debugging(enable bool) {
+	C.gtk_window_set_interactive_debugging(enable)
 }
 
-pub fn (self &GtkWindow) set_handle_menubar_accel(b bool) {
-	C.gtk_window_set_handle_menubar_accel(self, b)
+pub fn (self &GtkWindow) set_handle_menubar_accel(handle_menubar_accel bool) {
+	C.gtk_window_set_handle_menubar_accel(self, handle_menubar_accel)
 }
 
 pub fn (self &GtkWindow) get_handle_menubar_accel() bool {

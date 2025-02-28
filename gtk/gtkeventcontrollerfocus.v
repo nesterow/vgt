@@ -5,10 +5,10 @@ pub struct C.GtkEventControllerFocusClass {}
 
 pub type GtkEventControllerFocusClass = C.GtkEventControllerFocusClass
 
-fn C.gtk_event_controller_focus_get_type() int
-fn C.gtk_event_controller_focus_new() &C.GtkEventController
-fn C.gtk_event_controller_focus_contains_focus(a &C.GtkEventControllerFocus) bool
-fn C.gtk_event_controller_focus_is_focus(a &C.GtkEventControllerFocus) bool
+pub fn C.gtk_event_controller_focus_get_type() int
+pub fn C.gtk_event_controller_focus_new() &GtkEventController
+pub fn C.gtk_event_controller_focus_contains_focus(self &GtkEventControllerFocus) bool
+pub fn C.gtk_event_controller_focus_is_focus(self &GtkEventControllerFocus) bool
 
 @[noinit; typedef]
 pub struct C.GtkEventControllerFocus {}

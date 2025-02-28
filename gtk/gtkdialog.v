@@ -25,19 +25,19 @@ pub enum GtkResponseType {
 	gtk_response_help         = -11
 }
 
-fn C.gtk_dialog_get_type() int
-fn C.gtk_dialog_new() &C.GtkWidget
-fn C.gtk_dialog_new_with_buttons(a &char, b &C.GtkWindow, c GtkDialogFlags, d &char, e voidptr) &C.GtkWidget
-fn C.gtk_dialog_add_action_widget(a &C.GtkDialog, b &C.GtkWidget, c int)
-fn C.gtk_dialog_add_button(a &C.GtkDialog, b &char, c int) &C.GtkWidget
-fn C.gtk_dialog_add_buttons(a &C.GtkDialog, b &char, c voidptr)
-fn C.gtk_dialog_set_response_sensitive(a &C.GtkDialog, b int, c bool)
-fn C.gtk_dialog_set_default_response(a &C.GtkDialog, b int)
-fn C.gtk_dialog_get_widget_for_response(a &C.GtkDialog, b int) &C.GtkWidget
-fn C.gtk_dialog_get_response_for_widget(a &C.GtkDialog, b &C.GtkWidget) int
-fn C.gtk_dialog_response(a &C.GtkDialog, b int)
-fn C.gtk_dialog_get_content_area(a &C.GtkDialog) &C.GtkWidget
-fn C.gtk_dialog_get_header_bar(a &C.GtkDialog) &C.GtkWidget
+pub fn C.gtk_dialog_get_type() int
+pub fn C.gtk_dialog_new() &GtkWidget
+pub fn C.gtk_dialog_new_with_buttons(title &char, parent &GtkWindow, flags GtkDialogFlags, first_button_text &char) &GtkWidget
+pub fn C.gtk_dialog_add_action_widget(dialog &GtkDialog, child &GtkWidget, response_id int)
+pub fn C.gtk_dialog_add_button(dialog &GtkDialog, button_text &char, response_id int) &GtkWidget
+pub fn C.gtk_dialog_add_buttons(dialog &GtkDialog, first_button_text &char)
+pub fn C.gtk_dialog_set_response_sensitive(dialog &GtkDialog, response_id int, setting bool)
+pub fn C.gtk_dialog_set_default_response(dialog &GtkDialog, response_id int)
+pub fn C.gtk_dialog_get_widget_for_response(dialog &GtkDialog, response_id int) &GtkWidget
+pub fn C.gtk_dialog_get_response_for_widget(dialog &GtkDialog, widget &GtkWidget) int
+pub fn C.gtk_dialog_response(dialog &GtkDialog, response_id int)
+pub fn C.gtk_dialog_get_content_area(dialog &GtkDialog) &GtkWidget
+pub fn C.gtk_dialog_get_header_bar(dialog &GtkDialog) &GtkWidget
 
 @[noinit; typedef]
 pub struct C.GtkDialog {}
@@ -52,46 +52,46 @@ pub fn GtkDialog.new() &GtkWidget {
 	return C.gtk_dialog_new()
 }
 
-pub fn GtkDialog.new_with_buttons(a &char, b &C.GtkWindow, c GtkDialogFlags, d &char, e voidptr) &GtkWidget {
-	return C.gtk_dialog_new_with_buttons(a, b, c, d, e)
+pub fn GtkDialog.new_with_buttons(title &char, parent &GtkWindow, flags GtkDialogFlags, first_button_text &char) &GtkWidget {
+	return C.gtk_dialog_new_with_buttons(title, parent, flags, first_button_text)
 }
 
-pub fn (self &GtkDialog) add_action_widget(b &C.GtkWidget, c int) {
-	C.gtk_dialog_add_action_widget(self, b, c)
+pub fn (self &GtkDialog) add_action_widget(child &GtkWidget, response_id int) {
+	C.gtk_dialog_add_action_widget(self, child, response_id)
 }
 
-pub fn (self &GtkDialog) add_button(b &char, c int) &C.GtkWidget {
-	return C.gtk_dialog_add_button(self, b, c)
+pub fn (self &GtkDialog) add_button(button_text &char, response_id int) &GtkWidget {
+	return C.gtk_dialog_add_button(self, button_text, response_id)
 }
 
-pub fn (self &GtkDialog) add_buttons(b &char, c voidptr) {
-	C.gtk_dialog_add_buttons(self, b, c)
+pub fn (self &GtkDialog) add_buttons(first_button_text &char) {
+	C.gtk_dialog_add_buttons(self, first_button_text)
 }
 
-pub fn (self &GtkDialog) set_response_sensitive(b int, c bool) {
-	C.gtk_dialog_set_response_sensitive(self, b, c)
+pub fn (self &GtkDialog) set_response_sensitive(response_id int, setting bool) {
+	C.gtk_dialog_set_response_sensitive(self, response_id, setting)
 }
 
-pub fn (self &GtkDialog) set_default_response(b int) {
-	C.gtk_dialog_set_default_response(self, b)
+pub fn (self &GtkDialog) set_default_response(response_id int) {
+	C.gtk_dialog_set_default_response(self, response_id)
 }
 
-pub fn (self &GtkDialog) get_widget_for_response(b int) &C.GtkWidget {
-	return C.gtk_dialog_get_widget_for_response(self, b)
+pub fn (self &GtkDialog) get_widget_for_response(response_id int) &GtkWidget {
+	return C.gtk_dialog_get_widget_for_response(self, response_id)
 }
 
-pub fn (self &GtkDialog) get_response_for_widget(b &C.GtkWidget) int {
-	return C.gtk_dialog_get_response_for_widget(self, b)
+pub fn (self &GtkDialog) get_response_for_widget(widget &GtkWidget) int {
+	return C.gtk_dialog_get_response_for_widget(self, widget)
 }
 
-pub fn (self &GtkDialog) response(b int) {
-	C.gtk_dialog_response(self, b)
+pub fn (self &GtkDialog) response(response_id int) {
+	C.gtk_dialog_response(self, response_id)
 }
 
-pub fn (self &GtkDialog) get_content_area() &C.GtkWidget {
+pub fn (self &GtkDialog) get_content_area() &GtkWidget {
 	return C.gtk_dialog_get_content_area(self)
 }
 
-pub fn (self &GtkDialog) get_header_bar() &C.GtkWidget {
+pub fn (self &GtkDialog) get_header_bar() &GtkWidget {
 	return C.gtk_dialog_get_header_bar(self)
 }

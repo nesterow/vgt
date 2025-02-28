@@ -5,8 +5,8 @@ pub struct C.GtkBinLayoutClass {}
 
 pub type GtkBinLayoutClass = C.GtkBinLayoutClass
 
-fn C.gtk_bin_layout_get_type() int
-fn C.gtk_bin_layout_new() &C.GtkLayoutManager
+pub fn C.gtk_bin_layout_get_type() int
+pub fn C.gtk_bin_layout_new() &GtkLayoutManager
 
 @[noinit; typedef]
 pub struct C.GtkBinLayout {}

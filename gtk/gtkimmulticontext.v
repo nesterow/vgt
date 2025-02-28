@@ -5,10 +5,10 @@ pub struct C.GtkIMMulticontextClass {}
 
 pub type GtkIMMulticontextClass = C.GtkIMMulticontextClass
 
-fn C.gtk_im_multicontext_get_type() int
-fn C.gtk_im_multicontext_new() &C.GtkIMContext
-fn C.gtk_im_multicontext_get_context_id(a &C.GtkIMMulticontext) &char
-fn C.gtk_im_multicontext_set_context_id(a &C.GtkIMMulticontext, b &char)
+pub fn C.gtk_im_multicontext_get_type() int
+pub fn C.gtk_im_multicontext_new() &GtkIMContext
+pub fn C.gtk_im_multicontext_get_context_id(context &GtkIMMulticontext) &char
+pub fn C.gtk_im_multicontext_set_context_id(context &GtkIMMulticontext, context_id &char)
 
 @[noinit; typedef]
 pub struct C.GtkIMMulticontext {}
@@ -27,6 +27,6 @@ pub fn (self &GtkIMMulticontext) get_context_id() &char {
 	return C.gtk_im_multicontext_get_context_id(self)
 }
 
-pub fn (self &GtkIMMulticontext) set_context_id(b &char) {
-	C.gtk_im_multicontext_set_context_id(self, b)
+pub fn (self &GtkIMMulticontext) set_context_id(context_id &char) {
+	C.gtk_im_multicontext_set_context_id(self, context_id)
 }

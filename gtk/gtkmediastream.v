@@ -5,41 +5,41 @@ pub struct C.GtkMediaStreamClass {}
 
 pub type GtkMediaStreamClass = C.GtkMediaStreamClass
 
-fn C.gtk_media_stream_get_type() int
-fn C.gtk_media_stream_is_prepared(a &C.GtkMediaStream) bool
-fn C.gtk_media_stream_get_error(a &C.GtkMediaStream) voidptr
-fn C.gtk_media_stream_has_audio(a &C.GtkMediaStream) bool
-fn C.gtk_media_stream_has_video(a &C.GtkMediaStream) bool
-fn C.gtk_media_stream_play(a &C.GtkMediaStream)
-fn C.gtk_media_stream_pause(a &C.GtkMediaStream)
-fn C.gtk_media_stream_get_playing(a &C.GtkMediaStream) bool
-fn C.gtk_media_stream_set_playing(a &C.GtkMediaStream, b bool)
-fn C.gtk_media_stream_get_ended(a &C.GtkMediaStream) bool
-fn C.gtk_media_stream_get_timestamp(a &C.GtkMediaStream) int
-fn C.gtk_media_stream_get_duration(a &C.GtkMediaStream) int
-fn C.gtk_media_stream_is_seekable(a &C.GtkMediaStream) bool
-fn C.gtk_media_stream_is_seeking(a &C.GtkMediaStream) bool
-fn C.gtk_media_stream_seek(a &C.GtkMediaStream, b int)
-fn C.gtk_media_stream_get_loop(a &C.GtkMediaStream) bool
-fn C.gtk_media_stream_set_loop(a &C.GtkMediaStream, b bool)
-fn C.gtk_media_stream_get_muted(a &C.GtkMediaStream) bool
-fn C.gtk_media_stream_set_muted(a &C.GtkMediaStream, b bool)
-fn C.gtk_media_stream_get_volume(a &C.GtkMediaStream) f32
-fn C.gtk_media_stream_set_volume(a &C.GtkMediaStream, b f32)
-fn C.gtk_media_stream_realize(a &C.GtkMediaStream, b voidptr)
-fn C.gtk_media_stream_unrealize(a &C.GtkMediaStream, b voidptr)
-fn C.gtk_media_stream_prepared(a &C.GtkMediaStream, b bool, c bool, d bool, e int)
-fn C.gtk_media_stream_unprepared(a &C.GtkMediaStream)
-fn C.gtk_media_stream_stream_prepared(a &C.GtkMediaStream, b bool, c bool, d bool, e int)
-fn C.gtk_media_stream_stream_unprepared(a &C.GtkMediaStream)
-fn C.gtk_media_stream_update(a &C.GtkMediaStream, b int)
-fn C.gtk_media_stream_ended(a &C.GtkMediaStream)
-fn C.gtk_media_stream_stream_ended(a &C.GtkMediaStream)
-fn C.gtk_media_stream_seek_success(a &C.GtkMediaStream)
-fn C.gtk_media_stream_seek_failed(a &C.GtkMediaStream)
-fn C.gtk_media_stream_gerror(a &C.GtkMediaStream, b voidptr)
-fn C.gtk_media_stream_error(a &C.GtkMediaStream, b voidptr, c int, d &char, e voidptr)
-fn C.gtk_media_stream_error_valist(a &C.GtkMediaStream, b voidptr, c int, d &char, e voidptr)
+pub fn C.gtk_media_stream_get_type() int
+pub fn C.gtk_media_stream_is_prepared(self &GtkMediaStream) bool
+pub fn C.gtk_media_stream_get_error(self &GtkMediaStream) voidptr
+pub fn C.gtk_media_stream_has_audio(self &GtkMediaStream) bool
+pub fn C.gtk_media_stream_has_video(self &GtkMediaStream) bool
+pub fn C.gtk_media_stream_play(self &GtkMediaStream)
+pub fn C.gtk_media_stream_pause(self &GtkMediaStream)
+pub fn C.gtk_media_stream_get_playing(self &GtkMediaStream) bool
+pub fn C.gtk_media_stream_set_playing(self &GtkMediaStream, playing bool)
+pub fn C.gtk_media_stream_get_ended(self &GtkMediaStream) bool
+pub fn C.gtk_media_stream_get_timestamp(self &GtkMediaStream) int
+pub fn C.gtk_media_stream_get_duration(self &GtkMediaStream) int
+pub fn C.gtk_media_stream_is_seekable(self &GtkMediaStream) bool
+pub fn C.gtk_media_stream_is_seeking(self &GtkMediaStream) bool
+pub fn C.gtk_media_stream_seek(self &GtkMediaStream, timestamp int)
+pub fn C.gtk_media_stream_get_loop(self &GtkMediaStream) bool
+pub fn C.gtk_media_stream_set_loop(self &GtkMediaStream, loop bool)
+pub fn C.gtk_media_stream_get_muted(self &GtkMediaStream) bool
+pub fn C.gtk_media_stream_set_muted(self &GtkMediaStream, muted bool)
+pub fn C.gtk_media_stream_get_volume(self &GtkMediaStream) f32
+pub fn C.gtk_media_stream_set_volume(self &GtkMediaStream, volume f32)
+pub fn C.gtk_media_stream_realize(self &GtkMediaStream, surface voidptr)
+pub fn C.gtk_media_stream_unrealize(self &GtkMediaStream, surface voidptr)
+pub fn C.gtk_media_stream_prepared(self &GtkMediaStream, has_audio bool, has_video bool, seekable bool, duration int)
+pub fn C.gtk_media_stream_unprepared(self &GtkMediaStream)
+pub fn C.gtk_media_stream_stream_prepared(self &GtkMediaStream, has_audio bool, has_video bool, seekable bool, duration int)
+pub fn C.gtk_media_stream_stream_unprepared(self &GtkMediaStream)
+pub fn C.gtk_media_stream_update(self &GtkMediaStream, timestamp int)
+pub fn C.gtk_media_stream_ended(self &GtkMediaStream)
+pub fn C.gtk_media_stream_stream_ended(self &GtkMediaStream)
+pub fn C.gtk_media_stream_seek_success(self &GtkMediaStream)
+pub fn C.gtk_media_stream_seek_failed(self &GtkMediaStream)
+pub fn C.gtk_media_stream_gerror(self &GtkMediaStream, error voidptr)
+pub fn C.gtk_media_stream_error(self &GtkMediaStream, domain voidptr, code int, format &char)
+pub fn C.gtk_media_stream_error_valist(self &GtkMediaStream, domain voidptr, code int, format &char, args voidptr)
 
 @[noinit; typedef]
 pub struct C.GtkMediaStream {}
@@ -78,8 +78,8 @@ pub fn (self &GtkMediaStream) get_playing() bool {
 	return C.gtk_media_stream_get_playing(self)
 }
 
-pub fn (self &GtkMediaStream) set_playing(b bool) {
-	C.gtk_media_stream_set_playing(self, b)
+pub fn (self &GtkMediaStream) set_playing(playing bool) {
+	C.gtk_media_stream_set_playing(self, playing)
 }
 
 pub fn (self &GtkMediaStream) get_ended() bool {
@@ -102,60 +102,60 @@ pub fn (self &GtkMediaStream) is_seeking() bool {
 	return C.gtk_media_stream_is_seeking(self)
 }
 
-pub fn (self &GtkMediaStream) seek(b int) {
-	C.gtk_media_stream_seek(self, b)
+pub fn (self &GtkMediaStream) seek(timestamp int) {
+	C.gtk_media_stream_seek(self, timestamp)
 }
 
 pub fn (self &GtkMediaStream) get_loop() bool {
 	return C.gtk_media_stream_get_loop(self)
 }
 
-pub fn (self &GtkMediaStream) set_loop(b bool) {
-	C.gtk_media_stream_set_loop(self, b)
+pub fn (self &GtkMediaStream) set_loop(loop bool) {
+	C.gtk_media_stream_set_loop(self, loop)
 }
 
 pub fn (self &GtkMediaStream) get_muted() bool {
 	return C.gtk_media_stream_get_muted(self)
 }
 
-pub fn (self &GtkMediaStream) set_muted(b bool) {
-	C.gtk_media_stream_set_muted(self, b)
+pub fn (self &GtkMediaStream) set_muted(muted bool) {
+	C.gtk_media_stream_set_muted(self, muted)
 }
 
 pub fn (self &GtkMediaStream) get_volume() f32 {
 	return C.gtk_media_stream_get_volume(self)
 }
 
-pub fn (self &GtkMediaStream) set_volume(b f32) {
-	C.gtk_media_stream_set_volume(self, b)
+pub fn (self &GtkMediaStream) set_volume(volume f32) {
+	C.gtk_media_stream_set_volume(self, volume)
 }
 
-pub fn (self &GtkMediaStream) realize(b voidptr) {
-	C.gtk_media_stream_realize(self, b)
+pub fn (self &GtkMediaStream) realize(surface voidptr) {
+	C.gtk_media_stream_realize(self, surface)
 }
 
-pub fn (self &GtkMediaStream) unrealize(b voidptr) {
-	C.gtk_media_stream_unrealize(self, b)
+pub fn (self &GtkMediaStream) unrealize(surface voidptr) {
+	C.gtk_media_stream_unrealize(self, surface)
 }
 
-pub fn (self &GtkMediaStream) prepared(b bool, c bool, d bool, e int) {
-	C.gtk_media_stream_prepared(self, b, c, d, e)
+pub fn (self &GtkMediaStream) prepared(has_audio bool, has_video bool, seekable bool, duration int) {
+	C.gtk_media_stream_prepared(self, has_audio, has_video, seekable, duration)
 }
 
 pub fn (self &GtkMediaStream) unprepared() {
 	C.gtk_media_stream_unprepared(self)
 }
 
-pub fn (self &GtkMediaStream) stream_prepared(b bool, c bool, d bool, e int) {
-	C.gtk_media_stream_stream_prepared(self, b, c, d, e)
+pub fn (self &GtkMediaStream) stream_prepared(has_audio bool, has_video bool, seekable bool, duration int) {
+	C.gtk_media_stream_stream_prepared(self, has_audio, has_video, seekable, duration)
 }
 
 pub fn (self &GtkMediaStream) stream_unprepared() {
 	C.gtk_media_stream_stream_unprepared(self)
 }
 
-pub fn (self &GtkMediaStream) update(b int) {
-	C.gtk_media_stream_update(self, b)
+pub fn (self &GtkMediaStream) update(timestamp int) {
+	C.gtk_media_stream_update(self, timestamp)
 }
 
 pub fn (self &GtkMediaStream) ended() {
@@ -174,14 +174,14 @@ pub fn (self &GtkMediaStream) seek_failed() {
 	C.gtk_media_stream_seek_failed(self)
 }
 
-pub fn (self &GtkMediaStream) gerror(b voidptr) {
-	C.gtk_media_stream_gerror(self, b)
+pub fn (self &GtkMediaStream) gerror(error voidptr) {
+	C.gtk_media_stream_gerror(self, error)
 }
 
-pub fn (self &GtkMediaStream) error(b voidptr, c int, d &char, e voidptr) {
-	C.gtk_media_stream_error(self, b, c, d, e)
+pub fn (self &GtkMediaStream) error(domain voidptr, code int, format &char) {
+	C.gtk_media_stream_error(self, domain, code, format)
 }
 
-pub fn (self &GtkMediaStream) error_valist(b voidptr, c int, d &char, e voidptr) {
-	C.gtk_media_stream_error_valist(self, b, c, d, e)
+pub fn (self &GtkMediaStream) error_valist(domain voidptr, code int, format &char, args voidptr) {
+	C.gtk_media_stream_error_valist(self, domain, code, format, args)
 }

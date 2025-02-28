@@ -1,7 +1,7 @@
 module gtk
 
-fn C.gtk_file_chooser_dialog_get_type() int
-fn C.gtk_file_chooser_dialog_new(a &char, b &C.GtkWindow, c GtkFileChooserAction, d &char, e voidptr) &C.GtkWidget
+pub fn C.gtk_file_chooser_dialog_get_type() int
+pub fn C.gtk_file_chooser_dialog_new(title &char, parent &GtkWindow, action GtkFileChooserAction, first_button_text &char) &GtkWidget
 
 @[noinit; typedef]
 pub struct C.GtkFileChooserDialog {}
@@ -12,6 +12,6 @@ pub fn (self &GtkFileChooserDialog) get_type() int {
 	return C.gtk_file_chooser_dialog_get_type()
 }
 
-pub fn GtkFileChooserDialog.new(a &char, b &C.GtkWindow, c GtkFileChooserAction, d &char, e voidptr) &GtkWidget {
-	return C.gtk_file_chooser_dialog_new(a, b, c, d, e)
+pub fn GtkFileChooserDialog.new(title &char, parent &GtkWindow, action GtkFileChooserAction, first_button_text &char) &GtkWidget {
+	return C.gtk_file_chooser_dialog_new(title, parent, action, first_button_text)
 }

@@ -35,52 +35,52 @@ pub struct C.GtkListBoxForeachFunc {}
 
 pub type GtkListBoxForeachFunc = C.GtkListBoxForeachFunc
 
-fn C.gtk_list_box_row_get_type() int
-fn C.gtk_list_box_row_new() &C.GtkWidget
-fn C.gtk_list_box_row_set_child(a &C.GtkListBoxRow, b &C.GtkWidget)
-fn C.gtk_list_box_row_get_child(a &C.GtkListBoxRow) &C.GtkWidget
-fn C.gtk_list_box_row_get_header(a &C.GtkListBoxRow) &C.GtkWidget
-fn C.gtk_list_box_row_set_header(a &C.GtkListBoxRow, b &C.GtkWidget)
-fn C.gtk_list_box_row_get_index(a &C.GtkListBoxRow) int
-fn C.gtk_list_box_row_changed(a &C.GtkListBoxRow)
-fn C.gtk_list_box_row_is_selected(a &C.GtkListBoxRow) bool
-fn C.gtk_list_box_row_set_selectable(a &C.GtkListBoxRow, b bool)
-fn C.gtk_list_box_row_get_selectable(a &C.GtkListBoxRow) bool
-fn C.gtk_list_box_row_set_activatable(a &C.GtkListBoxRow, b bool)
-fn C.gtk_list_box_row_get_activatable(a &C.GtkListBoxRow) bool
-fn C.gtk_list_box_get_type() int
-fn C.gtk_list_box_prepend(a &C.GtkListBox, b &C.GtkWidget)
-fn C.gtk_list_box_append(a &C.GtkListBox, b &C.GtkWidget)
-fn C.gtk_list_box_insert(a &C.GtkListBox, b &C.GtkWidget, c int)
-fn C.gtk_list_box_remove(a &C.GtkListBox, b &C.GtkWidget)
-fn C.gtk_list_box_get_selected_row(a &C.GtkListBox) &C.GtkListBoxRow
-fn C.gtk_list_box_get_row_at_index(a &C.GtkListBox, b int) &C.GtkListBoxRow
-fn C.gtk_list_box_get_row_at_y(a &C.GtkListBox, b int) &C.GtkListBoxRow
-fn C.gtk_list_box_select_row(a &C.GtkListBox, b &C.GtkListBoxRow)
-fn C.gtk_list_box_set_placeholder(a &C.GtkListBox, b &C.GtkWidget)
-fn C.gtk_list_box_set_adjustment(a &C.GtkListBox, b &C.GtkAdjustment)
-fn C.gtk_list_box_get_adjustment(a &C.GtkListBox) &C.GtkAdjustment
-fn C.gtk_list_box_selected_foreach(a &C.GtkListBox, b int, c voidptr)
-fn C.gtk_list_box_get_selected_rows(a &C.GtkListBox) voidptr
-fn C.gtk_list_box_unselect_row(a &C.GtkListBox, b &C.GtkListBoxRow)
-fn C.gtk_list_box_select_all(a &C.GtkListBox)
-fn C.gtk_list_box_unselect_all(a &C.GtkListBox)
-fn C.gtk_list_box_set_selection_mode(a &C.GtkListBox, b GtkSelectionMode)
-fn C.gtk_list_box_get_selection_mode(a &C.GtkListBox) GtkSelectionMode
-fn C.gtk_list_box_set_filter_func(a &C.GtkListBox, b int, c voidptr, d voidptr)
-fn C.gtk_list_box_set_header_func(a &C.GtkListBox, b int, c voidptr, d voidptr)
-fn C.gtk_list_box_invalidate_filter(a &C.GtkListBox)
-fn C.gtk_list_box_invalidate_sort(a &C.GtkListBox)
-fn C.gtk_list_box_invalidate_headers(a &C.GtkListBox)
-fn C.gtk_list_box_set_sort_func(a &C.GtkListBox, b int, c voidptr, d voidptr)
-fn C.gtk_list_box_set_activate_on_single_click(a &C.GtkListBox, b bool)
-fn C.gtk_list_box_get_activate_on_single_click(a &C.GtkListBox) bool
-fn C.gtk_list_box_drag_unhighlight_row(a &C.GtkListBox)
-fn C.gtk_list_box_drag_highlight_row(a &C.GtkListBox, b &C.GtkListBoxRow)
-fn C.gtk_list_box_new() &C.GtkWidget
-fn C.gtk_list_box_bind_model(a &C.GtkListBox, b voidptr, c int, d voidptr, e voidptr)
-fn C.gtk_list_box_set_show_separators(a &C.GtkListBox, b bool)
-fn C.gtk_list_box_get_show_separators(a &C.GtkListBox) bool
+pub fn C.gtk_list_box_row_get_type() int
+pub fn C.gtk_list_box_row_new() &GtkWidget
+pub fn C.gtk_list_box_row_set_child(row &GtkListBoxRow, child &GtkWidget)
+pub fn C.gtk_list_box_row_get_child(row &GtkListBoxRow) &GtkWidget
+pub fn C.gtk_list_box_row_get_header(row &GtkListBoxRow) &GtkWidget
+pub fn C.gtk_list_box_row_set_header(row &GtkListBoxRow, header &GtkWidget)
+pub fn C.gtk_list_box_row_get_index(row &GtkListBoxRow) int
+pub fn C.gtk_list_box_row_changed(row &GtkListBoxRow)
+pub fn C.gtk_list_box_row_is_selected(row &GtkListBoxRow) bool
+pub fn C.gtk_list_box_row_set_selectable(row &GtkListBoxRow, selectable bool)
+pub fn C.gtk_list_box_row_get_selectable(row &GtkListBoxRow) bool
+pub fn C.gtk_list_box_row_set_activatable(row &GtkListBoxRow, activatable bool)
+pub fn C.gtk_list_box_row_get_activatable(row &GtkListBoxRow) bool
+pub fn C.gtk_list_box_get_type() int
+pub fn C.gtk_list_box_prepend(box &GtkListBox, child &GtkWidget)
+pub fn C.gtk_list_box_append(box &GtkListBox, child &GtkWidget)
+pub fn C.gtk_list_box_insert(box &GtkListBox, child &GtkWidget, position int)
+pub fn C.gtk_list_box_remove(box &GtkListBox, child &GtkWidget)
+pub fn C.gtk_list_box_get_selected_row(box &GtkListBox) &GtkListBoxRow
+pub fn C.gtk_list_box_get_row_at_index(box &GtkListBox, index_ int) &GtkListBoxRow
+pub fn C.gtk_list_box_get_row_at_y(box &GtkListBox, y int) &GtkListBoxRow
+pub fn C.gtk_list_box_select_row(box &GtkListBox, row &GtkListBoxRow)
+pub fn C.gtk_list_box_set_placeholder(box &GtkListBox, placeholder &GtkWidget)
+pub fn C.gtk_list_box_set_adjustment(box &GtkListBox, adjustment &GtkAdjustment)
+pub fn C.gtk_list_box_get_adjustment(box &GtkListBox) &GtkAdjustment
+pub fn C.gtk_list_box_selected_foreach(box &GtkListBox, func voidptr, data voidptr)
+pub fn C.gtk_list_box_get_selected_rows(box &GtkListBox) voidptr
+pub fn C.gtk_list_box_unselect_row(box &GtkListBox, row &GtkListBoxRow)
+pub fn C.gtk_list_box_select_all(box &GtkListBox)
+pub fn C.gtk_list_box_unselect_all(box &GtkListBox)
+pub fn C.gtk_list_box_set_selection_mode(box &GtkListBox, mode GtkSelectionMode)
+pub fn C.gtk_list_box_get_selection_mode(box &GtkListBox) GtkSelectionMode
+pub fn C.gtk_list_box_set_filter_func(box &GtkListBox, filter_func voidptr, user_data voidptr, destroy voidptr)
+pub fn C.gtk_list_box_set_header_func(box &GtkListBox, update_header voidptr, user_data voidptr, destroy voidptr)
+pub fn C.gtk_list_box_invalidate_filter(box &GtkListBox)
+pub fn C.gtk_list_box_invalidate_sort(box &GtkListBox)
+pub fn C.gtk_list_box_invalidate_headers(box &GtkListBox)
+pub fn C.gtk_list_box_set_sort_func(box &GtkListBox, sort_func voidptr, user_data voidptr, destroy voidptr)
+pub fn C.gtk_list_box_set_activate_on_single_click(box &GtkListBox, single bool)
+pub fn C.gtk_list_box_get_activate_on_single_click(box &GtkListBox) bool
+pub fn C.gtk_list_box_drag_unhighlight_row(box &GtkListBox)
+pub fn C.gtk_list_box_drag_highlight_row(box &GtkListBox, row &GtkListBoxRow)
+pub fn C.gtk_list_box_new() &GtkWidget
+pub fn C.gtk_list_box_bind_model(box &GtkListBox, model voidptr, create_widget_func voidptr, user_data voidptr, user_data_free_func voidptr)
+pub fn C.gtk_list_box_set_show_separators(box &GtkListBox, show_separators bool)
+pub fn C.gtk_list_box_get_show_separators(box &GtkListBox) bool
 
 @[noinit; typedef]
 pub struct C.GtkListBox {}
@@ -95,108 +95,108 @@ pub fn GtkListBox.row_new() &GtkWidget {
 	return C.gtk_list_box_row_new()
 }
 
-pub fn (self &GtkListBox) row_set_child(a &C.GtkListBoxRow, b &C.GtkWidget) {
-	C.gtk_list_box_row_set_child(a, b)
+pub fn (self &GtkListBox) row_set_child(row &GtkListBoxRow, child &GtkWidget) {
+	C.gtk_list_box_row_set_child(row, child)
 }
 
-pub fn (self &GtkListBox) row_get_child(a &C.GtkListBoxRow) &C.GtkWidget {
-	return C.gtk_list_box_row_get_child(a)
+pub fn (self &GtkListBox) row_get_child(row &GtkListBoxRow) &GtkWidget {
+	return C.gtk_list_box_row_get_child(row)
 }
 
-pub fn (self &GtkListBox) row_get_header(a &C.GtkListBoxRow) &C.GtkWidget {
-	return C.gtk_list_box_row_get_header(a)
+pub fn (self &GtkListBox) row_get_header(row &GtkListBoxRow) &GtkWidget {
+	return C.gtk_list_box_row_get_header(row)
 }
 
-pub fn (self &GtkListBox) row_set_header(a &C.GtkListBoxRow, b &C.GtkWidget) {
-	C.gtk_list_box_row_set_header(a, b)
+pub fn (self &GtkListBox) row_set_header(row &GtkListBoxRow, header &GtkWidget) {
+	C.gtk_list_box_row_set_header(row, header)
 }
 
-pub fn (self &GtkListBox) row_get_index(a &C.GtkListBoxRow) int {
-	return C.gtk_list_box_row_get_index(a)
+pub fn (self &GtkListBox) row_get_index(row &GtkListBoxRow) int {
+	return C.gtk_list_box_row_get_index(row)
 }
 
-pub fn (self &GtkListBox) row_changed(a &C.GtkListBoxRow) {
-	C.gtk_list_box_row_changed(a)
+pub fn (self &GtkListBox) row_changed(row &GtkListBoxRow) {
+	C.gtk_list_box_row_changed(row)
 }
 
-pub fn (self &GtkListBox) row_is_selected(a &C.GtkListBoxRow) bool {
-	return C.gtk_list_box_row_is_selected(a)
+pub fn (self &GtkListBox) row_is_selected(row &GtkListBoxRow) bool {
+	return C.gtk_list_box_row_is_selected(row)
 }
 
-pub fn (self &GtkListBox) row_set_selectable(a &C.GtkListBoxRow, b bool) {
-	C.gtk_list_box_row_set_selectable(a, b)
+pub fn (self &GtkListBox) row_set_selectable(row &GtkListBoxRow, selectable bool) {
+	C.gtk_list_box_row_set_selectable(row, selectable)
 }
 
-pub fn (self &GtkListBox) row_get_selectable(a &C.GtkListBoxRow) bool {
-	return C.gtk_list_box_row_get_selectable(a)
+pub fn (self &GtkListBox) row_get_selectable(row &GtkListBoxRow) bool {
+	return C.gtk_list_box_row_get_selectable(row)
 }
 
-pub fn (self &GtkListBox) row_set_activatable(a &C.GtkListBoxRow, b bool) {
-	C.gtk_list_box_row_set_activatable(a, b)
+pub fn (self &GtkListBox) row_set_activatable(row &GtkListBoxRow, activatable bool) {
+	C.gtk_list_box_row_set_activatable(row, activatable)
 }
 
-pub fn (self &GtkListBox) row_get_activatable(a &C.GtkListBoxRow) bool {
-	return C.gtk_list_box_row_get_activatable(a)
+pub fn (self &GtkListBox) row_get_activatable(row &GtkListBoxRow) bool {
+	return C.gtk_list_box_row_get_activatable(row)
 }
 
 pub fn (self &GtkListBox) get_type() int {
 	return C.gtk_list_box_get_type()
 }
 
-pub fn (self &GtkListBox) prepend(b &C.GtkWidget) {
-	C.gtk_list_box_prepend(self, b)
+pub fn (self &GtkListBox) prepend(child &GtkWidget) {
+	C.gtk_list_box_prepend(self, child)
 }
 
-pub fn (self &GtkListBox) append(b &C.GtkWidget) {
-	C.gtk_list_box_append(self, b)
+pub fn (self &GtkListBox) append(child &GtkWidget) {
+	C.gtk_list_box_append(self, child)
 }
 
-pub fn (self &GtkListBox) insert(b &C.GtkWidget, c int) {
-	C.gtk_list_box_insert(self, b, c)
+pub fn (self &GtkListBox) insert(child &GtkWidget, position int) {
+	C.gtk_list_box_insert(self, child, position)
 }
 
-pub fn (self &GtkListBox) remove(b &C.GtkWidget) {
-	C.gtk_list_box_remove(self, b)
+pub fn (self &GtkListBox) remove(child &GtkWidget) {
+	C.gtk_list_box_remove(self, child)
 }
 
-pub fn (self &GtkListBox) get_selected_row() &C.GtkListBoxRow {
+pub fn (self &GtkListBox) get_selected_row() &GtkListBoxRow {
 	return C.gtk_list_box_get_selected_row(self)
 }
 
-pub fn (self &GtkListBox) get_row_at_index(b int) &C.GtkListBoxRow {
-	return C.gtk_list_box_get_row_at_index(self, b)
+pub fn (self &GtkListBox) get_row_at_index(index_ int) &GtkListBoxRow {
+	return C.gtk_list_box_get_row_at_index(self, index_)
 }
 
-pub fn (self &GtkListBox) get_row_at_y(b int) &C.GtkListBoxRow {
-	return C.gtk_list_box_get_row_at_y(self, b)
+pub fn (self &GtkListBox) get_row_at_y(y int) &GtkListBoxRow {
+	return C.gtk_list_box_get_row_at_y(self, y)
 }
 
-pub fn (self &GtkListBox) select_row(b &C.GtkListBoxRow) {
-	C.gtk_list_box_select_row(self, b)
+pub fn (self &GtkListBox) select_row(row &GtkListBoxRow) {
+	C.gtk_list_box_select_row(self, row)
 }
 
-pub fn (self &GtkListBox) set_placeholder(b &C.GtkWidget) {
-	C.gtk_list_box_set_placeholder(self, b)
+pub fn (self &GtkListBox) set_placeholder(placeholder &GtkWidget) {
+	C.gtk_list_box_set_placeholder(self, placeholder)
 }
 
-pub fn (self &GtkListBox) set_adjustment(b &C.GtkAdjustment) {
-	C.gtk_list_box_set_adjustment(self, b)
+pub fn (self &GtkListBox) set_adjustment(adjustment &GtkAdjustment) {
+	C.gtk_list_box_set_adjustment(self, adjustment)
 }
 
-pub fn (self &GtkListBox) get_adjustment() &C.GtkAdjustment {
+pub fn (self &GtkListBox) get_adjustment() &GtkAdjustment {
 	return C.gtk_list_box_get_adjustment(self)
 }
 
-pub fn (self &GtkListBox) selected_foreach(b int, c voidptr) {
-	C.gtk_list_box_selected_foreach(self, b, c)
+pub fn (self &GtkListBox) selected_foreach(func voidptr, data voidptr) {
+	C.gtk_list_box_selected_foreach(self, func, data)
 }
 
 pub fn (self &GtkListBox) get_selected_rows() voidptr {
 	return C.gtk_list_box_get_selected_rows(self)
 }
 
-pub fn (self &GtkListBox) unselect_row(b &C.GtkListBoxRow) {
-	C.gtk_list_box_unselect_row(self, b)
+pub fn (self &GtkListBox) unselect_row(row &GtkListBoxRow) {
+	C.gtk_list_box_unselect_row(self, row)
 }
 
 pub fn (self &GtkListBox) select_all() {
@@ -207,20 +207,20 @@ pub fn (self &GtkListBox) unselect_all() {
 	C.gtk_list_box_unselect_all(self)
 }
 
-pub fn (self &GtkListBox) set_selection_mode(b GtkSelectionMode) {
-	C.gtk_list_box_set_selection_mode(self, b)
+pub fn (self &GtkListBox) set_selection_mode(mode GtkSelectionMode) {
+	C.gtk_list_box_set_selection_mode(self, mode)
 }
 
 pub fn (self &GtkListBox) get_selection_mode() GtkSelectionMode {
 	return C.gtk_list_box_get_selection_mode(self)
 }
 
-pub fn (self &GtkListBox) set_filter_func(b int, c voidptr, d voidptr) {
-	C.gtk_list_box_set_filter_func(self, b, c, d)
+pub fn (self &GtkListBox) set_filter_func(filter_func voidptr, user_data voidptr, destroy voidptr) {
+	C.gtk_list_box_set_filter_func(self, filter_func, user_data, destroy)
 }
 
-pub fn (self &GtkListBox) set_header_func(b int, c voidptr, d voidptr) {
-	C.gtk_list_box_set_header_func(self, b, c, d)
+pub fn (self &GtkListBox) set_header_func(update_header voidptr, user_data voidptr, destroy voidptr) {
+	C.gtk_list_box_set_header_func(self, update_header, user_data, destroy)
 }
 
 pub fn (self &GtkListBox) invalidate_filter() {
@@ -235,12 +235,12 @@ pub fn (self &GtkListBox) invalidate_headers() {
 	C.gtk_list_box_invalidate_headers(self)
 }
 
-pub fn (self &GtkListBox) set_sort_func(b int, c voidptr, d voidptr) {
-	C.gtk_list_box_set_sort_func(self, b, c, d)
+pub fn (self &GtkListBox) set_sort_func(sort_func voidptr, user_data voidptr, destroy voidptr) {
+	C.gtk_list_box_set_sort_func(self, sort_func, user_data, destroy)
 }
 
-pub fn (self &GtkListBox) set_activate_on_single_click(b bool) {
-	C.gtk_list_box_set_activate_on_single_click(self, b)
+pub fn (self &GtkListBox) set_activate_on_single_click(single bool) {
+	C.gtk_list_box_set_activate_on_single_click(self, single)
 }
 
 pub fn (self &GtkListBox) get_activate_on_single_click() bool {
@@ -251,20 +251,20 @@ pub fn (self &GtkListBox) drag_unhighlight_row() {
 	C.gtk_list_box_drag_unhighlight_row(self)
 }
 
-pub fn (self &GtkListBox) drag_highlight_row(b &C.GtkListBoxRow) {
-	C.gtk_list_box_drag_highlight_row(self, b)
+pub fn (self &GtkListBox) drag_highlight_row(row &GtkListBoxRow) {
+	C.gtk_list_box_drag_highlight_row(self, row)
 }
 
 pub fn GtkListBox.new() &GtkWidget {
 	return C.gtk_list_box_new()
 }
 
-pub fn (self &GtkListBox) bind_model(b voidptr, c int, d voidptr, e voidptr) {
-	C.gtk_list_box_bind_model(self, b, c, d, e)
+pub fn (self &GtkListBox) bind_model(model voidptr, create_widget_func voidptr, user_data voidptr, user_data_free_func voidptr) {
+	C.gtk_list_box_bind_model(self, model, create_widget_func, user_data, user_data_free_func)
 }
 
-pub fn (self &GtkListBox) set_show_separators(b bool) {
-	C.gtk_list_box_set_show_separators(self, b)
+pub fn (self &GtkListBox) set_show_separators(show_separators bool) {
+	C.gtk_list_box_set_show_separators(self, show_separators)
 }
 
 pub fn (self &GtkListBox) get_show_separators() bool {

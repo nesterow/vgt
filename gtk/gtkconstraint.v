@@ -15,21 +15,21 @@ pub struct C.GtkConstraintClass {}
 
 pub type GtkConstraintClass = C.GtkConstraintClass
 
-fn C.gtk_constraint_target_get_type() int
-fn C.gtk_constraint_get_type() int
-fn C.gtk_constraint_new(a voidptr, b GtkConstraintAttribute, c GtkConstraintRelation, d voidptr, e GtkConstraintAttribute, f f32, g f32, h int) &C.GtkConstraint
-fn C.gtk_constraint_new_constant(a voidptr, b GtkConstraintAttribute, c GtkConstraintRelation, d f32, e int) &C.GtkConstraint
-fn C.gtk_constraint_get_target(a &C.GtkConstraint) &C.GtkConstraintTarget
-fn C.gtk_constraint_get_target_attribute(a &C.GtkConstraint) GtkConstraintAttribute
-fn C.gtk_constraint_get_source(a &C.GtkConstraint) &C.GtkConstraintTarget
-fn C.gtk_constraint_get_source_attribute(a &C.GtkConstraint) GtkConstraintAttribute
-fn C.gtk_constraint_get_relation(a &C.GtkConstraint) GtkConstraintRelation
-fn C.gtk_constraint_get_multiplier(a &C.GtkConstraint) f32
-fn C.gtk_constraint_get_constant(a &C.GtkConstraint) f32
-fn C.gtk_constraint_get_strength(a &C.GtkConstraint) int
-fn C.gtk_constraint_is_required(a &C.GtkConstraint) bool
-fn C.gtk_constraint_is_attached(a &C.GtkConstraint) bool
-fn C.gtk_constraint_is_constant(a &C.GtkConstraint) bool
+pub fn C.gtk_constraint_target_get_type() int
+pub fn C.gtk_constraint_get_type() int
+pub fn C.gtk_constraint_new(target voidptr, target_attribute GtkConstraintAttribute, relation GtkConstraintRelation, source voidptr, source_attribute GtkConstraintAttribute, multiplier f32, constant f32, strength int) &GtkConstraint
+pub fn C.gtk_constraint_new_constant(target voidptr, target_attribute GtkConstraintAttribute, relation GtkConstraintRelation, constant f32, strength int) &GtkConstraint
+pub fn C.gtk_constraint_get_target(constraint &GtkConstraint) &GtkConstraintTarget
+pub fn C.gtk_constraint_get_target_attribute(constraint &GtkConstraint) GtkConstraintAttribute
+pub fn C.gtk_constraint_get_source(constraint &GtkConstraint) &GtkConstraintTarget
+pub fn C.gtk_constraint_get_source_attribute(constraint &GtkConstraint) GtkConstraintAttribute
+pub fn C.gtk_constraint_get_relation(constraint &GtkConstraint) GtkConstraintRelation
+pub fn C.gtk_constraint_get_multiplier(constraint &GtkConstraint) f32
+pub fn C.gtk_constraint_get_constant(constraint &GtkConstraint) f32
+pub fn C.gtk_constraint_get_strength(constraint &GtkConstraint) int
+pub fn C.gtk_constraint_is_required(constraint &GtkConstraint) bool
+pub fn C.gtk_constraint_is_attached(constraint &GtkConstraint) bool
+pub fn C.gtk_constraint_is_constant(constraint &GtkConstraint) bool
 
 @[noinit; typedef]
 pub struct C.GtkConstraint {}
@@ -44,15 +44,17 @@ pub fn (self &GtkConstraint) get_type() int {
 	return C.gtk_constraint_get_type()
 }
 
-pub fn GtkConstraint.new(a voidptr, b GtkConstraintAttribute, c GtkConstraintRelation, d voidptr, e GtkConstraintAttribute, f f32, g f32, h int) &GtkConstraint {
-	return C.gtk_constraint_new(a, b, c, d, e, f, g, h)
+pub fn GtkConstraint.new(target voidptr, target_attribute GtkConstraintAttribute, relation GtkConstraintRelation, source voidptr, source_attribute GtkConstraintAttribute, multiplier f32, constant f32, strength int) &GtkConstraint {
+	return C.gtk_constraint_new(target, target_attribute, relation, source, source_attribute,
+		multiplier, constant, strength)
 }
 
-pub fn GtkConstraint.new_constant(a voidptr, b GtkConstraintAttribute, c GtkConstraintRelation, d f32, e int) &GtkConstraint {
-	return C.gtk_constraint_new_constant(a, b, c, d, e)
+pub fn GtkConstraint.new_constant(target voidptr, target_attribute GtkConstraintAttribute, relation GtkConstraintRelation, constant f32, strength int) &GtkConstraint {
+	return C.gtk_constraint_new_constant(target, target_attribute, relation, constant,
+		strength)
 }
 
-pub fn (self &GtkConstraint) get_target() &C.GtkConstraintTarget {
+pub fn (self &GtkConstraint) get_target() &GtkConstraintTarget {
 	return C.gtk_constraint_get_target(self)
 }
 
@@ -60,7 +62,7 @@ pub fn (self &GtkConstraint) get_target_attribute() GtkConstraintAttribute {
 	return C.gtk_constraint_get_target_attribute(self)
 }
 
-pub fn (self &GtkConstraint) get_source() &C.GtkConstraintTarget {
+pub fn (self &GtkConstraint) get_source() &GtkConstraintTarget {
 	return C.gtk_constraint_get_source(self)
 }
 

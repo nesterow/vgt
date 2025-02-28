@@ -1,7 +1,7 @@
 module gtk
 
-fn C.gtk_cell_renderer_spinner_get_type() int
-fn C.gtk_cell_renderer_spinner_new() &C.GtkCellRenderer
+pub fn C.gtk_cell_renderer_spinner_get_type() int
+pub fn C.gtk_cell_renderer_spinner_new() &GtkCellRenderer
 
 @[noinit; typedef]
 pub struct C.GtkCellRendererSpinner {}

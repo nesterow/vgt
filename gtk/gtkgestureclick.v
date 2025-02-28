@@ -5,8 +5,8 @@ pub struct C.GtkGestureClickClass {}
 
 pub type GtkGestureClickClass = C.GtkGestureClickClass
 
-fn C.gtk_gesture_click_get_type() int
-fn C.gtk_gesture_click_new() &C.GtkGesture
+pub fn C.gtk_gesture_click_get_type() int
+pub fn C.gtk_gesture_click_new() &GtkGesture
 
 @[noinit; typedef]
 pub struct C.GtkGestureClick {}

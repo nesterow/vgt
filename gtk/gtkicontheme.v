@@ -11,25 +11,56 @@ pub enum GtkIconThemeError {
 	gtk_icon_theme_failed
 }
 
-fn C.gtk_icon_theme_error_quark() voidptr
-fn C.gtk_icon_theme_get_type() int
-fn C.gtk_icon_theme_new() &C.GtkIconTheme
-fn C.gtk_icon_theme_get_for_display(a voidptr) &C.GtkIconTheme
-fn C.gtk_icon_theme_get_display(a &C.GtkIconTheme) voidptr
-fn C.gtk_icon_theme_set_search_path(a &C.GtkIconTheme, b voidptr)
-fn C.gtk_icon_theme_get_search_path(a &C.GtkIconTheme) voidptr
-fn C.gtk_icon_theme_add_search_path(a &C.GtkIconTheme, b &char)
-fn C.gtk_icon_theme_set_resource_path(a &C.GtkIconTheme, b voidptr)
-fn C.gtk_icon_theme_get_resource_path(a &C.GtkIconTheme) voidptr
-fn C.gtk_icon_theme_add_resource_path(a &C.GtkIconTheme, b &char)
-fn C.gtk_icon_theme_set_theme_name(a &C.GtkIconTheme, b &char)
-fn C.gtk_icon_theme_get_theme_name(a &C.GtkIconTheme) voidptr
-fn C.gtk_icon_theme_has_icon(a &C.GtkIconTheme, b &char) bool
-fn C.gtk_icon_theme_has_gicon(a &C.GtkIconTheme, b voidptr) bool
-fn C.gtk_icon_theme_get_icon_sizes(a &C.GtkIconTheme, b &char) voidptr
-fn C.gtk_icon_theme_lookup_icon(a &C.GtkIconTheme, b &char, c voidptr, d int, e int, f GtkTextDirection, g GtkIconLookupFlags) &C.GtkIconPaintable
-fn C.gtk_icon_theme_lookup_by_gicon(a &C.GtkIconTheme, b voidptr, c int, d int, e GtkTextDirection, f GtkIconLookupFlags) &C.GtkIconPaintable
-fn C.gtk_icon_theme_get_icon_names(a &C.GtkIconTheme) voidptr
+pub fn C.gtk_icon_paintable_new_for_file(file voidptr, size int, scale int) &GtkIconPaintable
+pub fn C.gtk_icon_paintable_get_type() int
+pub fn C.gtk_icon_paintable_get_file(self &GtkIconPaintable) voidptr
+pub fn C.gtk_icon_paintable_get_icon_name(self &GtkIconPaintable) &char
+pub fn C.gtk_icon_paintable_is_symbolic(self &GtkIconPaintable) bool
+
+@[noinit; typedef]
+pub struct C.GtkIconPaintable {}
+
+pub type GtkIconPaintable = C.GtkIconPaintable
+
+pub fn GtkIconPaintable.new_for_file(file voidptr, size int, scale int) &GtkIconPaintable {
+	return C.gtk_icon_paintable_new_for_file(file, size, scale)
+}
+
+pub fn (self &GtkIconPaintable) get_type() int {
+	return C.gtk_icon_paintable_get_type()
+}
+
+pub fn (self &GtkIconPaintable) get_file() voidptr {
+	return C.gtk_icon_paintable_get_file(self)
+}
+
+pub fn (self &GtkIconPaintable) get_icon_name() &char {
+	return C.gtk_icon_paintable_get_icon_name(self)
+}
+
+pub fn (self &GtkIconPaintable) is_symbolic() bool {
+	return C.gtk_icon_paintable_is_symbolic(self)
+}
+
+pub fn C.gtk_icon_theme_error_quark() voidptr
+pub fn C.gtk_icon_theme_get_type() int
+pub fn C.gtk_icon_theme_new() &GtkIconTheme
+pub fn C.gtk_icon_theme_get_for_display(display voidptr) &GtkIconTheme
+pub fn C.gtk_icon_theme_get_display(self &GtkIconTheme) voidptr
+pub fn C.gtk_icon_theme_set_search_path(self &GtkIconTheme, path voidptr)
+pub fn C.gtk_icon_theme_get_search_path(self &GtkIconTheme) voidptr
+pub fn C.gtk_icon_theme_add_search_path(self &GtkIconTheme, path &char)
+pub fn C.gtk_icon_theme_set_resource_path(self &GtkIconTheme, path voidptr)
+pub fn C.gtk_icon_theme_get_resource_path(self &GtkIconTheme) voidptr
+pub fn C.gtk_icon_theme_add_resource_path(self &GtkIconTheme, path &char)
+pub fn C.gtk_icon_theme_set_theme_name(self &GtkIconTheme, theme_name &char)
+pub fn C.gtk_icon_theme_get_theme_name(self &GtkIconTheme) voidptr
+pub fn C.gtk_icon_theme_has_icon(self &GtkIconTheme, icon_name &char) bool
+pub fn C.gtk_icon_theme_has_gicon(self &GtkIconTheme, gicon voidptr) bool
+pub fn C.gtk_icon_theme_get_icon_sizes(self &GtkIconTheme, icon_name &char) voidptr
+pub fn C.gtk_icon_theme_lookup_icon(self &GtkIconTheme, icon_name &char, fallbacks voidptr, size int, scale int, direction GtkTextDirection, flags GtkIconLookupFlags) &GtkIconPaintable
+pub fn C.gtk_icon_theme_lookup_by_gicon(self &GtkIconTheme, icon voidptr, size int, scale int, direction GtkTextDirection, flags GtkIconLookupFlags) &GtkIconPaintable
+pub fn C.gtk_icon_theme_get_icon_names(self &GtkIconTheme) voidptr
 
 @[noinit; typedef]
 pub struct C.GtkIconTheme {}
@@ -48,64 +79,65 @@ pub fn GtkIconTheme.new() &GtkIconTheme {
 	return C.gtk_icon_theme_new()
 }
 
-pub fn (self &GtkIconTheme) get_for_display(a voidptr) &C.GtkIconTheme {
-	return C.gtk_icon_theme_get_for_display(a)
+pub fn (self &GtkIconTheme) get_for_display(display voidptr) &GtkIconTheme {
+	return C.gtk_icon_theme_get_for_display(display)
 }
 
 pub fn (self &GtkIconTheme) get_display() voidptr {
 	return C.gtk_icon_theme_get_display(self)
 }
 
-pub fn (self &GtkIconTheme) set_search_path(b voidptr) {
-	C.gtk_icon_theme_set_search_path(self, b)
+pub fn (self &GtkIconTheme) set_search_path(path voidptr) {
+	C.gtk_icon_theme_set_search_path(self, path)
 }
 
 pub fn (self &GtkIconTheme) get_search_path() voidptr {
 	return C.gtk_icon_theme_get_search_path(self)
 }
 
-pub fn (self &GtkIconTheme) add_search_path(b &char) {
-	C.gtk_icon_theme_add_search_path(self, b)
+pub fn (self &GtkIconTheme) add_search_path(path &char) {
+	C.gtk_icon_theme_add_search_path(self, path)
 }
 
-pub fn (self &GtkIconTheme) set_resource_path(b voidptr) {
-	C.gtk_icon_theme_set_resource_path(self, b)
+pub fn (self &GtkIconTheme) set_resource_path(path voidptr) {
+	C.gtk_icon_theme_set_resource_path(self, path)
 }
 
 pub fn (self &GtkIconTheme) get_resource_path() voidptr {
 	return C.gtk_icon_theme_get_resource_path(self)
 }
 
-pub fn (self &GtkIconTheme) add_resource_path(b &char) {
-	C.gtk_icon_theme_add_resource_path(self, b)
+pub fn (self &GtkIconTheme) add_resource_path(path &char) {
+	C.gtk_icon_theme_add_resource_path(self, path)
 }
 
-pub fn (self &GtkIconTheme) set_theme_name(b &char) {
-	C.gtk_icon_theme_set_theme_name(self, b)
+pub fn (self &GtkIconTheme) set_theme_name(theme_name &char) {
+	C.gtk_icon_theme_set_theme_name(self, theme_name)
 }
 
 pub fn (self &GtkIconTheme) get_theme_name() voidptr {
 	return C.gtk_icon_theme_get_theme_name(self)
 }
 
-pub fn (self &GtkIconTheme) has_icon(b &char) bool {
-	return C.gtk_icon_theme_has_icon(self, b)
+pub fn (self &GtkIconTheme) has_icon(icon_name &char) bool {
+	return C.gtk_icon_theme_has_icon(self, icon_name)
 }
 
-pub fn (self &GtkIconTheme) has_gicon(b voidptr) bool {
-	return C.gtk_icon_theme_has_gicon(self, b)
+pub fn (self &GtkIconTheme) has_gicon(gicon voidptr) bool {
+	return C.gtk_icon_theme_has_gicon(self, gicon)
 }
 
-pub fn (self &GtkIconTheme) get_icon_sizes(b &char) voidptr {
-	return C.gtk_icon_theme_get_icon_sizes(self, b)
+pub fn (self &GtkIconTheme) get_icon_sizes(icon_name &char) voidptr {
+	return C.gtk_icon_theme_get_icon_sizes(self, icon_name)
 }
 
-pub fn (self &GtkIconTheme) lookup_icon(b &char, c voidptr, d int, e int, f GtkTextDirection, g GtkIconLookupFlags) &C.GtkIconPaintable {
-	return C.gtk_icon_theme_lookup_icon(self, b, c, d, e, f, g)
+pub fn (self &GtkIconTheme) lookup_icon(icon_name &char, fallbacks voidptr, size int, scale int, direction GtkTextDirection, flags GtkIconLookupFlags) &GtkIconPaintable {
+	return C.gtk_icon_theme_lookup_icon(self, icon_name, fallbacks, size, scale, direction,
+		flags)
 }
 
-pub fn (self &GtkIconTheme) lookup_by_gicon(b voidptr, c int, d int, e GtkTextDirection, f GtkIconLookupFlags) &C.GtkIconPaintable {
-	return C.gtk_icon_theme_lookup_by_gicon(self, b, c, d, e, f)
+pub fn (self &GtkIconTheme) lookup_by_gicon(icon voidptr, size int, scale int, direction GtkTextDirection, flags GtkIconLookupFlags) &GtkIconPaintable {
+	return C.gtk_icon_theme_lookup_by_gicon(self, icon, size, scale, direction, flags)
 }
 
 pub fn (self &GtkIconTheme) get_icon_names() voidptr {

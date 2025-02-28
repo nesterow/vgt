@@ -5,10 +5,10 @@ pub struct C.GtkWindowHandleClass {}
 
 pub type GtkWindowHandleClass = C.GtkWindowHandleClass
 
-fn C.gtk_window_handle_get_type() int
-fn C.gtk_window_handle_new() &C.GtkWidget
-fn C.gtk_window_handle_get_child(a &C.GtkWindowHandle) &C.GtkWidget
-fn C.gtk_window_handle_set_child(a &C.GtkWindowHandle, b &C.GtkWidget)
+pub fn C.gtk_window_handle_get_type() int
+pub fn C.gtk_window_handle_new() &GtkWidget
+pub fn C.gtk_window_handle_get_child(self &GtkWindowHandle) &GtkWidget
+pub fn C.gtk_window_handle_set_child(self &GtkWindowHandle, child &GtkWidget)
 
 @[noinit; typedef]
 pub struct C.GtkWindowHandle {}
@@ -23,10 +23,10 @@ pub fn GtkWindowHandle.new() &GtkWidget {
 	return C.gtk_window_handle_new()
 }
 
-pub fn (self &GtkWindowHandle) get_child() &C.GtkWidget {
+pub fn (self &GtkWindowHandle) get_child() &GtkWidget {
 	return C.gtk_window_handle_get_child(self)
 }
 
-pub fn (self &GtkWindowHandle) set_child(b &C.GtkWidget) {
-	C.gtk_window_handle_set_child(self, b)
+pub fn (self &GtkWindowHandle) set_child(child &GtkWidget) {
+	C.gtk_window_handle_set_child(self, child)
 }

@@ -5,10 +5,10 @@ pub struct C.GtkRootInterface {}
 
 pub type GtkRootInterface = C.GtkRootInterface
 
-fn C.gtk_root_get_type() int
-fn C.gtk_root_get_display(a &C.GtkRoot) voidptr
-fn C.gtk_root_set_focus(a &C.GtkRoot, b &C.GtkWidget)
-fn C.gtk_root_get_focus(a &C.GtkRoot) &C.GtkWidget
+pub fn C.gtk_root_get_type() int
+pub fn C.gtk_root_get_display(self &GtkRoot) voidptr
+pub fn C.gtk_root_set_focus(self &GtkRoot, focus &GtkWidget)
+pub fn C.gtk_root_get_focus(self &GtkRoot) &GtkWidget
 
 @[noinit; typedef]
 pub struct C.GtkRoot {}
@@ -23,10 +23,10 @@ pub fn (self &GtkRoot) get_display() voidptr {
 	return C.gtk_root_get_display(self)
 }
 
-pub fn (self &GtkRoot) set_focus(b &C.GtkWidget) {
-	C.gtk_root_set_focus(self, b)
+pub fn (self &GtkRoot) set_focus(focus &GtkWidget) {
+	C.gtk_root_set_focus(self, focus)
 }
 
-pub fn (self &GtkRoot) get_focus() &C.GtkWidget {
+pub fn (self &GtkRoot) get_focus() &GtkWidget {
 	return C.gtk_root_get_focus(self)
 }

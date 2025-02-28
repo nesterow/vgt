@@ -5,30 +5,30 @@ pub struct C.GtkGridClass {}
 
 pub type GtkGridClass = C.GtkGridClass
 
-fn C.gtk_grid_get_type() int
-fn C.gtk_grid_new() &C.GtkWidget
-fn C.gtk_grid_attach(a &C.GtkGrid, b &C.GtkWidget, c int, d int, e int, f int)
-fn C.gtk_grid_attach_next_to(a &C.GtkGrid, b &C.GtkWidget, c &C.GtkWidget, d GtkPositionType, e int, f int)
-fn C.gtk_grid_get_child_at(a &C.GtkGrid, b int, c int) &C.GtkWidget
-fn C.gtk_grid_remove(a &C.GtkGrid, b &C.GtkWidget)
-fn C.gtk_grid_insert_row(a &C.GtkGrid, b int)
-fn C.gtk_grid_insert_column(a &C.GtkGrid, b int)
-fn C.gtk_grid_remove_row(a &C.GtkGrid, b int)
-fn C.gtk_grid_remove_column(a &C.GtkGrid, b int)
-fn C.gtk_grid_insert_next_to(a &C.GtkGrid, b &C.GtkWidget, c GtkPositionType)
-fn C.gtk_grid_set_row_homogeneous(a &C.GtkGrid, b bool)
-fn C.gtk_grid_get_row_homogeneous(a &C.GtkGrid) bool
-fn C.gtk_grid_set_row_spacing(a &C.GtkGrid, b u64)
-fn C.gtk_grid_get_row_spacing(a &C.GtkGrid) u64
-fn C.gtk_grid_set_column_homogeneous(a &C.GtkGrid, b bool)
-fn C.gtk_grid_get_column_homogeneous(a &C.GtkGrid) bool
-fn C.gtk_grid_set_column_spacing(a &C.GtkGrid, b u64)
-fn C.gtk_grid_get_column_spacing(a &C.GtkGrid) u64
-fn C.gtk_grid_set_row_baseline_position(a &C.GtkGrid, b int, c GtkBaselinePosition)
-fn C.gtk_grid_get_row_baseline_position(a &C.GtkGrid, b int) GtkBaselinePosition
-fn C.gtk_grid_set_baseline_row(a &C.GtkGrid, b int)
-fn C.gtk_grid_get_baseline_row(a &C.GtkGrid) int
-fn C.gtk_grid_query_child(a &C.GtkGrid, b &C.GtkWidget, c voidptr, d voidptr, e voidptr, f voidptr)
+pub fn C.gtk_grid_get_type() int
+pub fn C.gtk_grid_new() &GtkWidget
+pub fn C.gtk_grid_attach(grid &GtkGrid, child &GtkWidget, column int, row int, width int, height int)
+pub fn C.gtk_grid_attach_next_to(grid &GtkGrid, child &GtkWidget, sibling &GtkWidget, side GtkPositionType, width int, height int)
+pub fn C.gtk_grid_get_child_at(grid &GtkGrid, column int, row int) &GtkWidget
+pub fn C.gtk_grid_remove(grid &GtkGrid, child &GtkWidget)
+pub fn C.gtk_grid_insert_row(grid &GtkGrid, position int)
+pub fn C.gtk_grid_insert_column(grid &GtkGrid, position int)
+pub fn C.gtk_grid_remove_row(grid &GtkGrid, position int)
+pub fn C.gtk_grid_remove_column(grid &GtkGrid, position int)
+pub fn C.gtk_grid_insert_next_to(grid &GtkGrid, sibling &GtkWidget, side GtkPositionType)
+pub fn C.gtk_grid_set_row_homogeneous(grid &GtkGrid, homogeneous bool)
+pub fn C.gtk_grid_get_row_homogeneous(grid &GtkGrid) bool
+pub fn C.gtk_grid_set_row_spacing(grid &GtkGrid, spacing u64)
+pub fn C.gtk_grid_get_row_spacing(grid &GtkGrid) u64
+pub fn C.gtk_grid_set_column_homogeneous(grid &GtkGrid, homogeneous bool)
+pub fn C.gtk_grid_get_column_homogeneous(grid &GtkGrid) bool
+pub fn C.gtk_grid_set_column_spacing(grid &GtkGrid, spacing u64)
+pub fn C.gtk_grid_get_column_spacing(grid &GtkGrid) u64
+pub fn C.gtk_grid_set_row_baseline_position(grid &GtkGrid, row int, pos GtkBaselinePosition)
+pub fn C.gtk_grid_get_row_baseline_position(grid &GtkGrid, row int) GtkBaselinePosition
+pub fn C.gtk_grid_set_baseline_row(grid &GtkGrid, row int)
+pub fn C.gtk_grid_get_baseline_row(grid &GtkGrid) int
+pub fn C.gtk_grid_query_child(grid &GtkGrid, child &GtkWidget, column voidptr, row voidptr, width voidptr, height voidptr)
 
 @[noinit; typedef]
 pub struct C.GtkGrid {}
@@ -43,90 +43,90 @@ pub fn GtkGrid.new() &GtkWidget {
 	return C.gtk_grid_new()
 }
 
-pub fn (self &GtkGrid) attach(b &C.GtkWidget, c int, d int, e int, f int) {
-	C.gtk_grid_attach(self, b, c, d, e, f)
+pub fn (self &GtkGrid) attach(child &GtkWidget, column int, row int, width int, height int) {
+	C.gtk_grid_attach(self, child, column, row, width, height)
 }
 
-pub fn (self &GtkGrid) attach_next_to(b &C.GtkWidget, c &C.GtkWidget, d GtkPositionType, e int, f int) {
-	C.gtk_grid_attach_next_to(self, b, c, d, e, f)
+pub fn (self &GtkGrid) attach_next_to(child &GtkWidget, sibling &GtkWidget, side GtkPositionType, width int, height int) {
+	C.gtk_grid_attach_next_to(self, child, sibling, side, width, height)
 }
 
-pub fn (self &GtkGrid) get_child_at(b int, c int) &C.GtkWidget {
-	return C.gtk_grid_get_child_at(self, b, c)
+pub fn (self &GtkGrid) get_child_at(column int, row int) &GtkWidget {
+	return C.gtk_grid_get_child_at(self, column, row)
 }
 
-pub fn (self &GtkGrid) remove(b &C.GtkWidget) {
-	C.gtk_grid_remove(self, b)
+pub fn (self &GtkGrid) remove(child &GtkWidget) {
+	C.gtk_grid_remove(self, child)
 }
 
-pub fn (self &GtkGrid) insert_row(b int) {
-	C.gtk_grid_insert_row(self, b)
+pub fn (self &GtkGrid) insert_row(position int) {
+	C.gtk_grid_insert_row(self, position)
 }
 
-pub fn (self &GtkGrid) insert_column(b int) {
-	C.gtk_grid_insert_column(self, b)
+pub fn (self &GtkGrid) insert_column(position int) {
+	C.gtk_grid_insert_column(self, position)
 }
 
-pub fn (self &GtkGrid) remove_row(b int) {
-	C.gtk_grid_remove_row(self, b)
+pub fn (self &GtkGrid) remove_row(position int) {
+	C.gtk_grid_remove_row(self, position)
 }
 
-pub fn (self &GtkGrid) remove_column(b int) {
-	C.gtk_grid_remove_column(self, b)
+pub fn (self &GtkGrid) remove_column(position int) {
+	C.gtk_grid_remove_column(self, position)
 }
 
-pub fn (self &GtkGrid) insert_next_to(b &C.GtkWidget, c GtkPositionType) {
-	C.gtk_grid_insert_next_to(self, b, c)
+pub fn (self &GtkGrid) insert_next_to(sibling &GtkWidget, side GtkPositionType) {
+	C.gtk_grid_insert_next_to(self, sibling, side)
 }
 
-pub fn (self &GtkGrid) set_row_homogeneous(b bool) {
-	C.gtk_grid_set_row_homogeneous(self, b)
+pub fn (self &GtkGrid) set_row_homogeneous(homogeneous bool) {
+	C.gtk_grid_set_row_homogeneous(self, homogeneous)
 }
 
 pub fn (self &GtkGrid) get_row_homogeneous() bool {
 	return C.gtk_grid_get_row_homogeneous(self)
 }
 
-pub fn (self &GtkGrid) set_row_spacing(b u64) {
-	C.gtk_grid_set_row_spacing(self, b)
+pub fn (self &GtkGrid) set_row_spacing(spacing u64) {
+	C.gtk_grid_set_row_spacing(self, spacing)
 }
 
 pub fn (self &GtkGrid) get_row_spacing() u64 {
 	return C.gtk_grid_get_row_spacing(self)
 }
 
-pub fn (self &GtkGrid) set_column_homogeneous(b bool) {
-	C.gtk_grid_set_column_homogeneous(self, b)
+pub fn (self &GtkGrid) set_column_homogeneous(homogeneous bool) {
+	C.gtk_grid_set_column_homogeneous(self, homogeneous)
 }
 
 pub fn (self &GtkGrid) get_column_homogeneous() bool {
 	return C.gtk_grid_get_column_homogeneous(self)
 }
 
-pub fn (self &GtkGrid) set_column_spacing(b u64) {
-	C.gtk_grid_set_column_spacing(self, b)
+pub fn (self &GtkGrid) set_column_spacing(spacing u64) {
+	C.gtk_grid_set_column_spacing(self, spacing)
 }
 
 pub fn (self &GtkGrid) get_column_spacing() u64 {
 	return C.gtk_grid_get_column_spacing(self)
 }
 
-pub fn (self &GtkGrid) set_row_baseline_position(b int, c GtkBaselinePosition) {
-	C.gtk_grid_set_row_baseline_position(self, b, c)
+pub fn (self &GtkGrid) set_row_baseline_position(row int, pos GtkBaselinePosition) {
+	C.gtk_grid_set_row_baseline_position(self, row, pos)
 }
 
-pub fn (self &GtkGrid) get_row_baseline_position(b int) GtkBaselinePosition {
-	return C.gtk_grid_get_row_baseline_position(self, b)
+pub fn (self &GtkGrid) get_row_baseline_position(row int) GtkBaselinePosition {
+	return C.gtk_grid_get_row_baseline_position(self, row)
 }
 
-pub fn (self &GtkGrid) set_baseline_row(b int) {
-	C.gtk_grid_set_baseline_row(self, b)
+pub fn (self &GtkGrid) set_baseline_row(row int) {
+	C.gtk_grid_set_baseline_row(self, row)
 }
 
 pub fn (self &GtkGrid) get_baseline_row() int {
 	return C.gtk_grid_get_baseline_row(self)
 }
 
-pub fn (self &GtkGrid) query_child(b &C.GtkWidget, c voidptr, d voidptr, e voidptr, f voidptr) {
-	C.gtk_grid_query_child(self, b, c, d, e, f)
+pub fn (self &GtkGrid) query_child(child &GtkWidget, column voidptr, row voidptr, width voidptr, height voidptr) {
+	C.gtk_grid_query_child(self, child, column, row, width, height)
 }

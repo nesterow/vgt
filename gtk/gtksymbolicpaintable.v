@@ -5,8 +5,8 @@ pub struct C.GtkSymbolicPaintableInterface {}
 
 pub type GtkSymbolicPaintableInterface = C.GtkSymbolicPaintableInterface
 
-fn C.gtk_symbolic_paintable_get_type() int
-fn C.gtk_symbolic_paintable_snapshot_symbolic(a &C.GtkSymbolicPaintable, b voidptr, c f32, d f32, e voidptr, f int)
+pub fn C.gtk_symbolic_paintable_get_type() int
+pub fn C.gtk_symbolic_paintable_snapshot_symbolic(paintable &GtkSymbolicPaintable, snapshot voidptr, width f32, height f32, colors voidptr, n_colors int)
 
 @[noinit; typedef]
 pub struct C.GtkSymbolicPaintable {}
@@ -17,6 +17,7 @@ pub fn (self &GtkSymbolicPaintable) get_type() int {
 	return C.gtk_symbolic_paintable_get_type()
 }
 
-pub fn (self &GtkSymbolicPaintable) snapshot_symbolic(b voidptr, c f32, d f32, e voidptr, f int) {
-	C.gtk_symbolic_paintable_snapshot_symbolic(self, b, c, d, e, f)
+pub fn (self &GtkSymbolicPaintable) snapshot_symbolic(snapshot voidptr, width f32, height f32, colors voidptr, n_colors int) {
+	C.gtk_symbolic_paintable_snapshot_symbolic(self, snapshot, width, height, colors,
+		n_colors)
 }

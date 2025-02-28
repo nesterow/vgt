@@ -5,15 +5,15 @@ pub struct C.GtkFilterListModelClass {}
 
 pub type GtkFilterListModelClass = C.GtkFilterListModelClass
 
-fn C.gtk_filter_list_model_get_type() int
-fn C.gtk_filter_list_model_new(a voidptr, b &C.GtkFilter) &C.GtkFilterListModel
-fn C.gtk_filter_list_model_set_filter(a &C.GtkFilterListModel, b &C.GtkFilter)
-fn C.gtk_filter_list_model_get_filter(a &C.GtkFilterListModel) &C.GtkFilter
-fn C.gtk_filter_list_model_set_model(a &C.GtkFilterListModel, b voidptr)
-fn C.gtk_filter_list_model_get_model(a &C.GtkFilterListModel) voidptr
-fn C.gtk_filter_list_model_set_incremental(a &C.GtkFilterListModel, b bool)
-fn C.gtk_filter_list_model_get_incremental(a &C.GtkFilterListModel) bool
-fn C.gtk_filter_list_model_get_pending(a &C.GtkFilterListModel) u64
+pub fn C.gtk_filter_list_model_get_type() int
+pub fn C.gtk_filter_list_model_new(model voidptr, filter &GtkFilter) &GtkFilterListModel
+pub fn C.gtk_filter_list_model_set_filter(self &GtkFilterListModel, filter &GtkFilter)
+pub fn C.gtk_filter_list_model_get_filter(self &GtkFilterListModel) &GtkFilter
+pub fn C.gtk_filter_list_model_set_model(self &GtkFilterListModel, model voidptr)
+pub fn C.gtk_filter_list_model_get_model(self &GtkFilterListModel) voidptr
+pub fn C.gtk_filter_list_model_set_incremental(self &GtkFilterListModel, incremental bool)
+pub fn C.gtk_filter_list_model_get_incremental(self &GtkFilterListModel) bool
+pub fn C.gtk_filter_list_model_get_pending(self &GtkFilterListModel) u64
 
 @[noinit; typedef]
 pub struct C.GtkFilterListModel {}
@@ -24,28 +24,28 @@ pub fn (self &GtkFilterListModel) get_type() int {
 	return C.gtk_filter_list_model_get_type()
 }
 
-pub fn GtkFilterListModel.new(a voidptr, b &C.GtkFilter) &GtkFilterListModel {
-	return C.gtk_filter_list_model_new(a, b)
+pub fn GtkFilterListModel.new(model voidptr, filter &GtkFilter) &GtkFilterListModel {
+	return C.gtk_filter_list_model_new(model, filter)
 }
 
-pub fn (self &GtkFilterListModel) set_filter(b &C.GtkFilter) {
-	C.gtk_filter_list_model_set_filter(self, b)
+pub fn (self &GtkFilterListModel) set_filter(filter &GtkFilter) {
+	C.gtk_filter_list_model_set_filter(self, filter)
 }
 
-pub fn (self &GtkFilterListModel) get_filter() &C.GtkFilter {
+pub fn (self &GtkFilterListModel) get_filter() &GtkFilter {
 	return C.gtk_filter_list_model_get_filter(self)
 }
 
-pub fn (self &GtkFilterListModel) set_model(b voidptr) {
-	C.gtk_filter_list_model_set_model(self, b)
+pub fn (self &GtkFilterListModel) set_model(model voidptr) {
+	C.gtk_filter_list_model_set_model(self, model)
 }
 
 pub fn (self &GtkFilterListModel) get_model() voidptr {
 	return C.gtk_filter_list_model_get_model(self)
 }
 
-pub fn (self &GtkFilterListModel) set_incremental(b bool) {
-	C.gtk_filter_list_model_set_incremental(self, b)
+pub fn (self &GtkFilterListModel) set_incremental(incremental bool) {
+	C.gtk_filter_list_model_set_incremental(self, incremental)
 }
 
 pub fn (self &GtkFilterListModel) get_incremental() bool {

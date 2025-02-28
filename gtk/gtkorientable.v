@@ -5,9 +5,9 @@ pub struct C.GtkOrientableIface {}
 
 pub type GtkOrientableIface = C.GtkOrientableIface
 
-fn C.gtk_orientable_get_type() int
-fn C.gtk_orientable_set_orientation(a &C.GtkOrientable, b GtkOrientation)
-fn C.gtk_orientable_get_orientation(a &C.GtkOrientable) GtkOrientation
+pub fn C.gtk_orientable_get_type() int
+pub fn C.gtk_orientable_set_orientation(orientable &GtkOrientable, orientation GtkOrientation)
+pub fn C.gtk_orientable_get_orientation(orientable &GtkOrientable) GtkOrientation
 
 @[noinit; typedef]
 pub struct C.GtkOrientable {}
@@ -18,8 +18,8 @@ pub fn (self &GtkOrientable) get_type() int {
 	return C.gtk_orientable_get_type()
 }
 
-pub fn (self &GtkOrientable) set_orientation(b GtkOrientation) {
-	C.gtk_orientable_set_orientation(self, b)
+pub fn (self &GtkOrientable) set_orientation(orientation GtkOrientation) {
+	C.gtk_orientable_set_orientation(self, orientation)
 }
 
 pub fn (self &GtkOrientable) get_orientation() GtkOrientation {

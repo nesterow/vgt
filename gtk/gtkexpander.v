@@ -1,22 +1,22 @@
 module gtk
 
-fn C.gtk_expander_get_type() int
-fn C.gtk_expander_new(a &char) &C.GtkWidget
-fn C.gtk_expander_new_with_mnemonic(a &char) &C.GtkWidget
-fn C.gtk_expander_set_expanded(a &C.GtkExpander, b bool)
-fn C.gtk_expander_get_expanded(a &C.GtkExpander) bool
-fn C.gtk_expander_set_label(a &C.GtkExpander, b &char)
-fn C.gtk_expander_get_label(a &C.GtkExpander) &char
-fn C.gtk_expander_set_use_underline(a &C.GtkExpander, b bool)
-fn C.gtk_expander_get_use_underline(a &C.GtkExpander) bool
-fn C.gtk_expander_set_use_markup(a &C.GtkExpander, b bool)
-fn C.gtk_expander_get_use_markup(a &C.GtkExpander) bool
-fn C.gtk_expander_set_label_widget(a &C.GtkExpander, b &C.GtkWidget)
-fn C.gtk_expander_get_label_widget(a &C.GtkExpander) &C.GtkWidget
-fn C.gtk_expander_set_resize_toplevel(a &C.GtkExpander, b bool)
-fn C.gtk_expander_get_resize_toplevel(a &C.GtkExpander) bool
-fn C.gtk_expander_set_child(a &C.GtkExpander, b &C.GtkWidget)
-fn C.gtk_expander_get_child(a &C.GtkExpander) &C.GtkWidget
+pub fn C.gtk_expander_get_type() int
+pub fn C.gtk_expander_new(label &char) &GtkWidget
+pub fn C.gtk_expander_new_with_mnemonic(label &char) &GtkWidget
+pub fn C.gtk_expander_set_expanded(expander &GtkExpander, expanded bool)
+pub fn C.gtk_expander_get_expanded(expander &GtkExpander) bool
+pub fn C.gtk_expander_set_label(expander &GtkExpander, label &char)
+pub fn C.gtk_expander_get_label(expander &GtkExpander) &char
+pub fn C.gtk_expander_set_use_underline(expander &GtkExpander, use_underline bool)
+pub fn C.gtk_expander_get_use_underline(expander &GtkExpander) bool
+pub fn C.gtk_expander_set_use_markup(expander &GtkExpander, use_markup bool)
+pub fn C.gtk_expander_get_use_markup(expander &GtkExpander) bool
+pub fn C.gtk_expander_set_label_widget(expander &GtkExpander, label_widget &GtkWidget)
+pub fn C.gtk_expander_get_label_widget(expander &GtkExpander) &GtkWidget
+pub fn C.gtk_expander_set_resize_toplevel(expander &GtkExpander, resize_toplevel bool)
+pub fn C.gtk_expander_get_resize_toplevel(expander &GtkExpander) bool
+pub fn C.gtk_expander_set_child(expander &GtkExpander, child &GtkWidget)
+pub fn C.gtk_expander_get_child(expander &GtkExpander) &GtkWidget
 
 @[noinit; typedef]
 pub struct C.GtkExpander {}
@@ -27,66 +27,66 @@ pub fn (self &GtkExpander) get_type() int {
 	return C.gtk_expander_get_type()
 }
 
-pub fn GtkExpander.new(a &char) &GtkWidget {
-	return C.gtk_expander_new(a)
+pub fn GtkExpander.new(label &char) &GtkWidget {
+	return C.gtk_expander_new(label)
 }
 
-pub fn GtkExpander.new_with_mnemonic(a &char) &GtkWidget {
-	return C.gtk_expander_new_with_mnemonic(a)
+pub fn GtkExpander.new_with_mnemonic(label &char) &GtkWidget {
+	return C.gtk_expander_new_with_mnemonic(label)
 }
 
-pub fn (self &GtkExpander) set_expanded(b bool) {
-	C.gtk_expander_set_expanded(self, b)
+pub fn (self &GtkExpander) set_expanded(expanded bool) {
+	C.gtk_expander_set_expanded(self, expanded)
 }
 
 pub fn (self &GtkExpander) get_expanded() bool {
 	return C.gtk_expander_get_expanded(self)
 }
 
-pub fn (self &GtkExpander) set_label(b &char) {
-	C.gtk_expander_set_label(self, b)
+pub fn (self &GtkExpander) set_label(label &char) {
+	C.gtk_expander_set_label(self, label)
 }
 
 pub fn (self &GtkExpander) get_label() &char {
 	return C.gtk_expander_get_label(self)
 }
 
-pub fn (self &GtkExpander) set_use_underline(b bool) {
-	C.gtk_expander_set_use_underline(self, b)
+pub fn (self &GtkExpander) set_use_underline(use_underline bool) {
+	C.gtk_expander_set_use_underline(self, use_underline)
 }
 
 pub fn (self &GtkExpander) get_use_underline() bool {
 	return C.gtk_expander_get_use_underline(self)
 }
 
-pub fn (self &GtkExpander) set_use_markup(b bool) {
-	C.gtk_expander_set_use_markup(self, b)
+pub fn (self &GtkExpander) set_use_markup(use_markup bool) {
+	C.gtk_expander_set_use_markup(self, use_markup)
 }
 
 pub fn (self &GtkExpander) get_use_markup() bool {
 	return C.gtk_expander_get_use_markup(self)
 }
 
-pub fn (self &GtkExpander) set_label_widget(b &C.GtkWidget) {
-	C.gtk_expander_set_label_widget(self, b)
+pub fn (self &GtkExpander) set_label_widget(label_widget &GtkWidget) {
+	C.gtk_expander_set_label_widget(self, label_widget)
 }
 
-pub fn (self &GtkExpander) get_label_widget() &C.GtkWidget {
+pub fn (self &GtkExpander) get_label_widget() &GtkWidget {
 	return C.gtk_expander_get_label_widget(self)
 }
 
-pub fn (self &GtkExpander) set_resize_toplevel(b bool) {
-	C.gtk_expander_set_resize_toplevel(self, b)
+pub fn (self &GtkExpander) set_resize_toplevel(resize_toplevel bool) {
+	C.gtk_expander_set_resize_toplevel(self, resize_toplevel)
 }
 
 pub fn (self &GtkExpander) get_resize_toplevel() bool {
 	return C.gtk_expander_get_resize_toplevel(self)
 }
 
-pub fn (self &GtkExpander) set_child(b &C.GtkWidget) {
-	C.gtk_expander_set_child(self, b)
+pub fn (self &GtkExpander) set_child(child &GtkWidget) {
+	C.gtk_expander_set_child(self, child)
 }
 
-pub fn (self &GtkExpander) get_child() &C.GtkWidget {
+pub fn (self &GtkExpander) get_child() &GtkWidget {
 	return C.gtk_expander_get_child(self)
 }

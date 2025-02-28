@@ -5,8 +5,8 @@ pub struct C.GtkSignalListItemFactoryClass {}
 
 pub type GtkSignalListItemFactoryClass = C.GtkSignalListItemFactoryClass
 
-fn C.gtk_signal_list_item_factory_get_type() int
-fn C.gtk_signal_list_item_factory_new() &C.GtkListItemFactory
+pub fn C.gtk_signal_list_item_factory_get_type() int
+pub fn C.gtk_signal_list_item_factory_new() &GtkListItemFactory
 
 @[noinit; typedef]
 pub struct C.GtkSignalListItemFactory {}

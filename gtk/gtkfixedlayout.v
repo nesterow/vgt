@@ -15,11 +15,11 @@ pub struct C.GtkFixedLayoutChildClass {}
 
 pub type GtkFixedLayoutChildClass = C.GtkFixedLayoutChildClass
 
-fn C.gtk_fixed_layout_get_type() int
-fn C.gtk_fixed_layout_new() &C.GtkLayoutManager
-fn C.gtk_fixed_layout_child_get_type() int
-fn C.gtk_fixed_layout_child_set_transform(a &C.GtkFixedLayoutChild, b voidptr)
-fn C.gtk_fixed_layout_child_get_transform(a &C.GtkFixedLayoutChild) voidptr
+pub fn C.gtk_fixed_layout_get_type() int
+pub fn C.gtk_fixed_layout_new() &GtkLayoutManager
+pub fn C.gtk_fixed_layout_child_get_type() int
+pub fn C.gtk_fixed_layout_child_set_transform(child &GtkFixedLayoutChild, transform voidptr)
+pub fn C.gtk_fixed_layout_child_get_transform(child &GtkFixedLayoutChild) voidptr
 
 @[noinit; typedef]
 pub struct C.GtkFixedLayout {}
@@ -38,10 +38,10 @@ pub fn (self &GtkFixedLayout) child_get_type() int {
 	return C.gtk_fixed_layout_child_get_type()
 }
 
-pub fn (self &GtkFixedLayout) child_set_transform(a &C.GtkFixedLayoutChild, b voidptr) {
-	C.gtk_fixed_layout_child_set_transform(a, b)
+pub fn (self &GtkFixedLayout) child_set_transform(child &GtkFixedLayoutChild, transform voidptr) {
+	C.gtk_fixed_layout_child_set_transform(child, transform)
 }
 
-pub fn (self &GtkFixedLayout) child_get_transform(a &C.GtkFixedLayoutChild) voidptr {
-	return C.gtk_fixed_layout_child_get_transform(a)
+pub fn (self &GtkFixedLayout) child_get_transform(child &GtkFixedLayoutChild) voidptr {
+	return C.gtk_fixed_layout_child_get_transform(child)
 }

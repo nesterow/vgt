@@ -5,12 +5,12 @@ pub struct C.GtkFileChooserNativeClass {}
 
 pub type GtkFileChooserNativeClass = C.GtkFileChooserNativeClass
 
-fn C.gtk_file_chooser_native_get_type() int
-fn C.gtk_file_chooser_native_new(a &char, b &C.GtkWindow, c GtkFileChooserAction, d &char, e &char) &C.GtkFileChooserNative
-fn C.gtk_file_chooser_native_get_accept_label(a &C.GtkFileChooserNative) &char
-fn C.gtk_file_chooser_native_set_accept_label(a &C.GtkFileChooserNative, b &char)
-fn C.gtk_file_chooser_native_get_cancel_label(a &C.GtkFileChooserNative) &char
-fn C.gtk_file_chooser_native_set_cancel_label(a &C.GtkFileChooserNative, b &char)
+pub fn C.gtk_file_chooser_native_get_type() int
+pub fn C.gtk_file_chooser_native_new(title &char, parent &GtkWindow, action GtkFileChooserAction, accept_label &char, cancel_label &char) &GtkFileChooserNative
+pub fn C.gtk_file_chooser_native_get_accept_label(self &GtkFileChooserNative) &char
+pub fn C.gtk_file_chooser_native_set_accept_label(self &GtkFileChooserNative, accept_label &char)
+pub fn C.gtk_file_chooser_native_get_cancel_label(self &GtkFileChooserNative) &char
+pub fn C.gtk_file_chooser_native_set_cancel_label(self &GtkFileChooserNative, cancel_label &char)
 
 @[noinit; typedef]
 pub struct C.GtkFileChooserNative {}
@@ -21,22 +21,22 @@ pub fn (self &GtkFileChooserNative) get_type() int {
 	return C.gtk_file_chooser_native_get_type()
 }
 
-pub fn GtkFileChooserNative.new(a &char, b &C.GtkWindow, c GtkFileChooserAction, d &char, e &char) &GtkFileChooserNative {
-	return C.gtk_file_chooser_native_new(a, b, c, d, e)
+pub fn GtkFileChooserNative.new(title &char, parent &GtkWindow, action GtkFileChooserAction, accept_label &char, cancel_label &char) &GtkFileChooserNative {
+	return C.gtk_file_chooser_native_new(title, parent, action, accept_label, cancel_label)
 }
 
 pub fn (self &GtkFileChooserNative) get_accept_label() &char {
 	return C.gtk_file_chooser_native_get_accept_label(self)
 }
 
-pub fn (self &GtkFileChooserNative) set_accept_label(b &char) {
-	C.gtk_file_chooser_native_set_accept_label(self, b)
+pub fn (self &GtkFileChooserNative) set_accept_label(accept_label &char) {
+	C.gtk_file_chooser_native_set_accept_label(self, accept_label)
 }
 
 pub fn (self &GtkFileChooserNative) get_cancel_label() &char {
 	return C.gtk_file_chooser_native_get_cancel_label(self)
 }
 
-pub fn (self &GtkFileChooserNative) set_cancel_label(b &char) {
-	C.gtk_file_chooser_native_set_cancel_label(self, b)
+pub fn (self &GtkFileChooserNative) set_cancel_label(cancel_label &char) {
+	C.gtk_file_chooser_native_set_cancel_label(self, cancel_label)
 }

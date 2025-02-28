@@ -28,41 +28,41 @@ pub enum GtkLicense {
 	gtk_license_mpl_2_0
 }
 
-fn C.gtk_about_dialog_get_type() int
-fn C.gtk_about_dialog_new() &C.GtkWidget
-fn C.gtk_about_dialog_get_program_name(a &C.GtkAboutDialog) &char
-fn C.gtk_about_dialog_set_program_name(a &C.GtkAboutDialog, b &char)
-fn C.gtk_about_dialog_get_version(a &C.GtkAboutDialog) &char
-fn C.gtk_about_dialog_set_version(a &C.GtkAboutDialog, b &char)
-fn C.gtk_about_dialog_get_copyright(a &C.GtkAboutDialog) &char
-fn C.gtk_about_dialog_set_copyright(a &C.GtkAboutDialog, b &char)
-fn C.gtk_about_dialog_get_comments(a &C.GtkAboutDialog) &char
-fn C.gtk_about_dialog_set_comments(a &C.GtkAboutDialog, b &char)
-fn C.gtk_about_dialog_get_license(a &C.GtkAboutDialog) &char
-fn C.gtk_about_dialog_set_license(a &C.GtkAboutDialog, b &char)
-fn C.gtk_about_dialog_set_license_type(a &C.GtkAboutDialog, b GtkLicense)
-fn C.gtk_about_dialog_get_license_type(a &C.GtkAboutDialog) GtkLicense
-fn C.gtk_about_dialog_get_wrap_license(a &C.GtkAboutDialog) bool
-fn C.gtk_about_dialog_set_wrap_license(a &C.GtkAboutDialog, b bool)
-fn C.gtk_about_dialog_get_system_information(a &C.GtkAboutDialog) &char
-fn C.gtk_about_dialog_set_system_information(a &C.GtkAboutDialog, b &char)
-fn C.gtk_about_dialog_get_website(a &C.GtkAboutDialog) &char
-fn C.gtk_about_dialog_set_website(a &C.GtkAboutDialog, b &char)
-fn C.gtk_about_dialog_get_website_label(a &C.GtkAboutDialog) &char
-fn C.gtk_about_dialog_set_website_label(a &C.GtkAboutDialog, b &char)
-fn C.gtk_about_dialog_get_authors(a &C.GtkAboutDialog) voidptr
-fn C.gtk_about_dialog_set_authors(a &C.GtkAboutDialog, b voidptr)
-fn C.gtk_about_dialog_get_documenters(a &C.GtkAboutDialog) voidptr
-fn C.gtk_about_dialog_set_documenters(a &C.GtkAboutDialog, b voidptr)
-fn C.gtk_about_dialog_get_artists(a &C.GtkAboutDialog) voidptr
-fn C.gtk_about_dialog_set_artists(a &C.GtkAboutDialog, b voidptr)
-fn C.gtk_about_dialog_get_translator_credits(a &C.GtkAboutDialog) &char
-fn C.gtk_about_dialog_set_translator_credits(a &C.GtkAboutDialog, b &char)
-fn C.gtk_about_dialog_get_logo(a &C.GtkAboutDialog) voidptr
-fn C.gtk_about_dialog_set_logo(a &C.GtkAboutDialog, b voidptr)
-fn C.gtk_about_dialog_get_logo_icon_name(a &C.GtkAboutDialog) &char
-fn C.gtk_about_dialog_set_logo_icon_name(a &C.GtkAboutDialog, b &char)
-fn C.gtk_about_dialog_add_credit_section(a &C.GtkAboutDialog, b &char, c voidptr)
+pub fn C.gtk_about_dialog_get_type() int
+pub fn C.gtk_about_dialog_new() &GtkWidget
+pub fn C.gtk_about_dialog_get_program_name(about &GtkAboutDialog) &char
+pub fn C.gtk_about_dialog_set_program_name(about &GtkAboutDialog, name &char)
+pub fn C.gtk_about_dialog_get_version(about &GtkAboutDialog) &char
+pub fn C.gtk_about_dialog_set_version(about &GtkAboutDialog, version &char)
+pub fn C.gtk_about_dialog_get_copyright(about &GtkAboutDialog) &char
+pub fn C.gtk_about_dialog_set_copyright(about &GtkAboutDialog, copyright &char)
+pub fn C.gtk_about_dialog_get_comments(about &GtkAboutDialog) &char
+pub fn C.gtk_about_dialog_set_comments(about &GtkAboutDialog, comments &char)
+pub fn C.gtk_about_dialog_get_license(about &GtkAboutDialog) &char
+pub fn C.gtk_about_dialog_set_license(about &GtkAboutDialog, license &char)
+pub fn C.gtk_about_dialog_set_license_type(about &GtkAboutDialog, license_typ GtkLicense)
+pub fn C.gtk_about_dialog_get_license_type(about &GtkAboutDialog) GtkLicense
+pub fn C.gtk_about_dialog_get_wrap_license(about &GtkAboutDialog) bool
+pub fn C.gtk_about_dialog_set_wrap_license(about &GtkAboutDialog, wrap_license bool)
+pub fn C.gtk_about_dialog_get_system_information(about &GtkAboutDialog) &char
+pub fn C.gtk_about_dialog_set_system_information(about &GtkAboutDialog, system_information &char)
+pub fn C.gtk_about_dialog_get_website(about &GtkAboutDialog) &char
+pub fn C.gtk_about_dialog_set_website(about &GtkAboutDialog, website &char)
+pub fn C.gtk_about_dialog_get_website_label(about &GtkAboutDialog) &char
+pub fn C.gtk_about_dialog_set_website_label(about &GtkAboutDialog, website_label &char)
+pub fn C.gtk_about_dialog_get_authors(about &GtkAboutDialog) voidptr
+pub fn C.gtk_about_dialog_set_authors(about &GtkAboutDialog, authors voidptr)
+pub fn C.gtk_about_dialog_get_documenters(about &GtkAboutDialog) voidptr
+pub fn C.gtk_about_dialog_set_documenters(about &GtkAboutDialog, documenters voidptr)
+pub fn C.gtk_about_dialog_get_artists(about &GtkAboutDialog) voidptr
+pub fn C.gtk_about_dialog_set_artists(about &GtkAboutDialog, artists voidptr)
+pub fn C.gtk_about_dialog_get_translator_credits(about &GtkAboutDialog) &char
+pub fn C.gtk_about_dialog_set_translator_credits(about &GtkAboutDialog, translator_credits &char)
+pub fn C.gtk_about_dialog_get_logo(about &GtkAboutDialog) voidptr
+pub fn C.gtk_about_dialog_set_logo(about &GtkAboutDialog, logo voidptr)
+pub fn C.gtk_about_dialog_get_logo_icon_name(about &GtkAboutDialog) &char
+pub fn C.gtk_about_dialog_set_logo_icon_name(about &GtkAboutDialog, icon_name &char)
+pub fn C.gtk_about_dialog_add_credit_section(about &GtkAboutDialog, section_name &char, people voidptr)
 
 @[noinit; typedef]
 pub struct C.GtkAboutDialog {}
@@ -81,44 +81,44 @@ pub fn (self &GtkAboutDialog) get_program_name() &char {
 	return C.gtk_about_dialog_get_program_name(self)
 }
 
-pub fn (self &GtkAboutDialog) set_program_name(b &char) {
-	C.gtk_about_dialog_set_program_name(self, b)
+pub fn (self &GtkAboutDialog) set_program_name(name &char) {
+	C.gtk_about_dialog_set_program_name(self, name)
 }
 
 pub fn (self &GtkAboutDialog) get_version() &char {
 	return C.gtk_about_dialog_get_version(self)
 }
 
-pub fn (self &GtkAboutDialog) set_version(b &char) {
-	C.gtk_about_dialog_set_version(self, b)
+pub fn (self &GtkAboutDialog) set_version(version &char) {
+	C.gtk_about_dialog_set_version(self, version)
 }
 
 pub fn (self &GtkAboutDialog) get_copyright() &char {
 	return C.gtk_about_dialog_get_copyright(self)
 }
 
-pub fn (self &GtkAboutDialog) set_copyright(b &char) {
-	C.gtk_about_dialog_set_copyright(self, b)
+pub fn (self &GtkAboutDialog) set_copyright(copyright &char) {
+	C.gtk_about_dialog_set_copyright(self, copyright)
 }
 
 pub fn (self &GtkAboutDialog) get_comments() &char {
 	return C.gtk_about_dialog_get_comments(self)
 }
 
-pub fn (self &GtkAboutDialog) set_comments(b &char) {
-	C.gtk_about_dialog_set_comments(self, b)
+pub fn (self &GtkAboutDialog) set_comments(comments &char) {
+	C.gtk_about_dialog_set_comments(self, comments)
 }
 
 pub fn (self &GtkAboutDialog) get_license() &char {
 	return C.gtk_about_dialog_get_license(self)
 }
 
-pub fn (self &GtkAboutDialog) set_license(b &char) {
-	C.gtk_about_dialog_set_license(self, b)
+pub fn (self &GtkAboutDialog) set_license(license &char) {
+	C.gtk_about_dialog_set_license(self, license)
 }
 
-pub fn (self &GtkAboutDialog) set_license_type(b GtkLicense) {
-	C.gtk_about_dialog_set_license_type(self, b)
+pub fn (self &GtkAboutDialog) set_license_type(license_typ GtkLicense) {
+	C.gtk_about_dialog_set_license_type(self, license_typ)
 }
 
 pub fn (self &GtkAboutDialog) get_license_type() GtkLicense {
@@ -129,82 +129,82 @@ pub fn (self &GtkAboutDialog) get_wrap_license() bool {
 	return C.gtk_about_dialog_get_wrap_license(self)
 }
 
-pub fn (self &GtkAboutDialog) set_wrap_license(b bool) {
-	C.gtk_about_dialog_set_wrap_license(self, b)
+pub fn (self &GtkAboutDialog) set_wrap_license(wrap_license bool) {
+	C.gtk_about_dialog_set_wrap_license(self, wrap_license)
 }
 
 pub fn (self &GtkAboutDialog) get_system_information() &char {
 	return C.gtk_about_dialog_get_system_information(self)
 }
 
-pub fn (self &GtkAboutDialog) set_system_information(b &char) {
-	C.gtk_about_dialog_set_system_information(self, b)
+pub fn (self &GtkAboutDialog) set_system_information(system_information &char) {
+	C.gtk_about_dialog_set_system_information(self, system_information)
 }
 
 pub fn (self &GtkAboutDialog) get_website() &char {
 	return C.gtk_about_dialog_get_website(self)
 }
 
-pub fn (self &GtkAboutDialog) set_website(b &char) {
-	C.gtk_about_dialog_set_website(self, b)
+pub fn (self &GtkAboutDialog) set_website(website &char) {
+	C.gtk_about_dialog_set_website(self, website)
 }
 
 pub fn (self &GtkAboutDialog) get_website_label() &char {
 	return C.gtk_about_dialog_get_website_label(self)
 }
 
-pub fn (self &GtkAboutDialog) set_website_label(b &char) {
-	C.gtk_about_dialog_set_website_label(self, b)
+pub fn (self &GtkAboutDialog) set_website_label(website_label &char) {
+	C.gtk_about_dialog_set_website_label(self, website_label)
 }
 
 pub fn (self &GtkAboutDialog) get_authors() voidptr {
 	return C.gtk_about_dialog_get_authors(self)
 }
 
-pub fn (self &GtkAboutDialog) set_authors(b voidptr) {
-	C.gtk_about_dialog_set_authors(self, b)
+pub fn (self &GtkAboutDialog) set_authors(authors voidptr) {
+	C.gtk_about_dialog_set_authors(self, authors)
 }
 
 pub fn (self &GtkAboutDialog) get_documenters() voidptr {
 	return C.gtk_about_dialog_get_documenters(self)
 }
 
-pub fn (self &GtkAboutDialog) set_documenters(b voidptr) {
-	C.gtk_about_dialog_set_documenters(self, b)
+pub fn (self &GtkAboutDialog) set_documenters(documenters voidptr) {
+	C.gtk_about_dialog_set_documenters(self, documenters)
 }
 
 pub fn (self &GtkAboutDialog) get_artists() voidptr {
 	return C.gtk_about_dialog_get_artists(self)
 }
 
-pub fn (self &GtkAboutDialog) set_artists(b voidptr) {
-	C.gtk_about_dialog_set_artists(self, b)
+pub fn (self &GtkAboutDialog) set_artists(artists voidptr) {
+	C.gtk_about_dialog_set_artists(self, artists)
 }
 
 pub fn (self &GtkAboutDialog) get_translator_credits() &char {
 	return C.gtk_about_dialog_get_translator_credits(self)
 }
 
-pub fn (self &GtkAboutDialog) set_translator_credits(b &char) {
-	C.gtk_about_dialog_set_translator_credits(self, b)
+pub fn (self &GtkAboutDialog) set_translator_credits(translator_credits &char) {
+	C.gtk_about_dialog_set_translator_credits(self, translator_credits)
 }
 
 pub fn (self &GtkAboutDialog) get_logo() voidptr {
 	return C.gtk_about_dialog_get_logo(self)
 }
 
-pub fn (self &GtkAboutDialog) set_logo(b voidptr) {
-	C.gtk_about_dialog_set_logo(self, b)
+pub fn (self &GtkAboutDialog) set_logo(logo voidptr) {
+	C.gtk_about_dialog_set_logo(self, logo)
 }
 
 pub fn (self &GtkAboutDialog) get_logo_icon_name() &char {
 	return C.gtk_about_dialog_get_logo_icon_name(self)
 }
 
-pub fn (self &GtkAboutDialog) set_logo_icon_name(b &char) {
-	C.gtk_about_dialog_set_logo_icon_name(self, b)
+pub fn (self &GtkAboutDialog) set_logo_icon_name(icon_name &char) {
+	C.gtk_about_dialog_set_logo_icon_name(self, icon_name)
 }
 
-pub fn (self &GtkAboutDialog) add_credit_section(b &char, c voidptr) {
-	C.gtk_about_dialog_add_credit_section(self, b, c)
+pub fn (self &GtkAboutDialog) add_credit_section(section_name &char, people voidptr) {
+	C.gtk_about_dialog_add_credit_section(self, section_name, people)
 }

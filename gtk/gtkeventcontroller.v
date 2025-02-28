@@ -5,19 +5,19 @@ pub struct C.GtkEventControllerClass {}
 
 pub type GtkEventControllerClass = C.GtkEventControllerClass
 
-fn C.gtk_event_controller_get_type() int
-fn C.gtk_event_controller_get_widget(a &C.GtkEventController) &C.GtkWidget
-fn C.gtk_event_controller_reset(a &C.GtkEventController)
-fn C.gtk_event_controller_get_propagation_phase(a &C.GtkEventController) GtkPropagationPhase
-fn C.gtk_event_controller_set_propagation_phase(a &C.GtkEventController, b GtkPropagationPhase)
-fn C.gtk_event_controller_get_propagation_limit(a &C.GtkEventController) GtkPropagationLimit
-fn C.gtk_event_controller_set_propagation_limit(a &C.GtkEventController, b GtkPropagationLimit)
-fn C.gtk_event_controller_get_name(a &C.GtkEventController) &char
-fn C.gtk_event_controller_set_name(a &C.GtkEventController, b &char)
-fn C.gtk_event_controller_get_current_event(a &C.GtkEventController) voidptr
-fn C.gtk_event_controller_get_current_event_time(a &C.GtkEventController) int
-fn C.gtk_event_controller_get_current_event_device(a &C.GtkEventController) voidptr
-fn C.gtk_event_controller_get_current_event_state(a &C.GtkEventController) voidptr
+pub fn C.gtk_event_controller_get_type() int
+pub fn C.gtk_event_controller_get_widget(controller &GtkEventController) &GtkWidget
+pub fn C.gtk_event_controller_reset(controller &GtkEventController)
+pub fn C.gtk_event_controller_get_propagation_phase(controller &GtkEventController) GtkPropagationPhase
+pub fn C.gtk_event_controller_set_propagation_phase(controller &GtkEventController, phase GtkPropagationPhase)
+pub fn C.gtk_event_controller_get_propagation_limit(controller &GtkEventController) GtkPropagationLimit
+pub fn C.gtk_event_controller_set_propagation_limit(controller &GtkEventController, limit GtkPropagationLimit)
+pub fn C.gtk_event_controller_get_name(controller &GtkEventController) &char
+pub fn C.gtk_event_controller_set_name(controller &GtkEventController, name &char)
+pub fn C.gtk_event_controller_get_current_event(controller &GtkEventController) voidptr
+pub fn C.gtk_event_controller_get_current_event_time(controller &GtkEventController) int
+pub fn C.gtk_event_controller_get_current_event_device(controller &GtkEventController) voidptr
+pub fn C.gtk_event_controller_get_current_event_state(controller &GtkEventController) voidptr
 
 @[noinit; typedef]
 pub struct C.GtkEventController {}
@@ -28,7 +28,7 @@ pub fn (self &GtkEventController) get_type() int {
 	return C.gtk_event_controller_get_type()
 }
 
-pub fn (self &GtkEventController) get_widget() &C.GtkWidget {
+pub fn (self &GtkEventController) get_widget() &GtkWidget {
 	return C.gtk_event_controller_get_widget(self)
 }
 
@@ -40,24 +40,24 @@ pub fn (self &GtkEventController) get_propagation_phase() GtkPropagationPhase {
 	return C.gtk_event_controller_get_propagation_phase(self)
 }
 
-pub fn (self &GtkEventController) set_propagation_phase(b GtkPropagationPhase) {
-	C.gtk_event_controller_set_propagation_phase(self, b)
+pub fn (self &GtkEventController) set_propagation_phase(phase GtkPropagationPhase) {
+	C.gtk_event_controller_set_propagation_phase(self, phase)
 }
 
 pub fn (self &GtkEventController) get_propagation_limit() GtkPropagationLimit {
 	return C.gtk_event_controller_get_propagation_limit(self)
 }
 
-pub fn (self &GtkEventController) set_propagation_limit(b GtkPropagationLimit) {
-	C.gtk_event_controller_set_propagation_limit(self, b)
+pub fn (self &GtkEventController) set_propagation_limit(limit GtkPropagationLimit) {
+	C.gtk_event_controller_set_propagation_limit(self, limit)
 }
 
 pub fn (self &GtkEventController) get_name() &char {
 	return C.gtk_event_controller_get_name(self)
 }
 
-pub fn (self &GtkEventController) set_name(b &char) {
-	C.gtk_event_controller_set_name(self, b)
+pub fn (self &GtkEventController) set_name(name &char) {
+	C.gtk_event_controller_set_name(self, name)
 }
 
 pub fn (self &GtkEventController) get_current_event() voidptr {

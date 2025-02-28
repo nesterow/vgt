@@ -1,13 +1,13 @@
 module gtk
 
-fn C.gtk_cell_renderer_toggle_get_type() int
-fn C.gtk_cell_renderer_toggle_new() &C.GtkCellRenderer
-fn C.gtk_cell_renderer_toggle_get_radio(a &C.GtkCellRendererToggle) bool
-fn C.gtk_cell_renderer_toggle_set_radio(a &C.GtkCellRendererToggle, b bool)
-fn C.gtk_cell_renderer_toggle_get_active(a &C.GtkCellRendererToggle) bool
-fn C.gtk_cell_renderer_toggle_set_active(a &C.GtkCellRendererToggle, b bool)
-fn C.gtk_cell_renderer_toggle_get_activatable(a &C.GtkCellRendererToggle) bool
-fn C.gtk_cell_renderer_toggle_set_activatable(a &C.GtkCellRendererToggle, b bool)
+pub fn C.gtk_cell_renderer_toggle_get_type() int
+pub fn C.gtk_cell_renderer_toggle_new() &GtkCellRenderer
+pub fn C.gtk_cell_renderer_toggle_get_radio(toggle &GtkCellRendererToggle) bool
+pub fn C.gtk_cell_renderer_toggle_set_radio(toggle &GtkCellRendererToggle, radio bool)
+pub fn C.gtk_cell_renderer_toggle_get_active(toggle &GtkCellRendererToggle) bool
+pub fn C.gtk_cell_renderer_toggle_set_active(toggle &GtkCellRendererToggle, setting bool)
+pub fn C.gtk_cell_renderer_toggle_get_activatable(toggle &GtkCellRendererToggle) bool
+pub fn C.gtk_cell_renderer_toggle_set_activatable(toggle &GtkCellRendererToggle, setting bool)
 
 @[noinit; typedef]
 pub struct C.GtkCellRendererToggle {}
@@ -26,22 +26,22 @@ pub fn (self &GtkCellRendererToggle) get_radio() bool {
 	return C.gtk_cell_renderer_toggle_get_radio(self)
 }
 
-pub fn (self &GtkCellRendererToggle) set_radio(b bool) {
-	C.gtk_cell_renderer_toggle_set_radio(self, b)
+pub fn (self &GtkCellRendererToggle) set_radio(radio bool) {
+	C.gtk_cell_renderer_toggle_set_radio(self, radio)
 }
 
 pub fn (self &GtkCellRendererToggle) get_active() bool {
 	return C.gtk_cell_renderer_toggle_get_active(self)
 }
 
-pub fn (self &GtkCellRendererToggle) set_active(b bool) {
-	C.gtk_cell_renderer_toggle_set_active(self, b)
+pub fn (self &GtkCellRendererToggle) set_active(setting bool) {
+	C.gtk_cell_renderer_toggle_set_active(self, setting)
 }
 
 pub fn (self &GtkCellRendererToggle) get_activatable() bool {
 	return C.gtk_cell_renderer_toggle_get_activatable(self)
 }
 
-pub fn (self &GtkCellRendererToggle) set_activatable(b bool) {
-	C.gtk_cell_renderer_toggle_set_activatable(self, b)
+pub fn (self &GtkCellRendererToggle) set_activatable(setting bool) {
+	C.gtk_cell_renderer_toggle_set_activatable(self, setting)
 }

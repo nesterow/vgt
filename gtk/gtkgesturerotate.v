@@ -5,9 +5,9 @@ pub struct C.GtkGestureRotateClass {}
 
 pub type GtkGestureRotateClass = C.GtkGestureRotateClass
 
-fn C.gtk_gesture_rotate_get_type() int
-fn C.gtk_gesture_rotate_new() &C.GtkGesture
-fn C.gtk_gesture_rotate_get_angle_delta(a &C.GtkGestureRotate) f32
+pub fn C.gtk_gesture_rotate_get_type() int
+pub fn C.gtk_gesture_rotate_new() &GtkGesture
+pub fn C.gtk_gesture_rotate_get_angle_delta(gesture &GtkGestureRotate) f32
 
 @[noinit; typedef]
 pub struct C.GtkGestureRotate {}

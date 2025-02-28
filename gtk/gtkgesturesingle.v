@@ -5,15 +5,15 @@ pub struct C.GtkGestureSingleClass {}
 
 pub type GtkGestureSingleClass = C.GtkGestureSingleClass
 
-fn C.gtk_gesture_single_get_type() int
-fn C.gtk_gesture_single_get_touch_only(a &C.GtkGestureSingle) bool
-fn C.gtk_gesture_single_set_touch_only(a &C.GtkGestureSingle, b bool)
-fn C.gtk_gesture_single_get_exclusive(a &C.GtkGestureSingle) bool
-fn C.gtk_gesture_single_set_exclusive(a &C.GtkGestureSingle, b bool)
-fn C.gtk_gesture_single_get_button(a &C.GtkGestureSingle) u64
-fn C.gtk_gesture_single_set_button(a &C.GtkGestureSingle, b u64)
-fn C.gtk_gesture_single_get_current_button(a &C.GtkGestureSingle) u64
-fn C.gtk_gesture_single_get_current_sequence(a &C.GtkGestureSingle) voidptr
+pub fn C.gtk_gesture_single_get_type() int
+pub fn C.gtk_gesture_single_get_touch_only(gesture &GtkGestureSingle) bool
+pub fn C.gtk_gesture_single_set_touch_only(gesture &GtkGestureSingle, touch_only bool)
+pub fn C.gtk_gesture_single_get_exclusive(gesture &GtkGestureSingle) bool
+pub fn C.gtk_gesture_single_set_exclusive(gesture &GtkGestureSingle, exclusive bool)
+pub fn C.gtk_gesture_single_get_button(gesture &GtkGestureSingle) u64
+pub fn C.gtk_gesture_single_set_button(gesture &GtkGestureSingle, button u64)
+pub fn C.gtk_gesture_single_get_current_button(gesture &GtkGestureSingle) u64
+pub fn C.gtk_gesture_single_get_current_sequence(gesture &GtkGestureSingle) voidptr
 
 @[noinit; typedef]
 pub struct C.GtkGestureSingle {}
@@ -28,24 +28,24 @@ pub fn (self &GtkGestureSingle) get_touch_only() bool {
 	return C.gtk_gesture_single_get_touch_only(self)
 }
 
-pub fn (self &GtkGestureSingle) set_touch_only(b bool) {
-	C.gtk_gesture_single_set_touch_only(self, b)
+pub fn (self &GtkGestureSingle) set_touch_only(touch_only bool) {
+	C.gtk_gesture_single_set_touch_only(self, touch_only)
 }
 
 pub fn (self &GtkGestureSingle) get_exclusive() bool {
 	return C.gtk_gesture_single_get_exclusive(self)
 }
 
-pub fn (self &GtkGestureSingle) set_exclusive(b bool) {
-	C.gtk_gesture_single_set_exclusive(self, b)
+pub fn (self &GtkGestureSingle) set_exclusive(exclusive bool) {
+	C.gtk_gesture_single_set_exclusive(self, exclusive)
 }
 
 pub fn (self &GtkGestureSingle) get_button() u64 {
 	return C.gtk_gesture_single_get_button(self)
 }
 
-pub fn (self &GtkGestureSingle) set_button(b u64) {
-	C.gtk_gesture_single_set_button(self, b)
+pub fn (self &GtkGestureSingle) set_button(button u64) {
+	C.gtk_gesture_single_set_button(self, button)
 }
 
 pub fn (self &GtkGestureSingle) get_current_button() u64 {

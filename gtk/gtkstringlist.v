@@ -5,13 +5,13 @@ pub struct C.GtkStringListClass {}
 
 pub type GtkStringListClass = C.GtkStringListClass
 
-fn C.gtk_string_list_get_type() int
-fn C.gtk_string_list_new(a voidptr) &C.GtkStringList
-fn C.gtk_string_list_append(a &C.GtkStringList, b &char)
-fn C.gtk_string_list_take(a &C.GtkStringList, b voidptr)
-fn C.gtk_string_list_remove(a &C.GtkStringList, b u64)
-fn C.gtk_string_list_splice(a &C.GtkStringList, b u64, c u64, d voidptr)
-fn C.gtk_string_list_get_string(a &C.GtkStringList, b u64) &char
+pub fn C.gtk_string_list_get_type() int
+pub fn C.gtk_string_list_new(strs voidptr) &GtkStringList
+pub fn C.gtk_string_list_append(self &GtkStringList, str &char)
+pub fn C.gtk_string_list_take(self &GtkStringList, str voidptr)
+pub fn C.gtk_string_list_remove(self &GtkStringList, position u64)
+pub fn C.gtk_string_list_splice(self &GtkStringList, position u64, n_removals u64, additions voidptr)
+pub fn C.gtk_string_list_get_string(self &GtkStringList, position u64) &char
 
 @[noinit; typedef]
 pub struct C.GtkStringList {}
@@ -22,26 +22,26 @@ pub fn (self &GtkStringList) get_type() int {
 	return C.gtk_string_list_get_type()
 }
 
-pub fn GtkStringList.new(a voidptr) &GtkStringList {
-	return C.gtk_string_list_new(a)
+pub fn GtkStringList.new(strs voidptr) &GtkStringList {
+	return C.gtk_string_list_new(strs)
 }
 
-pub fn (self &GtkStringList) append(b &char) {
-	C.gtk_string_list_append(self, b)
+pub fn (self &GtkStringList) append(str &char) {
+	C.gtk_string_list_append(self, str)
 }
 
-pub fn (self &GtkStringList) take(b voidptr) {
-	C.gtk_string_list_take(self, b)
+pub fn (self &GtkStringList) take(str voidptr) {
+	C.gtk_string_list_take(self, str)
 }
 
-pub fn (self &GtkStringList) remove(b u64) {
-	C.gtk_string_list_remove(self, b)
+pub fn (self &GtkStringList) remove(position u64) {
+	C.gtk_string_list_remove(self, position)
 }
 
-pub fn (self &GtkStringList) splice(b u64, c u64, d voidptr) {
-	C.gtk_string_list_splice(self, b, c, d)
+pub fn (self &GtkStringList) splice(position u64, n_removals u64, additions voidptr) {
+	C.gtk_string_list_splice(self, position, n_removals, additions)
 }
 
-pub fn (self &GtkStringList) get_string(b u64) &char {
-	return C.gtk_string_list_get_string(self, b)
+pub fn (self &GtkStringList) get_string(position u64) &char {
+	return C.gtk_string_list_get_string(self, position)
 }

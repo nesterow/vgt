@@ -5,10 +5,10 @@ pub struct C.GtkEventControllerScrollClass {}
 
 pub type GtkEventControllerScrollClass = C.GtkEventControllerScrollClass
 
-fn C.gtk_event_controller_scroll_get_type() int
-fn C.gtk_event_controller_scroll_new(a GtkEventControllerScrollFlags) &C.GtkEventController
-fn C.gtk_event_controller_scroll_set_flags(a &C.GtkEventControllerScroll, b GtkEventControllerScrollFlags)
-fn C.gtk_event_controller_scroll_get_flags(a &C.GtkEventControllerScroll) GtkEventControllerScrollFlags
+pub fn C.gtk_event_controller_scroll_get_type() int
+pub fn C.gtk_event_controller_scroll_new(flags GtkEventControllerScrollFlags) &GtkEventController
+pub fn C.gtk_event_controller_scroll_set_flags(scroll &GtkEventControllerScroll, flags GtkEventControllerScrollFlags)
+pub fn C.gtk_event_controller_scroll_get_flags(scroll &GtkEventControllerScroll) GtkEventControllerScrollFlags
 
 @[noinit; typedef]
 pub struct C.GtkEventControllerScroll {}
@@ -19,12 +19,12 @@ pub fn (self &GtkEventControllerScroll) get_type() int {
 	return C.gtk_event_controller_scroll_get_type()
 }
 
-pub fn GtkEventControllerScroll.new(a GtkEventControllerScrollFlags) &GtkEventController {
-	return C.gtk_event_controller_scroll_new(a)
+pub fn GtkEventControllerScroll.new(flags GtkEventControllerScrollFlags) &GtkEventController {
+	return C.gtk_event_controller_scroll_new(flags)
 }
 
-pub fn (self &GtkEventControllerScroll) set_flags(b GtkEventControllerScrollFlags) {
-	C.gtk_event_controller_scroll_set_flags(self, b)
+pub fn (self &GtkEventControllerScroll) set_flags(flags GtkEventControllerScrollFlags) {
+	C.gtk_event_controller_scroll_set_flags(self, flags)
 }
 
 pub fn (self &GtkEventControllerScroll) get_flags() GtkEventControllerScrollFlags {

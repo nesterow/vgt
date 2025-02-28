@@ -5,54 +5,54 @@ pub struct C.GtkSnapshotClass {}
 
 pub type GtkSnapshotClass = C.GtkSnapshotClass
 
-fn C.gtk_snapshot_get_type() int
-fn C.gtk_snapshot_new() &C.GtkSnapshot
-fn C.gtk_snapshot_free_to_node(a &C.GtkSnapshot) voidptr
-fn C.gtk_snapshot_free_to_paintable(a &C.GtkSnapshot, b &char) voidptr
-fn C.gtk_snapshot_to_node(a &C.GtkSnapshot) voidptr
-fn C.gtk_snapshot_to_paintable(a &C.GtkSnapshot, b &char) voidptr
-fn C.gtk_snapshot_push_debug(a &C.GtkSnapshot, b &char, c voidptr)
-fn C.gtk_snapshot_push_opacity(a &C.GtkSnapshot, b f32)
-fn C.gtk_snapshot_push_blur(a &C.GtkSnapshot, b f32)
-fn C.gtk_snapshot_push_color_matrix(a &C.GtkSnapshot, b &char, c &char)
-fn C.gtk_snapshot_push_repeat(a &C.GtkSnapshot, b &char, c &char)
-fn C.gtk_snapshot_push_clip(a &C.GtkSnapshot, b &char)
-fn C.gtk_snapshot_push_rounded_clip(a &C.GtkSnapshot, b voidptr)
-fn C.gtk_snapshot_push_shadow(a &C.GtkSnapshot, b voidptr, c int)
-fn C.gtk_snapshot_push_blend(a &C.GtkSnapshot, b voidptr)
-fn C.gtk_snapshot_push_cross_fade(a &C.GtkSnapshot, b f32)
-fn C.gtk_snapshot_push_gl_shader(a &C.GtkSnapshot, b voidptr, c &char, d voidptr)
-fn C.gtk_snapshot_gl_shader_pop_texture(a &C.GtkSnapshot)
-fn C.gtk_snapshot_pop(a &C.GtkSnapshot)
-fn C.gtk_snapshot_save(a &C.GtkSnapshot)
-fn C.gtk_snapshot_restore(a &C.GtkSnapshot)
-fn C.gtk_snapshot_transform(a &C.GtkSnapshot, b voidptr)
-fn C.gtk_snapshot_transform_matrix(a &C.GtkSnapshot, b &char)
-fn C.gtk_snapshot_translate(a &C.GtkSnapshot, b &char)
-fn C.gtk_snapshot_translate_3d(a &C.GtkSnapshot, b &char)
-fn C.gtk_snapshot_rotate(a &C.GtkSnapshot, b f64)
-fn C.gtk_snapshot_rotate_3d(a &C.GtkSnapshot, b f64, c &char)
-fn C.gtk_snapshot_scale(a &C.GtkSnapshot, b f64, c f64)
-fn C.gtk_snapshot_scale_3d(a &C.GtkSnapshot, b f64, c f64, d f64)
-fn C.gtk_snapshot_perspective(a &C.GtkSnapshot, b f64)
-fn C.gtk_snapshot_append_node(a &C.GtkSnapshot, b voidptr)
-fn C.gtk_snapshot_append_cairo(a &C.GtkSnapshot, b &char) voidptr
-fn C.gtk_snapshot_append_texture(a &C.GtkSnapshot, b voidptr, c &char)
-fn C.gtk_snapshot_append_color(a &C.GtkSnapshot, b voidptr, c &char)
-fn C.gtk_snapshot_append_linear_gradient(a &C.GtkSnapshot, b &char, c &char, d &char, e voidptr, f int)
-fn C.gtk_snapshot_append_repeating_linear_gradient(a &C.GtkSnapshot, b &char, c &char, d &char, e voidptr, f int)
-fn C.gtk_snapshot_append_radial_gradient(a &C.GtkSnapshot, b &char, c &char, d f64, e f64, f f64, g f64, h voidptr, i int)
-fn C.gtk_snapshot_append_repeating_radial_gradient(a &C.GtkSnapshot, b &char, c &char, d f64, e f64, f f64, g f64, h voidptr, i int)
-fn C.gtk_snapshot_append_conic_gradient(a &C.GtkSnapshot, b &char, c &char, d f64, e voidptr, f int)
-fn C.gtk_snapshot_append_border(a &C.GtkSnapshot, b voidptr, c voidptr, d voidptr)
-fn C.gtk_snapshot_append_inset_shadow(a &C.GtkSnapshot, b voidptr, c voidptr, d f64, e f64, f f64, g f64)
-fn C.gtk_snapshot_append_outset_shadow(a &C.GtkSnapshot, b voidptr, c voidptr, d f64, e f64, f f64, g f64)
-fn C.gtk_snapshot_append_layout(a &C.GtkSnapshot, b voidptr, c voidptr)
-fn C.gtk_snapshot_render_background(a &C.GtkSnapshot, b &C.GtkStyleContext, c f32, d f32, e f32, f f32)
-fn C.gtk_snapshot_render_frame(a &C.GtkSnapshot, b &C.GtkStyleContext, c f32, d f32, e f32, f f32)
-fn C.gtk_snapshot_render_focus(a &C.GtkSnapshot, b &C.GtkStyleContext, c f32, d f32, e f32, f f32)
-fn C.gtk_snapshot_render_layout(a &C.GtkSnapshot, b &C.GtkStyleContext, c f32, d f32, e voidptr)
-fn C.gtk_snapshot_render_insertion_cursor(a &C.GtkSnapshot, b &C.GtkStyleContext, c f32, d f32, e voidptr, f int, g int)
+pub fn C.gtk_snapshot_get_type() int
+pub fn C.gtk_snapshot_new() &GtkSnapshot
+pub fn C.gtk_snapshot_free_to_node(snapshot &GtkSnapshot) voidptr
+pub fn C.gtk_snapshot_free_to_paintable(snapshot &GtkSnapshot, size &char) voidptr
+pub fn C.gtk_snapshot_to_node(snapshot &GtkSnapshot) voidptr
+pub fn C.gtk_snapshot_to_paintable(snapshot &GtkSnapshot, size &char) voidptr
+pub fn C.gtk_snapshot_push_debug(snapshot &GtkSnapshot, message &char)
+pub fn C.gtk_snapshot_push_opacity(snapshot &GtkSnapshot, opacity f32)
+pub fn C.gtk_snapshot_push_blur(snapshot &GtkSnapshot, radius f32)
+pub fn C.gtk_snapshot_push_color_matrix(snapshot &GtkSnapshot, color_matrix &char, color_offset &char)
+pub fn C.gtk_snapshot_push_repeat(snapshot &GtkSnapshot, bounds &char, child_bounds &char)
+pub fn C.gtk_snapshot_push_clip(snapshot &GtkSnapshot, bounds &char)
+pub fn C.gtk_snapshot_push_rounded_clip(snapshot &GtkSnapshot, bounds voidptr)
+pub fn C.gtk_snapshot_push_shadow(snapshot &GtkSnapshot, shadow voidptr, n_shadows int)
+pub fn C.gtk_snapshot_push_blend(snapshot &GtkSnapshot, blend_mode voidptr)
+pub fn C.gtk_snapshot_push_cross_fade(snapshot &GtkSnapshot, progress f32)
+pub fn C.gtk_snapshot_push_gl_shader(snapshot &GtkSnapshot, shader voidptr, bounds &char, take_args voidptr)
+pub fn C.gtk_snapshot_gl_shader_pop_texture(snapshot &GtkSnapshot)
+pub fn C.gtk_snapshot_pop(snapshot &GtkSnapshot)
+pub fn C.gtk_snapshot_save(snapshot &GtkSnapshot)
+pub fn C.gtk_snapshot_restore(snapshot &GtkSnapshot)
+pub fn C.gtk_snapshot_transform(snapshot &GtkSnapshot, transform voidptr)
+pub fn C.gtk_snapshot_transform_matrix(snapshot &GtkSnapshot, matrix &char)
+pub fn C.gtk_snapshot_translate(snapshot &GtkSnapshot, point &char)
+pub fn C.gtk_snapshot_translate_3d(snapshot &GtkSnapshot, point &char)
+pub fn C.gtk_snapshot_rotate(snapshot &GtkSnapshot, angle f64)
+pub fn C.gtk_snapshot_rotate_3d(snapshot &GtkSnapshot, angle f64, axis &char)
+pub fn C.gtk_snapshot_scale(snapshot &GtkSnapshot, factor_x f64, factor_y f64)
+pub fn C.gtk_snapshot_scale_3d(snapshot &GtkSnapshot, factor_x f64, factor_y f64, factor_z f64)
+pub fn C.gtk_snapshot_perspective(snapshot &GtkSnapshot, depth f64)
+pub fn C.gtk_snapshot_append_node(snapshot &GtkSnapshot, node voidptr)
+pub fn C.gtk_snapshot_append_cairo(snapshot &GtkSnapshot, bounds &char) voidptr
+pub fn C.gtk_snapshot_append_texture(snapshot &GtkSnapshot, texture voidptr, bounds &char)
+pub fn C.gtk_snapshot_append_color(snapshot &GtkSnapshot, color voidptr, bounds &char)
+pub fn C.gtk_snapshot_append_linear_gradient(snapshot &GtkSnapshot, bounds &char, start_point &char, end_point &char, stops voidptr, n_stops int)
+pub fn C.gtk_snapshot_append_repeating_linear_gradient(snapshot &GtkSnapshot, bounds &char, start_point &char, end_point &char, stops voidptr, n_stops int)
+pub fn C.gtk_snapshot_append_radial_gradient(snapshot &GtkSnapshot, bounds &char, center &char, hradius f64, vradius f64, start f64, end f64, stops voidptr, n_stops int)
+pub fn C.gtk_snapshot_append_repeating_radial_gradient(snapshot &GtkSnapshot, bounds &char, center &char, hradius f64, vradius f64, start f64, end f64, stops voidptr, n_stops int)
+pub fn C.gtk_snapshot_append_conic_gradient(snapshot &GtkSnapshot, bounds &char, center &char, rotation f64, stops voidptr, n_stops int)
+pub fn C.gtk_snapshot_append_border(snapshot &GtkSnapshot, outline voidptr, border_width voidptr, border_color voidptr)
+pub fn C.gtk_snapshot_append_inset_shadow(snapshot &GtkSnapshot, outline voidptr, color voidptr, dx f64, dy f64, spread f64, blur_radius f64)
+pub fn C.gtk_snapshot_append_outset_shadow(snapshot &GtkSnapshot, outline voidptr, color voidptr, dx f64, dy f64, spread f64, blur_radius f64)
+pub fn C.gtk_snapshot_append_layout(snapshot &GtkSnapshot, layout voidptr, color voidptr)
+pub fn C.gtk_snapshot_render_background(snapshot &GtkSnapshot, context &GtkStyleContext, x f32, y f32, width f32, height f32)
+pub fn C.gtk_snapshot_render_frame(snapshot &GtkSnapshot, context &GtkStyleContext, x f32, y f32, width f32, height f32)
+pub fn C.gtk_snapshot_render_focus(snapshot &GtkSnapshot, context &GtkStyleContext, x f32, y f32, width f32, height f32)
+pub fn C.gtk_snapshot_render_layout(snapshot &GtkSnapshot, context &GtkStyleContext, x f32, y f32, layout voidptr)
+pub fn C.gtk_snapshot_render_insertion_cursor(snapshot &GtkSnapshot, context &GtkStyleContext, x f32, y f32, layout voidptr, index int, direction int)
 
 @[noinit; typedef]
 pub struct C.GtkSnapshot {}
@@ -71,60 +71,60 @@ pub fn (self &GtkSnapshot) free_to_node() voidptr {
 	return C.gtk_snapshot_free_to_node(self)
 }
 
-pub fn (self &GtkSnapshot) free_to_paintable(b &char) voidptr {
-	return C.gtk_snapshot_free_to_paintable(self, b)
+pub fn (self &GtkSnapshot) free_to_paintable(size &char) voidptr {
+	return C.gtk_snapshot_free_to_paintable(self, size)
 }
 
 pub fn (self &GtkSnapshot) to_node() voidptr {
 	return C.gtk_snapshot_to_node(self)
 }
 
-pub fn (self &GtkSnapshot) to_paintable(b &char) voidptr {
-	return C.gtk_snapshot_to_paintable(self, b)
+pub fn (self &GtkSnapshot) to_paintable(size &char) voidptr {
+	return C.gtk_snapshot_to_paintable(self, size)
 }
 
-pub fn (self &GtkSnapshot) push_debug(b &char, c voidptr) {
-	C.gtk_snapshot_push_debug(self, b, c)
+pub fn (self &GtkSnapshot) push_debug(message &char) {
+	C.gtk_snapshot_push_debug(self, message)
 }
 
-pub fn (self &GtkSnapshot) push_opacity(b f32) {
-	C.gtk_snapshot_push_opacity(self, b)
+pub fn (self &GtkSnapshot) push_opacity(opacity f32) {
+	C.gtk_snapshot_push_opacity(self, opacity)
 }
 
-pub fn (self &GtkSnapshot) push_blur(b f32) {
-	C.gtk_snapshot_push_blur(self, b)
+pub fn (self &GtkSnapshot) push_blur(radius f32) {
+	C.gtk_snapshot_push_blur(self, radius)
 }
 
-pub fn (self &GtkSnapshot) push_color_matrix(b &char, c &char) {
-	C.gtk_snapshot_push_color_matrix(self, b, c)
+pub fn (self &GtkSnapshot) push_color_matrix(color_matrix &char, color_offset &char) {
+	C.gtk_snapshot_push_color_matrix(self, color_matrix, color_offset)
 }
 
-pub fn (self &GtkSnapshot) push_repeat(b &char, c &char) {
-	C.gtk_snapshot_push_repeat(self, b, c)
+pub fn (self &GtkSnapshot) push_repeat(bounds &char, child_bounds &char) {
+	C.gtk_snapshot_push_repeat(self, bounds, child_bounds)
 }
 
-pub fn (self &GtkSnapshot) push_clip(b &char) {
-	C.gtk_snapshot_push_clip(self, b)
+pub fn (self &GtkSnapshot) push_clip(bounds &char) {
+	C.gtk_snapshot_push_clip(self, bounds)
 }
 
-pub fn (self &GtkSnapshot) push_rounded_clip(b voidptr) {
-	C.gtk_snapshot_push_rounded_clip(self, b)
+pub fn (self &GtkSnapshot) push_rounded_clip(bounds voidptr) {
+	C.gtk_snapshot_push_rounded_clip(self, bounds)
 }
 
-pub fn (self &GtkSnapshot) push_shadow(b voidptr, c int) {
-	C.gtk_snapshot_push_shadow(self, b, c)
+pub fn (self &GtkSnapshot) push_shadow(shadow voidptr, n_shadows int) {
+	C.gtk_snapshot_push_shadow(self, shadow, n_shadows)
 }
 
-pub fn (self &GtkSnapshot) push_blend(b voidptr) {
-	C.gtk_snapshot_push_blend(self, b)
+pub fn (self &GtkSnapshot) push_blend(blend_mode voidptr) {
+	C.gtk_snapshot_push_blend(self, blend_mode)
 }
 
-pub fn (self &GtkSnapshot) push_cross_fade(b f32) {
-	C.gtk_snapshot_push_cross_fade(self, b)
+pub fn (self &GtkSnapshot) push_cross_fade(progress f32) {
+	C.gtk_snapshot_push_cross_fade(self, progress)
 }
 
-pub fn (self &GtkSnapshot) push_gl_shader(b voidptr, c &char, d voidptr) {
-	C.gtk_snapshot_push_gl_shader(self, b, c, d)
+pub fn (self &GtkSnapshot) push_gl_shader(shader voidptr, bounds &char, take_args voidptr) {
+	C.gtk_snapshot_push_gl_shader(self, shader, bounds, take_args)
 }
 
 pub fn (self &GtkSnapshot) gl_shader_pop_texture() {
@@ -143,110 +143,114 @@ pub fn (self &GtkSnapshot) restore() {
 	C.gtk_snapshot_restore(self)
 }
 
-pub fn (self &GtkSnapshot) transform(b voidptr) {
-	C.gtk_snapshot_transform(self, b)
+pub fn (self &GtkSnapshot) transform(transform voidptr) {
+	C.gtk_snapshot_transform(self, transform)
 }
 
-pub fn (self &GtkSnapshot) transform_matrix(b &char) {
-	C.gtk_snapshot_transform_matrix(self, b)
+pub fn (self &GtkSnapshot) transform_matrix(matrix &char) {
+	C.gtk_snapshot_transform_matrix(self, matrix)
 }
 
-pub fn (self &GtkSnapshot) translate(b &char) {
-	C.gtk_snapshot_translate(self, b)
+pub fn (self &GtkSnapshot) translate(point &char) {
+	C.gtk_snapshot_translate(self, point)
 }
 
-pub fn (self &GtkSnapshot) translate_3d(b &char) {
-	C.gtk_snapshot_translate_3d(self, b)
+pub fn (self &GtkSnapshot) translate_3d(point &char) {
+	C.gtk_snapshot_translate_3d(self, point)
 }
 
-pub fn (self &GtkSnapshot) rotate(b f64) {
-	C.gtk_snapshot_rotate(self, b)
+pub fn (self &GtkSnapshot) rotate(angle f64) {
+	C.gtk_snapshot_rotate(self, angle)
 }
 
-pub fn (self &GtkSnapshot) rotate_3d(b f64, c &char) {
-	C.gtk_snapshot_rotate_3d(self, b, c)
+pub fn (self &GtkSnapshot) rotate_3d(angle f64, axis &char) {
+	C.gtk_snapshot_rotate_3d(self, angle, axis)
 }
 
-pub fn (self &GtkSnapshot) scale(b f64, c f64) {
-	C.gtk_snapshot_scale(self, b, c)
+pub fn (self &GtkSnapshot) scale(factor_x f64, factor_y f64) {
+	C.gtk_snapshot_scale(self, factor_x, factor_y)
 }
 
-pub fn (self &GtkSnapshot) scale_3d(b f64, c f64, d f64) {
-	C.gtk_snapshot_scale_3d(self, b, c, d)
+pub fn (self &GtkSnapshot) scale_3d(factor_x f64, factor_y f64, factor_z f64) {
+	C.gtk_snapshot_scale_3d(self, factor_x, factor_y, factor_z)
 }
 
-pub fn (self &GtkSnapshot) perspective(b f64) {
-	C.gtk_snapshot_perspective(self, b)
+pub fn (self &GtkSnapshot) perspective(depth f64) {
+	C.gtk_snapshot_perspective(self, depth)
 }
 
-pub fn (self &GtkSnapshot) append_node(b voidptr) {
-	C.gtk_snapshot_append_node(self, b)
+pub fn (self &GtkSnapshot) append_node(node voidptr) {
+	C.gtk_snapshot_append_node(self, node)
 }
 
-pub fn (self &GtkSnapshot) append_cairo(b &char) voidptr {
-	return C.gtk_snapshot_append_cairo(self, b)
+pub fn (self &GtkSnapshot) append_cairo(bounds &char) voidptr {
+	return C.gtk_snapshot_append_cairo(self, bounds)
 }
 
-pub fn (self &GtkSnapshot) append_texture(b voidptr, c &char) {
-	C.gtk_snapshot_append_texture(self, b, c)
+pub fn (self &GtkSnapshot) append_texture(texture voidptr, bounds &char) {
+	C.gtk_snapshot_append_texture(self, texture, bounds)
 }
 
-pub fn (self &GtkSnapshot) append_color(b voidptr, c &char) {
-	C.gtk_snapshot_append_color(self, b, c)
+pub fn (self &GtkSnapshot) append_color(color voidptr, bounds &char) {
+	C.gtk_snapshot_append_color(self, color, bounds)
 }
 
-pub fn (self &GtkSnapshot) append_linear_gradient(b &char, c &char, d &char, e voidptr, f int) {
-	C.gtk_snapshot_append_linear_gradient(self, b, c, d, e, f)
+pub fn (self &GtkSnapshot) append_linear_gradient(bounds &char, start_point &char, end_point &char, stops voidptr, n_stops int) {
+	C.gtk_snapshot_append_linear_gradient(self, bounds, start_point, end_point, stops,
+		n_stops)
 }
 
-pub fn (self &GtkSnapshot) append_repeating_linear_gradient(b &char, c &char, d &char, e voidptr, f int) {
-	C.gtk_snapshot_append_repeating_linear_gradient(self, b, c, d, e, f)
+pub fn (self &GtkSnapshot) append_repeating_linear_gradient(bounds &char, start_point &char, end_point &char, stops voidptr, n_stops int) {
+	C.gtk_snapshot_append_repeating_linear_gradient(self, bounds, start_point, end_point,
+		stops, n_stops)
 }
 
-pub fn (self &GtkSnapshot) append_radial_gradient(b &char, c &char, d f64, e f64, f f64, g f64, h voidptr, i int) {
-	C.gtk_snapshot_append_radial_gradient(self, b, c, d, e, f, g, h, i)
+pub fn (self &GtkSnapshot) append_radial_gradient(bounds &char, center &char, hradius f64, vradius f64, start f64, end f64, stops voidptr, n_stops int) {
+	C.gtk_snapshot_append_radial_gradient(self, bounds, center, hradius, vradius, start,
+		end, stops, n_stops)
 }
 
-pub fn (self &GtkSnapshot) append_repeating_radial_gradient(b &char, c &char, d f64, e f64, f f64, g f64, h voidptr, i int) {
-	C.gtk_snapshot_append_repeating_radial_gradient(self, b, c, d, e, f, g, h, i)
+pub fn (self &GtkSnapshot) append_repeating_radial_gradient(bounds &char, center &char, hradius f64, vradius f64, start f64, end f64, stops voidptr, n_stops int) {
+	C.gtk_snapshot_append_repeating_radial_gradient(self, bounds, center, hradius, vradius,
+		start, end, stops, n_stops)
 }
 
-pub fn (self &GtkSnapshot) append_conic_gradient(b &char, c &char, d f64, e voidptr, f int) {
-	C.gtk_snapshot_append_conic_gradient(self, b, c, d, e, f)
+pub fn (self &GtkSnapshot) append_conic_gradient(bounds &char, center &char, rotation f64, stops voidptr, n_stops int) {
+	C.gtk_snapshot_append_conic_gradient(self, bounds, center, rotation, stops, n_stops)
 }
 
-pub fn (self &GtkSnapshot) append_border(b voidptr, c voidptr, d voidptr) {
-	C.gtk_snapshot_append_border(self, b, c, d)
+pub fn (self &GtkSnapshot) append_border(outline voidptr, border_width voidptr, border_color voidptr) {
+	C.gtk_snapshot_append_border(self, outline, border_width, border_color)
 }
 
-pub fn (self &GtkSnapshot) append_inset_shadow(b voidptr, c voidptr, d f64, e f64, f f64, g f64) {
-	C.gtk_snapshot_append_inset_shadow(self, b, c, d, e, f, g)
+pub fn (self &GtkSnapshot) append_inset_shadow(outline voidptr, color voidptr, dx f64, dy f64, spread f64, blur_radius f64) {
+	C.gtk_snapshot_append_inset_shadow(self, outline, color, dx, dy, spread, blur_radius)
 }
 
-pub fn (self &GtkSnapshot) append_outset_shadow(b voidptr, c voidptr, d f64, e f64, f f64, g f64) {
-	C.gtk_snapshot_append_outset_shadow(self, b, c, d, e, f, g)
+pub fn (self &GtkSnapshot) append_outset_shadow(outline voidptr, color voidptr, dx f64, dy f64, spread f64, blur_radius f64) {
+	C.gtk_snapshot_append_outset_shadow(self, outline, color, dx, dy, spread, blur_radius)
 }
 
-pub fn (self &GtkSnapshot) append_layout(b voidptr, c voidptr) {
-	C.gtk_snapshot_append_layout(self, b, c)
+pub fn (self &GtkSnapshot) append_layout(layout voidptr, color voidptr) {
+	C.gtk_snapshot_append_layout(self, layout, color)
 }
 
-pub fn (self &GtkSnapshot) render_background(b &C.GtkStyleContext, c f32, d f32, e f32, f f32) {
-	C.gtk_snapshot_render_background(self, b, c, d, e, f)
+pub fn (self &GtkSnapshot) render_background(context &GtkStyleContext, x f32, y f32, width f32, height f32) {
+	C.gtk_snapshot_render_background(self, context, x, y, width, height)
 }
 
-pub fn (self &GtkSnapshot) render_frame(b &C.GtkStyleContext, c f32, d f32, e f32, f f32) {
-	C.gtk_snapshot_render_frame(self, b, c, d, e, f)
+pub fn (self &GtkSnapshot) render_frame(context &GtkStyleContext, x f32, y f32, width f32, height f32) {
+	C.gtk_snapshot_render_frame(self, context, x, y, width, height)
 }
 
-pub fn (self &GtkSnapshot) render_focus(b &C.GtkStyleContext, c f32, d f32, e f32, f f32) {
-	C.gtk_snapshot_render_focus(self, b, c, d, e, f)
+pub fn (self &GtkSnapshot) render_focus(context &GtkStyleContext, x f32, y f32, width f32, height f32) {
+	C.gtk_snapshot_render_focus(self, context, x, y, width, height)
 }
 
-pub fn (self &GtkSnapshot) render_layout(b &C.GtkStyleContext, c f32, d f32, e voidptr) {
-	C.gtk_snapshot_render_layout(self, b, c, d, e)
+pub fn (self &GtkSnapshot) render_layout(context &GtkStyleContext, x f32, y f32, layout voidptr) {
+	C.gtk_snapshot_render_layout(self, context, x, y, layout)
 }
 
-pub fn (self &GtkSnapshot) render_insertion_cursor(b &C.GtkStyleContext, c f32, d f32, e voidptr, f int, g int) {
-	C.gtk_snapshot_render_insertion_cursor(self, b, c, d, e, f, g)
+pub fn (self &GtkSnapshot) render_insertion_cursor(context &GtkStyleContext, x f32, y f32, layout voidptr, index int, direction int) {
+	C.gtk_snapshot_render_insertion_cursor(self, context, x, y, layout, index, direction)
 }

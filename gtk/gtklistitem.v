@@ -10,16 +10,16 @@ pub struct C.GtkListItemClass {}
 
 pub type GtkListItemClass = C.GtkListItemClass
 
-fn C.gtk_list_item_get_type() int
-fn C.gtk_list_item_get_item(a &C.GtkListItem) voidptr
-fn C.gtk_list_item_get_position(a &C.GtkListItem) u64
-fn C.gtk_list_item_get_selected(a &C.GtkListItem) bool
-fn C.gtk_list_item_get_selectable(a &C.GtkListItem) bool
-fn C.gtk_list_item_set_selectable(a &C.GtkListItem, b bool)
-fn C.gtk_list_item_get_activatable(a &C.GtkListItem) bool
-fn C.gtk_list_item_set_activatable(a &C.GtkListItem, b bool)
-fn C.gtk_list_item_set_child(a &C.GtkListItem, b &C.GtkWidget)
-fn C.gtk_list_item_get_child(a &C.GtkListItem) &C.GtkWidget
+pub fn C.gtk_list_item_get_type() int
+pub fn C.gtk_list_item_get_item(self &GtkListItem) voidptr
+pub fn C.gtk_list_item_get_position(self &GtkListItem) u64
+pub fn C.gtk_list_item_get_selected(self &GtkListItem) bool
+pub fn C.gtk_list_item_get_selectable(self &GtkListItem) bool
+pub fn C.gtk_list_item_set_selectable(self &GtkListItem, selectable bool)
+pub fn C.gtk_list_item_get_activatable(self &GtkListItem) bool
+pub fn C.gtk_list_item_set_activatable(self &GtkListItem, activatable bool)
+pub fn C.gtk_list_item_set_child(self &GtkListItem, child &GtkWidget)
+pub fn C.gtk_list_item_get_child(self &GtkListItem) &GtkWidget
 
 @[noinit; typedef]
 pub struct C.GtkListItem {}
@@ -46,22 +46,22 @@ pub fn (self &GtkListItem) get_selectable() bool {
 	return C.gtk_list_item_get_selectable(self)
 }
 
-pub fn (self &GtkListItem) set_selectable(b bool) {
-	C.gtk_list_item_set_selectable(self, b)
+pub fn (self &GtkListItem) set_selectable(selectable bool) {
+	C.gtk_list_item_set_selectable(self, selectable)
 }
 
 pub fn (self &GtkListItem) get_activatable() bool {
 	return C.gtk_list_item_get_activatable(self)
 }
 
-pub fn (self &GtkListItem) set_activatable(b bool) {
-	C.gtk_list_item_set_activatable(self, b)
+pub fn (self &GtkListItem) set_activatable(activatable bool) {
+	C.gtk_list_item_set_activatable(self, activatable)
 }
 
-pub fn (self &GtkListItem) set_child(b &C.GtkWidget) {
-	C.gtk_list_item_set_child(self, b)
+pub fn (self &GtkListItem) set_child(child &GtkWidget) {
+	C.gtk_list_item_set_child(self, child)
 }
 
-pub fn (self &GtkListItem) get_child() &C.GtkWidget {
+pub fn (self &GtkListItem) get_child() &GtkWidget {
 	return C.gtk_list_item_get_child(self)
 }

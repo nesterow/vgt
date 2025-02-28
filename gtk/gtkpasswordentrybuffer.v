@@ -5,8 +5,8 @@ pub struct C.GtkPasswordEntryBufferClass {}
 
 pub type GtkPasswordEntryBufferClass = C.GtkPasswordEntryBufferClass
 
-fn C.gtk_password_entry_buffer_get_type() int
-fn C.gtk_password_entry_buffer_new() &C.GtkEntryBuffer
+pub fn C.gtk_password_entry_buffer_get_type() int
+pub fn C.gtk_password_entry_buffer_new() &GtkEntryBuffer
 
 @[noinit; typedef]
 pub struct C.GtkPasswordEntryBuffer {}

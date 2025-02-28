@@ -5,13 +5,13 @@ pub struct C.GtkNativeInterface {}
 
 pub type GtkNativeInterface = C.GtkNativeInterface
 
-fn C.gtk_native_get_type() int
-fn C.gtk_native_realize(a &C.GtkNative)
-fn C.gtk_native_unrealize(a &C.GtkNative)
-fn C.gtk_native_get_for_surface(a voidptr) &C.GtkNative
-fn C.gtk_native_get_surface(a &C.GtkNative) voidptr
-fn C.gtk_native_get_renderer(a &C.GtkNative) voidptr
-fn C.gtk_native_get_surface_transform(a &C.GtkNative, b voidptr, c voidptr)
+pub fn C.gtk_native_get_type() int
+pub fn C.gtk_native_realize(self &GtkNative)
+pub fn C.gtk_native_unrealize(self &GtkNative)
+pub fn C.gtk_native_get_for_surface(surface voidptr) &GtkNative
+pub fn C.gtk_native_get_surface(self &GtkNative) voidptr
+pub fn C.gtk_native_get_renderer(self &GtkNative) voidptr
+pub fn C.gtk_native_get_surface_transform(self &GtkNative, x voidptr, y voidptr)
 
 @[noinit; typedef]
 pub struct C.GtkNative {}
@@ -30,8 +30,8 @@ pub fn (self &GtkNative) unrealize() {
 	C.gtk_native_unrealize(self)
 }
 
-pub fn (self &GtkNative) get_for_surface(a voidptr) &C.GtkNative {
-	return C.gtk_native_get_for_surface(a)
+pub fn (self &GtkNative) get_for_surface(surface voidptr) &GtkNative {
+	return C.gtk_native_get_for_surface(surface)
 }
 
 pub fn (self &GtkNative) get_surface() voidptr {
@@ -42,6 +42,6 @@ pub fn (self &GtkNative) get_renderer() voidptr {
 	return C.gtk_native_get_renderer(self)
 }
 
-pub fn (self &GtkNative) get_surface_transform(b voidptr, c voidptr) {
-	C.gtk_native_get_surface_transform(self, b, c)
+pub fn (self &GtkNative) get_surface_transform(x voidptr, y voidptr) {
+	C.gtk_native_get_surface_transform(self, x, y)
 }

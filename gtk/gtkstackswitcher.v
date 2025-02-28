@@ -1,9 +1,9 @@
 module gtk
 
-fn C.gtk_stack_switcher_get_type() int
-fn C.gtk_stack_switcher_new() &C.GtkWidget
-fn C.gtk_stack_switcher_set_stack(a &C.GtkStackSwitcher, b &C.GtkStack)
-fn C.gtk_stack_switcher_get_stack(a &C.GtkStackSwitcher) &C.GtkStack
+pub fn C.gtk_stack_switcher_get_type() int
+pub fn C.gtk_stack_switcher_new() &GtkWidget
+pub fn C.gtk_stack_switcher_set_stack(switcher &GtkStackSwitcher, stack &GtkStack)
+pub fn C.gtk_stack_switcher_get_stack(switcher &GtkStackSwitcher) &GtkStack
 
 @[noinit; typedef]
 pub struct C.GtkStackSwitcher {}
@@ -18,10 +18,10 @@ pub fn GtkStackSwitcher.new() &GtkWidget {
 	return C.gtk_stack_switcher_new()
 }
 
-pub fn (self &GtkStackSwitcher) set_stack(b &C.GtkStack) {
-	C.gtk_stack_switcher_set_stack(self, b)
+pub fn (self &GtkStackSwitcher) set_stack(stack &GtkStack) {
+	C.gtk_stack_switcher_set_stack(self, stack)
 }
 
-pub fn (self &GtkStackSwitcher) get_stack() &C.GtkStack {
+pub fn (self &GtkStackSwitcher) get_stack() &GtkStack {
 	return C.gtk_stack_switcher_get_stack(self)
 }

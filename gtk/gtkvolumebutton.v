@@ -1,7 +1,7 @@
 module gtk
 
-fn C.gtk_volume_button_get_type() int
-fn C.gtk_volume_button_new() &C.GtkWidget
+pub fn C.gtk_volume_button_get_type() int
+pub fn C.gtk_volume_button_new() &GtkWidget
 
 @[noinit; typedef]
 pub struct C.GtkVolumeButton {}

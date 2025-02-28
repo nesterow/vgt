@@ -5,7 +5,7 @@ pub struct C.GtkShortcutManagerInterface {}
 
 pub type GtkShortcutManagerInterface = C.GtkShortcutManagerInterface
 
-fn C.gtk_shortcut_manager_get_type() int
+pub fn C.gtk_shortcut_manager_get_type() int
 
 @[noinit; typedef]
 pub struct C.GtkShortcutManager {}

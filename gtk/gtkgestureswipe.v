@@ -5,9 +5,9 @@ pub struct C.GtkGestureSwipeClass {}
 
 pub type GtkGestureSwipeClass = C.GtkGestureSwipeClass
 
-fn C.gtk_gesture_swipe_get_type() int
-fn C.gtk_gesture_swipe_new() &C.GtkGesture
-fn C.gtk_gesture_swipe_get_velocity(a &C.GtkGestureSwipe, b voidptr, c voidptr) bool
+pub fn C.gtk_gesture_swipe_get_type() int
+pub fn C.gtk_gesture_swipe_new() &GtkGesture
+pub fn C.gtk_gesture_swipe_get_velocity(gesture &GtkGestureSwipe, velocity_x voidptr, velocity_y voidptr) bool
 
 @[noinit; typedef]
 pub struct C.GtkGestureSwipe {}
@@ -22,6 +22,6 @@ pub fn GtkGestureSwipe.new() &GtkGesture {
 	return C.gtk_gesture_swipe_new()
 }
 
-pub fn (self &GtkGestureSwipe) get_velocity(b voidptr, c voidptr) bool {
-	return C.gtk_gesture_swipe_get_velocity(self, b, c)
+pub fn (self &GtkGestureSwipe) get_velocity(velocity_x voidptr, velocity_y voidptr) bool {
+	return C.gtk_gesture_swipe_get_velocity(self, velocity_x, velocity_y)
 }

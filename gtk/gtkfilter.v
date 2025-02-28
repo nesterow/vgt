@@ -17,10 +17,10 @@ pub enum GtkFilterChange {
 	gtk_filter_change_more_strict
 }
 
-fn C.gtk_filter_get_type() int
-fn C.gtk_filter_match(a &C.GtkFilter, b voidptr) bool
-fn C.gtk_filter_get_strictness(a &C.GtkFilter) GtkFilterMatch
-fn C.gtk_filter_changed(a &C.GtkFilter, b GtkFilterChange)
+pub fn C.gtk_filter_get_type() int
+pub fn C.gtk_filter_match(self &GtkFilter, item voidptr) bool
+pub fn C.gtk_filter_get_strictness(self &GtkFilter) GtkFilterMatch
+pub fn C.gtk_filter_changed(self &GtkFilter, change GtkFilterChange)
 
 @[noinit; typedef]
 pub struct C.GtkFilter {}
@@ -31,14 +31,14 @@ pub fn (self &GtkFilter) get_type() int {
 	return C.gtk_filter_get_type()
 }
 
-pub fn (self &GtkFilter) match(b voidptr) bool {
-	return C.gtk_filter_match(self, b)
+pub fn (self &GtkFilter) match(item voidptr) bool {
+	return C.gtk_filter_match(self, item)
 }
 
 pub fn (self &GtkFilter) get_strictness() GtkFilterMatch {
 	return C.gtk_filter_get_strictness(self)
 }
 
-pub fn (self &GtkFilter) changed(b GtkFilterChange) {
-	C.gtk_filter_changed(self, b)
+pub fn (self &GtkFilter) changed(change GtkFilterChange) {
+	C.gtk_filter_changed(self, change)
 }

@@ -1,11 +1,11 @@
 module gtk
 
-fn C.gtk_viewport_get_type() int
-fn C.gtk_viewport_new(a &C.GtkAdjustment, b &C.GtkAdjustment) &C.GtkWidget
-fn C.gtk_viewport_get_scroll_to_focus(a &C.GtkViewport) bool
-fn C.gtk_viewport_set_scroll_to_focus(a &C.GtkViewport, b bool)
-fn C.gtk_viewport_set_child(a &C.GtkViewport, b &C.GtkWidget)
-fn C.gtk_viewport_get_child(a &C.GtkViewport) &C.GtkWidget
+pub fn C.gtk_viewport_get_type() int
+pub fn C.gtk_viewport_new(hadjustment &GtkAdjustment, vadjustment &GtkAdjustment) &GtkWidget
+pub fn C.gtk_viewport_get_scroll_to_focus(viewport &GtkViewport) bool
+pub fn C.gtk_viewport_set_scroll_to_focus(viewport &GtkViewport, scroll_to_focus bool)
+pub fn C.gtk_viewport_set_child(viewport &GtkViewport, child &GtkWidget)
+pub fn C.gtk_viewport_get_child(viewport &GtkViewport) &GtkWidget
 
 @[noinit; typedef]
 pub struct C.GtkViewport {}
@@ -16,22 +16,22 @@ pub fn (self &GtkViewport) get_type() int {
 	return C.gtk_viewport_get_type()
 }
 
-pub fn GtkViewport.new(a &C.GtkAdjustment, b &C.GtkAdjustment) &GtkWidget {
-	return C.gtk_viewport_new(a, b)
+pub fn GtkViewport.new(hadjustment &GtkAdjustment, vadjustment &GtkAdjustment) &GtkWidget {
+	return C.gtk_viewport_new(hadjustment, vadjustment)
 }
 
 pub fn (self &GtkViewport) get_scroll_to_focus() bool {
 	return C.gtk_viewport_get_scroll_to_focus(self)
 }
 
-pub fn (self &GtkViewport) set_scroll_to_focus(b bool) {
-	C.gtk_viewport_set_scroll_to_focus(self, b)
+pub fn (self &GtkViewport) set_scroll_to_focus(scroll_to_focus bool) {
+	C.gtk_viewport_set_scroll_to_focus(self, scroll_to_focus)
 }
 
-pub fn (self &GtkViewport) set_child(b &C.GtkWidget) {
-	C.gtk_viewport_set_child(self, b)
+pub fn (self &GtkViewport) set_child(child &GtkWidget) {
+	C.gtk_viewport_set_child(self, child)
 }
 
-pub fn (self &GtkViewport) get_child() &C.GtkWidget {
+pub fn (self &GtkViewport) get_child() &GtkWidget {
 	return C.gtk_viewport_get_child(self)
 }

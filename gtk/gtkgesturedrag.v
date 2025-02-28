@@ -5,10 +5,10 @@ pub struct C.GtkGestureDragClass {}
 
 pub type GtkGestureDragClass = C.GtkGestureDragClass
 
-fn C.gtk_gesture_drag_get_type() int
-fn C.gtk_gesture_drag_new() &C.GtkGesture
-fn C.gtk_gesture_drag_get_start_point(a &C.GtkGestureDrag, b voidptr, c voidptr) bool
-fn C.gtk_gesture_drag_get_offset(a &C.GtkGestureDrag, b voidptr, c voidptr) bool
+pub fn C.gtk_gesture_drag_get_type() int
+pub fn C.gtk_gesture_drag_new() &GtkGesture
+pub fn C.gtk_gesture_drag_get_start_point(gesture &GtkGestureDrag, x voidptr, y voidptr) bool
+pub fn C.gtk_gesture_drag_get_offset(gesture &GtkGestureDrag, x voidptr, y voidptr) bool
 
 @[noinit; typedef]
 pub struct C.GtkGestureDrag {}
@@ -23,10 +23,10 @@ pub fn GtkGestureDrag.new() &GtkGesture {
 	return C.gtk_gesture_drag_new()
 }
 
-pub fn (self &GtkGestureDrag) get_start_point(b voidptr, c voidptr) bool {
-	return C.gtk_gesture_drag_get_start_point(self, b, c)
+pub fn (self &GtkGestureDrag) get_start_point(x voidptr, y voidptr) bool {
+	return C.gtk_gesture_drag_get_start_point(self, x, y)
 }
 
-pub fn (self &GtkGestureDrag) get_offset(b voidptr, c voidptr) bool {
-	return C.gtk_gesture_drag_get_offset(self, b, c)
+pub fn (self &GtkGestureDrag) get_offset(x voidptr, y voidptr) bool {
+	return C.gtk_gesture_drag_get_offset(self, x, y)
 }

@@ -1,9 +1,9 @@
 module gtk
 
-fn C.gtk_search_entry_get_type() int
-fn C.gtk_search_entry_new() &C.GtkWidget
-fn C.gtk_search_entry_set_key_capture_widget(a &C.GtkSearchEntry, b &C.GtkWidget)
-fn C.gtk_search_entry_get_key_capture_widget(a &C.GtkSearchEntry) &C.GtkWidget
+pub fn C.gtk_search_entry_get_type() int
+pub fn C.gtk_search_entry_new() &GtkWidget
+pub fn C.gtk_search_entry_set_key_capture_widget(entry &GtkSearchEntry, widget &GtkWidget)
+pub fn C.gtk_search_entry_get_key_capture_widget(entry &GtkSearchEntry) &GtkWidget
 
 @[noinit; typedef]
 pub struct C.GtkSearchEntry {}
@@ -18,10 +18,10 @@ pub fn GtkSearchEntry.new() &GtkWidget {
 	return C.gtk_search_entry_new()
 }
 
-pub fn (self &GtkSearchEntry) set_key_capture_widget(b &C.GtkWidget) {
-	C.gtk_search_entry_set_key_capture_widget(self, b)
+pub fn (self &GtkSearchEntry) set_key_capture_widget(widget &GtkWidget) {
+	C.gtk_search_entry_set_key_capture_widget(self, widget)
 }
 
-pub fn (self &GtkSearchEntry) get_key_capture_widget() &C.GtkWidget {
+pub fn (self &GtkSearchEntry) get_key_capture_widget() &GtkWidget {
 	return C.gtk_search_entry_get_key_capture_widget(self)
 }

@@ -1,6 +1,6 @@
 module gtk
 
-fn C.gtk_style_provider_get_type() int
+pub fn C.gtk_style_provider_get_type() int
 
 @[noinit; typedef]
 pub struct C.GtkStyleProvider {}

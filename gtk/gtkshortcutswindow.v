@@ -1,6 +1,6 @@
 module gtk
 
-fn C.gtk_shortcuts_window_get_type() int
+pub fn C.gtk_shortcuts_window_get_type() int
 
 @[noinit; typedef]
 pub struct C.GtkShortcutsWindow {}

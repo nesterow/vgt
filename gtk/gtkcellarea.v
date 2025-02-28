@@ -10,54 +10,54 @@ pub struct C.GtkCellAreaContext {}
 
 pub type GtkCellAreaContext = C.GtkCellAreaContext
 
-fn C.gtk_cell_area_get_type() int
-fn C.gtk_cell_area_add(a &C.GtkCellArea, b &C.GtkCellRenderer)
-fn C.gtk_cell_area_remove(a &C.GtkCellArea, b &C.GtkCellRenderer)
-fn C.gtk_cell_area_has_renderer(a &C.GtkCellArea, b &C.GtkCellRenderer) bool
-fn C.gtk_cell_area_foreach(a &C.GtkCellArea, b int, c voidptr)
-fn C.gtk_cell_area_foreach_alloc(a &C.GtkCellArea, b &C.GtkCellAreaContext, c &C.GtkWidget, d voidptr, e voidptr, f int, g voidptr)
-fn C.gtk_cell_area_event(a &C.GtkCellArea, b &C.GtkCellAreaContext, c &C.GtkWidget, d voidptr, e voidptr, f int) int
-fn C.gtk_cell_area_snapshot(a &C.GtkCellArea, b &C.GtkCellAreaContext, c &C.GtkWidget, d &C.GtkSnapshot, e voidptr, f voidptr, g int, h bool)
-fn C.gtk_cell_area_get_cell_allocation(a &C.GtkCellArea, b &C.GtkCellAreaContext, c &C.GtkWidget, d &C.GtkCellRenderer, e voidptr, f voidptr)
-fn C.gtk_cell_area_get_cell_at_position(a &C.GtkCellArea, b &C.GtkCellAreaContext, c &C.GtkWidget, d voidptr, e int, f int, g voidptr) &C.GtkCellRenderer
-fn C.gtk_cell_area_create_context(a &C.GtkCellArea) &C.GtkCellAreaContext
-fn C.gtk_cell_area_copy_context(a &C.GtkCellArea, b &C.GtkCellAreaContext) &C.GtkCellAreaContext
-fn C.gtk_cell_area_get_request_mode(a &C.GtkCellArea) GtkSizeRequestMode
-fn C.gtk_cell_area_get_preferred_width(a &C.GtkCellArea, b &C.GtkCellAreaContext, c &C.GtkWidget, d voidptr, e voidptr)
-fn C.gtk_cell_area_get_preferred_height_for_width(a &C.GtkCellArea, b &C.GtkCellAreaContext, c &C.GtkWidget, d int, e voidptr, f voidptr)
-fn C.gtk_cell_area_get_preferred_height(a &C.GtkCellArea, b &C.GtkCellAreaContext, c &C.GtkWidget, d voidptr, e voidptr)
-fn C.gtk_cell_area_get_preferred_width_for_height(a &C.GtkCellArea, b &C.GtkCellAreaContext, c &C.GtkWidget, d int, e voidptr, f voidptr)
-fn C.gtk_cell_area_get_current_path_string(a &C.GtkCellArea) &char
-fn C.gtk_cell_area_apply_attributes(a &C.GtkCellArea, b &C.GtkTreeModel, c &C.GtkTreeIter, d bool, e bool)
-fn C.gtk_cell_area_attribute_connect(a &C.GtkCellArea, b &C.GtkCellRenderer, c &char, d int)
-fn C.gtk_cell_area_attribute_disconnect(a &C.GtkCellArea, b &C.GtkCellRenderer, c &char)
-fn C.gtk_cell_area_attribute_get_column(a &C.GtkCellArea, b &C.GtkCellRenderer, c &char) int
-fn C.gtk_cell_area_class_install_cell_property(a &C.GtkCellAreaClass, b u64, c voidptr)
-fn C.gtk_cell_area_class_find_cell_property(a &C.GtkCellAreaClass, b &char) voidptr
-fn C.gtk_cell_area_class_list_cell_properties(a &C.GtkCellAreaClass, b voidptr) voidptr
-fn C.gtk_cell_area_add_with_properties(a &C.GtkCellArea, b &C.GtkCellRenderer, c &char, d voidptr)
-fn C.gtk_cell_area_cell_set(a &C.GtkCellArea, b &C.GtkCellRenderer, c &char, d voidptr)
-fn C.gtk_cell_area_cell_get(a &C.GtkCellArea, b &C.GtkCellRenderer, c &char, d voidptr)
-fn C.gtk_cell_area_cell_set_valist(a &C.GtkCellArea, b &C.GtkCellRenderer, c &char, d voidptr)
-fn C.gtk_cell_area_cell_get_valist(a &C.GtkCellArea, b &C.GtkCellRenderer, c &char, d voidptr)
-fn C.gtk_cell_area_cell_set_property(a &C.GtkCellArea, b &C.GtkCellRenderer, c &char, d voidptr)
-fn C.gtk_cell_area_cell_get_property(a &C.GtkCellArea, b &C.GtkCellRenderer, c &char, d voidptr)
-fn C.gtk_cell_area_is_activatable(a &C.GtkCellArea) bool
-fn C.gtk_cell_area_activate(a &C.GtkCellArea, b &C.GtkCellAreaContext, c &C.GtkWidget, d voidptr, e int, f bool) bool
-fn C.gtk_cell_area_focus(a &C.GtkCellArea, b GtkDirectionType) bool
-fn C.gtk_cell_area_set_focus_cell(a &C.GtkCellArea, b &C.GtkCellRenderer)
-fn C.gtk_cell_area_get_focus_cell(a &C.GtkCellArea) &C.GtkCellRenderer
-fn C.gtk_cell_area_add_focus_sibling(a &C.GtkCellArea, b &C.GtkCellRenderer, c &C.GtkCellRenderer)
-fn C.gtk_cell_area_remove_focus_sibling(a &C.GtkCellArea, b &C.GtkCellRenderer, c &C.GtkCellRenderer)
-fn C.gtk_cell_area_is_focus_sibling(a &C.GtkCellArea, b &C.GtkCellRenderer, c &C.GtkCellRenderer) bool
-fn C.gtk_cell_area_get_focus_siblings(a &C.GtkCellArea, b &C.GtkCellRenderer) voidptr
-fn C.gtk_cell_area_get_focus_from_sibling(a &C.GtkCellArea, b &C.GtkCellRenderer) &C.GtkCellRenderer
-fn C.gtk_cell_area_get_edited_cell(a &C.GtkCellArea) &C.GtkCellRenderer
-fn C.gtk_cell_area_get_edit_widget(a &C.GtkCellArea) &C.GtkCellEditable
-fn C.gtk_cell_area_activate_cell(a &C.GtkCellArea, b &C.GtkWidget, c &C.GtkCellRenderer, d voidptr, e voidptr, f int) bool
-fn C.gtk_cell_area_stop_editing(a &C.GtkCellArea, b bool)
-fn C.gtk_cell_area_inner_cell_area(a &C.GtkCellArea, b &C.GtkWidget, c voidptr, d voidptr)
-fn C.gtk_cell_area_request_renderer(a &C.GtkCellArea, b &C.GtkCellRenderer, c GtkOrientation, d &C.GtkWidget, e int, f voidptr, g voidptr)
+pub fn C.gtk_cell_area_get_type() int
+pub fn C.gtk_cell_area_add(area &GtkCellArea, renderer &GtkCellRenderer)
+pub fn C.gtk_cell_area_remove(area &GtkCellArea, renderer &GtkCellRenderer)
+pub fn C.gtk_cell_area_has_renderer(area &GtkCellArea, renderer &GtkCellRenderer) bool
+pub fn C.gtk_cell_area_foreach(area &GtkCellArea, callback voidptr, callback_data voidptr)
+pub fn C.gtk_cell_area_foreach_alloc(area &GtkCellArea, context &GtkCellAreaContext, widget &GtkWidget, cell_area voidptr, background_area voidptr, callback voidptr, callback_data voidptr)
+pub fn C.gtk_cell_area_event(area &GtkCellArea, context &GtkCellAreaContext, widget &GtkWidget, event voidptr, cell_area voidptr, flags voidptr) int
+pub fn C.gtk_cell_area_snapshot(area &GtkCellArea, context &GtkCellAreaContext, widget &GtkWidget, snapshot &GtkSnapshot, background_area voidptr, cell_area voidptr, flags voidptr, paint_focus bool)
+pub fn C.gtk_cell_area_get_cell_allocation(area &GtkCellArea, context &GtkCellAreaContext, widget &GtkWidget, renderer &GtkCellRenderer, cell_area voidptr, allocation voidptr)
+pub fn C.gtk_cell_area_get_cell_at_position(area &GtkCellArea, context &GtkCellAreaContext, widget &GtkWidget, cell_area voidptr, x int, y int, alloc_area voidptr) &GtkCellRenderer
+pub fn C.gtk_cell_area_create_context(area &GtkCellArea) &GtkCellAreaContext
+pub fn C.gtk_cell_area_copy_context(area &GtkCellArea, context &GtkCellAreaContext) &GtkCellAreaContext
+pub fn C.gtk_cell_area_get_request_mode(area &GtkCellArea) GtkSizeRequestMode
+pub fn C.gtk_cell_area_get_preferred_width(area &GtkCellArea, context &GtkCellAreaContext, widget &GtkWidget, minimum_width voidptr, natural_width voidptr)
+pub fn C.gtk_cell_area_get_preferred_height_for_width(area &GtkCellArea, context &GtkCellAreaContext, widget &GtkWidget, width int, minimum_height voidptr, natural_height voidptr)
+pub fn C.gtk_cell_area_get_preferred_height(area &GtkCellArea, context &GtkCellAreaContext, widget &GtkWidget, minimum_height voidptr, natural_height voidptr)
+pub fn C.gtk_cell_area_get_preferred_width_for_height(area &GtkCellArea, context &GtkCellAreaContext, widget &GtkWidget, height int, minimum_width voidptr, natural_width voidptr)
+pub fn C.gtk_cell_area_get_current_path_string(area &GtkCellArea) &char
+pub fn C.gtk_cell_area_apply_attributes(area &GtkCellArea, tree_model &GtkTreeModel, iter &GtkTreeIter, is_expander bool, is_expanded bool)
+pub fn C.gtk_cell_area_attribute_connect(area &GtkCellArea, renderer &GtkCellRenderer, attribute &char, column int)
+pub fn C.gtk_cell_area_attribute_disconnect(area &GtkCellArea, renderer &GtkCellRenderer, attribute &char)
+pub fn C.gtk_cell_area_attribute_get_column(area &GtkCellArea, renderer &GtkCellRenderer, attribute &char) int
+pub fn C.gtk_cell_area_class_install_cell_property(aclass &GtkCellAreaClass, property_id u64, pspec voidptr)
+pub fn C.gtk_cell_area_class_find_cell_property(aclass &GtkCellAreaClass, property_name &char) voidptr
+pub fn C.gtk_cell_area_class_list_cell_properties(aclass &GtkCellAreaClass, n_properties voidptr) voidptr
+pub fn C.gtk_cell_area_add_with_properties(area &GtkCellArea, renderer &GtkCellRenderer, first_prop_name &char)
+pub fn C.gtk_cell_area_cell_set(area &GtkCellArea, renderer &GtkCellRenderer, first_prop_name &char)
+pub fn C.gtk_cell_area_cell_get(area &GtkCellArea, renderer &GtkCellRenderer, first_prop_name &char)
+pub fn C.gtk_cell_area_cell_set_valist(area &GtkCellArea, renderer &GtkCellRenderer, first_property_name &char, var_args voidptr)
+pub fn C.gtk_cell_area_cell_get_valist(area &GtkCellArea, renderer &GtkCellRenderer, first_property_name &char, var_args voidptr)
+pub fn C.gtk_cell_area_cell_set_property(area &GtkCellArea, renderer &GtkCellRenderer, property_name &char, value voidptr)
+pub fn C.gtk_cell_area_cell_get_property(area &GtkCellArea, renderer &GtkCellRenderer, property_name &char, value voidptr)
+pub fn C.gtk_cell_area_is_activatable(area &GtkCellArea) bool
+pub fn C.gtk_cell_area_activate(area &GtkCellArea, context &GtkCellAreaContext, widget &GtkWidget, cell_area voidptr, flags voidptr, edit_only bool) bool
+pub fn C.gtk_cell_area_focus(area &GtkCellArea, direction GtkDirectionType) bool
+pub fn C.gtk_cell_area_set_focus_cell(area &GtkCellArea, renderer &GtkCellRenderer)
+pub fn C.gtk_cell_area_get_focus_cell(area &GtkCellArea) &GtkCellRenderer
+pub fn C.gtk_cell_area_add_focus_sibling(area &GtkCellArea, renderer &GtkCellRenderer, sibling &GtkCellRenderer)
+pub fn C.gtk_cell_area_remove_focus_sibling(area &GtkCellArea, renderer &GtkCellRenderer, sibling &GtkCellRenderer)
+pub fn C.gtk_cell_area_is_focus_sibling(area &GtkCellArea, renderer &GtkCellRenderer, sibling &GtkCellRenderer) bool
+pub fn C.gtk_cell_area_get_focus_siblings(area &GtkCellArea, renderer &GtkCellRenderer) voidptr
+pub fn C.gtk_cell_area_get_focus_from_sibling(area &GtkCellArea, renderer &GtkCellRenderer) &GtkCellRenderer
+pub fn C.gtk_cell_area_get_edited_cell(area &GtkCellArea) &GtkCellRenderer
+pub fn C.gtk_cell_area_get_edit_widget(area &GtkCellArea) &GtkCellEditable
+pub fn C.gtk_cell_area_activate_cell(area &GtkCellArea, widget &GtkWidget, renderer &GtkCellRenderer, event voidptr, cell_area voidptr, flags voidptr) bool
+pub fn C.gtk_cell_area_stop_editing(area &GtkCellArea, canceled bool)
+pub fn C.gtk_cell_area_inner_cell_area(area &GtkCellArea, widget &GtkWidget, cell_area voidptr, inner_area voidptr)
+pub fn C.gtk_cell_area_request_renderer(area &GtkCellArea, renderer &GtkCellRenderer, orientation GtkOrientation, widget &GtkWidget, for_size int, minimum_size voidptr, natural_size voidptr)
 
 @[noinit; typedef]
 pub struct C.GtkCellArea {}
@@ -68,178 +68,196 @@ pub fn (self &GtkCellArea) get_type() int {
 	return C.gtk_cell_area_get_type()
 }
 
-pub fn (self &GtkCellArea) add(b &C.GtkCellRenderer) {
-	C.gtk_cell_area_add(self, b)
+pub fn (self &GtkCellArea) add(renderer &GtkCellRenderer) {
+	C.gtk_cell_area_add(self, renderer)
 }
 
-pub fn (self &GtkCellArea) remove(b &C.GtkCellRenderer) {
-	C.gtk_cell_area_remove(self, b)
+pub fn (self &GtkCellArea) remove(renderer &GtkCellRenderer) {
+	C.gtk_cell_area_remove(self, renderer)
 }
 
-pub fn (self &GtkCellArea) has_renderer(b &C.GtkCellRenderer) bool {
-	return C.gtk_cell_area_has_renderer(self, b)
+pub fn (self &GtkCellArea) has_renderer(renderer &GtkCellRenderer) bool {
+	return C.gtk_cell_area_has_renderer(self, renderer)
 }
 
-pub fn (self &GtkCellArea) foreach(b int, c voidptr) {
-	C.gtk_cell_area_foreach(self, b, c)
+pub fn (self &GtkCellArea) foreach(callback voidptr, callback_data voidptr) {
+	C.gtk_cell_area_foreach(self, callback, callback_data)
 }
 
-pub fn (self &GtkCellArea) foreach_alloc(b &C.GtkCellAreaContext, c &C.GtkWidget, d voidptr, e voidptr, f int, g voidptr) {
-	C.gtk_cell_area_foreach_alloc(self, b, c, d, e, f, g)
+pub fn (self &GtkCellArea) foreach_alloc(context &GtkCellAreaContext, widget &GtkWidget, cell_area voidptr, background_area voidptr, callback voidptr, callback_data voidptr) {
+	C.gtk_cell_area_foreach_alloc(self, context, widget, cell_area, background_area, callback,
+		callback_data)
 }
 
-pub fn (self &GtkCellArea) event(b &C.GtkCellAreaContext, c &C.GtkWidget, d voidptr, e voidptr, f int) int {
-	return C.gtk_cell_area_event(self, b, c, d, e, f)
+pub fn (self &GtkCellArea) event(context &GtkCellAreaContext, widget &GtkWidget, event voidptr, cell_area voidptr, flags voidptr) int {
+	return C.gtk_cell_area_event(self, context, widget, event, cell_area, flags)
 }
 
-pub fn (self &GtkCellArea) snapshot(b &C.GtkCellAreaContext, c &C.GtkWidget, d &C.GtkSnapshot, e voidptr, f voidptr, g int, h bool) {
-	C.gtk_cell_area_snapshot(self, b, c, d, e, f, g, h)
+pub fn (self &GtkCellArea) snapshot(context &GtkCellAreaContext, widget &GtkWidget, snapshot &GtkSnapshot, background_area voidptr, cell_area voidptr, flags voidptr, paint_focus bool) {
+	C.gtk_cell_area_snapshot(self, context, widget, snapshot, background_area, cell_area,
+		flags, paint_focus)
 }
 
-pub fn (self &GtkCellArea) get_cell_allocation(b &C.GtkCellAreaContext, c &C.GtkWidget, d &C.GtkCellRenderer, e voidptr, f voidptr) {
-	C.gtk_cell_area_get_cell_allocation(self, b, c, d, e, f)
+pub fn (self &GtkCellArea) get_cell_allocation(context &GtkCellAreaContext, widget &GtkWidget, renderer &GtkCellRenderer, cell_area voidptr, allocation voidptr) {
+	C.gtk_cell_area_get_cell_allocation(self, context, widget, renderer, cell_area, allocation)
 }
 
-pub fn (self &GtkCellArea) get_cell_at_position(b &C.GtkCellAreaContext, c &C.GtkWidget, d voidptr, e int, f int, g voidptr) &C.GtkCellRenderer {
-	return C.gtk_cell_area_get_cell_at_position(self, b, c, d, e, f, g)
+pub fn (self &GtkCellArea) get_cell_at_position(context &GtkCellAreaContext, widget &GtkWidget, cell_area voidptr, x int, y int, alloc_area voidptr) &GtkCellRenderer {
+	return C.gtk_cell_area_get_cell_at_position(self, context, widget, cell_area, x, y,
+		alloc_area)
 }
 
-pub fn (self &GtkCellArea) create_context() &C.GtkCellAreaContext {
+pub fn (self &GtkCellArea) create_context() &GtkCellAreaContext {
 	return C.gtk_cell_area_create_context(self)
 }
 
-pub fn (self &GtkCellArea) copy_context(b &C.GtkCellAreaContext) &C.GtkCellAreaContext {
-	return C.gtk_cell_area_copy_context(self, b)
+pub fn (self &GtkCellArea) copy_context(context &GtkCellAreaContext) &GtkCellAreaContext {
+	return C.gtk_cell_area_copy_context(self, context)
 }
 
 pub fn (self &GtkCellArea) get_request_mode() GtkSizeRequestMode {
 	return C.gtk_cell_area_get_request_mode(self)
 }
 
-pub fn (self &GtkCellArea) get_preferred_width(b &C.GtkCellAreaContext, c &C.GtkWidget, d voidptr, e voidptr) {
-	C.gtk_cell_area_get_preferred_width(self, b, c, d, e)
+pub fn (self &GtkCellArea) get_preferred_width(context &GtkCellAreaContext, widget &GtkWidget, minimum_width voidptr, natural_width voidptr) {
+	C.gtk_cell_area_get_preferred_width(self, context, widget, minimum_width, natural_width)
 }
 
-pub fn (self &GtkCellArea) get_preferred_height_for_width(b &C.GtkCellAreaContext, c &C.GtkWidget, d int, e voidptr, f voidptr) {
-	C.gtk_cell_area_get_preferred_height_for_width(self, b, c, d, e, f)
+pub fn (self &GtkCellArea) get_preferred_height_for_width(context &GtkCellAreaContext, widget &GtkWidget, width int, minimum_height voidptr, natural_height voidptr) {
+	C.gtk_cell_area_get_preferred_height_for_width(self, context, widget, width, minimum_height,
+		natural_height)
 }
 
-pub fn (self &GtkCellArea) get_preferred_height(b &C.GtkCellAreaContext, c &C.GtkWidget, d voidptr, e voidptr) {
-	C.gtk_cell_area_get_preferred_height(self, b, c, d, e)
+pub fn (self &GtkCellArea) get_preferred_height(context &GtkCellAreaContext, widget &GtkWidget, minimum_height voidptr, natural_height voidptr) {
+	C.gtk_cell_area_get_preferred_height(self, context, widget, minimum_height, natural_height)
 }
 
-pub fn (self &GtkCellArea) get_preferred_width_for_height(b &C.GtkCellAreaContext, c &C.GtkWidget, d int, e voidptr, f voidptr) {
-	C.gtk_cell_area_get_preferred_width_for_height(self, b, c, d, e, f)
+pub fn (self &GtkCellArea) get_preferred_width_for_height(context &GtkCellAreaContext, widget &GtkWidget, height int, minimum_width voidptr, natural_width voidptr) {
+	C.gtk_cell_area_get_preferred_width_for_height(self, context, widget, height, minimum_width,
+		natural_width)
 }
 
 pub fn (self &GtkCellArea) get_current_path_string() &char {
 	return C.gtk_cell_area_get_current_path_string(self)
 }
 
-pub fn (self &GtkCellArea) apply_attributes(b &C.GtkTreeModel, c &C.GtkTreeIter, d bool, e bool) {
-	C.gtk_cell_area_apply_attributes(self, b, c, d, e)
+pub fn (self &GtkCellArea) apply_attributes(tree_model &GtkTreeModel, iter &GtkTreeIter, is_expander bool, is_expanded bool) {
+	C.gtk_cell_area_apply_attributes(self, tree_model, iter, is_expander, is_expanded)
 }
 
-pub fn (self &GtkCellArea) attribute_connect(b &C.GtkCellRenderer, c &char, d int) {
-	C.gtk_cell_area_attribute_connect(self, b, c, d)
+pub fn (self &GtkCellArea) attribute_connect(renderer &GtkCellRenderer, attribute &char, column int) {
+	C.gtk_cell_area_attribute_connect(self, renderer, attribute, column)
 }
 
-pub fn (self &GtkCellArea) attribute_disconnect(b &C.GtkCellRenderer, c &char) {
-	C.gtk_cell_area_attribute_disconnect(self, b, c)
+pub fn (self &GtkCellArea) attribute_disconnect(renderer &GtkCellRenderer, attribute &char) {
+	C.gtk_cell_area_attribute_disconnect(self, renderer, attribute)
 }
 
-pub fn (self &GtkCellArea) attribute_get_column(b &C.GtkCellRenderer, c &char) int {
-	return C.gtk_cell_area_attribute_get_column(self, b, c)
+pub fn (self &GtkCellArea) attribute_get_column(renderer &GtkCellRenderer, attribute &char) int {
+	return C.gtk_cell_area_attribute_get_column(self, renderer, attribute)
 }
 
-pub fn (self &GtkCellArea) add_with_properties(b &C.GtkCellRenderer, c &char, d voidptr) {
-	C.gtk_cell_area_add_with_properties(self, b, c, d)
+pub fn (self &GtkCellArea) class_install_cell_property(aclass &GtkCellAreaClass, property_id u64, pspec voidptr) {
+	C.gtk_cell_area_class_install_cell_property(aclass, property_id, pspec)
 }
 
-pub fn (self &GtkCellArea) cell_set(b &C.GtkCellRenderer, c &char, d voidptr) {
-	C.gtk_cell_area_cell_set(self, b, c, d)
+pub fn (self &GtkCellArea) class_find_cell_property(aclass &GtkCellAreaClass, property_name &char) voidptr {
+	return C.gtk_cell_area_class_find_cell_property(aclass, property_name)
 }
 
-pub fn (self &GtkCellArea) cell_get(b &C.GtkCellRenderer, c &char, d voidptr) {
-	C.gtk_cell_area_cell_get(self, b, c, d)
+pub fn (self &GtkCellArea) class_list_cell_properties(aclass &GtkCellAreaClass, n_properties voidptr) voidptr {
+	return C.gtk_cell_area_class_list_cell_properties(aclass, n_properties)
 }
 
-pub fn (self &GtkCellArea) cell_set_valist(b &C.GtkCellRenderer, c &char, d voidptr) {
-	C.gtk_cell_area_cell_set_valist(self, b, c, d)
+pub fn (self &GtkCellArea) add_with_properties(renderer &GtkCellRenderer, first_prop_name &char) {
+	C.gtk_cell_area_add_with_properties(self, renderer, first_prop_name)
 }
 
-pub fn (self &GtkCellArea) cell_get_valist(b &C.GtkCellRenderer, c &char, d voidptr) {
-	C.gtk_cell_area_cell_get_valist(self, b, c, d)
+pub fn (self &GtkCellArea) cell_set(renderer &GtkCellRenderer, first_prop_name &char) {
+	C.gtk_cell_area_cell_set(self, renderer, first_prop_name)
 }
 
-pub fn (self &GtkCellArea) cell_set_property(b &C.GtkCellRenderer, c &char, d voidptr) {
-	C.gtk_cell_area_cell_set_property(self, b, c, d)
+pub fn (self &GtkCellArea) cell_get(renderer &GtkCellRenderer, first_prop_name &char) {
+	C.gtk_cell_area_cell_get(self, renderer, first_prop_name)
 }
 
-pub fn (self &GtkCellArea) cell_get_property(b &C.GtkCellRenderer, c &char, d voidptr) {
-	C.gtk_cell_area_cell_get_property(self, b, c, d)
+pub fn (self &GtkCellArea) cell_set_valist(renderer &GtkCellRenderer, first_property_name &char, var_args voidptr) {
+	C.gtk_cell_area_cell_set_valist(self, renderer, first_property_name, var_args)
+}
+
+pub fn (self &GtkCellArea) cell_get_valist(renderer &GtkCellRenderer, first_property_name &char, var_args voidptr) {
+	C.gtk_cell_area_cell_get_valist(self, renderer, first_property_name, var_args)
+}
+
+pub fn (self &GtkCellArea) cell_set_property(renderer &GtkCellRenderer, property_name &char, value voidptr) {
+	C.gtk_cell_area_cell_set_property(self, renderer, property_name, value)
+}
+
+pub fn (self &GtkCellArea) cell_get_property(renderer &GtkCellRenderer, property_name &char, value voidptr) {
+	C.gtk_cell_area_cell_get_property(self, renderer, property_name, value)
 }
 
 pub fn (self &GtkCellArea) is_activatable() bool {
 	return C.gtk_cell_area_is_activatable(self)
 }
 
-pub fn (self &GtkCellArea) activate(b &C.GtkCellAreaContext, c &C.GtkWidget, d voidptr, e int, f bool) bool {
-	return C.gtk_cell_area_activate(self, b, c, d, e, f)
+pub fn (self &GtkCellArea) activate(context &GtkCellAreaContext, widget &GtkWidget, cell_area voidptr, flags voidptr, edit_only bool) bool {
+	return C.gtk_cell_area_activate(self, context, widget, cell_area, flags, edit_only)
 }
 
-pub fn (self &GtkCellArea) focus(b GtkDirectionType) bool {
-	return C.gtk_cell_area_focus(self, b)
+pub fn (self &GtkCellArea) focus(direction GtkDirectionType) bool {
+	return C.gtk_cell_area_focus(self, direction)
 }
 
-pub fn (self &GtkCellArea) set_focus_cell(b &C.GtkCellRenderer) {
-	C.gtk_cell_area_set_focus_cell(self, b)
+pub fn (self &GtkCellArea) set_focus_cell(renderer &GtkCellRenderer) {
+	C.gtk_cell_area_set_focus_cell(self, renderer)
 }
 
-pub fn (self &GtkCellArea) get_focus_cell() &C.GtkCellRenderer {
+pub fn (self &GtkCellArea) get_focus_cell() &GtkCellRenderer {
 	return C.gtk_cell_area_get_focus_cell(self)
 }
 
-pub fn (self &GtkCellArea) add_focus_sibling(b &C.GtkCellRenderer, c &C.GtkCellRenderer) {
-	C.gtk_cell_area_add_focus_sibling(self, b, c)
+pub fn (self &GtkCellArea) add_focus_sibling(renderer &GtkCellRenderer, sibling &GtkCellRenderer) {
+	C.gtk_cell_area_add_focus_sibling(self, renderer, sibling)
 }
 
-pub fn (self &GtkCellArea) remove_focus_sibling(b &C.GtkCellRenderer, c &C.GtkCellRenderer) {
-	C.gtk_cell_area_remove_focus_sibling(self, b, c)
+pub fn (self &GtkCellArea) remove_focus_sibling(renderer &GtkCellRenderer, sibling &GtkCellRenderer) {
+	C.gtk_cell_area_remove_focus_sibling(self, renderer, sibling)
 }
 
-pub fn (self &GtkCellArea) is_focus_sibling(b &C.GtkCellRenderer, c &C.GtkCellRenderer) bool {
-	return C.gtk_cell_area_is_focus_sibling(self, b, c)
+pub fn (self &GtkCellArea) is_focus_sibling(renderer &GtkCellRenderer, sibling &GtkCellRenderer) bool {
+	return C.gtk_cell_area_is_focus_sibling(self, renderer, sibling)
 }
 
-pub fn (self &GtkCellArea) get_focus_siblings(b &C.GtkCellRenderer) voidptr {
-	return C.gtk_cell_area_get_focus_siblings(self, b)
+pub fn (self &GtkCellArea) get_focus_siblings(renderer &GtkCellRenderer) voidptr {
+	return C.gtk_cell_area_get_focus_siblings(self, renderer)
 }
 
-pub fn (self &GtkCellArea) get_focus_from_sibling(b &C.GtkCellRenderer) &C.GtkCellRenderer {
-	return C.gtk_cell_area_get_focus_from_sibling(self, b)
+pub fn (self &GtkCellArea) get_focus_from_sibling(renderer &GtkCellRenderer) &GtkCellRenderer {
+	return C.gtk_cell_area_get_focus_from_sibling(self, renderer)
 }
 
-pub fn (self &GtkCellArea) get_edited_cell() &C.GtkCellRenderer {
+pub fn (self &GtkCellArea) get_edited_cell() &GtkCellRenderer {
 	return C.gtk_cell_area_get_edited_cell(self)
 }
 
-pub fn (self &GtkCellArea) get_edit_widget() &C.GtkCellEditable {
+pub fn (self &GtkCellArea) get_edit_widget() &GtkCellEditable {
 	return C.gtk_cell_area_get_edit_widget(self)
 }
 
-pub fn (self &GtkCellArea) activate_cell(b &C.GtkWidget, c &C.GtkCellRenderer, d voidptr, e voidptr, f int) bool {
-	return C.gtk_cell_area_activate_cell(self, b, c, d, e, f)
+pub fn (self &GtkCellArea) activate_cell(widget &GtkWidget, renderer &GtkCellRenderer, event voidptr, cell_area voidptr, flags voidptr) bool {
+	return C.gtk_cell_area_activate_cell(self, widget, renderer, event, cell_area, flags)
 }
 
-pub fn (self &GtkCellArea) stop_editing(b bool) {
-	C.gtk_cell_area_stop_editing(self, b)
+pub fn (self &GtkCellArea) stop_editing(canceled bool) {
+	C.gtk_cell_area_stop_editing(self, canceled)
 }
 
-pub fn (self &GtkCellArea) inner_cell_area(b &C.GtkWidget, c voidptr, d voidptr) {
-	C.gtk_cell_area_inner_cell_area(self, b, c, d)
+pub fn (self &GtkCellArea) inner_cell_area(widget &GtkWidget, cell_area voidptr, inner_area voidptr) {
+	C.gtk_cell_area_inner_cell_area(self, widget, cell_area, inner_area)
 }
 
-pub fn (self &GtkCellArea) request_renderer(b &C.GtkCellRenderer, c GtkOrientation, d &C.GtkWidget, e int, f voidptr, g voidptr) {
-	C.gtk_cell_area_request_renderer(self, b, c, d, e, f, g)
+pub fn (self &GtkCellArea) request_renderer(renderer &GtkCellRenderer, orientation GtkOrientation, widget &GtkWidget, for_size int, minimum_size voidptr, natural_size voidptr) {
+	C.gtk_cell_area_request_renderer(self, renderer, orientation, widget, for_size, minimum_size,
+		natural_size)
 }

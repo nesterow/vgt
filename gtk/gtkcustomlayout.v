@@ -5,8 +5,8 @@ pub struct C.GtkCustomLayoutClass {}
 
 pub type GtkCustomLayoutClass = C.GtkCustomLayoutClass
 
-fn C.gtk_custom_layout_get_type() int
-fn C.gtk_custom_layout_new(a int, b int, c int) &C.GtkLayoutManager
+pub fn C.gtk_custom_layout_get_type() int
+pub fn C.gtk_custom_layout_new(request_mode voidptr, measure voidptr, allocate voidptr) &GtkLayoutManager
 
 @[noinit; typedef]
 pub struct C.GtkCustomLayout {}
@@ -17,6 +17,6 @@ pub fn (self &GtkCustomLayout) get_type() int {
 	return C.gtk_custom_layout_get_type()
 }
 
-pub fn GtkCustomLayout.new(a int, b int, c int) &GtkLayoutManager {
-	return C.gtk_custom_layout_new(a, b, c)
+pub fn GtkCustomLayout.new(request_mode voidptr, measure voidptr, allocate voidptr) &GtkLayoutManager {
+	return C.gtk_custom_layout_new(request_mode, measure, allocate)
 }

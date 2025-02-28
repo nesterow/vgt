@@ -5,14 +5,14 @@ pub struct C.GtkBookmarkListClass {}
 
 pub type GtkBookmarkListClass = C.GtkBookmarkListClass
 
-fn C.gtk_bookmark_list_get_type() int
-fn C.gtk_bookmark_list_new(a &char, b &char) &C.GtkBookmarkList
-fn C.gtk_bookmark_list_get_filename(a &C.GtkBookmarkList) &char
-fn C.gtk_bookmark_list_set_attributes(a &C.GtkBookmarkList, b &char)
-fn C.gtk_bookmark_list_get_attributes(a &C.GtkBookmarkList) &char
-fn C.gtk_bookmark_list_set_io_priority(a &C.GtkBookmarkList, b int)
-fn C.gtk_bookmark_list_get_io_priority(a &C.GtkBookmarkList) int
-fn C.gtk_bookmark_list_is_loading(a &C.GtkBookmarkList) bool
+pub fn C.gtk_bookmark_list_get_type() int
+pub fn C.gtk_bookmark_list_new(filename &char, attributes &char) &GtkBookmarkList
+pub fn C.gtk_bookmark_list_get_filename(self &GtkBookmarkList) &char
+pub fn C.gtk_bookmark_list_set_attributes(self &GtkBookmarkList, attributes &char)
+pub fn C.gtk_bookmark_list_get_attributes(self &GtkBookmarkList) &char
+pub fn C.gtk_bookmark_list_set_io_priority(self &GtkBookmarkList, io_priority int)
+pub fn C.gtk_bookmark_list_get_io_priority(self &GtkBookmarkList) int
+pub fn C.gtk_bookmark_list_is_loading(self &GtkBookmarkList) bool
 
 @[noinit; typedef]
 pub struct C.GtkBookmarkList {}
@@ -23,24 +23,24 @@ pub fn (self &GtkBookmarkList) get_type() int {
 	return C.gtk_bookmark_list_get_type()
 }
 
-pub fn GtkBookmarkList.new(a &char, b &char) &GtkBookmarkList {
-	return C.gtk_bookmark_list_new(a, b)
+pub fn GtkBookmarkList.new(filename &char, attributes &char) &GtkBookmarkList {
+	return C.gtk_bookmark_list_new(filename, attributes)
 }
 
 pub fn (self &GtkBookmarkList) get_filename() &char {
 	return C.gtk_bookmark_list_get_filename(self)
 }
 
-pub fn (self &GtkBookmarkList) set_attributes(b &char) {
-	C.gtk_bookmark_list_set_attributes(self, b)
+pub fn (self &GtkBookmarkList) set_attributes(attributes &char) {
+	C.gtk_bookmark_list_set_attributes(self, attributes)
 }
 
 pub fn (self &GtkBookmarkList) get_attributes() &char {
 	return C.gtk_bookmark_list_get_attributes(self)
 }
 
-pub fn (self &GtkBookmarkList) set_io_priority(b int) {
-	C.gtk_bookmark_list_set_io_priority(self, b)
+pub fn (self &GtkBookmarkList) set_io_priority(io_priority int) {
+	C.gtk_bookmark_list_set_io_priority(self, io_priority)
 }
 
 pub fn (self &GtkBookmarkList) get_io_priority() int {

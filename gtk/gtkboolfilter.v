@@ -5,12 +5,12 @@ pub struct C.GtkBoolFilterClass {}
 
 pub type GtkBoolFilterClass = C.GtkBoolFilterClass
 
-fn C.gtk_bool_filter_get_type() int
-fn C.gtk_bool_filter_new(a &C.GtkExpression) &C.GtkBoolFilter
-fn C.gtk_bool_filter_get_expression(a &C.GtkBoolFilter) &C.GtkExpression
-fn C.gtk_bool_filter_set_expression(a &C.GtkBoolFilter, b &C.GtkExpression)
-fn C.gtk_bool_filter_get_invert(a &C.GtkBoolFilter) bool
-fn C.gtk_bool_filter_set_invert(a &C.GtkBoolFilter, b bool)
+pub fn C.gtk_bool_filter_get_type() int
+pub fn C.gtk_bool_filter_new(expression &GtkExpression) &GtkBoolFilter
+pub fn C.gtk_bool_filter_get_expression(self &GtkBoolFilter) &GtkExpression
+pub fn C.gtk_bool_filter_set_expression(self &GtkBoolFilter, expression &GtkExpression)
+pub fn C.gtk_bool_filter_get_invert(self &GtkBoolFilter) bool
+pub fn C.gtk_bool_filter_set_invert(self &GtkBoolFilter, invert bool)
 
 @[noinit; typedef]
 pub struct C.GtkBoolFilter {}
@@ -21,22 +21,22 @@ pub fn (self &GtkBoolFilter) get_type() int {
 	return C.gtk_bool_filter_get_type()
 }
 
-pub fn GtkBoolFilter.new(a &C.GtkExpression) &GtkBoolFilter {
-	return C.gtk_bool_filter_new(a)
+pub fn GtkBoolFilter.new(expression &GtkExpression) &GtkBoolFilter {
+	return C.gtk_bool_filter_new(expression)
 }
 
-pub fn (self &GtkBoolFilter) get_expression() &C.GtkExpression {
+pub fn (self &GtkBoolFilter) get_expression() &GtkExpression {
 	return C.gtk_bool_filter_get_expression(self)
 }
 
-pub fn (self &GtkBoolFilter) set_expression(b &C.GtkExpression) {
-	C.gtk_bool_filter_set_expression(self, b)
+pub fn (self &GtkBoolFilter) set_expression(expression &GtkExpression) {
+	C.gtk_bool_filter_set_expression(self, expression)
 }
 
 pub fn (self &GtkBoolFilter) get_invert() bool {
 	return C.gtk_bool_filter_get_invert(self)
 }
 
-pub fn (self &GtkBoolFilter) set_invert(b bool) {
-	C.gtk_bool_filter_set_invert(self, b)
+pub fn (self &GtkBoolFilter) set_invert(invert bool) {
+	C.gtk_bool_filter_set_invert(self, invert)
 }

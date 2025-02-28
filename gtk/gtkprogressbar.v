@@ -1,20 +1,20 @@
 module gtk
 
-fn C.gtk_progress_bar_get_type() int
-fn C.gtk_progress_bar_new() &C.GtkWidget
-fn C.gtk_progress_bar_pulse(a &C.GtkProgressBar)
-fn C.gtk_progress_bar_set_text(a &C.GtkProgressBar, b &char)
-fn C.gtk_progress_bar_set_fraction(a &C.GtkProgressBar, b f32)
-fn C.gtk_progress_bar_set_pulse_step(a &C.GtkProgressBar, b f32)
-fn C.gtk_progress_bar_set_inverted(a &C.GtkProgressBar, b bool)
-fn C.gtk_progress_bar_get_text(a &C.GtkProgressBar) &char
-fn C.gtk_progress_bar_get_fraction(a &C.GtkProgressBar) f32
-fn C.gtk_progress_bar_get_pulse_step(a &C.GtkProgressBar) f32
-fn C.gtk_progress_bar_get_inverted(a &C.GtkProgressBar) bool
-fn C.gtk_progress_bar_set_ellipsize(a &C.GtkProgressBar, b int)
-fn C.gtk_progress_bar_get_ellipsize(a &C.GtkProgressBar) int
-fn C.gtk_progress_bar_set_show_text(a &C.GtkProgressBar, b bool)
-fn C.gtk_progress_bar_get_show_text(a &C.GtkProgressBar) bool
+pub fn C.gtk_progress_bar_get_type() int
+pub fn C.gtk_progress_bar_new() &GtkWidget
+pub fn C.gtk_progress_bar_pulse(pbar &GtkProgressBar)
+pub fn C.gtk_progress_bar_set_text(pbar &GtkProgressBar, text &char)
+pub fn C.gtk_progress_bar_set_fraction(pbar &GtkProgressBar, fraction f32)
+pub fn C.gtk_progress_bar_set_pulse_step(pbar &GtkProgressBar, fraction f32)
+pub fn C.gtk_progress_bar_set_inverted(pbar &GtkProgressBar, inverted bool)
+pub fn C.gtk_progress_bar_get_text(pbar &GtkProgressBar) &char
+pub fn C.gtk_progress_bar_get_fraction(pbar &GtkProgressBar) f32
+pub fn C.gtk_progress_bar_get_pulse_step(pbar &GtkProgressBar) f32
+pub fn C.gtk_progress_bar_get_inverted(pbar &GtkProgressBar) bool
+pub fn C.gtk_progress_bar_set_ellipsize(pbar &GtkProgressBar, mode int)
+pub fn C.gtk_progress_bar_get_ellipsize(pbar &GtkProgressBar) int
+pub fn C.gtk_progress_bar_set_show_text(pbar &GtkProgressBar, show_text bool)
+pub fn C.gtk_progress_bar_get_show_text(pbar &GtkProgressBar) bool
 
 @[noinit; typedef]
 pub struct C.GtkProgressBar {}
@@ -33,20 +33,20 @@ pub fn (self &GtkProgressBar) pulse() {
 	C.gtk_progress_bar_pulse(self)
 }
 
-pub fn (self &GtkProgressBar) set_text(b &char) {
-	C.gtk_progress_bar_set_text(self, b)
+pub fn (self &GtkProgressBar) set_text(text &char) {
+	C.gtk_progress_bar_set_text(self, text)
 }
 
-pub fn (self &GtkProgressBar) set_fraction(b f32) {
-	C.gtk_progress_bar_set_fraction(self, b)
+pub fn (self &GtkProgressBar) set_fraction(fraction f32) {
+	C.gtk_progress_bar_set_fraction(self, fraction)
 }
 
-pub fn (self &GtkProgressBar) set_pulse_step(b f32) {
-	C.gtk_progress_bar_set_pulse_step(self, b)
+pub fn (self &GtkProgressBar) set_pulse_step(fraction f32) {
+	C.gtk_progress_bar_set_pulse_step(self, fraction)
 }
 
-pub fn (self &GtkProgressBar) set_inverted(b bool) {
-	C.gtk_progress_bar_set_inverted(self, b)
+pub fn (self &GtkProgressBar) set_inverted(inverted bool) {
+	C.gtk_progress_bar_set_inverted(self, inverted)
 }
 
 pub fn (self &GtkProgressBar) get_text() &char {
@@ -65,16 +65,16 @@ pub fn (self &GtkProgressBar) get_inverted() bool {
 	return C.gtk_progress_bar_get_inverted(self)
 }
 
-pub fn (self &GtkProgressBar) set_ellipsize(b int) {
-	C.gtk_progress_bar_set_ellipsize(self, b)
+pub fn (self &GtkProgressBar) set_ellipsize(mode int) {
+	C.gtk_progress_bar_set_ellipsize(self, mode)
 }
 
 pub fn (self &GtkProgressBar) get_ellipsize() int {
 	return C.gtk_progress_bar_get_ellipsize(self)
 }
 
-pub fn (self &GtkProgressBar) set_show_text(b bool) {
-	C.gtk_progress_bar_set_show_text(self, b)
+pub fn (self &GtkProgressBar) set_show_text(show_text bool) {
+	C.gtk_progress_bar_set_show_text(self, show_text)
 }
 
 pub fn (self &GtkProgressBar) get_show_text() bool {

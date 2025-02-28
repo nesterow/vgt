@@ -1,7 +1,7 @@
 module gtk
 
-fn C.gtk_cell_renderer_progress_get_type() int
-fn C.gtk_cell_renderer_progress_new() &C.GtkCellRenderer
+pub fn C.gtk_cell_renderer_progress_get_type() int
+pub fn C.gtk_cell_renderer_progress_new() &GtkCellRenderer
 
 @[noinit; typedef]
 pub struct C.GtkCellRendererProgress {}

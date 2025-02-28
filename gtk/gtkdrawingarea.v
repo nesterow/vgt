@@ -10,13 +10,13 @@ pub struct C.GtkDrawingAreaDrawFunc {}
 
 pub type GtkDrawingAreaDrawFunc = C.GtkDrawingAreaDrawFunc
 
-fn C.gtk_drawing_area_get_type() int
-fn C.gtk_drawing_area_new() &C.GtkWidget
-fn C.gtk_drawing_area_set_content_width(a &C.GtkDrawingArea, b int)
-fn C.gtk_drawing_area_get_content_width(a &C.GtkDrawingArea) int
-fn C.gtk_drawing_area_set_content_height(a &C.GtkDrawingArea, b int)
-fn C.gtk_drawing_area_get_content_height(a &C.GtkDrawingArea) int
-fn C.gtk_drawing_area_set_draw_func(a &C.GtkDrawingArea, b int, c voidptr, d voidptr)
+pub fn C.gtk_drawing_area_get_type() int
+pub fn C.gtk_drawing_area_new() &GtkWidget
+pub fn C.gtk_drawing_area_set_content_width(self &GtkDrawingArea, width int)
+pub fn C.gtk_drawing_area_get_content_width(self &GtkDrawingArea) int
+pub fn C.gtk_drawing_area_set_content_height(self &GtkDrawingArea, height int)
+pub fn C.gtk_drawing_area_get_content_height(self &GtkDrawingArea) int
+pub fn C.gtk_drawing_area_set_draw_func(self &GtkDrawingArea, draw_func voidptr, user_data voidptr, destroy voidptr)
 
 @[noinit; typedef]
 pub struct C.GtkDrawingArea {}
@@ -31,22 +31,22 @@ pub fn GtkDrawingArea.new() &GtkWidget {
 	return C.gtk_drawing_area_new()
 }
 
-pub fn (self &GtkDrawingArea) set_content_width(b int) {
-	C.gtk_drawing_area_set_content_width(self, b)
+pub fn (self &GtkDrawingArea) set_content_width(width int) {
+	C.gtk_drawing_area_set_content_width(self, width)
 }
 
 pub fn (self &GtkDrawingArea) get_content_width() int {
 	return C.gtk_drawing_area_get_content_width(self)
 }
 
-pub fn (self &GtkDrawingArea) set_content_height(b int) {
-	C.gtk_drawing_area_set_content_height(self, b)
+pub fn (self &GtkDrawingArea) set_content_height(height int) {
+	C.gtk_drawing_area_set_content_height(self, height)
 }
 
 pub fn (self &GtkDrawingArea) get_content_height() int {
 	return C.gtk_drawing_area_get_content_height(self)
 }
 
-pub fn (self &GtkDrawingArea) set_draw_func(b int, c voidptr, d voidptr) {
-	C.gtk_drawing_area_set_draw_func(self, b, c, d)
+pub fn (self &GtkDrawingArea) set_draw_func(draw_func voidptr, user_data voidptr, destroy voidptr) {
+	C.gtk_drawing_area_set_draw_func(self, draw_func, user_data, destroy)
 }

@@ -5,10 +5,10 @@ pub struct C.GtkCellEditableIface {}
 
 pub type GtkCellEditableIface = C.GtkCellEditableIface
 
-fn C.gtk_cell_editable_get_type() int
-fn C.gtk_cell_editable_start_editing(a &C.GtkCellEditable, b voidptr)
-fn C.gtk_cell_editable_editing_done(a &C.GtkCellEditable)
-fn C.gtk_cell_editable_remove_widget(a &C.GtkCellEditable)
+pub fn C.gtk_cell_editable_get_type() int
+pub fn C.gtk_cell_editable_start_editing(cell_editable &GtkCellEditable, event voidptr)
+pub fn C.gtk_cell_editable_editing_done(cell_editable &GtkCellEditable)
+pub fn C.gtk_cell_editable_remove_widget(cell_editable &GtkCellEditable)
 
 @[noinit; typedef]
 pub struct C.GtkCellEditable {}
@@ -19,8 +19,8 @@ pub fn (self &GtkCellEditable) get_type() int {
 	return C.gtk_cell_editable_get_type()
 }
 
-pub fn (self &GtkCellEditable) start_editing(b voidptr) {
-	C.gtk_cell_editable_start_editing(self, b)
+pub fn (self &GtkCellEditable) start_editing(event voidptr) {
+	C.gtk_cell_editable_start_editing(self, event)
 }
 
 pub fn (self &GtkCellEditable) editing_done() {

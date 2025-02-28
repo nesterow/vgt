@@ -5,7 +5,7 @@ pub struct C.GtkShortcutsSectionClass {}
 
 pub type GtkShortcutsSectionClass = C.GtkShortcutsSectionClass
 
-fn C.gtk_shortcuts_section_get_type() int
+pub fn C.gtk_shortcuts_section_get_type() int
 
 @[noinit; typedef]
 pub struct C.GtkShortcutsSection {}

@@ -5,22 +5,22 @@ pub struct C.GtkVideoClass {}
 
 pub type GtkVideoClass = C.GtkVideoClass
 
-fn C.gtk_video_get_type() int
-fn C.gtk_video_new() &C.GtkWidget
-fn C.gtk_video_new_for_media_stream(a &C.GtkMediaStream) &C.GtkWidget
-fn C.gtk_video_new_for_file(a voidptr) &C.GtkWidget
-fn C.gtk_video_new_for_filename(a &char) &C.GtkWidget
-fn C.gtk_video_new_for_resource(a &char) &C.GtkWidget
-fn C.gtk_video_get_media_stream(a &C.GtkVideo) &C.GtkMediaStream
-fn C.gtk_video_set_media_stream(a &C.GtkVideo, b &C.GtkMediaStream)
-fn C.gtk_video_get_file(a &C.GtkVideo) voidptr
-fn C.gtk_video_set_file(a &C.GtkVideo, b voidptr)
-fn C.gtk_video_set_filename(a &C.GtkVideo, b &char)
-fn C.gtk_video_set_resource(a &C.GtkVideo, b &char)
-fn C.gtk_video_get_autoplay(a &C.GtkVideo) bool
-fn C.gtk_video_set_autoplay(a &C.GtkVideo, b bool)
-fn C.gtk_video_get_loop(a &C.GtkVideo) bool
-fn C.gtk_video_set_loop(a &C.GtkVideo, b bool)
+pub fn C.gtk_video_get_type() int
+pub fn C.gtk_video_new() &GtkWidget
+pub fn C.gtk_video_new_for_media_stream(stream &GtkMediaStream) &GtkWidget
+pub fn C.gtk_video_new_for_file(file voidptr) &GtkWidget
+pub fn C.gtk_video_new_for_filename(filename &char) &GtkWidget
+pub fn C.gtk_video_new_for_resource(resource_path &char) &GtkWidget
+pub fn C.gtk_video_get_media_stream(self &GtkVideo) &GtkMediaStream
+pub fn C.gtk_video_set_media_stream(self &GtkVideo, stream &GtkMediaStream)
+pub fn C.gtk_video_get_file(self &GtkVideo) voidptr
+pub fn C.gtk_video_set_file(self &GtkVideo, file voidptr)
+pub fn C.gtk_video_set_filename(self &GtkVideo, filename &char)
+pub fn C.gtk_video_set_resource(self &GtkVideo, resource_path &char)
+pub fn C.gtk_video_get_autoplay(self &GtkVideo) bool
+pub fn C.gtk_video_set_autoplay(self &GtkVideo, autoplay bool)
+pub fn C.gtk_video_get_loop(self &GtkVideo) bool
+pub fn C.gtk_video_set_loop(self &GtkVideo, loop bool)
 
 @[noinit; typedef]
 pub struct C.GtkVideo {}
@@ -35,58 +35,58 @@ pub fn GtkVideo.new() &GtkWidget {
 	return C.gtk_video_new()
 }
 
-pub fn GtkVideo.new_for_media_stream(a &C.GtkMediaStream) &GtkWidget {
-	return C.gtk_video_new_for_media_stream(a)
+pub fn GtkVideo.new_for_media_stream(stream &GtkMediaStream) &GtkWidget {
+	return C.gtk_video_new_for_media_stream(stream)
 }
 
-pub fn GtkVideo.new_for_file(a voidptr) &GtkWidget {
-	return C.gtk_video_new_for_file(a)
+pub fn GtkVideo.new_for_file(file voidptr) &GtkWidget {
+	return C.gtk_video_new_for_file(file)
 }
 
-pub fn GtkVideo.new_for_filename(a &char) &GtkWidget {
-	return C.gtk_video_new_for_filename(a)
+pub fn GtkVideo.new_for_filename(filename &char) &GtkWidget {
+	return C.gtk_video_new_for_filename(filename)
 }
 
-pub fn GtkVideo.new_for_resource(a &char) &GtkWidget {
-	return C.gtk_video_new_for_resource(a)
+pub fn GtkVideo.new_for_resource(resource_path &char) &GtkWidget {
+	return C.gtk_video_new_for_resource(resource_path)
 }
 
-pub fn (self &GtkVideo) get_media_stream() &C.GtkMediaStream {
+pub fn (self &GtkVideo) get_media_stream() &GtkMediaStream {
 	return C.gtk_video_get_media_stream(self)
 }
 
-pub fn (self &GtkVideo) set_media_stream(b &C.GtkMediaStream) {
-	C.gtk_video_set_media_stream(self, b)
+pub fn (self &GtkVideo) set_media_stream(stream &GtkMediaStream) {
+	C.gtk_video_set_media_stream(self, stream)
 }
 
 pub fn (self &GtkVideo) get_file() voidptr {
 	return C.gtk_video_get_file(self)
 }
 
-pub fn (self &GtkVideo) set_file(b voidptr) {
-	C.gtk_video_set_file(self, b)
+pub fn (self &GtkVideo) set_file(file voidptr) {
+	C.gtk_video_set_file(self, file)
 }
 
-pub fn (self &GtkVideo) set_filename(b &char) {
-	C.gtk_video_set_filename(self, b)
+pub fn (self &GtkVideo) set_filename(filename &char) {
+	C.gtk_video_set_filename(self, filename)
 }
 
-pub fn (self &GtkVideo) set_resource(b &char) {
-	C.gtk_video_set_resource(self, b)
+pub fn (self &GtkVideo) set_resource(resource_path &char) {
+	C.gtk_video_set_resource(self, resource_path)
 }
 
 pub fn (self &GtkVideo) get_autoplay() bool {
 	return C.gtk_video_get_autoplay(self)
 }
 
-pub fn (self &GtkVideo) set_autoplay(b bool) {
-	C.gtk_video_set_autoplay(self, b)
+pub fn (self &GtkVideo) set_autoplay(autoplay bool) {
+	C.gtk_video_set_autoplay(self, autoplay)
 }
 
 pub fn (self &GtkVideo) get_loop() bool {
 	return C.gtk_video_get_loop(self)
 }
 
-pub fn (self &GtkVideo) set_loop(b bool) {
-	C.gtk_video_set_loop(self, b)
+pub fn (self &GtkVideo) set_loop(loop bool) {
+	C.gtk_video_set_loop(self, loop)
 }

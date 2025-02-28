@@ -14,70 +14,70 @@ pub enum GtkIconViewDropPosition {
 	gtk_icon_view_drop_below
 }
 
-fn C.gtk_icon_view_get_type() int
-fn C.gtk_icon_view_new() &C.GtkWidget
-fn C.gtk_icon_view_new_with_area(a &C.GtkCellArea) &C.GtkWidget
-fn C.gtk_icon_view_new_with_model(a &C.GtkTreeModel) &C.GtkWidget
-fn C.gtk_icon_view_set_model(a &C.GtkIconView, b &C.GtkTreeModel)
-fn C.gtk_icon_view_get_model(a &C.GtkIconView) &C.GtkTreeModel
-fn C.gtk_icon_view_set_text_column(a &C.GtkIconView, b int)
-fn C.gtk_icon_view_get_text_column(a &C.GtkIconView) int
-fn C.gtk_icon_view_set_markup_column(a &C.GtkIconView, b int)
-fn C.gtk_icon_view_get_markup_column(a &C.GtkIconView) int
-fn C.gtk_icon_view_set_pixbuf_column(a &C.GtkIconView, b int)
-fn C.gtk_icon_view_get_pixbuf_column(a &C.GtkIconView) int
-fn C.gtk_icon_view_set_item_orientation(a &C.GtkIconView, b GtkOrientation)
-fn C.gtk_icon_view_get_item_orientation(a &C.GtkIconView) GtkOrientation
-fn C.gtk_icon_view_set_columns(a &C.GtkIconView, b int)
-fn C.gtk_icon_view_get_columns(a &C.GtkIconView) int
-fn C.gtk_icon_view_set_item_width(a &C.GtkIconView, b int)
-fn C.gtk_icon_view_get_item_width(a &C.GtkIconView) int
-fn C.gtk_icon_view_set_spacing(a &C.GtkIconView, b int)
-fn C.gtk_icon_view_get_spacing(a &C.GtkIconView) int
-fn C.gtk_icon_view_set_row_spacing(a &C.GtkIconView, b int)
-fn C.gtk_icon_view_get_row_spacing(a &C.GtkIconView) int
-fn C.gtk_icon_view_set_column_spacing(a &C.GtkIconView, b int)
-fn C.gtk_icon_view_get_column_spacing(a &C.GtkIconView) int
-fn C.gtk_icon_view_set_margin(a &C.GtkIconView, b int)
-fn C.gtk_icon_view_get_margin(a &C.GtkIconView) int
-fn C.gtk_icon_view_set_item_padding(a &C.GtkIconView, b int)
-fn C.gtk_icon_view_get_item_padding(a &C.GtkIconView) int
-fn C.gtk_icon_view_get_path_at_pos(a &C.GtkIconView, b int, c int) &C.GtkTreePath
-fn C.gtk_icon_view_get_item_at_pos(a &C.GtkIconView, b int, c int, d &C.GtkTreePath, e &C.GtkCellRenderer) bool
-fn C.gtk_icon_view_get_visible_range(a &C.GtkIconView, b &C.GtkTreePath, c &C.GtkTreePath) bool
-fn C.gtk_icon_view_set_activate_on_single_click(a &C.GtkIconView, b bool)
-fn C.gtk_icon_view_get_activate_on_single_click(a &C.GtkIconView) bool
-fn C.gtk_icon_view_selected_foreach(a &C.GtkIconView, b int, c voidptr)
-fn C.gtk_icon_view_set_selection_mode(a &C.GtkIconView, b GtkSelectionMode)
-fn C.gtk_icon_view_get_selection_mode(a &C.GtkIconView) GtkSelectionMode
-fn C.gtk_icon_view_select_path(a &C.GtkIconView, b &C.GtkTreePath)
-fn C.gtk_icon_view_unselect_path(a &C.GtkIconView, b &C.GtkTreePath)
-fn C.gtk_icon_view_path_is_selected(a &C.GtkIconView, b &C.GtkTreePath) bool
-fn C.gtk_icon_view_get_item_row(a &C.GtkIconView, b &C.GtkTreePath) int
-fn C.gtk_icon_view_get_item_column(a &C.GtkIconView, b &C.GtkTreePath) int
-fn C.gtk_icon_view_get_selected_items(a &C.GtkIconView) voidptr
-fn C.gtk_icon_view_select_all(a &C.GtkIconView)
-fn C.gtk_icon_view_unselect_all(a &C.GtkIconView)
-fn C.gtk_icon_view_item_activated(a &C.GtkIconView, b &C.GtkTreePath)
-fn C.gtk_icon_view_set_cursor(a &C.GtkIconView, b &C.GtkTreePath, c &C.GtkCellRenderer, d bool)
-fn C.gtk_icon_view_get_cursor(a &C.GtkIconView, b &C.GtkTreePath, c &C.GtkCellRenderer) bool
-fn C.gtk_icon_view_scroll_to_path(a &C.GtkIconView, b &C.GtkTreePath, c bool, d f64, e f64)
-fn C.gtk_icon_view_enable_model_drag_source(a &C.GtkIconView, b voidptr, c voidptr, d voidptr)
-fn C.gtk_icon_view_enable_model_drag_dest(a &C.GtkIconView, b voidptr, c voidptr)
-fn C.gtk_icon_view_unset_model_drag_source(a &C.GtkIconView)
-fn C.gtk_icon_view_unset_model_drag_dest(a &C.GtkIconView)
-fn C.gtk_icon_view_set_reorderable(a &C.GtkIconView, b bool)
-fn C.gtk_icon_view_get_reorderable(a &C.GtkIconView) bool
-fn C.gtk_icon_view_set_drag_dest_item(a &C.GtkIconView, b &C.GtkTreePath, c GtkIconViewDropPosition)
-fn C.gtk_icon_view_get_drag_dest_item(a &C.GtkIconView, b &C.GtkTreePath, c GtkIconViewDropPosition)
-fn C.gtk_icon_view_get_dest_item_at_pos(a &C.GtkIconView, b int, c int, d &C.GtkTreePath, e GtkIconViewDropPosition) bool
-fn C.gtk_icon_view_create_drag_icon(a &C.GtkIconView, b &C.GtkTreePath) voidptr
-fn C.gtk_icon_view_get_cell_rect(a &C.GtkIconView, b &C.GtkTreePath, c &C.GtkCellRenderer, d voidptr) bool
-fn C.gtk_icon_view_set_tooltip_item(a &C.GtkIconView, b &C.GtkTooltip, c &C.GtkTreePath)
-fn C.gtk_icon_view_set_tooltip_cell(a &C.GtkIconView, b &C.GtkTooltip, c &C.GtkTreePath, d &C.GtkCellRenderer)
-fn C.gtk_icon_view_get_tooltip_context(a &C.GtkIconView, b int, c int, d bool, e &C.GtkTreeModel, f &C.GtkTreePath, g &C.GtkTreeIter) bool
-fn C.gtk_icon_view_set_tooltip_column(a &C.GtkIconView, b int)
-fn C.gtk_icon_view_get_tooltip_column(a &C.GtkIconView) int
+pub fn C.gtk_icon_view_get_type() int
+pub fn C.gtk_icon_view_new() &GtkWidget
+pub fn C.gtk_icon_view_new_with_area(area &GtkCellArea) &GtkWidget
+pub fn C.gtk_icon_view_new_with_model(model &GtkTreeModel) &GtkWidget
+pub fn C.gtk_icon_view_set_model(icon_view &GtkIconView, model &GtkTreeModel)
+pub fn C.gtk_icon_view_get_model(icon_view &GtkIconView) &GtkTreeModel
+pub fn C.gtk_icon_view_set_text_column(icon_view &GtkIconView, column int)
+pub fn C.gtk_icon_view_get_text_column(icon_view &GtkIconView) int
+pub fn C.gtk_icon_view_set_markup_column(icon_view &GtkIconView, column int)
+pub fn C.gtk_icon_view_get_markup_column(icon_view &GtkIconView) int
+pub fn C.gtk_icon_view_set_pixbuf_column(icon_view &GtkIconView, column int)
+pub fn C.gtk_icon_view_get_pixbuf_column(icon_view &GtkIconView) int
+pub fn C.gtk_icon_view_set_item_orientation(icon_view &GtkIconView, orientation GtkOrientation)
+pub fn C.gtk_icon_view_get_item_orientation(icon_view &GtkIconView) GtkOrientation
+pub fn C.gtk_icon_view_set_columns(icon_view &GtkIconView, columns int)
+pub fn C.gtk_icon_view_get_columns(icon_view &GtkIconView) int
+pub fn C.gtk_icon_view_set_item_width(icon_view &GtkIconView, item_width int)
+pub fn C.gtk_icon_view_get_item_width(icon_view &GtkIconView) int
+pub fn C.gtk_icon_view_set_spacing(icon_view &GtkIconView, spacing int)
+pub fn C.gtk_icon_view_get_spacing(icon_view &GtkIconView) int
+pub fn C.gtk_icon_view_set_row_spacing(icon_view &GtkIconView, row_spacing int)
+pub fn C.gtk_icon_view_get_row_spacing(icon_view &GtkIconView) int
+pub fn C.gtk_icon_view_set_column_spacing(icon_view &GtkIconView, column_spacing int)
+pub fn C.gtk_icon_view_get_column_spacing(icon_view &GtkIconView) int
+pub fn C.gtk_icon_view_set_margin(icon_view &GtkIconView, margin int)
+pub fn C.gtk_icon_view_get_margin(icon_view &GtkIconView) int
+pub fn C.gtk_icon_view_set_item_padding(icon_view &GtkIconView, item_padding int)
+pub fn C.gtk_icon_view_get_item_padding(icon_view &GtkIconView) int
+pub fn C.gtk_icon_view_get_path_at_pos(icon_view &GtkIconView, x int, y int) &GtkTreePath
+pub fn C.gtk_icon_view_get_item_at_pos(icon_view &GtkIconView, x int, y int, path &GtkTreePath, cell &GtkCellRenderer) bool
+pub fn C.gtk_icon_view_get_visible_range(icon_view &GtkIconView, start_path &GtkTreePath, end_path &GtkTreePath) bool
+pub fn C.gtk_icon_view_set_activate_on_single_click(icon_view &GtkIconView, single bool)
+pub fn C.gtk_icon_view_get_activate_on_single_click(icon_view &GtkIconView) bool
+pub fn C.gtk_icon_view_selected_foreach(icon_view &GtkIconView, func voidptr, data voidptr)
+pub fn C.gtk_icon_view_set_selection_mode(icon_view &GtkIconView, mode GtkSelectionMode)
+pub fn C.gtk_icon_view_get_selection_mode(icon_view &GtkIconView) GtkSelectionMode
+pub fn C.gtk_icon_view_select_path(icon_view &GtkIconView, path &GtkTreePath)
+pub fn C.gtk_icon_view_unselect_path(icon_view &GtkIconView, path &GtkTreePath)
+pub fn C.gtk_icon_view_path_is_selected(icon_view &GtkIconView, path &GtkTreePath) bool
+pub fn C.gtk_icon_view_get_item_row(icon_view &GtkIconView, path &GtkTreePath) int
+pub fn C.gtk_icon_view_get_item_column(icon_view &GtkIconView, path &GtkTreePath) int
+pub fn C.gtk_icon_view_get_selected_items(icon_view &GtkIconView) voidptr
+pub fn C.gtk_icon_view_select_all(icon_view &GtkIconView)
+pub fn C.gtk_icon_view_unselect_all(icon_view &GtkIconView)
+pub fn C.gtk_icon_view_item_activated(icon_view &GtkIconView, path &GtkTreePath)
+pub fn C.gtk_icon_view_set_cursor(icon_view &GtkIconView, path &GtkTreePath, cell &GtkCellRenderer, start_editing bool)
+pub fn C.gtk_icon_view_get_cursor(icon_view &GtkIconView, path &GtkTreePath, cell &GtkCellRenderer) bool
+pub fn C.gtk_icon_view_scroll_to_path(icon_view &GtkIconView, path &GtkTreePath, use_align bool, row_align f64, col_align f64)
+pub fn C.gtk_icon_view_enable_model_drag_source(icon_view &GtkIconView, start_button_mask voidptr, formats voidptr, actions voidptr)
+pub fn C.gtk_icon_view_enable_model_drag_dest(icon_view &GtkIconView, formats voidptr, actions voidptr)
+pub fn C.gtk_icon_view_unset_model_drag_source(icon_view &GtkIconView)
+pub fn C.gtk_icon_view_unset_model_drag_dest(icon_view &GtkIconView)
+pub fn C.gtk_icon_view_set_reorderable(icon_view &GtkIconView, reorderable bool)
+pub fn C.gtk_icon_view_get_reorderable(icon_view &GtkIconView) bool
+pub fn C.gtk_icon_view_set_drag_dest_item(icon_view &GtkIconView, path &GtkTreePath, pos GtkIconViewDropPosition)
+pub fn C.gtk_icon_view_get_drag_dest_item(icon_view &GtkIconView, path &GtkTreePath, pos GtkIconViewDropPosition)
+pub fn C.gtk_icon_view_get_dest_item_at_pos(icon_view &GtkIconView, drag_x int, drag_y int, path &GtkTreePath, pos GtkIconViewDropPosition) bool
+pub fn C.gtk_icon_view_create_drag_icon(icon_view &GtkIconView, path &GtkTreePath) voidptr
+pub fn C.gtk_icon_view_get_cell_rect(icon_view &GtkIconView, path &GtkTreePath, cell &GtkCellRenderer, rect voidptr) bool
+pub fn C.gtk_icon_view_set_tooltip_item(icon_view &GtkIconView, tooltip &GtkTooltip, path &GtkTreePath)
+pub fn C.gtk_icon_view_set_tooltip_cell(icon_view &GtkIconView, tooltip &GtkTooltip, path &GtkTreePath, cell &GtkCellRenderer)
+pub fn C.gtk_icon_view_get_tooltip_context(icon_view &GtkIconView, x int, y int, keyboard_tip bool, model &GtkTreeModel, path &GtkTreePath, iter &GtkTreeIter) bool
+pub fn C.gtk_icon_view_set_tooltip_column(icon_view &GtkIconView, column int)
+pub fn C.gtk_icon_view_get_tooltip_column(icon_view &GtkIconView) int
 
 @[noinit; typedef]
 pub struct C.GtkIconView {}
@@ -92,160 +92,160 @@ pub fn GtkIconView.new() &GtkWidget {
 	return C.gtk_icon_view_new()
 }
 
-pub fn GtkIconView.new_with_area(a &C.GtkCellArea) &GtkWidget {
-	return C.gtk_icon_view_new_with_area(a)
+pub fn GtkIconView.new_with_area(area &GtkCellArea) &GtkWidget {
+	return C.gtk_icon_view_new_with_area(area)
 }
 
-pub fn GtkIconView.new_with_model(a &C.GtkTreeModel) &GtkWidget {
-	return C.gtk_icon_view_new_with_model(a)
+pub fn GtkIconView.new_with_model(model &GtkTreeModel) &GtkWidget {
+	return C.gtk_icon_view_new_with_model(model)
 }
 
-pub fn (self &GtkIconView) set_model(b &C.GtkTreeModel) {
-	C.gtk_icon_view_set_model(self, b)
+pub fn (self &GtkIconView) set_model(model &GtkTreeModel) {
+	C.gtk_icon_view_set_model(self, model)
 }
 
-pub fn (self &GtkIconView) get_model() &C.GtkTreeModel {
+pub fn (self &GtkIconView) get_model() &GtkTreeModel {
 	return C.gtk_icon_view_get_model(self)
 }
 
-pub fn (self &GtkIconView) set_text_column(b int) {
-	C.gtk_icon_view_set_text_column(self, b)
+pub fn (self &GtkIconView) set_text_column(column int) {
+	C.gtk_icon_view_set_text_column(self, column)
 }
 
 pub fn (self &GtkIconView) get_text_column() int {
 	return C.gtk_icon_view_get_text_column(self)
 }
 
-pub fn (self &GtkIconView) set_markup_column(b int) {
-	C.gtk_icon_view_set_markup_column(self, b)
+pub fn (self &GtkIconView) set_markup_column(column int) {
+	C.gtk_icon_view_set_markup_column(self, column)
 }
 
 pub fn (self &GtkIconView) get_markup_column() int {
 	return C.gtk_icon_view_get_markup_column(self)
 }
 
-pub fn (self &GtkIconView) set_pixbuf_column(b int) {
-	C.gtk_icon_view_set_pixbuf_column(self, b)
+pub fn (self &GtkIconView) set_pixbuf_column(column int) {
+	C.gtk_icon_view_set_pixbuf_column(self, column)
 }
 
 pub fn (self &GtkIconView) get_pixbuf_column() int {
 	return C.gtk_icon_view_get_pixbuf_column(self)
 }
 
-pub fn (self &GtkIconView) set_item_orientation(b GtkOrientation) {
-	C.gtk_icon_view_set_item_orientation(self, b)
+pub fn (self &GtkIconView) set_item_orientation(orientation GtkOrientation) {
+	C.gtk_icon_view_set_item_orientation(self, orientation)
 }
 
 pub fn (self &GtkIconView) get_item_orientation() GtkOrientation {
 	return C.gtk_icon_view_get_item_orientation(self)
 }
 
-pub fn (self &GtkIconView) set_columns(b int) {
-	C.gtk_icon_view_set_columns(self, b)
+pub fn (self &GtkIconView) set_columns(columns int) {
+	C.gtk_icon_view_set_columns(self, columns)
 }
 
 pub fn (self &GtkIconView) get_columns() int {
 	return C.gtk_icon_view_get_columns(self)
 }
 
-pub fn (self &GtkIconView) set_item_width(b int) {
-	C.gtk_icon_view_set_item_width(self, b)
+pub fn (self &GtkIconView) set_item_width(item_width int) {
+	C.gtk_icon_view_set_item_width(self, item_width)
 }
 
 pub fn (self &GtkIconView) get_item_width() int {
 	return C.gtk_icon_view_get_item_width(self)
 }
 
-pub fn (self &GtkIconView) set_spacing(b int) {
-	C.gtk_icon_view_set_spacing(self, b)
+pub fn (self &GtkIconView) set_spacing(spacing int) {
+	C.gtk_icon_view_set_spacing(self, spacing)
 }
 
 pub fn (self &GtkIconView) get_spacing() int {
 	return C.gtk_icon_view_get_spacing(self)
 }
 
-pub fn (self &GtkIconView) set_row_spacing(b int) {
-	C.gtk_icon_view_set_row_spacing(self, b)
+pub fn (self &GtkIconView) set_row_spacing(row_spacing int) {
+	C.gtk_icon_view_set_row_spacing(self, row_spacing)
 }
 
 pub fn (self &GtkIconView) get_row_spacing() int {
 	return C.gtk_icon_view_get_row_spacing(self)
 }
 
-pub fn (self &GtkIconView) set_column_spacing(b int) {
-	C.gtk_icon_view_set_column_spacing(self, b)
+pub fn (self &GtkIconView) set_column_spacing(column_spacing int) {
+	C.gtk_icon_view_set_column_spacing(self, column_spacing)
 }
 
 pub fn (self &GtkIconView) get_column_spacing() int {
 	return C.gtk_icon_view_get_column_spacing(self)
 }
 
-pub fn (self &GtkIconView) set_margin(b int) {
-	C.gtk_icon_view_set_margin(self, b)
+pub fn (self &GtkIconView) set_margin(margin int) {
+	C.gtk_icon_view_set_margin(self, margin)
 }
 
 pub fn (self &GtkIconView) get_margin() int {
 	return C.gtk_icon_view_get_margin(self)
 }
 
-pub fn (self &GtkIconView) set_item_padding(b int) {
-	C.gtk_icon_view_set_item_padding(self, b)
+pub fn (self &GtkIconView) set_item_padding(item_padding int) {
+	C.gtk_icon_view_set_item_padding(self, item_padding)
 }
 
 pub fn (self &GtkIconView) get_item_padding() int {
 	return C.gtk_icon_view_get_item_padding(self)
 }
 
-pub fn (self &GtkIconView) get_path_at_pos(b int, c int) &C.GtkTreePath {
-	return C.gtk_icon_view_get_path_at_pos(self, b, c)
+pub fn (self &GtkIconView) get_path_at_pos(x int, y int) &GtkTreePath {
+	return C.gtk_icon_view_get_path_at_pos(self, x, y)
 }
 
-pub fn (self &GtkIconView) get_item_at_pos(b int, c int, d &C.GtkTreePath, e &C.GtkCellRenderer) bool {
-	return C.gtk_icon_view_get_item_at_pos(self, b, c, d, e)
+pub fn (self &GtkIconView) get_item_at_pos(x int, y int, path &GtkTreePath, cell &GtkCellRenderer) bool {
+	return C.gtk_icon_view_get_item_at_pos(self, x, y, path, cell)
 }
 
-pub fn (self &GtkIconView) get_visible_range(b &C.GtkTreePath, c &C.GtkTreePath) bool {
-	return C.gtk_icon_view_get_visible_range(self, b, c)
+pub fn (self &GtkIconView) get_visible_range(start_path &GtkTreePath, end_path &GtkTreePath) bool {
+	return C.gtk_icon_view_get_visible_range(self, start_path, end_path)
 }
 
-pub fn (self &GtkIconView) set_activate_on_single_click(b bool) {
-	C.gtk_icon_view_set_activate_on_single_click(self, b)
+pub fn (self &GtkIconView) set_activate_on_single_click(single bool) {
+	C.gtk_icon_view_set_activate_on_single_click(self, single)
 }
 
 pub fn (self &GtkIconView) get_activate_on_single_click() bool {
 	return C.gtk_icon_view_get_activate_on_single_click(self)
 }
 
-pub fn (self &GtkIconView) selected_foreach(b int, c voidptr) {
-	C.gtk_icon_view_selected_foreach(self, b, c)
+pub fn (self &GtkIconView) selected_foreach(func voidptr, data voidptr) {
+	C.gtk_icon_view_selected_foreach(self, func, data)
 }
 
-pub fn (self &GtkIconView) set_selection_mode(b GtkSelectionMode) {
-	C.gtk_icon_view_set_selection_mode(self, b)
+pub fn (self &GtkIconView) set_selection_mode(mode GtkSelectionMode) {
+	C.gtk_icon_view_set_selection_mode(self, mode)
 }
 
 pub fn (self &GtkIconView) get_selection_mode() GtkSelectionMode {
 	return C.gtk_icon_view_get_selection_mode(self)
 }
 
-pub fn (self &GtkIconView) select_path(b &C.GtkTreePath) {
-	C.gtk_icon_view_select_path(self, b)
+pub fn (self &GtkIconView) select_path(path &GtkTreePath) {
+	C.gtk_icon_view_select_path(self, path)
 }
 
-pub fn (self &GtkIconView) unselect_path(b &C.GtkTreePath) {
-	C.gtk_icon_view_unselect_path(self, b)
+pub fn (self &GtkIconView) unselect_path(path &GtkTreePath) {
+	C.gtk_icon_view_unselect_path(self, path)
 }
 
-pub fn (self &GtkIconView) path_is_selected(b &C.GtkTreePath) bool {
-	return C.gtk_icon_view_path_is_selected(self, b)
+pub fn (self &GtkIconView) path_is_selected(path &GtkTreePath) bool {
+	return C.gtk_icon_view_path_is_selected(self, path)
 }
 
-pub fn (self &GtkIconView) get_item_row(b &C.GtkTreePath) int {
-	return C.gtk_icon_view_get_item_row(self, b)
+pub fn (self &GtkIconView) get_item_row(path &GtkTreePath) int {
+	return C.gtk_icon_view_get_item_row(self, path)
 }
 
-pub fn (self &GtkIconView) get_item_column(b &C.GtkTreePath) int {
-	return C.gtk_icon_view_get_item_column(self, b)
+pub fn (self &GtkIconView) get_item_column(path &GtkTreePath) int {
+	return C.gtk_icon_view_get_item_column(self, path)
 }
 
 pub fn (self &GtkIconView) get_selected_items() voidptr {
@@ -260,28 +260,28 @@ pub fn (self &GtkIconView) unselect_all() {
 	C.gtk_icon_view_unselect_all(self)
 }
 
-pub fn (self &GtkIconView) item_activated(b &C.GtkTreePath) {
-	C.gtk_icon_view_item_activated(self, b)
+pub fn (self &GtkIconView) item_activated(path &GtkTreePath) {
+	C.gtk_icon_view_item_activated(self, path)
 }
 
-pub fn (self &GtkIconView) set_cursor(b &C.GtkTreePath, c &C.GtkCellRenderer, d bool) {
-	C.gtk_icon_view_set_cursor(self, b, c, d)
+pub fn (self &GtkIconView) set_cursor(path &GtkTreePath, cell &GtkCellRenderer, start_editing bool) {
+	C.gtk_icon_view_set_cursor(self, path, cell, start_editing)
 }
 
-pub fn (self &GtkIconView) get_cursor(b &C.GtkTreePath, c &C.GtkCellRenderer) bool {
-	return C.gtk_icon_view_get_cursor(self, b, c)
+pub fn (self &GtkIconView) get_cursor(path &GtkTreePath, cell &GtkCellRenderer) bool {
+	return C.gtk_icon_view_get_cursor(self, path, cell)
 }
 
-pub fn (self &GtkIconView) scroll_to_path(b &C.GtkTreePath, c bool, d f64, e f64) {
-	C.gtk_icon_view_scroll_to_path(self, b, c, d, e)
+pub fn (self &GtkIconView) scroll_to_path(path &GtkTreePath, use_align bool, row_align f64, col_align f64) {
+	C.gtk_icon_view_scroll_to_path(self, path, use_align, row_align, col_align)
 }
 
-pub fn (self &GtkIconView) enable_model_drag_source(b voidptr, c voidptr, d voidptr) {
-	C.gtk_icon_view_enable_model_drag_source(self, b, c, d)
+pub fn (self &GtkIconView) enable_model_drag_source(start_button_mask voidptr, formats voidptr, actions voidptr) {
+	C.gtk_icon_view_enable_model_drag_source(self, start_button_mask, formats, actions)
 }
 
-pub fn (self &GtkIconView) enable_model_drag_dest(b voidptr, c voidptr) {
-	C.gtk_icon_view_enable_model_drag_dest(self, b, c)
+pub fn (self &GtkIconView) enable_model_drag_dest(formats voidptr, actions voidptr) {
+	C.gtk_icon_view_enable_model_drag_dest(self, formats, actions)
 }
 
 pub fn (self &GtkIconView) unset_model_drag_source() {
@@ -292,48 +292,49 @@ pub fn (self &GtkIconView) unset_model_drag_dest() {
 	C.gtk_icon_view_unset_model_drag_dest(self)
 }
 
-pub fn (self &GtkIconView) set_reorderable(b bool) {
-	C.gtk_icon_view_set_reorderable(self, b)
+pub fn (self &GtkIconView) set_reorderable(reorderable bool) {
+	C.gtk_icon_view_set_reorderable(self, reorderable)
 }
 
 pub fn (self &GtkIconView) get_reorderable() bool {
 	return C.gtk_icon_view_get_reorderable(self)
 }
 
-pub fn (self &GtkIconView) set_drag_dest_item(b &C.GtkTreePath, c GtkIconViewDropPosition) {
-	C.gtk_icon_view_set_drag_dest_item(self, b, c)
+pub fn (self &GtkIconView) set_drag_dest_item(path &GtkTreePath, pos GtkIconViewDropPosition) {
+	C.gtk_icon_view_set_drag_dest_item(self, path, pos)
 }
 
-pub fn (self &GtkIconView) get_drag_dest_item(b &C.GtkTreePath, c GtkIconViewDropPosition) {
-	C.gtk_icon_view_get_drag_dest_item(self, b, c)
+pub fn (self &GtkIconView) get_drag_dest_item(path &GtkTreePath, pos GtkIconViewDropPosition) {
+	C.gtk_icon_view_get_drag_dest_item(self, path, pos)
 }
 
-pub fn (self &GtkIconView) get_dest_item_at_pos(b int, c int, d &C.GtkTreePath, e GtkIconViewDropPosition) bool {
-	return C.gtk_icon_view_get_dest_item_at_pos(self, b, c, d, e)
+pub fn (self &GtkIconView) get_dest_item_at_pos(drag_x int, drag_y int, path &GtkTreePath, pos GtkIconViewDropPosition) bool {
+	return C.gtk_icon_view_get_dest_item_at_pos(self, drag_x, drag_y, path, pos)
 }
 
-pub fn (self &GtkIconView) create_drag_icon(b &C.GtkTreePath) voidptr {
-	return C.gtk_icon_view_create_drag_icon(self, b)
+pub fn (self &GtkIconView) create_drag_icon(path &GtkTreePath) voidptr {
+	return C.gtk_icon_view_create_drag_icon(self, path)
 }
 
-pub fn (self &GtkIconView) get_cell_rect(b &C.GtkTreePath, c &C.GtkCellRenderer, d voidptr) bool {
-	return C.gtk_icon_view_get_cell_rect(self, b, c, d)
+pub fn (self &GtkIconView) get_cell_rect(path &GtkTreePath, cell &GtkCellRenderer, rect voidptr) bool {
+	return C.gtk_icon_view_get_cell_rect(self, path, cell, rect)
 }
 
-pub fn (self &GtkIconView) set_tooltip_item(b &C.GtkTooltip, c &C.GtkTreePath) {
-	C.gtk_icon_view_set_tooltip_item(self, b, c)
+pub fn (self &GtkIconView) set_tooltip_item(tooltip &GtkTooltip, path &GtkTreePath) {
+	C.gtk_icon_view_set_tooltip_item(self, tooltip, path)
 }
 
-pub fn (self &GtkIconView) set_tooltip_cell(b &C.GtkTooltip, c &C.GtkTreePath, d &C.GtkCellRenderer) {
-	C.gtk_icon_view_set_tooltip_cell(self, b, c, d)
+pub fn (self &GtkIconView) set_tooltip_cell(tooltip &GtkTooltip, path &GtkTreePath, cell &GtkCellRenderer) {
+	C.gtk_icon_view_set_tooltip_cell(self, tooltip, path, cell)
 }
 
-pub fn (self &GtkIconView) get_tooltip_context(b int, c int, d bool, e &C.GtkTreeModel, f &C.GtkTreePath, g &C.GtkTreeIter) bool {
-	return C.gtk_icon_view_get_tooltip_context(self, b, c, d, e, f, g)
+pub fn (self &GtkIconView) get_tooltip_context(x int, y int, keyboard_tip bool, model &GtkTreeModel, path &GtkTreePath, iter &GtkTreeIter) bool {
+	return C.gtk_icon_view_get_tooltip_context(self, x, y, keyboard_tip, model, path,
+		iter)
 }
 
-pub fn (self &GtkIconView) set_tooltip_column(b int) {
-	C.gtk_icon_view_set_tooltip_column(self, b)
+pub fn (self &GtkIconView) set_tooltip_column(column int) {
+	C.gtk_icon_view_set_tooltip_column(self, column)
 }
 
 pub fn (self &GtkIconView) get_tooltip_column() int {

@@ -5,9 +5,9 @@ pub struct C.GtkCustomSorterClass {}
 
 pub type GtkCustomSorterClass = C.GtkCustomSorterClass
 
-fn C.gtk_custom_sorter_get_type() int
-fn C.gtk_custom_sorter_new(a voidptr, b voidptr, c voidptr) &C.GtkCustomSorter
-fn C.gtk_custom_sorter_set_sort_func(a &C.GtkCustomSorter, b voidptr, c voidptr, d voidptr)
+pub fn C.gtk_custom_sorter_get_type() int
+pub fn C.gtk_custom_sorter_new(sort_func voidptr, user_data voidptr, user_destroy voidptr) &GtkCustomSorter
+pub fn C.gtk_custom_sorter_set_sort_func(self &GtkCustomSorter, sort_func voidptr, user_data voidptr, user_destroy voidptr)
 
 @[noinit; typedef]
 pub struct C.GtkCustomSorter {}
@@ -18,10 +18,10 @@ pub fn (self &GtkCustomSorter) get_type() int {
 	return C.gtk_custom_sorter_get_type()
 }
 
-pub fn GtkCustomSorter.new(a voidptr, b voidptr, c voidptr) &GtkCustomSorter {
-	return C.gtk_custom_sorter_new(a, b, c)
+pub fn GtkCustomSorter.new(sort_func voidptr, user_data voidptr, user_destroy voidptr) &GtkCustomSorter {
+	return C.gtk_custom_sorter_new(sort_func, user_data, user_destroy)
 }
 
-pub fn (self &GtkCustomSorter) set_sort_func(b voidptr, c voidptr, d voidptr) {
-	C.gtk_custom_sorter_set_sort_func(self, b, c, d)
+pub fn (self &GtkCustomSorter) set_sort_func(sort_func voidptr, user_data voidptr, user_destroy voidptr) {
+	C.gtk_custom_sorter_set_sort_func(self, sort_func, user_data, user_destroy)
 }

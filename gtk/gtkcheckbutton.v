@@ -5,19 +5,19 @@ pub struct C.GtkCheckButtonClass {}
 
 pub type GtkCheckButtonClass = C.GtkCheckButtonClass
 
-fn C.gtk_check_button_get_type() int
-fn C.gtk_check_button_new() &C.GtkWidget
-fn C.gtk_check_button_new_with_label(a &char) &C.GtkWidget
-fn C.gtk_check_button_new_with_mnemonic(a &char) &C.GtkWidget
-fn C.gtk_check_button_set_inconsistent(a &C.GtkCheckButton, b bool)
-fn C.gtk_check_button_get_inconsistent(a &C.GtkCheckButton) bool
-fn C.gtk_check_button_get_active(a &C.GtkCheckButton) bool
-fn C.gtk_check_button_set_active(a &C.GtkCheckButton, b bool)
-fn C.gtk_check_button_get_label(a &C.GtkCheckButton) &char
-fn C.gtk_check_button_set_label(a &C.GtkCheckButton, b &char)
-fn C.gtk_check_button_set_group(a &C.GtkCheckButton, b &C.GtkCheckButton)
-fn C.gtk_check_button_get_use_underline(a &C.GtkCheckButton) bool
-fn C.gtk_check_button_set_use_underline(a &C.GtkCheckButton, b bool)
+pub fn C.gtk_check_button_get_type() int
+pub fn C.gtk_check_button_new() &GtkWidget
+pub fn C.gtk_check_button_new_with_label(label &char) &GtkWidget
+pub fn C.gtk_check_button_new_with_mnemonic(label &char) &GtkWidget
+pub fn C.gtk_check_button_set_inconsistent(check_button &GtkCheckButton, inconsistent bool)
+pub fn C.gtk_check_button_get_inconsistent(check_button &GtkCheckButton) bool
+pub fn C.gtk_check_button_get_active(self &GtkCheckButton) bool
+pub fn C.gtk_check_button_set_active(self &GtkCheckButton, setting bool)
+pub fn C.gtk_check_button_get_label(self &GtkCheckButton) &char
+pub fn C.gtk_check_button_set_label(self &GtkCheckButton, label &char)
+pub fn C.gtk_check_button_set_group(self &GtkCheckButton, group &GtkCheckButton)
+pub fn C.gtk_check_button_get_use_underline(self &GtkCheckButton) bool
+pub fn C.gtk_check_button_set_use_underline(self &GtkCheckButton, setting bool)
 
 @[noinit; typedef]
 pub struct C.GtkCheckButton {}
@@ -32,16 +32,16 @@ pub fn GtkCheckButton.new() &GtkWidget {
 	return C.gtk_check_button_new()
 }
 
-pub fn GtkCheckButton.new_with_label(a &char) &GtkWidget {
-	return C.gtk_check_button_new_with_label(a)
+pub fn GtkCheckButton.new_with_label(label &char) &GtkWidget {
+	return C.gtk_check_button_new_with_label(label)
 }
 
-pub fn GtkCheckButton.new_with_mnemonic(a &char) &GtkWidget {
-	return C.gtk_check_button_new_with_mnemonic(a)
+pub fn GtkCheckButton.new_with_mnemonic(label &char) &GtkWidget {
+	return C.gtk_check_button_new_with_mnemonic(label)
 }
 
-pub fn (self &GtkCheckButton) set_inconsistent(b bool) {
-	C.gtk_check_button_set_inconsistent(self, b)
+pub fn (self &GtkCheckButton) set_inconsistent(inconsistent bool) {
+	C.gtk_check_button_set_inconsistent(self, inconsistent)
 }
 
 pub fn (self &GtkCheckButton) get_inconsistent() bool {
@@ -52,26 +52,26 @@ pub fn (self &GtkCheckButton) get_active() bool {
 	return C.gtk_check_button_get_active(self)
 }
 
-pub fn (self &GtkCheckButton) set_active(b bool) {
-	C.gtk_check_button_set_active(self, b)
+pub fn (self &GtkCheckButton) set_active(setting bool) {
+	C.gtk_check_button_set_active(self, setting)
 }
 
 pub fn (self &GtkCheckButton) get_label() &char {
 	return C.gtk_check_button_get_label(self)
 }
 
-pub fn (self &GtkCheckButton) set_label(b &char) {
-	C.gtk_check_button_set_label(self, b)
+pub fn (self &GtkCheckButton) set_label(label &char) {
+	C.gtk_check_button_set_label(self, label)
 }
 
-pub fn (self &GtkCheckButton) set_group(b &C.GtkCheckButton) {
-	C.gtk_check_button_set_group(self, b)
+pub fn (self &GtkCheckButton) set_group(group &GtkCheckButton) {
+	C.gtk_check_button_set_group(self, group)
 }
 
 pub fn (self &GtkCheckButton) get_use_underline() bool {
 	return C.gtk_check_button_get_use_underline(self)
 }
 
-pub fn (self &GtkCheckButton) set_use_underline(b bool) {
-	C.gtk_check_button_set_use_underline(self, b)
+pub fn (self &GtkCheckButton) set_use_underline(setting bool) {
+	C.gtk_check_button_set_use_underline(self, setting)
 }

@@ -18,10 +18,10 @@ pub enum GtkSorterChange {
 	gtk_sorter_change_more_strict
 }
 
-fn C.gtk_sorter_get_type() int
-fn C.gtk_sorter_compare(a &C.GtkSorter, b voidptr, c voidptr) GtkOrdering
-fn C.gtk_sorter_get_order(a &C.GtkSorter) GtkSorterOrder
-fn C.gtk_sorter_changed(a &C.GtkSorter, b GtkSorterChange)
+pub fn C.gtk_sorter_get_type() int
+pub fn C.gtk_sorter_compare(self &GtkSorter, item1 voidptr, item2 voidptr) GtkOrdering
+pub fn C.gtk_sorter_get_order(self &GtkSorter) GtkSorterOrder
+pub fn C.gtk_sorter_changed(self &GtkSorter, change GtkSorterChange)
 
 @[noinit; typedef]
 pub struct C.GtkSorter {}
@@ -32,14 +32,14 @@ pub fn (self &GtkSorter) get_type() int {
 	return C.gtk_sorter_get_type()
 }
 
-pub fn (self &GtkSorter) compare(b voidptr, c voidptr) GtkOrdering {
-	return C.gtk_sorter_compare(self, b, c)
+pub fn (self &GtkSorter) compare(item1 voidptr, item2 voidptr) GtkOrdering {
+	return C.gtk_sorter_compare(self, item1, item2)
 }
 
 pub fn (self &GtkSorter) get_order() GtkSorterOrder {
 	return C.gtk_sorter_get_order(self)
 }
 
-pub fn (self &GtkSorter) changed(b GtkSorterChange) {
-	C.gtk_sorter_changed(self, b)
+pub fn (self &GtkSorter) changed(change GtkSorterChange) {
+	C.gtk_sorter_changed(self, change)
 }

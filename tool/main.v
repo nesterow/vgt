@@ -6,10 +6,13 @@ import tool { GtkHeader, generate_gtk }
 const frozen = true
 
 fn main() {
-	if frozen {
-		println('codegen is frozen')
-		return
-	}
+	// 	// if frozen {
+	// 	// 	println('codegen is frozen')
+	// 	// 	return
+	// 	// }
+
+	// generate_gtk([GtkHeader{'gtkwidget', 'GtkWidget', 'gtk_widget', false}])!
+
 	generate_gtk([
 		GtkHeader{'gtkaboutdialog', 'GtkAboutDialog', 'gtk_about_dialog', false},
 		GtkHeader{'gtkaccessible', 'GtkAccessible', 'gtk_accessible', false},
@@ -33,6 +36,7 @@ fn main() {
 		GtkHeader{'gtkbox', 'GtkBox', 'gtk_box', false},
 		GtkHeader{'gtkboxlayout', 'GtkBoxLayout', 'gtk_box_layout', false},
 		GtkHeader{'gtkbuildable', 'GtkBuildable', 'gtk_buildable', false},
+		GtkHeader{'gtkbuilder', 'GtkBuilderCScope', 'gtk_builder_cscope', false},
 		GtkHeader{'gtkbuilder', 'GtkBuilder', 'gtk_builder', false},
 		GtkHeader{'gtkbuilderlistitemfactory', 'GtkBuilderListItemFactory', 'gtk_builder_list_item_factory', false},
 		GtkHeader{'gtkbutton', 'GtkButton', 'gtk_button', false},
@@ -102,6 +106,7 @@ fn main() {
 		GtkHeader{'gtkfixed', 'GtkFixed', 'gtk_fixed', false},
 		GtkHeader{'gtkfixedlayout', 'GtkFixedLayout', 'gtk_fixed_layout', false},
 		GtkHeader{'gtkflattenlistmodel', 'GtkFlattenListModel', 'gtk_flatten_list_model', false},
+		GtkHeader{'gtkflowbox', 'GtkFlowBoxChild', 'gtk_flow_box_child', false},
 		GtkHeader{'gtkflowbox', 'GtkFlowBox', 'gtk_flow_box', false},
 		GtkHeader{'gtkfontbutton', 'GtkFontButton', 'gtk_font_button', false},
 		GtkHeader{'gtkfontchooser', 'GtkFontChooser', 'gtk_font_chooser', false},
@@ -123,6 +128,7 @@ fn main() {
 		GtkHeader{'gtkgridlayout', 'GtkGridLayout', 'gtk_grid_layout', false},
 		GtkHeader{'gtkgridview', 'GtkGridView', 'gtk_grid_view', false},
 		GtkHeader{'gtkheaderbar', 'GtkHeaderBar', 'gtk_header_bar', false},
+		GtkHeader{'gtkicontheme', 'GtkIconPaintable', 'gtk_icon_paintable', false},
 		GtkHeader{'gtkicontheme', 'GtkIconTheme', 'gtk_icon_theme', false},
 		GtkHeader{'gtkiconview', 'GtkIconView', 'gtk_icon_view', false},
 		GtkHeader{'gtkimage', 'GtkImage', 'gtk_image', false},
@@ -160,6 +166,7 @@ fn main() {
 		GtkHeader{'gtkorientable', 'GtkOrientable', 'gtk_orientable', false},
 		GtkHeader{'gtkoverlay', 'GtkOverlay', 'gtk_overlay', false},
 		GtkHeader{'gtkoverlaylayout', 'GtkOverlayLayout', 'gtk_overlay_layout', false},
+		GtkHeader{'gtkpadcontroller', 'GtkPadActionEntry', '$$', false},
 		GtkHeader{'gtkpadcontroller', 'GtkPadController', 'gtk_pad_controller', false},
 		GtkHeader{'gtkpagesetup', 'GtkPageSetup', 'gtk_page_setup', false},
 		GtkHeader{'gtkpaned', 'GtkPaned', 'gtk_paned', false},
@@ -176,8 +183,9 @@ fn main() {
 		GtkHeader{'gtkprintsettings', 'GtkPrintSettings', 'gtk_print_settings', false},
 		GtkHeader{'gtkprogressbar', 'GtkProgressBar', 'gtk_progress_bar', false},
 		GtkHeader{'gtkrange', 'GtkRange', 'gtk_range', false},
+		GtkHeader{'gtkrecentmanager', 'GtkRecentData', '$', false},
+		GtkHeader{'gtkrecentmanager', 'GtkRecentInfo', '$', false},
 		GtkHeader{'gtkrecentmanager', 'GtkRecentManager', 'gtk_recent_manager', false},
-		GtkHeader{'gtkrecentmanager', 'GtkRecentInfo', 'gtk_recent_info', false},
 		GtkHeader{'gtkrevealer', 'GtkRevealer', 'gtk_revealer', false},
 		GtkHeader{'gtkroot', 'GtkRoot', 'gtk_root', false},
 		GtkHeader{'gtkscale', 'GtkScale', 'gtk_scale', false},
@@ -210,6 +218,7 @@ fn main() {
 		GtkHeader{'gtksortlistmodel', 'GtkSortListModel', 'gtk_sort_list_model', false},
 		GtkHeader{'gtkspinbutton', 'GtkSpinButton', 'gtk_spin_button', false},
 		GtkHeader{'gtkspinner', 'GtkSpinner', 'gtk_spinner', false},
+		GtkHeader{'gtkstack', 'GtkStackPage', 'gtk_stack_page', false},
 		GtkHeader{'gtkstack', 'GtkStack', 'gtk_stack', false},
 		GtkHeader{'gtkstacksidebar', 'GtkStackSidebar', 'gtk_stack_sidebar', false},
 		GtkHeader{'gtkstackswitcher', 'GtkStackSwitcher', 'gtk_stack_switcher', false},

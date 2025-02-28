@@ -5,11 +5,11 @@ pub struct C.GtkDropControllerMotionClass {}
 
 pub type GtkDropControllerMotionClass = C.GtkDropControllerMotionClass
 
-fn C.gtk_drop_controller_motion_get_type() int
-fn C.gtk_drop_controller_motion_new() &C.GtkEventController
-fn C.gtk_drop_controller_motion_contains_pointer(a &C.GtkDropControllerMotion) bool
-fn C.gtk_drop_controller_motion_get_drop(a &C.GtkDropControllerMotion) voidptr
-fn C.gtk_drop_controller_motion_is_pointer(a &C.GtkDropControllerMotion) bool
+pub fn C.gtk_drop_controller_motion_get_type() int
+pub fn C.gtk_drop_controller_motion_new() &GtkEventController
+pub fn C.gtk_drop_controller_motion_contains_pointer(self &GtkDropControllerMotion) bool
+pub fn C.gtk_drop_controller_motion_get_drop(self &GtkDropControllerMotion) voidptr
+pub fn C.gtk_drop_controller_motion_is_pointer(self &GtkDropControllerMotion) bool
 
 @[noinit; typedef]
 pub struct C.GtkDropControllerMotion {}

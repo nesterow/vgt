@@ -5,13 +5,13 @@ pub struct C.GtkWindowControlsClass {}
 
 pub type GtkWindowControlsClass = C.GtkWindowControlsClass
 
-fn C.gtk_window_controls_get_type() int
-fn C.gtk_window_controls_new(a GtkPackType) &C.GtkWidget
-fn C.gtk_window_controls_get_side(a &C.GtkWindowControls) GtkPackType
-fn C.gtk_window_controls_set_side(a &C.GtkWindowControls, b GtkPackType)
-fn C.gtk_window_controls_get_decoration_layout(a &C.GtkWindowControls) &char
-fn C.gtk_window_controls_set_decoration_layout(a &C.GtkWindowControls, b &char)
-fn C.gtk_window_controls_get_empty(a &C.GtkWindowControls) bool
+pub fn C.gtk_window_controls_get_type() int
+pub fn C.gtk_window_controls_new(side GtkPackType) &GtkWidget
+pub fn C.gtk_window_controls_get_side(self &GtkWindowControls) GtkPackType
+pub fn C.gtk_window_controls_set_side(self &GtkWindowControls, side GtkPackType)
+pub fn C.gtk_window_controls_get_decoration_layout(self &GtkWindowControls) &char
+pub fn C.gtk_window_controls_set_decoration_layout(self &GtkWindowControls, layout &char)
+pub fn C.gtk_window_controls_get_empty(self &GtkWindowControls) bool
 
 @[noinit; typedef]
 pub struct C.GtkWindowControls {}
@@ -22,24 +22,24 @@ pub fn (self &GtkWindowControls) get_type() int {
 	return C.gtk_window_controls_get_type()
 }
 
-pub fn GtkWindowControls.new(a GtkPackType) &GtkWidget {
-	return C.gtk_window_controls_new(a)
+pub fn GtkWindowControls.new(side GtkPackType) &GtkWidget {
+	return C.gtk_window_controls_new(side)
 }
 
 pub fn (self &GtkWindowControls) get_side() GtkPackType {
 	return C.gtk_window_controls_get_side(self)
 }
 
-pub fn (self &GtkWindowControls) set_side(b GtkPackType) {
-	C.gtk_window_controls_set_side(self, b)
+pub fn (self &GtkWindowControls) set_side(side GtkPackType) {
+	C.gtk_window_controls_set_side(self, side)
 }
 
 pub fn (self &GtkWindowControls) get_decoration_layout() &char {
 	return C.gtk_window_controls_get_decoration_layout(self)
 }
 
-pub fn (self &GtkWindowControls) set_decoration_layout(b &char) {
-	C.gtk_window_controls_set_decoration_layout(self, b)
+pub fn (self &GtkWindowControls) set_decoration_layout(layout &char) {
+	C.gtk_window_controls_set_decoration_layout(self, layout)
 }
 
 pub fn (self &GtkWindowControls) get_empty() bool {

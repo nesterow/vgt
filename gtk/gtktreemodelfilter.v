@@ -15,18 +15,18 @@ pub struct C.GtkTreeModelFilterClass {}
 
 pub type GtkTreeModelFilterClass = C.GtkTreeModelFilterClass
 
-fn C.gtk_tree_model_filter_get_type() int
-fn C.gtk_tree_model_filter_new(a &C.GtkTreeModel, b &C.GtkTreePath) &C.GtkTreeModel
-fn C.gtk_tree_model_filter_set_visible_func(a &C.GtkTreeModelFilter, b int, c voidptr, d voidptr)
-fn C.gtk_tree_model_filter_set_modify_func(a &C.GtkTreeModelFilter, b int, c voidptr, d int, e voidptr, f voidptr)
-fn C.gtk_tree_model_filter_set_visible_column(a &C.GtkTreeModelFilter, b int)
-fn C.gtk_tree_model_filter_get_model(a &C.GtkTreeModelFilter) &C.GtkTreeModel
-fn C.gtk_tree_model_filter_convert_child_iter_to_iter(a &C.GtkTreeModelFilter, b &C.GtkTreeIter, c &C.GtkTreeIter) bool
-fn C.gtk_tree_model_filter_convert_iter_to_child_iter(a &C.GtkTreeModelFilter, b &C.GtkTreeIter, c &C.GtkTreeIter)
-fn C.gtk_tree_model_filter_convert_child_path_to_path(a &C.GtkTreeModelFilter, b &C.GtkTreePath) &C.GtkTreePath
-fn C.gtk_tree_model_filter_convert_path_to_child_path(a &C.GtkTreeModelFilter, b &C.GtkTreePath) &C.GtkTreePath
-fn C.gtk_tree_model_filter_refilter(a &C.GtkTreeModelFilter)
-fn C.gtk_tree_model_filter_clear_cache(a &C.GtkTreeModelFilter)
+pub fn C.gtk_tree_model_filter_get_type() int
+pub fn C.gtk_tree_model_filter_new(child_model &GtkTreeModel, root &GtkTreePath) &GtkTreeModel
+pub fn C.gtk_tree_model_filter_set_visible_func(filter &GtkTreeModelFilter, func voidptr, data voidptr, destroy voidptr)
+pub fn C.gtk_tree_model_filter_set_modify_func(filter &GtkTreeModelFilter, n_columns int, typs voidptr, func voidptr, data voidptr, destroy voidptr)
+pub fn C.gtk_tree_model_filter_set_visible_column(filter &GtkTreeModelFilter, column int)
+pub fn C.gtk_tree_model_filter_get_model(filter &GtkTreeModelFilter) &GtkTreeModel
+pub fn C.gtk_tree_model_filter_convert_child_iter_to_iter(filter &GtkTreeModelFilter, filter_iter &GtkTreeIter, child_iter &GtkTreeIter) bool
+pub fn C.gtk_tree_model_filter_convert_iter_to_child_iter(filter &GtkTreeModelFilter, child_iter &GtkTreeIter, filter_iter &GtkTreeIter)
+pub fn C.gtk_tree_model_filter_convert_child_path_to_path(filter &GtkTreeModelFilter, child_path &GtkTreePath) &GtkTreePath
+pub fn C.gtk_tree_model_filter_convert_path_to_child_path(filter &GtkTreeModelFilter, filter_path &GtkTreePath) &GtkTreePath
+pub fn C.gtk_tree_model_filter_refilter(filter &GtkTreeModelFilter)
+pub fn C.gtk_tree_model_filter_clear_cache(filter &GtkTreeModelFilter)
 
 @[noinit; typedef]
 pub struct C.GtkTreeModelFilter {}
@@ -37,40 +37,40 @@ pub fn (self &GtkTreeModelFilter) get_type() int {
 	return C.gtk_tree_model_filter_get_type()
 }
 
-pub fn GtkTreeModelFilter.new(a &C.GtkTreeModel, b &C.GtkTreePath) &GtkTreeModel {
-	return C.gtk_tree_model_filter_new(a, b)
+pub fn GtkTreeModelFilter.new(child_model &GtkTreeModel, root &GtkTreePath) &GtkTreeModel {
+	return C.gtk_tree_model_filter_new(child_model, root)
 }
 
-pub fn (self &GtkTreeModelFilter) set_visible_func(b int, c voidptr, d voidptr) {
-	C.gtk_tree_model_filter_set_visible_func(self, b, c, d)
+pub fn (self &GtkTreeModelFilter) set_visible_func(func voidptr, data voidptr, destroy voidptr) {
+	C.gtk_tree_model_filter_set_visible_func(self, func, data, destroy)
 }
 
-pub fn (self &GtkTreeModelFilter) set_modify_func(b int, c voidptr, d int, e voidptr, f voidptr) {
-	C.gtk_tree_model_filter_set_modify_func(self, b, c, d, e, f)
+pub fn (self &GtkTreeModelFilter) set_modify_func(n_columns int, typs voidptr, func voidptr, data voidptr, destroy voidptr) {
+	C.gtk_tree_model_filter_set_modify_func(self, n_columns, typs, func, data, destroy)
 }
 
-pub fn (self &GtkTreeModelFilter) set_visible_column(b int) {
-	C.gtk_tree_model_filter_set_visible_column(self, b)
+pub fn (self &GtkTreeModelFilter) set_visible_column(column int) {
+	C.gtk_tree_model_filter_set_visible_column(self, column)
 }
 
-pub fn (self &GtkTreeModelFilter) get_model() &C.GtkTreeModel {
+pub fn (self &GtkTreeModelFilter) get_model() &GtkTreeModel {
 	return C.gtk_tree_model_filter_get_model(self)
 }
 
-pub fn (self &GtkTreeModelFilter) convert_child_iter_to_iter(b &C.GtkTreeIter, c &C.GtkTreeIter) bool {
-	return C.gtk_tree_model_filter_convert_child_iter_to_iter(self, b, c)
+pub fn (self &GtkTreeModelFilter) convert_child_iter_to_iter(filter_iter &GtkTreeIter, child_iter &GtkTreeIter) bool {
+	return C.gtk_tree_model_filter_convert_child_iter_to_iter(self, filter_iter, child_iter)
 }
 
-pub fn (self &GtkTreeModelFilter) convert_iter_to_child_iter(b &C.GtkTreeIter, c &C.GtkTreeIter) {
-	C.gtk_tree_model_filter_convert_iter_to_child_iter(self, b, c)
+pub fn (self &GtkTreeModelFilter) convert_iter_to_child_iter(child_iter &GtkTreeIter, filter_iter &GtkTreeIter) {
+	C.gtk_tree_model_filter_convert_iter_to_child_iter(self, child_iter, filter_iter)
 }
 
-pub fn (self &GtkTreeModelFilter) convert_child_path_to_path(b &C.GtkTreePath) &C.GtkTreePath {
-	return C.gtk_tree_model_filter_convert_child_path_to_path(self, b)
+pub fn (self &GtkTreeModelFilter) convert_child_path_to_path(child_path &GtkTreePath) &GtkTreePath {
+	return C.gtk_tree_model_filter_convert_child_path_to_path(self, child_path)
 }
 
-pub fn (self &GtkTreeModelFilter) convert_path_to_child_path(b &C.GtkTreePath) &C.GtkTreePath {
-	return C.gtk_tree_model_filter_convert_path_to_child_path(self, b)
+pub fn (self &GtkTreeModelFilter) convert_path_to_child_path(filter_path &GtkTreePath) &GtkTreePath {
+	return C.gtk_tree_model_filter_convert_path_to_child_path(self, filter_path)
 }
 
 pub fn (self &GtkTreeModelFilter) refilter() {

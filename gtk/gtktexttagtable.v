@@ -5,13 +5,14 @@ pub struct C.GtkTextTagTableForeach {}
 
 pub type GtkTextTagTableForeach = C.GtkTextTagTableForeach
 
-fn C.gtk_text_tag_table_get_type() int
-fn C.gtk_text_tag_table_new() &C.GtkTextTagTable
-fn C.gtk_text_tag_table_add(a &C.GtkTextTagTable, b &C.GtkTextTag) bool
-fn C.gtk_text_tag_table_remove(a &C.GtkTextTagTable, b &C.GtkTextTag)
-fn C.gtk_text_tag_table_lookup(a &C.GtkTextTagTable, b &char) &C.GtkTextTag
-fn C.gtk_text_tag_table_foreach(a &C.GtkTextTagTable, b int, c voidptr)
-fn C.gtk_text_tag_table_get_size(a &C.GtkTextTagTable) int
+pub fn C.gtk_text_tag_table_get_type() int
+pub fn C.gtk_text_tag_table_new() &GtkTextTagTable
+pub fn C.gtk_text_tag_table_add(table &GtkTextTagTable, tag &GtkTextTag) bool
+pub fn C.gtk_text_tag_table_remove(table &GtkTextTagTable, tag &GtkTextTag)
+pub fn C.gtk_text_tag_table_lookup(table &GtkTextTagTable, name &char) &GtkTextTag
+pub fn C.gtk_text_tag_table_foreach(table &GtkTextTagTable, func voidptr, data voidptr)
+pub fn C.gtk_text_tag_table_get_size(table &GtkTextTagTable) int
+
 pub fn (self &GtkTextTagTable) get_type() int {
 	return C.gtk_text_tag_table_get_type()
 }
@@ -20,20 +21,20 @@ pub fn GtkTextTagTable.new() &GtkTextTagTable {
 	return C.gtk_text_tag_table_new()
 }
 
-pub fn (self &GtkTextTagTable) add(b &C.GtkTextTag) bool {
-	return C.gtk_text_tag_table_add(self, b)
+pub fn (self &GtkTextTagTable) add(tag &GtkTextTag) bool {
+	return C.gtk_text_tag_table_add(self, tag)
 }
 
-pub fn (self &GtkTextTagTable) remove(b &C.GtkTextTag) {
-	C.gtk_text_tag_table_remove(self, b)
+pub fn (self &GtkTextTagTable) remove(tag &GtkTextTag) {
+	C.gtk_text_tag_table_remove(self, tag)
 }
 
-pub fn (self &GtkTextTagTable) lookup(b &char) &C.GtkTextTag {
-	return C.gtk_text_tag_table_lookup(self, b)
+pub fn (self &GtkTextTagTable) lookup(name &char) &GtkTextTag {
+	return C.gtk_text_tag_table_lookup(self, name)
 }
 
-pub fn (self &GtkTextTagTable) foreach(b int, c voidptr) {
-	C.gtk_text_tag_table_foreach(self, b, c)
+pub fn (self &GtkTextTagTable) foreach(func voidptr, data voidptr) {
+	C.gtk_text_tag_table_foreach(self, func, data)
 }
 
 pub fn (self &GtkTextTagTable) get_size() int {
