@@ -1,6 +1,6 @@
 # VGT
 
-A [Gtk4](https://www.gtk.org) UI toolkit for [Vlang](https://vlang.io).
+A Gtk4 UI toolkit for [Vlang](https://vlang.io).
 
 <small>Work in Progress, but usable</small>
 
