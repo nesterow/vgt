@@ -1,5 +1,7 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkTextTagTable {}
 
@@ -10,7 +12,7 @@ pub struct C.GtkTextTagClass {}
 
 pub type GtkTextTagClass = C.GtkTextTagClass
 
-pub fn C.gtk_text_tag_get_type() int
+pub fn C.gtk_text_tag_get_type() glib.GType
 pub fn C.gtk_text_tag_new(name &char) &GtkTextTag
 pub fn C.gtk_text_tag_get_priority(tag &GtkTextTag) int
 pub fn C.gtk_text_tag_set_priority(tag &GtkTextTag, priority int)
@@ -21,7 +23,7 @@ pub struct C.GtkTextTag {}
 
 pub type GtkTextTag = C.GtkTextTag
 
-pub fn (self &GtkTextTag) get_type() int {
+pub fn (self &GtkTextTag) get_type() glib.GType {
 	return C.gtk_text_tag_get_type()
 }
 

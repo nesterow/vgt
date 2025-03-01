@@ -1,5 +1,7 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkShortcutAction {}
 
@@ -15,7 +17,7 @@ pub struct C.GtkShortcutClass {}
 
 pub type GtkShortcutClass = C.GtkShortcutClass
 
-pub fn C.gtk_shortcut_get_type() int
+pub fn C.gtk_shortcut_get_type() glib.GType
 pub fn C.gtk_shortcut_new(trigger &GtkShortcutTrigger, action &GtkShortcutAction) &GtkShortcut
 pub fn C.gtk_shortcut_new_with_arguments(trigger &GtkShortcutTrigger, action &GtkShortcutAction, format_str &char) &GtkShortcut
 pub fn C.gtk_shortcut_get_trigger(self &GtkShortcut) &GtkShortcutTrigger
@@ -23,14 +25,14 @@ pub fn C.gtk_shortcut_set_trigger(self &GtkShortcut, trigger &GtkShortcutTrigger
 pub fn C.gtk_shortcut_get_action(self &GtkShortcut) &GtkShortcutAction
 pub fn C.gtk_shortcut_set_action(self &GtkShortcut, action &GtkShortcutAction)
 pub fn C.gtk_shortcut_get_arguments(self &GtkShortcut) voidptr
-pub fn C.gtk_shortcut_set_arguments(self &GtkShortcut, args voidptr)
+pub fn C.gtk_shortcut_set_arguments(self &GtkShortcut, args &glib.GVariant)
 
 @[noinit; typedef]
 pub struct C.GtkShortcut {}
 
 pub type GtkShortcut = C.GtkShortcut
 
-pub fn (self &GtkShortcut) get_type() int {
+pub fn (self &GtkShortcut) get_type() glib.GType {
 	return C.gtk_shortcut_get_type()
 }
 
@@ -62,6 +64,6 @@ pub fn (self &GtkShortcut) get_arguments() voidptr {
 	return C.gtk_shortcut_get_arguments(self)
 }
 
-pub fn (self &GtkShortcut) set_arguments(args voidptr) {
+pub fn (self &GtkShortcut) set_arguments(args &glib.GVariant) {
 	C.gtk_shortcut_set_arguments(self, args)
 }

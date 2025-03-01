@@ -1,24 +1,26 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkListStoreClass {}
 
 pub type GtkListStoreClass = C.GtkListStoreClass
 
-pub fn C.gtk_list_store_get_type() int
+pub fn C.gtk_list_store_get_type() glib.GType
 pub fn C.gtk_list_store_new(n_columns int) &GtkListStore
-pub fn C.gtk_list_store_newv(n_columns int, typs voidptr) &GtkListStore
-pub fn C.gtk_list_store_set_column_types(list_store &GtkListStore, n_columns int, typs voidptr)
-pub fn C.gtk_list_store_set_value(list_store &GtkListStore, iter &GtkTreeIter, column int, value voidptr)
+pub fn C.gtk_list_store_newv(n_columns int, typs &int) &GtkListStore
+pub fn C.gtk_list_store_set_column_types(list_store &GtkListStore, n_columns int, typs &int)
+pub fn C.gtk_list_store_set_value(list_store &GtkListStore, iter &GtkTreeIter, column int, value &glib.GValue)
 pub fn C.gtk_list_store_set(list_store &GtkListStore, iter &GtkTreeIter)
-pub fn C.gtk_list_store_set_valuesv(list_store &GtkListStore, iter &GtkTreeIter, columns voidptr, values voidptr, n_values int)
+pub fn C.gtk_list_store_set_valuesv(list_store &GtkListStore, iter &GtkTreeIter, columns voidptr, values &glib.GValue, n_values int)
 pub fn C.gtk_list_store_set_valist(list_store &GtkListStore, iter &GtkTreeIter, var_args voidptr)
 pub fn C.gtk_list_store_remove(list_store &GtkListStore, iter &GtkTreeIter) bool
 pub fn C.gtk_list_store_insert(list_store &GtkListStore, iter &GtkTreeIter, position int)
 pub fn C.gtk_list_store_insert_before(list_store &GtkListStore, iter &GtkTreeIter, sibling &GtkTreeIter)
 pub fn C.gtk_list_store_insert_after(list_store &GtkListStore, iter &GtkTreeIter, sibling &GtkTreeIter)
 pub fn C.gtk_list_store_insert_with_values(list_store &GtkListStore, iter &GtkTreeIter, position int)
-pub fn C.gtk_list_store_insert_with_valuesv(list_store &GtkListStore, iter &GtkTreeIter, position int, columns voidptr, values voidptr, n_values int)
+pub fn C.gtk_list_store_insert_with_valuesv(list_store &GtkListStore, iter &GtkTreeIter, position int, columns voidptr, values &glib.GValue, n_values int)
 pub fn C.gtk_list_store_prepend(list_store &GtkListStore, iter &GtkTreeIter)
 pub fn C.gtk_list_store_append(list_store &GtkListStore, iter &GtkTreeIter)
 pub fn C.gtk_list_store_clear(list_store &GtkListStore)
@@ -33,7 +35,7 @@ pub struct C.GtkListStore {}
 
 pub type GtkListStore = C.GtkListStore
 
-pub fn (self &GtkListStore) get_type() int {
+pub fn (self &GtkListStore) get_type() glib.GType {
 	return C.gtk_list_store_get_type()
 }
 
@@ -41,15 +43,15 @@ pub fn GtkListStore.new(n_columns int) &GtkListStore {
 	return C.gtk_list_store_new(n_columns)
 }
 
-pub fn GtkListStore.newv(n_columns int, typs voidptr) &GtkListStore {
+pub fn GtkListStore.newv(n_columns int, typs &int) &GtkListStore {
 	return C.gtk_list_store_newv(n_columns, typs)
 }
 
-pub fn (self &GtkListStore) set_column_types(n_columns int, typs voidptr) {
+pub fn (self &GtkListStore) set_column_types(n_columns int, typs &int) {
 	C.gtk_list_store_set_column_types(self, n_columns, typs)
 }
 
-pub fn (self &GtkListStore) set_value(iter &GtkTreeIter, column int, value voidptr) {
+pub fn (self &GtkListStore) set_value(iter &GtkTreeIter, column int, value &glib.GValue) {
 	C.gtk_list_store_set_value(self, iter, column, value)
 }
 
@@ -57,7 +59,7 @@ pub fn (self &GtkListStore) set(iter &GtkTreeIter) {
 	C.gtk_list_store_set(self, iter)
 }
 
-pub fn (self &GtkListStore) set_valuesv(iter &GtkTreeIter, columns voidptr, values voidptr, n_values int) {
+pub fn (self &GtkListStore) set_valuesv(iter &GtkTreeIter, columns voidptr, values &glib.GValue, n_values int) {
 	C.gtk_list_store_set_valuesv(self, iter, columns, values, n_values)
 }
 
@@ -85,7 +87,7 @@ pub fn (self &GtkListStore) insert_with_values(iter &GtkTreeIter, position int) 
 	C.gtk_list_store_insert_with_values(self, iter, position)
 }
 
-pub fn (self &GtkListStore) insert_with_valuesv(iter &GtkTreeIter, position int, columns voidptr, values voidptr, n_values int) {
+pub fn (self &GtkListStore) insert_with_valuesv(iter &GtkTreeIter, position int, columns voidptr, values &glib.GValue, n_values int) {
 	C.gtk_list_store_insert_with_valuesv(self, iter, position, columns, values, n_values)
 }
 

@@ -1,5 +1,7 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkWidgetClass {}
 
@@ -10,7 +12,7 @@ pub struct C.GtkWidgetActionActivateFunc {}
 
 pub type GtkWidgetActionActivateFunc = C.GtkWidgetActionActivateFunc
 
-pub fn C.gtk_widget_get_type() int
+pub fn C.gtk_widget_get_type() glib.GType
 pub fn C.gtk_widget_unparent(widget &GtkWidget)
 pub fn C.gtk_widget_show(widget &GtkWidget)
 pub fn C.gtk_widget_hide(widget &GtkWidget)
@@ -30,7 +32,7 @@ pub fn C.gtk_widget_get_preferred_size(widget &GtkWidget, minimum_size &GtkRequi
 pub fn C.gtk_widget_set_layout_manager(widget &GtkWidget, layout_manager &GtkLayoutManager)
 pub fn C.gtk_widget_get_layout_manager(widget &GtkWidget) &GtkLayoutManager
 pub fn C.gtk_widget_class_set_layout_manager_type(widget_class &GtkWidgetClass, typ int)
-pub fn C.gtk_widget_class_get_layout_manager_type(widget_class &GtkWidgetClass) int
+pub fn C.gtk_widget_class_get_layout_manager_type(widget_class &GtkWidgetClass) glib.GType
 pub fn C.gtk_widget_class_add_binding(widget_class &GtkWidgetClass, keyval u64, mods voidptr, callback voidptr, format_str &char)
 pub fn C.gtk_widget_class_add_binding_signal(widget_class &GtkWidgetClass, keyval u64, mods voidptr, signal &char, format_str &char)
 pub fn C.gtk_widget_class_add_binding_action(widget_class &GtkWidgetClass, keyval u64, mods voidptr, action_name &char, format_str &char)
@@ -157,14 +159,14 @@ pub fn C.gtk_widget_add_tick_callback(widget &GtkWidget, callback voidptr, user_
 pub fn C.gtk_widget_remove_tick_callback(widget &GtkWidget, id u64)
 pub fn C.gtk_widget_init_template(widget &GtkWidget)
 pub fn C.gtk_widget_get_template_child(widget &GtkWidget, widget_typ int, name &char) voidptr
-pub fn C.gtk_widget_class_set_template(widget_class &GtkWidgetClass, template_bytes voidptr)
+pub fn C.gtk_widget_class_set_template(widget_class &GtkWidgetClass, template_bytes &glib.GBytes)
 pub fn C.gtk_widget_class_set_template_from_resource(widget_class &GtkWidgetClass, resource_name &char)
-pub fn C.gtk_widget_class_bind_template_callback_full(widget_class &GtkWidgetClass, callback_name &char, callback_symbol voidptr)
+pub fn C.gtk_widget_class_bind_template_callback_full(widget_class &GtkWidgetClass, callback_name &char, callback_symbol glib.GCallback)
 pub fn C.gtk_widget_class_set_template_scope(widget_class &GtkWidgetClass, scope &GtkBuilderScope)
 pub fn C.gtk_widget_class_bind_template_child_full(widget_class &GtkWidgetClass, name &char, internal_child bool, struct_offset int)
-pub fn C.gtk_widget_insert_action_group(widget &GtkWidget, name &char, group voidptr)
+pub fn C.gtk_widget_insert_action_group(widget &GtkWidget, name &char, group &glib.GActionGroup)
 pub fn C.gtk_widget_activate_action(widget &GtkWidget, name &char, format_str &char) bool
-pub fn C.gtk_widget_activate_action_variant(widget &GtkWidget, name &char, args voidptr) bool
+pub fn C.gtk_widget_activate_action_variant(widget &GtkWidget, name &char, args &glib.GVariant) bool
 pub fn C.gtk_widget_activate_default(widget &GtkWidget)
 pub fn C.gtk_widget_set_font_map(widget &GtkWidget, font_map voidptr)
 pub fn C.gtk_widget_get_font_map(widget &GtkWidget) voidptr
@@ -188,7 +190,7 @@ pub fn C.gtk_widget_get_css_classes(widget &GtkWidget) voidptr
 pub fn C.gtk_widget_set_css_classes(widget &GtkWidget, classes voidptr)
 pub fn C.gtk_widget_class_install_action(widget_class &GtkWidgetClass, action_name &char, parameter_typ &char, activate voidptr)
 pub fn C.gtk_widget_class_install_property_action(widget_class &GtkWidgetClass, action_name &char, property_name &char)
-pub fn C.gtk_widget_class_query_action(widget_class &GtkWidgetClass, index_ u64, owner voidptr, action_name voidptr, parameter_typ voidptr, property_name voidptr) bool
+pub fn C.gtk_widget_class_query_action(widget_class &GtkWidgetClass, index_ u64, owner &int, action_name voidptr, parameter_typ &glib.GVariantType, property_name voidptr) bool
 pub fn C.gtk_widget_action_set_enabled(widget &GtkWidget, action_name &char, enabled bool)
 pub fn C.gtk_widget_class_set_accessible_role(widget_class &GtkWidgetClass, accessible_role GtkAccessibleRole)
 pub fn C.gtk_widget_class_get_accessible_role(widget_class &GtkWidgetClass) GtkAccessibleRole
@@ -198,7 +200,7 @@ pub struct C.GtkWidget {}
 
 pub type GtkWidget = C.GtkWidget
 
-pub fn (self &GtkWidget) get_type() int {
+pub fn (self &GtkWidget) get_type() glib.GType {
 	return C.gtk_widget_get_type()
 }
 
@@ -279,7 +281,7 @@ pub fn (self &GtkWidget) class_set_layout_manager_type(widget_class &GtkWidgetCl
 	C.gtk_widget_class_set_layout_manager_type(widget_class, typ)
 }
 
-pub fn (self &GtkWidget) class_get_layout_manager_type(widget_class &GtkWidgetClass) int {
+pub fn (self &GtkWidget) class_get_layout_manager_type(widget_class &GtkWidgetClass) glib.GType {
 	return C.gtk_widget_class_get_layout_manager_type(widget_class)
 }
 
@@ -788,7 +790,7 @@ pub fn (self &GtkWidget) get_template_child(widget_typ int, name &char) voidptr 
 	return C.gtk_widget_get_template_child(self, widget_typ, name)
 }
 
-pub fn (self &GtkWidget) class_set_template(widget_class &GtkWidgetClass, template_bytes voidptr) {
+pub fn (self &GtkWidget) class_set_template(widget_class &GtkWidgetClass, template_bytes &glib.GBytes) {
 	C.gtk_widget_class_set_template(widget_class, template_bytes)
 }
 
@@ -796,7 +798,7 @@ pub fn (self &GtkWidget) class_set_template_from_resource(widget_class &GtkWidge
 	C.gtk_widget_class_set_template_from_resource(widget_class, resource_name)
 }
 
-pub fn (self &GtkWidget) class_bind_template_callback_full(widget_class &GtkWidgetClass, callback_name &char, callback_symbol voidptr) {
+pub fn (self &GtkWidget) class_bind_template_callback_full(widget_class &GtkWidgetClass, callback_name &char, callback_symbol glib.GCallback) {
 	C.gtk_widget_class_bind_template_callback_full(widget_class, callback_name, callback_symbol)
 }
 
@@ -808,7 +810,7 @@ pub fn (self &GtkWidget) class_bind_template_child_full(widget_class &GtkWidgetC
 	C.gtk_widget_class_bind_template_child_full(widget_class, name, internal_child, struct_offset)
 }
 
-pub fn (self &GtkWidget) insert_action_group(name &char, group voidptr) {
+pub fn (self &GtkWidget) insert_action_group(name &char, group &glib.GActionGroup) {
 	C.gtk_widget_insert_action_group(self, name, group)
 }
 
@@ -816,7 +818,7 @@ pub fn (self &GtkWidget) activate_action(name &char, format_str &char) bool {
 	return C.gtk_widget_activate_action(self, name, format_str)
 }
 
-pub fn (self &GtkWidget) activate_action_variant(name &char, args voidptr) bool {
+pub fn (self &GtkWidget) activate_action_variant(name &char, args &glib.GVariant) bool {
 	return C.gtk_widget_activate_action_variant(self, name, args)
 }
 
@@ -912,7 +914,7 @@ pub fn (self &GtkWidget) class_install_property_action(widget_class &GtkWidgetCl
 	C.gtk_widget_class_install_property_action(widget_class, action_name, property_name)
 }
 
-pub fn (self &GtkWidget) class_query_action(widget_class &GtkWidgetClass, index_ u64, owner voidptr, action_name voidptr, parameter_typ voidptr, property_name voidptr) bool {
+pub fn (self &GtkWidget) class_query_action(widget_class &GtkWidgetClass, index_ u64, owner &int, action_name voidptr, parameter_typ &glib.GVariantType, property_name voidptr) bool {
 	return C.gtk_widget_class_query_action(widget_class, index_, owner, action_name, parameter_typ,
 		property_name)
 }

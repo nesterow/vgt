@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkIMMulticontextClass {}
 
 pub type GtkIMMulticontextClass = C.GtkIMMulticontextClass
 
-pub fn C.gtk_im_multicontext_get_type() int
+pub fn C.gtk_im_multicontext_get_type() glib.GType
 pub fn C.gtk_im_multicontext_new() &GtkIMContext
 pub fn C.gtk_im_multicontext_get_context_id(context &GtkIMMulticontext) &char
 pub fn C.gtk_im_multicontext_set_context_id(context &GtkIMMulticontext, context_id &char)
@@ -15,7 +17,7 @@ pub struct C.GtkIMMulticontext {}
 
 pub type GtkIMMulticontext = C.GtkIMMulticontext
 
-pub fn (self &GtkIMMulticontext) get_type() int {
+pub fn (self &GtkIMMulticontext) get_type() glib.GType {
 	return C.gtk_im_multicontext_get_type()
 }
 

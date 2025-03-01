@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkGestureSwipeClass {}
 
 pub type GtkGestureSwipeClass = C.GtkGestureSwipeClass
 
-pub fn C.gtk_gesture_swipe_get_type() int
+pub fn C.gtk_gesture_swipe_get_type() glib.GType
 pub fn C.gtk_gesture_swipe_new() &GtkGesture
 pub fn C.gtk_gesture_swipe_get_velocity(gesture &GtkGestureSwipe, velocity_x voidptr, velocity_y voidptr) bool
 
@@ -14,7 +16,7 @@ pub struct C.GtkGestureSwipe {}
 
 pub type GtkGestureSwipe = C.GtkGestureSwipe
 
-pub fn (self &GtkGestureSwipe) get_type() int {
+pub fn (self &GtkGestureSwipe) get_type() glib.GType {
 	return C.gtk_gesture_swipe_get_type()
 }
 

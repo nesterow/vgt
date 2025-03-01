@@ -1,15 +1,17 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkSortListModelClass {}
 
 pub type GtkSortListModelClass = C.GtkSortListModelClass
 
-pub fn C.gtk_sort_list_model_get_type() int
-pub fn C.gtk_sort_list_model_new(model voidptr, sorter &GtkSorter) &GtkSortListModel
+pub fn C.gtk_sort_list_model_get_type() glib.GType
+pub fn C.gtk_sort_list_model_new(model &glib.GListModel, sorter &GtkSorter) &GtkSortListModel
 pub fn C.gtk_sort_list_model_set_sorter(self &GtkSortListModel, sorter &GtkSorter)
 pub fn C.gtk_sort_list_model_get_sorter(self &GtkSortListModel) &GtkSorter
-pub fn C.gtk_sort_list_model_set_model(self &GtkSortListModel, model voidptr)
+pub fn C.gtk_sort_list_model_set_model(self &GtkSortListModel, model &glib.GListModel)
 pub fn C.gtk_sort_list_model_get_model(self &GtkSortListModel) voidptr
 pub fn C.gtk_sort_list_model_set_incremental(self &GtkSortListModel, incremental bool)
 pub fn C.gtk_sort_list_model_get_incremental(self &GtkSortListModel) bool
@@ -20,11 +22,11 @@ pub struct C.GtkSortListModel {}
 
 pub type GtkSortListModel = C.GtkSortListModel
 
-pub fn (self &GtkSortListModel) get_type() int {
+pub fn (self &GtkSortListModel) get_type() glib.GType {
 	return C.gtk_sort_list_model_get_type()
 }
 
-pub fn GtkSortListModel.new(model voidptr, sorter &GtkSorter) &GtkSortListModel {
+pub fn GtkSortListModel.new(model &glib.GListModel, sorter &GtkSorter) &GtkSortListModel {
 	return C.gtk_sort_list_model_new(model, sorter)
 }
 
@@ -36,7 +38,7 @@ pub fn (self &GtkSortListModel) get_sorter() &GtkSorter {
 	return C.gtk_sort_list_model_get_sorter(self)
 }
 
-pub fn (self &GtkSortListModel) set_model(model voidptr) {
+pub fn (self &GtkSortListModel) set_model(model &glib.GListModel) {
 	C.gtk_sort_list_model_set_model(self, model)
 }
 

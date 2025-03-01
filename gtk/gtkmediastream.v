@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkMediaStreamClass {}
 
 pub type GtkMediaStreamClass = C.GtkMediaStreamClass
 
-pub fn C.gtk_media_stream_get_type() int
+pub fn C.gtk_media_stream_get_type() glib.GType
 pub fn C.gtk_media_stream_is_prepared(self &GtkMediaStream) bool
 pub fn C.gtk_media_stream_get_error(self &GtkMediaStream) voidptr
 pub fn C.gtk_media_stream_has_audio(self &GtkMediaStream) bool
@@ -37,16 +39,16 @@ pub fn C.gtk_media_stream_ended(self &GtkMediaStream)
 pub fn C.gtk_media_stream_stream_ended(self &GtkMediaStream)
 pub fn C.gtk_media_stream_seek_success(self &GtkMediaStream)
 pub fn C.gtk_media_stream_seek_failed(self &GtkMediaStream)
-pub fn C.gtk_media_stream_gerror(self &GtkMediaStream, error voidptr)
-pub fn C.gtk_media_stream_error(self &GtkMediaStream, domain voidptr, code int, format &char)
-pub fn C.gtk_media_stream_error_valist(self &GtkMediaStream, domain voidptr, code int, format &char, args voidptr)
+pub fn C.gtk_media_stream_gerror(self &GtkMediaStream, error &glib.GError)
+pub fn C.gtk_media_stream_error(self &GtkMediaStream, domain glib.GQuark, code int, format &char)
+pub fn C.gtk_media_stream_error_valist(self &GtkMediaStream, domain glib.GQuark, code int, format &char, args voidptr)
 
 @[noinit; typedef]
 pub struct C.GtkMediaStream {}
 
 pub type GtkMediaStream = C.GtkMediaStream
 
-pub fn (self &GtkMediaStream) get_type() int {
+pub fn (self &GtkMediaStream) get_type() glib.GType {
 	return C.gtk_media_stream_get_type()
 }
 
@@ -174,14 +176,14 @@ pub fn (self &GtkMediaStream) seek_failed() {
 	C.gtk_media_stream_seek_failed(self)
 }
 
-pub fn (self &GtkMediaStream) gerror(error voidptr) {
+pub fn (self &GtkMediaStream) gerror(error &glib.GError) {
 	C.gtk_media_stream_gerror(self, error)
 }
 
-pub fn (self &GtkMediaStream) error(domain voidptr, code int, format &char) {
+pub fn (self &GtkMediaStream) error(domain glib.GQuark, code int, format &char) {
 	C.gtk_media_stream_error(self, domain, code, format)
 }
 
-pub fn (self &GtkMediaStream) error_valist(domain voidptr, code int, format &char, args voidptr) {
+pub fn (self &GtkMediaStream) error_valist(domain glib.GQuark, code int, format &char, args voidptr) {
 	C.gtk_media_stream_error_valist(self, domain, code, format, args)
 }

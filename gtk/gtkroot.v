@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkRootInterface {}
 
 pub type GtkRootInterface = C.GtkRootInterface
 
-pub fn C.gtk_root_get_type() int
+pub fn C.gtk_root_get_type() glib.GType
 pub fn C.gtk_root_get_display(self &GtkRoot) voidptr
 pub fn C.gtk_root_set_focus(self &GtkRoot, focus &GtkWidget)
 pub fn C.gtk_root_get_focus(self &GtkRoot) &GtkWidget
@@ -15,7 +17,7 @@ pub struct C.GtkRoot {}
 
 pub type GtkRoot = C.GtkRoot
 
-pub fn (self &GtkRoot) get_type() int {
+pub fn (self &GtkRoot) get_type() glib.GType {
 	return C.gtk_root_get_type()
 }
 

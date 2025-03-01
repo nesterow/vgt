@@ -1,6 +1,8 @@
 module gtk
 
-pub fn C.gtk_cell_renderer_pixbuf_get_type() int
+import glib
+
+pub fn C.gtk_cell_renderer_pixbuf_get_type() glib.GType
 pub fn C.gtk_cell_renderer_pixbuf_new() &GtkCellRenderer
 
 @[noinit; typedef]
@@ -8,7 +10,7 @@ pub struct C.GtkCellRendererPixbuf {}
 
 pub type GtkCellRendererPixbuf = C.GtkCellRendererPixbuf
 
-pub fn (self &GtkCellRendererPixbuf) get_type() int {
+pub fn (self &GtkCellRendererPixbuf) get_type() glib.GType {
 	return C.gtk_cell_renderer_pixbuf_get_type()
 }
 

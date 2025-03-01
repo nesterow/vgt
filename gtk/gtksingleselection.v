@@ -1,14 +1,16 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkSingleSelectionClass {}
 
 pub type GtkSingleSelectionClass = C.GtkSingleSelectionClass
 
-pub fn C.gtk_single_selection_get_type() int
-pub fn C.gtk_single_selection_new(model voidptr) &GtkSingleSelection
+pub fn C.gtk_single_selection_get_type() glib.GType
+pub fn C.gtk_single_selection_new(model &glib.GListModel) &GtkSingleSelection
 pub fn C.gtk_single_selection_get_model(self &GtkSingleSelection) voidptr
-pub fn C.gtk_single_selection_set_model(self &GtkSingleSelection, model voidptr)
+pub fn C.gtk_single_selection_set_model(self &GtkSingleSelection, model &glib.GListModel)
 pub fn C.gtk_single_selection_get_selected(self &GtkSingleSelection) u64
 pub fn C.gtk_single_selection_set_selected(self &GtkSingleSelection, position u64)
 pub fn C.gtk_single_selection_get_selected_item(self &GtkSingleSelection) voidptr
@@ -22,11 +24,11 @@ pub struct C.GtkSingleSelection {}
 
 pub type GtkSingleSelection = C.GtkSingleSelection
 
-pub fn (self &GtkSingleSelection) get_type() int {
+pub fn (self &GtkSingleSelection) get_type() glib.GType {
 	return C.gtk_single_selection_get_type()
 }
 
-pub fn GtkSingleSelection.new(model voidptr) &GtkSingleSelection {
+pub fn GtkSingleSelection.new(model &glib.GListModel) &GtkSingleSelection {
 	return C.gtk_single_selection_new(model)
 }
 
@@ -34,7 +36,7 @@ pub fn (self &GtkSingleSelection) get_model() voidptr {
 	return C.gtk_single_selection_get_model(self)
 }
 
-pub fn (self &GtkSingleSelection) set_model(model voidptr) {
+pub fn (self &GtkSingleSelection) set_model(model &glib.GListModel) {
 	C.gtk_single_selection_set_model(self, model)
 }
 

@@ -20,60 +20,19 @@ fn get_ast(header string) !string {
 	return data
 }
 
-struct Node {
-pub mut:
-	id    string
-	kind  string
-	name  string
-	type  struct {
-		qual_type string @[json: 'qualType']
-	}
-	inner []Node
-}
-
-pub struct GtkHeader {
-pub:
-	file      string
-	camel     string
-	snake     string
-	is_locked bool
-}
-
-const ctov_type = {
-	'gboolean':                      'bool'
-	'guint':                         'u64'
-	'gpointer':                      'voidptr'
-	'gssize':                        'usize'
-	'gsize':                         'usize'
-	'GType':                         'int'
-	'GString':                       'GString'
-	'GString *':                     '&GString'
-	'double':                        'f32'
-	'float':                         'f64'
-	'int':                           'int'
-	'const char *':                  '&char'
-	'const int *':                   '&char'
-	'int **':                        'voidptr'
-	'int *':                         'voidptr'
-	'void':                          ''
-	'const int *const *':            'voidptr'
-	'GApplicationFlags':             'AppFlags'
-	'GtkEventControllerScrollFlags': 'GtkEventControllerScrollFlags'
-	'GDestroyNotify':                'voidptr'
-	'GtkRequisition':                'GtkRequisition'
-	'GtkRequisition *':              '&GtkRequisition'
-	'const GtkRequisition *':        '&GtkRequisition'
-	'GtkPageRange':                  'GtkPageRange'
-	'GtkPageRange *':                '&GtkPageRange'
-	'const GtkPageRange *':          '&GtkPageRange'
-	'GtkAllocation':                 'GtkAllocation'
-	'GtkAllocation *':               '&GtkAllocation'
-	'const GtkAllocation *':         '&GtkAllocation'
-}
-
-fn convert_ret_type(fdecl_type string, enums map[string]bool) string {
+fn convert_ret_type(fdecl_type string, enums map[string]bool, glib_idx GioIndex) string {
 	c_ret_type := fdecl_type.all_before('(').trim_indent().trim(' ')
 	mut v_ret_type := ''
+	if glib_idx.enums[c_ret_type] {
+		return 'glib.' + c_ret_type
+	}
+	if glib_idx.types[c_ret_type.replace_each(['*', ''])] {
+		if c_ret_type.contains('*') {
+			return '&glib.' + c_ret_type.replace_each(['*', ''])
+		} else {
+			return 'glib.' + c_ret_type
+		}
+	}
 	if enums[c_ret_type] {
 		v_ret_type = c_ret_type
 	} else if c_ret_type.starts_with('Gtk') && ctov_type[c_ret_type] == '' {
@@ -92,7 +51,7 @@ fn replace_keywords(str string) string {
 	return str.replace('type', 'typ').replace('string', 'str')
 }
 
-fn convert_fdecl_args_to_vc_args(inner []Node, enums map[string]bool) []string {
+fn convert_fdecl_args_to_vc_args(inner []Node, enums map[string]bool, glib_idx GioIndex) []string {
 	mut v_args := []string{}
 	for _, param in inner {
 		if param.kind == 'ParmVarDecl' {
@@ -100,6 +59,11 @@ fn convert_fdecl_args_to_vc_args(inner []Node, enums map[string]bool) []string {
 			typ := param.type.qual_type.trim_space()
 			if enums[typ] {
 				v_args << name + typ
+				continue
+			}
+
+			if glib_idx.enums[typ] {
+				v_args << name + 'glib.' + typ
 				continue
 			}
 
@@ -113,6 +77,16 @@ fn convert_fdecl_args_to_vc_args(inner []Node, enums map[string]bool) []string {
 			ctov := ctov_type[typ.trim_space()]
 			if ctov != '' {
 				v_args << name + ctov
+				continue
+			}
+
+			typ_strp := typ.replace_each(['*', '', 'const', '']).trim_space()
+			if glib_idx.types[typ_strp] {
+				if typ.contains('*') {
+					v_args << name + '&glib.' + typ_strp
+				} else {
+					v_args << name + 'glib.' + typ_strp
+				}
 				continue
 			}
 			if typ.starts_with('Gtk') || typ.starts_with('const Gtk') {
@@ -134,9 +108,9 @@ fn convert_fdecl_args_to_vc_args(inner []Node, enums map[string]bool) []string {
 	return v_args
 }
 
-fn convert_vcdecl_to_vmethods(node Node, enums map[string]bool, h GtkHeader) string {
-	ret_type := convert_ret_type(node.type.qual_type, enums)
-	mut args := convert_fdecl_args_to_vc_args(node.inner, enums)
+fn convert_vcdecl_to_vmethods(node Node, enums map[string]bool, h GtkHeader, glib_idx GioIndex) string {
+	ret_type := convert_ret_type(node.type.qual_type, enums, glib_idx)
+	mut args := convert_fdecl_args_to_vc_args(node.inner, enums, glib_idx)
 	mut return_str := 'return'
 	if ret_type.trim(' ') == '' {
 		return_str = ''
@@ -151,8 +125,7 @@ fn convert_vcdecl_to_vmethods(node Node, enums map[string]bool, h GtkHeader) str
 		if args.len > 0 && args[0].trim_space().ends_with('&${self}') {
 			args.delete(0)
 			vargs = args.join(',')
-			call_args[0] = call_args[0].replace(call_args[0].all_before('&${self}'),
-				'self ')
+			call_args[0] = call_args[0].replace(call_args[0].all_before('&${self}'), 'self ')
 			for i, arg in call_args {
 				if i > 0 {
 					if arg.trim_space().contains('self') {
@@ -174,7 +147,7 @@ fn convert_vcdecl_to_vmethods(node Node, enums map[string]bool, h GtkHeader) str
 	return ''
 }
 
-pub fn generate_gtk(headers []GtkHeader) ! {
+pub fn generate_gtk(headers []GtkHeader, glib_idx GioIndex) ! {
 	mut cdecls := map[string]bool{}
 	mut cfns := map[string]bool{}
 	mut enums := gtk_enums('/usr/include/gtk-4.0/gtk/gtkenums.h')!
@@ -210,15 +183,16 @@ pub fn generate_gtk(headers []GtkHeader) ! {
 					continue
 				}
 				mut v_decl := 'C.${node.name}'
-				v_args := convert_fdecl_args_to_vc_args(node.inner, enums.names)
+				v_args := convert_fdecl_args_to_vc_args(node.inner, enums.names, glib_idx)
 				v_decl += '(${v_args.join(', ')})'
-				cfn := 'pub fn ' + v_decl + convert_ret_type(node.type.qual_type, enums.names)
+				cfn := 'pub fn ' + v_decl +
+					convert_ret_type(node.type.qual_type, enums.names, glib_idx)
 				if cfns[cfn] {
 					continue
 				}
 				cfns[cfn] = true
 				cfunctions << cfn
-				vfunctions << convert_vcdecl_to_vmethods(node, enums.names, h)
+				vfunctions << convert_vcdecl_to_vmethods(node, enums.names, h, glib_idx)
 			}
 			if kind == 'TypedefDecl' {
 				if !name.starts_with(h.camel) || name.ends_with('Private') || name.contains('_') {
@@ -242,7 +216,7 @@ pub fn generate_gtk(headers []GtkHeader) ! {
 			}
 		}
 
-		mut file := 'module gtk\n'
+		mut file := ''
 		if prev == h.file {
 			file = os.read_file('gtk/${h.file}.v')!
 		}
@@ -261,6 +235,14 @@ pub fn generate_gtk(headers []GtkHeader) ! {
 			file += '\n'
 		}
 		file += vfunctions.join('\n')
+
+		if !file.contains('import glib') && file.contains('glib.') {
+			file = 'import glib\n' + file.all_after('module gtk')
+		}
+
+		if !file.contains('module gtk') {
+			file = 'module gtk\n' + file
+		}
 
 		os.write_file('gtk/${h.file}.v', file)!
 		os.system('v fmt gtk/${h.file}.v -w')

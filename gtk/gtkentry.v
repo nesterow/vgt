@@ -1,5 +1,7 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkEntryBuffer {}
 
@@ -30,7 +32,7 @@ pub enum GtkEntryIconPosition {
 	gtk_entry_icon_secondary
 }
 
-pub fn C.gtk_entry_buffer_get_type() int
+pub fn C.gtk_entry_buffer_get_type() glib.GType
 pub fn C.gtk_entry_buffer_new(initial_chars &char, n_initial_chars int) &GtkEntryBuffer
 pub fn C.gtk_entry_buffer_get_bytes(buffer &GtkEntryBuffer) int
 pub fn C.gtk_entry_buffer_get_length(buffer &GtkEntryBuffer) u64
@@ -42,7 +44,7 @@ pub fn C.gtk_entry_buffer_insert_text(buffer &GtkEntryBuffer, position u64, char
 pub fn C.gtk_entry_buffer_delete_text(buffer &GtkEntryBuffer, position u64, n_chars int) u64
 pub fn C.gtk_entry_buffer_emit_inserted_text(buffer &GtkEntryBuffer, position u64, chars &char, n_chars u64)
 pub fn C.gtk_entry_buffer_emit_deleted_text(buffer &GtkEntryBuffer, position u64, n_chars u64)
-pub fn C.gtk_entry_completion_get_type() int
+pub fn C.gtk_entry_completion_get_type() glib.GType
 pub fn C.gtk_entry_completion_new() &GtkEntryCompletion
 pub fn C.gtk_entry_completion_new_with_area(area &GtkCellArea) &GtkEntryCompletion
 pub fn C.gtk_entry_completion_get_entry(completion &GtkEntryCompletion) &GtkWidget
@@ -67,15 +69,15 @@ pub fn C.gtk_entry_completion_get_popup_single_match(completion &GtkEntryComplet
 pub fn C.gtk_entry_completion_get_completion_prefix(completion &GtkEntryCompletion) &char
 pub fn C.gtk_entry_completion_set_text_column(completion &GtkEntryCompletion, column int)
 pub fn C.gtk_entry_completion_get_text_column(completion &GtkEntryCompletion) int
-pub fn C.gtk_entry_get_type() int
+pub fn C.gtk_entry_get_type() glib.GType
 pub fn C.gtk_entry_new() &GtkWidget
 pub fn C.gtk_entry_new_with_buffer(buffer &GtkEntryBuffer) &GtkWidget
 pub fn C.gtk_entry_get_buffer(entry &GtkEntry) &GtkEntryBuffer
 pub fn C.gtk_entry_set_buffer(entry &GtkEntry, buffer &GtkEntryBuffer)
 pub fn C.gtk_entry_set_visibility(entry &GtkEntry, visible bool)
 pub fn C.gtk_entry_get_visibility(entry &GtkEntry) bool
-pub fn C.gtk_entry_set_invisible_char(entry &GtkEntry, ch voidptr)
-pub fn C.gtk_entry_get_invisible_char(entry &GtkEntry) voidptr
+pub fn C.gtk_entry_set_invisible_char(entry &GtkEntry, ch u8)
+pub fn C.gtk_entry_get_invisible_char(entry &GtkEntry) u8
 pub fn C.gtk_entry_unset_invisible_char(entry &GtkEntry)
 pub fn C.gtk_entry_set_has_frame(entry &GtkEntry, setting bool)
 pub fn C.gtk_entry_get_has_frame(entry &GtkEntry) bool
@@ -99,7 +101,7 @@ pub fn C.gtk_entry_get_placeholder_text(entry &GtkEntry) &char
 pub fn C.gtk_entry_set_placeholder_text(entry &GtkEntry, text &char)
 pub fn C.gtk_entry_set_icon_from_paintable(entry &GtkEntry, icon_pos GtkEntryIconPosition, paintable voidptr)
 pub fn C.gtk_entry_set_icon_from_icon_name(entry &GtkEntry, icon_pos GtkEntryIconPosition, icon_name &char)
-pub fn C.gtk_entry_set_icon_from_gicon(entry &GtkEntry, icon_pos GtkEntryIconPosition, icon voidptr)
+pub fn C.gtk_entry_set_icon_from_gicon(entry &GtkEntry, icon_pos GtkEntryIconPosition, icon &glib.GIcon)
 pub fn C.gtk_entry_get_icon_storage_type(entry &GtkEntry, icon_pos GtkEntryIconPosition) GtkImageType
 pub fn C.gtk_entry_get_icon_paintable(entry &GtkEntry, icon_pos GtkEntryIconPosition) voidptr
 pub fn C.gtk_entry_get_icon_name(entry &GtkEntry, icon_pos GtkEntryIconPosition) &char
@@ -126,7 +128,7 @@ pub fn C.gtk_entry_get_attributes(entry &GtkEntry) voidptr
 pub fn C.gtk_entry_set_tabs(entry &GtkEntry, tabs voidptr)
 pub fn C.gtk_entry_get_tabs(entry &GtkEntry) voidptr
 pub fn C.gtk_entry_grab_focus_without_selecting(entry &GtkEntry) bool
-pub fn C.gtk_entry_set_extra_menu(entry &GtkEntry, model voidptr)
+pub fn C.gtk_entry_set_extra_menu(entry &GtkEntry, model &glib.GMenuModel)
 pub fn C.gtk_entry_get_extra_menu(entry &GtkEntry) voidptr
 
 @[noinit; typedef]
@@ -134,7 +136,7 @@ pub struct C.GtkEntry {}
 
 pub type GtkEntry = C.GtkEntry
 
-pub fn (self &GtkEntry) buffer_get_type() int {
+pub fn (self &GtkEntry) buffer_get_type() glib.GType {
 	return C.gtk_entry_buffer_get_type()
 }
 
@@ -182,7 +184,7 @@ pub fn (self &GtkEntry) buffer_emit_deleted_text(buffer &GtkEntryBuffer, positio
 	C.gtk_entry_buffer_emit_deleted_text(buffer, position, n_chars)
 }
 
-pub fn (self &GtkEntry) completion_get_type() int {
+pub fn (self &GtkEntry) completion_get_type() glib.GType {
 	return C.gtk_entry_completion_get_type()
 }
 
@@ -282,7 +284,7 @@ pub fn (self &GtkEntry) completion_get_text_column(completion &GtkEntryCompletio
 	return C.gtk_entry_completion_get_text_column(completion)
 }
 
-pub fn (self &GtkEntry) get_type() int {
+pub fn (self &GtkEntry) get_type() glib.GType {
 	return C.gtk_entry_get_type()
 }
 
@@ -310,11 +312,11 @@ pub fn (self &GtkEntry) get_visibility() bool {
 	return C.gtk_entry_get_visibility(self)
 }
 
-pub fn (self &GtkEntry) set_invisible_char(ch voidptr) {
+pub fn (self &GtkEntry) set_invisible_char(ch u8) {
 	C.gtk_entry_set_invisible_char(self, ch)
 }
 
-pub fn (self &GtkEntry) get_invisible_char() voidptr {
+pub fn (self &GtkEntry) get_invisible_char() u8 {
 	return C.gtk_entry_get_invisible_char(self)
 }
 
@@ -410,7 +412,7 @@ pub fn (self &GtkEntry) set_icon_from_icon_name(icon_pos GtkEntryIconPosition, i
 	C.gtk_entry_set_icon_from_icon_name(self, icon_pos, icon_name)
 }
 
-pub fn (self &GtkEntry) set_icon_from_gicon(icon_pos GtkEntryIconPosition, icon voidptr) {
+pub fn (self &GtkEntry) set_icon_from_gicon(icon_pos GtkEntryIconPosition, icon &glib.GIcon) {
 	C.gtk_entry_set_icon_from_gicon(self, icon_pos, icon)
 }
 
@@ -518,7 +520,7 @@ pub fn (self &GtkEntry) grab_focus_without_selecting() bool {
 	return C.gtk_entry_grab_focus_without_selecting(self)
 }
 
-pub fn (self &GtkEntry) set_extra_menu(model voidptr) {
+pub fn (self &GtkEntry) set_extra_menu(model &glib.GMenuModel) {
 	C.gtk_entry_set_extra_menu(self, model)
 }
 

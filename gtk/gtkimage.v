@@ -1,5 +1,7 @@
 module gtk
 
+import glib
+
 pub enum GtkImageType {
 	gtk_image_empty
 	gtk_image_icon_name
@@ -7,21 +9,21 @@ pub enum GtkImageType {
 	gtk_image_paintable
 }
 
-pub fn C.gtk_image_get_type() int
+pub fn C.gtk_image_get_type() glib.GType
 pub fn C.gtk_image_new() &GtkWidget
 pub fn C.gtk_image_new_from_file(filename &char) &GtkWidget
 pub fn C.gtk_image_new_from_resource(resource_path &char) &GtkWidget
 pub fn C.gtk_image_new_from_pixbuf(pixbuf voidptr) &GtkWidget
 pub fn C.gtk_image_new_from_paintable(paintable voidptr) &GtkWidget
 pub fn C.gtk_image_new_from_icon_name(icon_name &char) &GtkWidget
-pub fn C.gtk_image_new_from_gicon(icon voidptr) &GtkWidget
+pub fn C.gtk_image_new_from_gicon(icon &glib.GIcon) &GtkWidget
 pub fn C.gtk_image_clear(image &GtkImage)
 pub fn C.gtk_image_set_from_file(image &GtkImage, filename &char)
 pub fn C.gtk_image_set_from_resource(image &GtkImage, resource_path &char)
 pub fn C.gtk_image_set_from_pixbuf(image &GtkImage, pixbuf voidptr)
 pub fn C.gtk_image_set_from_paintable(image &GtkImage, paintable voidptr)
 pub fn C.gtk_image_set_from_icon_name(image &GtkImage, icon_name &char)
-pub fn C.gtk_image_set_from_gicon(image &GtkImage, icon voidptr)
+pub fn C.gtk_image_set_from_gicon(image &GtkImage, icon &glib.GIcon)
 pub fn C.gtk_image_set_pixel_size(image &GtkImage, pixel_size int)
 pub fn C.gtk_image_set_icon_size(image &GtkImage, icon_size GtkIconSize)
 pub fn C.gtk_image_get_storage_type(image &GtkImage) GtkImageType
@@ -36,7 +38,7 @@ pub struct C.GtkImage {}
 
 pub type GtkImage = C.GtkImage
 
-pub fn (self &GtkImage) get_type() int {
+pub fn (self &GtkImage) get_type() glib.GType {
 	return C.gtk_image_get_type()
 }
 
@@ -64,7 +66,7 @@ pub fn GtkImage.new_from_icon_name(icon_name &char) &GtkWidget {
 	return C.gtk_image_new_from_icon_name(icon_name)
 }
 
-pub fn GtkImage.new_from_gicon(icon voidptr) &GtkWidget {
+pub fn GtkImage.new_from_gicon(icon &glib.GIcon) &GtkWidget {
 	return C.gtk_image_new_from_gicon(icon)
 }
 
@@ -92,7 +94,7 @@ pub fn (self &GtkImage) set_from_icon_name(icon_name &char) {
 	C.gtk_image_set_from_icon_name(self, icon_name)
 }
 
-pub fn (self &GtkImage) set_from_gicon(icon voidptr) {
+pub fn (self &GtkImage) set_from_gicon(icon &glib.GIcon) {
 	C.gtk_image_set_from_gicon(self, icon)
 }
 

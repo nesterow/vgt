@@ -1,6 +1,8 @@
 module gtk
 
-pub fn C.gtk_scrollbar_get_type() int
+import glib
+
+pub fn C.gtk_scrollbar_get_type() glib.GType
 pub fn C.gtk_scrollbar_new(orientation GtkOrientation, adjustment &GtkAdjustment) &GtkWidget
 pub fn C.gtk_scrollbar_set_adjustment(self &GtkScrollbar, adjustment &GtkAdjustment)
 pub fn C.gtk_scrollbar_get_adjustment(self &GtkScrollbar) &GtkAdjustment
@@ -10,7 +12,7 @@ pub struct C.GtkScrollbar {}
 
 pub type GtkScrollbar = C.GtkScrollbar
 
-pub fn (self &GtkScrollbar) get_type() int {
+pub fn (self &GtkScrollbar) get_type() glib.GType {
 	return C.gtk_scrollbar_get_type()
 }
 

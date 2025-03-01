@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkDropTargetAsyncClass {}
 
 pub type GtkDropTargetAsyncClass = C.GtkDropTargetAsyncClass
 
-pub fn C.gtk_drop_target_async_get_type() int
+pub fn C.gtk_drop_target_async_get_type() glib.GType
 pub fn C.gtk_drop_target_async_new(formats voidptr, actions voidptr) &GtkDropTargetAsync
 pub fn C.gtk_drop_target_async_set_formats(self &GtkDropTargetAsync, formats voidptr)
 pub fn C.gtk_drop_target_async_get_formats(self &GtkDropTargetAsync) voidptr
@@ -18,7 +20,7 @@ pub struct C.GtkDropTargetAsync {}
 
 pub type GtkDropTargetAsync = C.GtkDropTargetAsync
 
-pub fn (self &GtkDropTargetAsync) get_type() int {
+pub fn (self &GtkDropTargetAsync) get_type() glib.GType {
 	return C.gtk_drop_target_async_get_type()
 }
 

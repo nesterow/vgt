@@ -1,6 +1,8 @@
 module gtk
 
-pub fn C.gtk_page_setup_get_type() int
+import glib
+
+pub fn C.gtk_page_setup_get_type() glib.GType
 pub fn C.gtk_page_setup_new() &GtkPageSetup
 pub fn C.gtk_page_setup_copy(other &GtkPageSetup) &GtkPageSetup
 pub fn C.gtk_page_setup_get_orientation(setup &GtkPageSetup) GtkPageOrientation
@@ -20,21 +22,21 @@ pub fn C.gtk_page_setup_get_paper_width(setup &GtkPageSetup, unit GtkUnit) f32
 pub fn C.gtk_page_setup_get_paper_height(setup &GtkPageSetup, unit GtkUnit) f32
 pub fn C.gtk_page_setup_get_page_width(setup &GtkPageSetup, unit GtkUnit) f32
 pub fn C.gtk_page_setup_get_page_height(setup &GtkPageSetup, unit GtkUnit) f32
-pub fn C.gtk_page_setup_new_from_file(file_name &char, error voidptr) &GtkPageSetup
-pub fn C.gtk_page_setup_load_file(setup &GtkPageSetup, file_name &char, error voidptr) bool
-pub fn C.gtk_page_setup_to_file(setup &GtkPageSetup, file_name &char, error voidptr) bool
-pub fn C.gtk_page_setup_new_from_key_file(key_file voidptr, group_name &char, error voidptr) &GtkPageSetup
-pub fn C.gtk_page_setup_load_key_file(setup &GtkPageSetup, key_file voidptr, group_name &char, error voidptr) bool
-pub fn C.gtk_page_setup_to_key_file(setup &GtkPageSetup, key_file voidptr, group_name &char)
+pub fn C.gtk_page_setup_new_from_file(file_name &char, error &glib.GError) &GtkPageSetup
+pub fn C.gtk_page_setup_load_file(setup &GtkPageSetup, file_name &char, error &glib.GError) bool
+pub fn C.gtk_page_setup_to_file(setup &GtkPageSetup, file_name &char, error &glib.GError) bool
+pub fn C.gtk_page_setup_new_from_key_file(key_file &glib.GKeyFile, group_name &char, error &glib.GError) &GtkPageSetup
+pub fn C.gtk_page_setup_load_key_file(setup &GtkPageSetup, key_file &glib.GKeyFile, group_name &char, error &glib.GError) bool
+pub fn C.gtk_page_setup_to_key_file(setup &GtkPageSetup, key_file &glib.GKeyFile, group_name &char)
 pub fn C.gtk_page_setup_to_gvariant(setup &GtkPageSetup) voidptr
-pub fn C.gtk_page_setup_new_from_gvariant(variant voidptr) &GtkPageSetup
+pub fn C.gtk_page_setup_new_from_gvariant(variant &glib.GVariant) &GtkPageSetup
 
 @[noinit; typedef]
 pub struct C.GtkPageSetup {}
 
 pub type GtkPageSetup = C.GtkPageSetup
 
-pub fn (self &GtkPageSetup) get_type() int {
+pub fn (self &GtkPageSetup) get_type() glib.GType {
 	return C.gtk_page_setup_get_type()
 }
 
@@ -114,27 +116,27 @@ pub fn (self &GtkPageSetup) get_page_height(unit GtkUnit) f32 {
 	return C.gtk_page_setup_get_page_height(self, unit)
 }
 
-pub fn GtkPageSetup.new_from_file(file_name &char, error voidptr) &GtkPageSetup {
+pub fn GtkPageSetup.new_from_file(file_name &char, error &glib.GError) &GtkPageSetup {
 	return C.gtk_page_setup_new_from_file(file_name, error)
 }
 
-pub fn (self &GtkPageSetup) load_file(file_name &char, error voidptr) bool {
+pub fn (self &GtkPageSetup) load_file(file_name &char, error &glib.GError) bool {
 	return C.gtk_page_setup_load_file(self, file_name, error)
 }
 
-pub fn (self &GtkPageSetup) to_file(file_name &char, error voidptr) bool {
+pub fn (self &GtkPageSetup) to_file(file_name &char, error &glib.GError) bool {
 	return C.gtk_page_setup_to_file(self, file_name, error)
 }
 
-pub fn GtkPageSetup.new_from_key_file(key_file voidptr, group_name &char, error voidptr) &GtkPageSetup {
+pub fn GtkPageSetup.new_from_key_file(key_file &glib.GKeyFile, group_name &char, error &glib.GError) &GtkPageSetup {
 	return C.gtk_page_setup_new_from_key_file(key_file, group_name, error)
 }
 
-pub fn (self &GtkPageSetup) load_key_file(key_file voidptr, group_name &char, error voidptr) bool {
+pub fn (self &GtkPageSetup) load_key_file(key_file &glib.GKeyFile, group_name &char, error &glib.GError) bool {
 	return C.gtk_page_setup_load_key_file(self, key_file, group_name, error)
 }
 
-pub fn (self &GtkPageSetup) to_key_file(key_file voidptr, group_name &char) {
+pub fn (self &GtkPageSetup) to_key_file(key_file &glib.GKeyFile, group_name &char) {
 	C.gtk_page_setup_to_key_file(self, key_file, group_name)
 }
 
@@ -142,6 +144,6 @@ pub fn (self &GtkPageSetup) to_gvariant() voidptr {
 	return C.gtk_page_setup_to_gvariant(self)
 }
 
-pub fn GtkPageSetup.new_from_gvariant(variant voidptr) &GtkPageSetup {
+pub fn GtkPageSetup.new_from_gvariant(variant &glib.GVariant) &GtkPageSetup {
 	return C.gtk_page_setup_new_from_gvariant(variant)
 }

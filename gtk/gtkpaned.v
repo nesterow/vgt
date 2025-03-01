@@ -1,6 +1,8 @@
 module gtk
 
-pub fn C.gtk_paned_get_type() int
+import glib
+
+pub fn C.gtk_paned_get_type() glib.GType
 pub fn C.gtk_paned_new(orientation GtkOrientation) &GtkWidget
 pub fn C.gtk_paned_set_start_child(paned &GtkPaned, child &GtkWidget)
 pub fn C.gtk_paned_get_start_child(paned &GtkPaned) &GtkWidget
@@ -24,7 +26,7 @@ pub struct C.GtkPaned {}
 
 pub type GtkPaned = C.GtkPaned
 
-pub fn (self &GtkPaned) get_type() int {
+pub fn (self &GtkPaned) get_type() glib.GType {
 	return C.gtk_paned_get_type()
 }
 

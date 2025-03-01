@@ -1,5 +1,7 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkFilterClass {}
 
@@ -17,7 +19,7 @@ pub enum GtkFilterChange {
 	gtk_filter_change_more_strict
 }
 
-pub fn C.gtk_filter_get_type() int
+pub fn C.gtk_filter_get_type() glib.GType
 pub fn C.gtk_filter_match(self &GtkFilter, item voidptr) bool
 pub fn C.gtk_filter_get_strictness(self &GtkFilter) GtkFilterMatch
 pub fn C.gtk_filter_changed(self &GtkFilter, change GtkFilterChange)
@@ -27,7 +29,7 @@ pub struct C.GtkFilter {}
 
 pub type GtkFilter = C.GtkFilter
 
-pub fn (self &GtkFilter) get_type() int {
+pub fn (self &GtkFilter) get_type() glib.GType {
 	return C.gtk_filter_get_type()
 }
 

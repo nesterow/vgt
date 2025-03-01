@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkSnapshotClass {}
 
 pub type GtkSnapshotClass = C.GtkSnapshotClass
 
-pub fn C.gtk_snapshot_get_type() int
+pub fn C.gtk_snapshot_get_type() glib.GType
 pub fn C.gtk_snapshot_new() &GtkSnapshot
 pub fn C.gtk_snapshot_free_to_node(snapshot &GtkSnapshot) voidptr
 pub fn C.gtk_snapshot_free_to_paintable(snapshot &GtkSnapshot, size &char) voidptr
@@ -21,7 +23,7 @@ pub fn C.gtk_snapshot_push_rounded_clip(snapshot &GtkSnapshot, bounds voidptr)
 pub fn C.gtk_snapshot_push_shadow(snapshot &GtkSnapshot, shadow voidptr, n_shadows int)
 pub fn C.gtk_snapshot_push_blend(snapshot &GtkSnapshot, blend_mode voidptr)
 pub fn C.gtk_snapshot_push_cross_fade(snapshot &GtkSnapshot, progress f32)
-pub fn C.gtk_snapshot_push_gl_shader(snapshot &GtkSnapshot, shader voidptr, bounds &char, take_args voidptr)
+pub fn C.gtk_snapshot_push_gl_shader(snapshot &GtkSnapshot, shader voidptr, bounds &char, take_args &glib.GBytes)
 pub fn C.gtk_snapshot_gl_shader_pop_texture(snapshot &GtkSnapshot)
 pub fn C.gtk_snapshot_pop(snapshot &GtkSnapshot)
 pub fn C.gtk_snapshot_save(snapshot &GtkSnapshot)
@@ -59,7 +61,7 @@ pub struct C.GtkSnapshot {}
 
 pub type GtkSnapshot = C.GtkSnapshot
 
-pub fn (self &GtkSnapshot) get_type() int {
+pub fn (self &GtkSnapshot) get_type() glib.GType {
 	return C.gtk_snapshot_get_type()
 }
 
@@ -123,7 +125,7 @@ pub fn (self &GtkSnapshot) push_cross_fade(progress f32) {
 	C.gtk_snapshot_push_cross_fade(self, progress)
 }
 
-pub fn (self &GtkSnapshot) push_gl_shader(shader voidptr, bounds &char, take_args voidptr) {
+pub fn (self &GtkSnapshot) push_gl_shader(shader voidptr, bounds &char, take_args &glib.GBytes) {
 	C.gtk_snapshot_push_gl_shader(self, shader, bounds, take_args)
 }
 

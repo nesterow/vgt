@@ -1,6 +1,8 @@
 module gtk
 
-pub fn C.gtk_file_filter_get_type() int
+import glib
+
+pub fn C.gtk_file_filter_get_type() glib.GType
 pub fn C.gtk_file_filter_new() &GtkFileFilter
 pub fn C.gtk_file_filter_set_name(filter &GtkFileFilter, name &char)
 pub fn C.gtk_file_filter_get_name(filter &GtkFileFilter) &char
@@ -10,14 +12,14 @@ pub fn C.gtk_file_filter_add_suffix(filter &GtkFileFilter, suffix &char)
 pub fn C.gtk_file_filter_add_pixbuf_formats(filter &GtkFileFilter)
 pub fn C.gtk_file_filter_get_attributes(filter &GtkFileFilter) voidptr
 pub fn C.gtk_file_filter_to_gvariant(filter &GtkFileFilter) voidptr
-pub fn C.gtk_file_filter_new_from_gvariant(variant voidptr) &GtkFileFilter
+pub fn C.gtk_file_filter_new_from_gvariant(variant &glib.GVariant) &GtkFileFilter
 
 @[noinit; typedef]
 pub struct C.GtkFileFilter {}
 
 pub type GtkFileFilter = C.GtkFileFilter
 
-pub fn (self &GtkFileFilter) get_type() int {
+pub fn (self &GtkFileFilter) get_type() glib.GType {
 	return C.gtk_file_filter_get_type()
 }
 
@@ -57,6 +59,6 @@ pub fn (self &GtkFileFilter) to_gvariant() voidptr {
 	return C.gtk_file_filter_to_gvariant(self)
 }
 
-pub fn GtkFileFilter.new_from_gvariant(variant voidptr) &GtkFileFilter {
+pub fn GtkFileFilter.new_from_gvariant(variant &glib.GVariant) &GtkFileFilter {
 	return C.gtk_file_filter_new_from_gvariant(variant)
 }

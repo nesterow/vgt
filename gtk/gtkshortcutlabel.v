@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkShortcutLabelClass {}
 
 pub type GtkShortcutLabelClass = C.GtkShortcutLabelClass
 
-pub fn C.gtk_shortcut_label_get_type() int
+pub fn C.gtk_shortcut_label_get_type() glib.GType
 pub fn C.gtk_shortcut_label_new(accelerator &char) &GtkWidget
 pub fn C.gtk_shortcut_label_get_accelerator(self &GtkShortcutLabel) &char
 pub fn C.gtk_shortcut_label_set_accelerator(self &GtkShortcutLabel, accelerator &char)
@@ -17,7 +19,7 @@ pub struct C.GtkShortcutLabel {}
 
 pub type GtkShortcutLabel = C.GtkShortcutLabel
 
-pub fn (self &GtkShortcutLabel) get_type() int {
+pub fn (self &GtkShortcutLabel) get_type() glib.GType {
 	return C.gtk_shortcut_label_get_type()
 }
 

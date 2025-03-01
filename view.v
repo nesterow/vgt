@@ -1,8 +1,8 @@
 module vgt
 
-
 import v.embed_file
-import gtk { Gtk, GtkBuilder }
+import glib { g_signal_connect }
+import gtk { GtkBuilder }
 
 /**
 * View for GTK4 XML Builder
@@ -27,7 +27,6 @@ pub mut:
 	signals []Signal
 }
 
-
 @[params]
 pub struct Signal {
 pub:
@@ -37,7 +36,7 @@ pub:
 
 pub struct ViewContext {
 pub:
-	view &View
+	view    &View
 	builder &GtkBuilder
 }
 
@@ -64,10 +63,10 @@ fn (ui View) bind_signals(builder &GtkBuilder) {
 		path := signal.path.split('.')
 		obj := builder.get_object(path[0].str)
 		if obj != unsafe { nil } {
-			sig := fn [signal, builder, obj] () {
+			sig := fn [signal, builder, obj] (data voidptr) {
 				signal.call(builder, obj)
 			}
-			Gtk.signal_connect(obj, path[1], sig, &builder)
+			g_signal_connect(obj, path[1], sig, &builder)
 		}
 	}
 }
@@ -75,9 +74,7 @@ fn (ui View) bind_signals(builder &GtkBuilder) {
 pub fn (ui View) build() ViewContext {
 	builder := ui.to_builder()
 	ui.bind_signals(builder)
-	return ViewContext{
-		&ui, builder
-	}
+	return ViewContext{&ui, builder}
 }
 
 // `Views` struct holds multiple views in one GtkBuilder
@@ -86,21 +83,17 @@ pub mut:
 	views []View
 }
 
-
 pub struct ViewsContext {
 pub:
-	views []View
+	views   []View
 	builder &GtkBuilder
 }
 
-pub fn(vs Views) build() ViewsContext {
+pub fn (vs Views) build() ViewsContext {
 	builder := GtkBuilder.new()
 	for view in vs.views {
 		GtkBuilder(builder).add_from_string(view.data.str, view.data.len, unsafe { nil })
 		view.bind_signals(builder)
 	}
-	return ViewsContext{
-		vs.views,
-		builder
-	}
+	return ViewsContext{vs.views, builder}
 }

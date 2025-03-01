@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkDragSourceClass {}
 
 pub type GtkDragSourceClass = C.GtkDragSourceClass
 
-pub fn C.gtk_drag_source_get_type() int
+pub fn C.gtk_drag_source_get_type() glib.GType
 pub fn C.gtk_drag_source_new() &GtkDragSource
 pub fn C.gtk_drag_source_set_content(source &GtkDragSource, content voidptr)
 pub fn C.gtk_drag_source_get_content(source &GtkDragSource) voidptr
@@ -20,7 +22,7 @@ pub struct C.GtkDragSource {}
 
 pub type GtkDragSource = C.GtkDragSource
 
-pub fn (self &GtkDragSource) get_type() int {
+pub fn (self &GtkDragSource) get_type() glib.GType {
 	return C.gtk_drag_source_get_type()
 }
 

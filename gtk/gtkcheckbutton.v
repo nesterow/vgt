@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkCheckButtonClass {}
 
 pub type GtkCheckButtonClass = C.GtkCheckButtonClass
 
-pub fn C.gtk_check_button_get_type() int
+pub fn C.gtk_check_button_get_type() glib.GType
 pub fn C.gtk_check_button_new() &GtkWidget
 pub fn C.gtk_check_button_new_with_label(label &char) &GtkWidget
 pub fn C.gtk_check_button_new_with_mnemonic(label &char) &GtkWidget
@@ -24,7 +26,7 @@ pub struct C.GtkCheckButton {}
 
 pub type GtkCheckButton = C.GtkCheckButton
 
-pub fn (self &GtkCheckButton) get_type() int {
+pub fn (self &GtkCheckButton) get_type() glib.GType {
 	return C.gtk_check_button_get_type()
 }
 

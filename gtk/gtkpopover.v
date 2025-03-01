@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkPopoverClass {}
 
 pub type GtkPopoverClass = C.GtkPopoverClass
 
-pub fn C.gtk_popover_get_type() int
+pub fn C.gtk_popover_get_type() glib.GType
 pub fn C.gtk_popover_new() &GtkWidget
 pub fn C.gtk_popover_set_child(popover &GtkPopover, child &GtkWidget)
 pub fn C.gtk_popover_get_child(popover &GtkPopover) &GtkWidget
@@ -33,7 +35,7 @@ pub struct C.GtkPopover {}
 
 pub type GtkPopover = C.GtkPopover
 
-pub fn (self &GtkPopover) get_type() int {
+pub fn (self &GtkPopover) get_type() glib.GType {
 	return C.gtk_popover_get_type()
 }
 

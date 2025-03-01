@@ -1,13 +1,15 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkDirectoryListClass {}
 
 pub type GtkDirectoryListClass = C.GtkDirectoryListClass
 
-pub fn C.gtk_directory_list_get_type() int
-pub fn C.gtk_directory_list_new(attributes &char, file voidptr) &GtkDirectoryList
-pub fn C.gtk_directory_list_set_file(self &GtkDirectoryList, file voidptr)
+pub fn C.gtk_directory_list_get_type() glib.GType
+pub fn C.gtk_directory_list_new(attributes &char, file &glib.GFile) &GtkDirectoryList
+pub fn C.gtk_directory_list_set_file(self &GtkDirectoryList, file &glib.GFile)
 pub fn C.gtk_directory_list_get_file(self &GtkDirectoryList) voidptr
 pub fn C.gtk_directory_list_set_attributes(self &GtkDirectoryList, attributes &char)
 pub fn C.gtk_directory_list_get_attributes(self &GtkDirectoryList) &char
@@ -23,15 +25,15 @@ pub struct C.GtkDirectoryList {}
 
 pub type GtkDirectoryList = C.GtkDirectoryList
 
-pub fn (self &GtkDirectoryList) get_type() int {
+pub fn (self &GtkDirectoryList) get_type() glib.GType {
 	return C.gtk_directory_list_get_type()
 }
 
-pub fn GtkDirectoryList.new(attributes &char, file voidptr) &GtkDirectoryList {
+pub fn GtkDirectoryList.new(attributes &char, file &glib.GFile) &GtkDirectoryList {
 	return C.gtk_directory_list_new(attributes, file)
 }
 
-pub fn (self &GtkDirectoryList) set_file(file voidptr) {
+pub fn (self &GtkDirectoryList) set_file(file &glib.GFile) {
 	C.gtk_directory_list_set_file(self, file)
 }
 

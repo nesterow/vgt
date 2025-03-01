@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkNativeInterface {}
 
 pub type GtkNativeInterface = C.GtkNativeInterface
 
-pub fn C.gtk_native_get_type() int
+pub fn C.gtk_native_get_type() glib.GType
 pub fn C.gtk_native_realize(self &GtkNative)
 pub fn C.gtk_native_unrealize(self &GtkNative)
 pub fn C.gtk_native_get_for_surface(surface voidptr) &GtkNative
@@ -18,7 +20,7 @@ pub struct C.GtkNative {}
 
 pub type GtkNative = C.GtkNative
 
-pub fn (self &GtkNative) get_type() int {
+pub fn (self &GtkNative) get_type() glib.GType {
 	return C.gtk_native_get_type()
 }
 

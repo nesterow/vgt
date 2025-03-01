@@ -1,6 +1,8 @@
 module gtk
 
-pub fn C.gtk_size_group_get_type() int
+import glib
+
+pub fn C.gtk_size_group_get_type() glib.GType
 pub fn C.gtk_size_group_new(mode GtkSizeGroupMode) &GtkSizeGroup
 pub fn C.gtk_size_group_set_mode(size_group &GtkSizeGroup, mode GtkSizeGroupMode)
 pub fn C.gtk_size_group_get_mode(size_group &GtkSizeGroup) GtkSizeGroupMode
@@ -13,7 +15,7 @@ pub struct C.GtkSizeGroup {}
 
 pub type GtkSizeGroup = C.GtkSizeGroup
 
-pub fn (self &GtkSizeGroup) get_type() int {
+pub fn (self &GtkSizeGroup) get_type() glib.GType {
 	return C.gtk_size_group_get_type()
 }
 

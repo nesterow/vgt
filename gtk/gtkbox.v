@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkBoxClass {}
 
 pub type GtkBoxClass = C.GtkBoxClass
 
-pub fn C.gtk_box_get_type() int
+pub fn C.gtk_box_get_type() glib.GType
 pub fn C.gtk_box_new(orientation GtkOrientation, spacing int) &GtkWidget
 pub fn C.gtk_box_set_homogeneous(box &GtkBox, homogeneous bool)
 pub fn C.gtk_box_get_homogeneous(box &GtkBox) bool
@@ -24,7 +26,7 @@ pub struct C.GtkBox {}
 
 pub type GtkBox = C.GtkBox
 
-pub fn (self &GtkBox) get_type() int {
+pub fn (self &GtkBox) get_type() glib.GType {
 	return C.gtk_box_get_type()
 }
 

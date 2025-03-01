@@ -1,20 +1,22 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkVideoClass {}
 
 pub type GtkVideoClass = C.GtkVideoClass
 
-pub fn C.gtk_video_get_type() int
+pub fn C.gtk_video_get_type() glib.GType
 pub fn C.gtk_video_new() &GtkWidget
 pub fn C.gtk_video_new_for_media_stream(stream &GtkMediaStream) &GtkWidget
-pub fn C.gtk_video_new_for_file(file voidptr) &GtkWidget
+pub fn C.gtk_video_new_for_file(file &glib.GFile) &GtkWidget
 pub fn C.gtk_video_new_for_filename(filename &char) &GtkWidget
 pub fn C.gtk_video_new_for_resource(resource_path &char) &GtkWidget
 pub fn C.gtk_video_get_media_stream(self &GtkVideo) &GtkMediaStream
 pub fn C.gtk_video_set_media_stream(self &GtkVideo, stream &GtkMediaStream)
 pub fn C.gtk_video_get_file(self &GtkVideo) voidptr
-pub fn C.gtk_video_set_file(self &GtkVideo, file voidptr)
+pub fn C.gtk_video_set_file(self &GtkVideo, file &glib.GFile)
 pub fn C.gtk_video_set_filename(self &GtkVideo, filename &char)
 pub fn C.gtk_video_set_resource(self &GtkVideo, resource_path &char)
 pub fn C.gtk_video_get_autoplay(self &GtkVideo) bool
@@ -27,7 +29,7 @@ pub struct C.GtkVideo {}
 
 pub type GtkVideo = C.GtkVideo
 
-pub fn (self &GtkVideo) get_type() int {
+pub fn (self &GtkVideo) get_type() glib.GType {
 	return C.gtk_video_get_type()
 }
 
@@ -39,7 +41,7 @@ pub fn GtkVideo.new_for_media_stream(stream &GtkMediaStream) &GtkWidget {
 	return C.gtk_video_new_for_media_stream(stream)
 }
 
-pub fn GtkVideo.new_for_file(file voidptr) &GtkWidget {
+pub fn GtkVideo.new_for_file(file &glib.GFile) &GtkWidget {
 	return C.gtk_video_new_for_file(file)
 }
 
@@ -63,7 +65,7 @@ pub fn (self &GtkVideo) get_file() voidptr {
 	return C.gtk_video_get_file(self)
 }
 
-pub fn (self &GtkVideo) set_file(file voidptr) {
+pub fn (self &GtkVideo) set_file(file &glib.GFile) {
 	C.gtk_video_set_file(self, file)
 }
 

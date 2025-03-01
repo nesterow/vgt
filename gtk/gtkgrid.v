@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkGridClass {}
 
 pub type GtkGridClass = C.GtkGridClass
 
-pub fn C.gtk_grid_get_type() int
+pub fn C.gtk_grid_get_type() glib.GType
 pub fn C.gtk_grid_new() &GtkWidget
 pub fn C.gtk_grid_attach(grid &GtkGrid, child &GtkWidget, column int, row int, width int, height int)
 pub fn C.gtk_grid_attach_next_to(grid &GtkGrid, child &GtkWidget, sibling &GtkWidget, side GtkPositionType, width int, height int)
@@ -35,7 +37,7 @@ pub struct C.GtkGrid {}
 
 pub type GtkGrid = C.GtkGrid
 
-pub fn (self &GtkGrid) get_type() int {
+pub fn (self &GtkGrid) get_type() glib.GType {
 	return C.gtk_grid_get_type()
 }
 

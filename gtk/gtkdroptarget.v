@@ -1,13 +1,15 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkDropTargetClass {}
 
 pub type GtkDropTargetClass = C.GtkDropTargetClass
 
-pub fn C.gtk_drop_target_get_type() int
+pub fn C.gtk_drop_target_get_type() glib.GType
 pub fn C.gtk_drop_target_new(typ int, actions voidptr) &GtkDropTarget
-pub fn C.gtk_drop_target_set_gtypes(self &GtkDropTarget, typs voidptr, n_typs int)
+pub fn C.gtk_drop_target_set_gtypes(self &GtkDropTarget, typs &int, n_typs int)
 pub fn C.gtk_drop_target_get_gtypes(self &GtkDropTarget, n_typs voidptr) voidptr
 pub fn C.gtk_drop_target_get_formats(self &GtkDropTarget) voidptr
 pub fn C.gtk_drop_target_set_actions(self &GtkDropTarget, actions voidptr)
@@ -24,7 +26,7 @@ pub struct C.GtkDropTarget {}
 
 pub type GtkDropTarget = C.GtkDropTarget
 
-pub fn (self &GtkDropTarget) get_type() int {
+pub fn (self &GtkDropTarget) get_type() glib.GType {
 	return C.gtk_drop_target_get_type()
 }
 
@@ -32,7 +34,7 @@ pub fn GtkDropTarget.new(typ int, actions voidptr) &GtkDropTarget {
 	return C.gtk_drop_target_new(typ, actions)
 }
 
-pub fn (self &GtkDropTarget) set_gtypes(typs voidptr, n_typs int) {
+pub fn (self &GtkDropTarget) set_gtypes(typs &int, n_typs int) {
 	C.gtk_drop_target_set_gtypes(self, typs, n_typs)
 }
 

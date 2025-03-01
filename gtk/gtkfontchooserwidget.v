@@ -1,6 +1,8 @@
 module gtk
 
-pub fn C.gtk_font_chooser_widget_get_type() int
+import glib
+
+pub fn C.gtk_font_chooser_widget_get_type() glib.GType
 pub fn C.gtk_font_chooser_widget_new() &GtkWidget
 
 @[noinit; typedef]
@@ -8,7 +10,7 @@ pub struct C.GtkFontChooserWidget {}
 
 pub type GtkFontChooserWidget = C.GtkFontChooserWidget
 
-pub fn (self &GtkFontChooserWidget) get_type() int {
+pub fn (self &GtkFontChooserWidget) get_type() glib.GType {
 	return C.gtk_font_chooser_widget_get_type()
 }
 

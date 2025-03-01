@@ -1,5 +1,7 @@
 module gtk
 
+import glib
+
 pub enum GtkIconLookupFlags {
 	gtk_icon_lookup_force_regular  = 1 << 0
 	gtk_icon_lookup_force_symbolic = 1 << 1
@@ -11,8 +13,8 @@ pub enum GtkIconThemeError {
 	gtk_icon_theme_failed
 }
 
-pub fn C.gtk_icon_paintable_new_for_file(file voidptr, size int, scale int) &GtkIconPaintable
-pub fn C.gtk_icon_paintable_get_type() int
+pub fn C.gtk_icon_paintable_new_for_file(file &glib.GFile, size int, scale int) &GtkIconPaintable
+pub fn C.gtk_icon_paintable_get_type() glib.GType
 pub fn C.gtk_icon_paintable_get_file(self &GtkIconPaintable) voidptr
 pub fn C.gtk_icon_paintable_get_icon_name(self &GtkIconPaintable) &char
 pub fn C.gtk_icon_paintable_is_symbolic(self &GtkIconPaintable) bool
@@ -22,11 +24,11 @@ pub struct C.GtkIconPaintable {}
 
 pub type GtkIconPaintable = C.GtkIconPaintable
 
-pub fn GtkIconPaintable.new_for_file(file voidptr, size int, scale int) &GtkIconPaintable {
+pub fn GtkIconPaintable.new_for_file(file &glib.GFile, size int, scale int) &GtkIconPaintable {
 	return C.gtk_icon_paintable_new_for_file(file, size, scale)
 }
 
-pub fn (self &GtkIconPaintable) get_type() int {
+pub fn (self &GtkIconPaintable) get_type() glib.GType {
 	return C.gtk_icon_paintable_get_type()
 }
 
@@ -42,8 +44,8 @@ pub fn (self &GtkIconPaintable) is_symbolic() bool {
 	return C.gtk_icon_paintable_is_symbolic(self)
 }
 
-pub fn C.gtk_icon_theme_error_quark() voidptr
-pub fn C.gtk_icon_theme_get_type() int
+pub fn C.gtk_icon_theme_error_quark() glib.GQuark
+pub fn C.gtk_icon_theme_get_type() glib.GType
 pub fn C.gtk_icon_theme_new() &GtkIconTheme
 pub fn C.gtk_icon_theme_get_for_display(display voidptr) &GtkIconTheme
 pub fn C.gtk_icon_theme_get_display(self &GtkIconTheme) voidptr
@@ -56,10 +58,10 @@ pub fn C.gtk_icon_theme_add_resource_path(self &GtkIconTheme, path &char)
 pub fn C.gtk_icon_theme_set_theme_name(self &GtkIconTheme, theme_name &char)
 pub fn C.gtk_icon_theme_get_theme_name(self &GtkIconTheme) voidptr
 pub fn C.gtk_icon_theme_has_icon(self &GtkIconTheme, icon_name &char) bool
-pub fn C.gtk_icon_theme_has_gicon(self &GtkIconTheme, gicon voidptr) bool
+pub fn C.gtk_icon_theme_has_gicon(self &GtkIconTheme, gicon &glib.GIcon) bool
 pub fn C.gtk_icon_theme_get_icon_sizes(self &GtkIconTheme, icon_name &char) voidptr
 pub fn C.gtk_icon_theme_lookup_icon(self &GtkIconTheme, icon_name &char, fallbacks voidptr, size int, scale int, direction GtkTextDirection, flags GtkIconLookupFlags) &GtkIconPaintable
-pub fn C.gtk_icon_theme_lookup_by_gicon(self &GtkIconTheme, icon voidptr, size int, scale int, direction GtkTextDirection, flags GtkIconLookupFlags) &GtkIconPaintable
+pub fn C.gtk_icon_theme_lookup_by_gicon(self &GtkIconTheme, icon &glib.GIcon, size int, scale int, direction GtkTextDirection, flags GtkIconLookupFlags) &GtkIconPaintable
 pub fn C.gtk_icon_theme_get_icon_names(self &GtkIconTheme) voidptr
 
 @[noinit; typedef]
@@ -67,11 +69,11 @@ pub struct C.GtkIconTheme {}
 
 pub type GtkIconTheme = C.GtkIconTheme
 
-pub fn (self &GtkIconTheme) error_quark() voidptr {
+pub fn (self &GtkIconTheme) error_quark() glib.GQuark {
 	return C.gtk_icon_theme_error_quark()
 }
 
-pub fn (self &GtkIconTheme) get_type() int {
+pub fn (self &GtkIconTheme) get_type() glib.GType {
 	return C.gtk_icon_theme_get_type()
 }
 
@@ -123,7 +125,7 @@ pub fn (self &GtkIconTheme) has_icon(icon_name &char) bool {
 	return C.gtk_icon_theme_has_icon(self, icon_name)
 }
 
-pub fn (self &GtkIconTheme) has_gicon(gicon voidptr) bool {
+pub fn (self &GtkIconTheme) has_gicon(gicon &glib.GIcon) bool {
 	return C.gtk_icon_theme_has_gicon(self, gicon)
 }
 
@@ -136,7 +138,7 @@ pub fn (self &GtkIconTheme) lookup_icon(icon_name &char, fallbacks voidptr, size
 		flags)
 }
 
-pub fn (self &GtkIconTheme) lookup_by_gicon(icon voidptr, size int, scale int, direction GtkTextDirection, flags GtkIconLookupFlags) &GtkIconPaintable {
+pub fn (self &GtkIconTheme) lookup_by_gicon(icon &glib.GIcon, size int, scale int, direction GtkTextDirection, flags GtkIconLookupFlags) &GtkIconPaintable {
 	return C.gtk_icon_theme_lookup_by_gicon(self, icon, size, scale, direction, flags)
 }
 

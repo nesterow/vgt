@@ -1,4 +1,4 @@
-module vgt;
+module vgt
 
 $if linux {
 	#pkgconfig --cflags gtk4

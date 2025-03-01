@@ -1,6 +1,8 @@
 module gtk
 
-pub fn C.gtk_level_bar_get_type() int
+import glib
+
+pub fn C.gtk_level_bar_get_type() glib.GType
 pub fn C.gtk_level_bar_new() &GtkWidget
 pub fn C.gtk_level_bar_new_for_interval(min_value f32, max_value f32) &GtkWidget
 pub fn C.gtk_level_bar_set_mode(self &GtkLevelBar, mode GtkLevelBarMode)
@@ -22,7 +24,7 @@ pub struct C.GtkLevelBar {}
 
 pub type GtkLevelBar = C.GtkLevelBar
 
-pub fn (self &GtkLevelBar) get_type() int {
+pub fn (self &GtkLevelBar) get_type() glib.GType {
 	return C.gtk_level_bar_get_type()
 }
 

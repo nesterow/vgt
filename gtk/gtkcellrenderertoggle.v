@@ -1,6 +1,8 @@
 module gtk
 
-pub fn C.gtk_cell_renderer_toggle_get_type() int
+import glib
+
+pub fn C.gtk_cell_renderer_toggle_get_type() glib.GType
 pub fn C.gtk_cell_renderer_toggle_new() &GtkCellRenderer
 pub fn C.gtk_cell_renderer_toggle_get_radio(toggle &GtkCellRendererToggle) bool
 pub fn C.gtk_cell_renderer_toggle_set_radio(toggle &GtkCellRendererToggle, radio bool)
@@ -14,7 +16,7 @@ pub struct C.GtkCellRendererToggle {}
 
 pub type GtkCellRendererToggle = C.GtkCellRendererToggle
 
-pub fn (self &GtkCellRendererToggle) get_type() int {
+pub fn (self &GtkCellRendererToggle) get_type() glib.GType {
 	return C.gtk_cell_renderer_toggle_get_type()
 }
 

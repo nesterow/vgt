@@ -1,13 +1,15 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkShortcutControllerClass {}
 
 pub type GtkShortcutControllerClass = C.GtkShortcutControllerClass
 
-pub fn C.gtk_shortcut_controller_get_type() int
+pub fn C.gtk_shortcut_controller_get_type() glib.GType
 pub fn C.gtk_shortcut_controller_new() &GtkEventController
-pub fn C.gtk_shortcut_controller_new_for_model(model voidptr) &GtkEventController
+pub fn C.gtk_shortcut_controller_new_for_model(model &glib.GListModel) &GtkEventController
 pub fn C.gtk_shortcut_controller_set_mnemonics_modifiers(self &GtkShortcutController, modifiers voidptr)
 pub fn C.gtk_shortcut_controller_get_mnemonics_modifiers(self &GtkShortcutController) voidptr
 pub fn C.gtk_shortcut_controller_set_scope(self &GtkShortcutController, scope GtkShortcutScope)
@@ -20,7 +22,7 @@ pub struct C.GtkShortcutController {}
 
 pub type GtkShortcutController = C.GtkShortcutController
 
-pub fn (self &GtkShortcutController) get_type() int {
+pub fn (self &GtkShortcutController) get_type() glib.GType {
 	return C.gtk_shortcut_controller_get_type()
 }
 
@@ -28,7 +30,7 @@ pub fn GtkShortcutController.new() &GtkEventController {
 	return C.gtk_shortcut_controller_new()
 }
 
-pub fn GtkShortcutController.new_for_model(model voidptr) &GtkEventController {
+pub fn GtkShortcutController.new_for_model(model &glib.GListModel) &GtkEventController {
 	return C.gtk_shortcut_controller_new_for_model(model)
 }
 

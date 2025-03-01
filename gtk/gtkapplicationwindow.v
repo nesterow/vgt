@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkApplicationWindowClass {}
 
 pub type GtkApplicationWindowClass = C.GtkApplicationWindowClass
 
-pub fn C.gtk_application_window_get_type() int
+pub fn C.gtk_application_window_get_type() glib.GType
 pub fn C.gtk_application_window_new(application &GtkApplication) &GtkWidget
 pub fn C.gtk_application_window_set_show_menubar(window &GtkApplicationWindow, show_menubar bool)
 pub fn C.gtk_application_window_get_show_menubar(window &GtkApplicationWindow) bool
@@ -18,7 +20,7 @@ pub struct C.GtkApplicationWindow {}
 
 pub type GtkApplicationWindow = C.GtkApplicationWindow
 
-pub fn (self &GtkApplicationWindow) get_type() int {
+pub fn (self &GtkApplicationWindow) get_type() glib.GType {
 	return C.gtk_application_window_get_type()
 }
 

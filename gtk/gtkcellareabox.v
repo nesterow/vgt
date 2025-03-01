@@ -1,6 +1,8 @@
 module gtk
 
-pub fn C.gtk_cell_area_box_get_type() int
+import glib
+
+pub fn C.gtk_cell_area_box_get_type() glib.GType
 pub fn C.gtk_cell_area_box_new() &GtkCellArea
 pub fn C.gtk_cell_area_box_pack_start(box &GtkCellAreaBox, renderer &GtkCellRenderer, expand bool, align bool, fixed bool)
 pub fn C.gtk_cell_area_box_pack_end(box &GtkCellAreaBox, renderer &GtkCellRenderer, expand bool, align bool, fixed bool)
@@ -12,7 +14,7 @@ pub struct C.GtkCellAreaBox {}
 
 pub type GtkCellAreaBox = C.GtkCellAreaBox
 
-pub fn (self &GtkCellAreaBox) get_type() int {
+pub fn (self &GtkCellAreaBox) get_type() glib.GType {
 	return C.gtk_cell_area_box_get_type()
 }
 

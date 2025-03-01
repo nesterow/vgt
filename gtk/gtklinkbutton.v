@@ -1,6 +1,8 @@
 module gtk
 
-pub fn C.gtk_link_button_get_type() int
+import glib
+
+pub fn C.gtk_link_button_get_type() glib.GType
 pub fn C.gtk_link_button_new(uri &char) &GtkWidget
 pub fn C.gtk_link_button_new_with_label(uri &char, label &char) &GtkWidget
 pub fn C.gtk_link_button_get_uri(link_button &GtkLinkButton) &char
@@ -13,7 +15,7 @@ pub struct C.GtkLinkButton {}
 
 pub type GtkLinkButton = C.GtkLinkButton
 
-pub fn (self &GtkLinkButton) get_type() int {
+pub fn (self &GtkLinkButton) get_type() glib.GType {
 	return C.gtk_link_button_get_type()
 }
 

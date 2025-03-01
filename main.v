@@ -1,33 +1,33 @@
 module main
 
+import glib { GApplication, GApplicationFlags, g_signal_connect }
+import gtk { GtkAlign, GtkApplication, GtkBuilder, GtkButton, GtkWidget, GtkWindow, gtk_init }
 import vgt { Signal, View }
-import gtk { AppFlags, Gtk, GtkAlign, GtkApplication, GtkBaselinePosition, GtkButton, GtkBuilder, GtkWidget, GtkWindow }
-
-
 
 fn main() {
-	Gtk.init()
+	gtk_init()
 
 	view := View{$embed_file('assets/ui/main_window.ui').to_string(), [
 		Signal{'Button.clicked', fn (builder &GtkBuilder, btn &GtkButton) {
-				box := &GtkWidget(builder.get_object(c'box'))
-				box.set_valign(GtkAlign.gtk_align_center)
-				btn.set_label('Hello, World!'.str)
+			box := &GtkWidget(builder.get_object(c'box'))
+			box.set_valign(GtkAlign.gtk_align_center)
+			btn.set_label('Hello, World!'.str)
 		}},
 	]}
 
 	ctx := view.build()
 
-	app := GtkApplication.new(c'org.xyz.MyApp', AppFlags.default)
+	app := GtkApplication.new(c'org.xyz.MyApp', GApplicationFlags.g_application_flags_none)
 	window := &GtkWindow(ctx.builder.get_object(c'MainWindow'))
 
-	Gtk.signal_connect(app, 'startup', fn [window, app] () {
+	g_signal_connect(app, 'startup', fn [window, app] (data voidptr) {
 		app.add_window(window)
 	}, unsafe { nil })
 
-	Gtk.signal_connect(app, 'activate', fn [window] () {
+	g_signal_connect(app, 'activate', fn [window] (data voidptr) {
 		window.present()
 	}, unsafe { nil })
 
-	Gtk.application_run(app, 0, unsafe { nil })
+	gapp := unsafe { &GApplication(app) }
+	gapp.run(0, unsafe { nil })
 }

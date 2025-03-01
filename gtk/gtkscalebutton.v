@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkScaleButtonClass {}
 
 pub type GtkScaleButtonClass = C.GtkScaleButtonClass
 
-pub fn C.gtk_scale_button_get_type() int
+pub fn C.gtk_scale_button_get_type() glib.GType
 pub fn C.gtk_scale_button_new(min f32, max f32, step f32, icons voidptr) &GtkWidget
 pub fn C.gtk_scale_button_set_icons(button &GtkScaleButton, icons voidptr)
 pub fn C.gtk_scale_button_get_value(button &GtkScaleButton) f32
@@ -21,7 +23,7 @@ pub struct C.GtkScaleButton {}
 
 pub type GtkScaleButton = C.GtkScaleButton
 
-pub fn (self &GtkScaleButton) get_type() int {
+pub fn (self &GtkScaleButton) get_type() glib.GType {
 	return C.gtk_scale_button_get_type()
 }
 

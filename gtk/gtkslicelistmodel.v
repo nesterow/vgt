@@ -1,13 +1,15 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkSliceListModelClass {}
 
 pub type GtkSliceListModelClass = C.GtkSliceListModelClass
 
-pub fn C.gtk_slice_list_model_get_type() int
-pub fn C.gtk_slice_list_model_new(model voidptr, offset u64, size u64) &GtkSliceListModel
-pub fn C.gtk_slice_list_model_set_model(self &GtkSliceListModel, model voidptr)
+pub fn C.gtk_slice_list_model_get_type() glib.GType
+pub fn C.gtk_slice_list_model_new(model &glib.GListModel, offset u64, size u64) &GtkSliceListModel
+pub fn C.gtk_slice_list_model_set_model(self &GtkSliceListModel, model &glib.GListModel)
 pub fn C.gtk_slice_list_model_get_model(self &GtkSliceListModel) voidptr
 pub fn C.gtk_slice_list_model_set_offset(self &GtkSliceListModel, offset u64)
 pub fn C.gtk_slice_list_model_get_offset(self &GtkSliceListModel) u64
@@ -19,15 +21,15 @@ pub struct C.GtkSliceListModel {}
 
 pub type GtkSliceListModel = C.GtkSliceListModel
 
-pub fn (self &GtkSliceListModel) get_type() int {
+pub fn (self &GtkSliceListModel) get_type() glib.GType {
 	return C.gtk_slice_list_model_get_type()
 }
 
-pub fn GtkSliceListModel.new(model voidptr, offset u64, size u64) &GtkSliceListModel {
+pub fn GtkSliceListModel.new(model &glib.GListModel, offset u64, size u64) &GtkSliceListModel {
 	return C.gtk_slice_list_model_new(model, offset, size)
 }
 
-pub fn (self &GtkSliceListModel) set_model(model voidptr) {
+pub fn (self &GtkSliceListModel) set_model(model &glib.GListModel) {
 	C.gtk_slice_list_model_set_model(self, model)
 }
 

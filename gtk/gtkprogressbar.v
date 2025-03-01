@@ -1,6 +1,8 @@
 module gtk
 
-pub fn C.gtk_progress_bar_get_type() int
+import glib
+
+pub fn C.gtk_progress_bar_get_type() glib.GType
 pub fn C.gtk_progress_bar_new() &GtkWidget
 pub fn C.gtk_progress_bar_pulse(pbar &GtkProgressBar)
 pub fn C.gtk_progress_bar_set_text(pbar &GtkProgressBar, text &char)
@@ -21,7 +23,7 @@ pub struct C.GtkProgressBar {}
 
 pub type GtkProgressBar = C.GtkProgressBar
 
-pub fn (self &GtkProgressBar) get_type() int {
+pub fn (self &GtkProgressBar) get_type() glib.GType {
 	return C.gtk_progress_bar_get_type()
 }
 

@@ -1,5 +1,7 @@
 module gtk
 
+import glib
+
 pub enum GtkRecentManagerError {
 	gtk_recent_manager_error_not_found
 	gtk_recent_manager_error_invalid_uri
@@ -25,29 +27,29 @@ pub struct C.GtkRecentManagerClass {}
 
 pub type GtkRecentManagerClass = C.GtkRecentManagerClass
 
-pub fn C.gtk_recent_manager_error_quark() voidptr
-pub fn C.gtk_recent_manager_get_type() int
+pub fn C.gtk_recent_manager_error_quark() glib.GQuark
+pub fn C.gtk_recent_manager_get_type() glib.GType
 pub fn C.gtk_recent_manager_new() &GtkRecentManager
 pub fn C.gtk_recent_manager_get_default() &GtkRecentManager
 pub fn C.gtk_recent_manager_add_item(manager &GtkRecentManager, uri &char) bool
 pub fn C.gtk_recent_manager_add_full(manager &GtkRecentManager, uri &char, recent_data &GtkRecentData) bool
-pub fn C.gtk_recent_manager_remove_item(manager &GtkRecentManager, uri &char, error voidptr) bool
-pub fn C.gtk_recent_manager_lookup_item(manager &GtkRecentManager, uri &char, error voidptr) &GtkRecentInfo
+pub fn C.gtk_recent_manager_remove_item(manager &GtkRecentManager, uri &char, error &glib.GError) bool
+pub fn C.gtk_recent_manager_lookup_item(manager &GtkRecentManager, uri &char, error &glib.GError) &GtkRecentInfo
 pub fn C.gtk_recent_manager_has_item(manager &GtkRecentManager, uri &char) bool
-pub fn C.gtk_recent_manager_move_item(manager &GtkRecentManager, uri &char, new_uri &char, error voidptr) bool
+pub fn C.gtk_recent_manager_move_item(manager &GtkRecentManager, uri &char, new_uri &char, error &glib.GError) bool
 pub fn C.gtk_recent_manager_get_items(manager &GtkRecentManager) voidptr
-pub fn C.gtk_recent_manager_purge_items(manager &GtkRecentManager, error voidptr) int
+pub fn C.gtk_recent_manager_purge_items(manager &GtkRecentManager, error &glib.GError) int
 
 @[noinit; typedef]
 pub struct C.GtkRecentManager {}
 
 pub type GtkRecentManager = C.GtkRecentManager
 
-pub fn (self &GtkRecentManager) error_quark() voidptr {
+pub fn (self &GtkRecentManager) error_quark() glib.GQuark {
 	return C.gtk_recent_manager_error_quark()
 }
 
-pub fn (self &GtkRecentManager) get_type() int {
+pub fn (self &GtkRecentManager) get_type() glib.GType {
 	return C.gtk_recent_manager_get_type()
 }
 
@@ -67,11 +69,11 @@ pub fn (self &GtkRecentManager) add_full(uri &char, recent_data &GtkRecentData) 
 	return C.gtk_recent_manager_add_full(self, uri, recent_data)
 }
 
-pub fn (self &GtkRecentManager) remove_item(uri &char, error voidptr) bool {
+pub fn (self &GtkRecentManager) remove_item(uri &char, error &glib.GError) bool {
 	return C.gtk_recent_manager_remove_item(self, uri, error)
 }
 
-pub fn (self &GtkRecentManager) lookup_item(uri &char, error voidptr) &GtkRecentInfo {
+pub fn (self &GtkRecentManager) lookup_item(uri &char, error &glib.GError) &GtkRecentInfo {
 	return C.gtk_recent_manager_lookup_item(self, uri, error)
 }
 
@@ -79,7 +81,7 @@ pub fn (self &GtkRecentManager) has_item(uri &char) bool {
 	return C.gtk_recent_manager_has_item(self, uri)
 }
 
-pub fn (self &GtkRecentManager) move_item(uri &char, new_uri &char, error voidptr) bool {
+pub fn (self &GtkRecentManager) move_item(uri &char, new_uri &char, error &glib.GError) bool {
 	return C.gtk_recent_manager_move_item(self, uri, new_uri, error)
 }
 
@@ -87,6 +89,6 @@ pub fn (self &GtkRecentManager) get_items() voidptr {
 	return C.gtk_recent_manager_get_items(self)
 }
 
-pub fn (self &GtkRecentManager) purge_items(error voidptr) int {
+pub fn (self &GtkRecentManager) purge_items(error &glib.GError) int {
 	return C.gtk_recent_manager_purge_items(self, error)
 }

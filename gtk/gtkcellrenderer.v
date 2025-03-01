@@ -1,5 +1,7 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkCellRendererClass {}
 
@@ -22,7 +24,7 @@ pub enum GtkCellRendererMode {
 	gtk_cell_renderer_mode_editable
 }
 
-pub fn C.gtk_cell_renderer_get_type() int
+pub fn C.gtk_cell_renderer_get_type() glib.GType
 pub fn C.gtk_cell_renderer_get_request_mode(cell &GtkCellRenderer) GtkSizeRequestMode
 pub fn C.gtk_cell_renderer_get_preferred_width(cell &GtkCellRenderer, widget &GtkWidget, minimum_size voidptr, natural_size voidptr)
 pub fn C.gtk_cell_renderer_get_preferred_height_for_width(cell &GtkCellRenderer, widget &GtkWidget, width int, minimum_height voidptr, natural_height voidptr)
@@ -56,7 +58,7 @@ pub struct C.GtkCellRenderer {}
 
 pub type GtkCellRenderer = C.GtkCellRenderer
 
-pub fn (self &GtkCellRenderer) get_type() int {
+pub fn (self &GtkCellRenderer) get_type() glib.GType {
 	return C.gtk_cell_renderer_get_type()
 }
 

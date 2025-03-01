@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkGLAreaClass {}
 
 pub type GtkGLAreaClass = C.GtkGLAreaClass
 
-pub fn C.gtk_gl_area_get_type() int
+pub fn C.gtk_gl_area_get_type() glib.GType
 pub fn C.gtk_gl_area_new() &GtkWidget
 pub fn C.gtk_gl_area_set_use_es(area &GtkGLArea, use_es bool)
 pub fn C.gtk_gl_area_get_use_es(area &GtkGLArea) bool
@@ -21,7 +23,7 @@ pub fn C.gtk_gl_area_queue_render(area &GtkGLArea)
 pub fn C.gtk_gl_area_get_context(area &GtkGLArea) voidptr
 pub fn C.gtk_gl_area_make_current(area &GtkGLArea)
 pub fn C.gtk_gl_area_attach_buffers(area &GtkGLArea)
-pub fn C.gtk_gl_area_set_error(area &GtkGLArea, error voidptr)
+pub fn C.gtk_gl_area_set_error(area &GtkGLArea, error &glib.GError)
 pub fn C.gtk_gl_area_get_error(area &GtkGLArea) voidptr
 
 @[noinit; typedef]
@@ -29,7 +31,7 @@ pub struct C.GtkGLArea {}
 
 pub type GtkGLArea = C.GtkGLArea
 
-pub fn (self &GtkGLArea) get_type() int {
+pub fn (self &GtkGLArea) get_type() glib.GType {
 	return C.gtk_gl_area_get_type()
 }
 
@@ -93,7 +95,7 @@ pub fn (self &GtkGLArea) attach_buffers() {
 	C.gtk_gl_area_attach_buffers(self)
 }
 
-pub fn (self &GtkGLArea) set_error(error voidptr) {
+pub fn (self &GtkGLArea) set_error(error &glib.GError) {
 	C.gtk_gl_area_set_error(self, error)
 }
 

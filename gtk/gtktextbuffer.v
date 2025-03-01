@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkTextBufferClass {}
 
 pub type GtkTextBufferClass = C.GtkTextBufferClass
 
-pub fn C.gtk_text_buffer_get_type() int
+pub fn C.gtk_text_buffer_get_type() glib.GType
 pub fn C.gtk_text_buffer_new(table &GtkTextTagTable) &GtkTextBuffer
 pub fn C.gtk_text_buffer_get_line_count(buffer &GtkTextBuffer) int
 pub fn C.gtk_text_buffer_get_char_count(buffer &GtkTextBuffer) int
@@ -83,7 +85,7 @@ pub struct C.GtkTextBuffer {}
 
 pub type GtkTextBuffer = C.GtkTextBuffer
 
-pub fn (self &GtkTextBuffer) get_type() int {
+pub fn (self &GtkTextBuffer) get_type() glib.GType {
 	return C.gtk_text_buffer_get_type()
 }
 

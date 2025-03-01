@@ -1,5 +1,7 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkCellLayoutIface {}
 
@@ -10,7 +12,7 @@ pub struct C.GtkCellLayoutDataFunc {}
 
 pub type GtkCellLayoutDataFunc = C.GtkCellLayoutDataFunc
 
-pub fn C.gtk_cell_layout_get_type() int
+pub fn C.gtk_cell_layout_get_type() glib.GType
 pub fn C.gtk_cell_layout_pack_start(cell_layout &GtkCellLayout, cell &GtkCellRenderer, expand bool)
 pub fn C.gtk_cell_layout_pack_end(cell_layout &GtkCellLayout, cell &GtkCellRenderer, expand bool)
 pub fn C.gtk_cell_layout_get_cells(cell_layout &GtkCellLayout) voidptr
@@ -27,7 +29,7 @@ pub struct C.GtkCellLayout {}
 
 pub type GtkCellLayout = C.GtkCellLayout
 
-pub fn (self &GtkCellLayout) get_type() int {
+pub fn (self &GtkCellLayout) get_type() glib.GType {
 	return C.gtk_cell_layout_get_type()
 }
 

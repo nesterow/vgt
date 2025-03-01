@@ -1,7 +1,9 @@
 module gtk
 
-pub fn C.gtk_app_chooser_dialog_get_type() int
-pub fn C.gtk_app_chooser_dialog_new(parent &GtkWindow, flags voidptr, file voidptr) &GtkWidget
+import glib
+
+pub fn C.gtk_app_chooser_dialog_get_type() glib.GType
+pub fn C.gtk_app_chooser_dialog_new(parent &GtkWindow, flags voidptr, file &glib.GFile) &GtkWidget
 pub fn C.gtk_app_chooser_dialog_new_for_content_type(parent &GtkWindow, flags voidptr, content_typ &char) &GtkWidget
 pub fn C.gtk_app_chooser_dialog_get_widget(self &GtkAppChooserDialog) &GtkWidget
 pub fn C.gtk_app_chooser_dialog_set_heading(self &GtkAppChooserDialog, heading &char)
@@ -12,11 +14,11 @@ pub struct C.GtkAppChooserDialog {}
 
 pub type GtkAppChooserDialog = C.GtkAppChooserDialog
 
-pub fn (self &GtkAppChooserDialog) get_type() int {
+pub fn (self &GtkAppChooserDialog) get_type() glib.GType {
 	return C.gtk_app_chooser_dialog_get_type()
 }
 
-pub fn GtkAppChooserDialog.new(parent &GtkWindow, flags voidptr, file voidptr) &GtkWidget {
+pub fn GtkAppChooserDialog.new(parent &GtkWindow, flags voidptr, file &glib.GFile) &GtkWidget {
 	return C.gtk_app_chooser_dialog_new(parent, flags, file)
 }
 

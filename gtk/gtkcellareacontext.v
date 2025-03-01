@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkCellAreaContextClass {}
 
 pub type GtkCellAreaContextClass = C.GtkCellAreaContextClass
 
-pub fn C.gtk_cell_area_context_get_type() int
+pub fn C.gtk_cell_area_context_get_type() glib.GType
 pub fn C.gtk_cell_area_context_get_area(context &GtkCellAreaContext) &GtkCellArea
 pub fn C.gtk_cell_area_context_allocate(context &GtkCellAreaContext, width int, height int)
 pub fn C.gtk_cell_area_context_reset(context &GtkCellAreaContext)
@@ -17,7 +19,7 @@ pub fn C.gtk_cell_area_context_get_allocation(context &GtkCellAreaContext, width
 pub fn C.gtk_cell_area_context_push_preferred_width(context &GtkCellAreaContext, minimum_width int, natural_width int)
 pub fn C.gtk_cell_area_context_push_preferred_height(context &GtkCellAreaContext, minimum_height int, natural_height int)
 
-pub fn (self &GtkCellAreaContext) get_type() int {
+pub fn (self &GtkCellAreaContext) get_type() glib.GType {
 	return C.gtk_cell_area_context_get_type()
 }
 

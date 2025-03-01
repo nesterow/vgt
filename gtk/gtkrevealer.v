@@ -1,5 +1,7 @@
 module gtk
 
+import glib
+
 pub enum GtkRevealerTransitionType {
 	gtk_revealer_transition_type_none
 	gtk_revealer_transition_type_crossfade
@@ -13,7 +15,7 @@ pub enum GtkRevealerTransitionType {
 	gtk_revealer_transition_type_swing_down
 }
 
-pub fn C.gtk_revealer_get_type() int
+pub fn C.gtk_revealer_get_type() glib.GType
 pub fn C.gtk_revealer_new() &GtkWidget
 pub fn C.gtk_revealer_get_reveal_child(revealer &GtkRevealer) bool
 pub fn C.gtk_revealer_set_reveal_child(revealer &GtkRevealer, reveal_child bool)
@@ -30,7 +32,7 @@ pub struct C.GtkRevealer {}
 
 pub type GtkRevealer = C.GtkRevealer
 
-pub fn (self &GtkRevealer) get_type() int {
+pub fn (self &GtkRevealer) get_type() glib.GType {
 	return C.gtk_revealer_get_type()
 }
 

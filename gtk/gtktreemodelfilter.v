@@ -1,5 +1,7 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkTreeModelFilterVisibleFunc {}
 
@@ -15,10 +17,10 @@ pub struct C.GtkTreeModelFilterClass {}
 
 pub type GtkTreeModelFilterClass = C.GtkTreeModelFilterClass
 
-pub fn C.gtk_tree_model_filter_get_type() int
+pub fn C.gtk_tree_model_filter_get_type() glib.GType
 pub fn C.gtk_tree_model_filter_new(child_model &GtkTreeModel, root &GtkTreePath) &GtkTreeModel
 pub fn C.gtk_tree_model_filter_set_visible_func(filter &GtkTreeModelFilter, func voidptr, data voidptr, destroy voidptr)
-pub fn C.gtk_tree_model_filter_set_modify_func(filter &GtkTreeModelFilter, n_columns int, typs voidptr, func voidptr, data voidptr, destroy voidptr)
+pub fn C.gtk_tree_model_filter_set_modify_func(filter &GtkTreeModelFilter, n_columns int, typs &int, func voidptr, data voidptr, destroy voidptr)
 pub fn C.gtk_tree_model_filter_set_visible_column(filter &GtkTreeModelFilter, column int)
 pub fn C.gtk_tree_model_filter_get_model(filter &GtkTreeModelFilter) &GtkTreeModel
 pub fn C.gtk_tree_model_filter_convert_child_iter_to_iter(filter &GtkTreeModelFilter, filter_iter &GtkTreeIter, child_iter &GtkTreeIter) bool
@@ -33,7 +35,7 @@ pub struct C.GtkTreeModelFilter {}
 
 pub type GtkTreeModelFilter = C.GtkTreeModelFilter
 
-pub fn (self &GtkTreeModelFilter) get_type() int {
+pub fn (self &GtkTreeModelFilter) get_type() glib.GType {
 	return C.gtk_tree_model_filter_get_type()
 }
 
@@ -45,7 +47,7 @@ pub fn (self &GtkTreeModelFilter) set_visible_func(func voidptr, data voidptr, d
 	C.gtk_tree_model_filter_set_visible_func(self, func, data, destroy)
 }
 
-pub fn (self &GtkTreeModelFilter) set_modify_func(n_columns int, typs voidptr, func voidptr, data voidptr, destroy voidptr) {
+pub fn (self &GtkTreeModelFilter) set_modify_func(n_columns int, typs &int, func voidptr, data voidptr, destroy voidptr) {
 	C.gtk_tree_model_filter_set_modify_func(self, n_columns, typs, func, data, destroy)
 }
 

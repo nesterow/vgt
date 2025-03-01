@@ -1,6 +1,8 @@
 module gtk
 
-pub fn C.gtk_search_entry_get_type() int
+import glib
+
+pub fn C.gtk_search_entry_get_type() glib.GType
 pub fn C.gtk_search_entry_new() &GtkWidget
 pub fn C.gtk_search_entry_set_key_capture_widget(entry &GtkSearchEntry, widget &GtkWidget)
 pub fn C.gtk_search_entry_get_key_capture_widget(entry &GtkSearchEntry) &GtkWidget
@@ -10,7 +12,7 @@ pub struct C.GtkSearchEntry {}
 
 pub type GtkSearchEntry = C.GtkSearchEntry
 
-pub fn (self &GtkSearchEntry) get_type() int {
+pub fn (self &GtkSearchEntry) get_type() glib.GType {
 	return C.gtk_search_entry_get_type()
 }
 

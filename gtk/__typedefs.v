@@ -2,19 +2,6 @@
 // 	ref: converter/gtk.v -> ctov_type
 module gtk
 
-pub enum AppFlags {
-	default             = 0
-	is_service          = (1 << 0)
-	is_launcher         = (1 << 1)
-	handles_open        = (1 << 2)
-	command_line        = (1 << 3)
-	send_environment    = (1 << 4)
-	non_qunique         = (1 << 5)
-	can_override_app_id = (1 << 6)
-	allow_replacement   = (1 << 7)
-	replace             = (1 << 8)
-}
-
 pub enum GtkEventControllerScrollFlags {
 	gtk_event_controller_scroll_none       = 0
 	gtk_event_controller_scroll_vertical   = 1 << 0

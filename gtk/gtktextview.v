@@ -1,5 +1,7 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkTextViewClass {}
 
@@ -24,7 +26,7 @@ pub enum GtkTextExtendSelection {
 	gtk_text_extend_selection_line
 }
 
-pub fn C.gtk_text_view_get_type() int
+pub fn C.gtk_text_view_get_type() glib.GType
 pub fn C.gtk_text_view_new() &GtkWidget
 pub fn C.gtk_text_view_new_with_buffer(buffer &GtkTextBuffer) &GtkWidget
 pub fn C.gtk_text_view_set_buffer(text_view &GtkTextView, buffer &GtkTextBuffer)
@@ -94,7 +96,7 @@ pub fn C.gtk_text_view_set_input_hints(text_view &GtkTextView, hints GtkInputHin
 pub fn C.gtk_text_view_get_input_hints(text_view &GtkTextView) GtkInputHints
 pub fn C.gtk_text_view_set_monospace(text_view &GtkTextView, monospace bool)
 pub fn C.gtk_text_view_get_monospace(text_view &GtkTextView) bool
-pub fn C.gtk_text_view_set_extra_menu(text_view &GtkTextView, model voidptr)
+pub fn C.gtk_text_view_set_extra_menu(text_view &GtkTextView, model &glib.GMenuModel)
 pub fn C.gtk_text_view_get_extra_menu(text_view &GtkTextView) voidptr
 pub fn C.gtk_text_view_get_rtl_context(text_view &GtkTextView) voidptr
 pub fn C.gtk_text_view_get_ltr_context(text_view &GtkTextView) voidptr
@@ -104,7 +106,7 @@ pub struct C.GtkTextView {}
 
 pub type GtkTextView = C.GtkTextView
 
-pub fn (self &GtkTextView) get_type() int {
+pub fn (self &GtkTextView) get_type() glib.GType {
 	return C.gtk_text_view_get_type()
 }
 
@@ -385,7 +387,7 @@ pub fn (self &GtkTextView) get_monospace() bool {
 	return C.gtk_text_view_get_monospace(self)
 }
 
-pub fn (self &GtkTextView) set_extra_menu(model voidptr) {
+pub fn (self &GtkTextView) set_extra_menu(model &glib.GMenuModel) {
 	C.gtk_text_view_set_extra_menu(self, model)
 }
 

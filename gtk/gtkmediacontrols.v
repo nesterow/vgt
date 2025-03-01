@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkMediaControlsClass {}
 
 pub type GtkMediaControlsClass = C.GtkMediaControlsClass
 
-pub fn C.gtk_media_controls_get_type() int
+pub fn C.gtk_media_controls_get_type() glib.GType
 pub fn C.gtk_media_controls_new(stream &GtkMediaStream) &GtkWidget
 pub fn C.gtk_media_controls_get_media_stream(controls &GtkMediaControls) &GtkMediaStream
 pub fn C.gtk_media_controls_set_media_stream(controls &GtkMediaControls, stream &GtkMediaStream)
@@ -15,7 +17,7 @@ pub struct C.GtkMediaControls {}
 
 pub type GtkMediaControls = C.GtkMediaControls
 
-pub fn (self &GtkMediaControls) get_type() int {
+pub fn (self &GtkMediaControls) get_type() glib.GType {
 	return C.gtk_media_controls_get_type()
 }
 

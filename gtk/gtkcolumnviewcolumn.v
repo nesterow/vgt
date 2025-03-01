@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkColumnViewColumnClass {}
 
 pub type GtkColumnViewColumnClass = C.GtkColumnViewColumnClass
 
-pub fn C.gtk_column_view_column_get_type() int
+pub fn C.gtk_column_view_column_get_type() glib.GType
 pub fn C.gtk_column_view_column_new(title &char, factory &GtkListItemFactory) &GtkColumnViewColumn
 pub fn C.gtk_column_view_column_get_column_view(self &GtkColumnViewColumn) &GtkColumnView
 pub fn C.gtk_column_view_column_set_factory(self &GtkColumnViewColumn, factory &GtkListItemFactory)
@@ -16,7 +18,7 @@ pub fn C.gtk_column_view_column_set_sorter(self &GtkColumnViewColumn, sorter &Gt
 pub fn C.gtk_column_view_column_get_sorter(self &GtkColumnViewColumn) &GtkSorter
 pub fn C.gtk_column_view_column_set_visible(self &GtkColumnViewColumn, visible bool)
 pub fn C.gtk_column_view_column_get_visible(self &GtkColumnViewColumn) bool
-pub fn C.gtk_column_view_column_set_header_menu(self &GtkColumnViewColumn, menu voidptr)
+pub fn C.gtk_column_view_column_set_header_menu(self &GtkColumnViewColumn, menu &glib.GMenuModel)
 pub fn C.gtk_column_view_column_get_header_menu(self &GtkColumnViewColumn) voidptr
 pub fn C.gtk_column_view_column_set_fixed_width(self &GtkColumnViewColumn, fixed_width int)
 pub fn C.gtk_column_view_column_get_fixed_width(self &GtkColumnViewColumn) int
@@ -25,7 +27,7 @@ pub fn C.gtk_column_view_column_get_resizable(self &GtkColumnViewColumn) bool
 pub fn C.gtk_column_view_column_set_expand(self &GtkColumnViewColumn, expand bool)
 pub fn C.gtk_column_view_column_get_expand(self &GtkColumnViewColumn) bool
 
-pub fn (self &GtkColumnViewColumn) get_type() int {
+pub fn (self &GtkColumnViewColumn) get_type() glib.GType {
 	return C.gtk_column_view_column_get_type()
 }
 
@@ -69,7 +71,7 @@ pub fn (self &GtkColumnViewColumn) get_visible() bool {
 	return C.gtk_column_view_column_get_visible(self)
 }
 
-pub fn (self &GtkColumnViewColumn) set_header_menu(menu voidptr) {
+pub fn (self &GtkColumnViewColumn) set_header_menu(menu &glib.GMenuModel) {
 	C.gtk_column_view_column_set_header_menu(self, menu)
 }
 

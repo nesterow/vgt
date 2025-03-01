@@ -1,13 +1,15 @@
 module gtk
 
+import glib
+
 pub enum GtkPopoverMenuFlags {
 	gtk_popover_menu_nested = 1 << 0
 }
 
-pub fn C.gtk_popover_menu_get_type() int
-pub fn C.gtk_popover_menu_new_from_model(model voidptr) &GtkWidget
-pub fn C.gtk_popover_menu_new_from_model_full(model voidptr, flags GtkPopoverMenuFlags) &GtkWidget
-pub fn C.gtk_popover_menu_set_menu_model(popover &GtkPopoverMenu, model voidptr)
+pub fn C.gtk_popover_menu_get_type() glib.GType
+pub fn C.gtk_popover_menu_new_from_model(model &glib.GMenuModel) &GtkWidget
+pub fn C.gtk_popover_menu_new_from_model_full(model &glib.GMenuModel, flags GtkPopoverMenuFlags) &GtkWidget
+pub fn C.gtk_popover_menu_set_menu_model(popover &GtkPopoverMenu, model &glib.GMenuModel)
 pub fn C.gtk_popover_menu_get_menu_model(popover &GtkPopoverMenu) voidptr
 pub fn C.gtk_popover_menu_add_child(popover &GtkPopoverMenu, child &GtkWidget, id &char) bool
 pub fn C.gtk_popover_menu_remove_child(popover &GtkPopoverMenu, child &GtkWidget) bool
@@ -17,19 +19,19 @@ pub struct C.GtkPopoverMenu {}
 
 pub type GtkPopoverMenu = C.GtkPopoverMenu
 
-pub fn (self &GtkPopoverMenu) get_type() int {
+pub fn (self &GtkPopoverMenu) get_type() glib.GType {
 	return C.gtk_popover_menu_get_type()
 }
 
-pub fn GtkPopoverMenu.new_from_model(model voidptr) &GtkWidget {
+pub fn GtkPopoverMenu.new_from_model(model &glib.GMenuModel) &GtkWidget {
 	return C.gtk_popover_menu_new_from_model(model)
 }
 
-pub fn GtkPopoverMenu.new_from_model_full(model voidptr, flags GtkPopoverMenuFlags) &GtkWidget {
+pub fn GtkPopoverMenu.new_from_model_full(model &glib.GMenuModel, flags GtkPopoverMenuFlags) &GtkWidget {
 	return C.gtk_popover_menu_new_from_model_full(model, flags)
 }
 
-pub fn (self &GtkPopoverMenu) set_menu_model(model voidptr) {
+pub fn (self &GtkPopoverMenu) set_menu_model(model &glib.GMenuModel) {
 	C.gtk_popover_menu_set_menu_model(self, model)
 }
 

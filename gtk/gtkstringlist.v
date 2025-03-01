@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkStringListClass {}
 
 pub type GtkStringListClass = C.GtkStringListClass
 
-pub fn C.gtk_string_list_get_type() int
+pub fn C.gtk_string_list_get_type() glib.GType
 pub fn C.gtk_string_list_new(strs voidptr) &GtkStringList
 pub fn C.gtk_string_list_append(self &GtkStringList, str &char)
 pub fn C.gtk_string_list_take(self &GtkStringList, str voidptr)
@@ -18,7 +20,7 @@ pub struct C.GtkStringList {}
 
 pub type GtkStringList = C.GtkStringList
 
-pub fn (self &GtkStringList) get_type() int {
+pub fn (self &GtkStringList) get_type() glib.GType {
 	return C.gtk_string_list_get_type()
 }
 

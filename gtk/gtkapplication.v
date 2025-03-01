@@ -1,5 +1,7 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkApplicationClass {}
 
@@ -12,13 +14,13 @@ pub enum GtkApplicationInhibitFlags {
 	gtk_application_inhibit_idle    = (1 << 3)
 }
 
-pub fn C.gtk_application_get_type() int
-pub fn C.gtk_application_new(application_id &char, flags AppFlags) &GtkApplication
+pub fn C.gtk_application_get_type() glib.GType
+pub fn C.gtk_application_new(application_id &char, flags glib.GApplicationFlags) &GtkApplication
 pub fn C.gtk_application_add_window(application &GtkApplication, window &GtkWindow)
 pub fn C.gtk_application_remove_window(application &GtkApplication, window &GtkWindow)
 pub fn C.gtk_application_get_windows(application &GtkApplication) voidptr
 pub fn C.gtk_application_get_menubar(application &GtkApplication) voidptr
-pub fn C.gtk_application_set_menubar(application &GtkApplication, menubar voidptr)
+pub fn C.gtk_application_set_menubar(application &GtkApplication, menubar &glib.GMenuModel)
 pub fn C.gtk_application_inhibit(application &GtkApplication, window &GtkWindow, flags GtkApplicationInhibitFlags, reason &char) u64
 pub fn C.gtk_application_uninhibit(application &GtkApplication, cookie u64)
 pub fn C.gtk_application_get_window_by_id(application &GtkApplication, id u64) &GtkWindow
@@ -34,11 +36,11 @@ pub struct C.GtkApplication {}
 
 pub type GtkApplication = C.GtkApplication
 
-pub fn (self &GtkApplication) get_type() int {
+pub fn (self &GtkApplication) get_type() glib.GType {
 	return C.gtk_application_get_type()
 }
 
-pub fn GtkApplication.new(application_id &char, flags AppFlags) &GtkApplication {
+pub fn GtkApplication.new(application_id &char, flags glib.GApplicationFlags) &GtkApplication {
 	return C.gtk_application_new(application_id, flags)
 }
 
@@ -58,7 +60,7 @@ pub fn (self &GtkApplication) get_menubar() voidptr {
 	return C.gtk_application_get_menubar(self)
 }
 
-pub fn (self &GtkApplication) set_menubar(menubar voidptr) {
+pub fn (self &GtkApplication) set_menubar(menubar &glib.GMenuModel) {
 	C.gtk_application_set_menubar(self, menubar)
 }
 

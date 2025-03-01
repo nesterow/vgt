@@ -1,6 +1,8 @@
 module gtk
 
-pub fn C.gtk_info_bar_get_type() int
+import glib
+
+pub fn C.gtk_info_bar_get_type() glib.GType
 pub fn C.gtk_info_bar_new() &GtkWidget
 pub fn C.gtk_info_bar_new_with_buttons(first_button_text &char) &GtkWidget
 pub fn C.gtk_info_bar_add_action_widget(info_bar &GtkInfoBar, child &GtkWidget, response_id int)
@@ -24,7 +26,7 @@ pub struct C.GtkInfoBar {}
 
 pub type GtkInfoBar = C.GtkInfoBar
 
-pub fn (self &GtkInfoBar) get_type() int {
+pub fn (self &GtkInfoBar) get_type() glib.GType {
 	return C.gtk_info_bar_get_type()
 }
 

@@ -1,5 +1,7 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkOverlayLayoutClass {}
 
@@ -15,9 +17,9 @@ pub struct C.GtkOverlayLayoutChildClass {}
 
 pub type GtkOverlayLayoutChildClass = C.GtkOverlayLayoutChildClass
 
-pub fn C.gtk_overlay_layout_get_type() int
+pub fn C.gtk_overlay_layout_get_type() glib.GType
 pub fn C.gtk_overlay_layout_new() &GtkLayoutManager
-pub fn C.gtk_overlay_layout_child_get_type() int
+pub fn C.gtk_overlay_layout_child_get_type() glib.GType
 pub fn C.gtk_overlay_layout_child_set_measure(child &GtkOverlayLayoutChild, measure bool)
 pub fn C.gtk_overlay_layout_child_get_measure(child &GtkOverlayLayoutChild) bool
 pub fn C.gtk_overlay_layout_child_set_clip_overlay(child &GtkOverlayLayoutChild, clip_overlay bool)
@@ -28,7 +30,7 @@ pub struct C.GtkOverlayLayout {}
 
 pub type GtkOverlayLayout = C.GtkOverlayLayout
 
-pub fn (self &GtkOverlayLayout) get_type() int {
+pub fn (self &GtkOverlayLayout) get_type() glib.GType {
 	return C.gtk_overlay_layout_get_type()
 }
 
@@ -36,7 +38,7 @@ pub fn GtkOverlayLayout.new() &GtkLayoutManager {
 	return C.gtk_overlay_layout_new()
 }
 
-pub fn (self &GtkOverlayLayout) child_get_type() int {
+pub fn (self &GtkOverlayLayout) child_get_type() glib.GType {
 	return C.gtk_overlay_layout_child_get_type()
 }
 

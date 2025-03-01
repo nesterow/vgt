@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkAdjustmentClass {}
 
 pub type GtkAdjustmentClass = C.GtkAdjustmentClass
 
-pub fn C.gtk_adjustment_get_type() int
+pub fn C.gtk_adjustment_get_type() glib.GType
 pub fn C.gtk_adjustment_new(value f32, lower f32, upper f32, step_increment f32, page_increment f32, page_size f32) &GtkAdjustment
 pub fn C.gtk_adjustment_clamp_page(adjustment &GtkAdjustment, lower f32, upper f32)
 pub fn C.gtk_adjustment_get_value(adjustment &GtkAdjustment) f32
@@ -28,7 +30,7 @@ pub struct C.GtkAdjustment {}
 
 pub type GtkAdjustment = C.GtkAdjustment
 
-pub fn (self &GtkAdjustment) get_type() int {
+pub fn (self &GtkAdjustment) get_type() glib.GType {
 	return C.gtk_adjustment_get_type()
 }
 

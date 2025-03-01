@@ -1,5 +1,7 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkWindowClass {}
 
@@ -15,7 +17,7 @@ pub struct C.GtkWindowGroupClass {}
 
 pub type GtkWindowGroupClass = C.GtkWindowGroupClass
 
-pub fn C.gtk_window_get_type() int
+pub fn C.gtk_window_get_type() glib.GType
 pub fn C.gtk_window_new() &GtkWidget
 pub fn C.gtk_window_set_title(window &GtkWindow, title &char)
 pub fn C.gtk_window_get_title(window &GtkWindow) &char
@@ -83,7 +85,7 @@ pub struct C.GtkWindow {}
 
 pub type GtkWindow = C.GtkWindow
 
-pub fn (self &GtkWindow) get_type() int {
+pub fn (self &GtkWindow) get_type() glib.GType {
 	return C.gtk_window_get_type()
 }
 

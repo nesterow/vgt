@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkCenterBoxClass {}
 
 pub type GtkCenterBoxClass = C.GtkCenterBoxClass
 
-pub fn C.gtk_center_box_get_type() int
+pub fn C.gtk_center_box_get_type() glib.GType
 pub fn C.gtk_center_box_new() &GtkWidget
 pub fn C.gtk_center_box_set_start_widget(self &GtkCenterBox, child &GtkWidget)
 pub fn C.gtk_center_box_set_center_widget(self &GtkCenterBox, child &GtkWidget)
@@ -21,7 +23,7 @@ pub struct C.GtkCenterBox {}
 
 pub type GtkCenterBox = C.GtkCenterBox
 
-pub fn (self &GtkCenterBox) get_type() int {
+pub fn (self &GtkCenterBox) get_type() glib.GType {
 	return C.gtk_center_box_get_type()
 }
 

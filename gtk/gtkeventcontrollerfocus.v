@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkEventControllerFocusClass {}
 
 pub type GtkEventControllerFocusClass = C.GtkEventControllerFocusClass
 
-pub fn C.gtk_event_controller_focus_get_type() int
+pub fn C.gtk_event_controller_focus_get_type() glib.GType
 pub fn C.gtk_event_controller_focus_new() &GtkEventController
 pub fn C.gtk_event_controller_focus_contains_focus(self &GtkEventControllerFocus) bool
 pub fn C.gtk_event_controller_focus_is_focus(self &GtkEventControllerFocus) bool
@@ -15,7 +17,7 @@ pub struct C.GtkEventControllerFocus {}
 
 pub type GtkEventControllerFocus = C.GtkEventControllerFocus
 
-pub fn (self &GtkEventControllerFocus) get_type() int {
+pub fn (self &GtkEventControllerFocus) get_type() glib.GType {
 	return C.gtk_event_controller_focus_get_type()
 }
 

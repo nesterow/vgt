@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkNumericSorterClass {}
 
 pub type GtkNumericSorterClass = C.GtkNumericSorterClass
 
-pub fn C.gtk_numeric_sorter_get_type() int
+pub fn C.gtk_numeric_sorter_get_type() glib.GType
 pub fn C.gtk_numeric_sorter_new(expression &GtkExpression) &GtkNumericSorter
 pub fn C.gtk_numeric_sorter_get_expression(self &GtkNumericSorter) &GtkExpression
 pub fn C.gtk_numeric_sorter_set_expression(self &GtkNumericSorter, expression &GtkExpression)
@@ -17,7 +19,7 @@ pub struct C.GtkNumericSorter {}
 
 pub type GtkNumericSorter = C.GtkNumericSorter
 
-pub fn (self &GtkNumericSorter) get_type() int {
+pub fn (self &GtkNumericSorter) get_type() glib.GType {
 	return C.gtk_numeric_sorter_get_type()
 }
 

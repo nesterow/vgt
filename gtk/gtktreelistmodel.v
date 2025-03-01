@@ -1,5 +1,7 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkTreeListModelClass {}
 
@@ -10,8 +12,8 @@ pub struct C.GtkTreeListModelCreateModelFunc {}
 
 pub type GtkTreeListModelCreateModelFunc = C.GtkTreeListModelCreateModelFunc
 
-pub fn C.gtk_tree_list_model_get_type() int
-pub fn C.gtk_tree_list_model_new(root voidptr, passthrough bool, autoexpand bool, create_func voidptr, user_data voidptr, user_destroy voidptr) &GtkTreeListModel
+pub fn C.gtk_tree_list_model_get_type() glib.GType
+pub fn C.gtk_tree_list_model_new(root &glib.GListModel, passthrough bool, autoexpand bool, create_func voidptr, user_data voidptr, user_destroy voidptr) &GtkTreeListModel
 pub fn C.gtk_tree_list_model_get_model(self &GtkTreeListModel) voidptr
 pub fn C.gtk_tree_list_model_get_passthrough(self &GtkTreeListModel) bool
 pub fn C.gtk_tree_list_model_set_autoexpand(self &GtkTreeListModel, autoexpand bool)
@@ -24,11 +26,11 @@ pub struct C.GtkTreeListModel {}
 
 pub type GtkTreeListModel = C.GtkTreeListModel
 
-pub fn (self &GtkTreeListModel) get_type() int {
+pub fn (self &GtkTreeListModel) get_type() glib.GType {
 	return C.gtk_tree_list_model_get_type()
 }
 
-pub fn GtkTreeListModel.new(root voidptr, passthrough bool, autoexpand bool, create_func voidptr, user_data voidptr, user_destroy voidptr) &GtkTreeListModel {
+pub fn GtkTreeListModel.new(root &glib.GListModel, passthrough bool, autoexpand bool, create_func voidptr, user_data voidptr, user_destroy voidptr) &GtkTreeListModel {
 	return C.gtk_tree_list_model_new(root, passthrough, autoexpand, create_func, user_data,
 		user_destroy)
 }
@@ -62,7 +64,7 @@ pub struct C.GtkTreeListRowClass {}
 
 pub type GtkTreeListRowClass = C.GtkTreeListRowClass
 
-pub fn C.gtk_tree_list_row_get_type() int
+pub fn C.gtk_tree_list_row_get_type() glib.GType
 pub fn C.gtk_tree_list_row_get_item(self &GtkTreeListRow) voidptr
 pub fn C.gtk_tree_list_row_set_expanded(self &GtkTreeListRow, expanded bool)
 pub fn C.gtk_tree_list_row_get_expanded(self &GtkTreeListRow) bool
@@ -78,7 +80,7 @@ pub struct C.GtkTreeListRow {}
 
 pub type GtkTreeListRow = C.GtkTreeListRow
 
-pub fn (self &GtkTreeListRow) get_type() int {
+pub fn (self &GtkTreeListRow) get_type() glib.GType {
 	return C.gtk_tree_list_row_get_type()
 }
 

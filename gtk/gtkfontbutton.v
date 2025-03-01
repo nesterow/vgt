@@ -1,6 +1,8 @@
 module gtk
 
-pub fn C.gtk_font_button_get_type() int
+import glib
+
+pub fn C.gtk_font_button_get_type() glib.GType
 pub fn C.gtk_font_button_new() &GtkWidget
 pub fn C.gtk_font_button_new_with_font(fontname &char) &GtkWidget
 pub fn C.gtk_font_button_get_title(font_button &GtkFontButton) &char
@@ -17,7 +19,7 @@ pub struct C.GtkFontButton {}
 
 pub type GtkFontButton = C.GtkFontButton
 
-pub fn (self &GtkFontButton) get_type() int {
+pub fn (self &GtkFontButton) get_type() glib.GType {
 	return C.gtk_font_button_get_type()
 }
 

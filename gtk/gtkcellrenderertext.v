@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkCellRendererTextClass {}
 
 pub type GtkCellRendererTextClass = C.GtkCellRendererTextClass
 
-pub fn C.gtk_cell_renderer_text_get_type() int
+pub fn C.gtk_cell_renderer_text_get_type() glib.GType
 pub fn C.gtk_cell_renderer_text_new() &GtkCellRenderer
 pub fn C.gtk_cell_renderer_text_set_fixed_height_from_font(renderer &GtkCellRendererText, number_of_rows int)
 
@@ -14,7 +16,7 @@ pub struct C.GtkCellRendererText {}
 
 pub type GtkCellRendererText = C.GtkCellRendererText
 
-pub fn (self &GtkCellRendererText) get_type() int {
+pub fn (self &GtkCellRendererText) get_type() glib.GType {
 	return C.gtk_cell_renderer_text_get_type()
 }
 

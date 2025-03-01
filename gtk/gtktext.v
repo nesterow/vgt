@@ -1,14 +1,16 @@
 module gtk
 
-pub fn C.gtk_text_get_type() int
+import glib
+
+pub fn C.gtk_text_get_type() glib.GType
 pub fn C.gtk_text_new() &GtkWidget
 pub fn C.gtk_text_new_with_buffer(buffer &GtkEntryBuffer) &GtkWidget
 pub fn C.gtk_text_get_buffer(self &GtkText) &GtkEntryBuffer
 pub fn C.gtk_text_set_buffer(self &GtkText, buffer &GtkEntryBuffer)
 pub fn C.gtk_text_set_visibility(self &GtkText, visible bool)
 pub fn C.gtk_text_get_visibility(self &GtkText) bool
-pub fn C.gtk_text_set_invisible_char(self &GtkText, ch voidptr)
-pub fn C.gtk_text_get_invisible_char(self &GtkText) voidptr
+pub fn C.gtk_text_set_invisible_char(self &GtkText, ch u8)
+pub fn C.gtk_text_get_invisible_char(self &GtkText) u8
 pub fn C.gtk_text_unset_invisible_char(self &GtkText)
 pub fn C.gtk_text_set_overwrite_mode(self &GtkText, overwrite bool)
 pub fn C.gtk_text_get_overwrite_mode(self &GtkText) bool
@@ -28,7 +30,7 @@ pub fn C.gtk_text_get_attributes(self &GtkText) voidptr
 pub fn C.gtk_text_set_tabs(self &GtkText, tabs voidptr)
 pub fn C.gtk_text_get_tabs(self &GtkText) voidptr
 pub fn C.gtk_text_grab_focus_without_selecting(self &GtkText) bool
-pub fn C.gtk_text_set_extra_menu(self &GtkText, model voidptr)
+pub fn C.gtk_text_set_extra_menu(self &GtkText, model &glib.GMenuModel)
 pub fn C.gtk_text_get_extra_menu(self &GtkText) voidptr
 pub fn C.gtk_text_set_enable_emoji_completion(self &GtkText, enable_emoji_completion bool)
 pub fn C.gtk_text_get_enable_emoji_completion(self &GtkText) bool
@@ -43,7 +45,7 @@ pub struct C.GtkText {}
 
 pub type GtkText = C.GtkText
 
-pub fn (self &GtkText) get_type() int {
+pub fn (self &GtkText) get_type() glib.GType {
 	return C.gtk_text_get_type()
 }
 
@@ -71,11 +73,11 @@ pub fn (self &GtkText) get_visibility() bool {
 	return C.gtk_text_get_visibility(self)
 }
 
-pub fn (self &GtkText) set_invisible_char(ch voidptr) {
+pub fn (self &GtkText) set_invisible_char(ch u8) {
 	C.gtk_text_set_invisible_char(self, ch)
 }
 
-pub fn (self &GtkText) get_invisible_char() voidptr {
+pub fn (self &GtkText) get_invisible_char() u8 {
 	return C.gtk_text_get_invisible_char(self)
 }
 
@@ -155,7 +157,7 @@ pub fn (self &GtkText) grab_focus_without_selecting() bool {
 	return C.gtk_text_grab_focus_without_selecting(self)
 }
 
-pub fn (self &GtkText) set_extra_menu(model voidptr) {
+pub fn (self &GtkText) set_extra_menu(model &glib.GMenuModel) {
 	C.gtk_text_set_extra_menu(self, model)
 }
 

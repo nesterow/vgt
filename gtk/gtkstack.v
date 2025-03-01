@@ -1,5 +1,7 @@
 module gtk
 
+import glib
+
 pub enum GtkStackTransitionType {
 	gtk_stack_transition_type_none
 	gtk_stack_transition_type_crossfade
@@ -26,7 +28,7 @@ pub enum GtkStackTransitionType {
 	gtk_stack_transition_type_rotate_left_right
 }
 
-pub fn C.gtk_stack_page_get_type() int
+pub fn C.gtk_stack_page_get_type() glib.GType
 pub fn C.gtk_stack_page_get_child(self &GtkStackPage) &GtkWidget
 pub fn C.gtk_stack_page_get_visible(self &GtkStackPage) bool
 pub fn C.gtk_stack_page_set_visible(self &GtkStackPage, visible bool)
@@ -46,7 +48,7 @@ pub struct C.GtkStackPage {}
 
 pub type GtkStackPage = C.GtkStackPage
 
-pub fn (self &GtkStackPage) get_type() int {
+pub fn (self &GtkStackPage) get_type() glib.GType {
 	return C.gtk_stack_page_get_type()
 }
 
@@ -102,7 +104,7 @@ pub fn (self &GtkStackPage) set_icon_name(setting &char) {
 	C.gtk_stack_page_set_icon_name(self, setting)
 }
 
-pub fn C.gtk_stack_get_type() int
+pub fn C.gtk_stack_get_type() glib.GType
 pub fn C.gtk_stack_new() &GtkWidget
 pub fn C.gtk_stack_add_child(stack &GtkStack, child &GtkWidget) &GtkStackPage
 pub fn C.gtk_stack_add_named(stack &GtkStack, child &GtkWidget, name &char) &GtkStackPage
@@ -133,7 +135,7 @@ pub struct C.GtkStack {}
 
 pub type GtkStack = C.GtkStack
 
-pub fn (self &GtkStack) get_type() int {
+pub fn (self &GtkStack) get_type() glib.GType {
 	return C.gtk_stack_get_type()
 }
 

@@ -1,14 +1,16 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkDropDownClass {}
 
 pub type GtkDropDownClass = C.GtkDropDownClass
 
-pub fn C.gtk_drop_down_get_type() int
-pub fn C.gtk_drop_down_new(model voidptr, expression &GtkExpression) &GtkWidget
+pub fn C.gtk_drop_down_get_type() glib.GType
+pub fn C.gtk_drop_down_new(model &glib.GListModel, expression &GtkExpression) &GtkWidget
 pub fn C.gtk_drop_down_new_from_strings(strs voidptr) &GtkWidget
-pub fn C.gtk_drop_down_set_model(self &GtkDropDown, model voidptr)
+pub fn C.gtk_drop_down_set_model(self &GtkDropDown, model &glib.GListModel)
 pub fn C.gtk_drop_down_get_model(self &GtkDropDown) voidptr
 pub fn C.gtk_drop_down_set_selected(self &GtkDropDown, position u64)
 pub fn C.gtk_drop_down_get_selected(self &GtkDropDown) u64
@@ -29,11 +31,11 @@ pub struct C.GtkDropDown {}
 
 pub type GtkDropDown = C.GtkDropDown
 
-pub fn (self &GtkDropDown) get_type() int {
+pub fn (self &GtkDropDown) get_type() glib.GType {
 	return C.gtk_drop_down_get_type()
 }
 
-pub fn GtkDropDown.new(model voidptr, expression &GtkExpression) &GtkWidget {
+pub fn GtkDropDown.new(model &glib.GListModel, expression &GtkExpression) &GtkWidget {
 	return C.gtk_drop_down_new(model, expression)
 }
 
@@ -41,7 +43,7 @@ pub fn GtkDropDown.new_from_strings(strs voidptr) &GtkWidget {
 	return C.gtk_drop_down_new_from_strings(strs)
 }
 
-pub fn (self &GtkDropDown) set_model(model voidptr) {
+pub fn (self &GtkDropDown) set_model(model &glib.GListModel) {
 	C.gtk_drop_down_set_model(self, model)
 }
 

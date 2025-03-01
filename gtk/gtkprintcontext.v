@@ -1,6 +1,8 @@
 module gtk
 
-pub fn C.gtk_print_context_get_type() int
+import glib
+
+pub fn C.gtk_print_context_get_type() glib.GType
 pub fn C.gtk_print_context_get_cairo_context(context &GtkPrintContext) voidptr
 pub fn C.gtk_print_context_get_page_setup(context &GtkPrintContext) &GtkPageSetup
 pub fn C.gtk_print_context_get_width(context &GtkPrintContext) f32
@@ -18,7 +20,7 @@ pub struct C.GtkPrintContext {}
 
 pub type GtkPrintContext = C.GtkPrintContext
 
-pub fn (self &GtkPrintContext) get_type() int {
+pub fn (self &GtkPrintContext) get_type() glib.GType {
 	return C.gtk_print_context_get_type()
 }
 

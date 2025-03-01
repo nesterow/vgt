@@ -1,5 +1,7 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkDrawingAreaClass {}
 
@@ -10,7 +12,7 @@ pub struct C.GtkDrawingAreaDrawFunc {}
 
 pub type GtkDrawingAreaDrawFunc = C.GtkDrawingAreaDrawFunc
 
-pub fn C.gtk_drawing_area_get_type() int
+pub fn C.gtk_drawing_area_get_type() glib.GType
 pub fn C.gtk_drawing_area_new() &GtkWidget
 pub fn C.gtk_drawing_area_set_content_width(self &GtkDrawingArea, width int)
 pub fn C.gtk_drawing_area_get_content_width(self &GtkDrawingArea) int
@@ -23,7 +25,7 @@ pub struct C.GtkDrawingArea {}
 
 pub type GtkDrawingArea = C.GtkDrawingArea
 
-pub fn (self &GtkDrawingArea) get_type() int {
+pub fn (self &GtkDrawingArea) get_type() glib.GType {
 	return C.gtk_drawing_area_get_type()
 }
 

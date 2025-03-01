@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkIMContextClass {}
 
 pub type GtkIMContextClass = C.GtkIMContextClass
 
-pub fn C.gtk_im_context_get_type() int
+pub fn C.gtk_im_context_get_type() glib.GType
 pub fn C.gtk_im_context_set_client_widget(context &GtkIMContext, widget &GtkWidget)
 pub fn C.gtk_im_context_get_preedit_string(context &GtkIMContext, str voidptr, attrs voidptr, cursor_pos voidptr)
 pub fn C.gtk_im_context_filter_keypress(context &GtkIMContext, event voidptr) bool
@@ -26,7 +28,7 @@ pub struct C.GtkIMContext {}
 
 pub type GtkIMContext = C.GtkIMContext
 
-pub fn (self &GtkIMContext) get_type() int {
+pub fn (self &GtkIMContext) get_type() glib.GType {
 	return C.gtk_im_context_get_type()
 }
 

@@ -1,6 +1,8 @@
 module gtk
 
-pub fn C.gtk_statusbar_get_type() int
+import glib
+
+pub fn C.gtk_statusbar_get_type() glib.GType
 pub fn C.gtk_statusbar_new() &GtkWidget
 pub fn C.gtk_statusbar_get_context_id(statusbar &GtkStatusbar, context_description &char) u64
 pub fn C.gtk_statusbar_push(statusbar &GtkStatusbar, context_id u64, text &char) u64
@@ -13,7 +15,7 @@ pub struct C.GtkStatusbar {}
 
 pub type GtkStatusbar = C.GtkStatusbar
 
-pub fn (self &GtkStatusbar) get_type() int {
+pub fn (self &GtkStatusbar) get_type() glib.GType {
 	return C.gtk_statusbar_get_type()
 }
 

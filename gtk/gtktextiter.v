@@ -1,5 +1,7 @@
 module gtk
 
+import glib
+
 pub enum GtkTextSearchFlags {
 	gtk_text_search_visible_only     = 1 << 0
 	gtk_text_search_text_only        = 1 << 1
@@ -11,14 +13,14 @@ pub fn C.gtk_text_iter_get_buffer(iter &GtkTextIter) &GtkTextBuffer
 pub fn C.gtk_text_iter_copy(iter &GtkTextIter) &GtkTextIter
 pub fn C.gtk_text_iter_free(iter &GtkTextIter)
 pub fn C.gtk_text_iter_assign(iter &GtkTextIter, other &GtkTextIter)
-pub fn C.gtk_text_iter_get_type() int
+pub fn C.gtk_text_iter_get_type() glib.GType
 pub fn C.gtk_text_iter_get_offset(iter &GtkTextIter) int
 pub fn C.gtk_text_iter_get_line(iter &GtkTextIter) int
 pub fn C.gtk_text_iter_get_line_offset(iter &GtkTextIter) int
 pub fn C.gtk_text_iter_get_line_index(iter &GtkTextIter) int
 pub fn C.gtk_text_iter_get_visible_line_offset(iter &GtkTextIter) int
 pub fn C.gtk_text_iter_get_visible_line_index(iter &GtkTextIter) int
-pub fn C.gtk_text_iter_get_char(iter &GtkTextIter) voidptr
+pub fn C.gtk_text_iter_get_char(iter &GtkTextIter) u8
 pub fn C.gtk_text_iter_get_slice(start &GtkTextIter, end &GtkTextIter) voidptr
 pub fn C.gtk_text_iter_get_text(start &GtkTextIter, end &GtkTextIter) voidptr
 pub fn C.gtk_text_iter_get_visible_slice(start &GtkTextIter, end &GtkTextIter) voidptr
@@ -120,7 +122,7 @@ pub fn (self &GtkTextIter) assign(other &GtkTextIter) {
 	C.gtk_text_iter_assign(self, other)
 }
 
-pub fn (self &GtkTextIter) get_type() int {
+pub fn (self &GtkTextIter) get_type() glib.GType {
 	return C.gtk_text_iter_get_type()
 }
 
@@ -148,7 +150,7 @@ pub fn (self &GtkTextIter) get_visible_line_index() int {
 	return C.gtk_text_iter_get_visible_line_index(self)
 }
 
-pub fn (self &GtkTextIter) get_char() voidptr {
+pub fn (self &GtkTextIter) get_char() u8 {
 	return C.gtk_text_iter_get_char(self)
 }
 

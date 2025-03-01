@@ -1,6 +1,8 @@
 module gtk
 
-pub fn C.gtk_app_chooser_get_type() int
+import glib
+
+pub fn C.gtk_app_chooser_get_type() glib.GType
 pub fn C.gtk_app_chooser_get_app_info(self &GtkAppChooser) voidptr
 pub fn C.gtk_app_chooser_get_content_type(self &GtkAppChooser) voidptr
 pub fn C.gtk_app_chooser_refresh(self &GtkAppChooser)
@@ -10,7 +12,7 @@ pub struct C.GtkAppChooser {}
 
 pub type GtkAppChooser = C.GtkAppChooser
 
-pub fn (self &GtkAppChooser) get_type() int {
+pub fn (self &GtkAppChooser) get_type() glib.GType {
 	return C.gtk_app_chooser_get_type()
 }
 

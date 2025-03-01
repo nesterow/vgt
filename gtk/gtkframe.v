@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkFrameClass {}
 
 pub type GtkFrameClass = C.GtkFrameClass
 
-pub fn C.gtk_frame_get_type() int
+pub fn C.gtk_frame_get_type() glib.GType
 pub fn C.gtk_frame_new(label &char) &GtkWidget
 pub fn C.gtk_frame_set_label(frame &GtkFrame, label &char)
 pub fn C.gtk_frame_get_label(frame &GtkFrame) &char
@@ -21,7 +23,7 @@ pub struct C.GtkFrame {}
 
 pub type GtkFrame = C.GtkFrame
 
-pub fn (self &GtkFrame) get_type() int {
+pub fn (self &GtkFrame) get_type() glib.GType {
 	return C.gtk_frame_get_type()
 }
 

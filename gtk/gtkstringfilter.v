@@ -1,5 +1,7 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkStringFilterClass {}
 
@@ -11,7 +13,7 @@ pub enum GtkStringFilterMatchMode {
 	gtk_string_filter_match_mode_prefix
 }
 
-pub fn C.gtk_string_filter_get_type() int
+pub fn C.gtk_string_filter_get_type() glib.GType
 pub fn C.gtk_string_filter_new(expression &GtkExpression) &GtkStringFilter
 pub fn C.gtk_string_filter_get_search(self &GtkStringFilter) &char
 pub fn C.gtk_string_filter_set_search(self &GtkStringFilter, search &char)
@@ -27,7 +29,7 @@ pub struct C.GtkStringFilter {}
 
 pub type GtkStringFilter = C.GtkStringFilter
 
-pub fn (self &GtkStringFilter) get_type() int {
+pub fn (self &GtkStringFilter) get_type() glib.GType {
 	return C.gtk_string_filter_get_type()
 }
 

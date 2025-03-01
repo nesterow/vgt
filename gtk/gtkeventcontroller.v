@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkEventControllerClass {}
 
 pub type GtkEventControllerClass = C.GtkEventControllerClass
 
-pub fn C.gtk_event_controller_get_type() int
+pub fn C.gtk_event_controller_get_type() glib.GType
 pub fn C.gtk_event_controller_get_widget(controller &GtkEventController) &GtkWidget
 pub fn C.gtk_event_controller_reset(controller &GtkEventController)
 pub fn C.gtk_event_controller_get_propagation_phase(controller &GtkEventController) GtkPropagationPhase
@@ -24,7 +26,7 @@ pub struct C.GtkEventController {}
 
 pub type GtkEventController = C.GtkEventController
 
-pub fn (self &GtkEventController) get_type() int {
+pub fn (self &GtkEventController) get_type() glib.GType {
 	return C.gtk_event_controller_get_type()
 }
 

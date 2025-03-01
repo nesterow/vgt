@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkGestureDragClass {}
 
 pub type GtkGestureDragClass = C.GtkGestureDragClass
 
-pub fn C.gtk_gesture_drag_get_type() int
+pub fn C.gtk_gesture_drag_get_type() glib.GType
 pub fn C.gtk_gesture_drag_new() &GtkGesture
 pub fn C.gtk_gesture_drag_get_start_point(gesture &GtkGestureDrag, x voidptr, y voidptr) bool
 pub fn C.gtk_gesture_drag_get_offset(gesture &GtkGestureDrag, x voidptr, y voidptr) bool
@@ -15,7 +17,7 @@ pub struct C.GtkGestureDrag {}
 
 pub type GtkGestureDrag = C.GtkGestureDrag
 
-pub fn (self &GtkGestureDrag) get_type() int {
+pub fn (self &GtkGestureDrag) get_type() glib.GType {
 	return C.gtk_gesture_drag_get_type()
 }
 

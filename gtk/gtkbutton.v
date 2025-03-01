@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkButtonClass {}
 
 pub type GtkButtonClass = C.GtkButtonClass
 
-pub fn C.gtk_button_get_type() int
+pub fn C.gtk_button_get_type() glib.GType
 pub fn C.gtk_button_new() &GtkWidget
 pub fn C.gtk_button_new_with_label(label &char) &GtkWidget
 pub fn C.gtk_button_new_from_icon_name(icon_name &char) &GtkWidget
@@ -26,7 +28,7 @@ pub struct C.GtkButton {}
 
 pub type GtkButton = C.GtkButton
 
-pub fn (self &GtkButton) get_type() int {
+pub fn (self &GtkButton) get_type() glib.GType {
 	return C.gtk_button_get_type()
 }
 

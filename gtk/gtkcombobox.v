@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkComboBoxClass {}
 
 pub type GtkComboBoxClass = C.GtkComboBoxClass
 
-pub fn C.gtk_combo_box_get_type() int
+pub fn C.gtk_combo_box_get_type() glib.GType
 pub fn C.gtk_combo_box_new() &GtkWidget
 pub fn C.gtk_combo_box_new_with_entry() &GtkWidget
 pub fn C.gtk_combo_box_new_with_model(model &GtkTreeModel) &GtkWidget
@@ -40,7 +42,7 @@ pub struct C.GtkComboBox {}
 
 pub type GtkComboBox = C.GtkComboBox
 
-pub fn (self &GtkComboBox) get_type() int {
+pub fn (self &GtkComboBox) get_type() glib.GType {
 	return C.gtk_combo_box_get_type()
 }
 

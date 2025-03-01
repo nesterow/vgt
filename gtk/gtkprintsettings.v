@@ -1,19 +1,21 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkPrintSettingsFunc {}
 
 pub type GtkPrintSettingsFunc = C.GtkPrintSettingsFunc
 
-pub fn C.gtk_print_settings_get_type() int
+pub fn C.gtk_print_settings_get_type() glib.GType
 pub fn C.gtk_print_settings_new() &GtkPrintSettings
 pub fn C.gtk_print_settings_copy(other &GtkPrintSettings) &GtkPrintSettings
-pub fn C.gtk_print_settings_new_from_file(file_name &char, error voidptr) &GtkPrintSettings
-pub fn C.gtk_print_settings_load_file(settings &GtkPrintSettings, file_name &char, error voidptr) bool
-pub fn C.gtk_print_settings_to_file(settings &GtkPrintSettings, file_name &char, error voidptr) bool
-pub fn C.gtk_print_settings_new_from_key_file(key_file voidptr, group_name &char, error voidptr) &GtkPrintSettings
-pub fn C.gtk_print_settings_load_key_file(settings &GtkPrintSettings, key_file voidptr, group_name &char, error voidptr) bool
-pub fn C.gtk_print_settings_to_key_file(settings &GtkPrintSettings, key_file voidptr, group_name &char)
+pub fn C.gtk_print_settings_new_from_file(file_name &char, error &glib.GError) &GtkPrintSettings
+pub fn C.gtk_print_settings_load_file(settings &GtkPrintSettings, file_name &char, error &glib.GError) bool
+pub fn C.gtk_print_settings_to_file(settings &GtkPrintSettings, file_name &char, error &glib.GError) bool
+pub fn C.gtk_print_settings_new_from_key_file(key_file &glib.GKeyFile, group_name &char, error &glib.GError) &GtkPrintSettings
+pub fn C.gtk_print_settings_load_key_file(settings &GtkPrintSettings, key_file &glib.GKeyFile, group_name &char, error &glib.GError) bool
+pub fn C.gtk_print_settings_to_key_file(settings &GtkPrintSettings, key_file &glib.GKeyFile, group_name &char)
 pub fn C.gtk_print_settings_has_key(settings &GtkPrintSettings, key &char) bool
 pub fn C.gtk_print_settings_get(settings &GtkPrintSettings, key &char) &char
 pub fn C.gtk_print_settings_set(settings &GtkPrintSettings, key &char, value &char)
@@ -81,14 +83,14 @@ pub fn C.gtk_print_settings_set_finishings(settings &GtkPrintSettings, finishing
 pub fn C.gtk_print_settings_get_output_bin(settings &GtkPrintSettings) &char
 pub fn C.gtk_print_settings_set_output_bin(settings &GtkPrintSettings, output_bin &char)
 pub fn C.gtk_print_settings_to_gvariant(settings &GtkPrintSettings) voidptr
-pub fn C.gtk_print_settings_new_from_gvariant(variant voidptr) &GtkPrintSettings
+pub fn C.gtk_print_settings_new_from_gvariant(variant &glib.GVariant) &GtkPrintSettings
 
 @[noinit; typedef]
 pub struct C.GtkPrintSettings {}
 
 pub type GtkPrintSettings = C.GtkPrintSettings
 
-pub fn (self &GtkPrintSettings) get_type() int {
+pub fn (self &GtkPrintSettings) get_type() glib.GType {
 	return C.gtk_print_settings_get_type()
 }
 
@@ -100,27 +102,27 @@ pub fn (self &GtkPrintSettings) copy() &GtkPrintSettings {
 	return C.gtk_print_settings_copy(self)
 }
 
-pub fn GtkPrintSettings.new_from_file(file_name &char, error voidptr) &GtkPrintSettings {
+pub fn GtkPrintSettings.new_from_file(file_name &char, error &glib.GError) &GtkPrintSettings {
 	return C.gtk_print_settings_new_from_file(file_name, error)
 }
 
-pub fn (self &GtkPrintSettings) load_file(file_name &char, error voidptr) bool {
+pub fn (self &GtkPrintSettings) load_file(file_name &char, error &glib.GError) bool {
 	return C.gtk_print_settings_load_file(self, file_name, error)
 }
 
-pub fn (self &GtkPrintSettings) to_file(file_name &char, error voidptr) bool {
+pub fn (self &GtkPrintSettings) to_file(file_name &char, error &glib.GError) bool {
 	return C.gtk_print_settings_to_file(self, file_name, error)
 }
 
-pub fn GtkPrintSettings.new_from_key_file(key_file voidptr, group_name &char, error voidptr) &GtkPrintSettings {
+pub fn GtkPrintSettings.new_from_key_file(key_file &glib.GKeyFile, group_name &char, error &glib.GError) &GtkPrintSettings {
 	return C.gtk_print_settings_new_from_key_file(key_file, group_name, error)
 }
 
-pub fn (self &GtkPrintSettings) load_key_file(key_file voidptr, group_name &char, error voidptr) bool {
+pub fn (self &GtkPrintSettings) load_key_file(key_file &glib.GKeyFile, group_name &char, error &glib.GError) bool {
 	return C.gtk_print_settings_load_key_file(self, key_file, group_name, error)
 }
 
-pub fn (self &GtkPrintSettings) to_key_file(key_file voidptr, group_name &char) {
+pub fn (self &GtkPrintSettings) to_key_file(key_file &glib.GKeyFile, group_name &char) {
 	C.gtk_print_settings_to_key_file(self, key_file, group_name)
 }
 
@@ -392,6 +394,6 @@ pub fn (self &GtkPrintSettings) to_gvariant() voidptr {
 	return C.gtk_print_settings_to_gvariant(self)
 }
 
-pub fn GtkPrintSettings.new_from_gvariant(variant voidptr) &GtkPrintSettings {
+pub fn GtkPrintSettings.new_from_gvariant(variant &glib.GVariant) &GtkPrintSettings {
 	return C.gtk_print_settings_new_from_gvariant(variant)
 }

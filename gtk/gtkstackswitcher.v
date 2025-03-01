@@ -1,6 +1,8 @@
 module gtk
 
-pub fn C.gtk_stack_switcher_get_type() int
+import glib
+
+pub fn C.gtk_stack_switcher_get_type() glib.GType
 pub fn C.gtk_stack_switcher_new() &GtkWidget
 pub fn C.gtk_stack_switcher_set_stack(switcher &GtkStackSwitcher, stack &GtkStack)
 pub fn C.gtk_stack_switcher_get_stack(switcher &GtkStackSwitcher) &GtkStack
@@ -10,7 +12,7 @@ pub struct C.GtkStackSwitcher {}
 
 pub type GtkStackSwitcher = C.GtkStackSwitcher
 
-pub fn (self &GtkStackSwitcher) get_type() int {
+pub fn (self &GtkStackSwitcher) get_type() glib.GType {
 	return C.gtk_stack_switcher_get_type()
 }
 

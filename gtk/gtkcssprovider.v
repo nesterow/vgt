@@ -1,15 +1,17 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkCssProviderClass {}
 
 pub type GtkCssProviderClass = C.GtkCssProviderClass
 
-pub fn C.gtk_css_provider_get_type() int
+pub fn C.gtk_css_provider_get_type() glib.GType
 pub fn C.gtk_css_provider_new() &GtkCssProvider
 pub fn C.gtk_css_provider_to_string(provider &GtkCssProvider) voidptr
 pub fn C.gtk_css_provider_load_from_data(css_provider &GtkCssProvider, data &char, length int)
-pub fn C.gtk_css_provider_load_from_file(css_provider &GtkCssProvider, file voidptr)
+pub fn C.gtk_css_provider_load_from_file(css_provider &GtkCssProvider, file &glib.GFile)
 pub fn C.gtk_css_provider_load_from_path(css_provider &GtkCssProvider, path &char)
 pub fn C.gtk_css_provider_load_from_resource(css_provider &GtkCssProvider, resource_path &char)
 pub fn C.gtk_css_provider_load_named(provider &GtkCssProvider, name &char, variant &char)
@@ -19,7 +21,7 @@ pub struct C.GtkCssProvider {}
 
 pub type GtkCssProvider = C.GtkCssProvider
 
-pub fn (self &GtkCssProvider) get_type() int {
+pub fn (self &GtkCssProvider) get_type() glib.GType {
 	return C.gtk_css_provider_get_type()
 }
 
@@ -35,7 +37,7 @@ pub fn (self &GtkCssProvider) load_from_data(data &char, length int) {
 	C.gtk_css_provider_load_from_data(self, data, length)
 }
 
-pub fn (self &GtkCssProvider) load_from_file(file voidptr) {
+pub fn (self &GtkCssProvider) load_from_file(file &glib.GFile) {
 	C.gtk_css_provider_load_from_file(self, file)
 }
 

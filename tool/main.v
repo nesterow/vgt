@@ -1,7 +1,7 @@
 //
 module main
 
-import tool { GtkHeader, generate_gtk }
+import tool { GtkHeader, generate_glib, generate_gtk }
 
 const frozen = true
 
@@ -11,7 +11,9 @@ fn main() {
 	// 	// 	return
 	// 	// }
 
-	// generate_gtk([GtkHeader{'gtkwidget', 'GtkWidget', 'gtk_widget', false}])!
+	glib_idx := generate_glib()!
+
+	// generate_gtk([GtkHeader{'gtkapplication', 'GtkApplication', 'gtk_application', false}], gio_idx)!
 
 	generate_gtk([
 		GtkHeader{'gtkaboutdialog', 'GtkAboutDialog', 'gtk_about_dialog', false},
@@ -266,5 +268,5 @@ fn main() {
 		GtkHeader{'gtkwindowcontrols', 'GtkWindowControls', 'gtk_window_controls', false},
 		GtkHeader{'gtkwindowgroup', 'GtkWindowGroup', 'gtk_window_group', false},
 		GtkHeader{'gtkwindowhandle', 'GtkWindowHandle', 'gtk_window_handle', false},
-	])!
+	], glib_idx)!
 }

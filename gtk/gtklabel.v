@@ -1,6 +1,8 @@
 module gtk
 
-pub fn C.gtk_label_get_type() int
+import glib
+
+pub fn C.gtk_label_get_type() glib.GType
 pub fn C.gtk_label_new(str &char) &GtkWidget
 pub fn C.gtk_label_new_with_mnemonic(str &char) &GtkWidget
 pub fn C.gtk_label_set_text(self &GtkLabel, str &char)
@@ -48,7 +50,7 @@ pub fn C.gtk_label_set_xalign(self &GtkLabel, xalign f64)
 pub fn C.gtk_label_get_xalign(self &GtkLabel) f64
 pub fn C.gtk_label_set_yalign(self &GtkLabel, yalign f64)
 pub fn C.gtk_label_get_yalign(self &GtkLabel) f64
-pub fn C.gtk_label_set_extra_menu(self &GtkLabel, model voidptr)
+pub fn C.gtk_label_set_extra_menu(self &GtkLabel, model &glib.GMenuModel)
 pub fn C.gtk_label_get_extra_menu(self &GtkLabel) voidptr
 
 @[noinit; typedef]
@@ -56,7 +58,7 @@ pub struct C.GtkLabel {}
 
 pub type GtkLabel = C.GtkLabel
 
-pub fn (self &GtkLabel) get_type() int {
+pub fn (self &GtkLabel) get_type() glib.GType {
 	return C.gtk_label_get_type()
 }
 
@@ -248,7 +250,7 @@ pub fn (self &GtkLabel) get_yalign() f64 {
 	return C.gtk_label_get_yalign(self)
 }
 
-pub fn (self &GtkLabel) set_extra_menu(model voidptr) {
+pub fn (self &GtkLabel) set_extra_menu(model &glib.GMenuModel) {
 	C.gtk_label_set_extra_menu(self, model)
 }
 

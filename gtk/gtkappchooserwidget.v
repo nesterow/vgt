@@ -1,6 +1,8 @@
 module gtk
 
-pub fn C.gtk_app_chooser_widget_get_type() int
+import glib
+
+pub fn C.gtk_app_chooser_widget_get_type() glib.GType
 pub fn C.gtk_app_chooser_widget_new(content_typ &char) &GtkWidget
 pub fn C.gtk_app_chooser_widget_set_show_default(self &GtkAppChooserWidget, setting bool)
 pub fn C.gtk_app_chooser_widget_get_show_default(self &GtkAppChooserWidget) bool
@@ -20,7 +22,7 @@ pub struct C.GtkAppChooserWidget {}
 
 pub type GtkAppChooserWidget = C.GtkAppChooserWidget
 
-pub fn (self &GtkAppChooserWidget) get_type() int {
+pub fn (self &GtkAppChooserWidget) get_type() glib.GType {
 	return C.gtk_app_chooser_widget_get_type()
 }
 

@@ -1,20 +1,22 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkPictureClass {}
 
 pub type GtkPictureClass = C.GtkPictureClass
 
-pub fn C.gtk_picture_get_type() int
+pub fn C.gtk_picture_get_type() glib.GType
 pub fn C.gtk_picture_new() &GtkWidget
 pub fn C.gtk_picture_new_for_paintable(paintable voidptr) &GtkWidget
 pub fn C.gtk_picture_new_for_pixbuf(pixbuf voidptr) &GtkWidget
-pub fn C.gtk_picture_new_for_file(file voidptr) &GtkWidget
+pub fn C.gtk_picture_new_for_file(file &glib.GFile) &GtkWidget
 pub fn C.gtk_picture_new_for_filename(filename &char) &GtkWidget
 pub fn C.gtk_picture_new_for_resource(resource_path &char) &GtkWidget
 pub fn C.gtk_picture_set_paintable(self &GtkPicture, paintable voidptr)
 pub fn C.gtk_picture_get_paintable(self &GtkPicture) voidptr
-pub fn C.gtk_picture_set_file(self &GtkPicture, file voidptr)
+pub fn C.gtk_picture_set_file(self &GtkPicture, file &glib.GFile)
 pub fn C.gtk_picture_get_file(self &GtkPicture) voidptr
 pub fn C.gtk_picture_set_filename(self &GtkPicture, filename &char)
 pub fn C.gtk_picture_set_resource(self &GtkPicture, resource_path &char)
@@ -31,7 +33,7 @@ pub struct C.GtkPicture {}
 
 pub type GtkPicture = C.GtkPicture
 
-pub fn (self &GtkPicture) get_type() int {
+pub fn (self &GtkPicture) get_type() glib.GType {
 	return C.gtk_picture_get_type()
 }
 
@@ -47,7 +49,7 @@ pub fn GtkPicture.new_for_pixbuf(pixbuf voidptr) &GtkWidget {
 	return C.gtk_picture_new_for_pixbuf(pixbuf)
 }
 
-pub fn GtkPicture.new_for_file(file voidptr) &GtkWidget {
+pub fn GtkPicture.new_for_file(file &glib.GFile) &GtkWidget {
 	return C.gtk_picture_new_for_file(file)
 }
 
@@ -67,7 +69,7 @@ pub fn (self &GtkPicture) get_paintable() voidptr {
 	return C.gtk_picture_get_paintable(self)
 }
 
-pub fn (self &GtkPicture) set_file(file voidptr) {
+pub fn (self &GtkPicture) set_file(file &glib.GFile) {
 	C.gtk_picture_set_file(self, file)
 }
 

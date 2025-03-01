@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkWindowHandleClass {}
 
 pub type GtkWindowHandleClass = C.GtkWindowHandleClass
 
-pub fn C.gtk_window_handle_get_type() int
+pub fn C.gtk_window_handle_get_type() glib.GType
 pub fn C.gtk_window_handle_new() &GtkWidget
 pub fn C.gtk_window_handle_get_child(self &GtkWindowHandle) &GtkWidget
 pub fn C.gtk_window_handle_set_child(self &GtkWindowHandle, child &GtkWidget)
@@ -15,7 +17,7 @@ pub struct C.GtkWindowHandle {}
 
 pub type GtkWindowHandle = C.GtkWindowHandle
 
-pub fn (self &GtkWindowHandle) get_type() int {
+pub fn (self &GtkWindowHandle) get_type() glib.GType {
 	return C.gtk_window_handle_get_type()
 }
 

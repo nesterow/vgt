@@ -1,12 +1,14 @@
 module gtk
 
+import glib
+
 pub enum GtkTreeViewColumnSizing {
 	gtk_tree_view_column_grow_only
 	gtk_tree_view_column_autosize
 	gtk_tree_view_column_fixed
 }
 
-pub fn C.gtk_tree_view_column_get_type() int
+pub fn C.gtk_tree_view_column_get_type() glib.GType
 pub fn C.gtk_tree_view_column_new() &GtkTreeViewColumn
 pub fn C.gtk_tree_view_column_new_with_area(area &GtkCellArea) &GtkTreeViewColumn
 pub fn C.gtk_tree_view_column_new_with_attributes(title &char, cell &GtkCellRenderer) &GtkTreeViewColumn
@@ -66,7 +68,7 @@ pub struct C.GtkTreeViewColumn {}
 
 pub type GtkTreeViewColumn = C.GtkTreeViewColumn
 
-pub fn (self &GtkTreeViewColumn) get_type() int {
+pub fn (self &GtkTreeViewColumn) get_type() glib.GType {
 	return C.gtk_tree_view_column_get_type()
 }
 

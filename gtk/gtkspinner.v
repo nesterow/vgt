@@ -1,6 +1,8 @@
 module gtk
 
-pub fn C.gtk_spinner_get_type() int
+import glib
+
+pub fn C.gtk_spinner_get_type() glib.GType
 pub fn C.gtk_spinner_new() &GtkWidget
 pub fn C.gtk_spinner_start(spinner &GtkSpinner)
 pub fn C.gtk_spinner_stop(spinner &GtkSpinner)
@@ -12,7 +14,7 @@ pub struct C.GtkSpinner {}
 
 pub type GtkSpinner = C.GtkSpinner
 
-pub fn (self &GtkSpinner) get_type() int {
+pub fn (self &GtkSpinner) get_type() glib.GType {
 	return C.gtk_spinner_get_type()
 }
 

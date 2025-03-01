@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkGestureSingleClass {}
 
 pub type GtkGestureSingleClass = C.GtkGestureSingleClass
 
-pub fn C.gtk_gesture_single_get_type() int
+pub fn C.gtk_gesture_single_get_type() glib.GType
 pub fn C.gtk_gesture_single_get_touch_only(gesture &GtkGestureSingle) bool
 pub fn C.gtk_gesture_single_set_touch_only(gesture &GtkGestureSingle, touch_only bool)
 pub fn C.gtk_gesture_single_get_exclusive(gesture &GtkGestureSingle) bool
@@ -20,7 +22,7 @@ pub struct C.GtkGestureSingle {}
 
 pub type GtkGestureSingle = C.GtkGestureSingle
 
-pub fn (self &GtkGestureSingle) get_type() int {
+pub fn (self &GtkGestureSingle) get_type() glib.GType {
 	return C.gtk_gesture_single_get_type()
 }
 

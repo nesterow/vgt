@@ -1,5 +1,7 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkMessageDialogClass {}
 
@@ -14,7 +16,7 @@ pub enum GtkButtonsType {
 	gtk_buttons_ok_cancel
 }
 
-pub fn C.gtk_message_dialog_get_type() int
+pub fn C.gtk_message_dialog_get_type() glib.GType
 pub fn C.gtk_message_dialog_new(parent &GtkWindow, flags GtkDialogFlags, typ GtkMessageType, buttons GtkButtonsType, message_format &char) &GtkWidget
 pub fn C.gtk_message_dialog_new_with_markup(parent &GtkWindow, flags GtkDialogFlags, typ GtkMessageType, buttons GtkButtonsType, message_format &char) &GtkWidget
 pub fn C.gtk_message_dialog_set_markup(message_dialog &GtkMessageDialog, str &char)
@@ -27,7 +29,7 @@ pub struct C.GtkMessageDialog {}
 
 pub type GtkMessageDialog = C.GtkMessageDialog
 
-pub fn (self &GtkMessageDialog) get_type() int {
+pub fn (self &GtkMessageDialog) get_type() glib.GType {
 	return C.gtk_message_dialog_get_type()
 }
 

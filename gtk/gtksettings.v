@@ -1,6 +1,8 @@
 module gtk
 
-pub fn C.gtk_settings_get_type() int
+import glib
+
+pub fn C.gtk_settings_get_type() glib.GType
 pub fn C.gtk_settings_get_default() &GtkSettings
 pub fn C.gtk_settings_get_for_display(display voidptr) &GtkSettings
 pub fn C.gtk_settings_reset_property(settings &GtkSettings, name &char)
@@ -10,7 +12,7 @@ pub struct C.GtkSettings {}
 
 pub type GtkSettings = C.GtkSettings
 
-pub fn (self &GtkSettings) get_type() int {
+pub fn (self &GtkSettings) get_type() glib.GType {
 	return C.gtk_settings_get_type()
 }
 

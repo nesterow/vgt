@@ -1,11 +1,13 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkBitsetIter {}
 
 pub type GtkBitsetIter = C.GtkBitsetIter
 
-pub fn C.gtk_bitset_get_type() int
+pub fn C.gtk_bitset_get_type() glib.GType
 pub fn C.gtk_bitset_ref(self &GtkBitset) &GtkBitset
 pub fn C.gtk_bitset_unref(self &GtkBitset)
 pub fn C.gtk_bitset_contains(self &GtkBitset, value u64) bool
@@ -35,12 +37,12 @@ pub fn C.gtk_bitset_difference(self &GtkBitset, other &GtkBitset)
 pub fn C.gtk_bitset_shift_left(self &GtkBitset, amount u64)
 pub fn C.gtk_bitset_shift_right(self &GtkBitset, amount u64)
 pub fn C.gtk_bitset_splice(self &GtkBitset, position u64, removed u64, added u64)
-pub fn C.gtk_bitset_iter_get_type() int
-pub fn C.gtk_bitset_iter_init_first(iter &GtkBitsetIter, set &GtkBitset, value voidptr) bool
-pub fn C.gtk_bitset_iter_init_last(iter &GtkBitsetIter, set &GtkBitset, value voidptr) bool
-pub fn C.gtk_bitset_iter_init_at(iter &GtkBitsetIter, set &GtkBitset, target u64, value voidptr) bool
-pub fn C.gtk_bitset_iter_next(iter &GtkBitsetIter, value voidptr) bool
-pub fn C.gtk_bitset_iter_previous(iter &GtkBitsetIter, value voidptr) bool
+pub fn C.gtk_bitset_iter_get_type() glib.GType
+pub fn C.gtk_bitset_iter_init_first(iter &GtkBitsetIter, set &GtkBitset, value &u64) bool
+pub fn C.gtk_bitset_iter_init_last(iter &GtkBitsetIter, set &GtkBitset, value &u64) bool
+pub fn C.gtk_bitset_iter_init_at(iter &GtkBitsetIter, set &GtkBitset, target u64, value &u64) bool
+pub fn C.gtk_bitset_iter_next(iter &GtkBitsetIter, value &u64) bool
+pub fn C.gtk_bitset_iter_previous(iter &GtkBitsetIter, value &u64) bool
 pub fn C.gtk_bitset_iter_get_value(iter &GtkBitsetIter) u64
 pub fn C.gtk_bitset_iter_is_valid(iter &GtkBitsetIter) bool
 
@@ -49,7 +51,7 @@ pub struct C.GtkBitset {}
 
 pub type GtkBitset = C.GtkBitset
 
-pub fn (self &GtkBitset) get_type() int {
+pub fn (self &GtkBitset) get_type() glib.GType {
 	return C.gtk_bitset_get_type()
 }
 
@@ -169,27 +171,27 @@ pub fn (self &GtkBitset) splice(position u64, removed u64, added u64) {
 	C.gtk_bitset_splice(self, position, removed, added)
 }
 
-pub fn (self &GtkBitset) iter_get_type() int {
+pub fn (self &GtkBitset) iter_get_type() glib.GType {
 	return C.gtk_bitset_iter_get_type()
 }
 
-pub fn (self &GtkBitset) iter_init_first(iter &GtkBitsetIter, set &GtkBitset, value voidptr) bool {
+pub fn (self &GtkBitset) iter_init_first(iter &GtkBitsetIter, set &GtkBitset, value &u64) bool {
 	return C.gtk_bitset_iter_init_first(iter, set, value)
 }
 
-pub fn (self &GtkBitset) iter_init_last(iter &GtkBitsetIter, set &GtkBitset, value voidptr) bool {
+pub fn (self &GtkBitset) iter_init_last(iter &GtkBitsetIter, set &GtkBitset, value &u64) bool {
 	return C.gtk_bitset_iter_init_last(iter, set, value)
 }
 
-pub fn (self &GtkBitset) iter_init_at(iter &GtkBitsetIter, set &GtkBitset, target u64, value voidptr) bool {
+pub fn (self &GtkBitset) iter_init_at(iter &GtkBitsetIter, set &GtkBitset, target u64, value &u64) bool {
 	return C.gtk_bitset_iter_init_at(iter, set, target, value)
 }
 
-pub fn (self &GtkBitset) iter_next(iter &GtkBitsetIter, value voidptr) bool {
+pub fn (self &GtkBitset) iter_next(iter &GtkBitsetIter, value &u64) bool {
 	return C.gtk_bitset_iter_next(iter, value)
 }
 
-pub fn (self &GtkBitset) iter_previous(iter &GtkBitsetIter, value voidptr) bool {
+pub fn (self &GtkBitset) iter_previous(iter &GtkBitsetIter, value &u64) bool {
 	return C.gtk_bitset_iter_previous(iter, value)
 }
 

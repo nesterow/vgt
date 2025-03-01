@@ -1,5 +1,7 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkEditableInterface {}
 
@@ -17,7 +19,7 @@ pub enum GtkEditableProperties {
 	gtk_editable_num_properties
 }
 
-pub fn C.gtk_editable_get_type() int
+pub fn C.gtk_editable_get_type() glib.GType
 pub fn C.gtk_editable_get_text(editable &GtkEditable) &char
 pub fn C.gtk_editable_set_text(editable &GtkEditable, text &char)
 pub fn C.gtk_editable_get_chars(editable &GtkEditable, start_pos int, end_pos int) voidptr
@@ -38,19 +40,19 @@ pub fn C.gtk_editable_get_max_width_chars(editable &GtkEditable) int
 pub fn C.gtk_editable_set_max_width_chars(editable &GtkEditable, n_chars int)
 pub fn C.gtk_editable_get_enable_undo(editable &GtkEditable) bool
 pub fn C.gtk_editable_set_enable_undo(editable &GtkEditable, enable_undo bool)
-pub fn C.gtk_editable_install_properties(object_class voidptr, first_prop u64) u64
+pub fn C.gtk_editable_install_properties(object_class &glib.GObjectClass, first_prop u64) u64
 pub fn C.gtk_editable_get_delegate(editable &GtkEditable) &GtkEditable
 pub fn C.gtk_editable_init_delegate(editable &GtkEditable)
 pub fn C.gtk_editable_finish_delegate(editable &GtkEditable)
-pub fn C.gtk_editable_delegate_set_property(object voidptr, prop_id u64, value voidptr, pspec voidptr) bool
-pub fn C.gtk_editable_delegate_get_property(object voidptr, prop_id u64, value voidptr, pspec voidptr) bool
+pub fn C.gtk_editable_delegate_set_property(object &glib.GObject, prop_id u64, value &glib.GValue, pspec &glib.GParamSpec) bool
+pub fn C.gtk_editable_delegate_get_property(object &glib.GObject, prop_id u64, value &glib.GValue, pspec &glib.GParamSpec) bool
 
 @[noinit; typedef]
 pub struct C.GtkEditable {}
 
 pub type GtkEditable = C.GtkEditable
 
-pub fn (self &GtkEditable) get_type() int {
+pub fn (self &GtkEditable) get_type() glib.GType {
 	return C.gtk_editable_get_type()
 }
 
@@ -134,7 +136,7 @@ pub fn (self &GtkEditable) set_enable_undo(enable_undo bool) {
 	C.gtk_editable_set_enable_undo(self, enable_undo)
 }
 
-pub fn (self &GtkEditable) install_properties(object_class voidptr, first_prop u64) u64 {
+pub fn (self &GtkEditable) install_properties(object_class &glib.GObjectClass, first_prop u64) u64 {
 	return C.gtk_editable_install_properties(object_class, first_prop)
 }
 
@@ -150,10 +152,10 @@ pub fn (self &GtkEditable) finish_delegate() {
 	C.gtk_editable_finish_delegate(self)
 }
 
-pub fn (self &GtkEditable) delegate_set_property(object voidptr, prop_id u64, value voidptr, pspec voidptr) bool {
+pub fn (self &GtkEditable) delegate_set_property(object &glib.GObject, prop_id u64, value &glib.GValue, pspec &glib.GParamSpec) bool {
 	return C.gtk_editable_delegate_set_property(object, prop_id, value, pspec)
 }
 
-pub fn (self &GtkEditable) delegate_get_property(object voidptr, prop_id u64, value voidptr, pspec voidptr) bool {
+pub fn (self &GtkEditable) delegate_get_property(object &glib.GObject, prop_id u64, value &glib.GValue, pspec &glib.GParamSpec) bool {
 	return C.gtk_editable_delegate_get_property(object, prop_id, value, pspec)
 }

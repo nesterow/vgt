@@ -1,5 +1,7 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkListBoxRow {}
 
@@ -35,7 +37,7 @@ pub struct C.GtkListBoxForeachFunc {}
 
 pub type GtkListBoxForeachFunc = C.GtkListBoxForeachFunc
 
-pub fn C.gtk_list_box_row_get_type() int
+pub fn C.gtk_list_box_row_get_type() glib.GType
 pub fn C.gtk_list_box_row_new() &GtkWidget
 pub fn C.gtk_list_box_row_set_child(row &GtkListBoxRow, child &GtkWidget)
 pub fn C.gtk_list_box_row_get_child(row &GtkListBoxRow) &GtkWidget
@@ -48,7 +50,7 @@ pub fn C.gtk_list_box_row_set_selectable(row &GtkListBoxRow, selectable bool)
 pub fn C.gtk_list_box_row_get_selectable(row &GtkListBoxRow) bool
 pub fn C.gtk_list_box_row_set_activatable(row &GtkListBoxRow, activatable bool)
 pub fn C.gtk_list_box_row_get_activatable(row &GtkListBoxRow) bool
-pub fn C.gtk_list_box_get_type() int
+pub fn C.gtk_list_box_get_type() glib.GType
 pub fn C.gtk_list_box_prepend(box &GtkListBox, child &GtkWidget)
 pub fn C.gtk_list_box_append(box &GtkListBox, child &GtkWidget)
 pub fn C.gtk_list_box_insert(box &GtkListBox, child &GtkWidget, position int)
@@ -78,7 +80,7 @@ pub fn C.gtk_list_box_get_activate_on_single_click(box &GtkListBox) bool
 pub fn C.gtk_list_box_drag_unhighlight_row(box &GtkListBox)
 pub fn C.gtk_list_box_drag_highlight_row(box &GtkListBox, row &GtkListBoxRow)
 pub fn C.gtk_list_box_new() &GtkWidget
-pub fn C.gtk_list_box_bind_model(box &GtkListBox, model voidptr, create_widget_func voidptr, user_data voidptr, user_data_free_func voidptr)
+pub fn C.gtk_list_box_bind_model(box &GtkListBox, model &glib.GListModel, create_widget_func voidptr, user_data voidptr, user_data_free_func voidptr)
 pub fn C.gtk_list_box_set_show_separators(box &GtkListBox, show_separators bool)
 pub fn C.gtk_list_box_get_show_separators(box &GtkListBox) bool
 
@@ -87,7 +89,7 @@ pub struct C.GtkListBox {}
 
 pub type GtkListBox = C.GtkListBox
 
-pub fn (self &GtkListBox) row_get_type() int {
+pub fn (self &GtkListBox) row_get_type() glib.GType {
 	return C.gtk_list_box_row_get_type()
 }
 
@@ -139,7 +141,7 @@ pub fn (self &GtkListBox) row_get_activatable(row &GtkListBoxRow) bool {
 	return C.gtk_list_box_row_get_activatable(row)
 }
 
-pub fn (self &GtkListBox) get_type() int {
+pub fn (self &GtkListBox) get_type() glib.GType {
 	return C.gtk_list_box_get_type()
 }
 
@@ -259,7 +261,7 @@ pub fn GtkListBox.new() &GtkWidget {
 	return C.gtk_list_box_new()
 }
 
-pub fn (self &GtkListBox) bind_model(model voidptr, create_widget_func voidptr, user_data voidptr, user_data_free_func voidptr) {
+pub fn (self &GtkListBox) bind_model(model &glib.GListModel, create_widget_func voidptr, user_data voidptr, user_data_free_func voidptr) {
 	C.gtk_list_box_bind_model(self, model, create_widget_func, user_data, user_data_free_func)
 }
 

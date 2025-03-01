@@ -1,8 +1,10 @@
 module gtk
 
-pub fn C.gtk_calendar_get_type() int
+import glib
+
+pub fn C.gtk_calendar_get_type() glib.GType
 pub fn C.gtk_calendar_new() &GtkWidget
-pub fn C.gtk_calendar_select_day(self &GtkCalendar, date voidptr)
+pub fn C.gtk_calendar_select_day(self &GtkCalendar, date &glib.GDateTime)
 pub fn C.gtk_calendar_mark_day(calendar &GtkCalendar, day u64)
 pub fn C.gtk_calendar_unmark_day(calendar &GtkCalendar, day u64)
 pub fn C.gtk_calendar_clear_marks(calendar &GtkCalendar)
@@ -20,7 +22,7 @@ pub struct C.GtkCalendar {}
 
 pub type GtkCalendar = C.GtkCalendar
 
-pub fn (self &GtkCalendar) get_type() int {
+pub fn (self &GtkCalendar) get_type() glib.GType {
 	return C.gtk_calendar_get_type()
 }
 
@@ -28,7 +30,7 @@ pub fn GtkCalendar.new() &GtkWidget {
 	return C.gtk_calendar_new()
 }
 
-pub fn (self &GtkCalendar) select_day(date voidptr) {
+pub fn (self &GtkCalendar) select_day(date &glib.GDateTime) {
 	C.gtk_calendar_select_day(self, date)
 }
 

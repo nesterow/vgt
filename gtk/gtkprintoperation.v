@@ -1,5 +1,7 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkPrintOperationPreview {}
 
@@ -48,11 +50,11 @@ pub enum GtkPrintError {
 	gtk_print_error_invalid_file
 }
 
-pub fn C.gtk_print_operation_preview_get_type() int
+pub fn C.gtk_print_operation_preview_get_type() glib.GType
 pub fn C.gtk_print_operation_preview_render_page(preview &GtkPrintOperationPreview, page_nr int)
 pub fn C.gtk_print_operation_preview_end_preview(preview &GtkPrintOperationPreview)
 pub fn C.gtk_print_operation_preview_is_selected(preview &GtkPrintOperationPreview, page_nr int) bool
-pub fn C.gtk_print_operation_get_type() int
+pub fn C.gtk_print_operation_get_type() glib.GType
 pub fn C.gtk_print_operation_new() &GtkPrintOperation
 pub fn C.gtk_print_operation_set_default_page_setup(op &GtkPrintOperation, default_page_setup &GtkPageSetup)
 pub fn C.gtk_print_operation_get_default_page_setup(op &GtkPrintOperation) &GtkPageSetup
@@ -68,8 +70,8 @@ pub fn C.gtk_print_operation_set_track_print_status(op &GtkPrintOperation, track
 pub fn C.gtk_print_operation_set_show_progress(op &GtkPrintOperation, show_progress bool)
 pub fn C.gtk_print_operation_set_allow_async(op &GtkPrintOperation, allow_async bool)
 pub fn C.gtk_print_operation_set_custom_tab_label(op &GtkPrintOperation, label &char)
-pub fn C.gtk_print_operation_run(op &GtkPrintOperation, action GtkPrintOperationAction, parent &GtkWindow, error voidptr) GtkPrintOperationResult
-pub fn C.gtk_print_operation_get_error(op &GtkPrintOperation, error voidptr)
+pub fn C.gtk_print_operation_run(op &GtkPrintOperation, action GtkPrintOperationAction, parent &GtkWindow, error &glib.GError) GtkPrintOperationResult
+pub fn C.gtk_print_operation_get_error(op &GtkPrintOperation, error &glib.GError)
 pub fn C.gtk_print_operation_get_status(op &GtkPrintOperation) GtkPrintStatus
 pub fn C.gtk_print_operation_get_status_string(op &GtkPrintOperation) &char
 pub fn C.gtk_print_operation_is_finished(op &GtkPrintOperation) bool
@@ -89,7 +91,7 @@ pub struct C.GtkPrintOperation {}
 
 pub type GtkPrintOperation = C.GtkPrintOperation
 
-pub fn (self &GtkPrintOperation) preview_get_type() int {
+pub fn (self &GtkPrintOperation) preview_get_type() glib.GType {
 	return C.gtk_print_operation_preview_get_type()
 }
 
@@ -105,7 +107,7 @@ pub fn (self &GtkPrintOperation) preview_is_selected(preview &GtkPrintOperationP
 	return C.gtk_print_operation_preview_is_selected(preview, page_nr)
 }
 
-pub fn (self &GtkPrintOperation) get_type() int {
+pub fn (self &GtkPrintOperation) get_type() glib.GType {
 	return C.gtk_print_operation_get_type()
 }
 
@@ -169,11 +171,11 @@ pub fn (self &GtkPrintOperation) set_custom_tab_label(label &char) {
 	C.gtk_print_operation_set_custom_tab_label(self, label)
 }
 
-pub fn (self &GtkPrintOperation) run(action GtkPrintOperationAction, parent &GtkWindow, error voidptr) GtkPrintOperationResult {
+pub fn (self &GtkPrintOperation) run(action GtkPrintOperationAction, parent &GtkWindow, error &glib.GError) GtkPrintOperationResult {
 	return C.gtk_print_operation_run(self, action, parent, error)
 }
 
-pub fn (self &GtkPrintOperation) get_error(error voidptr) {
+pub fn (self &GtkPrintOperation) get_error(error &glib.GError) {
 	C.gtk_print_operation_get_error(self, error)
 }
 

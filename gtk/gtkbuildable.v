@@ -1,5 +1,7 @@
 module gtk
 
+import glib
+
 @[noinit; typedef]
 pub struct C.GtkBuildableIface {}
 
@@ -15,7 +17,7 @@ pub struct C.GtkBuildableParser {}
 
 pub type GtkBuildableParser = C.GtkBuildableParser
 
-pub fn C.gtk_buildable_get_type() int
+pub fn C.gtk_buildable_get_type() glib.GType
 pub fn C.gtk_buildable_get_buildable_id(buildable &GtkBuildable) &char
 pub fn C.gtk_buildable_parse_context_push(context &GtkBuildableParseContext, parser &GtkBuildableParser, user_data voidptr)
 pub fn C.gtk_buildable_parse_context_pop(context &GtkBuildableParseContext) voidptr
@@ -28,7 +30,7 @@ pub struct C.GtkBuildable {}
 
 pub type GtkBuildable = C.GtkBuildable
 
-pub fn (self &GtkBuildable) get_type() int {
+pub fn (self &GtkBuildable) get_type() glib.GType {
 	return C.gtk_buildable_get_type()
 }
 

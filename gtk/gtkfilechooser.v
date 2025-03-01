@@ -1,5 +1,7 @@
 module gtk
 
+import glib
+
 pub enum GtkFileChooserAction {
 	gtk_file_chooser_action_open
 	gtk_file_chooser_action_save
@@ -13,8 +15,8 @@ pub enum GtkFileChooserError {
 	gtk_file_chooser_error_incomplete_hostname
 }
 
-pub fn C.gtk_file_chooser_get_type() int
-pub fn C.gtk_file_chooser_error_quark() voidptr
+pub fn C.gtk_file_chooser_get_type() glib.GType
+pub fn C.gtk_file_chooser_error_quark() glib.GQuark
 pub fn C.gtk_file_chooser_set_action(chooser &GtkFileChooser, action GtkFileChooserAction)
 pub fn C.gtk_file_chooser_get_action(chooser &GtkFileChooser) GtkFileChooserAction
 pub fn C.gtk_file_chooser_set_select_multiple(chooser &GtkFileChooser, select_multiple bool)
@@ -24,17 +26,17 @@ pub fn C.gtk_file_chooser_get_create_folders(chooser &GtkFileChooser) bool
 pub fn C.gtk_file_chooser_set_current_name(chooser &GtkFileChooser, name &char)
 pub fn C.gtk_file_chooser_get_current_name(chooser &GtkFileChooser) voidptr
 pub fn C.gtk_file_chooser_get_file(chooser &GtkFileChooser) voidptr
-pub fn C.gtk_file_chooser_set_file(chooser &GtkFileChooser, file voidptr, error voidptr) bool
+pub fn C.gtk_file_chooser_set_file(chooser &GtkFileChooser, file &glib.GFile, error &glib.GError) bool
 pub fn C.gtk_file_chooser_get_files(chooser &GtkFileChooser) voidptr
-pub fn C.gtk_file_chooser_set_current_folder(chooser &GtkFileChooser, file voidptr, error voidptr) bool
+pub fn C.gtk_file_chooser_set_current_folder(chooser &GtkFileChooser, file &glib.GFile, error &glib.GError) bool
 pub fn C.gtk_file_chooser_get_current_folder(chooser &GtkFileChooser) voidptr
 pub fn C.gtk_file_chooser_add_filter(chooser &GtkFileChooser, filter &GtkFileFilter)
 pub fn C.gtk_file_chooser_remove_filter(chooser &GtkFileChooser, filter &GtkFileFilter)
 pub fn C.gtk_file_chooser_get_filters(chooser &GtkFileChooser) voidptr
 pub fn C.gtk_file_chooser_set_filter(chooser &GtkFileChooser, filter &GtkFileFilter)
 pub fn C.gtk_file_chooser_get_filter(chooser &GtkFileChooser) &GtkFileFilter
-pub fn C.gtk_file_chooser_add_shortcut_folder(chooser &GtkFileChooser, folder voidptr, error voidptr) bool
-pub fn C.gtk_file_chooser_remove_shortcut_folder(chooser &GtkFileChooser, folder voidptr, error voidptr) bool
+pub fn C.gtk_file_chooser_add_shortcut_folder(chooser &GtkFileChooser, folder &glib.GFile, error &glib.GError) bool
+pub fn C.gtk_file_chooser_remove_shortcut_folder(chooser &GtkFileChooser, folder &glib.GFile, error &glib.GError) bool
 pub fn C.gtk_file_chooser_get_shortcut_folders(chooser &GtkFileChooser) voidptr
 pub fn C.gtk_file_chooser_add_choice(chooser &GtkFileChooser, id &char, label &char, options voidptr, option_labels voidptr)
 pub fn C.gtk_file_chooser_remove_choice(chooser &GtkFileChooser, id &char)
@@ -46,11 +48,11 @@ pub struct C.GtkFileChooser {}
 
 pub type GtkFileChooser = C.GtkFileChooser
 
-pub fn (self &GtkFileChooser) get_type() int {
+pub fn (self &GtkFileChooser) get_type() glib.GType {
 	return C.gtk_file_chooser_get_type()
 }
 
-pub fn (self &GtkFileChooser) error_quark() voidptr {
+pub fn (self &GtkFileChooser) error_quark() glib.GQuark {
 	return C.gtk_file_chooser_error_quark()
 }
 
@@ -90,7 +92,7 @@ pub fn (self &GtkFileChooser) get_file() voidptr {
 	return C.gtk_file_chooser_get_file(self)
 }
 
-pub fn (self &GtkFileChooser) set_file(file voidptr, error voidptr) bool {
+pub fn (self &GtkFileChooser) set_file(file &glib.GFile, error &glib.GError) bool {
 	return C.gtk_file_chooser_set_file(self, file, error)
 }
 
@@ -98,7 +100,7 @@ pub fn (self &GtkFileChooser) get_files() voidptr {
 	return C.gtk_file_chooser_get_files(self)
 }
 
-pub fn (self &GtkFileChooser) set_current_folder(file voidptr, error voidptr) bool {
+pub fn (self &GtkFileChooser) set_current_folder(file &glib.GFile, error &glib.GError) bool {
 	return C.gtk_file_chooser_set_current_folder(self, file, error)
 }
 
@@ -126,11 +128,11 @@ pub fn (self &GtkFileChooser) get_filter() &GtkFileFilter {
 	return C.gtk_file_chooser_get_filter(self)
 }
 
-pub fn (self &GtkFileChooser) add_shortcut_folder(folder voidptr, error voidptr) bool {
+pub fn (self &GtkFileChooser) add_shortcut_folder(folder &glib.GFile, error &glib.GError) bool {
 	return C.gtk_file_chooser_add_shortcut_folder(self, folder, error)
 }
 
-pub fn (self &GtkFileChooser) remove_shortcut_folder(folder voidptr, error voidptr) bool {
+pub fn (self &GtkFileChooser) remove_shortcut_folder(folder &glib.GFile, error &glib.GError) bool {
 	return C.gtk_file_chooser_remove_shortcut_folder(self, folder, error)
 }
 
