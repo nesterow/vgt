@@ -66,6 +66,6 @@ fn main() {
 ## Roadmap
 
 - [x] Gtk4 bindings
-- [ ] Glib bindings
+- [x] Glib bindings
 - [ ] Adwaita
 - [ ] Framework/Tooling
