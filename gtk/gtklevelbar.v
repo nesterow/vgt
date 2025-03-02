@@ -17,7 +17,7 @@ pub fn C.gtk_level_bar_set_inverted(self &GtkLevelBar, inverted bool)
 pub fn C.gtk_level_bar_get_inverted(self &GtkLevelBar) bool
 pub fn C.gtk_level_bar_add_offset_value(self &GtkLevelBar, name &char, value f32)
 pub fn C.gtk_level_bar_remove_offset_value(self &GtkLevelBar, name &char)
-pub fn C.gtk_level_bar_get_offset_value(self &GtkLevelBar, name &char, value voidptr) bool
+pub fn C.gtk_level_bar_get_offset_value(self &GtkLevelBar, name &char, value &f32) bool
 
 @[noinit; typedef]
 pub struct C.GtkLevelBar {}
@@ -76,14 +76,14 @@ pub fn (self &GtkLevelBar) get_inverted() bool {
 	return C.gtk_level_bar_get_inverted(self)
 }
 
-pub fn (self &GtkLevelBar) add_offset_value(name &char, value f32) {
-	C.gtk_level_bar_add_offset_value(self, name, value)
+pub fn (self &GtkLevelBar) add_offset_value(name string, value f32) {
+	C.gtk_level_bar_add_offset_value(self, name.str, value)
 }
 
-pub fn (self &GtkLevelBar) remove_offset_value(name &char) {
-	C.gtk_level_bar_remove_offset_value(self, name)
+pub fn (self &GtkLevelBar) remove_offset_value(name string) {
+	C.gtk_level_bar_remove_offset_value(self, name.str)
 }
 
-pub fn (self &GtkLevelBar) get_offset_value(name &char, value voidptr) bool {
-	return C.gtk_level_bar_get_offset_value(self, name, value)
+pub fn (self &GtkLevelBar) get_offset_value(name string, value &f32) bool {
+	return C.gtk_level_bar_get_offset_value(self, name.str, value)
 }

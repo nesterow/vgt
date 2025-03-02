@@ -165,8 +165,8 @@ pub fn (self &GSubprocess) launcher_spawnv(self_t &GSubprocessLauncher, argv voi
 	return C.g_subprocess_launcher_spawnv(self_t, argv, error)
 }
 
-pub fn C.g_subprocess_launcher_set_environ(self_t &GSubprocessLauncher, env &char)
-pub fn (self &GSubprocess) launcher_set_environ(self_t &GSubprocessLauncher, env &char) {
+pub fn C.g_subprocess_launcher_set_environ(self_t &GSubprocessLauncher, env &&char)
+pub fn (self &GSubprocess) launcher_set_environ(self_t &GSubprocessLauncher, env &&char) {
 	C.g_subprocess_launcher_set_environ(self_t, env)
 }
 

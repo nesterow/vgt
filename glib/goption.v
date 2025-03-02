@@ -70,13 +70,13 @@ pub fn g_option_context_add_main_entries(context &GOptionContext, entries &GOpti
 	C.g_option_context_add_main_entries(context, entries, translation_domain)
 }
 
-pub fn C.g_option_context_parse(context &GOptionContext, argc int, argv &char, error &GError) bool
-pub fn g_option_context_parse(context &GOptionContext, argc int, argv &char, error &GError) bool {
+pub fn C.g_option_context_parse(context &GOptionContext, argc int, argv &&&char, error &GError) bool
+pub fn g_option_context_parse(context &GOptionContext, argc int, argv &&&char, error &GError) bool {
 	return C.g_option_context_parse(context, argc, argv, error)
 }
 
-pub fn C.g_option_context_parse_strv(context &GOptionContext, arguments &char, error &GError) bool
-pub fn g_option_context_parse_strv(context &GOptionContext, arguments &char, error &GError) bool {
+pub fn C.g_option_context_parse_strv(context &GOptionContext, arguments &&&char, error &GError) bool
+pub fn g_option_context_parse_strv(context &GOptionContext, arguments &&&char, error &GError) bool {
 	return C.g_option_context_parse_strv(context, arguments, error)
 }
 

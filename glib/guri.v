@@ -1,7 +1,7 @@
 module glib
 
-pub fn C.g_uri_list_extract_uris(uri_list &char) &char
-pub fn (self &GUri) list_extract_uris(uri_list &char) &char {
+pub fn C.g_uri_list_extract_uris(uri_list &char) &&char
+pub fn (self &GUri) list_extract_uris(uri_list &char) &&char {
 	return C.g_uri_list_extract_uris(uri_list)
 }
 
@@ -15,20 +15,20 @@ pub fn (uri &GUri) unref() {
 	C.g_uri_unref(uri)
 }
 
-pub fn C.g_uri_split(uri_ref &char, flags GUriFlags, scheme &char, userinfo &char, host &char, port int, path &char, query &char, fragment &char, error &GError) bool
-pub fn (self &GUri) split(uri_ref &char, flags GUriFlags, scheme &char, userinfo &char, host &char, port int, path &char, query &char, fragment &char, error &GError) bool {
+pub fn C.g_uri_split(uri_ref &char, flags GUriFlags, scheme &&char, userinfo &&char, host &&char, port int, path &&char, query &&char, fragment &&char, error &GError) bool
+pub fn (self &GUri) split(uri_ref &char, flags GUriFlags, scheme &&char, userinfo &&char, host &&char, port int, path &&char, query &&char, fragment &&char, error &GError) bool {
 	return C.g_uri_split(uri_ref, flags, scheme, userinfo, host, port, path, query, fragment,
 		error)
 }
 
-pub fn C.g_uri_split_with_user(uri_ref &char, flags GUriFlags, scheme &char, user &char, password &char, auth_params &char, host &char, port int, path &char, query &char, fragment &char, error &GError) bool
-pub fn (self &GUri) split_with_user(uri_ref &char, flags GUriFlags, scheme &char, user &char, password &char, auth_params &char, host &char, port int, path &char, query &char, fragment &char, error &GError) bool {
+pub fn C.g_uri_split_with_user(uri_ref &char, flags GUriFlags, scheme &&char, user &&char, password &&char, auth_params &&char, host &&char, port int, path &&char, query &&char, fragment &&char, error &GError) bool
+pub fn (self &GUri) split_with_user(uri_ref &char, flags GUriFlags, scheme &&char, user &&char, password &&char, auth_params &&char, host &&char, port int, path &&char, query &&char, fragment &&char, error &GError) bool {
 	return C.g_uri_split_with_user(uri_ref, flags, scheme, user, password, auth_params,
 		host, port, path, query, fragment, error)
 }
 
-pub fn C.g_uri_split_network(uri_string &char, flags GUriFlags, scheme &char, host &char, port int, error &GError) bool
-pub fn (self &GUri) split_network(uri_string &char, flags GUriFlags, scheme &char, host &char, port int, error &GError) bool {
+pub fn C.g_uri_split_network(uri_string &char, flags GUriFlags, scheme &&char, host &&char, port int, error &GError) bool
+pub fn (self &GUri) split_network(uri_string &char, flags GUriFlags, scheme &&char, host &&char, port int, error &GError) bool {
 	return C.g_uri_split_network(uri_string, flags, scheme, host, port, error)
 }
 
@@ -149,8 +149,8 @@ pub fn (self &GUri) params_iter_init(iter &GUriParamsIter, params &char, length 
 	C.g_uri_params_iter_init(iter, params, length, separators, flags)
 }
 
-pub fn C.g_uri_params_iter_next(iter &GUriParamsIter, attribute &char, value &char, error &GError) bool
-pub fn (self &GUri) params_iter_next(iter &GUriParamsIter, attribute &char, value &char, error &GError) bool {
+pub fn C.g_uri_params_iter_next(iter &GUriParamsIter, attribute &&char, value &&char, error &GError) bool
+pub fn (self &GUri) params_iter_next(iter &GUriParamsIter, attribute &&char, value &&char, error &GError) bool {
 	return C.g_uri_params_iter_next(iter, attribute, value, error)
 }
 

@@ -34,12 +34,12 @@ pub fn GtkMediaFile.new() &GtkMediaStream {
 	return C.gtk_media_file_new()
 }
 
-pub fn GtkMediaFile.new_for_filename(filename &char) &GtkMediaStream {
-	return C.gtk_media_file_new_for_filename(filename)
+pub fn GtkMediaFile.new_for_filename(filename string) &GtkMediaStream {
+	return C.gtk_media_file_new_for_filename(filename.str)
 }
 
-pub fn GtkMediaFile.new_for_resource(resource_path &char) &GtkMediaStream {
-	return C.gtk_media_file_new_for_resource(resource_path)
+pub fn GtkMediaFile.new_for_resource(resource_path string) &GtkMediaStream {
+	return C.gtk_media_file_new_for_resource(resource_path.str)
 }
 
 pub fn GtkMediaFile.new_for_file(file &glib.GFile) &GtkMediaStream {
@@ -54,12 +54,12 @@ pub fn (self &GtkMediaFile) clear() {
 	C.gtk_media_file_clear(self)
 }
 
-pub fn (self &GtkMediaFile) set_filename(filename &char) {
-	C.gtk_media_file_set_filename(self, filename)
+pub fn (self &GtkMediaFile) set_filename(filename string) {
+	C.gtk_media_file_set_filename(self, filename.str)
 }
 
-pub fn (self &GtkMediaFile) set_resource(resource_path &char) {
-	C.gtk_media_file_set_resource(self, resource_path)
+pub fn (self &GtkMediaFile) set_resource(resource_path string) {
+	C.gtk_media_file_set_resource(self, resource_path.str)
 }
 
 pub fn (self &GtkMediaFile) set_file(file &glib.GFile) {

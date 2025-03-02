@@ -27,16 +27,16 @@ pub fn (self &GtkFrame) get_type() glib.GType {
 	return C.gtk_frame_get_type()
 }
 
-pub fn GtkFrame.new(label &char) &GtkWidget {
-	return C.gtk_frame_new(label)
+pub fn GtkFrame.new(label string) &GtkWidget {
+	return C.gtk_frame_new(label.str)
 }
 
-pub fn (self &GtkFrame) set_label(label &char) {
-	C.gtk_frame_set_label(self, label)
+pub fn (self &GtkFrame) set_label(label string) {
+	C.gtk_frame_set_label(self, label.str)
 }
 
-pub fn (self &GtkFrame) get_label() &char {
-	return C.gtk_frame_get_label(self)
+pub fn (self &GtkFrame) get_label() string {
+	return unsafe { cstring_to_vstring(C.gtk_frame_get_label(self)) }
 }
 
 pub fn (self &GtkFrame) set_label_widget(label_widget &GtkWidget) {

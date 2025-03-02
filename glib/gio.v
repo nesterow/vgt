@@ -125,8 +125,8 @@ pub fn g_io_channel_flush(channel &GIOChannel, error &GError) GIOStatus {
 	return C.g_io_channel_flush(channel, error)
 }
 
-pub fn C.g_io_channel_read_line(channel &GIOChannel, str_return &char, length usize, terminator_pos usize, error &GError) GIOStatus
-pub fn g_io_channel_read_line(channel &GIOChannel, str_return &char, length usize, terminator_pos usize, error &GError) GIOStatus {
+pub fn C.g_io_channel_read_line(channel &GIOChannel, str_return &&char, length usize, terminator_pos usize, error &GError) GIOStatus
+pub fn g_io_channel_read_line(channel &GIOChannel, str_return &&char, length usize, terminator_pos usize, error &GError) GIOStatus {
 	return C.g_io_channel_read_line(channel, str_return, length, terminator_pos, error)
 }
 
@@ -135,8 +135,8 @@ pub fn g_io_channel_read_line_string(channel &GIOChannel, buffer &GString, termi
 	return C.g_io_channel_read_line_string(channel, buffer, terminator_pos, error)
 }
 
-pub fn C.g_io_channel_read_to_end(channel &GIOChannel, str_return &char, length usize, error &GError) GIOStatus
-pub fn g_io_channel_read_to_end(channel &GIOChannel, str_return &char, length usize, error &GError) GIOStatus {
+pub fn C.g_io_channel_read_to_end(channel &GIOChannel, str_return &&char, length usize, error &GError) GIOStatus
+pub fn g_io_channel_read_to_end(channel &GIOChannel, str_return &&char, length usize, error &GError) GIOStatus {
 	return C.g_io_channel_read_to_end(channel, str_return, length, error)
 }
 

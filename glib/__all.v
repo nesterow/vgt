@@ -15,8 +15,8 @@ pub fn g_atexit(func GVoidFunc) {
 	C.g_atexit(func)
 }
 
-pub fn C.g_iconv(converter GIConv, inbuf &char, inbytes_left usize, outbuf &char, outbytes_left usize) usize
-pub fn g_iconv(converter GIConv, inbuf &char, inbytes_left usize, outbuf &char, outbytes_left usize) usize {
+pub fn C.g_iconv(converter GIConv, inbuf &&char, inbytes_left usize, outbuf &&char, outbytes_left usize) usize
+pub fn g_iconv(converter GIConv, inbuf &&char, inbytes_left usize, outbuf &&char, outbytes_left usize) usize {
 	return C.g_iconv(converter, inbuf, inbytes_left, outbuf, outbytes_left)
 }
 
@@ -41,8 +41,8 @@ pub fn g_unsetenv(variable &char) {
 	C.g_unsetenv(variable)
 }
 
-pub fn C.g_listenv() &char
-pub fn g_listenv() &char {
+pub fn C.g_listenv() &&char
+pub fn g_listenv() &&char {
 	return C.g_listenv()
 }
 
@@ -171,8 +171,8 @@ pub fn g_strrstr(haystack &char, needle &char) &char {
 	return C.g_strrstr(haystack, needle)
 }
 
-pub fn C.g_strtod(nptr &char, endptr &char) f32
-pub fn g_strtod(nptr &char, endptr &char) f32 {
+pub fn C.g_strtod(nptr &char, endptr &&char) f32
+pub fn g_strtod(nptr &char, endptr &&char) f32 {
 	return C.g_strtod(nptr, endptr)
 }
 
@@ -251,23 +251,23 @@ pub fn g_memdup2(mem voidptr, byte_size usize) voidptr {
 	return C.g_memdup2(mem, byte_size)
 }
 
-pub fn C.g_strsplit(str_t &char, delimiter &char, max_tokens int) &char
-pub fn g_strsplit(str_t &char, delimiter &char, max_tokens int) &char {
+pub fn C.g_strsplit(str_t &char, delimiter &char, max_tokens int) &&char
+pub fn g_strsplit(str_t &char, delimiter &char, max_tokens int) &&char {
 	return C.g_strsplit(str_t, delimiter, max_tokens)
 }
 
-pub fn C.g_strjoinv(separator &char, str_array &char) &char
-pub fn g_strjoinv(separator &char, str_array &char) &char {
+pub fn C.g_strjoinv(separator &char, str_array &&char) &char
+pub fn g_strjoinv(separator &char, str_array &&char) &char {
 	return C.g_strjoinv(separator, str_array)
 }
 
-pub fn C.g_strfreev(str_array &char)
-pub fn g_strfreev(str_array &char) {
+pub fn C.g_strfreev(str_array &&char)
+pub fn g_strfreev(str_array &&char) {
 	C.g_strfreev(str_array)
 }
 
-pub fn C.g_strdupv(str_array &char) &char
-pub fn g_strdupv(str_array &char) &char {
+pub fn C.g_strdupv(str_array &&char) &&char
+pub fn g_strdupv(str_array &&char) &&char {
 	return C.g_strdupv(str_array)
 }
 

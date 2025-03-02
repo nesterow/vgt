@@ -12,7 +12,7 @@ pub fn C.gtk_gl_area_new() &GtkWidget
 pub fn C.gtk_gl_area_set_use_es(area &GtkGLArea, use_es bool)
 pub fn C.gtk_gl_area_get_use_es(area &GtkGLArea) bool
 pub fn C.gtk_gl_area_set_required_version(area &GtkGLArea, major int, minor int)
-pub fn C.gtk_gl_area_get_required_version(area &GtkGLArea, major voidptr, minor voidptr)
+pub fn C.gtk_gl_area_get_required_version(area &GtkGLArea, major &i64, minor &i64)
 pub fn C.gtk_gl_area_get_has_depth_buffer(area &GtkGLArea) bool
 pub fn C.gtk_gl_area_set_has_depth_buffer(area &GtkGLArea, has_depth_buffer bool)
 pub fn C.gtk_gl_area_get_has_stencil_buffer(area &GtkGLArea) bool
@@ -51,7 +51,7 @@ pub fn (self &GtkGLArea) set_required_version(major int, minor int) {
 	C.gtk_gl_area_set_required_version(self, major, minor)
 }
 
-pub fn (self &GtkGLArea) get_required_version(major voidptr, minor voidptr) {
+pub fn (self &GtkGLArea) get_required_version(major &i64, minor &i64) {
 	C.gtk_gl_area_get_required_version(self, major, minor)
 }
 

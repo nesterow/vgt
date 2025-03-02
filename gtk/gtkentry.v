@@ -123,10 +123,10 @@ pub fn C.gtk_entry_set_input_purpose(entry &GtkEntry, purpose GtkInputPurpose)
 pub fn C.gtk_entry_get_input_purpose(entry &GtkEntry) GtkInputPurpose
 pub fn C.gtk_entry_set_input_hints(entry &GtkEntry, hints GtkInputHints)
 pub fn C.gtk_entry_get_input_hints(entry &GtkEntry) GtkInputHints
-pub fn C.gtk_entry_set_attributes(entry &GtkEntry, attrs voidptr)
-pub fn C.gtk_entry_get_attributes(entry &GtkEntry) voidptr
-pub fn C.gtk_entry_set_tabs(entry &GtkEntry, tabs voidptr)
-pub fn C.gtk_entry_get_tabs(entry &GtkEntry) voidptr
+pub fn C.gtk_entry_set_attributes(entry &GtkEntry, attrs &i64)
+pub fn C.gtk_entry_get_attributes(entry &GtkEntry) &i64
+pub fn C.gtk_entry_set_tabs(entry &GtkEntry, tabs &i64)
+pub fn C.gtk_entry_get_tabs(entry &GtkEntry) &i64
 pub fn C.gtk_entry_grab_focus_without_selecting(entry &GtkEntry) bool
 pub fn C.gtk_entry_set_extra_menu(entry &GtkEntry, model &glib.GMenuModel)
 pub fn C.gtk_entry_get_extra_menu(entry &GtkEntry) voidptr
@@ -140,8 +140,8 @@ pub fn (self &GtkEntry) buffer_get_type() glib.GType {
 	return C.gtk_entry_buffer_get_type()
 }
 
-pub fn GtkEntry.buffer_new(initial_chars &char, n_initial_chars int) &GtkEntryBuffer {
-	return C.gtk_entry_buffer_new(initial_chars, n_initial_chars)
+pub fn GtkEntry.buffer_new(initial_chars string, n_initial_chars int) &GtkEntryBuffer {
+	return C.gtk_entry_buffer_new(initial_chars.str, n_initial_chars)
 }
 
 pub fn (self &GtkEntry) buffer_get_bytes(buffer &GtkEntryBuffer) int {
@@ -152,12 +152,12 @@ pub fn (self &GtkEntry) buffer_get_length(buffer &GtkEntryBuffer) u64 {
 	return C.gtk_entry_buffer_get_length(buffer)
 }
 
-pub fn (self &GtkEntry) buffer_get_text(buffer &GtkEntryBuffer) &char {
-	return C.gtk_entry_buffer_get_text(buffer)
+pub fn (self &GtkEntry) buffer_get_text(buffer &GtkEntryBuffer) string {
+	return unsafe { cstring_to_vstring(C.gtk_entry_buffer_get_text(buffer)) }
 }
 
-pub fn (self &GtkEntry) buffer_set_text(buffer &GtkEntryBuffer, chars &char, n_chars int) {
-	C.gtk_entry_buffer_set_text(buffer, chars, n_chars)
+pub fn (self &GtkEntry) buffer_set_text(buffer &GtkEntryBuffer, chars string, n_chars int) {
+	C.gtk_entry_buffer_set_text(buffer, chars.str, n_chars)
 }
 
 pub fn (self &GtkEntry) buffer_set_max_length(buffer &GtkEntryBuffer, max_length int) {
@@ -168,16 +168,16 @@ pub fn (self &GtkEntry) buffer_get_max_length(buffer &GtkEntryBuffer) int {
 	return C.gtk_entry_buffer_get_max_length(buffer)
 }
 
-pub fn (self &GtkEntry) buffer_insert_text(buffer &GtkEntryBuffer, position u64, chars &char, n_chars int) u64 {
-	return C.gtk_entry_buffer_insert_text(buffer, position, chars, n_chars)
+pub fn (self &GtkEntry) buffer_insert_text(buffer &GtkEntryBuffer, position u64, chars string, n_chars int) u64 {
+	return C.gtk_entry_buffer_insert_text(buffer, position, chars.str, n_chars)
 }
 
 pub fn (self &GtkEntry) buffer_delete_text(buffer &GtkEntryBuffer, position u64, n_chars int) u64 {
 	return C.gtk_entry_buffer_delete_text(buffer, position, n_chars)
 }
 
-pub fn (self &GtkEntry) buffer_emit_inserted_text(buffer &GtkEntryBuffer, position u64, chars &char, n_chars u64) {
-	C.gtk_entry_buffer_emit_inserted_text(buffer, position, chars, n_chars)
+pub fn (self &GtkEntry) buffer_emit_inserted_text(buffer &GtkEntryBuffer, position u64, chars string, n_chars u64) {
+	C.gtk_entry_buffer_emit_inserted_text(buffer, position, chars.str, n_chars)
 }
 
 pub fn (self &GtkEntry) buffer_emit_deleted_text(buffer &GtkEntryBuffer, position u64, n_chars u64) {
@@ -220,8 +220,8 @@ pub fn (self &GtkEntry) completion_get_minimum_key_length(completion &GtkEntryCo
 	return C.gtk_entry_completion_get_minimum_key_length(completion)
 }
 
-pub fn (self &GtkEntry) completion_compute_prefix(completion &GtkEntryCompletion, key &char) voidptr {
-	return C.gtk_entry_completion_compute_prefix(completion, key)
+pub fn (self &GtkEntry) completion_compute_prefix(completion &GtkEntryCompletion, key string) voidptr {
+	return C.gtk_entry_completion_compute_prefix(completion, key.str)
 }
 
 pub fn (self &GtkEntry) completion_complete(completion &GtkEntryCompletion) {
@@ -272,8 +272,8 @@ pub fn (self &GtkEntry) completion_get_popup_single_match(completion &GtkEntryCo
 	return C.gtk_entry_completion_get_popup_single_match(completion)
 }
 
-pub fn (self &GtkEntry) completion_get_completion_prefix(completion &GtkEntryCompletion) &char {
-	return C.gtk_entry_completion_get_completion_prefix(completion)
+pub fn (self &GtkEntry) completion_get_completion_prefix(completion &GtkEntryCompletion) string {
+	return unsafe { cstring_to_vstring(C.gtk_entry_completion_get_completion_prefix(completion)) }
 }
 
 pub fn (self &GtkEntry) completion_set_text_column(completion &GtkEntryCompletion, column int) {
@@ -396,20 +396,20 @@ pub fn (self &GtkEntry) progress_pulse() {
 	C.gtk_entry_progress_pulse(self)
 }
 
-pub fn (self &GtkEntry) get_placeholder_text() &char {
-	return C.gtk_entry_get_placeholder_text(self)
+pub fn (self &GtkEntry) get_placeholder_text() string {
+	return unsafe { cstring_to_vstring(C.gtk_entry_get_placeholder_text(self)) }
 }
 
-pub fn (self &GtkEntry) set_placeholder_text(text &char) {
-	C.gtk_entry_set_placeholder_text(self, text)
+pub fn (self &GtkEntry) set_placeholder_text(text string) {
+	C.gtk_entry_set_placeholder_text(self, text.str)
 }
 
 pub fn (self &GtkEntry) set_icon_from_paintable(icon_pos GtkEntryIconPosition, paintable voidptr) {
 	C.gtk_entry_set_icon_from_paintable(self, icon_pos, paintable)
 }
 
-pub fn (self &GtkEntry) set_icon_from_icon_name(icon_pos GtkEntryIconPosition, icon_name &char) {
-	C.gtk_entry_set_icon_from_icon_name(self, icon_pos, icon_name)
+pub fn (self &GtkEntry) set_icon_from_icon_name(icon_pos GtkEntryIconPosition, icon_name string) {
+	C.gtk_entry_set_icon_from_icon_name(self, icon_pos, icon_name.str)
 }
 
 pub fn (self &GtkEntry) set_icon_from_gicon(icon_pos GtkEntryIconPosition, icon &glib.GIcon) {
@@ -424,8 +424,8 @@ pub fn (self &GtkEntry) get_icon_paintable(icon_pos GtkEntryIconPosition) voidpt
 	return C.gtk_entry_get_icon_paintable(self, icon_pos)
 }
 
-pub fn (self &GtkEntry) get_icon_name(icon_pos GtkEntryIconPosition) &char {
-	return C.gtk_entry_get_icon_name(self, icon_pos)
+pub fn (self &GtkEntry) get_icon_name(icon_pos GtkEntryIconPosition) string {
+	return unsafe { cstring_to_vstring(C.gtk_entry_get_icon_name(self, icon_pos)) }
 }
 
 pub fn (self &GtkEntry) get_icon_gicon(icon_pos GtkEntryIconPosition) voidptr {
@@ -452,16 +452,16 @@ pub fn (self &GtkEntry) get_icon_at_pos(x int, y int) int {
 	return C.gtk_entry_get_icon_at_pos(self, x, y)
 }
 
-pub fn (self &GtkEntry) set_icon_tooltip_text(icon_pos GtkEntryIconPosition, tooltip &char) {
-	C.gtk_entry_set_icon_tooltip_text(self, icon_pos, tooltip)
+pub fn (self &GtkEntry) set_icon_tooltip_text(icon_pos GtkEntryIconPosition, tooltip string) {
+	C.gtk_entry_set_icon_tooltip_text(self, icon_pos, tooltip.str)
 }
 
 pub fn (self &GtkEntry) get_icon_tooltip_text(icon_pos GtkEntryIconPosition) voidptr {
 	return C.gtk_entry_get_icon_tooltip_text(self, icon_pos)
 }
 
-pub fn (self &GtkEntry) set_icon_tooltip_markup(icon_pos GtkEntryIconPosition, tooltip &char) {
-	C.gtk_entry_set_icon_tooltip_markup(self, icon_pos, tooltip)
+pub fn (self &GtkEntry) set_icon_tooltip_markup(icon_pos GtkEntryIconPosition, tooltip string) {
+	C.gtk_entry_set_icon_tooltip_markup(self, icon_pos, tooltip.str)
 }
 
 pub fn (self &GtkEntry) get_icon_tooltip_markup(icon_pos GtkEntryIconPosition) voidptr {
@@ -500,19 +500,19 @@ pub fn (self &GtkEntry) get_input_hints() GtkInputHints {
 	return C.gtk_entry_get_input_hints(self)
 }
 
-pub fn (self &GtkEntry) set_attributes(attrs voidptr) {
+pub fn (self &GtkEntry) set_attributes(attrs &i64) {
 	C.gtk_entry_set_attributes(self, attrs)
 }
 
-pub fn (self &GtkEntry) get_attributes() voidptr {
+pub fn (self &GtkEntry) get_attributes() &i64 {
 	return C.gtk_entry_get_attributes(self)
 }
 
-pub fn (self &GtkEntry) set_tabs(tabs voidptr) {
+pub fn (self &GtkEntry) set_tabs(tabs &i64) {
 	C.gtk_entry_set_tabs(self, tabs)
 }
 
-pub fn (self &GtkEntry) get_tabs() voidptr {
+pub fn (self &GtkEntry) get_tabs() &i64 {
 	return C.gtk_entry_get_tabs(self)
 }
 

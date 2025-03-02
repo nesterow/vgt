@@ -29,38 +29,25 @@ brew install gtk4
 ## Example
 
 ```v
-import glib { GApplication, GApplicationFlags, g_signal_connect }
-import gtk { GtkAlign, GtkApplication, GtkBuilder, GtkButton, GtkWidget, GtkWindow, gtk_init }
-import vgt { Signal, View }
+import gtk { GtkAlign, GtkBuilder, GtkButton, GtkWidget, GtkWindow, gtk_init }
+import vgt { app, run_simple, signal, view }
 
 fn main() {
 	gtk_init()
 
-	view := View{$embed_file('assets/ui/main_window.ui').to_string(), [
-		Signal{'Button.clicked', fn (builder &GtkBuilder, btn &GtkButton) {
-			box := &GtkWidget(builder.get_object(c'box'))
+	ctx := view($embed_file('assets/ui/main_window.ui').to_string(), [
+		signal('Button.clicked', fn (builder &GtkBuilder, btn &GtkButton, data voidptr) {
+			box := builder.get[GtkWidget]('box')
 			box.set_valign(GtkAlign.gtk_align_center)
-			btn.set_label('Hello, World!'.str)
-		}},
-	]}
+			btn.set_label('Hello, World!')
+		}),
+	])
 
-	ctx := view.build()
+	app := app(id: 'org.xyz.MyApp')
+	window := ctx.builder.get[GtkWindow]('MainWindow')
 
-	app := GtkApplication.new(c'org.xyz.MyApp', GApplicationFlags.g_application_flags_none)
-	window := &GtkWindow(ctx.builder.get_object(c'MainWindow'))
-
-	g_signal_connect(app, 'startup', fn [window, app] (data voidptr) {
-		app.add_window(window)
-	}, unsafe { nil })
-
-	g_signal_connect(app, 'activate', fn [window] (data voidptr) {
-		window.present()
-	}, unsafe { nil })
-
-	gapp := unsafe { &GApplication(app) }
-	gapp.run(0, unsafe { nil })
+	run_simple(app, window)
 }
-
 ```
 
 ## Roadmap

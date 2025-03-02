@@ -23,8 +23,8 @@ pub fn C.gtk_scale_set_has_origin(scale &GtkScale, has_origin bool)
 pub fn C.gtk_scale_get_has_origin(scale &GtkScale) bool
 pub fn C.gtk_scale_set_value_pos(scale &GtkScale, pos GtkPositionType)
 pub fn C.gtk_scale_get_value_pos(scale &GtkScale) GtkPositionType
-pub fn C.gtk_scale_get_layout(scale &GtkScale) voidptr
-pub fn C.gtk_scale_get_layout_offsets(scale &GtkScale, x voidptr, y voidptr)
+pub fn C.gtk_scale_get_layout(scale &GtkScale) &i64
+pub fn C.gtk_scale_get_layout_offsets(scale &GtkScale, x &i64, y &i64)
 pub fn C.gtk_scale_add_mark(scale &GtkScale, value f32, position GtkPositionType, markup &char)
 pub fn C.gtk_scale_clear_marks(scale &GtkScale)
 pub fn C.gtk_scale_set_format_value_func(scale &GtkScale, func voidptr, user_data voidptr, destroy_notify voidptr)
@@ -78,16 +78,16 @@ pub fn (self &GtkScale) get_value_pos() GtkPositionType {
 	return C.gtk_scale_get_value_pos(self)
 }
 
-pub fn (self &GtkScale) get_layout() voidptr {
+pub fn (self &GtkScale) get_layout() &i64 {
 	return C.gtk_scale_get_layout(self)
 }
 
-pub fn (self &GtkScale) get_layout_offsets(x voidptr, y voidptr) {
+pub fn (self &GtkScale) get_layout_offsets(x &i64, y &i64) {
 	C.gtk_scale_get_layout_offsets(self, x, y)
 }
 
-pub fn (self &GtkScale) add_mark(value f32, position GtkPositionType, markup &char) {
-	C.gtk_scale_add_mark(self, value, position, markup)
+pub fn (self &GtkScale) add_mark(value f32, position GtkPositionType, markup string) {
+	C.gtk_scale_add_mark(self, value, position, markup.str)
 }
 
 pub fn (self &GtkScale) clear_marks() {

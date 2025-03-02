@@ -34,12 +34,12 @@ pub fn GtkCheckButton.new() &GtkWidget {
 	return C.gtk_check_button_new()
 }
 
-pub fn GtkCheckButton.new_with_label(label &char) &GtkWidget {
-	return C.gtk_check_button_new_with_label(label)
+pub fn GtkCheckButton.new_with_label(label string) &GtkWidget {
+	return C.gtk_check_button_new_with_label(label.str)
 }
 
-pub fn GtkCheckButton.new_with_mnemonic(label &char) &GtkWidget {
-	return C.gtk_check_button_new_with_mnemonic(label)
+pub fn GtkCheckButton.new_with_mnemonic(label string) &GtkWidget {
+	return C.gtk_check_button_new_with_mnemonic(label.str)
 }
 
 pub fn (self &GtkCheckButton) set_inconsistent(inconsistent bool) {
@@ -58,12 +58,12 @@ pub fn (self &GtkCheckButton) set_active(setting bool) {
 	C.gtk_check_button_set_active(self, setting)
 }
 
-pub fn (self &GtkCheckButton) get_label() &char {
-	return C.gtk_check_button_get_label(self)
+pub fn (self &GtkCheckButton) get_label() string {
+	return unsafe { cstring_to_vstring(C.gtk_check_button_get_label(self)) }
 }
 
-pub fn (self &GtkCheckButton) set_label(label &char) {
-	C.gtk_check_button_set_label(self, label)
+pub fn (self &GtkCheckButton) set_label(label string) {
+	C.gtk_check_button_set_label(self, label.str)
 }
 
 pub fn (self &GtkCheckButton) set_group(group &GtkCheckButton) {

@@ -15,8 +15,8 @@ pub fn (self &GFile) test(filename &char, test GFileTest) bool {
 	return C.g_file_test(filename, test)
 }
 
-pub fn C.g_file_get_contents(filename &char, contents &char, length usize, error &GError) bool
-pub fn (self &GFile) get_contents(filename &char, contents &char, length usize, error &GError) bool {
+pub fn C.g_file_get_contents(filename &char, contents &&char, length usize, error &GError) bool
+pub fn (self &GFile) get_contents(filename &char, contents &&char, length usize, error &GError) bool {
 	return C.g_file_get_contents(filename, contents, length, error)
 }
 
@@ -35,7 +35,7 @@ pub fn (self &GFile) read_link(filename &char, error &GError) &char {
 	return C.g_file_read_link(filename, error)
 }
 
-pub fn C.g_file_open_tmp(tmpl &char, name_used &char, error &GError) int
-pub fn (self &GFile) open_tmp(tmpl &char, name_used &char, error &GError) int {
+pub fn C.g_file_open_tmp(tmpl &char, name_used &&char, error &GError) int
+pub fn (self &GFile) open_tmp(tmpl &char, name_used &&char, error &GError) int {
 	return C.g_file_open_tmp(tmpl, name_used, error)
 }

@@ -50,8 +50,8 @@ pub fn (self &GAction) name_is_valid(action_name &char) bool {
 	return C.g_action_name_is_valid(action_name)
 }
 
-pub fn C.g_action_parse_detailed_name(detailed_name &char, action_name &char, target_value &GVariant, error &GError) bool
-pub fn (self &GAction) parse_detailed_name(detailed_name &char, action_name &char, target_value &GVariant, error &GError) bool {
+pub fn C.g_action_parse_detailed_name(detailed_name &char, action_name &&char, target_value &GVariant, error &GError) bool
+pub fn (self &GAction) parse_detailed_name(detailed_name &char, action_name &&char, target_value &GVariant, error &GError) bool {
 	return C.g_action_parse_detailed_name(detailed_name, action_name, target_value, error)
 }
 
@@ -70,8 +70,8 @@ pub fn (self &GAction) group_has_action(action_group &GActionGroup, action_name 
 	return C.g_action_group_has_action(action_group, action_name)
 }
 
-pub fn C.g_action_group_list_actions(action_group &GActionGroup) &char
-pub fn (self &GAction) group_list_actions(action_group &GActionGroup) &char {
+pub fn C.g_action_group_list_actions(action_group &GActionGroup) &&char
+pub fn (self &GAction) group_list_actions(action_group &GActionGroup) &&char {
 	return C.g_action_group_list_actions(action_group)
 }
 

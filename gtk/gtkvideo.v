@@ -45,12 +45,12 @@ pub fn GtkVideo.new_for_file(file &glib.GFile) &GtkWidget {
 	return C.gtk_video_new_for_file(file)
 }
 
-pub fn GtkVideo.new_for_filename(filename &char) &GtkWidget {
-	return C.gtk_video_new_for_filename(filename)
+pub fn GtkVideo.new_for_filename(filename string) &GtkWidget {
+	return C.gtk_video_new_for_filename(filename.str)
 }
 
-pub fn GtkVideo.new_for_resource(resource_path &char) &GtkWidget {
-	return C.gtk_video_new_for_resource(resource_path)
+pub fn GtkVideo.new_for_resource(resource_path string) &GtkWidget {
+	return C.gtk_video_new_for_resource(resource_path.str)
 }
 
 pub fn (self &GtkVideo) get_media_stream() &GtkMediaStream {
@@ -69,12 +69,12 @@ pub fn (self &GtkVideo) set_file(file &glib.GFile) {
 	C.gtk_video_set_file(self, file)
 }
 
-pub fn (self &GtkVideo) set_filename(filename &char) {
-	C.gtk_video_set_filename(self, filename)
+pub fn (self &GtkVideo) set_filename(filename string) {
+	C.gtk_video_set_filename(self, filename.str)
 }
 
-pub fn (self &GtkVideo) set_resource(resource_path &char) {
-	C.gtk_video_set_resource(self, resource_path)
+pub fn (self &GtkVideo) set_resource(resource_path string) {
+	C.gtk_video_set_resource(self, resource_path.str)
 }
 
 pub fn (self &GtkVideo) get_autoplay() bool {

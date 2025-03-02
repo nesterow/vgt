@@ -17,7 +17,7 @@ pub fn C.gtk_range_get_flippable(range &GtkRange) bool
 pub fn C.gtk_range_set_slider_size_fixed(range &GtkRange, size_fixed bool)
 pub fn C.gtk_range_get_slider_size_fixed(range &GtkRange) bool
 pub fn C.gtk_range_get_range_rect(range &GtkRange, range_rect voidptr)
-pub fn C.gtk_range_get_slider_range(range &GtkRange, slider_start voidptr, slider_end voidptr)
+pub fn C.gtk_range_get_slider_range(range &GtkRange, slider_start &i64, slider_end &i64)
 pub fn C.gtk_range_set_increments(range &GtkRange, step f32, page f32)
 pub fn C.gtk_range_set_range(range &GtkRange, min f32, max f32)
 pub fn C.gtk_range_set_value(range &GtkRange, value f32)
@@ -76,7 +76,7 @@ pub fn (self &GtkRange) get_range_rect(range_rect voidptr) {
 	C.gtk_range_get_range_rect(self, range_rect)
 }
 
-pub fn (self &GtkRange) get_slider_range(slider_start voidptr, slider_end voidptr) {
+pub fn (self &GtkRange) get_slider_range(slider_start &i64, slider_end &i64) {
 	C.gtk_range_get_slider_range(self, slider_start, slider_end)
 }
 

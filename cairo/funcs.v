@@ -781,9 +781,9 @@ pub fn cairo_scaled_font_glyph_extents(scaled_font CairoScaledFont, glyphs &Cair
 	C.cairo_scaled_font_glyph_extents(scaled_font, glyphs, num_glyphs, extents)
 }
 
-pub fn C.cairo_scaled_font_text_to_glyphs(scaled_font CairoScaledFont, x f32, y f32, utf8 &char, utf8_len int, glyphs &&CairoGlyph, num_glyphs voidptr, clusters &&CairoTextCluster, num_clusters voidptr, cluster_flags voidptr) CairoStatus
+pub fn C.cairo_scaled_font_text_to_glyphs(scaled_font CairoScaledFont, x f32, y f32, utf8 &char, utf8_len int, glyphs &&CairoGlyph, num_glyphs &i64, clusters &&CairoTextCluster, num_clusters &i64, cluster_flags voidptr) CairoStatus
 
-pub fn cairo_scaled_font_text_to_glyphs(scaled_font CairoScaledFont, x f32, y f32, utf8 &char, utf8_len int, glyphs &&CairoGlyph, num_glyphs voidptr, clusters &&CairoTextCluster, num_clusters voidptr, cluster_flags voidptr) CairoStatus {
+pub fn cairo_scaled_font_text_to_glyphs(scaled_font CairoScaledFont, x f32, y f32, utf8 &char, utf8_len int, glyphs &&CairoGlyph, num_glyphs &i64, clusters &&CairoTextCluster, num_clusters &i64, cluster_flags voidptr) CairoStatus {
 	return C.cairo_scaled_font_text_to_glyphs(scaled_font, x, y, utf8, utf8_len, glyphs,
 		num_glyphs, clusters, num_clusters, cluster_flags)
 }
@@ -1732,9 +1732,9 @@ pub fn cairo_pattern_get_color_stop_rgba(pattern CairoPatternType, index int, of
 		alpha)
 }
 
-pub fn C.cairo_pattern_get_color_stop_count(pattern CairoPatternType, count voidptr) CairoStatus
+pub fn C.cairo_pattern_get_color_stop_count(pattern CairoPatternType, count &i64) CairoStatus
 
-pub fn cairo_pattern_get_color_stop_count(pattern CairoPatternType, count voidptr) CairoStatus {
+pub fn cairo_pattern_get_color_stop_count(pattern CairoPatternType, count &i64) CairoStatus {
 	return C.cairo_pattern_get_color_stop_count(pattern, count)
 }
 

@@ -53,8 +53,8 @@ pub fn (self &GtkCellLayout) set_attributes(cell &GtkCellRenderer) {
 	C.gtk_cell_layout_set_attributes(self, cell)
 }
 
-pub fn (self &GtkCellLayout) add_attribute(cell &GtkCellRenderer, attribute &char, column int) {
-	C.gtk_cell_layout_add_attribute(self, cell, attribute, column)
+pub fn (self &GtkCellLayout) add_attribute(cell &GtkCellRenderer, attribute string, column int) {
+	C.gtk_cell_layout_add_attribute(self, cell, attribute.str, column)
 }
 
 pub fn (self &GtkCellLayout) set_cell_data_func(cell &GtkCellRenderer, func voidptr, func_data voidptr, destroy voidptr) {

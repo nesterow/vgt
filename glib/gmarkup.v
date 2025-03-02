@@ -80,8 +80,8 @@ pub fn g_markup_vprintf_escaped(format &char, args voidptr) &char {
 	return C.g_markup_vprintf_escaped(format, args)
 }
 
-pub fn C.g_markup_collect_attributes(element_name &char, attribute_names &char, attribute_values &char, error &GError, first_type GMarkupCollectType, first_attr &char) bool
-pub fn g_markup_collect_attributes(element_name &char, attribute_names &char, attribute_values &char, error &GError, first_type GMarkupCollectType, first_attr &char) bool {
+pub fn C.g_markup_collect_attributes(element_name &char, attribute_names &&char, attribute_values &&char, error &GError, first_type GMarkupCollectType, first_attr &char) bool
+pub fn g_markup_collect_attributes(element_name &char, attribute_names &&char, attribute_values &&char, error &GError, first_type GMarkupCollectType, first_attr &char) bool {
 	return C.g_markup_collect_attributes(element_name, attribute_names, attribute_values,
 		error, first_type, first_attr)
 }

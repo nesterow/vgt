@@ -407,7 +407,7 @@ pub type GSequenceIterCompareFunc = fn (gsequenceiter__ptr_typ voidptr, gsequenc
 
 pub type GSpawnChildSetupFunc = fn (gpointer_typ voidptr)
 
-pub type GStrv = &char
+pub type GStrv = &&char
 
 @[noinit; typedef]
 pub struct C.GStringChunk {}
@@ -1815,7 +1815,7 @@ pub type GDBusInterfaceGetPropertyFunc = fn (gdbusconnection__ptr_typ voidptr, c
 
 pub type GDBusInterfaceSetPropertyFunc = fn (gdbusconnection__ptr_typ voidptr, const_gchar__ptr_typ voidptr, const_gchar__ptr_typ voidptr, const_gchar__ptr_typ voidptr, const_gchar__ptr_typ voidptr, gvariant__ptr_typ voidptr, gerror__ptr_ptr_typ voidptr, gpointer_typ voidptr) bool
 
-pub type GDBusSubtreeEnumerateFunc = fn (gdbusconnection__ptr_typ voidptr, const_gchar__ptr_typ voidptr, const_gchar__ptr_typ voidptr, gpointer_typ voidptr) &char
+pub type GDBusSubtreeEnumerateFunc = fn (gdbusconnection__ptr_typ voidptr, const_gchar__ptr_typ voidptr, const_gchar__ptr_typ voidptr, gpointer_typ voidptr) &&char
 
 pub type GDBusSubtreeIntrospectFunc = fn (gdbusconnection__ptr_typ voidptr, const_gchar__ptr_typ voidptr, const_gchar__ptr_typ voidptr, const_gchar__ptr_typ voidptr, gpointer_typ voidptr)
 

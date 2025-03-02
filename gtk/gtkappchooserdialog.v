@@ -22,18 +22,18 @@ pub fn GtkAppChooserDialog.new(parent &GtkWindow, flags voidptr, file &glib.GFil
 	return C.gtk_app_chooser_dialog_new(parent, flags, file)
 }
 
-pub fn GtkAppChooserDialog.new_for_content_type(parent &GtkWindow, flags voidptr, content_typ &char) &GtkWidget {
-	return C.gtk_app_chooser_dialog_new_for_content_type(parent, flags, content_typ)
+pub fn GtkAppChooserDialog.new_for_content_type(parent &GtkWindow, flags voidptr, content_typ string) &GtkWidget {
+	return C.gtk_app_chooser_dialog_new_for_content_type(parent, flags, content_typ.str)
 }
 
 pub fn (self &GtkAppChooserDialog) get_widget() &GtkWidget {
 	return C.gtk_app_chooser_dialog_get_widget(self)
 }
 
-pub fn (self &GtkAppChooserDialog) set_heading(heading &char) {
-	C.gtk_app_chooser_dialog_set_heading(self, heading)
+pub fn (self &GtkAppChooserDialog) set_heading(heading string) {
+	C.gtk_app_chooser_dialog_set_heading(self, heading.str)
 }
 
-pub fn (self &GtkAppChooserDialog) get_heading() &char {
-	return C.gtk_app_chooser_dialog_get_heading(self)
+pub fn (self &GtkAppChooserDialog) get_heading() string {
+	return unsafe { cstring_to_vstring(C.gtk_app_chooser_dialog_get_heading(self)) }
 }

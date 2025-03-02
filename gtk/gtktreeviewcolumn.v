@@ -55,10 +55,10 @@ pub fn C.gtk_tree_view_column_get_sort_indicator(tree_column &GtkTreeViewColumn)
 pub fn C.gtk_tree_view_column_set_sort_order(tree_column &GtkTreeViewColumn, order GtkSortType)
 pub fn C.gtk_tree_view_column_get_sort_order(tree_column &GtkTreeViewColumn) GtkSortType
 pub fn C.gtk_tree_view_column_cell_set_cell_data(tree_column &GtkTreeViewColumn, tree_model &GtkTreeModel, iter &GtkTreeIter, is_expander bool, is_expanded bool)
-pub fn C.gtk_tree_view_column_cell_get_size(tree_column &GtkTreeViewColumn, x_offset voidptr, y_offset voidptr, width voidptr, height voidptr)
+pub fn C.gtk_tree_view_column_cell_get_size(tree_column &GtkTreeViewColumn, x_offset &i64, y_offset &i64, width &i64, height &i64)
 pub fn C.gtk_tree_view_column_cell_is_visible(tree_column &GtkTreeViewColumn) bool
 pub fn C.gtk_tree_view_column_focus_cell(tree_column &GtkTreeViewColumn, cell &GtkCellRenderer)
-pub fn C.gtk_tree_view_column_cell_get_position(tree_column &GtkTreeViewColumn, cell_renderer &GtkCellRenderer, x_offset voidptr, width voidptr) bool
+pub fn C.gtk_tree_view_column_cell_get_position(tree_column &GtkTreeViewColumn, cell_renderer &GtkCellRenderer, x_offset &i64, width &i64) bool
 pub fn C.gtk_tree_view_column_queue_resize(tree_column &GtkTreeViewColumn)
 pub fn C.gtk_tree_view_column_get_tree_view(tree_column &GtkTreeViewColumn) &GtkWidget
 pub fn C.gtk_tree_view_column_get_button(tree_column &GtkTreeViewColumn) &GtkWidget
@@ -80,8 +80,8 @@ pub fn GtkTreeViewColumn.new_with_area(area &GtkCellArea) &GtkTreeViewColumn {
 	return C.gtk_tree_view_column_new_with_area(area)
 }
 
-pub fn GtkTreeViewColumn.new_with_attributes(title &char, cell &GtkCellRenderer) &GtkTreeViewColumn {
-	return C.gtk_tree_view_column_new_with_attributes(title, cell)
+pub fn GtkTreeViewColumn.new_with_attributes(title string, cell &GtkCellRenderer) &GtkTreeViewColumn {
+	return C.gtk_tree_view_column_new_with_attributes(title.str, cell)
 }
 
 pub fn (self &GtkTreeViewColumn) pack_start(cell &GtkCellRenderer, expand bool) {
@@ -96,8 +96,8 @@ pub fn (self &GtkTreeViewColumn) clear() {
 	C.gtk_tree_view_column_clear(self)
 }
 
-pub fn (self &GtkTreeViewColumn) add_attribute(cell_renderer &GtkCellRenderer, attribute &char, column int) {
-	C.gtk_tree_view_column_add_attribute(self, cell_renderer, attribute, column)
+pub fn (self &GtkTreeViewColumn) add_attribute(cell_renderer &GtkCellRenderer, attribute string, column int) {
+	C.gtk_tree_view_column_add_attribute(self, cell_renderer, attribute.str, column)
 }
 
 pub fn (self &GtkTreeViewColumn) set_attributes(cell_renderer &GtkCellRenderer) {
@@ -180,12 +180,12 @@ pub fn (self &GtkTreeViewColumn) clicked() {
 	C.gtk_tree_view_column_clicked(self)
 }
 
-pub fn (self &GtkTreeViewColumn) set_title(title &char) {
-	C.gtk_tree_view_column_set_title(self, title)
+pub fn (self &GtkTreeViewColumn) set_title(title string) {
+	C.gtk_tree_view_column_set_title(self, title.str)
 }
 
-pub fn (self &GtkTreeViewColumn) get_title() &char {
-	return C.gtk_tree_view_column_get_title(self)
+pub fn (self &GtkTreeViewColumn) get_title() string {
+	return unsafe { cstring_to_vstring(C.gtk_tree_view_column_get_title(self)) }
 }
 
 pub fn (self &GtkTreeViewColumn) set_expand(expand bool) {
@@ -256,7 +256,7 @@ pub fn (self &GtkTreeViewColumn) cell_set_cell_data(tree_model &GtkTreeModel, it
 	C.gtk_tree_view_column_cell_set_cell_data(self, tree_model, iter, is_expander, is_expanded)
 }
 
-pub fn (self &GtkTreeViewColumn) cell_get_size(x_offset voidptr, y_offset voidptr, width voidptr, height voidptr) {
+pub fn (self &GtkTreeViewColumn) cell_get_size(x_offset &i64, y_offset &i64, width &i64, height &i64) {
 	C.gtk_tree_view_column_cell_get_size(self, x_offset, y_offset, width, height)
 }
 
@@ -268,7 +268,7 @@ pub fn (self &GtkTreeViewColumn) focus_cell(cell &GtkCellRenderer) {
 	C.gtk_tree_view_column_focus_cell(self, cell)
 }
 
-pub fn (self &GtkTreeViewColumn) cell_get_position(cell_renderer &GtkCellRenderer, x_offset voidptr, width voidptr) bool {
+pub fn (self &GtkTreeViewColumn) cell_get_position(cell_renderer &GtkCellRenderer, x_offset &i64, width &i64) bool {
 	return C.gtk_tree_view_column_cell_get_position(self, cell_renderer, x_offset, width)
 }
 

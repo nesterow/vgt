@@ -25,10 +25,10 @@ pub fn C.gtk_text_set_input_purpose(self &GtkText, purpose GtkInputPurpose)
 pub fn C.gtk_text_get_input_purpose(self &GtkText) GtkInputPurpose
 pub fn C.gtk_text_set_input_hints(self &GtkText, hints GtkInputHints)
 pub fn C.gtk_text_get_input_hints(self &GtkText) GtkInputHints
-pub fn C.gtk_text_set_attributes(self &GtkText, attrs voidptr)
-pub fn C.gtk_text_get_attributes(self &GtkText) voidptr
-pub fn C.gtk_text_set_tabs(self &GtkText, tabs voidptr)
-pub fn C.gtk_text_get_tabs(self &GtkText) voidptr
+pub fn C.gtk_text_set_attributes(self &GtkText, attrs &i64)
+pub fn C.gtk_text_get_attributes(self &GtkText) &i64
+pub fn C.gtk_text_set_tabs(self &GtkText, tabs &i64)
+pub fn C.gtk_text_get_tabs(self &GtkText) &i64
 pub fn C.gtk_text_grab_focus_without_selecting(self &GtkText) bool
 pub fn C.gtk_text_set_extra_menu(self &GtkText, model &glib.GMenuModel)
 pub fn C.gtk_text_get_extra_menu(self &GtkText) voidptr
@@ -38,7 +38,7 @@ pub fn C.gtk_text_set_propagate_text_width(self &GtkText, propagate_text_width b
 pub fn C.gtk_text_get_propagate_text_width(self &GtkText) bool
 pub fn C.gtk_text_set_truncate_multiline(self &GtkText, truncate_multiline bool)
 pub fn C.gtk_text_get_truncate_multiline(self &GtkText) bool
-pub fn C.gtk_text_compute_cursor_extents(self &GtkText, position int, strong voidptr, weak voidptr)
+pub fn C.gtk_text_compute_cursor_extents(self &GtkText, position int, strong &i64, weak &i64)
 
 @[noinit; typedef]
 pub struct C.GtkText {}
@@ -113,12 +113,12 @@ pub fn (self &GtkText) get_activates_default() bool {
 	return C.gtk_text_get_activates_default(self)
 }
 
-pub fn (self &GtkText) get_placeholder_text() &char {
-	return C.gtk_text_get_placeholder_text(self)
+pub fn (self &GtkText) get_placeholder_text() string {
+	return unsafe { cstring_to_vstring(C.gtk_text_get_placeholder_text(self)) }
 }
 
-pub fn (self &GtkText) set_placeholder_text(text &char) {
-	C.gtk_text_set_placeholder_text(self, text)
+pub fn (self &GtkText) set_placeholder_text(text string) {
+	C.gtk_text_set_placeholder_text(self, text.str)
 }
 
 pub fn (self &GtkText) set_input_purpose(purpose GtkInputPurpose) {
@@ -137,19 +137,19 @@ pub fn (self &GtkText) get_input_hints() GtkInputHints {
 	return C.gtk_text_get_input_hints(self)
 }
 
-pub fn (self &GtkText) set_attributes(attrs voidptr) {
+pub fn (self &GtkText) set_attributes(attrs &i64) {
 	C.gtk_text_set_attributes(self, attrs)
 }
 
-pub fn (self &GtkText) get_attributes() voidptr {
+pub fn (self &GtkText) get_attributes() &i64 {
 	return C.gtk_text_get_attributes(self)
 }
 
-pub fn (self &GtkText) set_tabs(tabs voidptr) {
+pub fn (self &GtkText) set_tabs(tabs &i64) {
 	C.gtk_text_set_tabs(self, tabs)
 }
 
-pub fn (self &GtkText) get_tabs() voidptr {
+pub fn (self &GtkText) get_tabs() &i64 {
 	return C.gtk_text_get_tabs(self)
 }
 
@@ -189,6 +189,6 @@ pub fn (self &GtkText) get_truncate_multiline() bool {
 	return C.gtk_text_get_truncate_multiline(self)
 }
 
-pub fn (self &GtkText) compute_cursor_extents(position int, strong voidptr, weak voidptr) {
+pub fn (self &GtkText) compute_cursor_extents(position int, strong &i64, weak &i64) {
 	C.gtk_text_compute_cursor_extents(self, position, strong, weak)
 }

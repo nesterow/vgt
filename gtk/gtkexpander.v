@@ -29,12 +29,12 @@ pub fn (self &GtkExpander) get_type() glib.GType {
 	return C.gtk_expander_get_type()
 }
 
-pub fn GtkExpander.new(label &char) &GtkWidget {
-	return C.gtk_expander_new(label)
+pub fn GtkExpander.new(label string) &GtkWidget {
+	return C.gtk_expander_new(label.str)
 }
 
-pub fn GtkExpander.new_with_mnemonic(label &char) &GtkWidget {
-	return C.gtk_expander_new_with_mnemonic(label)
+pub fn GtkExpander.new_with_mnemonic(label string) &GtkWidget {
+	return C.gtk_expander_new_with_mnemonic(label.str)
 }
 
 pub fn (self &GtkExpander) set_expanded(expanded bool) {
@@ -45,12 +45,12 @@ pub fn (self &GtkExpander) get_expanded() bool {
 	return C.gtk_expander_get_expanded(self)
 }
 
-pub fn (self &GtkExpander) set_label(label &char) {
-	C.gtk_expander_set_label(self, label)
+pub fn (self &GtkExpander) set_label(label string) {
+	C.gtk_expander_set_label(self, label.str)
 }
 
-pub fn (self &GtkExpander) get_label() &char {
-	return C.gtk_expander_get_label(self)
+pub fn (self &GtkExpander) get_label() string {
+	return unsafe { cstring_to_vstring(C.gtk_expander_get_label(self)) }
 }
 
 pub fn (self &GtkExpander) set_use_underline(use_underline bool) {

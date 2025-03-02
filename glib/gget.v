@@ -110,18 +110,18 @@ pub fn g_get_language_names_with_category(category_name &char) voidptr {
 	return C.g_get_language_names_with_category(category_name)
 }
 
-pub fn C.g_get_locale_variants(locale &char) &char
-pub fn g_get_locale_variants(locale &char) &char {
+pub fn C.g_get_locale_variants(locale &char) &&char
+pub fn g_get_locale_variants(locale &char) &&char {
 	return C.g_get_locale_variants(locale)
 }
 
-pub fn C.g_get_filename_charsets(filename_charsets &char) bool
-pub fn g_get_filename_charsets(filename_charsets &char) bool {
+pub fn C.g_get_filename_charsets(filename_charsets &&&char) bool
+pub fn g_get_filename_charsets(filename_charsets &&&char) bool {
 	return C.g_get_filename_charsets(filename_charsets)
 }
 
-pub fn C.g_get_environ() &char
-pub fn g_get_environ() &char {
+pub fn C.g_get_environ() &&char
+pub fn g_get_environ() &&char {
 	return C.g_get_environ()
 }
 

@@ -54,20 +54,20 @@ pub fn GtkDialog.new() &GtkWidget {
 	return C.gtk_dialog_new()
 }
 
-pub fn GtkDialog.new_with_buttons(title &char, parent &GtkWindow, flags GtkDialogFlags, first_button_text &char) &GtkWidget {
-	return C.gtk_dialog_new_with_buttons(title, parent, flags, first_button_text)
+pub fn GtkDialog.new_with_buttons(title string, parent &GtkWindow, flags GtkDialogFlags, first_button_text string) &GtkWidget {
+	return C.gtk_dialog_new_with_buttons(title.str, parent, flags, first_button_text.str)
 }
 
 pub fn (self &GtkDialog) add_action_widget(child &GtkWidget, response_id int) {
 	C.gtk_dialog_add_action_widget(self, child, response_id)
 }
 
-pub fn (self &GtkDialog) add_button(button_text &char, response_id int) &GtkWidget {
-	return C.gtk_dialog_add_button(self, button_text, response_id)
+pub fn (self &GtkDialog) add_button(button_text string, response_id int) &GtkWidget {
+	return C.gtk_dialog_add_button(self, button_text.str, response_id)
 }
 
-pub fn (self &GtkDialog) add_buttons(first_button_text &char) {
-	C.gtk_dialog_add_buttons(self, first_button_text)
+pub fn (self &GtkDialog) add_buttons(first_button_text string) {
+	C.gtk_dialog_add_buttons(self, first_button_text.str)
 }
 
 pub fn (self &GtkDialog) set_response_sensitive(response_id int, setting bool) {

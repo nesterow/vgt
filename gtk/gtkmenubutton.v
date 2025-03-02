@@ -70,12 +70,12 @@ pub fn (self &GtkMenuButton) get_menu_model() voidptr {
 	return C.gtk_menu_button_get_menu_model(self)
 }
 
-pub fn (self &GtkMenuButton) set_icon_name(icon_name &char) {
-	C.gtk_menu_button_set_icon_name(self, icon_name)
+pub fn (self &GtkMenuButton) set_icon_name(icon_name string) {
+	C.gtk_menu_button_set_icon_name(self, icon_name.str)
 }
 
-pub fn (self &GtkMenuButton) get_icon_name() &char {
-	return C.gtk_menu_button_get_icon_name(self)
+pub fn (self &GtkMenuButton) get_icon_name() string {
+	return unsafe { cstring_to_vstring(C.gtk_menu_button_get_icon_name(self)) }
 }
 
 pub fn (self &GtkMenuButton) set_always_show_arrow(always_show_arrow bool) {
@@ -86,12 +86,12 @@ pub fn (self &GtkMenuButton) get_always_show_arrow() bool {
 	return C.gtk_menu_button_get_always_show_arrow(self)
 }
 
-pub fn (self &GtkMenuButton) set_label(label &char) {
-	C.gtk_menu_button_set_label(self, label)
+pub fn (self &GtkMenuButton) set_label(label string) {
+	C.gtk_menu_button_set_label(self, label.str)
 }
 
-pub fn (self &GtkMenuButton) get_label() &char {
-	return C.gtk_menu_button_get_label(self)
+pub fn (self &GtkMenuButton) get_label() string {
+	return unsafe { cstring_to_vstring(C.gtk_menu_button_get_label(self)) }
 }
 
 pub fn (self &GtkMenuButton) set_use_underline(use_underline bool) {

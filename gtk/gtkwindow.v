@@ -64,7 +64,7 @@ pub fn C.gtk_window_unfullscreen(window &GtkWindow)
 pub fn C.gtk_window_fullscreen_on_monitor(window &GtkWindow, monitor voidptr)
 pub fn C.gtk_window_close(window &GtkWindow)
 pub fn C.gtk_window_set_default_size(window &GtkWindow, width int, height int)
-pub fn C.gtk_window_get_default_size(window &GtkWindow, width voidptr, height voidptr)
+pub fn C.gtk_window_get_default_size(window &GtkWindow, width &i64, height &i64)
 pub fn C.gtk_window_get_group(window &GtkWindow) &GtkWindowGroup
 pub fn C.gtk_window_has_group(window &GtkWindow) bool
 pub fn C.gtk_window_get_application(window &GtkWindow) &GtkApplication
@@ -93,16 +93,16 @@ pub fn GtkWindow.new() &GtkWidget {
 	return C.gtk_window_new()
 }
 
-pub fn (self &GtkWindow) set_title(title &char) {
-	C.gtk_window_set_title(self, title)
+pub fn (self &GtkWindow) set_title(title string) {
+	C.gtk_window_set_title(self, title.str)
 }
 
-pub fn (self &GtkWindow) get_title() &char {
-	return C.gtk_window_get_title(self)
+pub fn (self &GtkWindow) get_title() string {
+	return unsafe { cstring_to_vstring(C.gtk_window_get_title(self)) }
 }
 
-pub fn (self &GtkWindow) set_startup_id(startup_id &char) {
-	C.gtk_window_set_startup_id(self, startup_id)
+pub fn (self &GtkWindow) set_startup_id(startup_id string) {
+	C.gtk_window_set_startup_id(self, startup_id.str)
 }
 
 pub fn (self &GtkWindow) set_focus(focus &GtkWidget) {
@@ -193,20 +193,20 @@ pub fn (self &GtkWindow) get_deletable() bool {
 	return C.gtk_window_get_deletable(self)
 }
 
-pub fn (self &GtkWindow) set_icon_name(name &char) {
-	C.gtk_window_set_icon_name(self, name)
+pub fn (self &GtkWindow) set_icon_name(name string) {
+	C.gtk_window_set_icon_name(self, name.str)
 }
 
-pub fn (self &GtkWindow) get_icon_name() &char {
-	return C.gtk_window_get_icon_name(self)
+pub fn (self &GtkWindow) get_icon_name() string {
+	return unsafe { cstring_to_vstring(C.gtk_window_get_icon_name(self)) }
 }
 
-pub fn (self &GtkWindow) set_default_icon_name(name &char) {
-	C.gtk_window_set_default_icon_name(name)
+pub fn (self &GtkWindow) set_default_icon_name(name string) {
+	C.gtk_window_set_default_icon_name(name.str)
 }
 
-pub fn (self &GtkWindow) get_default_icon_name() &char {
-	return C.gtk_window_get_default_icon_name()
+pub fn (self &GtkWindow) get_default_icon_name() string {
+	return unsafe { cstring_to_vstring(C.gtk_window_get_default_icon_name()) }
 }
 
 pub fn (self &GtkWindow) set_auto_startup_notification(setting bool) {
@@ -273,7 +273,7 @@ pub fn (self &GtkWindow) set_default_size(width int, height int) {
 	C.gtk_window_set_default_size(self, width, height)
 }
 
-pub fn (self &GtkWindow) get_default_size(width voidptr, height voidptr) {
+pub fn (self &GtkWindow) get_default_size(width &i64, height &i64) {
 	C.gtk_window_get_default_size(self, width, height)
 }
 

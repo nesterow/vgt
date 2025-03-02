@@ -20,13 +20,13 @@ pub fn (cmp &GCompletion) clear_items() {
 	C.g_completion_clear_items(cmp)
 }
 
-pub fn C.g_completion_complete(cmp &GCompletion, prefix &char, new_prefix &char) &GList
-pub fn (cmp &GCompletion) complete(prefix &char, new_prefix &char) &GList {
+pub fn C.g_completion_complete(cmp &GCompletion, prefix &char, new_prefix &&char) &GList
+pub fn (cmp &GCompletion) complete(prefix &char, new_prefix &&char) &GList {
 	return C.g_completion_complete(cmp, prefix, new_prefix)
 }
 
-pub fn C.g_completion_complete_utf8(cmp &GCompletion, prefix &char, new_prefix &char) &GList
-pub fn (cmp &GCompletion) complete_utf8(prefix &char, new_prefix &char) &GList {
+pub fn C.g_completion_complete_utf8(cmp &GCompletion, prefix &char, new_prefix &&char) &GList
+pub fn (cmp &GCompletion) complete_utf8(prefix &char, new_prefix &&char) &GList {
 	return C.g_completion_complete_utf8(cmp, prefix, new_prefix)
 }
 

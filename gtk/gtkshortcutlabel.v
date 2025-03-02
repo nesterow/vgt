@@ -23,22 +23,22 @@ pub fn (self &GtkShortcutLabel) get_type() glib.GType {
 	return C.gtk_shortcut_label_get_type()
 }
 
-pub fn GtkShortcutLabel.new(accelerator &char) &GtkWidget {
-	return C.gtk_shortcut_label_new(accelerator)
+pub fn GtkShortcutLabel.new(accelerator string) &GtkWidget {
+	return C.gtk_shortcut_label_new(accelerator.str)
 }
 
-pub fn (self &GtkShortcutLabel) get_accelerator() &char {
-	return C.gtk_shortcut_label_get_accelerator(self)
+pub fn (self &GtkShortcutLabel) get_accelerator() string {
+	return unsafe { cstring_to_vstring(C.gtk_shortcut_label_get_accelerator(self)) }
 }
 
-pub fn (self &GtkShortcutLabel) set_accelerator(accelerator &char) {
-	C.gtk_shortcut_label_set_accelerator(self, accelerator)
+pub fn (self &GtkShortcutLabel) set_accelerator(accelerator string) {
+	C.gtk_shortcut_label_set_accelerator(self, accelerator.str)
 }
 
-pub fn (self &GtkShortcutLabel) get_disabled_text() &char {
-	return C.gtk_shortcut_label_get_disabled_text(self)
+pub fn (self &GtkShortcutLabel) get_disabled_text() string {
+	return unsafe { cstring_to_vstring(C.gtk_shortcut_label_get_disabled_text(self)) }
 }
 
-pub fn (self &GtkShortcutLabel) set_disabled_text(disabled_text &char) {
-	C.gtk_shortcut_label_set_disabled_text(self, disabled_text)
+pub fn (self &GtkShortcutLabel) set_disabled_text(disabled_text string) {
+	C.gtk_shortcut_label_set_disabled_text(self, disabled_text.str)
 }

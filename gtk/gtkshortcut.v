@@ -40,8 +40,8 @@ pub fn GtkShortcut.new(trigger &GtkShortcutTrigger, action &GtkShortcutAction) &
 	return C.gtk_shortcut_new(trigger, action)
 }
 
-pub fn GtkShortcut.new_with_arguments(trigger &GtkShortcutTrigger, action &GtkShortcutAction, format_str &char) &GtkShortcut {
-	return C.gtk_shortcut_new_with_arguments(trigger, action, format_str)
+pub fn GtkShortcut.new_with_arguments(trigger &GtkShortcutTrigger, action &GtkShortcutAction, format_str string) &GtkShortcut {
+	return C.gtk_shortcut_new_with_arguments(trigger, action, format_str.str)
 }
 
 pub fn (self &GtkShortcut) get_trigger() &GtkShortcutTrigger {

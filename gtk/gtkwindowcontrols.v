@@ -36,12 +36,12 @@ pub fn (self &GtkWindowControls) set_side(side GtkPackType) {
 	C.gtk_window_controls_set_side(self, side)
 }
 
-pub fn (self &GtkWindowControls) get_decoration_layout() &char {
-	return C.gtk_window_controls_get_decoration_layout(self)
+pub fn (self &GtkWindowControls) get_decoration_layout() string {
+	return unsafe { cstring_to_vstring(C.gtk_window_controls_get_decoration_layout(self)) }
 }
 
-pub fn (self &GtkWindowControls) set_decoration_layout(layout &char) {
-	C.gtk_window_controls_set_decoration_layout(self, layout)
+pub fn (self &GtkWindowControls) set_decoration_layout(layout string) {
+	C.gtk_window_controls_set_decoration_layout(self, layout.str)
 }
 
 pub fn (self &GtkWindowControls) get_empty() bool {

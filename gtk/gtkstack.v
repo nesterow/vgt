@@ -80,28 +80,28 @@ pub fn (self &GtkStackPage) set_use_underline(setting bool) {
 	C.gtk_stack_page_set_use_underline(self, setting)
 }
 
-pub fn (self &GtkStackPage) get_name() &char {
-	return C.gtk_stack_page_get_name(self)
+pub fn (self &GtkStackPage) get_name() string {
+	return unsafe { cstring_to_vstring(C.gtk_stack_page_get_name(self)) }
 }
 
-pub fn (self &GtkStackPage) set_name(setting &char) {
-	C.gtk_stack_page_set_name(self, setting)
+pub fn (self &GtkStackPage) set_name(setting string) {
+	C.gtk_stack_page_set_name(self, setting.str)
 }
 
-pub fn (self &GtkStackPage) get_title() &char {
-	return C.gtk_stack_page_get_title(self)
+pub fn (self &GtkStackPage) get_title() string {
+	return unsafe { cstring_to_vstring(C.gtk_stack_page_get_title(self)) }
 }
 
-pub fn (self &GtkStackPage) set_title(setting &char) {
-	C.gtk_stack_page_set_title(self, setting)
+pub fn (self &GtkStackPage) set_title(setting string) {
+	C.gtk_stack_page_set_title(self, setting.str)
 }
 
-pub fn (self &GtkStackPage) get_icon_name() &char {
-	return C.gtk_stack_page_get_icon_name(self)
+pub fn (self &GtkStackPage) get_icon_name() string {
+	return unsafe { cstring_to_vstring(C.gtk_stack_page_get_icon_name(self)) }
 }
 
-pub fn (self &GtkStackPage) set_icon_name(setting &char) {
-	C.gtk_stack_page_set_icon_name(self, setting)
+pub fn (self &GtkStackPage) set_icon_name(setting string) {
+	C.gtk_stack_page_set_icon_name(self, setting.str)
 }
 
 pub fn C.gtk_stack_get_type() glib.GType
@@ -147,12 +147,12 @@ pub fn (self &GtkStack) add_child(child &GtkWidget) &GtkStackPage {
 	return C.gtk_stack_add_child(self, child)
 }
 
-pub fn (self &GtkStack) add_named(child &GtkWidget, name &char) &GtkStackPage {
-	return C.gtk_stack_add_named(self, child, name)
+pub fn (self &GtkStack) add_named(child &GtkWidget, name string) &GtkStackPage {
+	return C.gtk_stack_add_named(self, child, name.str)
 }
 
-pub fn (self &GtkStack) add_titled(child &GtkWidget, name &char, title &char) &GtkStackPage {
-	return C.gtk_stack_add_titled(self, child, name, title)
+pub fn (self &GtkStack) add_titled(child &GtkWidget, name string, title string) &GtkStackPage {
+	return C.gtk_stack_add_titled(self, child, name.str, title.str)
 }
 
 pub fn (self &GtkStack) remove(child &GtkWidget) {
@@ -163,8 +163,8 @@ pub fn (self &GtkStack) get_page(child &GtkWidget) &GtkStackPage {
 	return C.gtk_stack_get_page(self, child)
 }
 
-pub fn (self &GtkStack) get_child_by_name(name &char) &GtkWidget {
-	return C.gtk_stack_get_child_by_name(self, name)
+pub fn (self &GtkStack) get_child_by_name(name string) &GtkWidget {
+	return C.gtk_stack_get_child_by_name(self, name.str)
 }
 
 pub fn (self &GtkStack) set_visible_child(child &GtkWidget) {
@@ -175,16 +175,16 @@ pub fn (self &GtkStack) get_visible_child() &GtkWidget {
 	return C.gtk_stack_get_visible_child(self)
 }
 
-pub fn (self &GtkStack) set_visible_child_name(name &char) {
-	C.gtk_stack_set_visible_child_name(self, name)
+pub fn (self &GtkStack) set_visible_child_name(name string) {
+	C.gtk_stack_set_visible_child_name(self, name.str)
 }
 
-pub fn (self &GtkStack) get_visible_child_name() &char {
-	return C.gtk_stack_get_visible_child_name(self)
+pub fn (self &GtkStack) get_visible_child_name() string {
+	return unsafe { cstring_to_vstring(C.gtk_stack_get_visible_child_name(self)) }
 }
 
-pub fn (self &GtkStack) set_visible_child_full(name &char, transition GtkStackTransitionType) {
-	C.gtk_stack_set_visible_child_full(self, name, transition)
+pub fn (self &GtkStack) set_visible_child_full(name string, transition GtkStackTransitionType) {
+	C.gtk_stack_set_visible_child_full(self, name.str, transition)
 }
 
 pub fn (self &GtkStack) set_hhomogeneous(hhomogeneous bool) {

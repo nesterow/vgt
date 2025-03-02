@@ -86,16 +86,16 @@ pub fn (self &GtkStyleContext) get_scale() int {
 	return C.gtk_style_context_get_scale(self)
 }
 
-pub fn (self &GtkStyleContext) add_class(class_name &char) {
-	C.gtk_style_context_add_class(self, class_name)
+pub fn (self &GtkStyleContext) add_class(class_name string) {
+	C.gtk_style_context_add_class(self, class_name.str)
 }
 
-pub fn (self &GtkStyleContext) remove_class(class_name &char) {
-	C.gtk_style_context_remove_class(self, class_name)
+pub fn (self &GtkStyleContext) remove_class(class_name string) {
+	C.gtk_style_context_remove_class(self, class_name.str)
 }
 
-pub fn (self &GtkStyleContext) has_class(class_name &char) bool {
-	return C.gtk_style_context_has_class(self, class_name)
+pub fn (self &GtkStyleContext) has_class(class_name string) bool {
+	return C.gtk_style_context_has_class(self, class_name.str)
 }
 
 pub fn (self &GtkStyleContext) set_display(display voidptr) {
@@ -106,8 +106,8 @@ pub fn (self &GtkStyleContext) get_display() voidptr {
 	return C.gtk_style_context_get_display(self)
 }
 
-pub fn (self &GtkStyleContext) lookup_color(color_name &char, color voidptr) bool {
-	return C.gtk_style_context_lookup_color(self, color_name, color)
+pub fn (self &GtkStyleContext) lookup_color(color_name string, color voidptr) bool {
+	return C.gtk_style_context_lookup_color(self, color_name.str, color)
 }
 
 pub fn (self &GtkStyleContext) get_color(color voidptr) {

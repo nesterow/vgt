@@ -26,8 +26,8 @@ pub fn (self &GtkAppChooserWidget) get_type() glib.GType {
 	return C.gtk_app_chooser_widget_get_type()
 }
 
-pub fn GtkAppChooserWidget.new(content_typ &char) &GtkWidget {
-	return C.gtk_app_chooser_widget_new(content_typ)
+pub fn GtkAppChooserWidget.new(content_typ string) &GtkWidget {
+	return C.gtk_app_chooser_widget_new(content_typ.str)
 }
 
 pub fn (self &GtkAppChooserWidget) set_show_default(setting bool) {
@@ -70,10 +70,10 @@ pub fn (self &GtkAppChooserWidget) get_show_all() bool {
 	return C.gtk_app_chooser_widget_get_show_all(self)
 }
 
-pub fn (self &GtkAppChooserWidget) set_default_text(text &char) {
-	C.gtk_app_chooser_widget_set_default_text(self, text)
+pub fn (self &GtkAppChooserWidget) set_default_text(text string) {
+	C.gtk_app_chooser_widget_set_default_text(self, text.str)
 }
 
-pub fn (self &GtkAppChooserWidget) get_default_text() &char {
-	return C.gtk_app_chooser_widget_get_default_text(self)
+pub fn (self &GtkAppChooserWidget) get_default_text() string {
+	return unsafe { cstring_to_vstring(C.gtk_app_chooser_widget_get_default_text(self)) }
 }

@@ -25,20 +25,20 @@ pub fn (self &GtkBookmarkList) get_type() glib.GType {
 	return C.gtk_bookmark_list_get_type()
 }
 
-pub fn GtkBookmarkList.new(filename &char, attributes &char) &GtkBookmarkList {
-	return C.gtk_bookmark_list_new(filename, attributes)
+pub fn GtkBookmarkList.new(filename string, attributes string) &GtkBookmarkList {
+	return C.gtk_bookmark_list_new(filename.str, attributes.str)
 }
 
-pub fn (self &GtkBookmarkList) get_filename() &char {
-	return C.gtk_bookmark_list_get_filename(self)
+pub fn (self &GtkBookmarkList) get_filename() string {
+	return unsafe { cstring_to_vstring(C.gtk_bookmark_list_get_filename(self)) }
 }
 
-pub fn (self &GtkBookmarkList) set_attributes(attributes &char) {
-	C.gtk_bookmark_list_set_attributes(self, attributes)
+pub fn (self &GtkBookmarkList) set_attributes(attributes string) {
+	C.gtk_bookmark_list_set_attributes(self, attributes.str)
 }
 
-pub fn (self &GtkBookmarkList) get_attributes() &char {
-	return C.gtk_bookmark_list_get_attributes(self)
+pub fn (self &GtkBookmarkList) get_attributes() string {
+	return unsafe { cstring_to_vstring(C.gtk_bookmark_list_get_attributes(self)) }
 }
 
 pub fn (self &GtkBookmarkList) set_io_priority(io_priority int) {

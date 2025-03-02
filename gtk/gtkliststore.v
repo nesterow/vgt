@@ -13,19 +13,19 @@ pub fn C.gtk_list_store_newv(n_columns int, typs &int) &GtkListStore
 pub fn C.gtk_list_store_set_column_types(list_store &GtkListStore, n_columns int, typs &int)
 pub fn C.gtk_list_store_set_value(list_store &GtkListStore, iter &GtkTreeIter, column int, value &glib.GValue)
 pub fn C.gtk_list_store_set(list_store &GtkListStore, iter &GtkTreeIter)
-pub fn C.gtk_list_store_set_valuesv(list_store &GtkListStore, iter &GtkTreeIter, columns voidptr, values &glib.GValue, n_values int)
+pub fn C.gtk_list_store_set_valuesv(list_store &GtkListStore, iter &GtkTreeIter, columns &i64, values &glib.GValue, n_values int)
 pub fn C.gtk_list_store_set_valist(list_store &GtkListStore, iter &GtkTreeIter, var_args voidptr)
 pub fn C.gtk_list_store_remove(list_store &GtkListStore, iter &GtkTreeIter) bool
 pub fn C.gtk_list_store_insert(list_store &GtkListStore, iter &GtkTreeIter, position int)
 pub fn C.gtk_list_store_insert_before(list_store &GtkListStore, iter &GtkTreeIter, sibling &GtkTreeIter)
 pub fn C.gtk_list_store_insert_after(list_store &GtkListStore, iter &GtkTreeIter, sibling &GtkTreeIter)
 pub fn C.gtk_list_store_insert_with_values(list_store &GtkListStore, iter &GtkTreeIter, position int)
-pub fn C.gtk_list_store_insert_with_valuesv(list_store &GtkListStore, iter &GtkTreeIter, position int, columns voidptr, values &glib.GValue, n_values int)
+pub fn C.gtk_list_store_insert_with_valuesv(list_store &GtkListStore, iter &GtkTreeIter, position int, columns &i64, values &glib.GValue, n_values int)
 pub fn C.gtk_list_store_prepend(list_store &GtkListStore, iter &GtkTreeIter)
 pub fn C.gtk_list_store_append(list_store &GtkListStore, iter &GtkTreeIter)
 pub fn C.gtk_list_store_clear(list_store &GtkListStore)
 pub fn C.gtk_list_store_iter_is_valid(list_store &GtkListStore, iter &GtkTreeIter) bool
-pub fn C.gtk_list_store_reorder(store &GtkListStore, new_order voidptr)
+pub fn C.gtk_list_store_reorder(store &GtkListStore, new_order &i64)
 pub fn C.gtk_list_store_swap(store &GtkListStore, a &GtkTreeIter, b &GtkTreeIter)
 pub fn C.gtk_list_store_move_after(store &GtkListStore, iter &GtkTreeIter, position &GtkTreeIter)
 pub fn C.gtk_list_store_move_before(store &GtkListStore, iter &GtkTreeIter, position &GtkTreeIter)
@@ -59,7 +59,7 @@ pub fn (self &GtkListStore) set(iter &GtkTreeIter) {
 	C.gtk_list_store_set(self, iter)
 }
 
-pub fn (self &GtkListStore) set_valuesv(iter &GtkTreeIter, columns voidptr, values &glib.GValue, n_values int) {
+pub fn (self &GtkListStore) set_valuesv(iter &GtkTreeIter, columns &i64, values &glib.GValue, n_values int) {
 	C.gtk_list_store_set_valuesv(self, iter, columns, values, n_values)
 }
 
@@ -87,7 +87,7 @@ pub fn (self &GtkListStore) insert_with_values(iter &GtkTreeIter, position int) 
 	C.gtk_list_store_insert_with_values(self, iter, position)
 }
 
-pub fn (self &GtkListStore) insert_with_valuesv(iter &GtkTreeIter, position int, columns voidptr, values &glib.GValue, n_values int) {
+pub fn (self &GtkListStore) insert_with_valuesv(iter &GtkTreeIter, position int, columns &i64, values &glib.GValue, n_values int) {
 	C.gtk_list_store_insert_with_valuesv(self, iter, position, columns, values, n_values)
 }
 
@@ -107,7 +107,7 @@ pub fn (self &GtkListStore) iter_is_valid(iter &GtkTreeIter) bool {
 	return C.gtk_list_store_iter_is_valid(self, iter)
 }
 
-pub fn (self &GtkListStore) reorder(new_order voidptr) {
+pub fn (self &GtkListStore) reorder(new_order &i64) {
 	C.gtk_list_store_reorder(self, new_order)
 }
 

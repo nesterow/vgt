@@ -34,12 +34,12 @@ pub fn GtkCellView.new_with_context(area &GtkCellArea, context &GtkCellAreaConte
 	return C.gtk_cell_view_new_with_context(area, context)
 }
 
-pub fn GtkCellView.new_with_text(text &char) &GtkWidget {
-	return C.gtk_cell_view_new_with_text(text)
+pub fn GtkCellView.new_with_text(text string) &GtkWidget {
+	return C.gtk_cell_view_new_with_text(text.str)
 }
 
-pub fn GtkCellView.new_with_markup(markup &char) &GtkWidget {
-	return C.gtk_cell_view_new_with_markup(markup)
+pub fn GtkCellView.new_with_markup(markup string) &GtkWidget {
+	return C.gtk_cell_view_new_with_markup(markup.str)
 }
 
 pub fn GtkCellView.new_with_texture(texture voidptr) &GtkWidget {

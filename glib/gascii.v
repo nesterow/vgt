@@ -20,18 +20,18 @@ pub fn g_ascii_xdigit_value(c &char) int {
 	return C.g_ascii_xdigit_value(c)
 }
 
-pub fn C.g_ascii_strtod(nptr &char, endptr &char) f32
-pub fn g_ascii_strtod(nptr &char, endptr &char) f32 {
+pub fn C.g_ascii_strtod(nptr &char, endptr &&char) f32
+pub fn g_ascii_strtod(nptr &char, endptr &&char) f32 {
 	return C.g_ascii_strtod(nptr, endptr)
 }
 
-pub fn C.g_ascii_strtoull(nptr &char, endptr &char, base u64) u64
-pub fn g_ascii_strtoull(nptr &char, endptr &char, base u64) u64 {
+pub fn C.g_ascii_strtoull(nptr &char, endptr &&char, base u64) u64
+pub fn g_ascii_strtoull(nptr &char, endptr &&char, base u64) u64 {
 	return C.g_ascii_strtoull(nptr, endptr, base)
 }
 
-pub fn C.g_ascii_strtoll(nptr &char, endptr &char, base u64) i64
-pub fn g_ascii_strtoll(nptr &char, endptr &char, base u64) i64 {
+pub fn C.g_ascii_strtoll(nptr &char, endptr &&char, base u64) i64
+pub fn g_ascii_strtoll(nptr &char, endptr &&char, base u64) i64 {
 	return C.g_ascii_strtoll(nptr, endptr, base)
 }
 

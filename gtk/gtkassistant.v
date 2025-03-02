@@ -118,12 +118,12 @@ pub fn (self &GtkAssistant) get_page_type(page &GtkWidget) GtkAssistantPageType 
 	return C.gtk_assistant_get_page_type(self, page)
 }
 
-pub fn (self &GtkAssistant) set_page_title(page &GtkWidget, title &char) {
-	C.gtk_assistant_set_page_title(self, page, title)
+pub fn (self &GtkAssistant) set_page_title(page &GtkWidget, title string) {
+	C.gtk_assistant_set_page_title(self, page, title.str)
 }
 
-pub fn (self &GtkAssistant) get_page_title(page &GtkWidget) &char {
-	return C.gtk_assistant_get_page_title(self, page)
+pub fn (self &GtkAssistant) get_page_title(page &GtkWidget) string {
+	return unsafe { cstring_to_vstring(C.gtk_assistant_get_page_title(self, page)) }
 }
 
 pub fn (self &GtkAssistant) set_page_complete(page &GtkWidget, complete bool) {

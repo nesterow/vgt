@@ -20,20 +20,20 @@ pub fn (self &GtkTooltip) get_type() glib.GType {
 	return C.gtk_tooltip_get_type()
 }
 
-pub fn (self &GtkTooltip) set_markup(markup &char) {
-	C.gtk_tooltip_set_markup(self, markup)
+pub fn (self &GtkTooltip) set_markup(markup string) {
+	C.gtk_tooltip_set_markup(self, markup.str)
 }
 
-pub fn (self &GtkTooltip) set_text(text &char) {
-	C.gtk_tooltip_set_text(self, text)
+pub fn (self &GtkTooltip) set_text(text string) {
+	C.gtk_tooltip_set_text(self, text.str)
 }
 
 pub fn (self &GtkTooltip) set_icon(paintable voidptr) {
 	C.gtk_tooltip_set_icon(self, paintable)
 }
 
-pub fn (self &GtkTooltip) set_icon_from_icon_name(icon_name &char) {
-	C.gtk_tooltip_set_icon_from_icon_name(self, icon_name)
+pub fn (self &GtkTooltip) set_icon_from_icon_name(icon_name string) {
+	C.gtk_tooltip_set_icon_from_icon_name(self, icon_name.str)
 }
 
 pub fn (self &GtkTooltip) set_icon_from_gicon(gicon &glib.GIcon) {

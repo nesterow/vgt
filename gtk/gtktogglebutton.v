@@ -29,12 +29,12 @@ pub fn GtkToggleButton.new() &GtkWidget {
 	return C.gtk_toggle_button_new()
 }
 
-pub fn GtkToggleButton.new_with_label(label &char) &GtkWidget {
-	return C.gtk_toggle_button_new_with_label(label)
+pub fn GtkToggleButton.new_with_label(label string) &GtkWidget {
+	return C.gtk_toggle_button_new_with_label(label.str)
 }
 
-pub fn GtkToggleButton.new_with_mnemonic(label &char) &GtkWidget {
-	return C.gtk_toggle_button_new_with_mnemonic(label)
+pub fn GtkToggleButton.new_with_mnemonic(label string) &GtkWidget {
+	return C.gtk_toggle_button_new_with_mnemonic(label.str)
 }
 
 pub fn (self &GtkToggleButton) set_active(is_active bool) {

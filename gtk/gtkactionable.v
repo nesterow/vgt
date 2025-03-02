@@ -24,12 +24,12 @@ pub fn (self &GtkActionable) get_type() glib.GType {
 	return C.gtk_actionable_get_type()
 }
 
-pub fn (self &GtkActionable) get_action_name() &char {
-	return C.gtk_actionable_get_action_name(self)
+pub fn (self &GtkActionable) get_action_name() string {
+	return unsafe { cstring_to_vstring(C.gtk_actionable_get_action_name(self)) }
 }
 
-pub fn (self &GtkActionable) set_action_name(action_name &char) {
-	C.gtk_actionable_set_action_name(self, action_name)
+pub fn (self &GtkActionable) set_action_name(action_name string) {
+	C.gtk_actionable_set_action_name(self, action_name.str)
 }
 
 pub fn (self &GtkActionable) get_action_target_value() voidptr {
@@ -40,10 +40,10 @@ pub fn (self &GtkActionable) set_action_target_value(target_value &glib.GVariant
 	C.gtk_actionable_set_action_target_value(self, target_value)
 }
 
-pub fn (self &GtkActionable) set_action_target(format_str &char) {
-	C.gtk_actionable_set_action_target(self, format_str)
+pub fn (self &GtkActionable) set_action_target(format_str string) {
+	C.gtk_actionable_set_action_target(self, format_str.str)
 }
 
-pub fn (self &GtkActionable) set_detailed_action_name(detailed_action_name &char) {
-	C.gtk_actionable_set_detailed_action_name(self, detailed_action_name)
+pub fn (self &GtkActionable) set_detailed_action_name(detailed_action_name string) {
+	C.gtk_actionable_set_detailed_action_name(self, detailed_action_name.str)
 }

@@ -31,8 +31,8 @@ pub fn (self &GtkTextTagTable) remove(tag &GtkTextTag) {
 	C.gtk_text_tag_table_remove(self, tag)
 }
 
-pub fn (self &GtkTextTagTable) lookup(name &char) &GtkTextTag {
-	return C.gtk_text_tag_table_lookup(self, name)
+pub fn (self &GtkTextTagTable) lookup(name string) &GtkTextTag {
+	return C.gtk_text_tag_table_lookup(self, name.str)
 }
 
 pub fn (self &GtkTextTagTable) foreach(func voidptr, data voidptr) {

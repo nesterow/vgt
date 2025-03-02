@@ -27,11 +27,13 @@ pub mut:
 	signals []Signal
 }
 
+type SignalCallback = fn (builder &GtkBuilder, current voidptr, data voidptr)
+
 @[params]
 pub struct Signal {
 pub:
 	path string
-	call fn (b voidptr, a voidptr) = unsafe { nil }
+	call ?SignalCallback
 }
 
 pub struct ViewContext {
@@ -55,16 +57,19 @@ pub fn (ui View) to_str() string {
 }
 
 pub fn (ui View) to_builder() &GtkBuilder {
-	return GtkBuilder.new_from_string(ui.data.str, ui.data.len)
+	return GtkBuilder.new_from_string(ui.data, ui.data.len)
 }
 
 fn (ui View) bind_signals(builder &GtkBuilder) {
 	for signal in ui.signals {
 		path := signal.path.split('.')
-		obj := builder.get_object(path[0].str)
+		obj := builder.get_object(path[0])
 		if obj != unsafe { nil } {
 			sig := fn [signal, builder, obj] (data voidptr) {
-				signal.call(builder, obj)
+				call := signal.call or { null }
+				if call != null {
+					call(builder, obj, data)
+				}
 			}
 			g_signal_connect(obj, path[1], sig, &builder)
 		}
@@ -92,8 +97,20 @@ pub:
 pub fn (vs Views) build() ViewsContext {
 	builder := GtkBuilder.new()
 	for view in vs.views {
-		GtkBuilder(builder).add_from_string(view.data.str, view.data.len, unsafe { nil })
+		builder.add_from_string(view.data, view.data.len, null)
 		view.bind_signals(builder)
 	}
 	return ViewsContext{vs.views, builder}
+}
+
+pub fn signal(id string, cb SignalCallback) Signal {
+	return Signal{id, cb}
+}
+
+pub fn view(data string, signals []Signal) ViewContext {
+	view := View{
+		data:    data
+		signals: signals
+	}
+	return view.build()
 }

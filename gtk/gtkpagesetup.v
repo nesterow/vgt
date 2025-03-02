@@ -22,11 +22,11 @@ pub fn C.gtk_page_setup_get_paper_width(setup &GtkPageSetup, unit GtkUnit) f32
 pub fn C.gtk_page_setup_get_paper_height(setup &GtkPageSetup, unit GtkUnit) f32
 pub fn C.gtk_page_setup_get_page_width(setup &GtkPageSetup, unit GtkUnit) f32
 pub fn C.gtk_page_setup_get_page_height(setup &GtkPageSetup, unit GtkUnit) f32
-pub fn C.gtk_page_setup_new_from_file(file_name &char, error &glib.GError) &GtkPageSetup
-pub fn C.gtk_page_setup_load_file(setup &GtkPageSetup, file_name &char, error &glib.GError) bool
-pub fn C.gtk_page_setup_to_file(setup &GtkPageSetup, file_name &char, error &glib.GError) bool
-pub fn C.gtk_page_setup_new_from_key_file(key_file &glib.GKeyFile, group_name &char, error &glib.GError) &GtkPageSetup
-pub fn C.gtk_page_setup_load_key_file(setup &GtkPageSetup, key_file &glib.GKeyFile, group_name &char, error &glib.GError) bool
+pub fn C.gtk_page_setup_new_from_file(file_name &char, error &&glib.GError) &GtkPageSetup
+pub fn C.gtk_page_setup_load_file(setup &GtkPageSetup, file_name &char, error &&glib.GError) bool
+pub fn C.gtk_page_setup_to_file(setup &GtkPageSetup, file_name &char, error &&glib.GError) bool
+pub fn C.gtk_page_setup_new_from_key_file(key_file &glib.GKeyFile, group_name &char, error &&glib.GError) &GtkPageSetup
+pub fn C.gtk_page_setup_load_key_file(setup &GtkPageSetup, key_file &glib.GKeyFile, group_name &char, error &&glib.GError) bool
 pub fn C.gtk_page_setup_to_key_file(setup &GtkPageSetup, key_file &glib.GKeyFile, group_name &char)
 pub fn C.gtk_page_setup_to_gvariant(setup &GtkPageSetup) voidptr
 pub fn C.gtk_page_setup_new_from_gvariant(variant &glib.GVariant) &GtkPageSetup
@@ -116,28 +116,28 @@ pub fn (self &GtkPageSetup) get_page_height(unit GtkUnit) f32 {
 	return C.gtk_page_setup_get_page_height(self, unit)
 }
 
-pub fn GtkPageSetup.new_from_file(file_name &char, error &glib.GError) &GtkPageSetup {
-	return C.gtk_page_setup_new_from_file(file_name, error)
+pub fn GtkPageSetup.new_from_file(file_name string, error &&glib.GError) &GtkPageSetup {
+	return C.gtk_page_setup_new_from_file(file_name.str, error)
 }
 
-pub fn (self &GtkPageSetup) load_file(file_name &char, error &glib.GError) bool {
-	return C.gtk_page_setup_load_file(self, file_name, error)
+pub fn (self &GtkPageSetup) load_file(file_name string, error &&glib.GError) bool {
+	return C.gtk_page_setup_load_file(self, file_name.str, error)
 }
 
-pub fn (self &GtkPageSetup) to_file(file_name &char, error &glib.GError) bool {
-	return C.gtk_page_setup_to_file(self, file_name, error)
+pub fn (self &GtkPageSetup) to_file(file_name string, error &&glib.GError) bool {
+	return C.gtk_page_setup_to_file(self, file_name.str, error)
 }
 
-pub fn GtkPageSetup.new_from_key_file(key_file &glib.GKeyFile, group_name &char, error &glib.GError) &GtkPageSetup {
-	return C.gtk_page_setup_new_from_key_file(key_file, group_name, error)
+pub fn GtkPageSetup.new_from_key_file(key_file &glib.GKeyFile, group_name string, error &&glib.GError) &GtkPageSetup {
+	return C.gtk_page_setup_new_from_key_file(key_file, group_name.str, error)
 }
 
-pub fn (self &GtkPageSetup) load_key_file(key_file &glib.GKeyFile, group_name &char, error &glib.GError) bool {
-	return C.gtk_page_setup_load_key_file(self, key_file, group_name, error)
+pub fn (self &GtkPageSetup) load_key_file(key_file &glib.GKeyFile, group_name string, error &&glib.GError) bool {
+	return C.gtk_page_setup_load_key_file(self, key_file, group_name.str, error)
 }
 
-pub fn (self &GtkPageSetup) to_key_file(key_file &glib.GKeyFile, group_name &char) {
-	C.gtk_page_setup_to_key_file(self, key_file, group_name)
+pub fn (self &GtkPageSetup) to_key_file(key_file &glib.GKeyFile, group_name string) {
+	C.gtk_page_setup_to_key_file(self, key_file, group_name.str)
 }
 
 pub fn (self &GtkPageSetup) to_gvariant() voidptr {

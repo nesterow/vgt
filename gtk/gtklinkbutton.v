@@ -19,20 +19,20 @@ pub fn (self &GtkLinkButton) get_type() glib.GType {
 	return C.gtk_link_button_get_type()
 }
 
-pub fn GtkLinkButton.new(uri &char) &GtkWidget {
-	return C.gtk_link_button_new(uri)
+pub fn GtkLinkButton.new(uri string) &GtkWidget {
+	return C.gtk_link_button_new(uri.str)
 }
 
-pub fn GtkLinkButton.new_with_label(uri &char, label &char) &GtkWidget {
-	return C.gtk_link_button_new_with_label(uri, label)
+pub fn GtkLinkButton.new_with_label(uri string, label string) &GtkWidget {
+	return C.gtk_link_button_new_with_label(uri.str, label.str)
 }
 
-pub fn (self &GtkLinkButton) get_uri() &char {
-	return C.gtk_link_button_get_uri(self)
+pub fn (self &GtkLinkButton) get_uri() string {
+	return unsafe { cstring_to_vstring(C.gtk_link_button_get_uri(self)) }
 }
 
-pub fn (self &GtkLinkButton) set_uri(uri &char) {
-	C.gtk_link_button_set_uri(self, uri)
+pub fn (self &GtkLinkButton) set_uri(uri string) {
+	C.gtk_link_button_set_uri(self, uri.str)
 }
 
 pub fn (self &GtkLinkButton) get_visited() bool {

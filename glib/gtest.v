@@ -10,8 +10,8 @@ pub fn g_test_maximized_result(maximized_quantity f32, format &char) {
 	C.g_test_maximized_result(maximized_quantity, format)
 }
 
-pub fn C.g_test_init(argc voidptr, argv &char)
-pub fn g_test_init(argc voidptr, argv &char) {
+pub fn C.g_test_init(argc &i64, argv &char)
+pub fn g_test_init(argc &i64, argv &char) {
 	C.g_test_init(argc, argv)
 }
 

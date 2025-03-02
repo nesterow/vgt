@@ -30,8 +30,8 @@ pub fn (self &GtkPopoverMenuBar) get_menu_model() voidptr {
 	return C.gtk_popover_menu_bar_get_menu_model(self)
 }
 
-pub fn (self &GtkPopoverMenuBar) add_child(child &GtkWidget, id &char) bool {
-	return C.gtk_popover_menu_bar_add_child(self, child, id)
+pub fn (self &GtkPopoverMenuBar) add_child(child &GtkWidget, id string) bool {
+	return C.gtk_popover_menu_bar_add_child(self, child, id.str)
 }
 
 pub fn (self &GtkPopoverMenuBar) remove_child(child &GtkWidget) bool {

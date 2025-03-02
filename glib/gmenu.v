@@ -50,8 +50,8 @@ pub fn (self &GMenu) attribute_iter_get_type() int {
 	return C.g_menu_attribute_iter_get_type()
 }
 
-pub fn C.g_menu_attribute_iter_get_next(iter &GMenuAttributeIter, out_name &char, value &GVariant) bool
-pub fn (self &GMenu) attribute_iter_get_next(iter &GMenuAttributeIter, out_name &char, value &GVariant) bool {
+pub fn C.g_menu_attribute_iter_get_next(iter &GMenuAttributeIter, out_name &&char, value &GVariant) bool
+pub fn (self &GMenu) attribute_iter_get_next(iter &GMenuAttributeIter, out_name &&char, value &GVariant) bool {
 	return C.g_menu_attribute_iter_get_next(iter, out_name, value)
 }
 
@@ -75,8 +75,8 @@ pub fn (self &GMenu) link_iter_get_type() int {
 	return C.g_menu_link_iter_get_type()
 }
 
-pub fn C.g_menu_link_iter_get_next(iter &GMenuLinkIter, out_link &char, value &GMenuModel) bool
-pub fn (self &GMenu) link_iter_get_next(iter &GMenuLinkIter, out_link &char, value &GMenuModel) bool {
+pub fn C.g_menu_link_iter_get_next(iter &GMenuLinkIter, out_link &&char, value &GMenuModel) bool
+pub fn (self &GMenu) link_iter_get_next(iter &GMenuLinkIter, out_link &&char, value &GMenuModel) bool {
 	return C.g_menu_link_iter_get_next(iter, out_link, value)
 }
 

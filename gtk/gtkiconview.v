@@ -45,8 +45,8 @@ pub fn C.gtk_icon_view_get_margin(icon_view &GtkIconView) int
 pub fn C.gtk_icon_view_set_item_padding(icon_view &GtkIconView, item_padding int)
 pub fn C.gtk_icon_view_get_item_padding(icon_view &GtkIconView) int
 pub fn C.gtk_icon_view_get_path_at_pos(icon_view &GtkIconView, x int, y int) &GtkTreePath
-pub fn C.gtk_icon_view_get_item_at_pos(icon_view &GtkIconView, x int, y int, path &GtkTreePath, cell &GtkCellRenderer) bool
-pub fn C.gtk_icon_view_get_visible_range(icon_view &GtkIconView, start_path &GtkTreePath, end_path &GtkTreePath) bool
+pub fn C.gtk_icon_view_get_item_at_pos(icon_view &GtkIconView, x int, y int, path &&GtkTreePath, cell &&GtkCellRenderer) bool
+pub fn C.gtk_icon_view_get_visible_range(icon_view &GtkIconView, start_path &&GtkTreePath, end_path &&GtkTreePath) bool
 pub fn C.gtk_icon_view_set_activate_on_single_click(icon_view &GtkIconView, single bool)
 pub fn C.gtk_icon_view_get_activate_on_single_click(icon_view &GtkIconView) bool
 pub fn C.gtk_icon_view_selected_foreach(icon_view &GtkIconView, func voidptr, data voidptr)
@@ -62,7 +62,7 @@ pub fn C.gtk_icon_view_select_all(icon_view &GtkIconView)
 pub fn C.gtk_icon_view_unselect_all(icon_view &GtkIconView)
 pub fn C.gtk_icon_view_item_activated(icon_view &GtkIconView, path &GtkTreePath)
 pub fn C.gtk_icon_view_set_cursor(icon_view &GtkIconView, path &GtkTreePath, cell &GtkCellRenderer, start_editing bool)
-pub fn C.gtk_icon_view_get_cursor(icon_view &GtkIconView, path &GtkTreePath, cell &GtkCellRenderer) bool
+pub fn C.gtk_icon_view_get_cursor(icon_view &GtkIconView, path &&GtkTreePath, cell &&GtkCellRenderer) bool
 pub fn C.gtk_icon_view_scroll_to_path(icon_view &GtkIconView, path &GtkTreePath, use_align bool, row_align f64, col_align f64)
 pub fn C.gtk_icon_view_enable_model_drag_source(icon_view &GtkIconView, start_button_mask voidptr, formats voidptr, actions voidptr)
 pub fn C.gtk_icon_view_enable_model_drag_dest(icon_view &GtkIconView, formats voidptr, actions voidptr)
@@ -71,13 +71,13 @@ pub fn C.gtk_icon_view_unset_model_drag_dest(icon_view &GtkIconView)
 pub fn C.gtk_icon_view_set_reorderable(icon_view &GtkIconView, reorderable bool)
 pub fn C.gtk_icon_view_get_reorderable(icon_view &GtkIconView) bool
 pub fn C.gtk_icon_view_set_drag_dest_item(icon_view &GtkIconView, path &GtkTreePath, pos GtkIconViewDropPosition)
-pub fn C.gtk_icon_view_get_drag_dest_item(icon_view &GtkIconView, path &GtkTreePath, pos GtkIconViewDropPosition)
-pub fn C.gtk_icon_view_get_dest_item_at_pos(icon_view &GtkIconView, drag_x int, drag_y int, path &GtkTreePath, pos GtkIconViewDropPosition) bool
+pub fn C.gtk_icon_view_get_drag_dest_item(icon_view &GtkIconView, path &&GtkTreePath, pos GtkIconViewDropPosition)
+pub fn C.gtk_icon_view_get_dest_item_at_pos(icon_view &GtkIconView, drag_x int, drag_y int, path &&GtkTreePath, pos GtkIconViewDropPosition) bool
 pub fn C.gtk_icon_view_create_drag_icon(icon_view &GtkIconView, path &GtkTreePath) voidptr
 pub fn C.gtk_icon_view_get_cell_rect(icon_view &GtkIconView, path &GtkTreePath, cell &GtkCellRenderer, rect voidptr) bool
 pub fn C.gtk_icon_view_set_tooltip_item(icon_view &GtkIconView, tooltip &GtkTooltip, path &GtkTreePath)
 pub fn C.gtk_icon_view_set_tooltip_cell(icon_view &GtkIconView, tooltip &GtkTooltip, path &GtkTreePath, cell &GtkCellRenderer)
-pub fn C.gtk_icon_view_get_tooltip_context(icon_view &GtkIconView, x int, y int, keyboard_tip bool, model &GtkTreeModel, path &GtkTreePath, iter &GtkTreeIter) bool
+pub fn C.gtk_icon_view_get_tooltip_context(icon_view &GtkIconView, x int, y int, keyboard_tip bool, model &&GtkTreeModel, path &&GtkTreePath, iter &GtkTreeIter) bool
 pub fn C.gtk_icon_view_set_tooltip_column(icon_view &GtkIconView, column int)
 pub fn C.gtk_icon_view_get_tooltip_column(icon_view &GtkIconView) int
 
@@ -202,11 +202,11 @@ pub fn (self &GtkIconView) get_path_at_pos(x int, y int) &GtkTreePath {
 	return C.gtk_icon_view_get_path_at_pos(self, x, y)
 }
 
-pub fn (self &GtkIconView) get_item_at_pos(x int, y int, path &GtkTreePath, cell &GtkCellRenderer) bool {
+pub fn (self &GtkIconView) get_item_at_pos(x int, y int, path &&GtkTreePath, cell &&GtkCellRenderer) bool {
 	return C.gtk_icon_view_get_item_at_pos(self, x, y, path, cell)
 }
 
-pub fn (self &GtkIconView) get_visible_range(start_path &GtkTreePath, end_path &GtkTreePath) bool {
+pub fn (self &GtkIconView) get_visible_range(start_path &&GtkTreePath, end_path &&GtkTreePath) bool {
 	return C.gtk_icon_view_get_visible_range(self, start_path, end_path)
 }
 
@@ -270,7 +270,7 @@ pub fn (self &GtkIconView) set_cursor(path &GtkTreePath, cell &GtkCellRenderer, 
 	C.gtk_icon_view_set_cursor(self, path, cell, start_editing)
 }
 
-pub fn (self &GtkIconView) get_cursor(path &GtkTreePath, cell &GtkCellRenderer) bool {
+pub fn (self &GtkIconView) get_cursor(path &&GtkTreePath, cell &&GtkCellRenderer) bool {
 	return C.gtk_icon_view_get_cursor(self, path, cell)
 }
 
@@ -306,11 +306,11 @@ pub fn (self &GtkIconView) set_drag_dest_item(path &GtkTreePath, pos GtkIconView
 	C.gtk_icon_view_set_drag_dest_item(self, path, pos)
 }
 
-pub fn (self &GtkIconView) get_drag_dest_item(path &GtkTreePath, pos GtkIconViewDropPosition) {
+pub fn (self &GtkIconView) get_drag_dest_item(path &&GtkTreePath, pos GtkIconViewDropPosition) {
 	C.gtk_icon_view_get_drag_dest_item(self, path, pos)
 }
 
-pub fn (self &GtkIconView) get_dest_item_at_pos(drag_x int, drag_y int, path &GtkTreePath, pos GtkIconViewDropPosition) bool {
+pub fn (self &GtkIconView) get_dest_item_at_pos(drag_x int, drag_y int, path &&GtkTreePath, pos GtkIconViewDropPosition) bool {
 	return C.gtk_icon_view_get_dest_item_at_pos(self, drag_x, drag_y, path, pos)
 }
 
@@ -330,7 +330,7 @@ pub fn (self &GtkIconView) set_tooltip_cell(tooltip &GtkTooltip, path &GtkTreePa
 	C.gtk_icon_view_set_tooltip_cell(self, tooltip, path, cell)
 }
 
-pub fn (self &GtkIconView) get_tooltip_context(x int, y int, keyboard_tip bool, model &GtkTreeModel, path &GtkTreePath, iter &GtkTreeIter) bool {
+pub fn (self &GtkIconView) get_tooltip_context(x int, y int, keyboard_tip bool, model &&GtkTreeModel, path &&GtkTreePath, iter &GtkTreeIter) bool {
 	return C.gtk_icon_view_get_tooltip_context(self, x, y, keyboard_tip, model, path,
 		iter)
 }

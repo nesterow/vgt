@@ -30,8 +30,8 @@ pub fn g_str_to_ascii(str &char, from_locale &char) &char {
 	return C.g_str_to_ascii(str, from_locale)
 }
 
-pub fn C.g_str_tokenize_and_fold(str_t &char, translit_locale &char, ascii_alternates &char) &char
-pub fn g_str_tokenize_and_fold(str_t &char, translit_locale &char, ascii_alternates &char) &char {
+pub fn C.g_str_tokenize_and_fold(str_t &char, translit_locale &char, ascii_alternates &&&char) &&char
+pub fn g_str_tokenize_and_fold(str_t &char, translit_locale &char, ascii_alternates &&&char) &&char {
 	return C.g_str_tokenize_and_fold(str_t, translit_locale, ascii_alternates)
 }
 

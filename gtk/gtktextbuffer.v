@@ -105,24 +105,24 @@ pub fn (self &GtkTextBuffer) get_tag_table() &GtkTextTagTable {
 	return C.gtk_text_buffer_get_tag_table(self)
 }
 
-pub fn (self &GtkTextBuffer) set_text(text &char, len int) {
-	C.gtk_text_buffer_set_text(self, text, len)
+pub fn (self &GtkTextBuffer) set_text(text string, len int) {
+	C.gtk_text_buffer_set_text(self, text.str, len)
 }
 
-pub fn (self &GtkTextBuffer) insert(iter &GtkTextIter, text &char, len int) {
-	C.gtk_text_buffer_insert(self, iter, text, len)
+pub fn (self &GtkTextBuffer) insert(iter &GtkTextIter, text string, len int) {
+	C.gtk_text_buffer_insert(self, iter, text.str, len)
 }
 
-pub fn (self &GtkTextBuffer) insert_at_cursor(text &char, len int) {
-	C.gtk_text_buffer_insert_at_cursor(self, text, len)
+pub fn (self &GtkTextBuffer) insert_at_cursor(text string, len int) {
+	C.gtk_text_buffer_insert_at_cursor(self, text.str, len)
 }
 
-pub fn (self &GtkTextBuffer) insert_interactive(iter &GtkTextIter, text &char, len int, default_editable bool) bool {
-	return C.gtk_text_buffer_insert_interactive(self, iter, text, len, default_editable)
+pub fn (self &GtkTextBuffer) insert_interactive(iter &GtkTextIter, text string, len int, default_editable bool) bool {
+	return C.gtk_text_buffer_insert_interactive(self, iter, text.str, len, default_editable)
 }
 
-pub fn (self &GtkTextBuffer) insert_interactive_at_cursor(text &char, len int, default_editable bool) bool {
-	return C.gtk_text_buffer_insert_interactive_at_cursor(self, text, len, default_editable)
+pub fn (self &GtkTextBuffer) insert_interactive_at_cursor(text string, len int, default_editable bool) bool {
+	return C.gtk_text_buffer_insert_interactive_at_cursor(self, text.str, len, default_editable)
 }
 
 pub fn (self &GtkTextBuffer) insert_range(iter &GtkTextIter, start &GtkTextIter, end &GtkTextIter) {
@@ -133,16 +133,16 @@ pub fn (self &GtkTextBuffer) insert_range_interactive(iter &GtkTextIter, start &
 	return C.gtk_text_buffer_insert_range_interactive(self, iter, start, end, default_editable)
 }
 
-pub fn (self &GtkTextBuffer) insert_with_tags(iter &GtkTextIter, text &char, len int, first_tag &GtkTextTag) {
-	C.gtk_text_buffer_insert_with_tags(self, iter, text, len, first_tag)
+pub fn (self &GtkTextBuffer) insert_with_tags(iter &GtkTextIter, text string, len int, first_tag &GtkTextTag) {
+	C.gtk_text_buffer_insert_with_tags(self, iter, text.str, len, first_tag)
 }
 
-pub fn (self &GtkTextBuffer) insert_with_tags_by_name(iter &GtkTextIter, text &char, len int, first_tag_name &char) {
-	C.gtk_text_buffer_insert_with_tags_by_name(self, iter, text, len, first_tag_name)
+pub fn (self &GtkTextBuffer) insert_with_tags_by_name(iter &GtkTextIter, text string, len int, first_tag_name string) {
+	C.gtk_text_buffer_insert_with_tags_by_name(self, iter, text.str, len, first_tag_name.str)
 }
 
-pub fn (self &GtkTextBuffer) insert_markup(iter &GtkTextIter, markup &char, len int) {
-	C.gtk_text_buffer_insert_markup(self, iter, markup, len)
+pub fn (self &GtkTextBuffer) insert_markup(iter &GtkTextIter, markup string, len int) {
+	C.gtk_text_buffer_insert_markup(self, iter, markup.str, len)
 }
 
 pub fn (self &GtkTextBuffer) delete(start &GtkTextIter, end &GtkTextIter) {
@@ -181,8 +181,8 @@ pub fn (self &GtkTextBuffer) add_mark(mark &GtkTextMark, where &GtkTextIter) {
 	C.gtk_text_buffer_add_mark(self, mark, where)
 }
 
-pub fn (self &GtkTextBuffer) create_mark(mark_name &char, where &GtkTextIter, left_gravity bool) &GtkTextMark {
-	return C.gtk_text_buffer_create_mark(self, mark_name, where, left_gravity)
+pub fn (self &GtkTextBuffer) create_mark(mark_name string, where &GtkTextIter, left_gravity bool) &GtkTextMark {
+	return C.gtk_text_buffer_create_mark(self, mark_name.str, where, left_gravity)
 }
 
 pub fn (self &GtkTextBuffer) move_mark(mark &GtkTextMark, where &GtkTextIter) {
@@ -193,16 +193,16 @@ pub fn (self &GtkTextBuffer) delete_mark(mark &GtkTextMark) {
 	C.gtk_text_buffer_delete_mark(self, mark)
 }
 
-pub fn (self &GtkTextBuffer) get_mark(name &char) &GtkTextMark {
-	return C.gtk_text_buffer_get_mark(self, name)
+pub fn (self &GtkTextBuffer) get_mark(name string) &GtkTextMark {
+	return C.gtk_text_buffer_get_mark(self, name.str)
 }
 
-pub fn (self &GtkTextBuffer) move_mark_by_name(name &char, where &GtkTextIter) {
-	C.gtk_text_buffer_move_mark_by_name(self, name, where)
+pub fn (self &GtkTextBuffer) move_mark_by_name(name string, where &GtkTextIter) {
+	C.gtk_text_buffer_move_mark_by_name(self, name.str, where)
 }
 
-pub fn (self &GtkTextBuffer) delete_mark_by_name(name &char) {
-	C.gtk_text_buffer_delete_mark_by_name(self, name)
+pub fn (self &GtkTextBuffer) delete_mark_by_name(name string) {
+	C.gtk_text_buffer_delete_mark_by_name(self, name.str)
 }
 
 pub fn (self &GtkTextBuffer) get_insert() &GtkTextMark {
@@ -229,20 +229,20 @@ pub fn (self &GtkTextBuffer) remove_tag(tag &GtkTextTag, start &GtkTextIter, end
 	C.gtk_text_buffer_remove_tag(self, tag, start, end)
 }
 
-pub fn (self &GtkTextBuffer) apply_tag_by_name(name &char, start &GtkTextIter, end &GtkTextIter) {
-	C.gtk_text_buffer_apply_tag_by_name(self, name, start, end)
+pub fn (self &GtkTextBuffer) apply_tag_by_name(name string, start &GtkTextIter, end &GtkTextIter) {
+	C.gtk_text_buffer_apply_tag_by_name(self, name.str, start, end)
 }
 
-pub fn (self &GtkTextBuffer) remove_tag_by_name(name &char, start &GtkTextIter, end &GtkTextIter) {
-	C.gtk_text_buffer_remove_tag_by_name(self, name, start, end)
+pub fn (self &GtkTextBuffer) remove_tag_by_name(name string, start &GtkTextIter, end &GtkTextIter) {
+	C.gtk_text_buffer_remove_tag_by_name(self, name.str, start, end)
 }
 
 pub fn (self &GtkTextBuffer) remove_all_tags(start &GtkTextIter, end &GtkTextIter) {
 	C.gtk_text_buffer_remove_all_tags(self, start, end)
 }
 
-pub fn (self &GtkTextBuffer) create_tag(tag_name &char, first_property_name &char) &GtkTextTag {
-	return C.gtk_text_buffer_create_tag(self, tag_name, first_property_name)
+pub fn (self &GtkTextBuffer) create_tag(tag_name string, first_property_name string) &GtkTextTag {
+	return C.gtk_text_buffer_create_tag(self, tag_name.str, first_property_name.str)
 }
 
 pub fn (self &GtkTextBuffer) get_iter_at_line_offset(iter &GtkTextIter, line_number int, char_offset int) bool {

@@ -37,12 +37,12 @@ pub fn GtkStringFilter.new(expression &GtkExpression) &GtkStringFilter {
 	return C.gtk_string_filter_new(expression)
 }
 
-pub fn (self &GtkStringFilter) get_search() &char {
-	return C.gtk_string_filter_get_search(self)
+pub fn (self &GtkStringFilter) get_search() string {
+	return unsafe { cstring_to_vstring(C.gtk_string_filter_get_search(self)) }
 }
 
-pub fn (self &GtkStringFilter) set_search(search &char) {
-	C.gtk_string_filter_set_search(self, search)
+pub fn (self &GtkStringFilter) set_search(search string) {
+	C.gtk_string_filter_set_search(self, search.str)
 }
 
 pub fn (self &GtkStringFilter) get_expression() &GtkExpression {

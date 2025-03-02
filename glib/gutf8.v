@@ -80,13 +80,13 @@ pub fn g_utf8_to_ucs4_fast(str &char, len i64, items_written &i64) &u8 {
 	return C.g_utf8_to_ucs4_fast(str, len, items_written)
 }
 
-pub fn C.g_utf8_validate(str &char, max_len usize, end &char) bool
-pub fn g_utf8_validate(str &char, max_len usize, end &char) bool {
+pub fn C.g_utf8_validate(str &char, max_len usize, end &&char) bool
+pub fn g_utf8_validate(str &char, max_len usize, end &&char) bool {
 	return C.g_utf8_validate(str, max_len, end)
 }
 
-pub fn C.g_utf8_validate_len(str &char, max_len usize, end &char) bool
-pub fn g_utf8_validate_len(str &char, max_len usize, end &char) bool {
+pub fn C.g_utf8_validate_len(str &char, max_len usize, end &&char) bool
+pub fn g_utf8_validate_len(str &char, max_len usize, end &&char) bool {
 	return C.g_utf8_validate_len(str, max_len, end)
 }
 

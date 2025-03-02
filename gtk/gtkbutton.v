@@ -36,16 +36,16 @@ pub fn GtkButton.new() &GtkWidget {
 	return C.gtk_button_new()
 }
 
-pub fn GtkButton.new_with_label(label &char) &GtkWidget {
-	return C.gtk_button_new_with_label(label)
+pub fn GtkButton.new_with_label(label string) &GtkWidget {
+	return C.gtk_button_new_with_label(label.str)
 }
 
-pub fn GtkButton.new_from_icon_name(icon_name &char) &GtkWidget {
-	return C.gtk_button_new_from_icon_name(icon_name)
+pub fn GtkButton.new_from_icon_name(icon_name string) &GtkWidget {
+	return C.gtk_button_new_from_icon_name(icon_name.str)
 }
 
-pub fn GtkButton.new_with_mnemonic(label &char) &GtkWidget {
-	return C.gtk_button_new_with_mnemonic(label)
+pub fn GtkButton.new_with_mnemonic(label string) &GtkWidget {
+	return C.gtk_button_new_with_mnemonic(label.str)
 }
 
 pub fn (self &GtkButton) set_has_frame(has_frame bool) {
@@ -56,12 +56,12 @@ pub fn (self &GtkButton) get_has_frame() bool {
 	return C.gtk_button_get_has_frame(self)
 }
 
-pub fn (self &GtkButton) set_label(label &char) {
-	C.gtk_button_set_label(self, label)
+pub fn (self &GtkButton) set_label(label string) {
+	C.gtk_button_set_label(self, label.str)
 }
 
-pub fn (self &GtkButton) get_label() &char {
-	return C.gtk_button_get_label(self)
+pub fn (self &GtkButton) get_label() string {
+	return unsafe { cstring_to_vstring(C.gtk_button_get_label(self)) }
 }
 
 pub fn (self &GtkButton) set_use_underline(use_underline bool) {
@@ -72,12 +72,12 @@ pub fn (self &GtkButton) get_use_underline() bool {
 	return C.gtk_button_get_use_underline(self)
 }
 
-pub fn (self &GtkButton) set_icon_name(icon_name &char) {
-	C.gtk_button_set_icon_name(self, icon_name)
+pub fn (self &GtkButton) set_icon_name(icon_name string) {
+	C.gtk_button_set_icon_name(self, icon_name.str)
 }
 
-pub fn (self &GtkButton) get_icon_name() &char {
-	return C.gtk_button_get_icon_name(self)
+pub fn (self &GtkButton) get_icon_name() string {
+	return unsafe { cstring_to_vstring(C.gtk_button_get_icon_name(self)) }
 }
 
 pub fn (self &GtkButton) set_child(child &GtkWidget) {

@@ -29,8 +29,8 @@ pub fn (self &GtkDirectoryList) get_type() glib.GType {
 	return C.gtk_directory_list_get_type()
 }
 
-pub fn GtkDirectoryList.new(attributes &char, file &glib.GFile) &GtkDirectoryList {
-	return C.gtk_directory_list_new(attributes, file)
+pub fn GtkDirectoryList.new(attributes string, file &glib.GFile) &GtkDirectoryList {
+	return C.gtk_directory_list_new(attributes.str, file)
 }
 
 pub fn (self &GtkDirectoryList) set_file(file &glib.GFile) {
@@ -41,12 +41,12 @@ pub fn (self &GtkDirectoryList) get_file() voidptr {
 	return C.gtk_directory_list_get_file(self)
 }
 
-pub fn (self &GtkDirectoryList) set_attributes(attributes &char) {
-	C.gtk_directory_list_set_attributes(self, attributes)
+pub fn (self &GtkDirectoryList) set_attributes(attributes string) {
+	C.gtk_directory_list_set_attributes(self, attributes.str)
 }
 
-pub fn (self &GtkDirectoryList) get_attributes() &char {
-	return C.gtk_directory_list_get_attributes(self)
+pub fn (self &GtkDirectoryList) get_attributes() string {
+	return unsafe { cstring_to_vstring(C.gtk_directory_list_get_attributes(self)) }
 }
 
 pub fn (self &GtkDirectoryList) set_io_priority(io_priority int) {

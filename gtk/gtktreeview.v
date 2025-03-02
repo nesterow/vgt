@@ -76,20 +76,20 @@ pub fn C.gtk_tree_view_set_reorderable(tree_view &GtkTreeView, reorderable bool)
 pub fn C.gtk_tree_view_get_reorderable(tree_view &GtkTreeView) bool
 pub fn C.gtk_tree_view_set_cursor(tree_view &GtkTreeView, path &GtkTreePath, focus_column &GtkTreeViewColumn, start_editing bool)
 pub fn C.gtk_tree_view_set_cursor_on_cell(tree_view &GtkTreeView, path &GtkTreePath, focus_column &GtkTreeViewColumn, focus_cell &GtkCellRenderer, start_editing bool)
-pub fn C.gtk_tree_view_get_cursor(tree_view &GtkTreeView, path &GtkTreePath, focus_column &GtkTreeViewColumn)
-pub fn C.gtk_tree_view_get_path_at_pos(tree_view &GtkTreeView, x int, y int, path &GtkTreePath, column &GtkTreeViewColumn, cell_x voidptr, cell_y voidptr) bool
+pub fn C.gtk_tree_view_get_cursor(tree_view &GtkTreeView, path &&GtkTreePath, focus_column &&GtkTreeViewColumn)
+pub fn C.gtk_tree_view_get_path_at_pos(tree_view &GtkTreeView, x int, y int, path &&GtkTreePath, column &&GtkTreeViewColumn, cell_x &i64, cell_y &i64) bool
 pub fn C.gtk_tree_view_get_cell_area(tree_view &GtkTreeView, path &GtkTreePath, column &GtkTreeViewColumn, rect voidptr)
 pub fn C.gtk_tree_view_get_background_area(tree_view &GtkTreeView, path &GtkTreePath, column &GtkTreeViewColumn, rect voidptr)
 pub fn C.gtk_tree_view_get_visible_rect(tree_view &GtkTreeView, visible_rect voidptr)
-pub fn C.gtk_tree_view_get_visible_range(tree_view &GtkTreeView, start_path &GtkTreePath, end_path &GtkTreePath) bool
-pub fn C.gtk_tree_view_is_blank_at_pos(tree_view &GtkTreeView, x int, y int, path &GtkTreePath, column &GtkTreeViewColumn, cell_x voidptr, cell_y voidptr) bool
+pub fn C.gtk_tree_view_get_visible_range(tree_view &GtkTreeView, start_path &&GtkTreePath, end_path &&GtkTreePath) bool
+pub fn C.gtk_tree_view_is_blank_at_pos(tree_view &GtkTreeView, x int, y int, path &&GtkTreePath, column &&GtkTreeViewColumn, cell_x &i64, cell_y &i64) bool
 pub fn C.gtk_tree_view_enable_model_drag_source(tree_view &GtkTreeView, start_button_mask voidptr, formats voidptr, actions voidptr)
 pub fn C.gtk_tree_view_enable_model_drag_dest(tree_view &GtkTreeView, formats voidptr, actions voidptr)
 pub fn C.gtk_tree_view_unset_rows_drag_source(tree_view &GtkTreeView)
 pub fn C.gtk_tree_view_unset_rows_drag_dest(tree_view &GtkTreeView)
 pub fn C.gtk_tree_view_set_drag_dest_row(tree_view &GtkTreeView, path &GtkTreePath, pos GtkTreeViewDropPosition)
-pub fn C.gtk_tree_view_get_drag_dest_row(tree_view &GtkTreeView, path &GtkTreePath, pos GtkTreeViewDropPosition)
-pub fn C.gtk_tree_view_get_dest_row_at_pos(tree_view &GtkTreeView, drag_x int, drag_y int, path &GtkTreePath, pos GtkTreeViewDropPosition) bool
+pub fn C.gtk_tree_view_get_drag_dest_row(tree_view &GtkTreeView, path &&GtkTreePath, pos GtkTreeViewDropPosition)
+pub fn C.gtk_tree_view_get_dest_row_at_pos(tree_view &GtkTreeView, drag_x int, drag_y int, path &&GtkTreePath, pos GtkTreeViewDropPosition) bool
 pub fn C.gtk_tree_view_create_row_drag_icon(tree_view &GtkTreeView, path &GtkTreePath) voidptr
 pub fn C.gtk_tree_view_set_enable_search(tree_view &GtkTreeView, enable_search bool)
 pub fn C.gtk_tree_view_get_enable_search(tree_view &GtkTreeView) bool
@@ -99,12 +99,12 @@ pub fn C.gtk_tree_view_get_search_equal_func(tree_view &GtkTreeView) GtkTreeView
 pub fn C.gtk_tree_view_set_search_equal_func(tree_view &GtkTreeView, search_equal_func voidptr, search_user_data voidptr, search_destroy voidptr)
 pub fn C.gtk_tree_view_get_search_entry(tree_view &GtkTreeView) &GtkEditable
 pub fn C.gtk_tree_view_set_search_entry(tree_view &GtkTreeView, entry &GtkEditable)
-pub fn C.gtk_tree_view_convert_widget_to_tree_coords(tree_view &GtkTreeView, wx int, wy int, tx voidptr, ty voidptr)
-pub fn C.gtk_tree_view_convert_tree_to_widget_coords(tree_view &GtkTreeView, tx int, ty int, wx voidptr, wy voidptr)
-pub fn C.gtk_tree_view_convert_widget_to_bin_window_coords(tree_view &GtkTreeView, wx int, wy int, bx voidptr, by voidptr)
-pub fn C.gtk_tree_view_convert_bin_window_to_widget_coords(tree_view &GtkTreeView, bx int, by int, wx voidptr, wy voidptr)
-pub fn C.gtk_tree_view_convert_tree_to_bin_window_coords(tree_view &GtkTreeView, tx int, ty int, bx voidptr, by voidptr)
-pub fn C.gtk_tree_view_convert_bin_window_to_tree_coords(tree_view &GtkTreeView, bx int, by int, tx voidptr, ty voidptr)
+pub fn C.gtk_tree_view_convert_widget_to_tree_coords(tree_view &GtkTreeView, wx int, wy int, tx &i64, ty &i64)
+pub fn C.gtk_tree_view_convert_tree_to_widget_coords(tree_view &GtkTreeView, tx int, ty int, wx &i64, wy &i64)
+pub fn C.gtk_tree_view_convert_widget_to_bin_window_coords(tree_view &GtkTreeView, wx int, wy int, bx &i64, by &i64)
+pub fn C.gtk_tree_view_convert_bin_window_to_widget_coords(tree_view &GtkTreeView, bx int, by int, wx &i64, wy &i64)
+pub fn C.gtk_tree_view_convert_tree_to_bin_window_coords(tree_view &GtkTreeView, tx int, ty int, bx &i64, by &i64)
+pub fn C.gtk_tree_view_convert_bin_window_to_tree_coords(tree_view &GtkTreeView, bx int, by int, tx &i64, ty &i64)
 pub fn C.gtk_tree_view_set_fixed_height_mode(tree_view &GtkTreeView, enable bool)
 pub fn C.gtk_tree_view_get_fixed_height_mode(tree_view &GtkTreeView) bool
 pub fn C.gtk_tree_view_set_hover_selection(tree_view &GtkTreeView, hover bool)
@@ -126,7 +126,7 @@ pub fn C.gtk_tree_view_set_level_indentation(tree_view &GtkTreeView, indentation
 pub fn C.gtk_tree_view_get_level_indentation(tree_view &GtkTreeView) int
 pub fn C.gtk_tree_view_set_tooltip_row(tree_view &GtkTreeView, tooltip &GtkTooltip, path &GtkTreePath)
 pub fn C.gtk_tree_view_set_tooltip_cell(tree_view &GtkTreeView, tooltip &GtkTooltip, path &GtkTreePath, column &GtkTreeViewColumn, cell &GtkCellRenderer)
-pub fn C.gtk_tree_view_get_tooltip_context(tree_view &GtkTreeView, x int, y int, keyboard_tip bool, model &GtkTreeModel, path &GtkTreePath, iter &GtkTreeIter) bool
+pub fn C.gtk_tree_view_get_tooltip_context(tree_view &GtkTreeView, x int, y int, keyboard_tip bool, model &&GtkTreeModel, path &&GtkTreePath, iter &GtkTreeIter) bool
 pub fn C.gtk_tree_view_set_tooltip_column(tree_view &GtkTreeView, column int)
 pub fn C.gtk_tree_view_get_tooltip_column(tree_view &GtkTreeView) int
 
@@ -199,13 +199,13 @@ pub fn (self &GtkTreeView) insert_column(column &GtkTreeViewColumn, position int
 	return C.gtk_tree_view_insert_column(self, column, position)
 }
 
-pub fn (self &GtkTreeView) insert_column_with_attributes(position int, title &char, cell &GtkCellRenderer) int {
-	return C.gtk_tree_view_insert_column_with_attributes(self, position, title, cell)
+pub fn (self &GtkTreeView) insert_column_with_attributes(position int, title string, cell &GtkCellRenderer) int {
+	return C.gtk_tree_view_insert_column_with_attributes(self, position, title.str, cell)
 }
 
-pub fn (self &GtkTreeView) insert_column_with_data_func(position int, title &char, cell &GtkCellRenderer, func voidptr, data voidptr, dnotify voidptr) int {
-	return C.gtk_tree_view_insert_column_with_data_func(self, position, title, cell, func,
-		data, dnotify)
+pub fn (self &GtkTreeView) insert_column_with_data_func(position int, title string, cell &GtkCellRenderer, func voidptr, data voidptr, dnotify voidptr) int {
+	return C.gtk_tree_view_insert_column_with_data_func(self, position, title.str, cell,
+		func, data, dnotify)
 }
 
 pub fn (self &GtkTreeView) get_n_columns() u64 {
@@ -292,11 +292,11 @@ pub fn (self &GtkTreeView) set_cursor_on_cell(path &GtkTreePath, focus_column &G
 	C.gtk_tree_view_set_cursor_on_cell(self, path, focus_column, focus_cell, start_editing)
 }
 
-pub fn (self &GtkTreeView) get_cursor(path &GtkTreePath, focus_column &GtkTreeViewColumn) {
+pub fn (self &GtkTreeView) get_cursor(path &&GtkTreePath, focus_column &&GtkTreeViewColumn) {
 	C.gtk_tree_view_get_cursor(self, path, focus_column)
 }
 
-pub fn (self &GtkTreeView) get_path_at_pos(x int, y int, path &GtkTreePath, column &GtkTreeViewColumn, cell_x voidptr, cell_y voidptr) bool {
+pub fn (self &GtkTreeView) get_path_at_pos(x int, y int, path &&GtkTreePath, column &&GtkTreeViewColumn, cell_x &i64, cell_y &i64) bool {
 	return C.gtk_tree_view_get_path_at_pos(self, x, y, path, column, cell_x, cell_y)
 }
 
@@ -312,11 +312,11 @@ pub fn (self &GtkTreeView) get_visible_rect(visible_rect voidptr) {
 	C.gtk_tree_view_get_visible_rect(self, visible_rect)
 }
 
-pub fn (self &GtkTreeView) get_visible_range(start_path &GtkTreePath, end_path &GtkTreePath) bool {
+pub fn (self &GtkTreeView) get_visible_range(start_path &&GtkTreePath, end_path &&GtkTreePath) bool {
 	return C.gtk_tree_view_get_visible_range(self, start_path, end_path)
 }
 
-pub fn (self &GtkTreeView) is_blank_at_pos(x int, y int, path &GtkTreePath, column &GtkTreeViewColumn, cell_x voidptr, cell_y voidptr) bool {
+pub fn (self &GtkTreeView) is_blank_at_pos(x int, y int, path &&GtkTreePath, column &&GtkTreeViewColumn, cell_x &i64, cell_y &i64) bool {
 	return C.gtk_tree_view_is_blank_at_pos(self, x, y, path, column, cell_x, cell_y)
 }
 
@@ -340,11 +340,11 @@ pub fn (self &GtkTreeView) set_drag_dest_row(path &GtkTreePath, pos GtkTreeViewD
 	C.gtk_tree_view_set_drag_dest_row(self, path, pos)
 }
 
-pub fn (self &GtkTreeView) get_drag_dest_row(path &GtkTreePath, pos GtkTreeViewDropPosition) {
+pub fn (self &GtkTreeView) get_drag_dest_row(path &&GtkTreePath, pos GtkTreeViewDropPosition) {
 	C.gtk_tree_view_get_drag_dest_row(self, path, pos)
 }
 
-pub fn (self &GtkTreeView) get_dest_row_at_pos(drag_x int, drag_y int, path &GtkTreePath, pos GtkTreeViewDropPosition) bool {
+pub fn (self &GtkTreeView) get_dest_row_at_pos(drag_x int, drag_y int, path &&GtkTreePath, pos GtkTreeViewDropPosition) bool {
 	return C.gtk_tree_view_get_dest_row_at_pos(self, drag_x, drag_y, path, pos)
 }
 
@@ -384,27 +384,27 @@ pub fn (self &GtkTreeView) set_search_entry(entry &GtkEditable) {
 	C.gtk_tree_view_set_search_entry(self, entry)
 }
 
-pub fn (self &GtkTreeView) convert_widget_to_tree_coords(wx int, wy int, tx voidptr, ty voidptr) {
+pub fn (self &GtkTreeView) convert_widget_to_tree_coords(wx int, wy int, tx &i64, ty &i64) {
 	C.gtk_tree_view_convert_widget_to_tree_coords(self, wx, wy, tx, ty)
 }
 
-pub fn (self &GtkTreeView) convert_tree_to_widget_coords(tx int, ty int, wx voidptr, wy voidptr) {
+pub fn (self &GtkTreeView) convert_tree_to_widget_coords(tx int, ty int, wx &i64, wy &i64) {
 	C.gtk_tree_view_convert_tree_to_widget_coords(self, tx, ty, wx, wy)
 }
 
-pub fn (self &GtkTreeView) convert_widget_to_bin_window_coords(wx int, wy int, bx voidptr, by voidptr) {
+pub fn (self &GtkTreeView) convert_widget_to_bin_window_coords(wx int, wy int, bx &i64, by &i64) {
 	C.gtk_tree_view_convert_widget_to_bin_window_coords(self, wx, wy, bx, by)
 }
 
-pub fn (self &GtkTreeView) convert_bin_window_to_widget_coords(bx int, by int, wx voidptr, wy voidptr) {
+pub fn (self &GtkTreeView) convert_bin_window_to_widget_coords(bx int, by int, wx &i64, wy &i64) {
 	C.gtk_tree_view_convert_bin_window_to_widget_coords(self, bx, by, wx, wy)
 }
 
-pub fn (self &GtkTreeView) convert_tree_to_bin_window_coords(tx int, ty int, bx voidptr, by voidptr) {
+pub fn (self &GtkTreeView) convert_tree_to_bin_window_coords(tx int, ty int, bx &i64, by &i64) {
 	C.gtk_tree_view_convert_tree_to_bin_window_coords(self, tx, ty, bx, by)
 }
 
-pub fn (self &GtkTreeView) convert_bin_window_to_tree_coords(bx int, by int, tx voidptr, ty voidptr) {
+pub fn (self &GtkTreeView) convert_bin_window_to_tree_coords(bx int, by int, tx &i64, ty &i64) {
 	C.gtk_tree_view_convert_bin_window_to_tree_coords(self, bx, by, tx, ty)
 }
 
@@ -492,7 +492,7 @@ pub fn (self &GtkTreeView) set_tooltip_cell(tooltip &GtkTooltip, path &GtkTreePa
 	C.gtk_tree_view_set_tooltip_cell(self, tooltip, path, column, cell)
 }
 
-pub fn (self &GtkTreeView) get_tooltip_context(x int, y int, keyboard_tip bool, model &GtkTreeModel, path &GtkTreePath, iter &GtkTreeIter) bool {
+pub fn (self &GtkTreeView) get_tooltip_context(x int, y int, keyboard_tip bool, model &&GtkTreeModel, path &&GtkTreePath, iter &GtkTreeIter) bool {
 	return C.gtk_tree_view_get_tooltip_context(self, x, y, keyboard_tip, model, path,
 		iter)
 }

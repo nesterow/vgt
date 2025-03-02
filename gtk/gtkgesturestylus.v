@@ -9,7 +9,7 @@ pub type GtkGestureStylusClass = C.GtkGestureStylusClass
 
 pub fn C.gtk_gesture_stylus_get_type() glib.GType
 pub fn C.gtk_gesture_stylus_new() &GtkGesture
-pub fn C.gtk_gesture_stylus_get_axis(gesture &GtkGestureStylus, axis voidptr, value voidptr) bool
+pub fn C.gtk_gesture_stylus_get_axis(gesture &GtkGestureStylus, axis voidptr, value &f32) bool
 pub fn C.gtk_gesture_stylus_get_axes(gesture &GtkGestureStylus, axes voidptr, values voidptr) bool
 pub fn C.gtk_gesture_stylus_get_backlog(gesture &GtkGestureStylus, backlog voidptr, n_elems &u64) bool
 pub fn C.gtk_gesture_stylus_get_device_tool(gesture &GtkGestureStylus) voidptr
@@ -27,7 +27,7 @@ pub fn GtkGestureStylus.new() &GtkGesture {
 	return C.gtk_gesture_stylus_new()
 }
 
-pub fn (self &GtkGestureStylus) get_axis(axis voidptr, value voidptr) bool {
+pub fn (self &GtkGestureStylus) get_axis(axis voidptr, value &f32) bool {
 	return C.gtk_gesture_stylus_get_axis(self, axis, value)
 }
 

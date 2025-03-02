@@ -196,8 +196,8 @@ pub fn (self &GApplication) command_line_get_type() int {
 	return C.g_application_command_line_get_type()
 }
 
-pub fn C.g_application_command_line_get_arguments(cmdline &GApplicationCommandLine, argc voidptr) &char
-pub fn (self &GApplication) command_line_get_arguments(cmdline &GApplicationCommandLine, argc voidptr) &char {
+pub fn C.g_application_command_line_get_arguments(cmdline &GApplicationCommandLine, argc &i64) &&char
+pub fn (self &GApplication) command_line_get_arguments(cmdline &GApplicationCommandLine, argc &i64) &&char {
 	return C.g_application_command_line_get_arguments(cmdline, argc)
 }
 

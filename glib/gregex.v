@@ -97,18 +97,18 @@ pub fn (regex &GRegex) match_all_full(str_t &char, string_len usize, start_posit
 		match_info, error)
 }
 
-pub fn C.g_regex_split_simple(pattern &char, str_t &char, compile_options GRegexCompileFlags, match_options GRegexMatchFlags) &char
-pub fn (self &GRegex) split_simple(pattern &char, str_t &char, compile_options GRegexCompileFlags, match_options GRegexMatchFlags) &char {
+pub fn C.g_regex_split_simple(pattern &char, str_t &char, compile_options GRegexCompileFlags, match_options GRegexMatchFlags) &&char
+pub fn (self &GRegex) split_simple(pattern &char, str_t &char, compile_options GRegexCompileFlags, match_options GRegexMatchFlags) &&char {
 	return C.g_regex_split_simple(pattern, str_t, compile_options, match_options)
 }
 
-pub fn C.g_regex_split(regex &GRegex, str_t &char, match_options GRegexMatchFlags) &char
-pub fn (regex &GRegex) split(str_t &char, match_options GRegexMatchFlags) &char {
+pub fn C.g_regex_split(regex &GRegex, str_t &char, match_options GRegexMatchFlags) &&char
+pub fn (regex &GRegex) split(str_t &char, match_options GRegexMatchFlags) &&char {
 	return C.g_regex_split(regex, str_t, match_options)
 }
 
-pub fn C.g_regex_split_full(regex &GRegex, str_t &char, string_len usize, start_position int, match_options GRegexMatchFlags, max_tokens int, error &GError) &char
-pub fn (regex &GRegex) split_full(str_t &char, string_len usize, start_position int, match_options GRegexMatchFlags, max_tokens int, error &GError) &char {
+pub fn C.g_regex_split_full(regex &GRegex, str_t &char, string_len usize, start_position int, match_options GRegexMatchFlags, max_tokens int, error &GError) &&char
+pub fn (regex &GRegex) split_full(str_t &char, string_len usize, start_position int, match_options GRegexMatchFlags, max_tokens int, error &GError) &&char {
 	return C.g_regex_split_full(regex, str_t, string_len, start_position, match_options,
 		max_tokens, error)
 }

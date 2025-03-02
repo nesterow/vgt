@@ -40,6 +40,6 @@ pub fn (self &GtkPadController) set_action_entries(entries &GtkPadActionEntry, n
 	C.gtk_pad_controller_set_action_entries(self, entries, n_entries)
 }
 
-pub fn (self &GtkPadController) set_action(typ GtkPadActionType, index int, mode int, label &char, action_name &char) {
-	C.gtk_pad_controller_set_action(self, typ, index, mode, label, action_name)
+pub fn (self &GtkPadController) set_action(typ GtkPadActionType, index int, mode int, label string, action_name string) {
+	C.gtk_pad_controller_set_action(self, typ, index, mode, label.str, action_name.str)
 }

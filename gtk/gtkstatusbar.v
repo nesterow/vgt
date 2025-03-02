@@ -23,12 +23,12 @@ pub fn GtkStatusbar.new() &GtkWidget {
 	return C.gtk_statusbar_new()
 }
 
-pub fn (self &GtkStatusbar) get_context_id(context_description &char) u64 {
-	return C.gtk_statusbar_get_context_id(self, context_description)
+pub fn (self &GtkStatusbar) get_context_id(context_description string) u64 {
+	return C.gtk_statusbar_get_context_id(self, context_description.str)
 }
 
-pub fn (self &GtkStatusbar) push(context_id u64, text &char) u64 {
-	return C.gtk_statusbar_push(self, context_id, text)
+pub fn (self &GtkStatusbar) push(context_id u64, text string) u64 {
+	return C.gtk_statusbar_push(self, context_id, text.str)
 }
 
 pub fn (self &GtkStatusbar) pop(context_id u64) {

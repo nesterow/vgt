@@ -102,12 +102,12 @@ pub fn (self &GtkNotebook) remove_page(page_num int) {
 	C.gtk_notebook_remove_page(self, page_num)
 }
 
-pub fn (self &GtkNotebook) set_group_name(group_name &char) {
-	C.gtk_notebook_set_group_name(self, group_name)
+pub fn (self &GtkNotebook) set_group_name(group_name string) {
+	C.gtk_notebook_set_group_name(self, group_name.str)
 }
 
-pub fn (self &GtkNotebook) get_group_name() &char {
-	return C.gtk_notebook_get_group_name(self)
+pub fn (self &GtkNotebook) get_group_name() string {
+	return unsafe { cstring_to_vstring(C.gtk_notebook_get_group_name(self)) }
 }
 
 pub fn (self &GtkNotebook) get_current_page() int {
@@ -186,12 +186,12 @@ pub fn (self &GtkNotebook) set_tab_label(child &GtkWidget, tab_label &GtkWidget)
 	C.gtk_notebook_set_tab_label(self, child, tab_label)
 }
 
-pub fn (self &GtkNotebook) set_tab_label_text(child &GtkWidget, tab_text &char) {
-	C.gtk_notebook_set_tab_label_text(self, child, tab_text)
+pub fn (self &GtkNotebook) set_tab_label_text(child &GtkWidget, tab_text string) {
+	C.gtk_notebook_set_tab_label_text(self, child, tab_text.str)
 }
 
-pub fn (self &GtkNotebook) get_tab_label_text(child &GtkWidget) &char {
-	return C.gtk_notebook_get_tab_label_text(self, child)
+pub fn (self &GtkNotebook) get_tab_label_text(child &GtkWidget) string {
+	return unsafe { cstring_to_vstring(C.gtk_notebook_get_tab_label_text(self, child)) }
 }
 
 pub fn (self &GtkNotebook) get_menu_label(child &GtkWidget) &GtkWidget {
@@ -202,12 +202,12 @@ pub fn (self &GtkNotebook) set_menu_label(child &GtkWidget, menu_label &GtkWidge
 	C.gtk_notebook_set_menu_label(self, child, menu_label)
 }
 
-pub fn (self &GtkNotebook) set_menu_label_text(child &GtkWidget, menu_text &char) {
-	C.gtk_notebook_set_menu_label_text(self, child, menu_text)
+pub fn (self &GtkNotebook) set_menu_label_text(child &GtkWidget, menu_text string) {
+	C.gtk_notebook_set_menu_label_text(self, child, menu_text.str)
 }
 
-pub fn (self &GtkNotebook) get_menu_label_text(child &GtkWidget) &char {
-	return C.gtk_notebook_get_menu_label_text(self, child)
+pub fn (self &GtkNotebook) get_menu_label_text(child &GtkWidget) string {
+	return unsafe { cstring_to_vstring(C.gtk_notebook_get_menu_label_text(self, child)) }
 }
 
 pub fn (self &GtkNotebook) reorder_child(child &GtkWidget, position int) {

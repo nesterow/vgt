@@ -34,8 +34,8 @@ pub fn GtkInfoBar.new() &GtkWidget {
 	return C.gtk_info_bar_new()
 }
 
-pub fn GtkInfoBar.new_with_buttons(first_button_text &char) &GtkWidget {
-	return C.gtk_info_bar_new_with_buttons(first_button_text)
+pub fn GtkInfoBar.new_with_buttons(first_button_text string) &GtkWidget {
+	return C.gtk_info_bar_new_with_buttons(first_button_text.str)
 }
 
 pub fn (self &GtkInfoBar) add_action_widget(child &GtkWidget, response_id int) {
@@ -46,12 +46,12 @@ pub fn (self &GtkInfoBar) remove_action_widget(widget &GtkWidget) {
 	C.gtk_info_bar_remove_action_widget(self, widget)
 }
 
-pub fn (self &GtkInfoBar) add_button(button_text &char, response_id int) &GtkWidget {
-	return C.gtk_info_bar_add_button(self, button_text, response_id)
+pub fn (self &GtkInfoBar) add_button(button_text string, response_id int) &GtkWidget {
+	return C.gtk_info_bar_add_button(self, button_text.str, response_id)
 }
 
-pub fn (self &GtkInfoBar) add_buttons(first_button_text &char) {
-	C.gtk_info_bar_add_buttons(self, first_button_text)
+pub fn (self &GtkInfoBar) add_buttons(first_button_text string) {
+	C.gtk_info_bar_add_buttons(self, first_button_text.str)
 }
 
 pub fn (self &GtkInfoBar) add_child(widget &GtkWidget) {

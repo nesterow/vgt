@@ -25,20 +25,20 @@ pub fn (self &GtkAppChooserButton) get_type() glib.GType {
 	return C.gtk_app_chooser_button_get_type()
 }
 
-pub fn GtkAppChooserButton.new(content_typ &char) &GtkWidget {
-	return C.gtk_app_chooser_button_new(content_typ)
+pub fn GtkAppChooserButton.new(content_typ string) &GtkWidget {
+	return C.gtk_app_chooser_button_new(content_typ.str)
 }
 
 pub fn (self &GtkAppChooserButton) append_separator() {
 	C.gtk_app_chooser_button_append_separator(self)
 }
 
-pub fn (self &GtkAppChooserButton) append_custom_item(name &char, label &char, icon &glib.GIcon) {
-	C.gtk_app_chooser_button_append_custom_item(self, name, label, icon)
+pub fn (self &GtkAppChooserButton) append_custom_item(name string, label string, icon &glib.GIcon) {
+	C.gtk_app_chooser_button_append_custom_item(self, name.str, label.str, icon)
 }
 
-pub fn (self &GtkAppChooserButton) set_active_custom_item(name &char) {
-	C.gtk_app_chooser_button_set_active_custom_item(self, name)
+pub fn (self &GtkAppChooserButton) set_active_custom_item(name string) {
+	C.gtk_app_chooser_button_set_active_custom_item(self, name.str)
 }
 
 pub fn (self &GtkAppChooserButton) set_show_dialog_item(setting bool) {
@@ -49,12 +49,12 @@ pub fn (self &GtkAppChooserButton) get_show_dialog_item() bool {
 	return C.gtk_app_chooser_button_get_show_dialog_item(self)
 }
 
-pub fn (self &GtkAppChooserButton) set_heading(heading &char) {
-	C.gtk_app_chooser_button_set_heading(self, heading)
+pub fn (self &GtkAppChooserButton) set_heading(heading string) {
+	C.gtk_app_chooser_button_set_heading(self, heading.str)
 }
 
-pub fn (self &GtkAppChooserButton) get_heading() &char {
-	return C.gtk_app_chooser_button_get_heading(self)
+pub fn (self &GtkAppChooserButton) get_heading() string {
+	return unsafe { cstring_to_vstring(C.gtk_app_chooser_button_get_heading(self)) }
 }
 
 pub fn (self &GtkAppChooserButton) set_show_default_item(setting bool) {

@@ -54,12 +54,12 @@ pub fn (self &GtkEventController) set_propagation_limit(limit GtkPropagationLimi
 	C.gtk_event_controller_set_propagation_limit(self, limit)
 }
 
-pub fn (self &GtkEventController) get_name() &char {
-	return C.gtk_event_controller_get_name(self)
+pub fn (self &GtkEventController) get_name() string {
+	return unsafe { cstring_to_vstring(C.gtk_event_controller_get_name(self)) }
 }
 
-pub fn (self &GtkEventController) set_name(name &char) {
-	C.gtk_event_controller_set_name(self, name)
+pub fn (self &GtkEventController) set_name(name string) {
+	C.gtk_event_controller_set_name(self, name.str)
 }
 
 pub fn (self &GtkEventController) get_current_event() voidptr {

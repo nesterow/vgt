@@ -35,8 +35,8 @@ pub fn (self &GSettings) schema_source_lookup(source &GSettingsSchemaSource, sch
 	return C.g_settings_schema_source_lookup(source, schema_id, recursive)
 }
 
-pub fn C.g_settings_schema_source_list_schemas(source &GSettingsSchemaSource, recursive bool, non_relocatable &char, relocatable &char)
-pub fn (self &GSettings) schema_source_list_schemas(source &GSettingsSchemaSource, recursive bool, non_relocatable &char, relocatable &char) {
+pub fn C.g_settings_schema_source_list_schemas(source &GSettingsSchemaSource, recursive bool, non_relocatable &&&char, relocatable &&&char)
+pub fn (self &GSettings) schema_source_list_schemas(source &GSettingsSchemaSource, recursive bool, non_relocatable &&&char, relocatable &&&char) {
 	C.g_settings_schema_source_list_schemas(source, recursive, non_relocatable, relocatable)
 }
 
@@ -75,13 +75,13 @@ pub fn (self &GSettings) schema_has_key(schema &GSettingsSchema, name &char) boo
 	return C.g_settings_schema_has_key(schema, name)
 }
 
-pub fn C.g_settings_schema_list_keys(schema &GSettingsSchema) &char
-pub fn (self &GSettings) schema_list_keys(schema &GSettingsSchema) &char {
+pub fn C.g_settings_schema_list_keys(schema &GSettingsSchema) &&char
+pub fn (self &GSettings) schema_list_keys(schema &GSettingsSchema) &&char {
 	return C.g_settings_schema_list_keys(schema)
 }
 
-pub fn C.g_settings_schema_list_children(schema &GSettingsSchema) &char
-pub fn (self &GSettings) schema_list_children(schema &GSettingsSchema) &char {
+pub fn C.g_settings_schema_list_children(schema &GSettingsSchema) &&char
+pub fn (self &GSettings) schema_list_children(schema &GSettingsSchema) &&char {
 	return C.g_settings_schema_list_children(schema)
 }
 
@@ -175,13 +175,13 @@ pub fn (self &GSettings) new_full(schema &GSettingsSchema, backend &GSettingsBac
 	return C.g_settings_new_full(schema, backend, path)
 }
 
-pub fn C.g_settings_list_children(settings &GSettings) &char
-pub fn (settings &GSettings) list_children() &char {
+pub fn C.g_settings_list_children(settings &GSettings) &&char
+pub fn (settings &GSettings) list_children() &&char {
 	return C.g_settings_list_children(settings)
 }
 
-pub fn C.g_settings_list_keys(settings &GSettings) &char
-pub fn (settings &GSettings) list_keys() &char {
+pub fn C.g_settings_list_keys(settings &GSettings) &&char
+pub fn (settings &GSettings) list_keys() &&char {
 	return C.g_settings_list_keys(settings)
 }
 
@@ -300,8 +300,8 @@ pub fn (settings &GSettings) set_double(key &char, value f32) bool {
 	return C.g_settings_set_double(settings, key, value)
 }
 
-pub fn C.g_settings_get_strv(settings &GSettings, key &char) &char
-pub fn (settings &GSettings) get_strv(key &char) &char {
+pub fn C.g_settings_get_strv(settings &GSettings, key &char) &&char
+pub fn (settings &GSettings) get_strv(key &char) &&char {
 	return C.g_settings_get_strv(settings, key)
 }
 

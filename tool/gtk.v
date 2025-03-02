@@ -27,7 +27,9 @@ fn convert_ret_type(fdecl_type string, enums map[string]bool, glib_idx GioIndex)
 		return 'glib.' + c_ret_type
 	}
 	if glib_idx.types[c_ret_type.replace_each(['*', ''])] {
-		if c_ret_type.contains('*') {
+		if c_ret_type.contains('**') {
+			return '&&glib.' + c_ret_type.replace_each(['**', ''])
+		} else if c_ret_type.contains('*') {
 			return '&glib.' + c_ret_type.replace_each(['*', ''])
 		} else {
 			return 'glib.' + c_ret_type
@@ -36,10 +38,12 @@ fn convert_ret_type(fdecl_type string, enums map[string]bool, glib_idx GioIndex)
 	if enums[c_ret_type] {
 		v_ret_type = c_ret_type
 	} else if c_ret_type.starts_with('Gtk') && ctov_type[c_ret_type] == '' {
-		if c_ret_type.contains('*') {
-			return c_ret_type.replace('Gtk', '&Gtk').replace('*', '').trim_indent()
+		if c_ret_type.contains('**') {
+			return c_ret_type.replace('Gtk', '&&Gtk').replace('*', '').trim_space()
+		} else if c_ret_type.contains('*') {
+			return c_ret_type.replace('Gtk', '&Gtk').replace('*', '').trim_space()
 		} else {
-			return c_ret_type.replace('*', '').replace('const', '').trim_indent() // assume a enum
+			return c_ret_type.replace('*', '').replace('const', '').trim_space() // assume a enum
 		}
 	} else {
 		return ctov_type[c_ret_type] or { 'voidptr' }
@@ -82,7 +86,9 @@ fn convert_fdecl_args_to_vc_args(inner []Node, enums map[string]bool, glib_idx G
 
 			typ_strp := typ.replace_each(['*', '', 'const', '']).trim_space()
 			if glib_idx.types[typ_strp] {
-				if typ.contains('*') {
+				if typ.contains('**') {
+					v_args << name + '&&glib.' + typ_strp
+				} else if typ.contains('*') {
 					v_args << name + '&glib.' + typ_strp
 				} else {
 					v_args << name + 'glib.' + typ_strp
@@ -90,7 +96,12 @@ fn convert_fdecl_args_to_vc_args(inner []Node, enums map[string]bool, glib_idx G
 				continue
 			}
 			if typ.starts_with('Gtk') || typ.starts_with('const Gtk') {
-				if typ.contains('*') {
+				if typ.contains('**') {
+					vt := typ.replace('Gtk', '&&Gtk').replace('*', '').replace('const',
+						'').trim_space()
+					v_args << name + vt
+					continue
+				} else if typ.contains('*') {
 					vt := typ.replace('Gtk', '&Gtk').replace('*', '').replace('const',
 						'').trim_space()
 					v_args << name + vt
@@ -109,14 +120,26 @@ fn convert_fdecl_args_to_vc_args(inner []Node, enums map[string]bool, glib_idx G
 }
 
 fn convert_vcdecl_to_vmethods(node Node, enums map[string]bool, h GtkHeader, glib_idx GioIndex) string {
-	ret_type := convert_ret_type(node.type.qual_type, enums, glib_idx)
-	mut args := convert_fdecl_args_to_vc_args(node.inner, enums, glib_idx)
+	mut ret_type := convert_ret_type(node.type.qual_type, enums, glib_idx)
+	if ret_type.contains('&char') && !ret_type.contains('&&') {
+		ret_type = 'string'
+	}
+	mut args := convert_fdecl_args_to_vc_args(node.inner, enums, glib_idx).map(fn (arg string) string {
+		if arg.contains('&char') && !arg.contains('&&') {
+			return arg.replace('&char', 'string')
+		}
+		return arg
+	})
 	mut return_str := 'return'
 	if ret_type.trim(' ') == '' {
 		return_str = ''
 	}
 	mut call_args := args.map(fn (arg string) string {
-		return arg.split(' ')[0] or { '' }
+		name := arg.split(' ')[0] or { '' }
+		if arg.contains(' string') {
+			return '${name.trim_space()}.str'
+		}
+		return name.trim_space()
 	})
 	if node.name.starts_with(h.snake) {
 		mut vargs := args.join(',')
@@ -138,10 +161,17 @@ fn convert_vcdecl_to_vmethods(node Node, enums map[string]bool, h GtkHeader, gli
 		}
 
 		call_args_str := call_args.join(',')
+
+		mut wrap_start := ''
+		mut wrap_end := ''
+		if ret_type == 'string' {
+			wrap_start = 'unsafe { cstring_to_vstring('
+			wrap_end = ') }'
+		}
 		if node.name.contains('new') {
-			return 'pub fn ${self}.${vname}(${vargs}) ${ret_type} { ${return_str} C.${node.name}(${call_args_str}) }'
+			return 'pub fn ${self}.${vname}(${vargs}) ${ret_type} { ${return_str} ${wrap_start}C.${node.name}(${call_args_str})${wrap_end} }'
 		} else {
-			return 'pub fn (self &${self}) ${vname}(${vargs}) ${ret_type} { ${return_str} C.${node.name}(${call_args_str}) }'
+			return 'pub fn (self &${self}) ${vname}(${vargs}) ${ret_type} { ${return_str} ${wrap_start}C.${node.name}(${call_args_str})${wrap_end} }'
 		}
 	}
 	return ''

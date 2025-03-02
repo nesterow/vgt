@@ -105,13 +105,13 @@ pub fn (mount &GMount) guess_content_type(force_rescan bool, cancellable &GCance
 	C.g_mount_guess_content_type(mount, force_rescan, cancellable, callback, user_data)
 }
 
-pub fn C.g_mount_guess_content_type_finish(mount &GMount, result &GAsyncResult, error &GError) &char
-pub fn (mount &GMount) guess_content_type_finish(result &GAsyncResult, error &GError) &char {
+pub fn C.g_mount_guess_content_type_finish(mount &GMount, result &GAsyncResult, error &GError) &&char
+pub fn (mount &GMount) guess_content_type_finish(result &GAsyncResult, error &GError) &&char {
 	return C.g_mount_guess_content_type_finish(mount, result, error)
 }
 
-pub fn C.g_mount_guess_content_type_sync(mount &GMount, force_rescan bool, cancellable &GCancellable, error &GError) &char
-pub fn (mount &GMount) guess_content_type_sync(force_rescan bool, cancellable &GCancellable, error &GError) &char {
+pub fn C.g_mount_guess_content_type_sync(mount &GMount, force_rescan bool, cancellable &GCancellable, error &GError) &&char
+pub fn (mount &GMount) guess_content_type_sync(force_rescan bool, cancellable &GCancellable, error &GError) &&char {
 	return C.g_mount_guess_content_type_sync(mount, force_rescan, cancellable, error)
 }
 

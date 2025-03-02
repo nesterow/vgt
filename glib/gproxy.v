@@ -96,8 +96,8 @@ pub fn (self &GProxy) resolver_is_supported(resolver &GProxyResolver) bool {
 	return C.g_proxy_resolver_is_supported(resolver)
 }
 
-pub fn C.g_proxy_resolver_lookup(resolver &GProxyResolver, uri &char, cancellable &GCancellable, error &GError) &char
-pub fn (self &GProxy) resolver_lookup(resolver &GProxyResolver, uri &char, cancellable &GCancellable, error &GError) &char {
+pub fn C.g_proxy_resolver_lookup(resolver &GProxyResolver, uri &char, cancellable &GCancellable, error &GError) &&char
+pub fn (self &GProxy) resolver_lookup(resolver &GProxyResolver, uri &char, cancellable &GCancellable, error &GError) &&char {
 	return C.g_proxy_resolver_lookup(resolver, uri, cancellable, error)
 }
 
@@ -106,7 +106,7 @@ pub fn (self &GProxy) resolver_lookup_async(resolver &GProxyResolver, uri &char,
 	C.g_proxy_resolver_lookup_async(resolver, uri, cancellable, callback, user_data)
 }
 
-pub fn C.g_proxy_resolver_lookup_finish(resolver &GProxyResolver, result &GAsyncResult, error &GError) &char
-pub fn (self &GProxy) resolver_lookup_finish(resolver &GProxyResolver, result &GAsyncResult, error &GError) &char {
+pub fn C.g_proxy_resolver_lookup_finish(resolver &GProxyResolver, result &GAsyncResult, error &GError) &&char
+pub fn (self &GProxy) resolver_lookup_finish(resolver &GProxyResolver, result &GAsyncResult, error &GError) &&char {
 	return C.g_proxy_resolver_lookup_finish(resolver, result, error)
 }

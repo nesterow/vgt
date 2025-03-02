@@ -70,7 +70,7 @@ pub fn g_match_info_fetch_named_pos(match_info &GMatchInfo, name &char, start_po
 	return C.g_match_info_fetch_named_pos(match_info, name, start_pos, end_pos)
 }
 
-pub fn C.g_match_info_fetch_all(match_info &GMatchInfo) &char
-pub fn g_match_info_fetch_all(match_info &GMatchInfo) &char {
+pub fn C.g_match_info_fetch_all(match_info &GMatchInfo) &&char
+pub fn g_match_info_fetch_all(match_info &GMatchInfo) &&char {
 	return C.g_match_info_fetch_all(match_info)
 }

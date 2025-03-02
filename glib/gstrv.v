@@ -1,7 +1,7 @@
 module glib
 
-pub fn C.g_strv_length(str_array &char) u64
-pub fn g_strv_length(str_array &char) u64 {
+pub fn C.g_strv_length(str_array &&char) u64
+pub fn g_strv_length(str_array &&char) u64 {
 	return C.g_strv_length(str_array)
 }
 

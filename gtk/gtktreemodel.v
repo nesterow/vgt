@@ -43,8 +43,8 @@ pub fn C.gtk_tree_model_row_changed(tree_model &GtkTreeModel, path &GtkTreePath,
 pub fn C.gtk_tree_model_row_inserted(tree_model &GtkTreeModel, path &GtkTreePath, iter &GtkTreeIter)
 pub fn C.gtk_tree_model_row_has_child_toggled(tree_model &GtkTreeModel, path &GtkTreePath, iter &GtkTreeIter)
 pub fn C.gtk_tree_model_row_deleted(tree_model &GtkTreeModel, path &GtkTreePath)
-pub fn C.gtk_tree_model_rows_reordered(tree_model &GtkTreeModel, path &GtkTreePath, iter &GtkTreeIter, new_order voidptr)
-pub fn C.gtk_tree_model_rows_reordered_with_length(tree_model &GtkTreeModel, path &GtkTreePath, iter &GtkTreeIter, new_order voidptr, length int)
+pub fn C.gtk_tree_model_rows_reordered(tree_model &GtkTreeModel, path &GtkTreePath, iter &GtkTreeIter, new_order &i64)
+pub fn C.gtk_tree_model_rows_reordered_with_length(tree_model &GtkTreeModel, path &GtkTreePath, iter &GtkTreeIter, new_order &i64, length int)
 
 @[noinit; typedef]
 pub struct C.GtkTreeModel {}
@@ -71,8 +71,8 @@ pub fn (self &GtkTreeModel) get_iter(iter &GtkTreeIter, path &GtkTreePath) bool 
 	return C.gtk_tree_model_get_iter(self, iter, path)
 }
 
-pub fn (self &GtkTreeModel) get_iter_from_string(iter &GtkTreeIter, path_str &char) bool {
-	return C.gtk_tree_model_get_iter_from_string(self, iter, path_str)
+pub fn (self &GtkTreeModel) get_iter_from_string(iter &GtkTreeIter, path_str string) bool {
+	return C.gtk_tree_model_get_iter_from_string(self, iter, path_str.str)
 }
 
 pub fn (self &GtkTreeModel) get_string_from_iter(iter &GtkTreeIter) voidptr {
@@ -155,11 +155,11 @@ pub fn (self &GtkTreeModel) row_deleted(path &GtkTreePath) {
 	C.gtk_tree_model_row_deleted(self, path)
 }
 
-pub fn (self &GtkTreeModel) rows_reordered(path &GtkTreePath, iter &GtkTreeIter, new_order voidptr) {
+pub fn (self &GtkTreeModel) rows_reordered(path &GtkTreePath, iter &GtkTreeIter, new_order &i64) {
 	C.gtk_tree_model_rows_reordered(self, path, iter, new_order)
 }
 
-pub fn (self &GtkTreeModel) rows_reordered_with_length(path &GtkTreePath, iter &GtkTreeIter, new_order voidptr, length int) {
+pub fn (self &GtkTreeModel) rows_reordered_with_length(path &GtkTreePath, iter &GtkTreeIter, new_order &i64, length int) {
 	C.gtk_tree_model_rows_reordered_with_length(self, path, iter, new_order, length)
 }
 
@@ -187,14 +187,14 @@ pub fn (self &GtkTreeIter) get_type() glib.GType {
 pub fn C.gtk_tree_path_new() &GtkTreePath
 pub fn C.gtk_tree_path_new_from_string(path &char) &GtkTreePath
 pub fn C.gtk_tree_path_new_from_indices(first_index int) &GtkTreePath
-pub fn C.gtk_tree_path_new_from_indicesv(indices voidptr, length int) &GtkTreePath
+pub fn C.gtk_tree_path_new_from_indicesv(indices &i64, length int) &GtkTreePath
 pub fn C.gtk_tree_path_to_string(path &GtkTreePath) voidptr
 pub fn C.gtk_tree_path_new_first() &GtkTreePath
 pub fn C.gtk_tree_path_append_index(path &GtkTreePath, index_ int)
 pub fn C.gtk_tree_path_prepend_index(path &GtkTreePath, index_ int)
 pub fn C.gtk_tree_path_get_depth(path &GtkTreePath) int
-pub fn C.gtk_tree_path_get_indices(path &GtkTreePath) voidptr
-pub fn C.gtk_tree_path_get_indices_with_depth(path &GtkTreePath, depth voidptr) voidptr
+pub fn C.gtk_tree_path_get_indices(path &GtkTreePath) &i64
+pub fn C.gtk_tree_path_get_indices_with_depth(path &GtkTreePath, depth &i64) &i64
 pub fn C.gtk_tree_path_free(path &GtkTreePath)
 pub fn C.gtk_tree_path_copy(path &GtkTreePath) &GtkTreePath
 pub fn C.gtk_tree_path_get_type() glib.GType
@@ -215,15 +215,15 @@ pub fn GtkTreePath.new() &GtkTreePath {
 	return C.gtk_tree_path_new()
 }
 
-pub fn GtkTreePath.new_from_string(path &char) &GtkTreePath {
-	return C.gtk_tree_path_new_from_string(path)
+pub fn GtkTreePath.new_from_string(path string) &GtkTreePath {
+	return C.gtk_tree_path_new_from_string(path.str)
 }
 
 pub fn GtkTreePath.new_from_indices(first_index int) &GtkTreePath {
 	return C.gtk_tree_path_new_from_indices(first_index)
 }
 
-pub fn GtkTreePath.new_from_indicesv(indices voidptr, length int) &GtkTreePath {
+pub fn GtkTreePath.new_from_indicesv(indices &i64, length int) &GtkTreePath {
 	return C.gtk_tree_path_new_from_indicesv(indices, length)
 }
 
@@ -247,11 +247,11 @@ pub fn (self &GtkTreePath) get_depth() int {
 	return C.gtk_tree_path_get_depth(self)
 }
 
-pub fn (self &GtkTreePath) get_indices() voidptr {
+pub fn (self &GtkTreePath) get_indices() &i64 {
 	return C.gtk_tree_path_get_indices(self)
 }
 
-pub fn (self &GtkTreePath) get_indices_with_depth(depth voidptr) voidptr {
+pub fn (self &GtkTreePath) get_indices_with_depth(depth &i64) &i64 {
 	return C.gtk_tree_path_get_indices_with_depth(self, depth)
 }
 
@@ -305,7 +305,7 @@ pub fn C.gtk_tree_row_reference_copy(reference &GtkTreeRowReference) &GtkTreeRow
 pub fn C.gtk_tree_row_reference_free(reference &GtkTreeRowReference)
 pub fn C.gtk_tree_row_reference_inserted(proxy &glib.GObject, path &GtkTreePath)
 pub fn C.gtk_tree_row_reference_deleted(proxy &glib.GObject, path &GtkTreePath)
-pub fn C.gtk_tree_row_reference_reordered(proxy &glib.GObject, path &GtkTreePath, iter &GtkTreeIter, new_order voidptr)
+pub fn C.gtk_tree_row_reference_reordered(proxy &glib.GObject, path &GtkTreePath, iter &GtkTreeIter, new_order &i64)
 
 @[noinit; typedef]
 pub struct C.GtkTreeRowReference {}
@@ -352,6 +352,6 @@ pub fn (self &GtkTreeRowReference) deleted(proxy &glib.GObject, path &GtkTreePat
 	C.gtk_tree_row_reference_deleted(proxy, path)
 }
 
-pub fn (self &GtkTreeRowReference) reordered(proxy &glib.GObject, path &GtkTreePath, iter &GtkTreeIter, new_order voidptr) {
+pub fn (self &GtkTreeRowReference) reordered(proxy &glib.GObject, path &GtkTreePath, iter &GtkTreeIter, new_order &i64) {
 	C.gtk_tree_row_reference_reordered(proxy, path, iter, new_order)
 }

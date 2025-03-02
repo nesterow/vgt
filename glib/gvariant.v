@@ -5,8 +5,8 @@ pub fn (self &GVariant) type_string_is_valid(type_string &char) bool {
 	return C.g_variant_type_string_is_valid(type_string)
 }
 
-pub fn C.g_variant_type_string_scan(str_t &char, limit &char, endptr &char) bool
-pub fn (self &GVariant) type_string_scan(str_t &char, limit &char, endptr &char) bool {
+pub fn C.g_variant_type_string_scan(str_t &char, limit &char, endptr &&char) bool
+pub fn (self &GVariant) type_string_scan(str_t &char, limit &char, endptr &&char) bool {
 	return C.g_variant_type_string_scan(str_t, limit, endptr)
 }
 
@@ -385,23 +385,23 @@ pub fn (value &GVariant) dup_string(length usize) &char {
 	return C.g_variant_dup_string(value, length)
 }
 
-pub fn C.g_variant_get_strv(value &GVariant, length usize) &char
-pub fn (value &GVariant) get_strv(length usize) &char {
+pub fn C.g_variant_get_strv(value &GVariant, length usize) &&char
+pub fn (value &GVariant) get_strv(length usize) &&char {
 	return C.g_variant_get_strv(value, length)
 }
 
-pub fn C.g_variant_dup_strv(value &GVariant, length usize) &char
-pub fn (value &GVariant) dup_strv(length usize) &char {
+pub fn C.g_variant_dup_strv(value &GVariant, length usize) &&char
+pub fn (value &GVariant) dup_strv(length usize) &&char {
 	return C.g_variant_dup_strv(value, length)
 }
 
-pub fn C.g_variant_get_objv(value &GVariant, length usize) &char
-pub fn (value &GVariant) get_objv(length usize) &char {
+pub fn C.g_variant_get_objv(value &GVariant, length usize) &&char
+pub fn (value &GVariant) get_objv(length usize) &&char {
 	return C.g_variant_get_objv(value, length)
 }
 
-pub fn C.g_variant_dup_objv(value &GVariant, length usize) &char
-pub fn (value &GVariant) dup_objv(length usize) &char {
+pub fn C.g_variant_dup_objv(value &GVariant, length usize) &&char
+pub fn (value &GVariant) dup_objv(length usize) &&char {
 	return C.g_variant_dup_objv(value, length)
 }
 
@@ -415,13 +415,13 @@ pub fn (value &GVariant) dup_bytestring(length usize) &char {
 	return C.g_variant_dup_bytestring(value, length)
 }
 
-pub fn C.g_variant_get_bytestring_array(value &GVariant, length usize) &char
-pub fn (value &GVariant) get_bytestring_array(length usize) &char {
+pub fn C.g_variant_get_bytestring_array(value &GVariant, length usize) &&char
+pub fn (value &GVariant) get_bytestring_array(length usize) &&char {
 	return C.g_variant_get_bytestring_array(value, length)
 }
 
-pub fn C.g_variant_dup_bytestring_array(value &GVariant, length usize) &char
-pub fn (value &GVariant) dup_bytestring_array(length usize) &char {
+pub fn C.g_variant_dup_bytestring_array(value &GVariant, length usize) &&char
+pub fn (value &GVariant) dup_bytestring_array(length usize) &&char {
 	return C.g_variant_dup_bytestring_array(value, length)
 }
 
@@ -660,13 +660,13 @@ pub fn (value &GVariant) get(format_string &char) {
 	C.g_variant_get(value, format_string)
 }
 
-pub fn C.g_variant_new_va(format_string &char, endptr &char, app voidptr) &GVariant
-pub fn (self &GVariant) new_va(format_string &char, endptr &char, app voidptr) &GVariant {
+pub fn C.g_variant_new_va(format_string &char, endptr &&char, app voidptr) &GVariant
+pub fn (self &GVariant) new_va(format_string &char, endptr &&char, app voidptr) &GVariant {
 	return C.g_variant_new_va(format_string, endptr, app)
 }
 
-pub fn C.g_variant_get_va(value &GVariant, format_string &char, endptr &char, app voidptr)
-pub fn (value &GVariant) get_va(format_string &char, endptr &char, app voidptr) {
+pub fn C.g_variant_get_va(value &GVariant, format_string &char, endptr &&char, app voidptr)
+pub fn (value &GVariant) get_va(format_string &char, endptr &&char, app voidptr) {
 	C.g_variant_get_va(value, format_string, endptr, app)
 }
 
@@ -675,8 +675,8 @@ pub fn (value &GVariant) check_format_string(format_string &char, copy_only bool
 	return C.g_variant_check_format_string(value, format_string, copy_only)
 }
 
-pub fn C.g_variant_parse(typ &GVariantType, text &char, limit &char, endptr &char, error &GError) &GVariant
-pub fn (self &GVariant) parse(typ &GVariantType, text &char, limit &char, endptr &char, error &GError) &GVariant {
+pub fn C.g_variant_parse(typ &GVariantType, text &char, limit &char, endptr &&char, error &GError) &GVariant
+pub fn (self &GVariant) parse(typ &GVariantType, text &char, limit &char, endptr &&char, error &GError) &GVariant {
 	return C.g_variant_parse(typ, text, limit, endptr, error)
 }
 

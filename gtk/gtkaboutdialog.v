@@ -79,44 +79,44 @@ pub fn GtkAboutDialog.new() &GtkWidget {
 	return C.gtk_about_dialog_new()
 }
 
-pub fn (self &GtkAboutDialog) get_program_name() &char {
-	return C.gtk_about_dialog_get_program_name(self)
+pub fn (self &GtkAboutDialog) get_program_name() string {
+	return unsafe { cstring_to_vstring(C.gtk_about_dialog_get_program_name(self)) }
 }
 
-pub fn (self &GtkAboutDialog) set_program_name(name &char) {
-	C.gtk_about_dialog_set_program_name(self, name)
+pub fn (self &GtkAboutDialog) set_program_name(name string) {
+	C.gtk_about_dialog_set_program_name(self, name.str)
 }
 
-pub fn (self &GtkAboutDialog) get_version() &char {
-	return C.gtk_about_dialog_get_version(self)
+pub fn (self &GtkAboutDialog) get_version() string {
+	return unsafe { cstring_to_vstring(C.gtk_about_dialog_get_version(self)) }
 }
 
-pub fn (self &GtkAboutDialog) set_version(version &char) {
-	C.gtk_about_dialog_set_version(self, version)
+pub fn (self &GtkAboutDialog) set_version(version string) {
+	C.gtk_about_dialog_set_version(self, version.str)
 }
 
-pub fn (self &GtkAboutDialog) get_copyright() &char {
-	return C.gtk_about_dialog_get_copyright(self)
+pub fn (self &GtkAboutDialog) get_copyright() string {
+	return unsafe { cstring_to_vstring(C.gtk_about_dialog_get_copyright(self)) }
 }
 
-pub fn (self &GtkAboutDialog) set_copyright(copyright &char) {
-	C.gtk_about_dialog_set_copyright(self, copyright)
+pub fn (self &GtkAboutDialog) set_copyright(copyright string) {
+	C.gtk_about_dialog_set_copyright(self, copyright.str)
 }
 
-pub fn (self &GtkAboutDialog) get_comments() &char {
-	return C.gtk_about_dialog_get_comments(self)
+pub fn (self &GtkAboutDialog) get_comments() string {
+	return unsafe { cstring_to_vstring(C.gtk_about_dialog_get_comments(self)) }
 }
 
-pub fn (self &GtkAboutDialog) set_comments(comments &char) {
-	C.gtk_about_dialog_set_comments(self, comments)
+pub fn (self &GtkAboutDialog) set_comments(comments string) {
+	C.gtk_about_dialog_set_comments(self, comments.str)
 }
 
-pub fn (self &GtkAboutDialog) get_license() &char {
-	return C.gtk_about_dialog_get_license(self)
+pub fn (self &GtkAboutDialog) get_license() string {
+	return unsafe { cstring_to_vstring(C.gtk_about_dialog_get_license(self)) }
 }
 
-pub fn (self &GtkAboutDialog) set_license(license &char) {
-	C.gtk_about_dialog_set_license(self, license)
+pub fn (self &GtkAboutDialog) set_license(license string) {
+	C.gtk_about_dialog_set_license(self, license.str)
 }
 
 pub fn (self &GtkAboutDialog) set_license_type(license_typ GtkLicense) {
@@ -135,28 +135,28 @@ pub fn (self &GtkAboutDialog) set_wrap_license(wrap_license bool) {
 	C.gtk_about_dialog_set_wrap_license(self, wrap_license)
 }
 
-pub fn (self &GtkAboutDialog) get_system_information() &char {
-	return C.gtk_about_dialog_get_system_information(self)
+pub fn (self &GtkAboutDialog) get_system_information() string {
+	return unsafe { cstring_to_vstring(C.gtk_about_dialog_get_system_information(self)) }
 }
 
-pub fn (self &GtkAboutDialog) set_system_information(system_information &char) {
-	C.gtk_about_dialog_set_system_information(self, system_information)
+pub fn (self &GtkAboutDialog) set_system_information(system_information string) {
+	C.gtk_about_dialog_set_system_information(self, system_information.str)
 }
 
-pub fn (self &GtkAboutDialog) get_website() &char {
-	return C.gtk_about_dialog_get_website(self)
+pub fn (self &GtkAboutDialog) get_website() string {
+	return unsafe { cstring_to_vstring(C.gtk_about_dialog_get_website(self)) }
 }
 
-pub fn (self &GtkAboutDialog) set_website(website &char) {
-	C.gtk_about_dialog_set_website(self, website)
+pub fn (self &GtkAboutDialog) set_website(website string) {
+	C.gtk_about_dialog_set_website(self, website.str)
 }
 
-pub fn (self &GtkAboutDialog) get_website_label() &char {
-	return C.gtk_about_dialog_get_website_label(self)
+pub fn (self &GtkAboutDialog) get_website_label() string {
+	return unsafe { cstring_to_vstring(C.gtk_about_dialog_get_website_label(self)) }
 }
 
-pub fn (self &GtkAboutDialog) set_website_label(website_label &char) {
-	C.gtk_about_dialog_set_website_label(self, website_label)
+pub fn (self &GtkAboutDialog) set_website_label(website_label string) {
+	C.gtk_about_dialog_set_website_label(self, website_label.str)
 }
 
 pub fn (self &GtkAboutDialog) get_authors() voidptr {
@@ -183,12 +183,12 @@ pub fn (self &GtkAboutDialog) set_artists(artists voidptr) {
 	C.gtk_about_dialog_set_artists(self, artists)
 }
 
-pub fn (self &GtkAboutDialog) get_translator_credits() &char {
-	return C.gtk_about_dialog_get_translator_credits(self)
+pub fn (self &GtkAboutDialog) get_translator_credits() string {
+	return unsafe { cstring_to_vstring(C.gtk_about_dialog_get_translator_credits(self)) }
 }
 
-pub fn (self &GtkAboutDialog) set_translator_credits(translator_credits &char) {
-	C.gtk_about_dialog_set_translator_credits(self, translator_credits)
+pub fn (self &GtkAboutDialog) set_translator_credits(translator_credits string) {
+	C.gtk_about_dialog_set_translator_credits(self, translator_credits.str)
 }
 
 pub fn (self &GtkAboutDialog) get_logo() voidptr {
@@ -199,14 +199,14 @@ pub fn (self &GtkAboutDialog) set_logo(logo voidptr) {
 	C.gtk_about_dialog_set_logo(self, logo)
 }
 
-pub fn (self &GtkAboutDialog) get_logo_icon_name() &char {
-	return C.gtk_about_dialog_get_logo_icon_name(self)
+pub fn (self &GtkAboutDialog) get_logo_icon_name() string {
+	return unsafe { cstring_to_vstring(C.gtk_about_dialog_get_logo_icon_name(self)) }
 }
 
-pub fn (self &GtkAboutDialog) set_logo_icon_name(icon_name &char) {
-	C.gtk_about_dialog_set_logo_icon_name(self, icon_name)
+pub fn (self &GtkAboutDialog) set_logo_icon_name(icon_name string) {
+	C.gtk_about_dialog_set_logo_icon_name(self, icon_name.str)
 }
 
-pub fn (self &GtkAboutDialog) add_credit_section(section_name &char, people voidptr) {
-	C.gtk_about_dialog_add_credit_section(self, section_name, people)
+pub fn (self &GtkAboutDialog) add_credit_section(section_name string, people voidptr) {
+	C.gtk_about_dialog_add_credit_section(self, section_name.str, people)
 }

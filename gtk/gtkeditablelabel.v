@@ -22,8 +22,8 @@ pub fn (self &GtkEditableLabel) get_type() glib.GType {
 	return C.gtk_editable_label_get_type()
 }
 
-pub fn GtkEditableLabel.new(str &char) &GtkWidget {
-	return C.gtk_editable_label_new(str)
+pub fn GtkEditableLabel.new(str string) &GtkWidget {
+	return C.gtk_editable_label_new(str.str)
 }
 
 pub fn (self &GtkEditableLabel) get_editing() bool {

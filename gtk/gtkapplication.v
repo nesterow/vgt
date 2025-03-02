@@ -40,8 +40,8 @@ pub fn (self &GtkApplication) get_type() glib.GType {
 	return C.gtk_application_get_type()
 }
 
-pub fn GtkApplication.new(application_id &char, flags glib.GApplicationFlags) &GtkApplication {
-	return C.gtk_application_new(application_id, flags)
+pub fn GtkApplication.new(application_id string, flags glib.GApplicationFlags) &GtkApplication {
+	return C.gtk_application_new(application_id.str, flags)
 }
 
 pub fn (self &GtkApplication) add_window(window &GtkWindow) {
@@ -64,8 +64,8 @@ pub fn (self &GtkApplication) set_menubar(menubar &glib.GMenuModel) {
 	C.gtk_application_set_menubar(self, menubar)
 }
 
-pub fn (self &GtkApplication) inhibit(window &GtkWindow, flags GtkApplicationInhibitFlags, reason &char) u64 {
-	return C.gtk_application_inhibit(self, window, flags, reason)
+pub fn (self &GtkApplication) inhibit(window &GtkWindow, flags GtkApplicationInhibitFlags, reason string) u64 {
+	return C.gtk_application_inhibit(self, window, flags, reason.str)
 }
 
 pub fn (self &GtkApplication) uninhibit(cookie u64) {
@@ -84,18 +84,18 @@ pub fn (self &GtkApplication) list_action_descriptions() voidptr {
 	return C.gtk_application_list_action_descriptions(self)
 }
 
-pub fn (self &GtkApplication) get_accels_for_action(detailed_action_name &char) voidptr {
-	return C.gtk_application_get_accels_for_action(self, detailed_action_name)
+pub fn (self &GtkApplication) get_accels_for_action(detailed_action_name string) voidptr {
+	return C.gtk_application_get_accels_for_action(self, detailed_action_name.str)
 }
 
-pub fn (self &GtkApplication) get_actions_for_accel(accel &char) voidptr {
-	return C.gtk_application_get_actions_for_accel(self, accel)
+pub fn (self &GtkApplication) get_actions_for_accel(accel string) voidptr {
+	return C.gtk_application_get_actions_for_accel(self, accel.str)
 }
 
-pub fn (self &GtkApplication) set_accels_for_action(detailed_action_name &char, accels voidptr) {
-	C.gtk_application_set_accels_for_action(self, detailed_action_name, accels)
+pub fn (self &GtkApplication) set_accels_for_action(detailed_action_name string, accels voidptr) {
+	C.gtk_application_set_accels_for_action(self, detailed_action_name.str, accels)
 }
 
-pub fn (self &GtkApplication) get_menu_by_id(id &char) voidptr {
-	return C.gtk_application_get_menu_by_id(self, id)
+pub fn (self &GtkApplication) get_menu_by_id(id string) voidptr {
+	return C.gtk_application_get_menu_by_id(self, id.str)
 }

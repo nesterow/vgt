@@ -45,14 +45,14 @@ pub fn g_key_file_load_from_bytes(key_file &GKeyFile, bytes &GBytes, flags GKeyF
 	return C.g_key_file_load_from_bytes(key_file, bytes, flags, error)
 }
 
-pub fn C.g_key_file_load_from_dirs(key_file &GKeyFile, file &char, search_dirs &char, full_path &char, flags GKeyFileFlags, error &GError) bool
-pub fn g_key_file_load_from_dirs(key_file &GKeyFile, file &char, search_dirs &char, full_path &char, flags GKeyFileFlags, error &GError) bool {
+pub fn C.g_key_file_load_from_dirs(key_file &GKeyFile, file &char, search_dirs &&char, full_path &&char, flags GKeyFileFlags, error &GError) bool
+pub fn g_key_file_load_from_dirs(key_file &GKeyFile, file &char, search_dirs &&char, full_path &&char, flags GKeyFileFlags, error &GError) bool {
 	return C.g_key_file_load_from_dirs(key_file, file, search_dirs, full_path, flags,
 		error)
 }
 
-pub fn C.g_key_file_load_from_data_dirs(key_file &GKeyFile, file &char, full_path &char, flags GKeyFileFlags, error &GError) bool
-pub fn g_key_file_load_from_data_dirs(key_file &GKeyFile, file &char, full_path &char, flags GKeyFileFlags, error &GError) bool {
+pub fn C.g_key_file_load_from_data_dirs(key_file &GKeyFile, file &char, full_path &&char, flags GKeyFileFlags, error &GError) bool
+pub fn g_key_file_load_from_data_dirs(key_file &GKeyFile, file &char, full_path &&char, flags GKeyFileFlags, error &GError) bool {
 	return C.g_key_file_load_from_data_dirs(key_file, file, full_path, flags, error)
 }
 
@@ -71,13 +71,13 @@ pub fn g_key_file_get_start_group(key_file &GKeyFile) &char {
 	return C.g_key_file_get_start_group(key_file)
 }
 
-pub fn C.g_key_file_get_groups(key_file &GKeyFile, length usize) &char
-pub fn g_key_file_get_groups(key_file &GKeyFile, length usize) &char {
+pub fn C.g_key_file_get_groups(key_file &GKeyFile, length usize) &&char
+pub fn g_key_file_get_groups(key_file &GKeyFile, length usize) &&char {
 	return C.g_key_file_get_groups(key_file, length)
 }
 
-pub fn C.g_key_file_get_keys(key_file &GKeyFile, group_name &char, length usize, error &GError) &char
-pub fn g_key_file_get_keys(key_file &GKeyFile, group_name &char, length usize, error &GError) &char {
+pub fn C.g_key_file_get_keys(key_file &GKeyFile, group_name &char, length usize, error &GError) &&char
+pub fn g_key_file_get_keys(key_file &GKeyFile, group_name &char, length usize, error &GError) &&char {
 	return C.g_key_file_get_keys(key_file, group_name, length, error)
 }
 
@@ -176,8 +176,8 @@ pub fn g_key_file_set_double(key_file &GKeyFile, group_name &char, key &char, va
 	C.g_key_file_set_double(key_file, group_name, key, value)
 }
 
-pub fn C.g_key_file_get_string_list(key_file &GKeyFile, group_name &char, key &char, length usize, error &GError) &char
-pub fn g_key_file_get_string_list(key_file &GKeyFile, group_name &char, key &char, length usize, error &GError) &char {
+pub fn C.g_key_file_get_string_list(key_file &GKeyFile, group_name &char, key &char, length usize, error &GError) &&char
+pub fn g_key_file_get_string_list(key_file &GKeyFile, group_name &char, key &char, length usize, error &GError) &&char {
 	return C.g_key_file_get_string_list(key_file, group_name, key, length, error)
 }
 
@@ -186,8 +186,8 @@ pub fn g_key_file_set_string_list(key_file &GKeyFile, group_name &char, key &cha
 	C.g_key_file_set_string_list(key_file, group_name, key, list, length)
 }
 
-pub fn C.g_key_file_get_locale_string_list(key_file &GKeyFile, group_name &char, key &char, locale &char, length usize, error &GError) &char
-pub fn g_key_file_get_locale_string_list(key_file &GKeyFile, group_name &char, key &char, locale &char, length usize, error &GError) &char {
+pub fn C.g_key_file_get_locale_string_list(key_file &GKeyFile, group_name &char, key &char, locale &char, length usize, error &GError) &&char
+pub fn g_key_file_get_locale_string_list(key_file &GKeyFile, group_name &char, key &char, locale &char, length usize, error &GError) &&char {
 	return C.g_key_file_get_locale_string_list(key_file, group_name, key, locale, length,
 		error)
 }

@@ -30,7 +30,7 @@ pub fn C.gtk_grid_set_row_baseline_position(grid &GtkGrid, row int, pos GtkBasel
 pub fn C.gtk_grid_get_row_baseline_position(grid &GtkGrid, row int) GtkBaselinePosition
 pub fn C.gtk_grid_set_baseline_row(grid &GtkGrid, row int)
 pub fn C.gtk_grid_get_baseline_row(grid &GtkGrid) int
-pub fn C.gtk_grid_query_child(grid &GtkGrid, child &GtkWidget, column voidptr, row voidptr, width voidptr, height voidptr)
+pub fn C.gtk_grid_query_child(grid &GtkGrid, child &GtkWidget, column &i64, row &i64, width &i64, height &i64)
 
 @[noinit; typedef]
 pub struct C.GtkGrid {}
@@ -129,6 +129,6 @@ pub fn (self &GtkGrid) get_baseline_row() int {
 	return C.gtk_grid_get_baseline_row(self)
 }
 
-pub fn (self &GtkGrid) query_child(child &GtkWidget, column voidptr, row voidptr, width voidptr, height voidptr) {
+pub fn (self &GtkGrid) query_child(child &GtkWidget, column &i64, row &i64, width &i64, height &i64) {
 	C.gtk_grid_query_child(self, child, column, row, width, height)
 }

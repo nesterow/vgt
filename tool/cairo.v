@@ -95,6 +95,11 @@ pub fn generate_cairo() !GioIndex {
 	mut enums_file := 'module cairo\n'
 	mut owned := map[string]string{}
 
+	mut result := GioIndex{
+		enums: map[string]bool{}
+		types: map[string]bool{}
+	}
+
 	typname := fn (s string) string {
 		return s.trim_right('_t').replace_each(['_', ' ']).replace('struct', '').title().replace_each([
 			' ',
@@ -129,7 +134,7 @@ pub fn generate_cairo() !GioIndex {
 			if name == '' {
 				continue
 			}
-
+			result.enums[name] = true
 			enums_file += '\npub enum ${name} {\n'
 			for _, n in node.inner {
 				if n.kind == 'EnumConstantDecl' {
@@ -182,6 +187,7 @@ pub fn generate_cairo() !GioIndex {
 					name = typname(nn)
 				}
 				type_idx[node.name] = name
+				result.types[name] = true
 				structs_file += 'pub struct ${name} {\n'
 				for _, f in node.inner {
 					if f.kind != 'FieldDecl' {
@@ -211,6 +217,7 @@ pub fn generate_cairo() !GioIndex {
 					name = typname(node.name)
 				}
 				type_idx[node.name] = name
+				result.types[name] = true
 				structs_file += 'pub struct ${name} {\n'
 				for _, n in node.inner {
 					for _, f in n.inner {
@@ -254,6 +261,8 @@ pub fn generate_cairo() !GioIndex {
 			if typ.contains('*') && !ret_t.contains('*') {
 				if ret_t == '' {
 					ret_t = 'voidptr'
+				} else if typ.contains('**') {
+					ret_t = '&&' + ret_t
 				} else {
 					ret_t = '&' + ret_t
 				}
@@ -278,5 +287,5 @@ pub fn generate_cairo() !GioIndex {
 	os.write_file('cairo/funcs.v', func_file)!
 	os.system('v fmt cairo/funcs.v -w')
 
-	return GioIndex{}
+	return result
 }

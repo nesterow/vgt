@@ -16,9 +16,9 @@ pub fn C.gtk_gesture_get_sequences(gesture &GtkGesture) voidptr
 pub fn C.gtk_gesture_get_last_updated_sequence(gesture &GtkGesture) voidptr
 pub fn C.gtk_gesture_handles_sequence(gesture &GtkGesture, sequence voidptr) bool
 pub fn C.gtk_gesture_get_last_event(gesture &GtkGesture, sequence voidptr) voidptr
-pub fn C.gtk_gesture_get_point(gesture &GtkGesture, sequence voidptr, x voidptr, y voidptr) bool
+pub fn C.gtk_gesture_get_point(gesture &GtkGesture, sequence voidptr, x &f32, y &f32) bool
 pub fn C.gtk_gesture_get_bounding_box(gesture &GtkGesture, rect voidptr) bool
-pub fn C.gtk_gesture_get_bounding_box_center(gesture &GtkGesture, x voidptr, y voidptr) bool
+pub fn C.gtk_gesture_get_bounding_box_center(gesture &GtkGesture, x &f32, y &f32) bool
 pub fn C.gtk_gesture_is_active(gesture &GtkGesture) bool
 pub fn C.gtk_gesture_is_recognized(gesture &GtkGesture) bool
 pub fn C.gtk_gesture_group(group_gesture &GtkGesture, gesture &GtkGesture)
@@ -67,7 +67,7 @@ pub fn (self &GtkGesture) get_last_event(sequence voidptr) voidptr {
 	return C.gtk_gesture_get_last_event(self, sequence)
 }
 
-pub fn (self &GtkGesture) get_point(sequence voidptr, x voidptr, y voidptr) bool {
+pub fn (self &GtkGesture) get_point(sequence voidptr, x &f32, y &f32) bool {
 	return C.gtk_gesture_get_point(self, sequence, x, y)
 }
 
@@ -75,7 +75,7 @@ pub fn (self &GtkGesture) get_bounding_box(rect voidptr) bool {
 	return C.gtk_gesture_get_bounding_box(self, rect)
 }
 
-pub fn (self &GtkGesture) get_bounding_box_center(x voidptr, y voidptr) bool {
+pub fn (self &GtkGesture) get_bounding_box_center(x &f32, y &f32) bool {
 	return C.gtk_gesture_get_bounding_box_center(self, x, y)
 }
 

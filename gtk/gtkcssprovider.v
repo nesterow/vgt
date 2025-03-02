@@ -33,22 +33,22 @@ pub fn (self &GtkCssProvider) to_string() voidptr {
 	return C.gtk_css_provider_to_string(self)
 }
 
-pub fn (self &GtkCssProvider) load_from_data(data &char, length int) {
-	C.gtk_css_provider_load_from_data(self, data, length)
+pub fn (self &GtkCssProvider) load_from_data(data string, length int) {
+	C.gtk_css_provider_load_from_data(self, data.str, length)
 }
 
 pub fn (self &GtkCssProvider) load_from_file(file &glib.GFile) {
 	C.gtk_css_provider_load_from_file(self, file)
 }
 
-pub fn (self &GtkCssProvider) load_from_path(path &char) {
-	C.gtk_css_provider_load_from_path(self, path)
+pub fn (self &GtkCssProvider) load_from_path(path string) {
+	C.gtk_css_provider_load_from_path(self, path.str)
 }
 
-pub fn (self &GtkCssProvider) load_from_resource(resource_path &char) {
-	C.gtk_css_provider_load_from_resource(self, resource_path)
+pub fn (self &GtkCssProvider) load_from_resource(resource_path string) {
+	C.gtk_css_provider_load_from_resource(self, resource_path.str)
 }
 
-pub fn (self &GtkCssProvider) load_named(name &char, variant &char) {
-	C.gtk_css_provider_load_named(self, name, variant)
+pub fn (self &GtkCssProvider) load_named(name string, variant string) {
+	C.gtk_css_provider_load_named(self, name.str, variant.str)
 }

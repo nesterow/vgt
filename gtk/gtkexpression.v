@@ -59,8 +59,8 @@ pub fn (self &GtkExpression) watch(this_ voidptr, notify voidptr, user_data void
 	return C.gtk_expression_watch(self, this_, notify, user_data, user_destroy)
 }
 
-pub fn (self &GtkExpression) bind(target voidptr, property &char, this_ voidptr) &GtkExpressionWatch {
-	return C.gtk_expression_bind(self, target, property, this_)
+pub fn (self &GtkExpression) bind(target voidptr, property string, this_ voidptr) &GtkExpressionWatch {
+	return C.gtk_expression_bind(self, target, property.str, this_)
 }
 
 pub fn (self &GtkExpression) watch_get_type() glib.GType {

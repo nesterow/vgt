@@ -14,6 +14,6 @@ pub fn (self &GtkFileChooserDialog) get_type() glib.GType {
 	return C.gtk_file_chooser_dialog_get_type()
 }
 
-pub fn GtkFileChooserDialog.new(title &char, parent &GtkWindow, action GtkFileChooserAction, first_button_text &char) &GtkWidget {
-	return C.gtk_file_chooser_dialog_new(title, parent, action, first_button_text)
+pub fn GtkFileChooserDialog.new(title string, parent &GtkWindow, action GtkFileChooserAction, first_button_text string) &GtkWidget {
+	return C.gtk_file_chooser_dialog_new(title.str, parent, action, first_button_text.str)
 }

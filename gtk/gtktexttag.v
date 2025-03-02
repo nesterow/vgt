@@ -27,8 +27,8 @@ pub fn (self &GtkTextTag) get_type() glib.GType {
 	return C.gtk_text_tag_get_type()
 }
 
-pub fn GtkTextTag.new(name &char) &GtkTextTag {
-	return C.gtk_text_tag_new(name)
+pub fn GtkTextTag.new(name string) &GtkTextTag {
+	return C.gtk_text_tag_new(name.str)
 }
 
 pub fn (self &GtkTextTag) get_priority() int {

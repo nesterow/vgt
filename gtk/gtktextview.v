@@ -43,11 +43,11 @@ pub fn C.gtk_text_view_reset_cursor_blink(text_view &GtkTextView)
 pub fn C.gtk_text_view_get_cursor_locations(text_view &GtkTextView, iter &GtkTextIter, strong voidptr, weak voidptr)
 pub fn C.gtk_text_view_get_iter_location(text_view &GtkTextView, iter &GtkTextIter, location voidptr)
 pub fn C.gtk_text_view_get_iter_at_location(text_view &GtkTextView, iter &GtkTextIter, x int, y int) bool
-pub fn C.gtk_text_view_get_iter_at_position(text_view &GtkTextView, iter &GtkTextIter, trailing voidptr, x int, y int) bool
-pub fn C.gtk_text_view_get_line_yrange(text_view &GtkTextView, iter &GtkTextIter, y voidptr, height voidptr)
-pub fn C.gtk_text_view_get_line_at_y(text_view &GtkTextView, target_iter &GtkTextIter, y int, line_top voidptr)
-pub fn C.gtk_text_view_buffer_to_window_coords(text_view &GtkTextView, win GtkTextWindowType, buffer_x int, buffer_y int, window_x voidptr, window_y voidptr)
-pub fn C.gtk_text_view_window_to_buffer_coords(text_view &GtkTextView, win GtkTextWindowType, window_x int, window_y int, buffer_x voidptr, buffer_y voidptr)
+pub fn C.gtk_text_view_get_iter_at_position(text_view &GtkTextView, iter &GtkTextIter, trailing &i64, x int, y int) bool
+pub fn C.gtk_text_view_get_line_yrange(text_view &GtkTextView, iter &GtkTextIter, y &i64, height &i64)
+pub fn C.gtk_text_view_get_line_at_y(text_view &GtkTextView, target_iter &GtkTextIter, y int, line_top &i64)
+pub fn C.gtk_text_view_buffer_to_window_coords(text_view &GtkTextView, win GtkTextWindowType, buffer_x int, buffer_y int, window_x &i64, window_y &i64)
+pub fn C.gtk_text_view_window_to_buffer_coords(text_view &GtkTextView, win GtkTextWindowType, window_x int, window_y int, buffer_x &i64, buffer_y &i64)
 pub fn C.gtk_text_view_forward_display_line(text_view &GtkTextView, iter &GtkTextIter) bool
 pub fn C.gtk_text_view_backward_display_line(text_view &GtkTextView, iter &GtkTextIter) bool
 pub fn C.gtk_text_view_forward_display_line_end(text_view &GtkTextView, iter &GtkTextIter) bool
@@ -88,8 +88,8 @@ pub fn C.gtk_text_view_set_bottom_margin(text_view &GtkTextView, bottom_margin i
 pub fn C.gtk_text_view_get_bottom_margin(text_view &GtkTextView) int
 pub fn C.gtk_text_view_set_indent(text_view &GtkTextView, indent int)
 pub fn C.gtk_text_view_get_indent(text_view &GtkTextView) int
-pub fn C.gtk_text_view_set_tabs(text_view &GtkTextView, tabs voidptr)
-pub fn C.gtk_text_view_get_tabs(text_view &GtkTextView) voidptr
+pub fn C.gtk_text_view_set_tabs(text_view &GtkTextView, tabs &i64)
+pub fn C.gtk_text_view_get_tabs(text_view &GtkTextView) &i64
 pub fn C.gtk_text_view_set_input_purpose(text_view &GtkTextView, purpose GtkInputPurpose)
 pub fn C.gtk_text_view_get_input_purpose(text_view &GtkTextView) GtkInputPurpose
 pub fn C.gtk_text_view_set_input_hints(text_view &GtkTextView, hints GtkInputHints)
@@ -98,8 +98,8 @@ pub fn C.gtk_text_view_set_monospace(text_view &GtkTextView, monospace bool)
 pub fn C.gtk_text_view_get_monospace(text_view &GtkTextView) bool
 pub fn C.gtk_text_view_set_extra_menu(text_view &GtkTextView, model &glib.GMenuModel)
 pub fn C.gtk_text_view_get_extra_menu(text_view &GtkTextView) voidptr
-pub fn C.gtk_text_view_get_rtl_context(text_view &GtkTextView) voidptr
-pub fn C.gtk_text_view_get_ltr_context(text_view &GtkTextView) voidptr
+pub fn C.gtk_text_view_get_rtl_context(text_view &GtkTextView) &i64
+pub fn C.gtk_text_view_get_ltr_context(text_view &GtkTextView) &i64
 
 @[noinit; typedef]
 pub struct C.GtkTextView {}
@@ -175,23 +175,23 @@ pub fn (self &GtkTextView) get_iter_at_location(iter &GtkTextIter, x int, y int)
 	return C.gtk_text_view_get_iter_at_location(self, iter, x, y)
 }
 
-pub fn (self &GtkTextView) get_iter_at_position(iter &GtkTextIter, trailing voidptr, x int, y int) bool {
+pub fn (self &GtkTextView) get_iter_at_position(iter &GtkTextIter, trailing &i64, x int, y int) bool {
 	return C.gtk_text_view_get_iter_at_position(self, iter, trailing, x, y)
 }
 
-pub fn (self &GtkTextView) get_line_yrange(iter &GtkTextIter, y voidptr, height voidptr) {
+pub fn (self &GtkTextView) get_line_yrange(iter &GtkTextIter, y &i64, height &i64) {
 	C.gtk_text_view_get_line_yrange(self, iter, y, height)
 }
 
-pub fn (self &GtkTextView) get_line_at_y(target_iter &GtkTextIter, y int, line_top voidptr) {
+pub fn (self &GtkTextView) get_line_at_y(target_iter &GtkTextIter, y int, line_top &i64) {
 	C.gtk_text_view_get_line_at_y(self, target_iter, y, line_top)
 }
 
-pub fn (self &GtkTextView) buffer_to_window_coords(win GtkTextWindowType, buffer_x int, buffer_y int, window_x voidptr, window_y voidptr) {
+pub fn (self &GtkTextView) buffer_to_window_coords(win GtkTextWindowType, buffer_x int, buffer_y int, window_x &i64, window_y &i64) {
 	C.gtk_text_view_buffer_to_window_coords(self, win, buffer_x, buffer_y, window_x, window_y)
 }
 
-pub fn (self &GtkTextView) window_to_buffer_coords(win GtkTextWindowType, window_x int, window_y int, buffer_x voidptr, buffer_y voidptr) {
+pub fn (self &GtkTextView) window_to_buffer_coords(win GtkTextWindowType, window_x int, window_y int, buffer_x &i64, buffer_y &i64) {
 	C.gtk_text_view_window_to_buffer_coords(self, win, window_x, window_y, buffer_x, buffer_y)
 }
 
@@ -355,11 +355,11 @@ pub fn (self &GtkTextView) get_indent() int {
 	return C.gtk_text_view_get_indent(self)
 }
 
-pub fn (self &GtkTextView) set_tabs(tabs voidptr) {
+pub fn (self &GtkTextView) set_tabs(tabs &i64) {
 	C.gtk_text_view_set_tabs(self, tabs)
 }
 
-pub fn (self &GtkTextView) get_tabs() voidptr {
+pub fn (self &GtkTextView) get_tabs() &i64 {
 	return C.gtk_text_view_get_tabs(self)
 }
 
@@ -395,10 +395,10 @@ pub fn (self &GtkTextView) get_extra_menu() voidptr {
 	return C.gtk_text_view_get_extra_menu(self)
 }
 
-pub fn (self &GtkTextView) get_rtl_context() voidptr {
+pub fn (self &GtkTextView) get_rtl_context() &i64 {
 	return C.gtk_text_view_get_rtl_context(self)
 }
 
-pub fn (self &GtkTextView) get_ltr_context() voidptr {
+pub fn (self &GtkTextView) get_ltr_context() &i64 {
 	return C.gtk_text_view_get_ltr_context(self)
 }

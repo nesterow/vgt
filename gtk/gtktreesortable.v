@@ -9,7 +9,7 @@ pub type GtkTreeSortableIface = C.GtkTreeSortableIface
 
 pub fn C.gtk_tree_sortable_get_type() glib.GType
 pub fn C.gtk_tree_sortable_sort_column_changed(sortable &GtkTreeSortable)
-pub fn C.gtk_tree_sortable_get_sort_column_id(sortable &GtkTreeSortable, sort_column_id voidptr, order GtkSortType) bool
+pub fn C.gtk_tree_sortable_get_sort_column_id(sortable &GtkTreeSortable, sort_column_id &i64, order GtkSortType) bool
 pub fn C.gtk_tree_sortable_set_sort_column_id(sortable &GtkTreeSortable, sort_column_id int, order GtkSortType)
 pub fn C.gtk_tree_sortable_set_sort_func(sortable &GtkTreeSortable, sort_column_id int, sort_func voidptr, user_data voidptr, destroy voidptr)
 pub fn C.gtk_tree_sortable_set_default_sort_func(sortable &GtkTreeSortable, sort_func voidptr, user_data voidptr, destroy voidptr)
@@ -28,7 +28,7 @@ pub fn (self &GtkTreeSortable) sort_column_changed() {
 	C.gtk_tree_sortable_sort_column_changed(self)
 }
 
-pub fn (self &GtkTreeSortable) get_sort_column_id(sort_column_id voidptr, order GtkSortType) bool {
+pub fn (self &GtkTreeSortable) get_sort_column_id(sort_column_id &i64, order GtkSortType) bool {
 	return C.gtk_tree_sortable_get_sort_column_id(self, sort_column_id, order)
 }
 

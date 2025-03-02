@@ -26,9 +26,9 @@ pub fn C.gtk_spin_button_get_adjustment(spin_button &GtkSpinButton) &GtkAdjustme
 pub fn C.gtk_spin_button_set_digits(spin_button &GtkSpinButton, digits u64)
 pub fn C.gtk_spin_button_get_digits(spin_button &GtkSpinButton) u64
 pub fn C.gtk_spin_button_set_increments(spin_button &GtkSpinButton, step f32, page f32)
-pub fn C.gtk_spin_button_get_increments(spin_button &GtkSpinButton, step voidptr, page voidptr)
+pub fn C.gtk_spin_button_get_increments(spin_button &GtkSpinButton, step &f32, page &f32)
 pub fn C.gtk_spin_button_set_range(spin_button &GtkSpinButton, min f32, max f32)
-pub fn C.gtk_spin_button_get_range(spin_button &GtkSpinButton, min voidptr, max voidptr)
+pub fn C.gtk_spin_button_get_range(spin_button &GtkSpinButton, min &f32, max &f32)
 pub fn C.gtk_spin_button_get_value(spin_button &GtkSpinButton) f32
 pub fn C.gtk_spin_button_get_value_as_int(spin_button &GtkSpinButton) int
 pub fn C.gtk_spin_button_set_value(spin_button &GtkSpinButton, value f32)
@@ -86,7 +86,7 @@ pub fn (self &GtkSpinButton) set_increments(step f32, page f32) {
 	C.gtk_spin_button_set_increments(self, step, page)
 }
 
-pub fn (self &GtkSpinButton) get_increments(step voidptr, page voidptr) {
+pub fn (self &GtkSpinButton) get_increments(step &f32, page &f32) {
 	C.gtk_spin_button_get_increments(self, step, page)
 }
 
@@ -94,7 +94,7 @@ pub fn (self &GtkSpinButton) set_range(min f32, max f32) {
 	C.gtk_spin_button_set_range(self, min, max)
 }
 
-pub fn (self &GtkSpinButton) get_range(min voidptr, max voidptr) {
+pub fn (self &GtkSpinButton) get_range(min &f32, max &f32) {
 	C.gtk_spin_button_get_range(self, min, max)
 }
 

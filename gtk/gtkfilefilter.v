@@ -27,24 +27,24 @@ pub fn GtkFileFilter.new() &GtkFileFilter {
 	return C.gtk_file_filter_new()
 }
 
-pub fn (self &GtkFileFilter) set_name(name &char) {
-	C.gtk_file_filter_set_name(self, name)
+pub fn (self &GtkFileFilter) set_name(name string) {
+	C.gtk_file_filter_set_name(self, name.str)
 }
 
-pub fn (self &GtkFileFilter) get_name() &char {
-	return C.gtk_file_filter_get_name(self)
+pub fn (self &GtkFileFilter) get_name() string {
+	return unsafe { cstring_to_vstring(C.gtk_file_filter_get_name(self)) }
 }
 
-pub fn (self &GtkFileFilter) add_mime_type(mime_typ &char) {
-	C.gtk_file_filter_add_mime_type(self, mime_typ)
+pub fn (self &GtkFileFilter) add_mime_type(mime_typ string) {
+	C.gtk_file_filter_add_mime_type(self, mime_typ.str)
 }
 
-pub fn (self &GtkFileFilter) add_pattern(pattern &char) {
-	C.gtk_file_filter_add_pattern(self, pattern)
+pub fn (self &GtkFileFilter) add_pattern(pattern string) {
+	C.gtk_file_filter_add_pattern(self, pattern.str)
 }
 
-pub fn (self &GtkFileFilter) add_suffix(suffix &char) {
-	C.gtk_file_filter_add_suffix(self, suffix)
+pub fn (self &GtkFileFilter) add_suffix(suffix string) {
+	C.gtk_file_filter_add_suffix(self, suffix.str)
 }
 
 pub fn (self &GtkFileFilter) add_pixbuf_formats() {

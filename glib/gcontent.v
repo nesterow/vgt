@@ -60,8 +60,8 @@ pub fn g_content_type_guess(filename &char, data &char, data_size usize, result_
 	return C.g_content_type_guess(filename, data, data_size, result_uncertain)
 }
 
-pub fn C.g_content_type_guess_for_tree(root &GFile) &char
-pub fn g_content_type_guess_for_tree(root &GFile) &char {
+pub fn C.g_content_type_guess_for_tree(root &GFile) &&char
+pub fn g_content_type_guess_for_tree(root &GFile) &&char {
 	return C.g_content_type_guess_for_tree(root)
 }
 

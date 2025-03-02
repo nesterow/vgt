@@ -24,7 +24,7 @@ pub fn C.gtk_paper_size_get_default_bottom_margin(size &GtkPaperSize, unit GtkUn
 pub fn C.gtk_paper_size_get_default_left_margin(size &GtkPaperSize, unit GtkUnit) f32
 pub fn C.gtk_paper_size_get_default_right_margin(size &GtkPaperSize, unit GtkUnit) f32
 pub fn C.gtk_paper_size_get_default() &char
-pub fn C.gtk_paper_size_new_from_key_file(key_file &glib.GKeyFile, group_name &char, error &glib.GError) &GtkPaperSize
+pub fn C.gtk_paper_size_new_from_key_file(key_file &glib.GKeyFile, group_name &char, error &&glib.GError) &GtkPaperSize
 pub fn C.gtk_paper_size_to_key_file(size &GtkPaperSize, key_file &glib.GKeyFile, group_name &char)
 pub fn C.gtk_paper_size_new_from_gvariant(variant &glib.GVariant) &GtkPaperSize
 pub fn C.gtk_paper_size_to_gvariant(paper_size &GtkPaperSize) voidptr
@@ -38,20 +38,20 @@ pub fn (self &GtkPaperSize) get_type() glib.GType {
 	return C.gtk_paper_size_get_type()
 }
 
-pub fn GtkPaperSize.new(name &char) &GtkPaperSize {
-	return C.gtk_paper_size_new(name)
+pub fn GtkPaperSize.new(name string) &GtkPaperSize {
+	return C.gtk_paper_size_new(name.str)
 }
 
-pub fn GtkPaperSize.new_from_ppd(ppd_name &char, ppd_display_name &char, width f32, height f32) &GtkPaperSize {
-	return C.gtk_paper_size_new_from_ppd(ppd_name, ppd_display_name, width, height)
+pub fn GtkPaperSize.new_from_ppd(ppd_name string, ppd_display_name string, width f32, height f32) &GtkPaperSize {
+	return C.gtk_paper_size_new_from_ppd(ppd_name.str, ppd_display_name.str, width, height)
 }
 
-pub fn GtkPaperSize.new_from_ipp(ipp_name &char, width f32, height f32) &GtkPaperSize {
-	return C.gtk_paper_size_new_from_ipp(ipp_name, width, height)
+pub fn GtkPaperSize.new_from_ipp(ipp_name string, width f32, height f32) &GtkPaperSize {
+	return C.gtk_paper_size_new_from_ipp(ipp_name.str, width, height)
 }
 
-pub fn GtkPaperSize.new_custom(name &char, display_name &char, width f32, height f32, unit GtkUnit) &GtkPaperSize {
-	return C.gtk_paper_size_new_custom(name, display_name, width, height, unit)
+pub fn GtkPaperSize.new_custom(name string, display_name string, width f32, height f32, unit GtkUnit) &GtkPaperSize {
+	return C.gtk_paper_size_new_custom(name.str, display_name.str, width, height, unit)
 }
 
 pub fn (self &GtkPaperSize) copy() &GtkPaperSize {
@@ -70,16 +70,16 @@ pub fn (self &GtkPaperSize) get_paper_sizes(include_custom bool) voidptr {
 	return C.gtk_paper_size_get_paper_sizes(include_custom)
 }
 
-pub fn (self &GtkPaperSize) get_name() &char {
-	return C.gtk_paper_size_get_name(self)
+pub fn (self &GtkPaperSize) get_name() string {
+	return unsafe { cstring_to_vstring(C.gtk_paper_size_get_name(self)) }
 }
 
-pub fn (self &GtkPaperSize) get_display_name() &char {
-	return C.gtk_paper_size_get_display_name(self)
+pub fn (self &GtkPaperSize) get_display_name() string {
+	return unsafe { cstring_to_vstring(C.gtk_paper_size_get_display_name(self)) }
 }
 
-pub fn (self &GtkPaperSize) get_ppd_name() &char {
-	return C.gtk_paper_size_get_ppd_name(self)
+pub fn (self &GtkPaperSize) get_ppd_name() string {
+	return unsafe { cstring_to_vstring(C.gtk_paper_size_get_ppd_name(self)) }
 }
 
 pub fn (self &GtkPaperSize) get_width(unit GtkUnit) f32 {
@@ -118,16 +118,16 @@ pub fn (self &GtkPaperSize) get_default_right_margin(unit GtkUnit) f32 {
 	return C.gtk_paper_size_get_default_right_margin(self, unit)
 }
 
-pub fn (self &GtkPaperSize) get_default() &char {
-	return C.gtk_paper_size_get_default()
+pub fn (self &GtkPaperSize) get_default() string {
+	return unsafe { cstring_to_vstring(C.gtk_paper_size_get_default()) }
 }
 
-pub fn GtkPaperSize.new_from_key_file(key_file &glib.GKeyFile, group_name &char, error &glib.GError) &GtkPaperSize {
-	return C.gtk_paper_size_new_from_key_file(key_file, group_name, error)
+pub fn GtkPaperSize.new_from_key_file(key_file &glib.GKeyFile, group_name string, error &&glib.GError) &GtkPaperSize {
+	return C.gtk_paper_size_new_from_key_file(key_file, group_name.str, error)
 }
 
-pub fn (self &GtkPaperSize) to_key_file(key_file &glib.GKeyFile, group_name &char) {
-	C.gtk_paper_size_to_key_file(self, key_file, group_name)
+pub fn (self &GtkPaperSize) to_key_file(key_file &glib.GKeyFile, group_name string) {
+	C.gtk_paper_size_to_key_file(self, key_file, group_name.str)
 }
 
 pub fn GtkPaperSize.new_from_gvariant(variant &glib.GVariant) &GtkPaperSize {

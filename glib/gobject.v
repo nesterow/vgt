@@ -85,8 +85,8 @@ pub fn (self &GObject) disconnect(object voidptr, signal_spec &char) {
 	C.g_object_disconnect(object, signal_spec)
 }
 
-pub fn C.g_object_setv(object &GObject, n_properties u64, names &char, values &GValue)
-pub fn (object &GObject) setv(n_properties u64, names &char, values &GValue) {
+pub fn C.g_object_setv(object &GObject, n_properties u64, names &&char, values &GValue)
+pub fn (object &GObject) setv(n_properties u64, names &&char, values &GValue) {
 	C.g_object_setv(object, n_properties, names, values)
 }
 
@@ -95,8 +95,8 @@ pub fn (object &GObject) set_valist(first_property_name &char, var_args voidptr)
 	C.g_object_set_valist(object, first_property_name, var_args)
 }
 
-pub fn C.g_object_getv(object &GObject, n_properties u64, names &char, values &GValue)
-pub fn (object &GObject) getv(n_properties u64, names &char, values &GValue) {
+pub fn C.g_object_getv(object &GObject, n_properties u64, names &&char, values &GValue)
+pub fn (object &GObject) getv(n_properties u64, names &&char, values &GValue) {
 	C.g_object_getv(object, n_properties, names, values)
 }
 

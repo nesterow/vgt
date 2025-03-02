@@ -23,9 +23,9 @@ pub fn C.gtk_editable_get_type() glib.GType
 pub fn C.gtk_editable_get_text(editable &GtkEditable) &char
 pub fn C.gtk_editable_set_text(editable &GtkEditable, text &char)
 pub fn C.gtk_editable_get_chars(editable &GtkEditable, start_pos int, end_pos int) voidptr
-pub fn C.gtk_editable_insert_text(editable &GtkEditable, text &char, length int, position voidptr)
+pub fn C.gtk_editable_insert_text(editable &GtkEditable, text &char, length int, position &i64)
 pub fn C.gtk_editable_delete_text(editable &GtkEditable, start_pos int, end_pos int)
-pub fn C.gtk_editable_get_selection_bounds(editable &GtkEditable, start_pos voidptr, end_pos voidptr) bool
+pub fn C.gtk_editable_get_selection_bounds(editable &GtkEditable, start_pos &i64, end_pos &i64) bool
 pub fn C.gtk_editable_delete_selection(editable &GtkEditable)
 pub fn C.gtk_editable_select_region(editable &GtkEditable, start_pos int, end_pos int)
 pub fn C.gtk_editable_set_position(editable &GtkEditable, position int)
@@ -56,27 +56,27 @@ pub fn (self &GtkEditable) get_type() glib.GType {
 	return C.gtk_editable_get_type()
 }
 
-pub fn (self &GtkEditable) get_text() &char {
-	return C.gtk_editable_get_text(self)
+pub fn (self &GtkEditable) get_text() string {
+	return unsafe { cstring_to_vstring(C.gtk_editable_get_text(self)) }
 }
 
-pub fn (self &GtkEditable) set_text(text &char) {
-	C.gtk_editable_set_text(self, text)
+pub fn (self &GtkEditable) set_text(text string) {
+	C.gtk_editable_set_text(self, text.str)
 }
 
 pub fn (self &GtkEditable) get_chars(start_pos int, end_pos int) voidptr {
 	return C.gtk_editable_get_chars(self, start_pos, end_pos)
 }
 
-pub fn (self &GtkEditable) insert_text(text &char, length int, position voidptr) {
-	C.gtk_editable_insert_text(self, text, length, position)
+pub fn (self &GtkEditable) insert_text(text string, length int, position &i64) {
+	C.gtk_editable_insert_text(self, text.str, length, position)
 }
 
 pub fn (self &GtkEditable) delete_text(start_pos int, end_pos int) {
 	C.gtk_editable_delete_text(self, start_pos, end_pos)
 }
 
-pub fn (self &GtkEditable) get_selection_bounds(start_pos voidptr, end_pos voidptr) bool {
+pub fn (self &GtkEditable) get_selection_bounds(start_pos &i64, end_pos &i64) bool {
 	return C.gtk_editable_get_selection_bounds(self, start_pos, end_pos)
 }
 

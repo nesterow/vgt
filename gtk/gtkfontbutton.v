@@ -27,16 +27,16 @@ pub fn GtkFontButton.new() &GtkWidget {
 	return C.gtk_font_button_new()
 }
 
-pub fn GtkFontButton.new_with_font(fontname &char) &GtkWidget {
-	return C.gtk_font_button_new_with_font(fontname)
+pub fn GtkFontButton.new_with_font(fontname string) &GtkWidget {
+	return C.gtk_font_button_new_with_font(fontname.str)
 }
 
-pub fn (self &GtkFontButton) get_title() &char {
-	return C.gtk_font_button_get_title(self)
+pub fn (self &GtkFontButton) get_title() string {
+	return unsafe { cstring_to_vstring(C.gtk_font_button_get_title(self)) }
 }
 
-pub fn (self &GtkFontButton) set_title(title &char) {
-	C.gtk_font_button_set_title(self, title)
+pub fn (self &GtkFontButton) set_title(title string) {
+	C.gtk_font_button_set_title(self, title.str)
 }
 
 pub fn (self &GtkFontButton) get_modal() bool {

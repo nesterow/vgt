@@ -26,21 +26,21 @@ pub enum GtkCellRendererMode {
 
 pub fn C.gtk_cell_renderer_get_type() glib.GType
 pub fn C.gtk_cell_renderer_get_request_mode(cell &GtkCellRenderer) GtkSizeRequestMode
-pub fn C.gtk_cell_renderer_get_preferred_width(cell &GtkCellRenderer, widget &GtkWidget, minimum_size voidptr, natural_size voidptr)
-pub fn C.gtk_cell_renderer_get_preferred_height_for_width(cell &GtkCellRenderer, widget &GtkWidget, width int, minimum_height voidptr, natural_height voidptr)
-pub fn C.gtk_cell_renderer_get_preferred_height(cell &GtkCellRenderer, widget &GtkWidget, minimum_size voidptr, natural_size voidptr)
-pub fn C.gtk_cell_renderer_get_preferred_width_for_height(cell &GtkCellRenderer, widget &GtkWidget, height int, minimum_width voidptr, natural_width voidptr)
+pub fn C.gtk_cell_renderer_get_preferred_width(cell &GtkCellRenderer, widget &GtkWidget, minimum_size &i64, natural_size &i64)
+pub fn C.gtk_cell_renderer_get_preferred_height_for_width(cell &GtkCellRenderer, widget &GtkWidget, width int, minimum_height &i64, natural_height &i64)
+pub fn C.gtk_cell_renderer_get_preferred_height(cell &GtkCellRenderer, widget &GtkWidget, minimum_size &i64, natural_size &i64)
+pub fn C.gtk_cell_renderer_get_preferred_width_for_height(cell &GtkCellRenderer, widget &GtkWidget, height int, minimum_width &i64, natural_width &i64)
 pub fn C.gtk_cell_renderer_get_preferred_size(cell &GtkCellRenderer, widget &GtkWidget, minimum_size &GtkRequisition, natural_size &GtkRequisition)
 pub fn C.gtk_cell_renderer_get_aligned_area(cell &GtkCellRenderer, widget &GtkWidget, flags GtkCellRendererState, cell_area voidptr, aligned_area voidptr)
 pub fn C.gtk_cell_renderer_snapshot(cell &GtkCellRenderer, snapshot &GtkSnapshot, widget &GtkWidget, background_area voidptr, cell_area voidptr, flags GtkCellRendererState)
 pub fn C.gtk_cell_renderer_activate(cell &GtkCellRenderer, event voidptr, widget &GtkWidget, path &char, background_area voidptr, cell_area voidptr, flags GtkCellRendererState) bool
 pub fn C.gtk_cell_renderer_start_editing(cell &GtkCellRenderer, event voidptr, widget &GtkWidget, path &char, background_area voidptr, cell_area voidptr, flags GtkCellRendererState) &GtkCellEditable
 pub fn C.gtk_cell_renderer_set_fixed_size(cell &GtkCellRenderer, width int, height int)
-pub fn C.gtk_cell_renderer_get_fixed_size(cell &GtkCellRenderer, width voidptr, height voidptr)
+pub fn C.gtk_cell_renderer_get_fixed_size(cell &GtkCellRenderer, width &i64, height &i64)
 pub fn C.gtk_cell_renderer_set_alignment(cell &GtkCellRenderer, xalign f64, yalign f64)
 pub fn C.gtk_cell_renderer_get_alignment(cell &GtkCellRenderer, xalign voidptr, yalign voidptr)
 pub fn C.gtk_cell_renderer_set_padding(cell &GtkCellRenderer, xpad int, ypad int)
-pub fn C.gtk_cell_renderer_get_padding(cell &GtkCellRenderer, xpad voidptr, ypad voidptr)
+pub fn C.gtk_cell_renderer_get_padding(cell &GtkCellRenderer, xpad &i64, ypad &i64)
 pub fn C.gtk_cell_renderer_set_visible(cell &GtkCellRenderer, visible bool)
 pub fn C.gtk_cell_renderer_get_visible(cell &GtkCellRenderer) bool
 pub fn C.gtk_cell_renderer_set_sensitive(cell &GtkCellRenderer, sensitive bool)
@@ -66,20 +66,20 @@ pub fn (self &GtkCellRenderer) get_request_mode() GtkSizeRequestMode {
 	return C.gtk_cell_renderer_get_request_mode(self)
 }
 
-pub fn (self &GtkCellRenderer) get_preferred_width(widget &GtkWidget, minimum_size voidptr, natural_size voidptr) {
+pub fn (self &GtkCellRenderer) get_preferred_width(widget &GtkWidget, minimum_size &i64, natural_size &i64) {
 	C.gtk_cell_renderer_get_preferred_width(self, widget, minimum_size, natural_size)
 }
 
-pub fn (self &GtkCellRenderer) get_preferred_height_for_width(widget &GtkWidget, width int, minimum_height voidptr, natural_height voidptr) {
+pub fn (self &GtkCellRenderer) get_preferred_height_for_width(widget &GtkWidget, width int, minimum_height &i64, natural_height &i64) {
 	C.gtk_cell_renderer_get_preferred_height_for_width(self, widget, width, minimum_height,
 		natural_height)
 }
 
-pub fn (self &GtkCellRenderer) get_preferred_height(widget &GtkWidget, minimum_size voidptr, natural_size voidptr) {
+pub fn (self &GtkCellRenderer) get_preferred_height(widget &GtkWidget, minimum_size &i64, natural_size &i64) {
 	C.gtk_cell_renderer_get_preferred_height(self, widget, minimum_size, natural_size)
 }
 
-pub fn (self &GtkCellRenderer) get_preferred_width_for_height(widget &GtkWidget, height int, minimum_width voidptr, natural_width voidptr) {
+pub fn (self &GtkCellRenderer) get_preferred_width_for_height(widget &GtkWidget, height int, minimum_width &i64, natural_width &i64) {
 	C.gtk_cell_renderer_get_preferred_width_for_height(self, widget, height, minimum_width,
 		natural_width)
 }
@@ -96,13 +96,13 @@ pub fn (self &GtkCellRenderer) snapshot(snapshot &GtkSnapshot, widget &GtkWidget
 	C.gtk_cell_renderer_snapshot(self, snapshot, widget, background_area, cell_area, flags)
 }
 
-pub fn (self &GtkCellRenderer) activate(event voidptr, widget &GtkWidget, path &char, background_area voidptr, cell_area voidptr, flags GtkCellRendererState) bool {
-	return C.gtk_cell_renderer_activate(self, event, widget, path, background_area, cell_area,
-		flags)
+pub fn (self &GtkCellRenderer) activate(event voidptr, widget &GtkWidget, path string, background_area voidptr, cell_area voidptr, flags GtkCellRendererState) bool {
+	return C.gtk_cell_renderer_activate(self, event, widget, path.str, background_area,
+		cell_area, flags)
 }
 
-pub fn (self &GtkCellRenderer) start_editing(event voidptr, widget &GtkWidget, path &char, background_area voidptr, cell_area voidptr, flags GtkCellRendererState) &GtkCellEditable {
-	return C.gtk_cell_renderer_start_editing(self, event, widget, path, background_area,
+pub fn (self &GtkCellRenderer) start_editing(event voidptr, widget &GtkWidget, path string, background_area voidptr, cell_area voidptr, flags GtkCellRendererState) &GtkCellEditable {
+	return C.gtk_cell_renderer_start_editing(self, event, widget, path.str, background_area,
 		cell_area, flags)
 }
 
@@ -110,7 +110,7 @@ pub fn (self &GtkCellRenderer) set_fixed_size(width int, height int) {
 	C.gtk_cell_renderer_set_fixed_size(self, width, height)
 }
 
-pub fn (self &GtkCellRenderer) get_fixed_size(width voidptr, height voidptr) {
+pub fn (self &GtkCellRenderer) get_fixed_size(width &i64, height &i64) {
 	C.gtk_cell_renderer_get_fixed_size(self, width, height)
 }
 
@@ -126,7 +126,7 @@ pub fn (self &GtkCellRenderer) set_padding(xpad int, ypad int) {
 	C.gtk_cell_renderer_set_padding(self, xpad, ypad)
 }
 
-pub fn (self &GtkCellRenderer) get_padding(xpad voidptr, ypad voidptr) {
+pub fn (self &GtkCellRenderer) get_padding(xpad &i64, ypad &i64) {
 	C.gtk_cell_renderer_get_padding(self, xpad, ypad)
 }
 

@@ -47,7 +47,7 @@ pub fn C.gtk_text_iter_ends_line(iter &GtkTextIter) bool
 pub fn C.gtk_text_iter_is_cursor_position(iter &GtkTextIter) bool
 pub fn C.gtk_text_iter_get_chars_in_line(iter &GtkTextIter) int
 pub fn C.gtk_text_iter_get_bytes_in_line(iter &GtkTextIter) int
-pub fn C.gtk_text_iter_get_language(iter &GtkTextIter) voidptr
+pub fn C.gtk_text_iter_get_language(iter &GtkTextIter) &i64
 pub fn C.gtk_text_iter_is_end(iter &GtkTextIter) bool
 pub fn C.gtk_text_iter_is_start(iter &GtkTextIter) bool
 pub fn C.gtk_text_iter_forward_char(iter &GtkTextIter) bool
@@ -258,7 +258,7 @@ pub fn (self &GtkTextIter) get_bytes_in_line() int {
 	return C.gtk_text_iter_get_bytes_in_line(self)
 }
 
-pub fn (self &GtkTextIter) get_language() voidptr {
+pub fn (self &GtkTextIter) get_language() &i64 {
 	return C.gtk_text_iter_get_language(self)
 }
 
@@ -446,12 +446,14 @@ pub fn (self &GtkTextIter) backward_find_char(pred voidptr, user_data voidptr, l
 	return C.gtk_text_iter_backward_find_char(self, pred, user_data, limit)
 }
 
-pub fn (self &GtkTextIter) forward_search(str &char, flags GtkTextSearchFlags, match_start &GtkTextIter, match_end &GtkTextIter, limit &GtkTextIter) bool {
-	return C.gtk_text_iter_forward_search(self, str, flags, match_start, match_end, limit)
+pub fn (self &GtkTextIter) forward_search(str string, flags GtkTextSearchFlags, match_start &GtkTextIter, match_end &GtkTextIter, limit &GtkTextIter) bool {
+	return C.gtk_text_iter_forward_search(self, str.str, flags, match_start, match_end,
+		limit)
 }
 
-pub fn (self &GtkTextIter) backward_search(str &char, flags GtkTextSearchFlags, match_start &GtkTextIter, match_end &GtkTextIter, limit &GtkTextIter) bool {
-	return C.gtk_text_iter_backward_search(self, str, flags, match_start, match_end, limit)
+pub fn (self &GtkTextIter) backward_search(str string, flags GtkTextSearchFlags, match_start &GtkTextIter, match_end &GtkTextIter, limit &GtkTextIter) bool {
+	return C.gtk_text_iter_backward_search(self, str.str, flags, match_start, match_end,
+		limit)
 }
 
 pub fn (self &GtkTextIter) equal(rhs &GtkTextIter) bool {

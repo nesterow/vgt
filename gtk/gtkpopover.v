@@ -24,7 +24,7 @@ pub fn C.gtk_popover_get_mnemonics_visible(popover &GtkPopover) bool
 pub fn C.gtk_popover_popup(popover &GtkPopover)
 pub fn C.gtk_popover_popdown(popover &GtkPopover)
 pub fn C.gtk_popover_set_offset(popover &GtkPopover, x_offset int, y_offset int)
-pub fn C.gtk_popover_get_offset(popover &GtkPopover, x_offset voidptr, y_offset voidptr)
+pub fn C.gtk_popover_get_offset(popover &GtkPopover, x_offset &i64, y_offset &i64)
 pub fn C.gtk_popover_set_cascade_popdown(popover &GtkPopover, cascade_popdown bool)
 pub fn C.gtk_popover_get_cascade_popdown(popover &GtkPopover) bool
 pub fn C.gtk_popover_set_default_widget(popover &GtkPopover, widget &GtkWidget)
@@ -103,7 +103,7 @@ pub fn (self &GtkPopover) set_offset(x_offset int, y_offset int) {
 	C.gtk_popover_set_offset(self, x_offset, y_offset)
 }
 
-pub fn (self &GtkPopover) get_offset(x_offset voidptr, y_offset voidptr) {
+pub fn (self &GtkPopover) get_offset(x_offset &i64, y_offset &i64) {
 	C.gtk_popover_get_offset(self, x_offset, y_offset)
 }
 

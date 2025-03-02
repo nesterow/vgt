@@ -13,14 +13,14 @@ pub fn C.gtk_image_get_type() glib.GType
 pub fn C.gtk_image_new() &GtkWidget
 pub fn C.gtk_image_new_from_file(filename &char) &GtkWidget
 pub fn C.gtk_image_new_from_resource(resource_path &char) &GtkWidget
-pub fn C.gtk_image_new_from_pixbuf(pixbuf voidptr) &GtkWidget
+pub fn C.gtk_image_new_from_pixbuf(pixbuf &i64) &GtkWidget
 pub fn C.gtk_image_new_from_paintable(paintable voidptr) &GtkWidget
 pub fn C.gtk_image_new_from_icon_name(icon_name &char) &GtkWidget
 pub fn C.gtk_image_new_from_gicon(icon &glib.GIcon) &GtkWidget
 pub fn C.gtk_image_clear(image &GtkImage)
 pub fn C.gtk_image_set_from_file(image &GtkImage, filename &char)
 pub fn C.gtk_image_set_from_resource(image &GtkImage, resource_path &char)
-pub fn C.gtk_image_set_from_pixbuf(image &GtkImage, pixbuf voidptr)
+pub fn C.gtk_image_set_from_pixbuf(image &GtkImage, pixbuf &i64)
 pub fn C.gtk_image_set_from_paintable(image &GtkImage, paintable voidptr)
 pub fn C.gtk_image_set_from_icon_name(image &GtkImage, icon_name &char)
 pub fn C.gtk_image_set_from_gicon(image &GtkImage, icon &glib.GIcon)
@@ -46,15 +46,15 @@ pub fn GtkImage.new() &GtkWidget {
 	return C.gtk_image_new()
 }
 
-pub fn GtkImage.new_from_file(filename &char) &GtkWidget {
-	return C.gtk_image_new_from_file(filename)
+pub fn GtkImage.new_from_file(filename string) &GtkWidget {
+	return C.gtk_image_new_from_file(filename.str)
 }
 
-pub fn GtkImage.new_from_resource(resource_path &char) &GtkWidget {
-	return C.gtk_image_new_from_resource(resource_path)
+pub fn GtkImage.new_from_resource(resource_path string) &GtkWidget {
+	return C.gtk_image_new_from_resource(resource_path.str)
 }
 
-pub fn GtkImage.new_from_pixbuf(pixbuf voidptr) &GtkWidget {
+pub fn GtkImage.new_from_pixbuf(pixbuf &i64) &GtkWidget {
 	return C.gtk_image_new_from_pixbuf(pixbuf)
 }
 
@@ -62,8 +62,8 @@ pub fn GtkImage.new_from_paintable(paintable voidptr) &GtkWidget {
 	return C.gtk_image_new_from_paintable(paintable)
 }
 
-pub fn GtkImage.new_from_icon_name(icon_name &char) &GtkWidget {
-	return C.gtk_image_new_from_icon_name(icon_name)
+pub fn GtkImage.new_from_icon_name(icon_name string) &GtkWidget {
+	return C.gtk_image_new_from_icon_name(icon_name.str)
 }
 
 pub fn GtkImage.new_from_gicon(icon &glib.GIcon) &GtkWidget {
@@ -74,15 +74,15 @@ pub fn (self &GtkImage) clear() {
 	C.gtk_image_clear(self)
 }
 
-pub fn (self &GtkImage) set_from_file(filename &char) {
-	C.gtk_image_set_from_file(self, filename)
+pub fn (self &GtkImage) set_from_file(filename string) {
+	C.gtk_image_set_from_file(self, filename.str)
 }
 
-pub fn (self &GtkImage) set_from_resource(resource_path &char) {
-	C.gtk_image_set_from_resource(self, resource_path)
+pub fn (self &GtkImage) set_from_resource(resource_path string) {
+	C.gtk_image_set_from_resource(self, resource_path.str)
 }
 
-pub fn (self &GtkImage) set_from_pixbuf(pixbuf voidptr) {
+pub fn (self &GtkImage) set_from_pixbuf(pixbuf &i64) {
 	C.gtk_image_set_from_pixbuf(self, pixbuf)
 }
 
@@ -90,8 +90,8 @@ pub fn (self &GtkImage) set_from_paintable(paintable voidptr) {
 	C.gtk_image_set_from_paintable(self, paintable)
 }
 
-pub fn (self &GtkImage) set_from_icon_name(icon_name &char) {
-	C.gtk_image_set_from_icon_name(self, icon_name)
+pub fn (self &GtkImage) set_from_icon_name(icon_name string) {
+	C.gtk_image_set_from_icon_name(self, icon_name.str)
 }
 
 pub fn (self &GtkImage) set_from_gicon(icon &glib.GIcon) {
@@ -114,8 +114,8 @@ pub fn (self &GtkImage) get_paintable() voidptr {
 	return C.gtk_image_get_paintable(self)
 }
 
-pub fn (self &GtkImage) get_icon_name() &char {
-	return C.gtk_image_get_icon_name(self)
+pub fn (self &GtkImage) get_icon_name() string {
+	return unsafe { cstring_to_vstring(C.gtk_image_get_icon_name(self)) }
 }
 
 pub fn (self &GtkImage) get_gicon() voidptr {

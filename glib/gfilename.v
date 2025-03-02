@@ -10,8 +10,8 @@ pub fn g_filename_from_utf8(utf8string &char, len usize, bytes_read usize, bytes
 	return C.g_filename_from_utf8(utf8string, len, bytes_read, bytes_written, error)
 }
 
-pub fn C.g_filename_from_uri(uri &char, hostname &char, error &GError) &char
-pub fn g_filename_from_uri(uri &char, hostname &char, error &GError) &char {
+pub fn C.g_filename_from_uri(uri &char, hostname &&char, error &GError) &char
+pub fn g_filename_from_uri(uri &char, hostname &&char, error &GError) &char {
 	return C.g_filename_from_uri(uri, hostname, error)
 }
 

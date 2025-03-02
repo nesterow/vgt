@@ -14,6 +14,6 @@ pub fn (self &GtkFontChooserDialog) get_type() glib.GType {
 	return C.gtk_font_chooser_dialog_get_type()
 }
 
-pub fn GtkFontChooserDialog.new(title &char, parent &GtkWindow) &GtkWidget {
-	return C.gtk_font_chooser_dialog_new(title, parent)
+pub fn GtkFontChooserDialog.new(title string, parent &GtkWindow) &GtkWidget {
+	return C.gtk_font_chooser_dialog_new(title.str, parent)
 }

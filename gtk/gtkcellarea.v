@@ -25,10 +25,10 @@ pub fn C.gtk_cell_area_get_cell_at_position(area &GtkCellArea, context &GtkCellA
 pub fn C.gtk_cell_area_create_context(area &GtkCellArea) &GtkCellAreaContext
 pub fn C.gtk_cell_area_copy_context(area &GtkCellArea, context &GtkCellAreaContext) &GtkCellAreaContext
 pub fn C.gtk_cell_area_get_request_mode(area &GtkCellArea) GtkSizeRequestMode
-pub fn C.gtk_cell_area_get_preferred_width(area &GtkCellArea, context &GtkCellAreaContext, widget &GtkWidget, minimum_width voidptr, natural_width voidptr)
-pub fn C.gtk_cell_area_get_preferred_height_for_width(area &GtkCellArea, context &GtkCellAreaContext, widget &GtkWidget, width int, minimum_height voidptr, natural_height voidptr)
-pub fn C.gtk_cell_area_get_preferred_height(area &GtkCellArea, context &GtkCellAreaContext, widget &GtkWidget, minimum_height voidptr, natural_height voidptr)
-pub fn C.gtk_cell_area_get_preferred_width_for_height(area &GtkCellArea, context &GtkCellAreaContext, widget &GtkWidget, height int, minimum_width voidptr, natural_width voidptr)
+pub fn C.gtk_cell_area_get_preferred_width(area &GtkCellArea, context &GtkCellAreaContext, widget &GtkWidget, minimum_width &i64, natural_width &i64)
+pub fn C.gtk_cell_area_get_preferred_height_for_width(area &GtkCellArea, context &GtkCellAreaContext, widget &GtkWidget, width int, minimum_height &i64, natural_height &i64)
+pub fn C.gtk_cell_area_get_preferred_height(area &GtkCellArea, context &GtkCellAreaContext, widget &GtkWidget, minimum_height &i64, natural_height &i64)
+pub fn C.gtk_cell_area_get_preferred_width_for_height(area &GtkCellArea, context &GtkCellAreaContext, widget &GtkWidget, height int, minimum_width &i64, natural_width &i64)
 pub fn C.gtk_cell_area_get_current_path_string(area &GtkCellArea) &char
 pub fn C.gtk_cell_area_apply_attributes(area &GtkCellArea, tree_model &GtkTreeModel, iter &GtkTreeIter, is_expander bool, is_expanded bool)
 pub fn C.gtk_cell_area_attribute_connect(area &GtkCellArea, renderer &GtkCellRenderer, attribute &char, column int)
@@ -59,7 +59,7 @@ pub fn C.gtk_cell_area_get_edit_widget(area &GtkCellArea) &GtkCellEditable
 pub fn C.gtk_cell_area_activate_cell(area &GtkCellArea, widget &GtkWidget, renderer &GtkCellRenderer, event voidptr, cell_area voidptr, flags voidptr) bool
 pub fn C.gtk_cell_area_stop_editing(area &GtkCellArea, canceled bool)
 pub fn C.gtk_cell_area_inner_cell_area(area &GtkCellArea, widget &GtkWidget, cell_area voidptr, inner_area voidptr)
-pub fn C.gtk_cell_area_request_renderer(area &GtkCellArea, renderer &GtkCellRenderer, orientation GtkOrientation, widget &GtkWidget, for_size int, minimum_size voidptr, natural_size voidptr)
+pub fn C.gtk_cell_area_request_renderer(area &GtkCellArea, renderer &GtkCellRenderer, orientation GtkOrientation, widget &GtkWidget, for_size int, minimum_size &i64, natural_size &i64)
 
 @[noinit; typedef]
 pub struct C.GtkCellArea {}
@@ -121,82 +121,82 @@ pub fn (self &GtkCellArea) get_request_mode() GtkSizeRequestMode {
 	return C.gtk_cell_area_get_request_mode(self)
 }
 
-pub fn (self &GtkCellArea) get_preferred_width(context &GtkCellAreaContext, widget &GtkWidget, minimum_width voidptr, natural_width voidptr) {
+pub fn (self &GtkCellArea) get_preferred_width(context &GtkCellAreaContext, widget &GtkWidget, minimum_width &i64, natural_width &i64) {
 	C.gtk_cell_area_get_preferred_width(self, context, widget, minimum_width, natural_width)
 }
 
-pub fn (self &GtkCellArea) get_preferred_height_for_width(context &GtkCellAreaContext, widget &GtkWidget, width int, minimum_height voidptr, natural_height voidptr) {
+pub fn (self &GtkCellArea) get_preferred_height_for_width(context &GtkCellAreaContext, widget &GtkWidget, width int, minimum_height &i64, natural_height &i64) {
 	C.gtk_cell_area_get_preferred_height_for_width(self, context, widget, width, minimum_height,
 		natural_height)
 }
 
-pub fn (self &GtkCellArea) get_preferred_height(context &GtkCellAreaContext, widget &GtkWidget, minimum_height voidptr, natural_height voidptr) {
+pub fn (self &GtkCellArea) get_preferred_height(context &GtkCellAreaContext, widget &GtkWidget, minimum_height &i64, natural_height &i64) {
 	C.gtk_cell_area_get_preferred_height(self, context, widget, minimum_height, natural_height)
 }
 
-pub fn (self &GtkCellArea) get_preferred_width_for_height(context &GtkCellAreaContext, widget &GtkWidget, height int, minimum_width voidptr, natural_width voidptr) {
+pub fn (self &GtkCellArea) get_preferred_width_for_height(context &GtkCellAreaContext, widget &GtkWidget, height int, minimum_width &i64, natural_width &i64) {
 	C.gtk_cell_area_get_preferred_width_for_height(self, context, widget, height, minimum_width,
 		natural_width)
 }
 
-pub fn (self &GtkCellArea) get_current_path_string() &char {
-	return C.gtk_cell_area_get_current_path_string(self)
+pub fn (self &GtkCellArea) get_current_path_string() string {
+	return unsafe { cstring_to_vstring(C.gtk_cell_area_get_current_path_string(self)) }
 }
 
 pub fn (self &GtkCellArea) apply_attributes(tree_model &GtkTreeModel, iter &GtkTreeIter, is_expander bool, is_expanded bool) {
 	C.gtk_cell_area_apply_attributes(self, tree_model, iter, is_expander, is_expanded)
 }
 
-pub fn (self &GtkCellArea) attribute_connect(renderer &GtkCellRenderer, attribute &char, column int) {
-	C.gtk_cell_area_attribute_connect(self, renderer, attribute, column)
+pub fn (self &GtkCellArea) attribute_connect(renderer &GtkCellRenderer, attribute string, column int) {
+	C.gtk_cell_area_attribute_connect(self, renderer, attribute.str, column)
 }
 
-pub fn (self &GtkCellArea) attribute_disconnect(renderer &GtkCellRenderer, attribute &char) {
-	C.gtk_cell_area_attribute_disconnect(self, renderer, attribute)
+pub fn (self &GtkCellArea) attribute_disconnect(renderer &GtkCellRenderer, attribute string) {
+	C.gtk_cell_area_attribute_disconnect(self, renderer, attribute.str)
 }
 
-pub fn (self &GtkCellArea) attribute_get_column(renderer &GtkCellRenderer, attribute &char) int {
-	return C.gtk_cell_area_attribute_get_column(self, renderer, attribute)
+pub fn (self &GtkCellArea) attribute_get_column(renderer &GtkCellRenderer, attribute string) int {
+	return C.gtk_cell_area_attribute_get_column(self, renderer, attribute.str)
 }
 
 pub fn (self &GtkCellArea) class_install_cell_property(aclass &GtkCellAreaClass, property_id u64, pspec &glib.GParamSpec) {
 	C.gtk_cell_area_class_install_cell_property(aclass, property_id, pspec)
 }
 
-pub fn (self &GtkCellArea) class_find_cell_property(aclass &GtkCellAreaClass, property_name &char) voidptr {
-	return C.gtk_cell_area_class_find_cell_property(aclass, property_name)
+pub fn (self &GtkCellArea) class_find_cell_property(aclass &GtkCellAreaClass, property_name string) voidptr {
+	return C.gtk_cell_area_class_find_cell_property(aclass, property_name.str)
 }
 
 pub fn (self &GtkCellArea) class_list_cell_properties(aclass &GtkCellAreaClass, n_properties &u64) voidptr {
 	return C.gtk_cell_area_class_list_cell_properties(aclass, n_properties)
 }
 
-pub fn (self &GtkCellArea) add_with_properties(renderer &GtkCellRenderer, first_prop_name &char) {
-	C.gtk_cell_area_add_with_properties(self, renderer, first_prop_name)
+pub fn (self &GtkCellArea) add_with_properties(renderer &GtkCellRenderer, first_prop_name string) {
+	C.gtk_cell_area_add_with_properties(self, renderer, first_prop_name.str)
 }
 
-pub fn (self &GtkCellArea) cell_set(renderer &GtkCellRenderer, first_prop_name &char) {
-	C.gtk_cell_area_cell_set(self, renderer, first_prop_name)
+pub fn (self &GtkCellArea) cell_set(renderer &GtkCellRenderer, first_prop_name string) {
+	C.gtk_cell_area_cell_set(self, renderer, first_prop_name.str)
 }
 
-pub fn (self &GtkCellArea) cell_get(renderer &GtkCellRenderer, first_prop_name &char) {
-	C.gtk_cell_area_cell_get(self, renderer, first_prop_name)
+pub fn (self &GtkCellArea) cell_get(renderer &GtkCellRenderer, first_prop_name string) {
+	C.gtk_cell_area_cell_get(self, renderer, first_prop_name.str)
 }
 
-pub fn (self &GtkCellArea) cell_set_valist(renderer &GtkCellRenderer, first_property_name &char, var_args voidptr) {
-	C.gtk_cell_area_cell_set_valist(self, renderer, first_property_name, var_args)
+pub fn (self &GtkCellArea) cell_set_valist(renderer &GtkCellRenderer, first_property_name string, var_args voidptr) {
+	C.gtk_cell_area_cell_set_valist(self, renderer, first_property_name.str, var_args)
 }
 
-pub fn (self &GtkCellArea) cell_get_valist(renderer &GtkCellRenderer, first_property_name &char, var_args voidptr) {
-	C.gtk_cell_area_cell_get_valist(self, renderer, first_property_name, var_args)
+pub fn (self &GtkCellArea) cell_get_valist(renderer &GtkCellRenderer, first_property_name string, var_args voidptr) {
+	C.gtk_cell_area_cell_get_valist(self, renderer, first_property_name.str, var_args)
 }
 
-pub fn (self &GtkCellArea) cell_set_property(renderer &GtkCellRenderer, property_name &char, value &glib.GValue) {
-	C.gtk_cell_area_cell_set_property(self, renderer, property_name, value)
+pub fn (self &GtkCellArea) cell_set_property(renderer &GtkCellRenderer, property_name string, value &glib.GValue) {
+	C.gtk_cell_area_cell_set_property(self, renderer, property_name.str, value)
 }
 
-pub fn (self &GtkCellArea) cell_get_property(renderer &GtkCellRenderer, property_name &char, value &glib.GValue) {
-	C.gtk_cell_area_cell_get_property(self, renderer, property_name, value)
+pub fn (self &GtkCellArea) cell_get_property(renderer &GtkCellRenderer, property_name string, value &glib.GValue) {
+	C.gtk_cell_area_cell_get_property(self, renderer, property_name.str, value)
 }
 
 pub fn (self &GtkCellArea) is_activatable() bool {
@@ -259,7 +259,7 @@ pub fn (self &GtkCellArea) inner_cell_area(widget &GtkWidget, cell_area voidptr,
 	C.gtk_cell_area_inner_cell_area(self, widget, cell_area, inner_area)
 }
 
-pub fn (self &GtkCellArea) request_renderer(renderer &GtkCellRenderer, orientation GtkOrientation, widget &GtkWidget, for_size int, minimum_size voidptr, natural_size voidptr) {
+pub fn (self &GtkCellArea) request_renderer(renderer &GtkCellRenderer, orientation GtkOrientation, widget &GtkWidget, for_size int, minimum_size &i64, natural_size &i64) {
 	C.gtk_cell_area_request_renderer(self, renderer, orientation, widget, for_size, minimum_size,
 		natural_size)
 }

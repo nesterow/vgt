@@ -35,8 +35,8 @@ pub fn (self &GtkProgressBar) pulse() {
 	C.gtk_progress_bar_pulse(self)
 }
 
-pub fn (self &GtkProgressBar) set_text(text &char) {
-	C.gtk_progress_bar_set_text(self, text)
+pub fn (self &GtkProgressBar) set_text(text string) {
+	C.gtk_progress_bar_set_text(self, text.str)
 }
 
 pub fn (self &GtkProgressBar) set_fraction(fraction f32) {
@@ -51,8 +51,8 @@ pub fn (self &GtkProgressBar) set_inverted(inverted bool) {
 	C.gtk_progress_bar_set_inverted(self, inverted)
 }
 
-pub fn (self &GtkProgressBar) get_text() &char {
-	return C.gtk_progress_bar_get_text(self)
+pub fn (self &GtkProgressBar) get_text() string {
+	return unsafe { cstring_to_vstring(C.gtk_progress_bar_get_text(self)) }
 }
 
 pub fn (self &GtkProgressBar) get_fraction() f32 {

@@ -8,7 +8,7 @@ pub struct C.GtkLayoutManagerClass {}
 pub type GtkLayoutManagerClass = C.GtkLayoutManagerClass
 
 pub fn C.gtk_layout_manager_get_type() glib.GType
-pub fn C.gtk_layout_manager_measure(manager &GtkLayoutManager, widget &GtkWidget, orientation GtkOrientation, for_size int, minimum voidptr, natural voidptr, minimum_baseline voidptr, natural_baseline voidptr)
+pub fn C.gtk_layout_manager_measure(manager &GtkLayoutManager, widget &GtkWidget, orientation GtkOrientation, for_size int, minimum &i64, natural &i64, minimum_baseline &i64, natural_baseline &i64)
 pub fn C.gtk_layout_manager_allocate(manager &GtkLayoutManager, widget &GtkWidget, width int, height int, baseline int)
 pub fn C.gtk_layout_manager_get_request_mode(manager &GtkLayoutManager) GtkSizeRequestMode
 pub fn C.gtk_layout_manager_get_widget(manager &GtkLayoutManager) &GtkWidget
@@ -24,7 +24,7 @@ pub fn (self &GtkLayoutManager) get_type() glib.GType {
 	return C.gtk_layout_manager_get_type()
 }
 
-pub fn (self &GtkLayoutManager) measure(widget &GtkWidget, orientation GtkOrientation, for_size int, minimum voidptr, natural voidptr, minimum_baseline voidptr, natural_baseline voidptr) {
+pub fn (self &GtkLayoutManager) measure(widget &GtkWidget, orientation GtkOrientation, for_size int, minimum &i64, natural &i64, minimum_baseline &i64, natural_baseline &i64) {
 	C.gtk_layout_manager_measure(self, widget, orientation, for_size, minimum, natural,
 		minimum_baseline, natural_baseline)
 }

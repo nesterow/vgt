@@ -19,8 +19,8 @@ pub fn C.gtk_tree_selection_set_select_function(selection &GtkTreeSelection, fun
 pub fn C.gtk_tree_selection_get_user_data(selection &GtkTreeSelection) voidptr
 pub fn C.gtk_tree_selection_get_tree_view(selection &GtkTreeSelection) &GtkTreeView
 pub fn C.gtk_tree_selection_get_select_function(selection &GtkTreeSelection) GtkTreeSelectionFunc
-pub fn C.gtk_tree_selection_get_selected(selection &GtkTreeSelection, model &GtkTreeModel, iter &GtkTreeIter) bool
-pub fn C.gtk_tree_selection_get_selected_rows(selection &GtkTreeSelection, model &GtkTreeModel) voidptr
+pub fn C.gtk_tree_selection_get_selected(selection &GtkTreeSelection, model &&GtkTreeModel, iter &GtkTreeIter) bool
+pub fn C.gtk_tree_selection_get_selected_rows(selection &GtkTreeSelection, model &&GtkTreeModel) voidptr
 pub fn C.gtk_tree_selection_count_selected_rows(selection &GtkTreeSelection) int
 pub fn C.gtk_tree_selection_selected_foreach(selection &GtkTreeSelection, func voidptr, data voidptr)
 pub fn C.gtk_tree_selection_select_path(selection &GtkTreeSelection, path &GtkTreePath)
@@ -67,11 +67,11 @@ pub fn (self &GtkTreeSelection) get_select_function() GtkTreeSelectionFunc {
 	return C.gtk_tree_selection_get_select_function(self)
 }
 
-pub fn (self &GtkTreeSelection) get_selected(model &GtkTreeModel, iter &GtkTreeIter) bool {
+pub fn (self &GtkTreeSelection) get_selected(model &&GtkTreeModel, iter &GtkTreeIter) bool {
 	return C.gtk_tree_selection_get_selected(self, model, iter)
 }
 
-pub fn (self &GtkTreeSelection) get_selected_rows(model &GtkTreeModel) voidptr {
+pub fn (self &GtkTreeSelection) get_selected_rows(model &&GtkTreeModel) voidptr {
 	return C.gtk_tree_selection_get_selected_rows(self, model)
 }
 

@@ -31,8 +31,8 @@ pub fn (self &GtkColumnViewColumn) get_type() glib.GType {
 	return C.gtk_column_view_column_get_type()
 }
 
-pub fn GtkColumnViewColumn.new(title &char, factory &GtkListItemFactory) &GtkColumnViewColumn {
-	return C.gtk_column_view_column_new(title, factory)
+pub fn GtkColumnViewColumn.new(title string, factory &GtkListItemFactory) &GtkColumnViewColumn {
+	return C.gtk_column_view_column_new(title.str, factory)
 }
 
 pub fn (self &GtkColumnViewColumn) get_column_view() &GtkColumnView {
@@ -47,12 +47,12 @@ pub fn (self &GtkColumnViewColumn) get_factory() &GtkListItemFactory {
 	return C.gtk_column_view_column_get_factory(self)
 }
 
-pub fn (self &GtkColumnViewColumn) set_title(title &char) {
-	C.gtk_column_view_column_set_title(self, title)
+pub fn (self &GtkColumnViewColumn) set_title(title string) {
+	C.gtk_column_view_column_set_title(self, title.str)
 }
 
-pub fn (self &GtkColumnViewColumn) get_title() &char {
-	return C.gtk_column_view_column_get_title(self)
+pub fn (self &GtkColumnViewColumn) get_title() string {
+	return unsafe { cstring_to_vstring(C.gtk_column_view_column_get_title(self)) }
 }
 
 pub fn (self &GtkColumnViewColumn) set_sorter(sorter &GtkSorter) {

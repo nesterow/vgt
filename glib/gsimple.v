@@ -218,8 +218,8 @@ pub fn g_simple_proxy_resolver_get_type() int {
 	return C.g_simple_proxy_resolver_get_type()
 }
 
-pub fn C.g_simple_proxy_resolver_new(default_proxy &char, ignore_hosts &char) &GProxyResolver
-pub fn g_simple_proxy_resolver_new(default_proxy &char, ignore_hosts &char) &GProxyResolver {
+pub fn C.g_simple_proxy_resolver_new(default_proxy &char, ignore_hosts &&char) &GProxyResolver
+pub fn g_simple_proxy_resolver_new(default_proxy &char, ignore_hosts &&char) &GProxyResolver {
 	return C.g_simple_proxy_resolver_new(default_proxy, ignore_hosts)
 }
 
@@ -228,8 +228,8 @@ pub fn g_simple_proxy_resolver_set_default_proxy(resolver &GSimpleProxyResolver,
 	C.g_simple_proxy_resolver_set_default_proxy(resolver, default_proxy)
 }
 
-pub fn C.g_simple_proxy_resolver_set_ignore_hosts(resolver &GSimpleProxyResolver, ignore_hosts &char)
-pub fn g_simple_proxy_resolver_set_ignore_hosts(resolver &GSimpleProxyResolver, ignore_hosts &char) {
+pub fn C.g_simple_proxy_resolver_set_ignore_hosts(resolver &GSimpleProxyResolver, ignore_hosts &&char)
+pub fn g_simple_proxy_resolver_set_ignore_hosts(resolver &GSimpleProxyResolver, ignore_hosts &&char) {
 	C.g_simple_proxy_resolver_set_ignore_hosts(resolver, ignore_hosts)
 }
 

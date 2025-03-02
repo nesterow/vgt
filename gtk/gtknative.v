@@ -13,7 +13,7 @@ pub fn C.gtk_native_unrealize(self &GtkNative)
 pub fn C.gtk_native_get_for_surface(surface voidptr) &GtkNative
 pub fn C.gtk_native_get_surface(self &GtkNative) voidptr
 pub fn C.gtk_native_get_renderer(self &GtkNative) voidptr
-pub fn C.gtk_native_get_surface_transform(self &GtkNative, x voidptr, y voidptr)
+pub fn C.gtk_native_get_surface_transform(self &GtkNative, x &f32, y &f32)
 
 @[noinit; typedef]
 pub struct C.GtkNative {}
@@ -44,6 +44,6 @@ pub fn (self &GtkNative) get_renderer() voidptr {
 	return C.gtk_native_get_renderer(self)
 }
 
-pub fn (self &GtkNative) get_surface_transform(x voidptr, y voidptr) {
+pub fn (self &GtkNative) get_surface_transform(x &f32, y &f32) {
 	C.gtk_native_get_surface_transform(self, x, y)
 }

@@ -24,6 +24,6 @@ pub fn (self &GtkSettings) get_for_display(display voidptr) &GtkSettings {
 	return C.gtk_settings_get_for_display(display)
 }
 
-pub fn (self &GtkSettings) reset_property(name &char) {
-	C.gtk_settings_reset_property(self, name)
+pub fn (self &GtkSettings) reset_property(name string) {
+	C.gtk_settings_reset_property(self, name.str)
 }

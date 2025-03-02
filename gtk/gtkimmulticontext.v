@@ -25,10 +25,10 @@ pub fn GtkIMMulticontext.new() &GtkIMContext {
 	return C.gtk_im_multicontext_new()
 }
 
-pub fn (self &GtkIMMulticontext) get_context_id() &char {
-	return C.gtk_im_multicontext_get_context_id(self)
+pub fn (self &GtkIMMulticontext) get_context_id() string {
+	return unsafe { cstring_to_vstring(C.gtk_im_multicontext_get_context_id(self)) }
 }
 
-pub fn (self &GtkIMMulticontext) set_context_id(context_id &char) {
-	C.gtk_im_multicontext_set_context_id(self, context_id)
+pub fn (self &GtkIMMulticontext) set_context_id(context_id string) {
+	C.gtk_im_multicontext_set_context_id(self, context_id.str)
 }

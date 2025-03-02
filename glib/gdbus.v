@@ -41,13 +41,13 @@ pub fn g_dbus_address_get_stream(address &char, cancellable &GCancellable, callb
 	C.g_dbus_address_get_stream(address, cancellable, callback, user_data)
 }
 
-pub fn C.g_dbus_address_get_stream_finish(res &GAsyncResult, out_guid &char, error &GError) &GIOStream
-pub fn g_dbus_address_get_stream_finish(res &GAsyncResult, out_guid &char, error &GError) &GIOStream {
+pub fn C.g_dbus_address_get_stream_finish(res &GAsyncResult, out_guid &&char, error &GError) &GIOStream
+pub fn g_dbus_address_get_stream_finish(res &GAsyncResult, out_guid &&char, error &GError) &GIOStream {
 	return C.g_dbus_address_get_stream_finish(res, out_guid, error)
 }
 
-pub fn C.g_dbus_address_get_stream_sync(address &char, out_guid &char, cancellable &GCancellable, error &GError) &GIOStream
-pub fn g_dbus_address_get_stream_sync(address &char, out_guid &char, cancellable &GCancellable, error &GError) &GIOStream {
+pub fn C.g_dbus_address_get_stream_sync(address &char, out_guid &&char, cancellable &GCancellable, error &GError) &GIOStream
+pub fn g_dbus_address_get_stream_sync(address &char, out_guid &&char, cancellable &GCancellable, error &GError) &GIOStream {
 	return C.g_dbus_address_get_stream_sync(address, out_guid, cancellable, error)
 }
 
@@ -1275,8 +1275,8 @@ pub fn g_dbus_proxy_set_cached_property(proxy &GDBusProxy, property_name &char, 
 	C.g_dbus_proxy_set_cached_property(proxy, property_name, value)
 }
 
-pub fn C.g_dbus_proxy_get_cached_property_names(proxy &GDBusProxy) &char
-pub fn g_dbus_proxy_get_cached_property_names(proxy &GDBusProxy) &char {
+pub fn C.g_dbus_proxy_get_cached_property_names(proxy &GDBusProxy) &&char
+pub fn g_dbus_proxy_get_cached_property_names(proxy &GDBusProxy) &&char {
 	return C.g_dbus_proxy_get_cached_property_names(proxy)
 }
 

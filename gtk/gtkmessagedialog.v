@@ -33,24 +33,24 @@ pub fn (self &GtkMessageDialog) get_type() glib.GType {
 	return C.gtk_message_dialog_get_type()
 }
 
-pub fn GtkMessageDialog.new(parent &GtkWindow, flags GtkDialogFlags, typ GtkMessageType, buttons GtkButtonsType, message_format &char) &GtkWidget {
-	return C.gtk_message_dialog_new(parent, flags, typ, buttons, message_format)
+pub fn GtkMessageDialog.new(parent &GtkWindow, flags GtkDialogFlags, typ GtkMessageType, buttons GtkButtonsType, message_format string) &GtkWidget {
+	return C.gtk_message_dialog_new(parent, flags, typ, buttons, message_format.str)
 }
 
-pub fn GtkMessageDialog.new_with_markup(parent &GtkWindow, flags GtkDialogFlags, typ GtkMessageType, buttons GtkButtonsType, message_format &char) &GtkWidget {
-	return C.gtk_message_dialog_new_with_markup(parent, flags, typ, buttons, message_format)
+pub fn GtkMessageDialog.new_with_markup(parent &GtkWindow, flags GtkDialogFlags, typ GtkMessageType, buttons GtkButtonsType, message_format string) &GtkWidget {
+	return C.gtk_message_dialog_new_with_markup(parent, flags, typ, buttons, message_format.str)
 }
 
-pub fn (self &GtkMessageDialog) set_markup(str &char) {
-	C.gtk_message_dialog_set_markup(self, str)
+pub fn (self &GtkMessageDialog) set_markup(str string) {
+	C.gtk_message_dialog_set_markup(self, str.str)
 }
 
-pub fn (self &GtkMessageDialog) format_secondary_text(message_format &char) {
-	C.gtk_message_dialog_format_secondary_text(self, message_format)
+pub fn (self &GtkMessageDialog) format_secondary_text(message_format string) {
+	C.gtk_message_dialog_format_secondary_text(self, message_format.str)
 }
 
-pub fn (self &GtkMessageDialog) format_secondary_markup(message_format &char) {
-	C.gtk_message_dialog_format_secondary_markup(self, message_format)
+pub fn (self &GtkMessageDialog) format_secondary_markup(message_format string) {
+	C.gtk_message_dialog_format_secondary_markup(self, message_format.str)
 }
 
 pub fn (self &GtkMessageDialog) get_message_area() &GtkWidget {

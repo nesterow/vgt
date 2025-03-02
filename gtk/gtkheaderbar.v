@@ -55,10 +55,10 @@ pub fn (self &GtkHeaderBar) set_show_title_buttons(setting bool) {
 	C.gtk_header_bar_set_show_title_buttons(self, setting)
 }
 
-pub fn (self &GtkHeaderBar) set_decoration_layout(layout &char) {
-	C.gtk_header_bar_set_decoration_layout(self, layout)
+pub fn (self &GtkHeaderBar) set_decoration_layout(layout string) {
+	C.gtk_header_bar_set_decoration_layout(self, layout.str)
 }
 
-pub fn (self &GtkHeaderBar) get_decoration_layout() &char {
-	return C.gtk_header_bar_get_decoration_layout(self)
+pub fn (self &GtkHeaderBar) get_decoration_layout() string {
+	return unsafe { cstring_to_vstring(C.gtk_header_bar_get_decoration_layout(self)) }
 }

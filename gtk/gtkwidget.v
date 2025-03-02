@@ -27,7 +27,7 @@ pub fn C.gtk_widget_get_frame_clock(widget &GtkWidget) voidptr
 pub fn C.gtk_widget_size_allocate(widget &GtkWidget, allocation &GtkAllocation, baseline int)
 pub fn C.gtk_widget_allocate(widget &GtkWidget, width int, height int, baseline int, transform voidptr)
 pub fn C.gtk_widget_get_request_mode(widget &GtkWidget) GtkSizeRequestMode
-pub fn C.gtk_widget_measure(widget &GtkWidget, orientation GtkOrientation, for_size int, minimum voidptr, natural voidptr, minimum_baseline voidptr, natural_baseline voidptr)
+pub fn C.gtk_widget_measure(widget &GtkWidget, orientation GtkOrientation, for_size int, minimum &i64, natural &i64, minimum_baseline &i64, natural_baseline &i64)
 pub fn C.gtk_widget_get_preferred_size(widget &GtkWidget, minimum_size &GtkRequisition, natural_size &GtkRequisition)
 pub fn C.gtk_widget_set_layout_manager(widget &GtkWidget, layout_manager &GtkLayoutManager)
 pub fn C.gtk_widget_get_layout_manager(widget &GtkWidget) &GtkLayoutManager
@@ -81,9 +81,9 @@ pub fn C.gtk_widget_get_allocated_width(widget &GtkWidget) int
 pub fn C.gtk_widget_get_allocated_height(widget &GtkWidget) int
 pub fn C.gtk_widget_get_allocated_baseline(widget &GtkWidget) int
 pub fn C.gtk_widget_get_allocation(widget &GtkWidget, allocation &GtkAllocation)
-pub fn C.gtk_widget_compute_transform(widget &GtkWidget, target &GtkWidget, out_transform voidptr) bool
-pub fn C.gtk_widget_compute_bounds(widget &GtkWidget, target &GtkWidget, out_bounds voidptr) bool
-pub fn C.gtk_widget_compute_point(widget &GtkWidget, target &GtkWidget, point &char, out_point voidptr) bool
+pub fn C.gtk_widget_compute_transform(widget &GtkWidget, target &GtkWidget, out_transform &i64) bool
+pub fn C.gtk_widget_compute_bounds(widget &GtkWidget, target &GtkWidget, out_bounds &i64) bool
+pub fn C.gtk_widget_compute_point(widget &GtkWidget, target &GtkWidget, point &int, out_point &i64) bool
 pub fn C.gtk_widget_get_width(widget &GtkWidget) int
 pub fn C.gtk_widget_get_height(widget &GtkWidget) int
 pub fn C.gtk_widget_get_size(widget &GtkWidget, orientation GtkOrientation) int
@@ -91,7 +91,7 @@ pub fn C.gtk_widget_child_focus(widget &GtkWidget, direction GtkDirectionType) b
 pub fn C.gtk_widget_keynav_failed(widget &GtkWidget, direction GtkDirectionType) bool
 pub fn C.gtk_widget_error_bell(widget &GtkWidget)
 pub fn C.gtk_widget_set_size_request(widget &GtkWidget, width int, height int)
-pub fn C.gtk_widget_get_size_request(widget &GtkWidget, width voidptr, height voidptr)
+pub fn C.gtk_widget_get_size_request(widget &GtkWidget, width &i64, height &i64)
 pub fn C.gtk_widget_set_opacity(widget &GtkWidget, opacity f32)
 pub fn C.gtk_widget_get_opacity(widget &GtkWidget) f32
 pub fn C.gtk_widget_set_overflow(widget &GtkWidget, overflow GtkOverflow)
@@ -124,16 +124,16 @@ pub fn C.gtk_widget_set_margin_top(widget &GtkWidget, margin int)
 pub fn C.gtk_widget_get_margin_bottom(widget &GtkWidget) int
 pub fn C.gtk_widget_set_margin_bottom(widget &GtkWidget, margin int)
 pub fn C.gtk_widget_is_ancestor(widget &GtkWidget, ancestor &GtkWidget) bool
-pub fn C.gtk_widget_translate_coordinates(src_widget &GtkWidget, dest_widget &GtkWidget, src_x f32, src_y f32, dest_x voidptr, dest_y voidptr) bool
+pub fn C.gtk_widget_translate_coordinates(src_widget &GtkWidget, dest_widget &GtkWidget, src_x f32, src_y f32, dest_x &f32, dest_y &f32) bool
 pub fn C.gtk_widget_contains(widget &GtkWidget, x f32, y f32) bool
 pub fn C.gtk_widget_pick(widget &GtkWidget, x f32, y f32, flags GtkPickFlags) &GtkWidget
 pub fn C.gtk_widget_add_controller(widget &GtkWidget, controller &GtkEventController)
 pub fn C.gtk_widget_remove_controller(widget &GtkWidget, controller &GtkEventController)
-pub fn C.gtk_widget_create_pango_context(widget &GtkWidget) voidptr
-pub fn C.gtk_widget_get_pango_context(widget &GtkWidget) voidptr
-pub fn C.gtk_widget_set_font_options(widget &GtkWidget, options &char)
-pub fn C.gtk_widget_get_font_options(widget &GtkWidget) &char
-pub fn C.gtk_widget_create_pango_layout(widget &GtkWidget, text &char) voidptr
+pub fn C.gtk_widget_create_pango_context(widget &GtkWidget) &i64
+pub fn C.gtk_widget_get_pango_context(widget &GtkWidget) &i64
+pub fn C.gtk_widget_set_font_options(widget &GtkWidget, options &int)
+pub fn C.gtk_widget_get_font_options(widget &GtkWidget) &int
+pub fn C.gtk_widget_create_pango_layout(widget &GtkWidget, text &char) &i64
 pub fn C.gtk_widget_set_direction(widget &GtkWidget, dir GtkTextDirection)
 pub fn C.gtk_widget_get_direction(widget &GtkWidget) GtkTextDirection
 pub fn C.gtk_widget_set_default_direction(dir GtkTextDirection)
@@ -168,8 +168,8 @@ pub fn C.gtk_widget_insert_action_group(widget &GtkWidget, name &char, group &gl
 pub fn C.gtk_widget_activate_action(widget &GtkWidget, name &char, format_str &char) bool
 pub fn C.gtk_widget_activate_action_variant(widget &GtkWidget, name &char, args &glib.GVariant) bool
 pub fn C.gtk_widget_activate_default(widget &GtkWidget)
-pub fn C.gtk_widget_set_font_map(widget &GtkWidget, font_map voidptr)
-pub fn C.gtk_widget_get_font_map(widget &GtkWidget) voidptr
+pub fn C.gtk_widget_set_font_map(widget &GtkWidget, font_map &i64)
+pub fn C.gtk_widget_get_font_map(widget &GtkWidget) &i64
 pub fn C.gtk_widget_get_first_child(widget &GtkWidget) &GtkWidget
 pub fn C.gtk_widget_get_last_child(widget &GtkWidget) &GtkWidget
 pub fn C.gtk_widget_get_next_sibling(widget &GtkWidget) &GtkWidget
@@ -190,7 +190,7 @@ pub fn C.gtk_widget_get_css_classes(widget &GtkWidget) voidptr
 pub fn C.gtk_widget_set_css_classes(widget &GtkWidget, classes voidptr)
 pub fn C.gtk_widget_class_install_action(widget_class &GtkWidgetClass, action_name &char, parameter_typ &char, activate voidptr)
 pub fn C.gtk_widget_class_install_property_action(widget_class &GtkWidgetClass, action_name &char, property_name &char)
-pub fn C.gtk_widget_class_query_action(widget_class &GtkWidgetClass, index_ u64, owner &int, action_name voidptr, parameter_typ &glib.GVariantType, property_name voidptr) bool
+pub fn C.gtk_widget_class_query_action(widget_class &GtkWidgetClass, index_ u64, owner &int, action_name voidptr, parameter_typ &&glib.GVariantType, property_name voidptr) bool
 pub fn C.gtk_widget_action_set_enabled(widget &GtkWidget, action_name &char, enabled bool)
 pub fn C.gtk_widget_class_set_accessible_role(widget_class &GtkWidgetClass, accessible_role GtkAccessibleRole)
 pub fn C.gtk_widget_class_get_accessible_role(widget_class &GtkWidgetClass) GtkAccessibleRole
@@ -260,7 +260,7 @@ pub fn (self &GtkWidget) get_request_mode() GtkSizeRequestMode {
 	return C.gtk_widget_get_request_mode(self)
 }
 
-pub fn (self &GtkWidget) measure(orientation GtkOrientation, for_size int, minimum voidptr, natural voidptr, minimum_baseline voidptr, natural_baseline voidptr) {
+pub fn (self &GtkWidget) measure(orientation GtkOrientation, for_size int, minimum &i64, natural &i64, minimum_baseline &i64, natural_baseline &i64) {
 	C.gtk_widget_measure(self, orientation, for_size, minimum, natural, minimum_baseline,
 		natural_baseline)
 }
@@ -285,16 +285,17 @@ pub fn (self &GtkWidget) class_get_layout_manager_type(widget_class &GtkWidgetCl
 	return C.gtk_widget_class_get_layout_manager_type(widget_class)
 }
 
-pub fn (self &GtkWidget) class_add_binding(widget_class &GtkWidgetClass, keyval u64, mods voidptr, callback voidptr, format_str &char) {
-	C.gtk_widget_class_add_binding(widget_class, keyval, mods, callback, format_str)
+pub fn (self &GtkWidget) class_add_binding(widget_class &GtkWidgetClass, keyval u64, mods voidptr, callback voidptr, format_str string) {
+	C.gtk_widget_class_add_binding(widget_class, keyval, mods, callback, format_str.str)
 }
 
-pub fn (self &GtkWidget) class_add_binding_signal(widget_class &GtkWidgetClass, keyval u64, mods voidptr, signal &char, format_str &char) {
-	C.gtk_widget_class_add_binding_signal(widget_class, keyval, mods, signal, format_str)
+pub fn (self &GtkWidget) class_add_binding_signal(widget_class &GtkWidgetClass, keyval u64, mods voidptr, signal string, format_str string) {
+	C.gtk_widget_class_add_binding_signal(widget_class, keyval, mods, signal.str, format_str.str)
 }
 
-pub fn (self &GtkWidget) class_add_binding_action(widget_class &GtkWidgetClass, keyval u64, mods voidptr, action_name &char, format_str &char) {
-	C.gtk_widget_class_add_binding_action(widget_class, keyval, mods, action_name, format_str)
+pub fn (self &GtkWidget) class_add_binding_action(widget_class &GtkWidgetClass, keyval u64, mods voidptr, action_name string, format_str string) {
+	C.gtk_widget_class_add_binding_action(widget_class, keyval, mods, action_name.str,
+		format_str.str)
 }
 
 pub fn (self &GtkWidget) class_add_shortcut(widget_class &GtkWidgetClass, shortcut &GtkShortcut) {
@@ -305,8 +306,8 @@ pub fn (self &GtkWidget) class_set_activate_signal(widget_class &GtkWidgetClass,
 	C.gtk_widget_class_set_activate_signal(widget_class, signal_id)
 }
 
-pub fn (self &GtkWidget) class_set_activate_signal_from_name(widget_class &GtkWidgetClass, signal_name &char) {
-	C.gtk_widget_class_set_activate_signal_from_name(widget_class, signal_name)
+pub fn (self &GtkWidget) class_set_activate_signal_from_name(widget_class &GtkWidgetClass, signal_name string) {
+	C.gtk_widget_class_set_activate_signal_from_name(widget_class, signal_name.str)
 }
 
 pub fn (self &GtkWidget) class_get_activate_signal(widget_class &GtkWidgetClass) u64 {
@@ -381,12 +382,12 @@ pub fn (self &GtkWidget) get_receives_default() bool {
 	return C.gtk_widget_get_receives_default(self)
 }
 
-pub fn (self &GtkWidget) set_name(name &char) {
-	C.gtk_widget_set_name(self, name)
+pub fn (self &GtkWidget) set_name(name string) {
+	C.gtk_widget_set_name(self, name.str)
 }
 
-pub fn (self &GtkWidget) get_name() &char {
-	return C.gtk_widget_get_name(self)
+pub fn (self &GtkWidget) get_name() string {
+	return unsafe { cstring_to_vstring(C.gtk_widget_get_name(self)) }
 }
 
 pub fn (self &GtkWidget) set_state_flags(flags GtkStateFlags, clear bool) {
@@ -477,15 +478,15 @@ pub fn (self &GtkWidget) get_allocation(allocation &GtkAllocation) {
 	C.gtk_widget_get_allocation(self, allocation)
 }
 
-pub fn (self &GtkWidget) compute_transform(target &GtkWidget, out_transform voidptr) bool {
+pub fn (self &GtkWidget) compute_transform(target &GtkWidget, out_transform &i64) bool {
 	return C.gtk_widget_compute_transform(self, target, out_transform)
 }
 
-pub fn (self &GtkWidget) compute_bounds(target &GtkWidget, out_bounds voidptr) bool {
+pub fn (self &GtkWidget) compute_bounds(target &GtkWidget, out_bounds &i64) bool {
 	return C.gtk_widget_compute_bounds(self, target, out_bounds)
 }
 
-pub fn (self &GtkWidget) compute_point(target &GtkWidget, point &char, out_point voidptr) bool {
+pub fn (self &GtkWidget) compute_point(target &GtkWidget, point &int, out_point &i64) bool {
 	return C.gtk_widget_compute_point(self, target, point, out_point)
 }
 
@@ -517,7 +518,7 @@ pub fn (self &GtkWidget) set_size_request(width int, height int) {
 	C.gtk_widget_set_size_request(self, width, height)
 }
 
-pub fn (self &GtkWidget) get_size_request(width voidptr, height voidptr) {
+pub fn (self &GtkWidget) get_size_request(width &i64, height &i64) {
 	C.gtk_widget_get_size_request(self, width, height)
 }
 
@@ -649,7 +650,7 @@ pub fn (self &GtkWidget) is_ancestor(ancestor &GtkWidget) bool {
 	return C.gtk_widget_is_ancestor(self, ancestor)
 }
 
-pub fn (self &GtkWidget) translate_coordinates(dest_widget &GtkWidget, src_x f32, src_y f32, dest_x voidptr, dest_y voidptr) bool {
+pub fn (self &GtkWidget) translate_coordinates(dest_widget &GtkWidget, src_x f32, src_y f32, dest_x &f32, dest_y &f32) bool {
 	return C.gtk_widget_translate_coordinates(self, dest_widget, src_x, src_y, dest_x,
 		dest_y)
 }
@@ -670,24 +671,24 @@ pub fn (self &GtkWidget) remove_controller(controller &GtkEventController) {
 	C.gtk_widget_remove_controller(self, controller)
 }
 
-pub fn (self &GtkWidget) create_pango_context() voidptr {
+pub fn (self &GtkWidget) create_pango_context() &i64 {
 	return C.gtk_widget_create_pango_context(self)
 }
 
-pub fn (self &GtkWidget) get_pango_context() voidptr {
+pub fn (self &GtkWidget) get_pango_context() &i64 {
 	return C.gtk_widget_get_pango_context(self)
 }
 
-pub fn (self &GtkWidget) set_font_options(options &char) {
+pub fn (self &GtkWidget) set_font_options(options &int) {
 	C.gtk_widget_set_font_options(self, options)
 }
 
-pub fn (self &GtkWidget) get_font_options() &char {
+pub fn (self &GtkWidget) get_font_options() &int {
 	return C.gtk_widget_get_font_options(self)
 }
 
-pub fn (self &GtkWidget) create_pango_layout(text &char) voidptr {
-	return C.gtk_widget_create_pango_layout(self, text)
+pub fn (self &GtkWidget) create_pango_layout(text string) &i64 {
+	return C.gtk_widget_create_pango_layout(self, text.str)
 }
 
 pub fn (self &GtkWidget) set_direction(dir GtkTextDirection) {
@@ -710,8 +711,8 @@ pub fn (self &GtkWidget) set_cursor(cursor voidptr) {
 	C.gtk_widget_set_cursor(self, cursor)
 }
 
-pub fn (self &GtkWidget) set_cursor_from_name(name &char) {
-	C.gtk_widget_set_cursor_from_name(self, name)
+pub fn (self &GtkWidget) set_cursor_from_name(name string) {
+	C.gtk_widget_set_cursor_from_name(self, name.str)
 }
 
 pub fn (self &GtkWidget) get_cursor() voidptr {
@@ -734,20 +735,20 @@ pub fn (self &GtkWidget) trigger_tooltip_query() {
 	C.gtk_widget_trigger_tooltip_query(self)
 }
 
-pub fn (self &GtkWidget) set_tooltip_text(text &char) {
-	C.gtk_widget_set_tooltip_text(self, text)
+pub fn (self &GtkWidget) set_tooltip_text(text string) {
+	C.gtk_widget_set_tooltip_text(self, text.str)
 }
 
-pub fn (self &GtkWidget) get_tooltip_text() &char {
-	return C.gtk_widget_get_tooltip_text(self)
+pub fn (self &GtkWidget) get_tooltip_text() string {
+	return unsafe { cstring_to_vstring(C.gtk_widget_get_tooltip_text(self)) }
 }
 
-pub fn (self &GtkWidget) set_tooltip_markup(markup &char) {
-	C.gtk_widget_set_tooltip_markup(self, markup)
+pub fn (self &GtkWidget) set_tooltip_markup(markup string) {
+	C.gtk_widget_set_tooltip_markup(self, markup.str)
 }
 
-pub fn (self &GtkWidget) get_tooltip_markup() &char {
-	return C.gtk_widget_get_tooltip_markup(self)
+pub fn (self &GtkWidget) get_tooltip_markup() string {
+	return unsafe { cstring_to_vstring(C.gtk_widget_get_tooltip_markup(self)) }
 }
 
 pub fn (self &GtkWidget) set_has_tooltip(has_tooltip bool) {
@@ -766,12 +767,12 @@ pub fn (self &GtkWidget) get_style_context() &GtkStyleContext {
 	return C.gtk_widget_get_style_context(self)
 }
 
-pub fn (self &GtkWidget) class_set_css_name(widget_class &GtkWidgetClass, name &char) {
-	C.gtk_widget_class_set_css_name(widget_class, name)
+pub fn (self &GtkWidget) class_set_css_name(widget_class &GtkWidgetClass, name string) {
+	C.gtk_widget_class_set_css_name(widget_class, name.str)
 }
 
-pub fn (self &GtkWidget) class_get_css_name(widget_class &GtkWidgetClass) &char {
-	return C.gtk_widget_class_get_css_name(widget_class)
+pub fn (self &GtkWidget) class_get_css_name(widget_class &GtkWidgetClass) string {
+	return unsafe { cstring_to_vstring(C.gtk_widget_class_get_css_name(widget_class)) }
 }
 
 pub fn (self &GtkWidget) add_tick_callback(callback voidptr, user_data voidptr, notify voidptr) u64 {
@@ -786,51 +787,52 @@ pub fn (self &GtkWidget) init_template() {
 	C.gtk_widget_init_template(self)
 }
 
-pub fn (self &GtkWidget) get_template_child(widget_typ int, name &char) voidptr {
-	return C.gtk_widget_get_template_child(self, widget_typ, name)
+pub fn (self &GtkWidget) get_template_child(widget_typ int, name string) voidptr {
+	return C.gtk_widget_get_template_child(self, widget_typ, name.str)
 }
 
 pub fn (self &GtkWidget) class_set_template(widget_class &GtkWidgetClass, template_bytes &glib.GBytes) {
 	C.gtk_widget_class_set_template(widget_class, template_bytes)
 }
 
-pub fn (self &GtkWidget) class_set_template_from_resource(widget_class &GtkWidgetClass, resource_name &char) {
-	C.gtk_widget_class_set_template_from_resource(widget_class, resource_name)
+pub fn (self &GtkWidget) class_set_template_from_resource(widget_class &GtkWidgetClass, resource_name string) {
+	C.gtk_widget_class_set_template_from_resource(widget_class, resource_name.str)
 }
 
-pub fn (self &GtkWidget) class_bind_template_callback_full(widget_class &GtkWidgetClass, callback_name &char, callback_symbol glib.GCallback) {
-	C.gtk_widget_class_bind_template_callback_full(widget_class, callback_name, callback_symbol)
+pub fn (self &GtkWidget) class_bind_template_callback_full(widget_class &GtkWidgetClass, callback_name string, callback_symbol glib.GCallback) {
+	C.gtk_widget_class_bind_template_callback_full(widget_class, callback_name.str, callback_symbol)
 }
 
 pub fn (self &GtkWidget) class_set_template_scope(widget_class &GtkWidgetClass, scope &GtkBuilderScope) {
 	C.gtk_widget_class_set_template_scope(widget_class, scope)
 }
 
-pub fn (self &GtkWidget) class_bind_template_child_full(widget_class &GtkWidgetClass, name &char, internal_child bool, struct_offset int) {
-	C.gtk_widget_class_bind_template_child_full(widget_class, name, internal_child, struct_offset)
+pub fn (self &GtkWidget) class_bind_template_child_full(widget_class &GtkWidgetClass, name string, internal_child bool, struct_offset int) {
+	C.gtk_widget_class_bind_template_child_full(widget_class, name.str, internal_child,
+		struct_offset)
 }
 
-pub fn (self &GtkWidget) insert_action_group(name &char, group &glib.GActionGroup) {
-	C.gtk_widget_insert_action_group(self, name, group)
+pub fn (self &GtkWidget) insert_action_group(name string, group &glib.GActionGroup) {
+	C.gtk_widget_insert_action_group(self, name.str, group)
 }
 
-pub fn (self &GtkWidget) activate_action(name &char, format_str &char) bool {
-	return C.gtk_widget_activate_action(self, name, format_str)
+pub fn (self &GtkWidget) activate_action(name string, format_str string) bool {
+	return C.gtk_widget_activate_action(self, name.str, format_str.str)
 }
 
-pub fn (self &GtkWidget) activate_action_variant(name &char, args &glib.GVariant) bool {
-	return C.gtk_widget_activate_action_variant(self, name, args)
+pub fn (self &GtkWidget) activate_action_variant(name string, args &glib.GVariant) bool {
+	return C.gtk_widget_activate_action_variant(self, name.str, args)
 }
 
 pub fn (self &GtkWidget) activate_default() {
 	C.gtk_widget_activate_default(self)
 }
 
-pub fn (self &GtkWidget) set_font_map(font_map voidptr) {
+pub fn (self &GtkWidget) set_font_map(font_map &i64) {
 	C.gtk_widget_set_font_map(self, font_map)
 }
 
-pub fn (self &GtkWidget) get_font_map() voidptr {
+pub fn (self &GtkWidget) get_font_map() &i64 {
 	return C.gtk_widget_get_font_map(self)
 }
 
@@ -882,20 +884,20 @@ pub fn (self &GtkWidget) should_layout() bool {
 	return C.gtk_widget_should_layout(self)
 }
 
-pub fn (self &GtkWidget) get_css_name() &char {
-	return C.gtk_widget_get_css_name(self)
+pub fn (self &GtkWidget) get_css_name() string {
+	return unsafe { cstring_to_vstring(C.gtk_widget_get_css_name(self)) }
 }
 
-pub fn (self &GtkWidget) add_css_class(css_class &char) {
-	C.gtk_widget_add_css_class(self, css_class)
+pub fn (self &GtkWidget) add_css_class(css_class string) {
+	C.gtk_widget_add_css_class(self, css_class.str)
 }
 
-pub fn (self &GtkWidget) remove_css_class(css_class &char) {
-	C.gtk_widget_remove_css_class(self, css_class)
+pub fn (self &GtkWidget) remove_css_class(css_class string) {
+	C.gtk_widget_remove_css_class(self, css_class.str)
 }
 
-pub fn (self &GtkWidget) has_css_class(css_class &char) bool {
-	return C.gtk_widget_has_css_class(self, css_class)
+pub fn (self &GtkWidget) has_css_class(css_class string) bool {
+	return C.gtk_widget_has_css_class(self, css_class.str)
 }
 
 pub fn (self &GtkWidget) get_css_classes() voidptr {
@@ -906,21 +908,22 @@ pub fn (self &GtkWidget) set_css_classes(classes voidptr) {
 	C.gtk_widget_set_css_classes(self, classes)
 }
 
-pub fn (self &GtkWidget) class_install_action(widget_class &GtkWidgetClass, action_name &char, parameter_typ &char, activate voidptr) {
-	C.gtk_widget_class_install_action(widget_class, action_name, parameter_typ, activate)
+pub fn (self &GtkWidget) class_install_action(widget_class &GtkWidgetClass, action_name string, parameter_typ string, activate voidptr) {
+	C.gtk_widget_class_install_action(widget_class, action_name.str, parameter_typ.str,
+		activate)
 }
 
-pub fn (self &GtkWidget) class_install_property_action(widget_class &GtkWidgetClass, action_name &char, property_name &char) {
-	C.gtk_widget_class_install_property_action(widget_class, action_name, property_name)
+pub fn (self &GtkWidget) class_install_property_action(widget_class &GtkWidgetClass, action_name string, property_name string) {
+	C.gtk_widget_class_install_property_action(widget_class, action_name.str, property_name.str)
 }
 
-pub fn (self &GtkWidget) class_query_action(widget_class &GtkWidgetClass, index_ u64, owner &int, action_name voidptr, parameter_typ &glib.GVariantType, property_name voidptr) bool {
+pub fn (self &GtkWidget) class_query_action(widget_class &GtkWidgetClass, index_ u64, owner &int, action_name voidptr, parameter_typ &&glib.GVariantType, property_name voidptr) bool {
 	return C.gtk_widget_class_query_action(widget_class, index_, owner, action_name, parameter_typ,
 		property_name)
 }
 
-pub fn (self &GtkWidget) action_set_enabled(action_name &char, enabled bool) {
-	C.gtk_widget_action_set_enabled(self, action_name, enabled)
+pub fn (self &GtkWidget) action_set_enabled(action_name string, enabled bool) {
+	C.gtk_widget_action_set_enabled(self, action_name.str, enabled)
 }
 
 pub fn (self &GtkWidget) class_set_accessible_role(widget_class &GtkWidgetClass, accessible_role GtkAccessibleRole) {

@@ -27,16 +27,16 @@ pub fn GtkBuilderListItemFactory.new_from_bytes(scope &GtkBuilderScope, bytes &g
 	return C.gtk_builder_list_item_factory_new_from_bytes(scope, bytes)
 }
 
-pub fn GtkBuilderListItemFactory.new_from_resource(scope &GtkBuilderScope, resource_path &char) &GtkListItemFactory {
-	return C.gtk_builder_list_item_factory_new_from_resource(scope, resource_path)
+pub fn GtkBuilderListItemFactory.new_from_resource(scope &GtkBuilderScope, resource_path string) &GtkListItemFactory {
+	return C.gtk_builder_list_item_factory_new_from_resource(scope, resource_path.str)
 }
 
 pub fn (self &GtkBuilderListItemFactory) get_bytes() voidptr {
 	return C.gtk_builder_list_item_factory_get_bytes(self)
 }
 
-pub fn (self &GtkBuilderListItemFactory) get_resource() &char {
-	return C.gtk_builder_list_item_factory_get_resource(self)
+pub fn (self &GtkBuilderListItemFactory) get_resource() string {
+	return unsafe { cstring_to_vstring(C.gtk_builder_list_item_factory_get_resource(self)) }
 }
 
 pub fn (self &GtkBuilderListItemFactory) get_scope() &GtkBuilderScope {

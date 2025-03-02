@@ -27,12 +27,12 @@ pub fn GtkColorButton.new_with_rgba(rgba voidptr) &GtkWidget {
 	return C.gtk_color_button_new_with_rgba(rgba)
 }
 
-pub fn (self &GtkColorButton) set_title(title &char) {
-	C.gtk_color_button_set_title(self, title)
+pub fn (self &GtkColorButton) set_title(title string) {
+	C.gtk_color_button_set_title(self, title.str)
 }
 
-pub fn (self &GtkColorButton) get_title() &char {
-	return C.gtk_color_button_get_title(self)
+pub fn (self &GtkColorButton) get_title() string {
+	return unsafe { cstring_to_vstring(C.gtk_color_button_get_title(self)) }
 }
 
 pub fn (self &GtkColorButton) get_modal() bool {

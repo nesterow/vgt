@@ -142,12 +142,12 @@ pub fn (self &GtkComboBox) set_id_column(id_column int) {
 	C.gtk_combo_box_set_id_column(self, id_column)
 }
 
-pub fn (self &GtkComboBox) get_active_id() &char {
-	return C.gtk_combo_box_get_active_id(self)
+pub fn (self &GtkComboBox) get_active_id() string {
+	return unsafe { cstring_to_vstring(C.gtk_combo_box_get_active_id(self)) }
 }
 
-pub fn (self &GtkComboBox) set_active_id(active_id &char) bool {
-	return C.gtk_combo_box_set_active_id(self, active_id)
+pub fn (self &GtkComboBox) set_active_id(active_id string) bool {
+	return C.gtk_combo_box_set_active_id(self, active_id.str)
 }
 
 pub fn (self &GtkComboBox) set_child(child &GtkWidget) {

@@ -22,8 +22,8 @@ pub fn (self &GtkShortcutTrigger) get_type() glib.GType {
 	return C.gtk_shortcut_trigger_get_type()
 }
 
-pub fn (self &GtkShortcutTrigger) parse_string(str &char) &GtkShortcutTrigger {
-	return C.gtk_shortcut_trigger_parse_string(str)
+pub fn (self &GtkShortcutTrigger) parse_string(str string) &GtkShortcutTrigger {
+	return C.gtk_shortcut_trigger_parse_string(str.str)
 }
 
 pub fn (self &GtkShortcutTrigger) to_string() voidptr {

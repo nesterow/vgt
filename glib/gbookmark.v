@@ -25,8 +25,8 @@ pub fn g_bookmark_file_load_from_data(bookmark &GBookmarkFile, data &char, lengt
 	return C.g_bookmark_file_load_from_data(bookmark, data, length, error)
 }
 
-pub fn C.g_bookmark_file_load_from_data_dirs(bookmark &GBookmarkFile, file &char, full_path &char, error &GError) bool
-pub fn g_bookmark_file_load_from_data_dirs(bookmark &GBookmarkFile, file &char, full_path &char, error &GError) bool {
+pub fn C.g_bookmark_file_load_from_data_dirs(bookmark &GBookmarkFile, file &char, full_path &&char, error &GError) bool
+pub fn g_bookmark_file_load_from_data_dirs(bookmark &GBookmarkFile, file &char, full_path &&char, error &GError) bool {
 	return C.g_bookmark_file_load_from_data_dirs(bookmark, file, full_path, error)
 }
 
@@ -70,8 +70,8 @@ pub fn g_bookmark_file_get_mime_type(bookmark &GBookmarkFile, uri &char, error &
 	return C.g_bookmark_file_get_mime_type(bookmark, uri, error)
 }
 
-pub fn C.g_bookmark_file_set_groups(bookmark &GBookmarkFile, uri &char, groups &char, length usize)
-pub fn g_bookmark_file_set_groups(bookmark &GBookmarkFile, uri &char, groups &char, length usize) {
+pub fn C.g_bookmark_file_set_groups(bookmark &GBookmarkFile, uri &char, groups &&char, length usize)
+pub fn g_bookmark_file_set_groups(bookmark &GBookmarkFile, uri &char, groups &&char, length usize) {
 	C.g_bookmark_file_set_groups(bookmark, uri, groups, length)
 }
 
@@ -85,8 +85,8 @@ pub fn g_bookmark_file_has_group(bookmark &GBookmarkFile, uri &char, group &char
 	return C.g_bookmark_file_has_group(bookmark, uri, group, error)
 }
 
-pub fn C.g_bookmark_file_get_groups(bookmark &GBookmarkFile, uri &char, length usize, error &GError) &char
-pub fn g_bookmark_file_get_groups(bookmark &GBookmarkFile, uri &char, length usize, error &GError) &char {
+pub fn C.g_bookmark_file_get_groups(bookmark &GBookmarkFile, uri &char, length usize, error &GError) &&char
+pub fn g_bookmark_file_get_groups(bookmark &GBookmarkFile, uri &char, length usize, error &GError) &&char {
 	return C.g_bookmark_file_get_groups(bookmark, uri, length, error)
 }
 
@@ -100,8 +100,8 @@ pub fn g_bookmark_file_has_application(bookmark &GBookmarkFile, uri &char, name 
 	return C.g_bookmark_file_has_application(bookmark, uri, name, error)
 }
 
-pub fn C.g_bookmark_file_get_applications(bookmark &GBookmarkFile, uri &char, length usize, error &GError) &char
-pub fn g_bookmark_file_get_applications(bookmark &GBookmarkFile, uri &char, length usize, error &GError) &char {
+pub fn C.g_bookmark_file_get_applications(bookmark &GBookmarkFile, uri &char, length usize, error &GError) &&char
+pub fn g_bookmark_file_get_applications(bookmark &GBookmarkFile, uri &char, length usize, error &GError) &&char {
 	return C.g_bookmark_file_get_applications(bookmark, uri, length, error)
 }
 
@@ -116,8 +116,8 @@ pub fn g_bookmark_file_set_application_info(bookmark &GBookmarkFile, uri &char, 
 		error)
 }
 
-pub fn C.g_bookmark_file_get_app_info(bookmark &GBookmarkFile, uri &char, name &char, exec &char, count &u64, stamp &int, error &GError) bool
-pub fn g_bookmark_file_get_app_info(bookmark &GBookmarkFile, uri &char, name &char, exec &char, count &u64, stamp &int, error &GError) bool {
+pub fn C.g_bookmark_file_get_app_info(bookmark &GBookmarkFile, uri &char, name &char, exec &&char, count &u64, stamp &int, error &GError) bool
+pub fn g_bookmark_file_get_app_info(bookmark &GBookmarkFile, uri &char, name &char, exec &&char, count &u64, stamp &int, error &GError) bool {
 	return C.g_bookmark_file_get_app_info(bookmark, uri, name, exec, count, stamp, error)
 }
 
@@ -142,8 +142,8 @@ pub fn g_bookmark_file_set_icon(bookmark &GBookmarkFile, uri &char, href &char, 
 	C.g_bookmark_file_set_icon(bookmark, uri, href, mime_type)
 }
 
-pub fn C.g_bookmark_file_get_icon(bookmark &GBookmarkFile, uri &char, href &char, mime_type &char, error &GError) bool
-pub fn g_bookmark_file_get_icon(bookmark &GBookmarkFile, uri &char, href &char, mime_type &char, error &GError) bool {
+pub fn C.g_bookmark_file_get_icon(bookmark &GBookmarkFile, uri &char, href &&char, mime_type &&char, error &GError) bool
+pub fn g_bookmark_file_get_icon(bookmark &GBookmarkFile, uri &char, href &&char, mime_type &&char, error &GError) bool {
 	return C.g_bookmark_file_get_icon(bookmark, uri, href, mime_type, error)
 }
 
@@ -217,8 +217,8 @@ pub fn g_bookmark_file_get_size(bookmark &GBookmarkFile) int {
 	return C.g_bookmark_file_get_size(bookmark)
 }
 
-pub fn C.g_bookmark_file_get_uris(bookmark &GBookmarkFile, length usize) &char
-pub fn g_bookmark_file_get_uris(bookmark &GBookmarkFile, length usize) &char {
+pub fn C.g_bookmark_file_get_uris(bookmark &GBookmarkFile, length usize) &&char
+pub fn g_bookmark_file_get_uris(bookmark &GBookmarkFile, length usize) &&char {
 	return C.g_bookmark_file_get_uris(bookmark, length)
 }
 

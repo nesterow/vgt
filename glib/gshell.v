@@ -15,7 +15,7 @@ pub fn g_shell_unquote(quoted_string &char, error &GError) &char {
 	return C.g_shell_unquote(quoted_string, error)
 }
 
-pub fn C.g_shell_parse_argv(command_line &char, argcp int, argvp &char, error &GError) bool
-pub fn g_shell_parse_argv(command_line &char, argcp int, argvp &char, error &GError) bool {
+pub fn C.g_shell_parse_argv(command_line &char, argcp int, argvp &&&char, error &GError) bool
+pub fn g_shell_parse_argv(command_line &char, argcp int, argvp &&&char, error &GError) bool {
 	return C.g_shell_parse_argv(command_line, argcp, argvp, error)
 }

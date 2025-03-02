@@ -10,11 +10,11 @@ pub type GtkPrintSettingsFunc = C.GtkPrintSettingsFunc
 pub fn C.gtk_print_settings_get_type() glib.GType
 pub fn C.gtk_print_settings_new() &GtkPrintSettings
 pub fn C.gtk_print_settings_copy(other &GtkPrintSettings) &GtkPrintSettings
-pub fn C.gtk_print_settings_new_from_file(file_name &char, error &glib.GError) &GtkPrintSettings
-pub fn C.gtk_print_settings_load_file(settings &GtkPrintSettings, file_name &char, error &glib.GError) bool
-pub fn C.gtk_print_settings_to_file(settings &GtkPrintSettings, file_name &char, error &glib.GError) bool
-pub fn C.gtk_print_settings_new_from_key_file(key_file &glib.GKeyFile, group_name &char, error &glib.GError) &GtkPrintSettings
-pub fn C.gtk_print_settings_load_key_file(settings &GtkPrintSettings, key_file &glib.GKeyFile, group_name &char, error &glib.GError) bool
+pub fn C.gtk_print_settings_new_from_file(file_name &char, error &&glib.GError) &GtkPrintSettings
+pub fn C.gtk_print_settings_load_file(settings &GtkPrintSettings, file_name &char, error &&glib.GError) bool
+pub fn C.gtk_print_settings_to_file(settings &GtkPrintSettings, file_name &char, error &&glib.GError) bool
+pub fn C.gtk_print_settings_new_from_key_file(key_file &glib.GKeyFile, group_name &char, error &&glib.GError) &GtkPrintSettings
+pub fn C.gtk_print_settings_load_key_file(settings &GtkPrintSettings, key_file &glib.GKeyFile, group_name &char, error &&glib.GError) bool
 pub fn C.gtk_print_settings_to_key_file(settings &GtkPrintSettings, key_file &glib.GKeyFile, group_name &char)
 pub fn C.gtk_print_settings_has_key(settings &GtkPrintSettings, key &char) bool
 pub fn C.gtk_print_settings_get(settings &GtkPrintSettings, key &char) &char
@@ -68,7 +68,7 @@ pub fn C.gtk_print_settings_get_scale(settings &GtkPrintSettings) f32
 pub fn C.gtk_print_settings_set_scale(settings &GtkPrintSettings, scale f32)
 pub fn C.gtk_print_settings_get_print_pages(settings &GtkPrintSettings) GtkPrintPages
 pub fn C.gtk_print_settings_set_print_pages(settings &GtkPrintSettings, pages GtkPrintPages)
-pub fn C.gtk_print_settings_get_page_ranges(settings &GtkPrintSettings, num_ranges voidptr) &GtkPageRange
+pub fn C.gtk_print_settings_get_page_ranges(settings &GtkPrintSettings, num_ranges &i64) &GtkPageRange
 pub fn C.gtk_print_settings_set_page_ranges(settings &GtkPrintSettings, page_ranges &GtkPageRange, num_ranges int)
 pub fn C.gtk_print_settings_get_page_set(settings &GtkPrintSettings) GtkPageSet
 pub fn C.gtk_print_settings_set_page_set(settings &GtkPrintSettings, page_set GtkPageSet)
@@ -102,96 +102,96 @@ pub fn (self &GtkPrintSettings) copy() &GtkPrintSettings {
 	return C.gtk_print_settings_copy(self)
 }
 
-pub fn GtkPrintSettings.new_from_file(file_name &char, error &glib.GError) &GtkPrintSettings {
-	return C.gtk_print_settings_new_from_file(file_name, error)
+pub fn GtkPrintSettings.new_from_file(file_name string, error &&glib.GError) &GtkPrintSettings {
+	return C.gtk_print_settings_new_from_file(file_name.str, error)
 }
 
-pub fn (self &GtkPrintSettings) load_file(file_name &char, error &glib.GError) bool {
-	return C.gtk_print_settings_load_file(self, file_name, error)
+pub fn (self &GtkPrintSettings) load_file(file_name string, error &&glib.GError) bool {
+	return C.gtk_print_settings_load_file(self, file_name.str, error)
 }
 
-pub fn (self &GtkPrintSettings) to_file(file_name &char, error &glib.GError) bool {
-	return C.gtk_print_settings_to_file(self, file_name, error)
+pub fn (self &GtkPrintSettings) to_file(file_name string, error &&glib.GError) bool {
+	return C.gtk_print_settings_to_file(self, file_name.str, error)
 }
 
-pub fn GtkPrintSettings.new_from_key_file(key_file &glib.GKeyFile, group_name &char, error &glib.GError) &GtkPrintSettings {
-	return C.gtk_print_settings_new_from_key_file(key_file, group_name, error)
+pub fn GtkPrintSettings.new_from_key_file(key_file &glib.GKeyFile, group_name string, error &&glib.GError) &GtkPrintSettings {
+	return C.gtk_print_settings_new_from_key_file(key_file, group_name.str, error)
 }
 
-pub fn (self &GtkPrintSettings) load_key_file(key_file &glib.GKeyFile, group_name &char, error &glib.GError) bool {
-	return C.gtk_print_settings_load_key_file(self, key_file, group_name, error)
+pub fn (self &GtkPrintSettings) load_key_file(key_file &glib.GKeyFile, group_name string, error &&glib.GError) bool {
+	return C.gtk_print_settings_load_key_file(self, key_file, group_name.str, error)
 }
 
-pub fn (self &GtkPrintSettings) to_key_file(key_file &glib.GKeyFile, group_name &char) {
-	C.gtk_print_settings_to_key_file(self, key_file, group_name)
+pub fn (self &GtkPrintSettings) to_key_file(key_file &glib.GKeyFile, group_name string) {
+	C.gtk_print_settings_to_key_file(self, key_file, group_name.str)
 }
 
-pub fn (self &GtkPrintSettings) has_key(key &char) bool {
-	return C.gtk_print_settings_has_key(self, key)
+pub fn (self &GtkPrintSettings) has_key(key string) bool {
+	return C.gtk_print_settings_has_key(self, key.str)
 }
 
-pub fn (self &GtkPrintSettings) get(key &char) &char {
-	return C.gtk_print_settings_get(self, key)
+pub fn (self &GtkPrintSettings) get(key string) string {
+	return unsafe { cstring_to_vstring(C.gtk_print_settings_get(self, key.str)) }
 }
 
-pub fn (self &GtkPrintSettings) set(key &char, value &char) {
-	C.gtk_print_settings_set(self, key, value)
+pub fn (self &GtkPrintSettings) set(key string, value string) {
+	C.gtk_print_settings_set(self, key.str, value.str)
 }
 
-pub fn (self &GtkPrintSettings) unset(key &char) {
-	C.gtk_print_settings_unset(self, key)
+pub fn (self &GtkPrintSettings) unset(key string) {
+	C.gtk_print_settings_unset(self, key.str)
 }
 
 pub fn (self &GtkPrintSettings) foreach(func voidptr, user_data voidptr) {
 	C.gtk_print_settings_foreach(self, func, user_data)
 }
 
-pub fn (self &GtkPrintSettings) get_bool(key &char) bool {
-	return C.gtk_print_settings_get_bool(self, key)
+pub fn (self &GtkPrintSettings) get_bool(key string) bool {
+	return C.gtk_print_settings_get_bool(self, key.str)
 }
 
-pub fn (self &GtkPrintSettings) set_bool(key &char, value bool) {
-	C.gtk_print_settings_set_bool(self, key, value)
+pub fn (self &GtkPrintSettings) set_bool(key string, value bool) {
+	C.gtk_print_settings_set_bool(self, key.str, value)
 }
 
-pub fn (self &GtkPrintSettings) get_double(key &char) f32 {
-	return C.gtk_print_settings_get_double(self, key)
+pub fn (self &GtkPrintSettings) get_double(key string) f32 {
+	return C.gtk_print_settings_get_double(self, key.str)
 }
 
-pub fn (self &GtkPrintSettings) get_double_with_default(key &char, def f32) f32 {
-	return C.gtk_print_settings_get_double_with_default(self, key, def)
+pub fn (self &GtkPrintSettings) get_double_with_default(key string, def f32) f32 {
+	return C.gtk_print_settings_get_double_with_default(self, key.str, def)
 }
 
-pub fn (self &GtkPrintSettings) set_double(key &char, value f32) {
-	C.gtk_print_settings_set_double(self, key, value)
+pub fn (self &GtkPrintSettings) set_double(key string, value f32) {
+	C.gtk_print_settings_set_double(self, key.str, value)
 }
 
-pub fn (self &GtkPrintSettings) get_length(key &char, unit GtkUnit) f32 {
-	return C.gtk_print_settings_get_length(self, key, unit)
+pub fn (self &GtkPrintSettings) get_length(key string, unit GtkUnit) f32 {
+	return C.gtk_print_settings_get_length(self, key.str, unit)
 }
 
-pub fn (self &GtkPrintSettings) set_length(key &char, value f32, unit GtkUnit) {
-	C.gtk_print_settings_set_length(self, key, value, unit)
+pub fn (self &GtkPrintSettings) set_length(key string, value f32, unit GtkUnit) {
+	C.gtk_print_settings_set_length(self, key.str, value, unit)
 }
 
-pub fn (self &GtkPrintSettings) get_int(key &char) int {
-	return C.gtk_print_settings_get_int(self, key)
+pub fn (self &GtkPrintSettings) get_int(key string) int {
+	return C.gtk_print_settings_get_int(self, key.str)
 }
 
-pub fn (self &GtkPrintSettings) get_int_with_default(key &char, def int) int {
-	return C.gtk_print_settings_get_int_with_default(self, key, def)
+pub fn (self &GtkPrintSettings) get_int_with_default(key string, def int) int {
+	return C.gtk_print_settings_get_int_with_default(self, key.str, def)
 }
 
-pub fn (self &GtkPrintSettings) set_int(key &char, value int) {
-	C.gtk_print_settings_set_int(self, key, value)
+pub fn (self &GtkPrintSettings) set_int(key string, value int) {
+	C.gtk_print_settings_set_int(self, key.str, value)
 }
 
-pub fn (self &GtkPrintSettings) get_printer() &char {
-	return C.gtk_print_settings_get_printer(self)
+pub fn (self &GtkPrintSettings) get_printer() string {
+	return unsafe { cstring_to_vstring(C.gtk_print_settings_get_printer(self)) }
 }
 
-pub fn (self &GtkPrintSettings) set_printer(printer &char) {
-	C.gtk_print_settings_set_printer(self, printer)
+pub fn (self &GtkPrintSettings) set_printer(printer string) {
+	C.gtk_print_settings_set_printer(self, printer.str)
 }
 
 pub fn (self &GtkPrintSettings) get_orientation() GtkPageOrientation {
@@ -334,7 +334,7 @@ pub fn (self &GtkPrintSettings) set_print_pages(pages GtkPrintPages) {
 	C.gtk_print_settings_set_print_pages(self, pages)
 }
 
-pub fn (self &GtkPrintSettings) get_page_ranges(num_ranges voidptr) &GtkPageRange {
+pub fn (self &GtkPrintSettings) get_page_ranges(num_ranges &i64) &GtkPageRange {
 	return C.gtk_print_settings_get_page_ranges(self, num_ranges)
 }
 
@@ -350,44 +350,44 @@ pub fn (self &GtkPrintSettings) set_page_set(page_set GtkPageSet) {
 	C.gtk_print_settings_set_page_set(self, page_set)
 }
 
-pub fn (self &GtkPrintSettings) get_default_source() &char {
-	return C.gtk_print_settings_get_default_source(self)
+pub fn (self &GtkPrintSettings) get_default_source() string {
+	return unsafe { cstring_to_vstring(C.gtk_print_settings_get_default_source(self)) }
 }
 
-pub fn (self &GtkPrintSettings) set_default_source(default_source &char) {
-	C.gtk_print_settings_set_default_source(self, default_source)
+pub fn (self &GtkPrintSettings) set_default_source(default_source string) {
+	C.gtk_print_settings_set_default_source(self, default_source.str)
 }
 
-pub fn (self &GtkPrintSettings) get_media_type() &char {
-	return C.gtk_print_settings_get_media_type(self)
+pub fn (self &GtkPrintSettings) get_media_type() string {
+	return unsafe { cstring_to_vstring(C.gtk_print_settings_get_media_type(self)) }
 }
 
-pub fn (self &GtkPrintSettings) set_media_type(media_typ &char) {
-	C.gtk_print_settings_set_media_type(self, media_typ)
+pub fn (self &GtkPrintSettings) set_media_type(media_typ string) {
+	C.gtk_print_settings_set_media_type(self, media_typ.str)
 }
 
-pub fn (self &GtkPrintSettings) get_dither() &char {
-	return C.gtk_print_settings_get_dither(self)
+pub fn (self &GtkPrintSettings) get_dither() string {
+	return unsafe { cstring_to_vstring(C.gtk_print_settings_get_dither(self)) }
 }
 
-pub fn (self &GtkPrintSettings) set_dither(dither &char) {
-	C.gtk_print_settings_set_dither(self, dither)
+pub fn (self &GtkPrintSettings) set_dither(dither string) {
+	C.gtk_print_settings_set_dither(self, dither.str)
 }
 
-pub fn (self &GtkPrintSettings) get_finishings() &char {
-	return C.gtk_print_settings_get_finishings(self)
+pub fn (self &GtkPrintSettings) get_finishings() string {
+	return unsafe { cstring_to_vstring(C.gtk_print_settings_get_finishings(self)) }
 }
 
-pub fn (self &GtkPrintSettings) set_finishings(finishings &char) {
-	C.gtk_print_settings_set_finishings(self, finishings)
+pub fn (self &GtkPrintSettings) set_finishings(finishings string) {
+	C.gtk_print_settings_set_finishings(self, finishings.str)
 }
 
-pub fn (self &GtkPrintSettings) get_output_bin() &char {
-	return C.gtk_print_settings_get_output_bin(self)
+pub fn (self &GtkPrintSettings) get_output_bin() string {
+	return unsafe { cstring_to_vstring(C.gtk_print_settings_get_output_bin(self)) }
 }
 
-pub fn (self &GtkPrintSettings) set_output_bin(output_bin &char) {
-	C.gtk_print_settings_set_output_bin(self, output_bin)
+pub fn (self &GtkPrintSettings) set_output_bin(output_bin string) {
+	C.gtk_print_settings_set_output_bin(self, output_bin.str)
 }
 
 pub fn (self &GtkPrintSettings) to_gvariant() voidptr {

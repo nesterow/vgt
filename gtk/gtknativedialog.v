@@ -52,12 +52,12 @@ pub fn (self &GtkNativeDialog) get_modal() bool {
 	return C.gtk_native_dialog_get_modal(self)
 }
 
-pub fn (self &GtkNativeDialog) set_title(title &char) {
-	C.gtk_native_dialog_set_title(self, title)
+pub fn (self &GtkNativeDialog) set_title(title string) {
+	C.gtk_native_dialog_set_title(self, title.str)
 }
 
-pub fn (self &GtkNativeDialog) get_title() &char {
-	return C.gtk_native_dialog_get_title(self)
+pub fn (self &GtkNativeDialog) get_title() string {
+	return unsafe { cstring_to_vstring(C.gtk_native_dialog_get_title(self)) }
 }
 
 pub fn (self &GtkNativeDialog) set_transient_for(parent &GtkWindow) {

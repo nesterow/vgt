@@ -25,8 +25,8 @@ pub fn (self &GtkShortcutAction) to_string() voidptr {
 	return C.gtk_shortcut_action_to_string(self)
 }
 
-pub fn (self &GtkShortcutAction) parse_string(str &char) &GtkShortcutAction {
-	return C.gtk_shortcut_action_parse_string(str)
+pub fn (self &GtkShortcutAction) parse_string(str string) &GtkShortcutAction {
+	return C.gtk_shortcut_action_parse_string(str.str)
 }
 
 pub fn (self &GtkShortcutAction) print(str &GString) {

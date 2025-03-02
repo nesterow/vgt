@@ -180,10 +180,10 @@ pub fn (self &GtkMediaStream) gerror(error &glib.GError) {
 	C.gtk_media_stream_gerror(self, error)
 }
 
-pub fn (self &GtkMediaStream) error(domain glib.GQuark, code int, format &char) {
-	C.gtk_media_stream_error(self, domain, code, format)
+pub fn (self &GtkMediaStream) error(domain glib.GQuark, code int, format string) {
+	C.gtk_media_stream_error(self, domain, code, format.str)
 }
 
-pub fn (self &GtkMediaStream) error_valist(domain glib.GQuark, code int, format &char, args voidptr) {
-	C.gtk_media_stream_error_valist(self, domain, code, format, args)
+pub fn (self &GtkMediaStream) error_valist(domain glib.GQuark, code int, format string, args voidptr) {
+	C.gtk_media_stream_error_valist(self, domain, code, format.str, args)
 }

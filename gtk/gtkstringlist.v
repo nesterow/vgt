@@ -28,8 +28,8 @@ pub fn GtkStringList.new(strs voidptr) &GtkStringList {
 	return C.gtk_string_list_new(strs)
 }
 
-pub fn (self &GtkStringList) append(str &char) {
-	C.gtk_string_list_append(self, str)
+pub fn (self &GtkStringList) append(str string) {
+	C.gtk_string_list_append(self, str.str)
 }
 
 pub fn (self &GtkStringList) take(str voidptr) {
@@ -44,6 +44,6 @@ pub fn (self &GtkStringList) splice(position u64, n_removals u64, additions void
 	C.gtk_string_list_splice(self, position, n_removals, additions)
 }
 
-pub fn (self &GtkStringList) get_string(position u64) &char {
-	return C.gtk_string_list_get_string(self, position)
+pub fn (self &GtkStringList) get_string(position u64) string {
+	return unsafe { cstring_to_vstring(C.gtk_string_list_get_string(self, position)) }
 }

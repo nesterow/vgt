@@ -9,7 +9,7 @@ pub type GtkIMContextClass = C.GtkIMContextClass
 
 pub fn C.gtk_im_context_get_type() glib.GType
 pub fn C.gtk_im_context_set_client_widget(context &GtkIMContext, widget &GtkWidget)
-pub fn C.gtk_im_context_get_preedit_string(context &GtkIMContext, str voidptr, attrs voidptr, cursor_pos voidptr)
+pub fn C.gtk_im_context_get_preedit_string(context &GtkIMContext, str voidptr, attrs &&i64, cursor_pos &i64)
 pub fn C.gtk_im_context_filter_keypress(context &GtkIMContext, event voidptr) bool
 pub fn C.gtk_im_context_filter_key(context &GtkIMContext, press bool, surface voidptr, device voidptr, time int, keycode u64, state voidptr, group int) bool
 pub fn C.gtk_im_context_focus_in(context &GtkIMContext)
@@ -18,9 +18,9 @@ pub fn C.gtk_im_context_reset(context &GtkIMContext)
 pub fn C.gtk_im_context_set_cursor_location(context &GtkIMContext, area voidptr)
 pub fn C.gtk_im_context_set_use_preedit(context &GtkIMContext, use_preedit bool)
 pub fn C.gtk_im_context_set_surrounding(context &GtkIMContext, text &char, len int, cursor_index int)
-pub fn C.gtk_im_context_get_surrounding(context &GtkIMContext, text voidptr, cursor_index voidptr) bool
+pub fn C.gtk_im_context_get_surrounding(context &GtkIMContext, text voidptr, cursor_index &i64) bool
 pub fn C.gtk_im_context_set_surrounding_with_selection(context &GtkIMContext, text &char, len int, cursor_index int, anchor_index int)
-pub fn C.gtk_im_context_get_surrounding_with_selection(context &GtkIMContext, text voidptr, cursor_index voidptr, anchor_index voidptr) bool
+pub fn C.gtk_im_context_get_surrounding_with_selection(context &GtkIMContext, text voidptr, cursor_index &i64, anchor_index &i64) bool
 pub fn C.gtk_im_context_delete_surrounding(context &GtkIMContext, offset int, n_chars int) bool
 
 @[noinit; typedef]
@@ -36,7 +36,7 @@ pub fn (self &GtkIMContext) set_client_widget(widget &GtkWidget) {
 	C.gtk_im_context_set_client_widget(self, widget)
 }
 
-pub fn (self &GtkIMContext) get_preedit_string(str voidptr, attrs voidptr, cursor_pos voidptr) {
+pub fn (self &GtkIMContext) get_preedit_string(str voidptr, attrs &&i64, cursor_pos &i64) {
 	C.gtk_im_context_get_preedit_string(self, str, attrs, cursor_pos)
 }
 
@@ -69,19 +69,20 @@ pub fn (self &GtkIMContext) set_use_preedit(use_preedit bool) {
 	C.gtk_im_context_set_use_preedit(self, use_preedit)
 }
 
-pub fn (self &GtkIMContext) set_surrounding(text &char, len int, cursor_index int) {
-	C.gtk_im_context_set_surrounding(self, text, len, cursor_index)
+pub fn (self &GtkIMContext) set_surrounding(text string, len int, cursor_index int) {
+	C.gtk_im_context_set_surrounding(self, text.str, len, cursor_index)
 }
 
-pub fn (self &GtkIMContext) get_surrounding(text voidptr, cursor_index voidptr) bool {
+pub fn (self &GtkIMContext) get_surrounding(text voidptr, cursor_index &i64) bool {
 	return C.gtk_im_context_get_surrounding(self, text, cursor_index)
 }
 
-pub fn (self &GtkIMContext) set_surrounding_with_selection(text &char, len int, cursor_index int, anchor_index int) {
-	C.gtk_im_context_set_surrounding_with_selection(self, text, len, cursor_index, anchor_index)
+pub fn (self &GtkIMContext) set_surrounding_with_selection(text string, len int, cursor_index int, anchor_index int) {
+	C.gtk_im_context_set_surrounding_with_selection(self, text.str, len, cursor_index,
+		anchor_index)
 }
 
-pub fn (self &GtkIMContext) get_surrounding_with_selection(text voidptr, cursor_index voidptr, anchor_index voidptr) bool {
+pub fn (self &GtkIMContext) get_surrounding_with_selection(text voidptr, cursor_index &i64, anchor_index &i64) bool {
 	return C.gtk_im_context_get_surrounding_with_selection(self, text, cursor_index, anchor_index)
 }
 

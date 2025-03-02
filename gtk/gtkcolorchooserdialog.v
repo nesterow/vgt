@@ -14,6 +14,6 @@ pub fn (self &GtkColorChooserDialog) get_type() glib.GType {
 	return C.gtk_color_chooser_dialog_get_type()
 }
 
-pub fn GtkColorChooserDialog.new(title &char, parent &GtkWindow) &GtkWidget {
-	return C.gtk_color_chooser_dialog_new(title, parent)
+pub fn GtkColorChooserDialog.new(title string, parent &GtkWindow) &GtkWidget {
+	return C.gtk_color_chooser_dialog_new(title.str, parent)
 }

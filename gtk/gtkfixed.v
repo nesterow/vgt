@@ -12,7 +12,7 @@ pub fn C.gtk_fixed_new() &GtkWidget
 pub fn C.gtk_fixed_put(fixed &GtkFixed, widget &GtkWidget, x f32, y f32)
 pub fn C.gtk_fixed_remove(fixed &GtkFixed, widget &GtkWidget)
 pub fn C.gtk_fixed_move(fixed &GtkFixed, widget &GtkWidget, x f32, y f32)
-pub fn C.gtk_fixed_get_child_position(fixed &GtkFixed, widget &GtkWidget, x voidptr, y voidptr)
+pub fn C.gtk_fixed_get_child_position(fixed &GtkFixed, widget &GtkWidget, x &f32, y &f32)
 pub fn C.gtk_fixed_set_child_transform(fixed &GtkFixed, widget &GtkWidget, transform voidptr)
 pub fn C.gtk_fixed_get_child_transform(fixed &GtkFixed, widget &GtkWidget) voidptr
 
@@ -41,7 +41,7 @@ pub fn (self &GtkFixed) move(widget &GtkWidget, x f32, y f32) {
 	C.gtk_fixed_move(self, widget, x, y)
 }
 
-pub fn (self &GtkFixed) get_child_position(widget &GtkWidget, x voidptr, y voidptr) {
+pub fn (self &GtkFixed) get_child_position(widget &GtkWidget, x &f32, y &f32) {
 	C.gtk_fixed_get_child_position(self, widget, x, y)
 }
 
