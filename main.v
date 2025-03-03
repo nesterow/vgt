@@ -1,7 +1,7 @@
 module main
 
 import gtk { GtkAlign, GtkBuilder, GtkButton, GtkWidget, GtkWindow, gtk_init }
-import vgt { app, run_simple, signal, view }
+import vtk { app, run_simple, signal, view }
 
 fn main() {
 	gtk_init()

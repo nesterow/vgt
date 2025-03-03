@@ -1,4 +1,4 @@
-module vgt
+module vtk
 
 import v.embed_file
 import glib { g_signal_connect }

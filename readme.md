@@ -54,5 +54,6 @@ fn main() {
 
 - [x] Gtk4 bindings
 - [x] Glib bindings
+- [x] Cairo bindings
 - [ ] Adwaita
 - [ ] Framework/Tooling

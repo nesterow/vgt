@@ -170,8 +170,8 @@ pub fn generate_cairo() !GioIndex {
 		if node.kind == 'RecordDecl' {
 			if node.tag_used == 'struct' {
 				if node.inner.len == 0 {
-					structs_file += '@[noinit; typedef]\npub struct C.${node.name} {}\n'
-					structs_file += 'pub type ${typname(node.name)} = C.${node.name}\n'
+					structs_file += '@[noinit]\n pub struct C.${node.name} {}\n'
+					structs_file += '\n pub type ${typname(node.name)} = C.${node.name}\n'
 					type_idx[node.name] = typname(node.name)
 					continue
 				}
@@ -258,7 +258,7 @@ pub fn generate_cairo() !GioIndex {
 				ret_t = typ.replace_each(['_', ' ', '*', '']).trim_right('_t').title().replace(' ',
 					'')
 			}
-			if typ.contains('*') && !ret_t.contains('*') {
+			if typ.contains('*') && !ret_t.contains('&') {
 				if ret_t == '' {
 					ret_t = 'voidptr'
 				} else if typ.contains('**') {
@@ -275,6 +275,7 @@ pub fn generate_cairo() !GioIndex {
 
 			func_file += '\npub fn C.${node.name} (${v_args.join(',')}) ${ret_t.trim_right('T')}\n\n'
 			func_file += '\npub fn ${node.name}(${v_args.join(',')}) ${ret_t.trim_right('T')} { \n ${res} C.${node.name}(${arg_names.join(',')}) \n}'
+			func_file += '\npub fn ${node.name.replace('cairo_', '')}(${v_args.join(',')}) ${ret_t.trim_right('T')} { \n ${res} C.${node.name}(${arg_names.join(',')}) \n}'
 		}
 	}
 

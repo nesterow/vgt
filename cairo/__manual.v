@@ -4,10 +4,10 @@ pub type CairoBool = bool
 
 pub type CairoRectangleList = voidptr
 
-@[noinit; typedef]
-pub struct C.CairoScaledFont {}
+@[noinit]
+pub struct C._cairo_scaled_font {}
 
-pub type CairoScaledFont = C.CairoScaledFont
+pub type CairoScaledFont = C._cairo_scaled_font
 
 pub type CairoUserScaledFontInitFunc = voidptr
 pub type CairoUserScaledFontRenderGlyphFunc = voidptr

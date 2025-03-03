@@ -1,7 +1,8 @@
 .cache
+test.png
 # Binaries for programs and plugins
 main
-vgt
+
 *.exe
 *.exe~
 *.so

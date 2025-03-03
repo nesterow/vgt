@@ -1,4 +1,4 @@
-module vgt
+module vtk
 
 import glib { GApplication, GApplicationFlags, g_signal_connect }
 import gtk { GtkApplication, GtkWindow, gtk_init }
@@ -26,6 +26,7 @@ pub fn run_simple(app &GtkApplication, main_window &GtkWindow) {
 	g_signal_connect(app, 'startup', fn [main_window, app] (data voidptr) {
 		app.add_window(main_window)
 	}, null)
+
 	g_signal_connect(app, 'activate', fn [main_window] (data voidptr) {
 		main_window.present()
 	}, null)

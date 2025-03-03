@@ -1,16 +1,16 @@
 module cairo
 
-@[noinit; typedef]
+@[noinit]
 pub struct C._cairo {}
 
 pub type Cairo = C._cairo
 
-@[noinit; typedef]
+@[noinit]
 pub struct C._cairo_surface {}
 
 pub type CairoSurface = C._cairo_surface
 
-@[noinit; typedef]
+@[noinit]
 pub struct C._cairo_device {}
 
 pub type CairoDevice = C._cairo_device
@@ -24,7 +24,7 @@ pub struct CairoMatrix {
 	y0 f32
 }
 
-@[noinit; typedef]
+@[noinit]
 pub struct C._cairo_pattern {}
 
 pub type CairoPattern = C._cairo_pattern
@@ -53,12 +53,12 @@ pub struct CairoRectangleLis {
 	num_rectangles int
 }
 
-@[noinit; typedef]
+@[noinit]
 pub struct C._cairo_scaled_font {}
 
 pub type CairoScaledFon = C._cairo_scaled_font
 
-@[noinit; typedef]
+@[noinit]
 pub struct C._cairo_font_face {}
 
 pub type CairoFontFace = C._cairo_font_face
@@ -91,7 +91,7 @@ pub struct CairoFontExtents {
 	max_y_advance f32
 }
 
-@[noinit; typedef]
+@[noinit]
 pub struct C._cairo_font_options {}
 
 pub type CairoFontOptions = C._cairo_font_options
@@ -109,7 +109,7 @@ pub struct CairoPath {
 	num_data int
 }
 
-@[noinit; typedef]
+@[noinit]
 pub struct C._cairo_region {}
 
 pub type CairoRegion = C._cairo_region
