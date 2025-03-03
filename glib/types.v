@@ -1080,7 +1080,7 @@ pub struct C.GFileAttributeInfoList {}
 
 pub type GFileAttributeInfoList = C.GFileAttributeInfoList
 
-@[noinit; typedef]
+@[noinit]
 pub struct C.GFileDescriptorBased {}
 
 pub type GFileDescriptorBased = C.GFileDescriptorBased
