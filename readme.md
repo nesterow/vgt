@@ -7,7 +7,7 @@ A Gtk4 UI toolkit for [Vlang](https://vlang.io).
 
 Most of the Gtk4 widgets can be used as V structs and mapped 1x1 to C struct names, so `GtkWindow*` is `&GtkWindow`.
 
-All widget related functions are accessible as methods so `gtk_window_set_title(W *, const char*)` becomes `&GtkWindow(w).set_title(c'Title')`
+All widget related functions are accessible as methods so `gtk_window_set_title(W *, const char*)` becomes `&GtkWindow(w).set_title('Title')`
 
 All constructor methods are mapped as V struct factory methods so `GtkWidgetName *gtk_widget_name_new() ` becomes `fn GtkWidgetName.new() &GtkWidgetName`.
 
@@ -30,7 +30,7 @@ brew install gtk4
 
 ```v
 import gtk { GtkAlign, GtkBuilder, GtkButton, GtkWidget, GtkWindow, gtk_init }
-import vgt { app, run_simple, signal, view }
+import vtk { app, run_simple, signal, view }
 
 fn main() {
 	gtk_init()

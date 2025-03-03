@@ -7,7 +7,7 @@ import vtk { app, run_simple, signal, view }
 fn main() {
 	gtk_init()
 
-	ctx := view($embed_file('examples/drawing_area.ui').to_string(), [])
+	ctx := view($embed_file('_examples/drawing_area.ui').to_string(), [])
 
 	app := app(id: 'org.xyz.MyApp')
 	window := ctx.builder.get[GtkWindow]('MainWindow')

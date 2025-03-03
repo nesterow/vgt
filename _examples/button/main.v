@@ -6,7 +6,7 @@ import vtk { app, run_simple, signal, view }
 fn main() {
 	gtk_init()
 
-	ctx := view($embed_file('assets/ui/main_window.ui').to_string(), [
+	ctx := view($embed_file('_examples/main_window.ui').to_string(), [
 		signal('Button.clicked', fn (builder &GtkBuilder, btn &GtkButton, data voidptr) {
 			box := builder.get[GtkWidget]('box')
 			box.set_valign(GtkAlign.gtk_align_center)
