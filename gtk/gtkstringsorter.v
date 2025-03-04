@@ -1,13 +1,11 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkStringSorterClass {}
 
 pub type GtkStringSorterClass = C.GtkStringSorterClass
 
-pub fn C.gtk_string_sorter_get_type() glib.GType
+pub fn C.gtk_string_sorter_get_type() int
 pub fn C.gtk_string_sorter_new(expression &GtkExpression) &GtkStringSorter
 pub fn C.gtk_string_sorter_get_expression(self &GtkStringSorter) &GtkExpression
 pub fn C.gtk_string_sorter_set_expression(self &GtkStringSorter, expression &GtkExpression)
@@ -19,7 +17,7 @@ pub struct C.GtkStringSorter {}
 
 pub type GtkStringSorter = C.GtkStringSorter
 
-pub fn (self &GtkStringSorter) get_type() glib.GType {
+pub fn (self &GtkStringSorter) get_type() int {
 	return C.gtk_string_sorter_get_type()
 }
 

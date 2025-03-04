@@ -12,7 +12,7 @@ pub struct C.GtkCellAreaContext {}
 
 pub type GtkCellAreaContext = C.GtkCellAreaContext
 
-pub fn C.gtk_cell_area_get_type() glib.GType
+pub fn C.gtk_cell_area_get_type() int
 pub fn C.gtk_cell_area_add(area &GtkCellArea, renderer &GtkCellRenderer)
 pub fn C.gtk_cell_area_remove(area &GtkCellArea, renderer &GtkCellRenderer)
 pub fn C.gtk_cell_area_has_renderer(area &GtkCellArea, renderer &GtkCellRenderer) bool
@@ -66,7 +66,7 @@ pub struct C.GtkCellArea {}
 
 pub type GtkCellArea = C.GtkCellArea
 
-pub fn (self &GtkCellArea) get_type() glib.GType {
+pub fn (self &GtkCellArea) get_type() int {
 	return C.gtk_cell_area_get_type()
 }
 
@@ -159,16 +159,16 @@ pub fn (self &GtkCellArea) attribute_get_column(renderer &GtkCellRenderer, attri
 	return C.gtk_cell_area_attribute_get_column(self, renderer, attribute.str)
 }
 
-pub fn (self &GtkCellArea) class_install_cell_property(aclass &GtkCellAreaClass, property_id u64, pspec &glib.GParamSpec) {
-	C.gtk_cell_area_class_install_cell_property(aclass, property_id, pspec)
+pub fn (self &GtkCellAreaClass) install_cell_property(property_id u64, pspec &glib.GParamSpec) {
+	C.gtk_cell_area_class_install_cell_property(self, property_id, pspec)
 }
 
-pub fn (self &GtkCellArea) class_find_cell_property(aclass &GtkCellAreaClass, property_name string) voidptr {
-	return C.gtk_cell_area_class_find_cell_property(aclass, property_name.str)
+pub fn (self &GtkCellAreaClass) find_cell_property(property_name string) voidptr {
+	return C.gtk_cell_area_class_find_cell_property(self, property_name.str)
 }
 
-pub fn (self &GtkCellArea) class_list_cell_properties(aclass &GtkCellAreaClass, n_properties &u64) voidptr {
-	return C.gtk_cell_area_class_list_cell_properties(aclass, n_properties)
+pub fn (self &GtkCellAreaClass) list_cell_properties(n_properties &u64) voidptr {
+	return C.gtk_cell_area_class_list_cell_properties(self, n_properties)
 }
 
 pub fn (self &GtkCellArea) add_with_properties(renderer &GtkCellRenderer, first_prop_name string) {

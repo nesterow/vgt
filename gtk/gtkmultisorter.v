@@ -1,13 +1,11 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkMultiSorterClass {}
 
 pub type GtkMultiSorterClass = C.GtkMultiSorterClass
 
-pub fn C.gtk_multi_sorter_get_type() glib.GType
+pub fn C.gtk_multi_sorter_get_type() int
 pub fn C.gtk_multi_sorter_new() &GtkMultiSorter
 pub fn C.gtk_multi_sorter_append(self &GtkMultiSorter, sorter &GtkSorter)
 pub fn C.gtk_multi_sorter_remove(self &GtkMultiSorter, position u64)
@@ -17,7 +15,7 @@ pub struct C.GtkMultiSorter {}
 
 pub type GtkMultiSorter = C.GtkMultiSorter
 
-pub fn (self &GtkMultiSorter) get_type() glib.GType {
+pub fn (self &GtkMultiSorter) get_type() int {
 	return C.gtk_multi_sorter_get_type()
 }
 

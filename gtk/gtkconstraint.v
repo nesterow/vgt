@@ -1,7 +1,5 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkConstraintTarget {}
 
@@ -17,8 +15,8 @@ pub struct C.GtkConstraintClass {}
 
 pub type GtkConstraintClass = C.GtkConstraintClass
 
-pub fn C.gtk_constraint_target_get_type() glib.GType
-pub fn C.gtk_constraint_get_type() glib.GType
+pub fn C.gtk_constraint_target_get_type() int
+pub fn C.gtk_constraint_get_type() int
 pub fn C.gtk_constraint_new(target voidptr, target_attribute GtkConstraintAttribute, relation GtkConstraintRelation, source voidptr, source_attribute GtkConstraintAttribute, multiplier f32, constant f32, strength int) &GtkConstraint
 pub fn C.gtk_constraint_new_constant(target voidptr, target_attribute GtkConstraintAttribute, relation GtkConstraintRelation, constant f32, strength int) &GtkConstraint
 pub fn C.gtk_constraint_get_target(constraint &GtkConstraint) &GtkConstraintTarget
@@ -38,11 +36,11 @@ pub struct C.GtkConstraint {}
 
 pub type GtkConstraint = C.GtkConstraint
 
-pub fn (self &GtkConstraint) target_get_type() glib.GType {
+pub fn (self &GtkConstraint) target_get_type() int {
 	return C.gtk_constraint_target_get_type()
 }
 
-pub fn (self &GtkConstraint) get_type() glib.GType {
+pub fn (self &GtkConstraint) get_type() int {
 	return C.gtk_constraint_get_type()
 }
 

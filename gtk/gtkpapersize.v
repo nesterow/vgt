@@ -2,7 +2,7 @@ module gtk
 
 import glib
 
-pub fn C.gtk_paper_size_get_type() glib.GType
+pub fn C.gtk_paper_size_get_type() int
 pub fn C.gtk_paper_size_new(name &char) &GtkPaperSize
 pub fn C.gtk_paper_size_new_from_ppd(ppd_name &char, ppd_display_name &char, width f32, height f32) &GtkPaperSize
 pub fn C.gtk_paper_size_new_from_ipp(ipp_name &char, width f32, height f32) &GtkPaperSize
@@ -34,7 +34,7 @@ pub struct C.GtkPaperSize {}
 
 pub type GtkPaperSize = C.GtkPaperSize
 
-pub fn (self &GtkPaperSize) get_type() glib.GType {
+pub fn (self &GtkPaperSize) get_type() int {
 	return C.gtk_paper_size_get_type()
 }
 

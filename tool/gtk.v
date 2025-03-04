@@ -27,6 +27,9 @@ fn convert_ret_type(fdecl_type string, enums map[string]bool, glib_idx GioIndex)
 		return 'glib.' + c_ret_type
 	}
 	if glib_idx.types[c_ret_type.replace_each(['*', ''])] {
+		if c_ret_type == 'GType' {
+			return 'int'
+		}
 		if c_ret_type.contains('**') {
 			return '&&glib.' + c_ret_type.replace_each(['**', ''])
 		} else if c_ret_type.contains('*') {
@@ -143,9 +146,10 @@ fn convert_vcdecl_to_vmethods(node Node, enums map[string]bool, h GtkHeader, gli
 	})
 	if node.name.starts_with(h.snake) {
 		mut vargs := args.join(',')
-		vname := node.name.replace(h.snake + '_', '')
+		mut vname := node.name.replace(h.snake + '_', '')
 		mut self := h.camel
-		if args.len > 0 && args[0].trim_space().ends_with('&${self}') {
+		if args.len > 0 && (args[0].trim_space().ends_with('&${self}')
+			|| args[0].trim_space().ends_with('&${self}Class')) {
 			args.delete(0)
 			vargs = args.join(',')
 			call_args[0] = call_args[0].replace(call_args[0].all_before('&${self}'), 'self ')
@@ -168,10 +172,15 @@ fn convert_vcdecl_to_vmethods(node Node, enums map[string]bool, h GtkHeader, gli
 			wrap_start = 'unsafe { cstring_to_vstring('
 			wrap_end = ') }'
 		}
+		mut class_sufix := ''
+		if node.name.starts_with(h.snake + '_class') {
+			class_sufix = 'Class'
+			vname = vname.replace('class_', '')
+		}
 		if node.name.contains('new') {
-			return 'pub fn ${self}.${vname}(${vargs}) ${ret_type} { ${return_str} ${wrap_start}C.${node.name}(${call_args_str})${wrap_end} }'
+			return 'pub fn ${self + class_sufix}.${vname}(${vargs}) ${ret_type} { ${return_str} ${wrap_start}C.${node.name}(${call_args_str})${wrap_end} }'
 		} else {
-			return 'pub fn (self &${self}) ${vname}(${vargs}) ${ret_type} { ${return_str} ${wrap_start}C.${node.name}(${call_args_str})${wrap_end} }'
+			return 'pub fn (self &${self + class_sufix}) ${vname}(${vargs}) ${ret_type} { ${return_str} ${wrap_start}C.${node.name}(${call_args_str})${wrap_end} }'
 		}
 	}
 	return ''

@@ -50,11 +50,11 @@ pub enum GtkPrintError {
 	gtk_print_error_invalid_file
 }
 
-pub fn C.gtk_print_operation_preview_get_type() glib.GType
+pub fn C.gtk_print_operation_preview_get_type() int
 pub fn C.gtk_print_operation_preview_render_page(preview &GtkPrintOperationPreview, page_nr int)
 pub fn C.gtk_print_operation_preview_end_preview(preview &GtkPrintOperationPreview)
 pub fn C.gtk_print_operation_preview_is_selected(preview &GtkPrintOperationPreview, page_nr int) bool
-pub fn C.gtk_print_operation_get_type() glib.GType
+pub fn C.gtk_print_operation_get_type() int
 pub fn C.gtk_print_operation_new() &GtkPrintOperation
 pub fn C.gtk_print_operation_set_default_page_setup(op &GtkPrintOperation, default_page_setup &GtkPageSetup)
 pub fn C.gtk_print_operation_get_default_page_setup(op &GtkPrintOperation) &GtkPageSetup
@@ -91,7 +91,7 @@ pub struct C.GtkPrintOperation {}
 
 pub type GtkPrintOperation = C.GtkPrintOperation
 
-pub fn (self &GtkPrintOperation) preview_get_type() glib.GType {
+pub fn (self &GtkPrintOperation) preview_get_type() int {
 	return C.gtk_print_operation_preview_get_type()
 }
 
@@ -107,7 +107,7 @@ pub fn (self &GtkPrintOperation) preview_is_selected(preview &GtkPrintOperationP
 	return C.gtk_print_operation_preview_is_selected(preview, page_nr)
 }
 
-pub fn (self &GtkPrintOperation) get_type() glib.GType {
+pub fn (self &GtkPrintOperation) get_type() int {
 	return C.gtk_print_operation_get_type()
 }
 

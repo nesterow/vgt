@@ -26,7 +26,7 @@ pub enum GtkTextExtendSelection {
 	gtk_text_extend_selection_line
 }
 
-pub fn C.gtk_text_view_get_type() glib.GType
+pub fn C.gtk_text_view_get_type() int
 pub fn C.gtk_text_view_new() &GtkWidget
 pub fn C.gtk_text_view_new_with_buffer(buffer &GtkTextBuffer) &GtkWidget
 pub fn C.gtk_text_view_set_buffer(text_view &GtkTextView, buffer &GtkTextBuffer)
@@ -106,7 +106,7 @@ pub struct C.GtkTextView {}
 
 pub type GtkTextView = C.GtkTextView
 
-pub fn (self &GtkTextView) get_type() glib.GType {
+pub fn (self &GtkTextView) get_type() int {
 	return C.gtk_text_view_get_type()
 }
 

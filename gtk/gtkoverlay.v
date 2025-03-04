@@ -1,8 +1,6 @@
 module gtk
 
-import glib
-
-pub fn C.gtk_overlay_get_type() glib.GType
+pub fn C.gtk_overlay_get_type() int
 pub fn C.gtk_overlay_new() &GtkWidget
 pub fn C.gtk_overlay_add_overlay(overlay &GtkOverlay, widget &GtkWidget)
 pub fn C.gtk_overlay_remove_overlay(overlay &GtkOverlay, widget &GtkWidget)
@@ -18,7 +16,7 @@ pub struct C.GtkOverlay {}
 
 pub type GtkOverlay = C.GtkOverlay
 
-pub fn (self &GtkOverlay) get_type() glib.GType {
+pub fn (self &GtkOverlay) get_type() int {
 	return C.gtk_overlay_get_type()
 }
 

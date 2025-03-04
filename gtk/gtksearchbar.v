@@ -1,8 +1,6 @@
 module gtk
 
-import glib
-
-pub fn C.gtk_search_bar_get_type() glib.GType
+pub fn C.gtk_search_bar_get_type() int
 pub fn C.gtk_search_bar_new() &GtkWidget
 pub fn C.gtk_search_bar_connect_entry(bar &GtkSearchBar, entry &GtkEditable)
 pub fn C.gtk_search_bar_get_search_mode(bar &GtkSearchBar) bool
@@ -19,7 +17,7 @@ pub struct C.GtkSearchBar {}
 
 pub type GtkSearchBar = C.GtkSearchBar
 
-pub fn (self &GtkSearchBar) get_type() glib.GType {
+pub fn (self &GtkSearchBar) get_type() int {
 	return C.gtk_search_bar_get_type()
 }
 

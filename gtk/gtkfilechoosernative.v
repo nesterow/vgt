@@ -1,13 +1,11 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkFileChooserNativeClass {}
 
 pub type GtkFileChooserNativeClass = C.GtkFileChooserNativeClass
 
-pub fn C.gtk_file_chooser_native_get_type() glib.GType
+pub fn C.gtk_file_chooser_native_get_type() int
 pub fn C.gtk_file_chooser_native_new(title &char, parent &GtkWindow, action GtkFileChooserAction, accept_label &char, cancel_label &char) &GtkFileChooserNative
 pub fn C.gtk_file_chooser_native_get_accept_label(self &GtkFileChooserNative) &char
 pub fn C.gtk_file_chooser_native_set_accept_label(self &GtkFileChooserNative, accept_label &char)
@@ -19,7 +17,7 @@ pub struct C.GtkFileChooserNative {}
 
 pub type GtkFileChooserNative = C.GtkFileChooserNative
 
-pub fn (self &GtkFileChooserNative) get_type() glib.GType {
+pub fn (self &GtkFileChooserNative) get_type() int {
 	return C.gtk_file_chooser_native_get_type()
 }
 

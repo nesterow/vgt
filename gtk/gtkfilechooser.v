@@ -15,7 +15,7 @@ pub enum GtkFileChooserError {
 	gtk_file_chooser_error_incomplete_hostname
 }
 
-pub fn C.gtk_file_chooser_get_type() glib.GType
+pub fn C.gtk_file_chooser_get_type() int
 pub fn C.gtk_file_chooser_error_quark() glib.GQuark
 pub fn C.gtk_file_chooser_set_action(chooser &GtkFileChooser, action GtkFileChooserAction)
 pub fn C.gtk_file_chooser_get_action(chooser &GtkFileChooser) GtkFileChooserAction
@@ -48,7 +48,7 @@ pub struct C.GtkFileChooser {}
 
 pub type GtkFileChooser = C.GtkFileChooser
 
-pub fn (self &GtkFileChooser) get_type() glib.GType {
+pub fn (self &GtkFileChooser) get_type() int {
 	return C.gtk_file_chooser_get_type()
 }
 

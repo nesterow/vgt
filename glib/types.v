@@ -2,23 +2,23 @@ module glib
 
 pub type GPid = int
 
-pub type GCompareFunc = fn (gconstpointer_typ voidptr, gconstpointer_typ voidptr) int
+pub type GCompareFunc = fn (gconstpointer_typ1 voidptr, gconstpointer_typ2 voidptr) int
 
-pub type GCompareDataFunc = fn (gconstpointer_typ voidptr, gconstpointer_typ voidptr, gpointer_typ voidptr) int
+pub type GCompareDataFunc = fn (gconstpointer_typ1 voidptr, gconstpointer_typ2 voidptr, gpointer_typ3 voidptr) int
 
-pub type GEqualFunc = fn (gconstpointer_typ voidptr, gconstpointer_typ voidptr) bool
+pub type GEqualFunc = fn (gconstpointer_typ1 voidptr, gconstpointer_typ2 voidptr) bool
 
-pub type GDestroyNotify = fn (gpointer_typ voidptr)
+pub type GDestroyNotify = fn (gpointer_typ1 voidptr)
 
-pub type GFunc = fn (gpointer_typ voidptr, gpointer_typ voidptr)
+pub type GFunc = fn (gpointer_typ1 voidptr, gpointer_typ2 voidptr)
 
-pub type GHashFunc = fn (gconstpointer_typ voidptr) u64
+pub type GHashFunc = fn (gconstpointer_typ1 voidptr) u64
 
-pub type GHFunc = fn (gpointer_typ voidptr, gpointer_typ voidptr, gpointer_typ voidptr)
+pub type GHFunc = fn (gpointer_typ1 voidptr, gpointer_typ2 voidptr, gpointer_typ3 voidptr)
 
-pub type GCopyFunc = fn (gconstpointer_typ voidptr, gpointer_typ voidptr) voidptr
+pub type GCopyFunc = fn (gconstpointer_typ1 voidptr, gpointer_typ2 voidptr) voidptr
 
-pub type GTranslateFunc = fn (const_gchar__ptr_typ voidptr, gpointer_typ voidptr) &char
+pub type GTranslateFunc = fn (const_gchar__ptr_typ1 voidptr, gpointer_typ2 voidptr) &char
 
 @[noinit; typedef]
 pub struct C.GTimeVal {}
@@ -52,20 +52,20 @@ pub struct C.GError {}
 
 pub type GError = C.GError
 
-pub type GErrorInitFunc = fn (gerror__ptr_typ voidptr)
+pub type GErrorInitFunc = fn (gerror__ptr_typ1 voidptr)
 
-pub type GErrorCopyFunc = fn (const_gerror__ptr_typ voidptr, gerror__ptr_typ voidptr)
+pub type GErrorCopyFunc = fn (const_gerror__ptr_typ1 voidptr, gerror__ptr_typ2 voidptr)
 
-pub type GErrorClearFunc = fn (gerror__ptr_typ voidptr)
+pub type GErrorClearFunc = fn (gerror__ptr_typ1 voidptr)
 
 @[noinit; typedef]
 pub struct C.GDebugKey {}
 
 pub type GDebugKey = C.GDebugKey
 
-pub type GVoidFunc = fn (void_typ voidptr)
+pub type GVoidFunc = fn (void_typ1 voidptr)
 
-pub type GThreadFunc = fn (gpointer_typ voidptr) voidptr
+pub type GThreadFunc = fn (gpointer_typ1 voidptr) voidptr
 
 @[noinit; typedef]
 pub struct C.GThread {}
@@ -134,9 +134,9 @@ pub struct C.GData {}
 
 pub type GData = C.GData
 
-pub type GDataForeachFunc = fn (gquark_typ voidptr, gpointer_typ voidptr, gpointer_typ voidptr)
+pub type GDataForeachFunc = fn (gquark_typ1 voidptr, gpointer_typ2 voidptr, gpointer_typ3 voidptr)
 
-pub type GDuplicateFunc = fn (gpointer_typ voidptr, gpointer_typ voidptr) voidptr
+pub type GDuplicateFunc = fn (gpointer_typ1 voidptr, gpointer_typ2 voidptr) voidptr
 
 pub type GTime = i32
 
@@ -164,9 +164,9 @@ pub struct C.GNode {}
 
 pub type GNode = C.GNode
 
-pub type GNodeTraverseFunc = fn (gnode__ptr_typ voidptr, gpointer_typ voidptr) bool
+pub type GNodeTraverseFunc = fn (gnode__ptr_typ1 voidptr, gpointer_typ2 voidptr) bool
 
-pub type GNodeForeachFunc = fn (gnode__ptr_typ voidptr, gpointer_typ voidptr)
+pub type GNodeForeachFunc = fn (gnode__ptr_typ1 voidptr, gpointer_typ2 voidptr)
 
 @[noinit; typedef]
 pub struct C.GList {}
@@ -178,7 +178,7 @@ pub struct C.GHashTable {}
 
 pub type GHashTable = C.GHashTable
 
-pub type GHRFunc = fn (gpointer_typ voidptr, gpointer_typ voidptr, gpointer_typ voidptr) bool
+pub type GHRFunc = fn (gpointer_typ1 voidptr, gpointer_typ2 voidptr, gpointer_typ3 voidptr) bool
 
 @[noinit; typedef]
 pub struct C.GHashTableIter {}
@@ -200,22 +200,22 @@ pub struct C.GHookList {}
 
 pub type GHookList = C.GHookList
 
-pub type GHookCompareFunc = fn (ghook__ptr_typ voidptr, ghook__ptr_typ voidptr) int
+pub type GHookCompareFunc = fn (ghook__ptr_typ1 voidptr, ghook__ptr_typ2 voidptr) int
 
-pub type GHookFindFunc = fn (ghook__ptr_typ voidptr, gpointer_typ voidptr) bool
+pub type GHookFindFunc = fn (ghook__ptr_typ1 voidptr, gpointer_typ2 voidptr) bool
 
-pub type GHookMarshaller = fn (ghook__ptr_typ voidptr, gpointer_typ voidptr)
+pub type GHookMarshaller = fn (ghook__ptr_typ1 voidptr, gpointer_typ2 voidptr)
 
-pub type GHookCheckMarshaller = fn (ghook__ptr_typ voidptr, gpointer_typ voidptr) bool
+pub type GHookCheckMarshaller = fn (ghook__ptr_typ1 voidptr, gpointer_typ2 voidptr) bool
 
-pub type GHookFinalizeFunc = fn (ghooklist__ptr_typ voidptr, ghook__ptr_typ voidptr)
+pub type GHookFinalizeFunc = fn (ghooklist__ptr_typ1 voidptr, ghook__ptr_typ2 voidptr)
 
 @[noinit; typedef]
 pub struct C.GPollFD {}
 
 pub type GPollFD = C.GPollFD
 
-pub type GPollFunc = fn (gpollfd__ptr_typ voidptr, guint_typ voidptr, gint_typ voidptr) int
+pub type GPollFunc = fn (gpollfd__ptr_typ1 voidptr, guint_typ2 voidptr, gint_typ3 voidptr) int
 
 @[noinit; typedef]
 pub struct C.GSList {}
@@ -252,15 +252,15 @@ pub struct C.GSourceFuncs {}
 
 pub type GSourceFuncs = C.GSourceFuncs
 
-pub type GSourceFunc = fn (gpointer_typ voidptr) bool
+pub type GSourceFunc = fn (gpointer_typ1 voidptr) bool
 
-pub type GChildWatchFunc = fn (gpid_typ voidptr, gint_typ voidptr, gpointer_typ voidptr)
+pub type GChildWatchFunc = fn (gpid_typ1 voidptr, gint_typ2 voidptr, gpointer_typ3 voidptr)
 
-pub type GSourceDisposeFunc = fn (gsource__ptr_typ voidptr)
+pub type GSourceDisposeFunc = fn (gsource__ptr_typ1 voidptr)
 
-pub type GSourceDummyMarshal = fn (void_typ voidptr)
+pub type GSourceDummyMarshal = fn (void_typ1 voidptr)
 
-pub type GClearHandleFunc = fn (guint_typ voidptr)
+pub type GClearHandleFunc = fn (guint_typ1 voidptr)
 
 @[noinit; typedef]
 pub struct C.GString {}
@@ -277,7 +277,7 @@ pub struct C.GIOFuncs {}
 
 pub type GIOFuncs = C.GIOFuncs
 
-pub type GIOFunc = fn (giochannel__ptr_typ voidptr, giocondition_typ voidptr, gpointer_typ voidptr) bool
+pub type GIOFunc = fn (giochannel__ptr_typ1 voidptr, giocondition_typ2 voidptr, gpointer_typ3 voidptr) bool
 
 @[noinit; typedef]
 pub struct C.GKeyFile {}
@@ -324,16 +324,16 @@ pub struct C.GVariantDict {}
 
 pub type GVariantDict = C.GVariantDict
 
-pub type GLogFunc = fn (const_gchar__ptr_typ voidptr, gloglevelflags_typ voidptr, const_gchar__ptr_typ voidptr, gpointer_typ voidptr)
+pub type GLogFunc = fn (const_gchar__ptr_typ1 voidptr, gloglevelflags_typ2 voidptr, const_gchar__ptr_typ3 voidptr, gpointer_typ4 voidptr)
 
 @[noinit; typedef]
 pub struct C.GLogField {}
 
 pub type GLogField = C.GLogField
 
-pub type GLogWriterFunc = fn (gloglevelflags_typ voidptr, const_glogfield__ptr_typ voidptr, gsize_typ voidptr, gpointer_typ voidptr)
+pub type GLogWriterFunc = fn (gloglevelflags_typ1 voidptr, const_glogfield__ptr_typ2 voidptr, gsize_typ3 voidptr, gpointer_typ4 voidptr)
 
-pub type GPrintFunc = fn (const_gchar__ptr_typ voidptr)
+pub type GPrintFunc = fn (const_gchar__ptr_typ1 voidptr)
 
 @[noinit; typedef]
 pub struct C.GOptionContext {}
@@ -350,9 +350,9 @@ pub struct C.GOptionEntry {}
 
 pub type GOptionEntry = C.GOptionEntry
 
-pub type GOptionParseFunc = fn (goptioncontext__ptr_typ voidptr, goptiongroup__ptr_typ voidptr, gpointer_typ voidptr, gerror__ptr_ptr_typ voidptr) bool
+pub type GOptionParseFunc = fn (goptioncontext__ptr_typ1 voidptr, goptiongroup__ptr_typ2 voidptr, gpointer_typ3 voidptr, gerror__ptr_ptr_typ4 voidptr) bool
 
-pub type GOptionErrorFunc = fn (goptioncontext__ptr_typ voidptr, goptiongroup__ptr_typ voidptr, gpointer_typ voidptr, gerror__ptr_ptr_typ voidptr)
+pub type GOptionErrorFunc = fn (goptioncontext__ptr_typ1 voidptr, goptiongroup__ptr_typ2 voidptr, gpointer_typ3 voidptr, gerror__ptr_ptr_typ4 voidptr)
 
 @[noinit; typedef]
 pub struct C.GPatternSpec {}
@@ -379,7 +379,7 @@ pub struct C.GMatchInfo {}
 
 pub type GMatchInfo = C.GMatchInfo
 
-pub type GRegexEvalCallback = fn (const_gmatchinfo__ptr_typ voidptr, gstring__ptr_typ voidptr, gpointer_typ voidptr) bool
+pub type GRegexEvalCallback = fn (const_gmatchinfo__ptr_typ1 voidptr, gstring__ptr_typ2 voidptr, gpointer_typ3 voidptr) bool
 
 @[noinit; typedef]
 pub struct C.GScanner {}
@@ -391,7 +391,7 @@ pub struct C.GScannerConfig {}
 
 pub type GScannerConfig = C.GScannerConfig
 
-pub type GScannerMsgFunc = fn (gscanner__ptr_typ voidptr, gchar__ptr_typ voidptr, gboolean_typ voidptr)
+pub type GScannerMsgFunc = fn (gscanner__ptr_typ1 voidptr, gchar__ptr_typ2 voidptr, gboolean_typ3 voidptr)
 
 @[noinit; typedef]
 pub struct C.GSequence {}
@@ -403,9 +403,9 @@ pub struct C.GSequenceIter {}
 
 pub type GSequenceIter = C.GSequenceIter
 
-pub type GSequenceIterCompareFunc = fn (gsequenceiter__ptr_typ voidptr, gsequenceiter__ptr_typ voidptr, gpointer_typ voidptr) int
+pub type GSequenceIterCompareFunc = fn (gsequenceiter__ptr_typ1 voidptr, gsequenceiter__ptr_typ2 voidptr, gpointer_typ3 voidptr) int
 
-pub type GSpawnChildSetupFunc = fn (gpointer_typ voidptr)
+pub type GSpawnChildSetupFunc = fn (gpointer_typ1 voidptr)
 
 pub type GStrv = &&char
 
@@ -419,13 +419,13 @@ pub struct C.GStrvBuilder {}
 
 pub type GStrvBuilder = C.GStrvBuilder
 
-pub type GTestFunc = fn (void_typ voidptr)
+pub type GTestFunc = fn (void_typ1 voidptr)
 
-pub type GTestDataFunc = fn (gconstpointer_typ voidptr)
+pub type GTestDataFunc = fn (gconstpointer_typ1 voidptr)
 
-pub type GTestFixtureFunc = fn (gpointer_typ voidptr, gconstpointer_typ voidptr)
+pub type GTestFixtureFunc = fn (gpointer_typ1 voidptr, gconstpointer_typ2 voidptr)
 
-pub type GTestLogFatalFunc = fn (const_gchar__ptr_typ voidptr, gloglevelflags_typ voidptr, const_gchar__ptr_typ voidptr, gpointer_typ voidptr) bool
+pub type GTestLogFatalFunc = fn (const_gchar__ptr_typ1 voidptr, gloglevelflags_typ2 voidptr, const_gchar__ptr_typ3 voidptr, gpointer_typ4 voidptr) bool
 
 @[noinit; typedef]
 pub struct C.GThreadPool {}
@@ -452,9 +452,9 @@ pub struct C.GTreeNode {}
 
 pub type GTreeNode = C.GTreeNode
 
-pub type GTraverseFunc = fn (gpointer_typ voidptr, gpointer_typ voidptr, gpointer_typ voidptr) bool
+pub type GTraverseFunc = fn (gpointer_typ1 voidptr, gpointer_typ2 voidptr, gpointer_typ3 voidptr) bool
 
-pub type GTraverseNodeFunc = fn (gtreenode__ptr_typ voidptr, gpointer_typ voidptr) bool
+pub type GTraverseNodeFunc = fn (gtreenode__ptr_typ1 voidptr, gpointer_typ2 voidptr) bool
 
 @[noinit; typedef]
 pub struct C.GUri {}
@@ -481,20 +481,20 @@ pub struct C.GCache {}
 
 pub type GCache = C.GCache
 
-pub type GCacheNewFunc = fn (gpointer_typ voidptr) voidptr
+pub type GCacheNewFunc = fn (gpointer_typ1 voidptr) voidptr
 
-pub type GCacheDupFunc = fn (gpointer_typ voidptr) voidptr
+pub type GCacheDupFunc = fn (gpointer_typ1 voidptr) voidptr
 
-pub type GCacheDestroyFunc = fn (gpointer_typ voidptr)
+pub type GCacheDestroyFunc = fn (gpointer_typ1 voidptr)
 
 @[noinit; typedef]
 pub struct C.GCompletion {}
 
 pub type GCompletion = C.GCompletion
 
-pub type GCompletionFunc = fn (gpointer_typ voidptr) &char
+pub type GCompletionFunc = fn (gpointer_typ1 voidptr) &char
 
-pub type GCompletionStrncmpFunc = fn (const_gchar__ptr_typ voidptr, const_gchar__ptr_typ voidptr, gsize_typ voidptr) int
+pub type GCompletionStrncmpFunc = fn (const_gchar__ptr_typ1 voidptr, const_gchar__ptr_typ2 voidptr, gsize_typ3 voidptr) int
 
 @[noinit; typedef]
 pub struct C.GRelation {}
@@ -578,25 +578,25 @@ pub struct C.GTypeQuery {}
 
 pub type GTypeQuery = C.GTypeQuery
 
-pub type GBaseInitFunc = fn (gpointer_typ voidptr)
+pub type GBaseInitFunc = fn (gpointer_typ1 voidptr)
 
-pub type GBaseFinalizeFunc = fn (gpointer_typ voidptr)
+pub type GBaseFinalizeFunc = fn (gpointer_typ1 voidptr)
 
-pub type GClassInitFunc = fn (gpointer_typ voidptr, gpointer_typ voidptr)
+pub type GClassInitFunc = fn (gpointer_typ1 voidptr, gpointer_typ2 voidptr)
 
-pub type GClassFinalizeFunc = fn (gpointer_typ voidptr, gpointer_typ voidptr)
+pub type GClassFinalizeFunc = fn (gpointer_typ1 voidptr, gpointer_typ2 voidptr)
 
-pub type GInstanceInitFunc = fn (gtypeinstance__ptr_typ voidptr, gpointer_typ voidptr)
+pub type GInstanceInitFunc = fn (gtypeinstance__ptr_typ1 voidptr, gpointer_typ2 voidptr)
 
-pub type GInterfaceInitFunc = fn (gpointer_typ voidptr, gpointer_typ voidptr)
+pub type GInterfaceInitFunc = fn (gpointer_typ1 voidptr, gpointer_typ2 voidptr)
 
-pub type GInterfaceFinalizeFunc = fn (gpointer_typ voidptr, gpointer_typ voidptr)
+pub type GInterfaceFinalizeFunc = fn (gpointer_typ1 voidptr, gpointer_typ2 voidptr)
 
-pub type GTypeClassCacheFunc = fn (gpointer_typ voidptr, gtypeclass__ptr_typ voidptr) bool
+pub type GTypeClassCacheFunc = fn (gpointer_typ1 voidptr, gtypeclass__ptr_typ2 voidptr) bool
 
-pub type GTypeInterfaceCheckFunc = fn (gpointer_typ voidptr, gpointer_typ voidptr)
+pub type GTypeInterfaceCheckFunc = fn (gpointer_typ1 voidptr, gpointer_typ2 voidptr)
 
-pub type GValueTransform = fn (const_gvalue__ptr_typ voidptr, gvalue__ptr_typ voidptr)
+pub type GValueTransform = fn (const_gvalue__ptr_typ1 voidptr, gvalue__ptr_typ2 voidptr)
 
 @[noinit; typedef]
 pub struct C.GParamSpec {}
@@ -633,13 +633,13 @@ pub struct C.GClosureNotifyData {}
 
 pub type GClosureNotifyData = C.GClosureNotifyData
 
-pub type GCallback = fn (void_typ voidptr)
+pub type GCallback = fn (void_typ1 voidptr)
 
-pub type GClosureNotify = fn (gpointer_typ voidptr, gclosure__ptr_typ voidptr)
+pub type GClosureNotify = fn (gpointer_typ1 voidptr, gclosure__ptr_typ2 voidptr)
 
-pub type GClosureMarshal = fn (gclosure__ptr_typ voidptr, gvalue__ptr_typ voidptr, guint_typ voidptr, const_gvalue__ptr_typ voidptr, gpointer_typ voidptr, gpointer_typ voidptr)
+pub type GClosureMarshal = fn (gclosure__ptr_typ1 voidptr, gvalue__ptr_typ2 voidptr, guint_typ3 voidptr, const_gvalue__ptr_typ4 voidptr, gpointer_typ5 voidptr, gpointer_typ6 voidptr)
 
-pub type GVaClosureMarshal = fn (gclosure__ptr_typ voidptr, gvalue__ptr_typ voidptr, gpointer_typ voidptr, struct___va_list_tag__ptr_typ voidptr, gpointer_typ voidptr, int_typ voidptr, gtype__ptr_typ voidptr)
+pub type GVaClosureMarshal = fn (gclosure__ptr_typ1 voidptr, gvalue__ptr_typ2 voidptr, gpointer_typ3 voidptr, struct___va_list_tag__ptr_typ4 voidptr, gpointer_typ5 voidptr, int_typ6 voidptr, gtype__ptr_typ7 voidptr)
 
 @[noinit; typedef]
 pub struct C.GCClosure {}
@@ -658,13 +658,13 @@ pub type GSignalInvocationHint = C.GSignalInvocationHint
 
 pub type GSignalCMarshaller = voidptr
 
-pub type GSignalEmissionHook = fn (gsignalinvocationhint__ptr_typ voidptr, guint_typ voidptr, const_gvalue__ptr_typ voidptr, gpointer_typ voidptr) bool
+pub type GSignalEmissionHook = fn (gsignalinvocationhint__ptr_typ1 voidptr, guint_typ2 voidptr, const_gvalue__ptr_typ3 voidptr, gpointer_typ4 voidptr) bool
 
-pub type GSignalAccumulator = fn (gsignalinvocationhint__ptr_typ voidptr, gvalue__ptr_typ voidptr, const_gvalue__ptr_typ voidptr, gpointer_typ voidptr) bool
+pub type GSignalAccumulator = fn (gsignalinvocationhint__ptr_typ1 voidptr, gvalue__ptr_typ2 voidptr, const_gvalue__ptr_typ3 voidptr, gpointer_typ4 voidptr) bool
 
-pub type GBoxedCopyFunc = fn (gpointer_typ voidptr) voidptr
+pub type GBoxedCopyFunc = fn (gpointer_typ1 voidptr) voidptr
 
-pub type GBoxedFreeFunc = fn (gpointer_typ voidptr)
+pub type GBoxedFreeFunc = fn (gpointer_typ1 voidptr)
 
 @[noinit; typedef]
 pub struct C.GObject {}
@@ -691,16 +691,16 @@ pub struct C.GObjectConstructParam {}
 
 pub type GObjectConstructParam = C.GObjectConstructParam
 
-pub type GWeakNotify = fn (gpointer_typ voidptr, gobject__ptr_typ voidptr)
+pub type GWeakNotify = fn (gpointer_typ1 voidptr, gobject__ptr_typ2 voidptr)
 
-pub type GToggleNotify = fn (gpointer_typ voidptr, gobject__ptr_typ voidptr, gboolean_typ voidptr)
+pub type GToggleNotify = fn (gpointer_typ1 voidptr, gobject__ptr_typ2 voidptr, gboolean_typ3 voidptr)
 
 @[noinit; typedef]
 pub struct C.GBinding {}
 
 pub type GBinding = C.GBinding
 
-pub type GBindingTransformFunc = fn (gbinding__ptr_typ voidptr, const_gvalue__ptr_typ voidptr, gvalue__ptr_typ voidptr, gpointer_typ voidptr) bool
+pub type GBindingTransformFunc = fn (gbinding__ptr_typ1 voidptr, const_gvalue__ptr_typ2 voidptr, gvalue__ptr_typ3 voidptr, gpointer_typ4 voidptr) bool
 
 @[noinit; typedef]
 pub struct C.GBindingGroup {}
@@ -862,13 +862,13 @@ pub struct C.GTypePluginClass {}
 
 pub type GTypePluginClass = C.GTypePluginClass
 
-pub type GTypePluginUse = fn (gtypeplugin__ptr_typ voidptr)
+pub type GTypePluginUse = fn (gtypeplugin__ptr_typ1 voidptr)
 
-pub type GTypePluginUnuse = fn (gtypeplugin__ptr_typ voidptr)
+pub type GTypePluginUnuse = fn (gtypeplugin__ptr_typ1 voidptr)
 
-pub type GTypePluginCompleteTypeInfo = fn (gtypeplugin__ptr_typ voidptr, gtype_typ voidptr, gtypeinfo__ptr_typ voidptr, gtypevaluetable__ptr_typ voidptr)
+pub type GTypePluginCompleteTypeInfo = fn (gtypeplugin__ptr_typ1 voidptr, gtype_typ2 voidptr, gtypeinfo__ptr_typ3 voidptr, gtypevaluetable__ptr_typ4 voidptr)
 
-pub type GTypePluginCompleteInterfaceInfo = fn (gtypeplugin__ptr_typ voidptr, gtype_typ voidptr, gtype_typ voidptr, ginterfaceinfo__ptr_typ voidptr)
+pub type GTypePluginCompleteInterfaceInfo = fn (gtypeplugin__ptr_typ1 voidptr, gtype_typ2 voidptr, gtype_typ3 voidptr, ginterfaceinfo__ptr_typ4 voidptr)
 
 @[noinit; typedef]
 pub struct C.GValueArray {}
@@ -1080,7 +1080,7 @@ pub struct C.GFileAttributeInfoList {}
 
 pub type GFileAttributeInfoList = C.GFileAttributeInfoList
 
-@[noinit]
+@[noinit; typedef]
 pub struct C.GFileDescriptorBased {}
 
 pub type GFileDescriptorBased = C.GFileDescriptorBased
@@ -1425,17 +1425,17 @@ pub struct C.GVolumeMonitor {}
 
 pub type GVolumeMonitor = C.GVolumeMonitor
 
-pub type GAsyncReadyCallback = fn (gobject__ptr_typ voidptr, gasyncresult__ptr_typ voidptr, gpointer_typ voidptr)
+pub type GAsyncReadyCallback = fn (gobject__ptr_typ1 voidptr, gasyncresult__ptr_typ2 voidptr, gpointer_typ3 voidptr)
 
-pub type GFileProgressCallback = fn (goffset_typ voidptr, goffset_typ voidptr, gpointer_typ voidptr)
+pub type GFileProgressCallback = fn (goffset_typ1 voidptr, goffset_typ2 voidptr, gpointer_typ3 voidptr)
 
-pub type GFileReadMoreCallback = fn (const_char__ptr_typ voidptr, goffset_typ voidptr, gpointer_typ voidptr) bool
+pub type GFileReadMoreCallback = fn (const_char__ptr_typ1 voidptr, goffset_typ2 voidptr, gpointer_typ3 voidptr) bool
 
-pub type GFileMeasureProgressCallback = fn (gboolean_typ voidptr, guint64_typ voidptr, guint64_typ voidptr, guint64_typ voidptr, gpointer_typ voidptr)
+pub type GFileMeasureProgressCallback = fn (gboolean_typ1 voidptr, guint64_typ2 voidptr, guint64_typ3 voidptr, guint64_typ4 voidptr, gpointer_typ5 voidptr)
 
-pub type GIOSchedulerJobFunc = fn (gioschedulerjob__ptr_typ voidptr, gcancellable__ptr_typ voidptr, gpointer_typ voidptr) bool
+pub type GIOSchedulerJobFunc = fn (gioschedulerjob__ptr_typ1 voidptr, gcancellable__ptr_typ2 voidptr, gpointer_typ3 voidptr) bool
 
-pub type GSimpleAsyncThreadFunc = fn (gsimpleasyncresult__ptr_typ voidptr, gobject__ptr_typ voidptr, gcancellable__ptr_typ voidptr)
+pub type GSimpleAsyncThreadFunc = fn (gsimpleasyncresult__ptr_typ1 voidptr, gobject__ptr_typ2 voidptr, gcancellable__ptr_typ3 voidptr)
 
 @[noinit; typedef]
 pub struct C.GInputVector {}
@@ -1592,7 +1592,7 @@ pub struct C.GDBusObjectManagerServer {}
 
 pub type GDBusObjectManagerServer = C.GDBusObjectManagerServer
 
-pub type GDBusProxyTypeFunc = fn (gdbusobjectmanagerclient__ptr_typ voidptr, const_gchar__ptr_typ voidptr, const_gchar__ptr_typ voidptr, gpointer_typ voidptr) int
+pub type GDBusProxyTypeFunc = fn (gdbusobjectmanagerclient__ptr_typ1 voidptr, const_gchar__ptr_typ2 voidptr, const_gchar__ptr_typ3 voidptr, gpointer_typ4 voidptr) int
 
 @[noinit; typedef]
 pub struct C.GTestDBus {}
@@ -1809,21 +1809,21 @@ pub struct C.GDataOutputStreamPrivate {}
 
 pub type GDataOutputStreamPrivate = C.GDataOutputStreamPrivate
 
-pub type GDBusInterfaceMethodCallFunc = fn (gdbusconnection__ptr_typ voidptr, const_gchar__ptr_typ voidptr, const_gchar__ptr_typ voidptr, const_gchar__ptr_typ voidptr, const_gchar__ptr_typ voidptr, gvariant__ptr_typ voidptr, gdbusmethodinvocation__ptr_typ voidptr, gpointer_typ voidptr)
+pub type GDBusInterfaceMethodCallFunc = fn (gdbusconnection__ptr_typ1 voidptr, const_gchar__ptr_typ2 voidptr, const_gchar__ptr_typ3 voidptr, const_gchar__ptr_typ4 voidptr, const_gchar__ptr_typ5 voidptr, gvariant__ptr_typ6 voidptr, gdbusmethodinvocation__ptr_typ7 voidptr, gpointer_typ8 voidptr)
 
-pub type GDBusInterfaceGetPropertyFunc = fn (gdbusconnection__ptr_typ voidptr, const_gchar__ptr_typ voidptr, const_gchar__ptr_typ voidptr, const_gchar__ptr_typ voidptr, const_gchar__ptr_typ voidptr, gerror__ptr_ptr_typ voidptr, gpointer_typ voidptr)
+pub type GDBusInterfaceGetPropertyFunc = fn (gdbusconnection__ptr_typ1 voidptr, const_gchar__ptr_typ2 voidptr, const_gchar__ptr_typ3 voidptr, const_gchar__ptr_typ4 voidptr, const_gchar__ptr_typ5 voidptr, gerror__ptr_ptr_typ6 voidptr, gpointer_typ7 voidptr)
 
-pub type GDBusInterfaceSetPropertyFunc = fn (gdbusconnection__ptr_typ voidptr, const_gchar__ptr_typ voidptr, const_gchar__ptr_typ voidptr, const_gchar__ptr_typ voidptr, const_gchar__ptr_typ voidptr, gvariant__ptr_typ voidptr, gerror__ptr_ptr_typ voidptr, gpointer_typ voidptr) bool
+pub type GDBusInterfaceSetPropertyFunc = fn (gdbusconnection__ptr_typ1 voidptr, const_gchar__ptr_typ2 voidptr, const_gchar__ptr_typ3 voidptr, const_gchar__ptr_typ4 voidptr, const_gchar__ptr_typ5 voidptr, gvariant__ptr_typ6 voidptr, gerror__ptr_ptr_typ7 voidptr, gpointer_typ8 voidptr) bool
 
-pub type GDBusSubtreeEnumerateFunc = fn (gdbusconnection__ptr_typ voidptr, const_gchar__ptr_typ voidptr, const_gchar__ptr_typ voidptr, gpointer_typ voidptr) &&char
+pub type GDBusSubtreeEnumerateFunc = fn (gdbusconnection__ptr_typ1 voidptr, const_gchar__ptr_typ2 voidptr, const_gchar__ptr_typ3 voidptr, gpointer_typ4 voidptr) &&char
 
-pub type GDBusSubtreeIntrospectFunc = fn (gdbusconnection__ptr_typ voidptr, const_gchar__ptr_typ voidptr, const_gchar__ptr_typ voidptr, const_gchar__ptr_typ voidptr, gpointer_typ voidptr)
+pub type GDBusSubtreeIntrospectFunc = fn (gdbusconnection__ptr_typ1 voidptr, const_gchar__ptr_typ2 voidptr, const_gchar__ptr_typ3 voidptr, const_gchar__ptr_typ4 voidptr, gpointer_typ5 voidptr)
 
-pub type GDBusSubtreeDispatchFunc = fn (gdbusconnection__ptr_typ voidptr, const_gchar__ptr_typ voidptr, const_gchar__ptr_typ voidptr, const_gchar__ptr_typ voidptr, const_gchar__ptr_typ voidptr, gpointer__ptr_typ voidptr, gpointer_typ voidptr)
+pub type GDBusSubtreeDispatchFunc = fn (gdbusconnection__ptr_typ1 voidptr, const_gchar__ptr_typ2 voidptr, const_gchar__ptr_typ3 voidptr, const_gchar__ptr_typ4 voidptr, const_gchar__ptr_typ5 voidptr, gpointer__ptr_typ6 voidptr, gpointer_typ7 voidptr)
 
-pub type GDBusSignalCallback = fn (gdbusconnection__ptr_typ voidptr, const_gchar__ptr_typ voidptr, const_gchar__ptr_typ voidptr, const_gchar__ptr_typ voidptr, const_gchar__ptr_typ voidptr, gvariant__ptr_typ voidptr, gpointer_typ voidptr)
+pub type GDBusSignalCallback = fn (gdbusconnection__ptr_typ1 voidptr, const_gchar__ptr_typ2 voidptr, const_gchar__ptr_typ3 voidptr, const_gchar__ptr_typ4 voidptr, const_gchar__ptr_typ5 voidptr, gvariant__ptr_typ6 voidptr, gpointer_typ7 voidptr)
 
-pub type GDBusMessageFilterFunction = fn (gdbusconnection__ptr_typ voidptr, gdbusmessage__ptr_typ voidptr, gboolean_typ voidptr, gpointer_typ voidptr)
+pub type GDBusMessageFilterFunction = fn (gdbusconnection__ptr_typ1 voidptr, gdbusmessage__ptr_typ2 voidptr, gboolean_typ3 voidptr, gpointer_typ4 voidptr)
 
 @[noinit; typedef]
 pub struct C.GDBusInterfaceIface {}
@@ -1845,15 +1845,15 @@ pub struct C.GDBusMenuModel {}
 
 pub type GDBusMenuModel = C.GDBusMenuModel
 
-pub type GBusAcquiredCallback = fn (gdbusconnection__ptr_typ voidptr, const_gchar__ptr_typ voidptr, gpointer_typ voidptr)
+pub type GBusAcquiredCallback = fn (gdbusconnection__ptr_typ1 voidptr, const_gchar__ptr_typ2 voidptr, gpointer_typ3 voidptr)
 
-pub type GBusNameAcquiredCallback = fn (gdbusconnection__ptr_typ voidptr, const_gchar__ptr_typ voidptr, gpointer_typ voidptr)
+pub type GBusNameAcquiredCallback = fn (gdbusconnection__ptr_typ1 voidptr, const_gchar__ptr_typ2 voidptr, gpointer_typ3 voidptr)
 
-pub type GBusNameLostCallback = fn (gdbusconnection__ptr_typ voidptr, const_gchar__ptr_typ voidptr, gpointer_typ voidptr)
+pub type GBusNameLostCallback = fn (gdbusconnection__ptr_typ1 voidptr, const_gchar__ptr_typ2 voidptr, gpointer_typ3 voidptr)
 
-pub type GBusNameAppearedCallback = fn (gdbusconnection__ptr_typ voidptr, const_gchar__ptr_typ voidptr, const_gchar__ptr_typ voidptr, gpointer_typ voidptr)
+pub type GBusNameAppearedCallback = fn (gdbusconnection__ptr_typ1 voidptr, const_gchar__ptr_typ2 voidptr, const_gchar__ptr_typ3 voidptr, gpointer_typ4 voidptr)
 
-pub type GBusNameVanishedCallback = fn (gdbusconnection__ptr_typ voidptr, const_gchar__ptr_typ voidptr, gpointer_typ voidptr)
+pub type GBusNameVanishedCallback = fn (gdbusconnection__ptr_typ1 voidptr, const_gchar__ptr_typ2 voidptr, gpointer_typ3 voidptr)
 
 @[noinit; typedef]
 pub struct C.GDBusObjectIface {}
@@ -2165,7 +2165,7 @@ pub struct C.GMemoryOutputStreamPrivate {}
 
 pub type GMemoryOutputStreamPrivate = C.GMemoryOutputStreamPrivate
 
-pub type GReallocFunc = fn (gpointer_typ voidptr, gsize_typ voidptr) voidptr
+pub type GReallocFunc = fn (gpointer_typ1 voidptr, gsize_typ2 voidptr) voidptr
 
 @[noinit; typedef]
 pub struct C.GMenuModelPrivate {}
@@ -2397,11 +2397,11 @@ pub struct C.GSettingsClass {}
 
 pub type GSettingsClass = C.GSettingsClass
 
-pub type GSettingsBindSetMapping = fn (const_gvalue__ptr_typ voidptr, const_gvarianttype__ptr_typ voidptr, gpointer_typ voidptr)
+pub type GSettingsBindSetMapping = fn (const_gvalue__ptr_typ1 voidptr, const_gvarianttype__ptr_typ2 voidptr, gpointer_typ3 voidptr)
 
-pub type GSettingsBindGetMapping = fn (gvalue__ptr_typ voidptr, gvariant__ptr_typ voidptr, gpointer_typ voidptr) bool
+pub type GSettingsBindGetMapping = fn (gvalue__ptr_typ1 voidptr, gvariant__ptr_typ2 voidptr, gpointer_typ3 voidptr) bool
 
-pub type GSettingsGetMapping = fn (gvariant__ptr_typ voidptr, gpointer__ptr_typ voidptr, gpointer_typ voidptr) bool
+pub type GSettingsGetMapping = fn (gvariant__ptr_typ1 voidptr, gpointer__ptr_typ2 voidptr, gpointer_typ3 voidptr) bool
 
 @[noinit; typedef]
 pub struct C.GSimpleActionGroupPrivate {}
@@ -2503,7 +2503,7 @@ pub struct C.GTaskClass {}
 
 pub type GTaskClass = C.GTaskClass
 
-pub type GTaskThreadFunc = fn (gtask__ptr_typ voidptr, gpointer_typ voidptr, gpointer_typ voidptr, gcancellable__ptr_typ voidptr)
+pub type GTaskThreadFunc = fn (gtask__ptr_typ1 voidptr, gpointer_typ2 voidptr, gpointer_typ3 voidptr, gcancellable__ptr_typ4 voidptr)
 
 @[noinit; typedef]
 pub struct C.GTcpConnectionPrivate {}
@@ -2615,7 +2615,7 @@ pub struct C.GTlsServerConnectionInterface {}
 
 pub type GTlsServerConnectionInterface = C.GTlsServerConnectionInterface
 
-pub type GVfsFileLookupFunc = fn (gvfs__ptr_typ voidptr, const_char__ptr_typ voidptr, gpointer_typ voidptr)
+pub type GVfsFileLookupFunc = fn (gvfs__ptr_typ1 voidptr, const_char__ptr_typ2 voidptr, gpointer_typ3 voidptr)
 
 @[noinit; typedef]
 pub struct C.GVfsClass {}

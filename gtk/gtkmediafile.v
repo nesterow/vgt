@@ -7,7 +7,7 @@ pub struct C.GtkMediaFileClass {}
 
 pub type GtkMediaFileClass = C.GtkMediaFileClass
 
-pub fn C.gtk_media_file_get_type() glib.GType
+pub fn C.gtk_media_file_get_type() int
 pub fn C.gtk_media_file_new() &GtkMediaStream
 pub fn C.gtk_media_file_new_for_filename(filename &char) &GtkMediaStream
 pub fn C.gtk_media_file_new_for_resource(resource_path &char) &GtkMediaStream
@@ -26,7 +26,7 @@ pub struct C.GtkMediaFile {}
 
 pub type GtkMediaFile = C.GtkMediaFile
 
-pub fn (self &GtkMediaFile) get_type() glib.GType {
+pub fn (self &GtkMediaFile) get_type() int {
 	return C.gtk_media_file_get_type()
 }
 

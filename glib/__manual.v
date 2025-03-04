@@ -2,6 +2,10 @@ module glib
 
 // gobject
 
+pub fn g_object_unref(gobj voidptr) {
+	C.g_object_unref(gobj)
+}
+
 pub fn C.g_signal_connect(gobj voidptr, const_signal &char, cb GCallback, data voidptr)
 
 pub fn g_signal_connect(gobj voidptr, signal string, cb GCallback, data voidptr) {

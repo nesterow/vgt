@@ -1,13 +1,11 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkTreeSortableIface {}
 
 pub type GtkTreeSortableIface = C.GtkTreeSortableIface
 
-pub fn C.gtk_tree_sortable_get_type() glib.GType
+pub fn C.gtk_tree_sortable_get_type() int
 pub fn C.gtk_tree_sortable_sort_column_changed(sortable &GtkTreeSortable)
 pub fn C.gtk_tree_sortable_get_sort_column_id(sortable &GtkTreeSortable, sort_column_id &i64, order GtkSortType) bool
 pub fn C.gtk_tree_sortable_set_sort_column_id(sortable &GtkTreeSortable, sort_column_id int, order GtkSortType)
@@ -20,7 +18,7 @@ pub struct C.GtkTreeSortable {}
 
 pub type GtkTreeSortable = C.GtkTreeSortable
 
-pub fn (self &GtkTreeSortable) get_type() glib.GType {
+pub fn (self &GtkTreeSortable) get_type() int {
 	return C.gtk_tree_sortable_get_type()
 }
 

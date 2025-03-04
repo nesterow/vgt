@@ -1,7 +1,5 @@
 module gtk
 
-import glib
-
 pub enum GtkCornerType {
 	gtk_corner_top_left
 	gtk_corner_bottom_left
@@ -16,7 +14,7 @@ pub enum GtkPolicyType {
 	gtk_policy_external
 }
 
-pub fn C.gtk_scrolled_window_get_type() glib.GType
+pub fn C.gtk_scrolled_window_get_type() int
 pub fn C.gtk_scrolled_window_new() &GtkWidget
 pub fn C.gtk_scrolled_window_set_hadjustment(scrolled_window &GtkScrolledWindow, hadjustment &GtkAdjustment)
 pub fn C.gtk_scrolled_window_set_vadjustment(scrolled_window &GtkScrolledWindow, vadjustment &GtkAdjustment)
@@ -55,7 +53,7 @@ pub struct C.GtkScrolledWindow {}
 
 pub type GtkScrolledWindow = C.GtkScrolledWindow
 
-pub fn (self &GtkScrolledWindow) get_type() glib.GType {
+pub fn (self &GtkScrolledWindow) get_type() int {
 	return C.gtk_scrolled_window_get_type()
 }
 

@@ -7,7 +7,7 @@ pub struct C.GtkSortListModelClass {}
 
 pub type GtkSortListModelClass = C.GtkSortListModelClass
 
-pub fn C.gtk_sort_list_model_get_type() glib.GType
+pub fn C.gtk_sort_list_model_get_type() int
 pub fn C.gtk_sort_list_model_new(model &glib.GListModel, sorter &GtkSorter) &GtkSortListModel
 pub fn C.gtk_sort_list_model_set_sorter(self &GtkSortListModel, sorter &GtkSorter)
 pub fn C.gtk_sort_list_model_get_sorter(self &GtkSortListModel) &GtkSorter
@@ -22,7 +22,7 @@ pub struct C.GtkSortListModel {}
 
 pub type GtkSortListModel = C.GtkSortListModel
 
-pub fn (self &GtkSortListModel) get_type() glib.GType {
+pub fn (self &GtkSortListModel) get_type() int {
 	return C.gtk_sort_list_model_get_type()
 }
 

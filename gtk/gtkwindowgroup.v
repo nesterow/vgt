@@ -1,14 +1,12 @@
 module gtk
 
-import glib
-
-pub fn C.gtk_window_group_get_type() glib.GType
+pub fn C.gtk_window_group_get_type() int
 pub fn C.gtk_window_group_new() &GtkWindowGroup
 pub fn C.gtk_window_group_add_window(window_group &GtkWindowGroup, window &GtkWindow)
 pub fn C.gtk_window_group_remove_window(window_group &GtkWindowGroup, window &GtkWindow)
 pub fn C.gtk_window_group_list_windows(window_group &GtkWindowGroup) voidptr
 
-pub fn (self &GtkWindowGroup) get_type() glib.GType {
+pub fn (self &GtkWindowGroup) get_type() int {
 	return C.gtk_window_group_get_type()
 }
 

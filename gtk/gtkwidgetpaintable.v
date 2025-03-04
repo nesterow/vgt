@@ -1,13 +1,11 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkWidgetPaintableClass {}
 
 pub type GtkWidgetPaintableClass = C.GtkWidgetPaintableClass
 
-pub fn C.gtk_widget_paintable_get_type() glib.GType
+pub fn C.gtk_widget_paintable_get_type() int
 pub fn C.gtk_widget_paintable_new(widget &GtkWidget) voidptr
 pub fn C.gtk_widget_paintable_get_widget(self &GtkWidgetPaintable) &GtkWidget
 pub fn C.gtk_widget_paintable_set_widget(self &GtkWidgetPaintable, widget &GtkWidget)
@@ -17,7 +15,7 @@ pub struct C.GtkWidgetPaintable {}
 
 pub type GtkWidgetPaintable = C.GtkWidgetPaintable
 
-pub fn (self &GtkWidgetPaintable) get_type() glib.GType {
+pub fn (self &GtkWidgetPaintable) get_type() int {
 	return C.gtk_widget_paintable_get_type()
 }
 

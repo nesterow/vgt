@@ -12,7 +12,7 @@ pub struct C.GtkMapListModelMapFunc {}
 
 pub type GtkMapListModelMapFunc = C.GtkMapListModelMapFunc
 
-pub fn C.gtk_map_list_model_get_type() glib.GType
+pub fn C.gtk_map_list_model_get_type() int
 pub fn C.gtk_map_list_model_new(model &glib.GListModel, map_func voidptr, user_data voidptr, user_destroy voidptr) &GtkMapListModel
 pub fn C.gtk_map_list_model_set_map_func(self &GtkMapListModel, map_func voidptr, user_data voidptr, user_destroy voidptr)
 pub fn C.gtk_map_list_model_set_model(self &GtkMapListModel, model &glib.GListModel)
@@ -24,7 +24,7 @@ pub struct C.GtkMapListModel {}
 
 pub type GtkMapListModel = C.GtkMapListModel
 
-pub fn (self &GtkMapListModel) get_type() glib.GType {
+pub fn (self &GtkMapListModel) get_type() int {
 	return C.gtk_map_list_model_get_type()
 }
 

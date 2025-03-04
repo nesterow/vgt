@@ -25,7 +25,7 @@ pub enum GtkBuilderError {
 	gtk_builder_error_invalid_function
 }
 
-pub fn C.gtk_builder_cscope_get_type() glib.GType
+pub fn C.gtk_builder_cscope_get_type() int
 pub fn C.gtk_builder_cscope_new() &GtkBuilderScope
 pub fn C.gtk_builder_cscope_add_callback_symbol(self &GtkBuilderCScope, callback_name &char, callback_symbol glib.GCallback)
 pub fn C.gtk_builder_cscope_add_callback_symbols(self &GtkBuilderCScope, first_callback_name &char, first_callback_symbol glib.GCallback)
@@ -36,7 +36,7 @@ pub struct C.GtkBuilderCScope {}
 
 pub type GtkBuilderCScope = C.GtkBuilderCScope
 
-pub fn (self &GtkBuilderCScope) get_type() glib.GType {
+pub fn (self &GtkBuilderCScope) get_type() int {
 	return C.gtk_builder_cscope_get_type()
 }
 
@@ -76,9 +76,9 @@ pub struct C.GtkBuilderClass {}
 
 pub type GtkBuilderClass = C.GtkBuilderClass
 
-pub fn C.gtk_builder_scope_get_type() glib.GType
+pub fn C.gtk_builder_scope_get_type() int
 pub fn C.gtk_builder_error_quark() glib.GQuark
-pub fn C.gtk_builder_get_type() glib.GType
+pub fn C.gtk_builder_get_type() int
 pub fn C.gtk_builder_new() &GtkBuilder
 pub fn C.gtk_builder_add_from_file(builder &GtkBuilder, filename &char, error &&glib.GError) bool
 pub fn C.gtk_builder_add_from_resource(builder &GtkBuilder, resource_path &char, error &&glib.GError) bool
@@ -95,7 +95,7 @@ pub fn C.gtk_builder_set_translation_domain(builder &GtkBuilder, domain &char)
 pub fn C.gtk_builder_get_translation_domain(builder &GtkBuilder) &char
 pub fn C.gtk_builder_get_scope(builder &GtkBuilder) &GtkBuilderScope
 pub fn C.gtk_builder_set_scope(builder &GtkBuilder, scope &GtkBuilderScope)
-pub fn C.gtk_builder_get_type_from_name(builder &GtkBuilder, typ_name &char) glib.GType
+pub fn C.gtk_builder_get_type_from_name(builder &GtkBuilder, typ_name &char) int
 pub fn C.gtk_builder_value_from_string(builder &GtkBuilder, pspec &glib.GParamSpec, str &char, value &glib.GValue, error &&glib.GError) bool
 pub fn C.gtk_builder_value_from_string_type(builder &GtkBuilder, typ int, str &char, value &glib.GValue, error &&glib.GError) bool
 pub fn C.gtk_builder_new_from_file(filename &char) &GtkBuilder
@@ -109,7 +109,7 @@ pub struct C.GtkBuilder {}
 
 pub type GtkBuilder = C.GtkBuilder
 
-pub fn (self &GtkBuilder) scope_get_type() glib.GType {
+pub fn (self &GtkBuilder) scope_get_type() int {
 	return C.gtk_builder_scope_get_type()
 }
 
@@ -117,7 +117,7 @@ pub fn (self &GtkBuilder) error_quark() glib.GQuark {
 	return C.gtk_builder_error_quark()
 }
 
-pub fn (self &GtkBuilder) get_type() glib.GType {
+pub fn (self &GtkBuilder) get_type() int {
 	return C.gtk_builder_get_type()
 }
 
@@ -187,7 +187,7 @@ pub fn (self &GtkBuilder) set_scope(scope &GtkBuilderScope) {
 	C.gtk_builder_set_scope(self, scope)
 }
 
-pub fn (self &GtkBuilder) get_type_from_name(typ_name string) glib.GType {
+pub fn (self &GtkBuilder) get_type_from_name(typ_name string) int {
 	return C.gtk_builder_get_type_from_name(self, typ_name.str)
 }
 

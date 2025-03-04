@@ -2,7 +2,7 @@ module gtk
 
 import glib
 
-pub fn C.gtk_popover_menu_bar_get_type() glib.GType
+pub fn C.gtk_popover_menu_bar_get_type() int
 pub fn C.gtk_popover_menu_bar_new_from_model(model &glib.GMenuModel) &GtkWidget
 pub fn C.gtk_popover_menu_bar_set_menu_model(bar &GtkPopoverMenuBar, model &glib.GMenuModel)
 pub fn C.gtk_popover_menu_bar_get_menu_model(bar &GtkPopoverMenuBar) voidptr
@@ -14,7 +14,7 @@ pub struct C.GtkPopoverMenuBar {}
 
 pub type GtkPopoverMenuBar = C.GtkPopoverMenuBar
 
-pub fn (self &GtkPopoverMenuBar) get_type() glib.GType {
+pub fn (self &GtkPopoverMenuBar) get_type() int {
 	return C.gtk_popover_menu_bar_get_type()
 }
 

@@ -1,13 +1,11 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkBoolFilterClass {}
 
 pub type GtkBoolFilterClass = C.GtkBoolFilterClass
 
-pub fn C.gtk_bool_filter_get_type() glib.GType
+pub fn C.gtk_bool_filter_get_type() int
 pub fn C.gtk_bool_filter_new(expression &GtkExpression) &GtkBoolFilter
 pub fn C.gtk_bool_filter_get_expression(self &GtkBoolFilter) &GtkExpression
 pub fn C.gtk_bool_filter_set_expression(self &GtkBoolFilter, expression &GtkExpression)
@@ -19,7 +17,7 @@ pub struct C.GtkBoolFilter {}
 
 pub type GtkBoolFilter = C.GtkBoolFilter
 
-pub fn (self &GtkBoolFilter) get_type() glib.GType {
+pub fn (self &GtkBoolFilter) get_type() int {
 	return C.gtk_bool_filter_get_type()
 }
 

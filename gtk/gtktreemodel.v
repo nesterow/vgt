@@ -17,10 +17,10 @@ pub enum GtkTreeModelFlags {
 	gtk_tree_model_list_only     = 1 << 1
 }
 
-pub fn C.gtk_tree_model_get_type() glib.GType
+pub fn C.gtk_tree_model_get_type() int
 pub fn C.gtk_tree_model_get_flags(tree_model &GtkTreeModel) GtkTreeModelFlags
 pub fn C.gtk_tree_model_get_n_columns(tree_model &GtkTreeModel) int
-pub fn C.gtk_tree_model_get_column_type(tree_model &GtkTreeModel, index_ int) glib.GType
+pub fn C.gtk_tree_model_get_column_type(tree_model &GtkTreeModel, index_ int) int
 pub fn C.gtk_tree_model_get_iter(tree_model &GtkTreeModel, iter &GtkTreeIter, path &GtkTreePath) bool
 pub fn C.gtk_tree_model_get_iter_from_string(tree_model &GtkTreeModel, iter &GtkTreeIter, path_str &char) bool
 pub fn C.gtk_tree_model_get_string_from_iter(tree_model &GtkTreeModel, iter &GtkTreeIter) voidptr
@@ -51,7 +51,7 @@ pub struct C.GtkTreeModel {}
 
 pub type GtkTreeModel = C.GtkTreeModel
 
-pub fn (self &GtkTreeModel) get_type() glib.GType {
+pub fn (self &GtkTreeModel) get_type() int {
 	return C.gtk_tree_model_get_type()
 }
 
@@ -63,7 +63,7 @@ pub fn (self &GtkTreeModel) get_n_columns() int {
 	return C.gtk_tree_model_get_n_columns(self)
 }
 
-pub fn (self &GtkTreeModel) get_column_type(index_ int) glib.GType {
+pub fn (self &GtkTreeModel) get_column_type(index_ int) int {
 	return C.gtk_tree_model_get_column_type(self, index_)
 }
 
@@ -165,7 +165,7 @@ pub fn (self &GtkTreeModel) rows_reordered_with_length(path &GtkTreePath, iter &
 
 pub fn C.gtk_tree_iter_copy(iter &GtkTreeIter) &GtkTreeIter
 pub fn C.gtk_tree_iter_free(iter &GtkTreeIter)
-pub fn C.gtk_tree_iter_get_type() glib.GType
+pub fn C.gtk_tree_iter_get_type() int
 
 @[noinit; typedef]
 pub struct C.GtkTreeIter {}
@@ -180,7 +180,7 @@ pub fn (self &GtkTreeIter) free() {
 	C.gtk_tree_iter_free(self)
 }
 
-pub fn (self &GtkTreeIter) get_type() glib.GType {
+pub fn (self &GtkTreeIter) get_type() int {
 	return C.gtk_tree_iter_get_type()
 }
 
@@ -197,7 +197,7 @@ pub fn C.gtk_tree_path_get_indices(path &GtkTreePath) &i64
 pub fn C.gtk_tree_path_get_indices_with_depth(path &GtkTreePath, depth &i64) &i64
 pub fn C.gtk_tree_path_free(path &GtkTreePath)
 pub fn C.gtk_tree_path_copy(path &GtkTreePath) &GtkTreePath
-pub fn C.gtk_tree_path_get_type() glib.GType
+pub fn C.gtk_tree_path_get_type() int
 pub fn C.gtk_tree_path_compare(a &GtkTreePath, b &GtkTreePath) int
 pub fn C.gtk_tree_path_next(path &GtkTreePath)
 pub fn C.gtk_tree_path_prev(path &GtkTreePath) bool
@@ -263,7 +263,7 @@ pub fn (self &GtkTreePath) copy() &GtkTreePath {
 	return C.gtk_tree_path_copy(self)
 }
 
-pub fn (self &GtkTreePath) get_type() glib.GType {
+pub fn (self &GtkTreePath) get_type() int {
 	return C.gtk_tree_path_get_type()
 }
 
@@ -295,7 +295,7 @@ pub fn (self &GtkTreePath) is_descendant(ancestor &GtkTreePath) bool {
 	return C.gtk_tree_path_is_descendant(self, ancestor)
 }
 
-pub fn C.gtk_tree_row_reference_get_type() glib.GType
+pub fn C.gtk_tree_row_reference_get_type() int
 pub fn C.gtk_tree_row_reference_new(model &GtkTreeModel, path &GtkTreePath) &GtkTreeRowReference
 pub fn C.gtk_tree_row_reference_new_proxy(proxy &glib.GObject, model &GtkTreeModel, path &GtkTreePath) &GtkTreeRowReference
 pub fn C.gtk_tree_row_reference_get_path(reference &GtkTreeRowReference) &GtkTreePath
@@ -312,7 +312,7 @@ pub struct C.GtkTreeRowReference {}
 
 pub type GtkTreeRowReference = C.GtkTreeRowReference
 
-pub fn (self &GtkTreeRowReference) get_type() glib.GType {
+pub fn (self &GtkTreeRowReference) get_type() int {
 	return C.gtk_tree_row_reference_get_type()
 }
 

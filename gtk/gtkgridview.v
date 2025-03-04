@@ -1,13 +1,11 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkGridViewClass {}
 
 pub type GtkGridViewClass = C.GtkGridViewClass
 
-pub fn C.gtk_grid_view_get_type() glib.GType
+pub fn C.gtk_grid_view_get_type() int
 pub fn C.gtk_grid_view_new(model &GtkSelectionModel, factory &GtkListItemFactory) &GtkWidget
 pub fn C.gtk_grid_view_get_model(self &GtkGridView) &GtkSelectionModel
 pub fn C.gtk_grid_view_set_model(self &GtkGridView, model &GtkSelectionModel)
@@ -27,7 +25,7 @@ pub struct C.GtkGridView {}
 
 pub type GtkGridView = C.GtkGridView
 
-pub fn (self &GtkGridView) get_type() glib.GType {
+pub fn (self &GtkGridView) get_type() int {
 	return C.gtk_grid_view_get_type()
 }
 

@@ -12,7 +12,7 @@ pub struct C.GtkWidgetActionActivateFunc {}
 
 pub type GtkWidgetActionActivateFunc = C.GtkWidgetActionActivateFunc
 
-pub fn C.gtk_widget_get_type() glib.GType
+pub fn C.gtk_widget_get_type() int
 pub fn C.gtk_widget_unparent(widget &GtkWidget)
 pub fn C.gtk_widget_show(widget &GtkWidget)
 pub fn C.gtk_widget_hide(widget &GtkWidget)
@@ -32,7 +32,7 @@ pub fn C.gtk_widget_get_preferred_size(widget &GtkWidget, minimum_size &GtkRequi
 pub fn C.gtk_widget_set_layout_manager(widget &GtkWidget, layout_manager &GtkLayoutManager)
 pub fn C.gtk_widget_get_layout_manager(widget &GtkWidget) &GtkLayoutManager
 pub fn C.gtk_widget_class_set_layout_manager_type(widget_class &GtkWidgetClass, typ int)
-pub fn C.gtk_widget_class_get_layout_manager_type(widget_class &GtkWidgetClass) glib.GType
+pub fn C.gtk_widget_class_get_layout_manager_type(widget_class &GtkWidgetClass) int
 pub fn C.gtk_widget_class_add_binding(widget_class &GtkWidgetClass, keyval u64, mods voidptr, callback voidptr, format_str &char)
 pub fn C.gtk_widget_class_add_binding_signal(widget_class &GtkWidgetClass, keyval u64, mods voidptr, signal &char, format_str &char)
 pub fn C.gtk_widget_class_add_binding_action(widget_class &GtkWidgetClass, keyval u64, mods voidptr, action_name &char, format_str &char)
@@ -159,7 +159,7 @@ pub fn C.gtk_widget_add_tick_callback(widget &GtkWidget, callback voidptr, user_
 pub fn C.gtk_widget_remove_tick_callback(widget &GtkWidget, id u64)
 pub fn C.gtk_widget_init_template(widget &GtkWidget)
 pub fn C.gtk_widget_get_template_child(widget &GtkWidget, widget_typ int, name &char) voidptr
-pub fn C.gtk_widget_class_set_template(widget_class &GtkWidgetClass, template_bytes &glib.GBytes)
+pub fn C.gtk_widget_class_set_template(widget_class voidptr, template_bytes &glib.GBytes)
 pub fn C.gtk_widget_class_set_template_from_resource(widget_class &GtkWidgetClass, resource_name &char)
 pub fn C.gtk_widget_class_bind_template_callback_full(widget_class &GtkWidgetClass, callback_name &char, callback_symbol glib.GCallback)
 pub fn C.gtk_widget_class_set_template_scope(widget_class &GtkWidgetClass, scope &GtkBuilderScope)
@@ -200,7 +200,7 @@ pub struct C.GtkWidget {}
 
 pub type GtkWidget = C.GtkWidget
 
-pub fn (self &GtkWidget) get_type() glib.GType {
+pub fn (self &GtkWidget) get_type() int {
 	return C.gtk_widget_get_type()
 }
 
@@ -277,41 +277,40 @@ pub fn (self &GtkWidget) get_layout_manager() &GtkLayoutManager {
 	return C.gtk_widget_get_layout_manager(self)
 }
 
-pub fn (self &GtkWidget) class_set_layout_manager_type(widget_class &GtkWidgetClass, typ int) {
-	C.gtk_widget_class_set_layout_manager_type(widget_class, typ)
+pub fn (self &GtkWidgetClass) set_layout_manager_type(typ int) {
+	C.gtk_widget_class_set_layout_manager_type(self, typ)
 }
 
-pub fn (self &GtkWidget) class_get_layout_manager_type(widget_class &GtkWidgetClass) glib.GType {
-	return C.gtk_widget_class_get_layout_manager_type(widget_class)
+pub fn (self &GtkWidgetClass) get_layout_manager_type() int {
+	return C.gtk_widget_class_get_layout_manager_type(self)
 }
 
-pub fn (self &GtkWidget) class_add_binding(widget_class &GtkWidgetClass, keyval u64, mods voidptr, callback voidptr, format_str string) {
-	C.gtk_widget_class_add_binding(widget_class, keyval, mods, callback, format_str.str)
+pub fn (self &GtkWidgetClass) add_binding(keyval u64, mods voidptr, callback voidptr, format_str string) {
+	C.gtk_widget_class_add_binding(self, keyval, mods, callback, format_str.str)
 }
 
-pub fn (self &GtkWidget) class_add_binding_signal(widget_class &GtkWidgetClass, keyval u64, mods voidptr, signal string, format_str string) {
-	C.gtk_widget_class_add_binding_signal(widget_class, keyval, mods, signal.str, format_str.str)
+pub fn (self &GtkWidgetClass) add_binding_signal(keyval u64, mods voidptr, signal string, format_str string) {
+	C.gtk_widget_class_add_binding_signal(self, keyval, mods, signal.str, format_str.str)
 }
 
-pub fn (self &GtkWidget) class_add_binding_action(widget_class &GtkWidgetClass, keyval u64, mods voidptr, action_name string, format_str string) {
-	C.gtk_widget_class_add_binding_action(widget_class, keyval, mods, action_name.str,
-		format_str.str)
+pub fn (self &GtkWidgetClass) add_binding_action(keyval u64, mods voidptr, action_name string, format_str string) {
+	C.gtk_widget_class_add_binding_action(self, keyval, mods, action_name.str, format_str.str)
 }
 
-pub fn (self &GtkWidget) class_add_shortcut(widget_class &GtkWidgetClass, shortcut &GtkShortcut) {
-	C.gtk_widget_class_add_shortcut(widget_class, shortcut)
+pub fn (self &GtkWidgetClass) add_shortcut(shortcut &GtkShortcut) {
+	C.gtk_widget_class_add_shortcut(self, shortcut)
 }
 
-pub fn (self &GtkWidget) class_set_activate_signal(widget_class &GtkWidgetClass, signal_id u64) {
-	C.gtk_widget_class_set_activate_signal(widget_class, signal_id)
+pub fn (self &GtkWidgetClass) set_activate_signal(signal_id u64) {
+	C.gtk_widget_class_set_activate_signal(self, signal_id)
 }
 
-pub fn (self &GtkWidget) class_set_activate_signal_from_name(widget_class &GtkWidgetClass, signal_name string) {
-	C.gtk_widget_class_set_activate_signal_from_name(widget_class, signal_name.str)
+pub fn (self &GtkWidgetClass) set_activate_signal_from_name(signal_name string) {
+	C.gtk_widget_class_set_activate_signal_from_name(self, signal_name.str)
 }
 
-pub fn (self &GtkWidget) class_get_activate_signal(widget_class &GtkWidgetClass) u64 {
-	return C.gtk_widget_class_get_activate_signal(widget_class)
+pub fn (self &GtkWidgetClass) get_activate_signal() u64 {
+	return C.gtk_widget_class_get_activate_signal(self)
 }
 
 pub fn (self &GtkWidget) mnemonic_activate(group_cycling bool) bool {
@@ -767,12 +766,12 @@ pub fn (self &GtkWidget) get_style_context() &GtkStyleContext {
 	return C.gtk_widget_get_style_context(self)
 }
 
-pub fn (self &GtkWidget) class_set_css_name(widget_class &GtkWidgetClass, name string) {
-	C.gtk_widget_class_set_css_name(widget_class, name.str)
+pub fn (self &GtkWidgetClass) set_css_name(name string) {
+	C.gtk_widget_class_set_css_name(self, name.str)
 }
 
-pub fn (self &GtkWidget) class_get_css_name(widget_class &GtkWidgetClass) string {
-	return unsafe { cstring_to_vstring(C.gtk_widget_class_get_css_name(widget_class)) }
+pub fn (self &GtkWidgetClass) get_css_name() string {
+	return unsafe { cstring_to_vstring(C.gtk_widget_class_get_css_name(self)) }
 }
 
 pub fn (self &GtkWidget) add_tick_callback(callback voidptr, user_data voidptr, notify voidptr) u64 {
@@ -791,25 +790,24 @@ pub fn (self &GtkWidget) get_template_child(widget_typ int, name string) voidptr
 	return C.gtk_widget_get_template_child(self, widget_typ, name.str)
 }
 
-pub fn (self &GtkWidget) class_set_template(widget_class &GtkWidgetClass, template_bytes &glib.GBytes) {
-	C.gtk_widget_class_set_template(widget_class, template_bytes)
+pub fn (self &GtkWidgetClass) set_template(template_bytes &glib.GBytes) {
+	C.gtk_widget_class_set_template(self, template_bytes)
 }
 
-pub fn (self &GtkWidget) class_set_template_from_resource(widget_class &GtkWidgetClass, resource_name string) {
-	C.gtk_widget_class_set_template_from_resource(widget_class, resource_name.str)
+pub fn (self &GtkWidgetClass) set_template_from_resource(resource_name string) {
+	C.gtk_widget_class_set_template_from_resource(self, resource_name.str)
 }
 
-pub fn (self &GtkWidget) class_bind_template_callback_full(widget_class &GtkWidgetClass, callback_name string, callback_symbol glib.GCallback) {
-	C.gtk_widget_class_bind_template_callback_full(widget_class, callback_name.str, callback_symbol)
+pub fn (self &GtkWidgetClass) bind_template_callback_full(callback_name string, callback_symbol glib.GCallback) {
+	C.gtk_widget_class_bind_template_callback_full(self, callback_name.str, callback_symbol)
 }
 
-pub fn (self &GtkWidget) class_set_template_scope(widget_class &GtkWidgetClass, scope &GtkBuilderScope) {
-	C.gtk_widget_class_set_template_scope(widget_class, scope)
+pub fn (self &GtkWidgetClass) set_template_scope(scope &GtkBuilderScope) {
+	C.gtk_widget_class_set_template_scope(self, scope)
 }
 
-pub fn (self &GtkWidget) class_bind_template_child_full(widget_class &GtkWidgetClass, name string, internal_child bool, struct_offset int) {
-	C.gtk_widget_class_bind_template_child_full(widget_class, name.str, internal_child,
-		struct_offset)
+pub fn (self &GtkWidgetClass) bind_template_child_full(name string, internal_child bool, struct_offset int) {
+	C.gtk_widget_class_bind_template_child_full(self, name.str, internal_child, struct_offset)
 }
 
 pub fn (self &GtkWidget) insert_action_group(name string, group &glib.GActionGroup) {
@@ -908,17 +906,16 @@ pub fn (self &GtkWidget) set_css_classes(classes voidptr) {
 	C.gtk_widget_set_css_classes(self, classes)
 }
 
-pub fn (self &GtkWidget) class_install_action(widget_class &GtkWidgetClass, action_name string, parameter_typ string, activate voidptr) {
-	C.gtk_widget_class_install_action(widget_class, action_name.str, parameter_typ.str,
-		activate)
+pub fn (self &GtkWidgetClass) install_action(action_name string, parameter_typ string, activate voidptr) {
+	C.gtk_widget_class_install_action(self, action_name.str, parameter_typ.str, activate)
 }
 
-pub fn (self &GtkWidget) class_install_property_action(widget_class &GtkWidgetClass, action_name string, property_name string) {
-	C.gtk_widget_class_install_property_action(widget_class, action_name.str, property_name.str)
+pub fn (self &GtkWidgetClass) install_property_action(action_name string, property_name string) {
+	C.gtk_widget_class_install_property_action(self, action_name.str, property_name.str)
 }
 
-pub fn (self &GtkWidget) class_query_action(widget_class &GtkWidgetClass, index_ u64, owner &int, action_name voidptr, parameter_typ &&glib.GVariantType, property_name voidptr) bool {
-	return C.gtk_widget_class_query_action(widget_class, index_, owner, action_name, parameter_typ,
+pub fn (self &GtkWidgetClass) query_action(index_ u64, owner &int, action_name voidptr, parameter_typ &&glib.GVariantType, property_name voidptr) bool {
+	return C.gtk_widget_class_query_action(self, index_, owner, action_name, parameter_typ,
 		property_name)
 }
 
@@ -926,10 +923,10 @@ pub fn (self &GtkWidget) action_set_enabled(action_name string, enabled bool) {
 	C.gtk_widget_action_set_enabled(self, action_name.str, enabled)
 }
 
-pub fn (self &GtkWidget) class_set_accessible_role(widget_class &GtkWidgetClass, accessible_role GtkAccessibleRole) {
-	C.gtk_widget_class_set_accessible_role(widget_class, accessible_role)
+pub fn (self &GtkWidgetClass) set_accessible_role(accessible_role GtkAccessibleRole) {
+	C.gtk_widget_class_set_accessible_role(self, accessible_role)
 }
 
-pub fn (self &GtkWidget) class_get_accessible_role(widget_class &GtkWidgetClass) GtkAccessibleRole {
-	return C.gtk_widget_class_get_accessible_role(widget_class)
+pub fn (self &GtkWidgetClass) get_accessible_role() GtkAccessibleRole {
+	return C.gtk_widget_class_get_accessible_role(self)
 }

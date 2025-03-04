@@ -25,7 +25,7 @@ fn test_square_png() {
 	cairo_rectangle(cr, f32(width) / 2.0 - square_size / 2, f32(height) / 2.0 - square_size / 2,
 		square_size, square_size)
 	cairo_stroke(cr)
-	
+
 	status := cairo_surface_write_to_png(surface, 'test.png'.str)
 	assert status == CairoStatus.cairo_status_success
 }

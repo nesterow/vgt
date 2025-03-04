@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+    <requires lib="gtk" version="4.0"/>
+    <template class="MyWindow" parent="GtkWindow">
+        <property name="title" translatable="yes">BasicDemo</property>
+        <property name="default-width">800</property>
+        <property name="default-height">600</property>
+        <property name="child">
+            <object class="GtkLabel" id="label">
+                <property name="label" translatable="yes">Hello, GTK!</property>
+                <style>
+                    <class name="title-1"/>
+                </style>
+            </object>
+        </property>
+    </template>
+</interface>

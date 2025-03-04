@@ -19,7 +19,7 @@ pub enum GtkEditableProperties {
 	gtk_editable_num_properties
 }
 
-pub fn C.gtk_editable_get_type() glib.GType
+pub fn C.gtk_editable_get_type() int
 pub fn C.gtk_editable_get_text(editable &GtkEditable) &char
 pub fn C.gtk_editable_set_text(editable &GtkEditable, text &char)
 pub fn C.gtk_editable_get_chars(editable &GtkEditable, start_pos int, end_pos int) voidptr
@@ -52,7 +52,7 @@ pub struct C.GtkEditable {}
 
 pub type GtkEditable = C.GtkEditable
 
-pub fn (self &GtkEditable) get_type() glib.GType {
+pub fn (self &GtkEditable) get_type() int {
 	return C.gtk_editable_get_type()
 }
 

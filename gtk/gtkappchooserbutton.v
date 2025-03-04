@@ -2,7 +2,7 @@ module gtk
 
 import glib
 
-pub fn C.gtk_app_chooser_button_get_type() glib.GType
+pub fn C.gtk_app_chooser_button_get_type() int
 pub fn C.gtk_app_chooser_button_new(content_typ &char) &GtkWidget
 pub fn C.gtk_app_chooser_button_append_separator(self &GtkAppChooserButton)
 pub fn C.gtk_app_chooser_button_append_custom_item(self &GtkAppChooserButton, name &char, label &char, icon &glib.GIcon)
@@ -21,7 +21,7 @@ pub struct C.GtkAppChooserButton {}
 
 pub type GtkAppChooserButton = C.GtkAppChooserButton
 
-pub fn (self &GtkAppChooserButton) get_type() glib.GType {
+pub fn (self &GtkAppChooserButton) get_type() int {
 	return C.gtk_app_chooser_button_get_type()
 }
 

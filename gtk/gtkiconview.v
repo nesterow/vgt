@@ -1,7 +1,5 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkIconViewForeachFunc {}
 
@@ -16,7 +14,7 @@ pub enum GtkIconViewDropPosition {
 	gtk_icon_view_drop_below
 }
 
-pub fn C.gtk_icon_view_get_type() glib.GType
+pub fn C.gtk_icon_view_get_type() int
 pub fn C.gtk_icon_view_new() &GtkWidget
 pub fn C.gtk_icon_view_new_with_area(area &GtkCellArea) &GtkWidget
 pub fn C.gtk_icon_view_new_with_model(model &GtkTreeModel) &GtkWidget
@@ -86,7 +84,7 @@ pub struct C.GtkIconView {}
 
 pub type GtkIconView = C.GtkIconView
 
-pub fn (self &GtkIconView) get_type() glib.GType {
+pub fn (self &GtkIconView) get_type() int {
 	return C.gtk_icon_view_get_type()
 }
 

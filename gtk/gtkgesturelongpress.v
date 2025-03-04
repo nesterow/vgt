@@ -1,13 +1,11 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkGestureLongPressClass {}
 
 pub type GtkGestureLongPressClass = C.GtkGestureLongPressClass
 
-pub fn C.gtk_gesture_long_press_get_type() glib.GType
+pub fn C.gtk_gesture_long_press_get_type() int
 pub fn C.gtk_gesture_long_press_new() &GtkGesture
 pub fn C.gtk_gesture_long_press_set_delay_factor(gesture &GtkGestureLongPress, delay_factor f32)
 pub fn C.gtk_gesture_long_press_get_delay_factor(gesture &GtkGestureLongPress) f32
@@ -17,7 +15,7 @@ pub struct C.GtkGestureLongPress {}
 
 pub type GtkGestureLongPress = C.GtkGestureLongPress
 
-pub fn (self &GtkGestureLongPress) get_type() glib.GType {
+pub fn (self &GtkGestureLongPress) get_type() int {
 	return C.gtk_gesture_long_press_get_type()
 }
 

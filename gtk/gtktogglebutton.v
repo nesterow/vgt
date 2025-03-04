@@ -1,13 +1,11 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkToggleButtonClass {}
 
 pub type GtkToggleButtonClass = C.GtkToggleButtonClass
 
-pub fn C.gtk_toggle_button_get_type() glib.GType
+pub fn C.gtk_toggle_button_get_type() int
 pub fn C.gtk_toggle_button_new() &GtkWidget
 pub fn C.gtk_toggle_button_new_with_label(label &char) &GtkWidget
 pub fn C.gtk_toggle_button_new_with_mnemonic(label &char) &GtkWidget
@@ -21,7 +19,7 @@ pub struct C.GtkToggleButton {}
 
 pub type GtkToggleButton = C.GtkToggleButton
 
-pub fn (self &GtkToggleButton) get_type() glib.GType {
+pub fn (self &GtkToggleButton) get_type() int {
 	return C.gtk_toggle_button_get_type()
 }
 

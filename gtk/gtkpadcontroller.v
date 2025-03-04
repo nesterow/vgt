@@ -18,7 +18,7 @@ pub struct C.GtkPadControllerClass {}
 
 pub type GtkPadControllerClass = C.GtkPadControllerClass
 
-pub fn C.gtk_pad_controller_get_type() glib.GType
+pub fn C.gtk_pad_controller_get_type() int
 pub fn C.gtk_pad_controller_new(group &glib.GActionGroup, pad voidptr) &GtkPadController
 pub fn C.gtk_pad_controller_set_action_entries(controller &GtkPadController, entries &GtkPadActionEntry, n_entries int)
 pub fn C.gtk_pad_controller_set_action(controller &GtkPadController, typ GtkPadActionType, index int, mode int, label &char, action_name &char)
@@ -28,7 +28,7 @@ pub struct C.GtkPadController {}
 
 pub type GtkPadController = C.GtkPadController
 
-pub fn (self &GtkPadController) get_type() glib.GType {
+pub fn (self &GtkPadController) get_type() int {
 	return C.gtk_pad_controller_get_type()
 }
 

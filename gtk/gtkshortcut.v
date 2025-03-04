@@ -17,7 +17,7 @@ pub struct C.GtkShortcutClass {}
 
 pub type GtkShortcutClass = C.GtkShortcutClass
 
-pub fn C.gtk_shortcut_get_type() glib.GType
+pub fn C.gtk_shortcut_get_type() int
 pub fn C.gtk_shortcut_new(trigger &GtkShortcutTrigger, action &GtkShortcutAction) &GtkShortcut
 pub fn C.gtk_shortcut_new_with_arguments(trigger &GtkShortcutTrigger, action &GtkShortcutAction, format_str &char) &GtkShortcut
 pub fn C.gtk_shortcut_get_trigger(self &GtkShortcut) &GtkShortcutTrigger
@@ -32,7 +32,7 @@ pub struct C.GtkShortcut {}
 
 pub type GtkShortcut = C.GtkShortcut
 
-pub fn (self &GtkShortcut) get_type() glib.GType {
+pub fn (self &GtkShortcut) get_type() int {
 	return C.gtk_shortcut_get_type()
 }
 

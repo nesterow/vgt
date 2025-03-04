@@ -7,7 +7,7 @@ pub struct C.GtkMenuButtonCreatePopupFunc {}
 
 pub type GtkMenuButtonCreatePopupFunc = C.GtkMenuButtonCreatePopupFunc
 
-pub fn C.gtk_menu_button_get_type() glib.GType
+pub fn C.gtk_menu_button_get_type() int
 pub fn C.gtk_menu_button_new() &GtkWidget
 pub fn C.gtk_menu_button_set_popover(menu_button &GtkMenuButton, popover &GtkWidget)
 pub fn C.gtk_menu_button_get_popover(menu_button &GtkMenuButton) &GtkPopover
@@ -38,7 +38,7 @@ pub struct C.GtkMenuButton {}
 
 pub type GtkMenuButton = C.GtkMenuButton
 
-pub fn (self &GtkMenuButton) get_type() glib.GType {
+pub fn (self &GtkMenuButton) get_type() int {
 	return C.gtk_menu_button_get_type()
 }
 

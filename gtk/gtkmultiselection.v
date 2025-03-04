@@ -7,7 +7,7 @@ pub struct C.GtkMultiSelectionClass {}
 
 pub type GtkMultiSelectionClass = C.GtkMultiSelectionClass
 
-pub fn C.gtk_multi_selection_get_type() glib.GType
+pub fn C.gtk_multi_selection_get_type() int
 pub fn C.gtk_multi_selection_new(model &glib.GListModel) &GtkMultiSelection
 pub fn C.gtk_multi_selection_get_model(self &GtkMultiSelection) voidptr
 pub fn C.gtk_multi_selection_set_model(self &GtkMultiSelection, model &glib.GListModel)
@@ -17,7 +17,7 @@ pub struct C.GtkMultiSelection {}
 
 pub type GtkMultiSelection = C.GtkMultiSelection
 
-pub fn (self &GtkMultiSelection) get_type() glib.GType {
+pub fn (self &GtkMultiSelection) get_type() int {
 	return C.gtk_multi_selection_get_type()
 }
 

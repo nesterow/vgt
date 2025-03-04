@@ -1,13 +1,11 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkSelectionModelInterface {}
 
 pub type GtkSelectionModelInterface = C.GtkSelectionModelInterface
 
-pub fn C.gtk_selection_model_get_type() glib.GType
+pub fn C.gtk_selection_model_get_type() int
 pub fn C.gtk_selection_model_is_selected(model &GtkSelectionModel, position u64) bool
 pub fn C.gtk_selection_model_get_selection(model &GtkSelectionModel) &GtkBitset
 pub fn C.gtk_selection_model_get_selection_in_range(model &GtkSelectionModel, position u64, n_items u64) &GtkBitset
@@ -25,7 +23,7 @@ pub struct C.GtkSelectionModel {}
 
 pub type GtkSelectionModel = C.GtkSelectionModel
 
-pub fn (self &GtkSelectionModel) get_type() glib.GType {
+pub fn (self &GtkSelectionModel) get_type() int {
 	return C.gtk_selection_model_get_type()
 }
 

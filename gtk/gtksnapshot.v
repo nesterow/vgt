@@ -7,7 +7,7 @@ pub struct C.GtkSnapshotClass {}
 
 pub type GtkSnapshotClass = C.GtkSnapshotClass
 
-pub fn C.gtk_snapshot_get_type() glib.GType
+pub fn C.gtk_snapshot_get_type() int
 pub fn C.gtk_snapshot_new() &GtkSnapshot
 pub fn C.gtk_snapshot_free_to_node(snapshot &GtkSnapshot) voidptr
 pub fn C.gtk_snapshot_free_to_paintable(snapshot &GtkSnapshot, size &int) voidptr
@@ -61,7 +61,7 @@ pub struct C.GtkSnapshot {}
 
 pub type GtkSnapshot = C.GtkSnapshot
 
-pub fn (self &GtkSnapshot) get_type() glib.GType {
+pub fn (self &GtkSnapshot) get_type() int {
 	return C.gtk_snapshot_get_type()
 }
 

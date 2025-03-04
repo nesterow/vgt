@@ -7,7 +7,7 @@ pub struct C.GtkCustomSorterClass {}
 
 pub type GtkCustomSorterClass = C.GtkCustomSorterClass
 
-pub fn C.gtk_custom_sorter_get_type() glib.GType
+pub fn C.gtk_custom_sorter_get_type() int
 pub fn C.gtk_custom_sorter_new(sort_func glib.GCompareDataFunc, user_data voidptr, user_destroy voidptr) &GtkCustomSorter
 pub fn C.gtk_custom_sorter_set_sort_func(self &GtkCustomSorter, sort_func glib.GCompareDataFunc, user_data voidptr, user_destroy voidptr)
 
@@ -16,7 +16,7 @@ pub struct C.GtkCustomSorter {}
 
 pub type GtkCustomSorter = C.GtkCustomSorter
 
-pub fn (self &GtkCustomSorter) get_type() glib.GType {
+pub fn (self &GtkCustomSorter) get_type() int {
 	return C.gtk_custom_sorter_get_type()
 }
 

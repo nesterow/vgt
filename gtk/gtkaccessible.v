@@ -7,7 +7,7 @@ pub struct C.GtkAccessibleInterface {}
 
 pub type GtkAccessibleInterface = C.GtkAccessibleInterface
 
-pub fn C.gtk_accessible_get_type() glib.GType
+pub fn C.gtk_accessible_get_type() int
 pub fn C.gtk_accessible_get_accessible_role(self &GtkAccessible) GtkAccessibleRole
 pub fn C.gtk_accessible_update_state(self &GtkAccessible, first_state GtkAccessibleState)
 pub fn C.gtk_accessible_update_property(self &GtkAccessible, first_property GtkAccessibleProperty)
@@ -27,7 +27,7 @@ pub struct C.GtkAccessible {}
 
 pub type GtkAccessible = C.GtkAccessible
 
-pub fn (self &GtkAccessible) get_type() glib.GType {
+pub fn (self &GtkAccessible) get_type() int {
 	return C.gtk_accessible_get_type()
 }
 

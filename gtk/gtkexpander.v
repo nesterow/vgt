@@ -1,8 +1,6 @@
 module gtk
 
-import glib
-
-pub fn C.gtk_expander_get_type() glib.GType
+pub fn C.gtk_expander_get_type() int
 pub fn C.gtk_expander_new(label &char) &GtkWidget
 pub fn C.gtk_expander_new_with_mnemonic(label &char) &GtkWidget
 pub fn C.gtk_expander_set_expanded(expander &GtkExpander, expanded bool)
@@ -25,7 +23,7 @@ pub struct C.GtkExpander {}
 
 pub type GtkExpander = C.GtkExpander
 
-pub fn (self &GtkExpander) get_type() glib.GType {
+pub fn (self &GtkExpander) get_type() int {
 	return C.gtk_expander_get_type()
 }
 

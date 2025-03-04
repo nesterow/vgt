@@ -1,7 +1,5 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkDialogClass {}
 
@@ -27,7 +25,7 @@ pub enum GtkResponseType {
 	gtk_response_help         = -11
 }
 
-pub fn C.gtk_dialog_get_type() glib.GType
+pub fn C.gtk_dialog_get_type() int
 pub fn C.gtk_dialog_new() &GtkWidget
 pub fn C.gtk_dialog_new_with_buttons(title &char, parent &GtkWindow, flags GtkDialogFlags, first_button_text &char) &GtkWidget
 pub fn C.gtk_dialog_add_action_widget(dialog &GtkDialog, child &GtkWidget, response_id int)
@@ -46,7 +44,7 @@ pub struct C.GtkDialog {}
 
 pub type GtkDialog = C.GtkDialog
 
-pub fn (self &GtkDialog) get_type() glib.GType {
+pub fn (self &GtkDialog) get_type() int {
 	return C.gtk_dialog_get_type()
 }
 

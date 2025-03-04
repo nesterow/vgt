@@ -1,7 +1,5 @@
 module gtk
 
-import glib
-
 pub enum GtkLicense {
 	gtk_license_unknown
 	gtk_license_custom
@@ -30,7 +28,7 @@ pub enum GtkLicense {
 	gtk_license_mpl_2_0
 }
 
-pub fn C.gtk_about_dialog_get_type() glib.GType
+pub fn C.gtk_about_dialog_get_type() int
 pub fn C.gtk_about_dialog_new() &GtkWidget
 pub fn C.gtk_about_dialog_get_program_name(about &GtkAboutDialog) &char
 pub fn C.gtk_about_dialog_set_program_name(about &GtkAboutDialog, name &char)
@@ -71,7 +69,7 @@ pub struct C.GtkAboutDialog {}
 
 pub type GtkAboutDialog = C.GtkAboutDialog
 
-pub fn (self &GtkAboutDialog) get_type() glib.GType {
+pub fn (self &GtkAboutDialog) get_type() int {
 	return C.gtk_about_dialog_get_type()
 }
 

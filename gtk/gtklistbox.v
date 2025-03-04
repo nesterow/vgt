@@ -37,7 +37,7 @@ pub struct C.GtkListBoxForeachFunc {}
 
 pub type GtkListBoxForeachFunc = C.GtkListBoxForeachFunc
 
-pub fn C.gtk_list_box_row_get_type() glib.GType
+pub fn C.gtk_list_box_row_get_type() int
 pub fn C.gtk_list_box_row_new() &GtkWidget
 pub fn C.gtk_list_box_row_set_child(row &GtkListBoxRow, child &GtkWidget)
 pub fn C.gtk_list_box_row_get_child(row &GtkListBoxRow) &GtkWidget
@@ -50,7 +50,7 @@ pub fn C.gtk_list_box_row_set_selectable(row &GtkListBoxRow, selectable bool)
 pub fn C.gtk_list_box_row_get_selectable(row &GtkListBoxRow) bool
 pub fn C.gtk_list_box_row_set_activatable(row &GtkListBoxRow, activatable bool)
 pub fn C.gtk_list_box_row_get_activatable(row &GtkListBoxRow) bool
-pub fn C.gtk_list_box_get_type() glib.GType
+pub fn C.gtk_list_box_get_type() int
 pub fn C.gtk_list_box_prepend(box &GtkListBox, child &GtkWidget)
 pub fn C.gtk_list_box_append(box &GtkListBox, child &GtkWidget)
 pub fn C.gtk_list_box_insert(box &GtkListBox, child &GtkWidget, position int)
@@ -89,7 +89,7 @@ pub struct C.GtkListBox {}
 
 pub type GtkListBox = C.GtkListBox
 
-pub fn (self &GtkListBox) row_get_type() glib.GType {
+pub fn (self &GtkListBox) row_get_type() int {
 	return C.gtk_list_box_row_get_type()
 }
 
@@ -141,7 +141,7 @@ pub fn (self &GtkListBox) row_get_activatable(row &GtkListBoxRow) bool {
 	return C.gtk_list_box_row_get_activatable(row)
 }
 
-pub fn (self &GtkListBox) get_type() glib.GType {
+pub fn (self &GtkListBox) get_type() int {
 	return C.gtk_list_box_get_type()
 }
 

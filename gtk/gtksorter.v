@@ -1,7 +1,5 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkSorterClass {}
 
@@ -20,7 +18,7 @@ pub enum GtkSorterChange {
 	gtk_sorter_change_more_strict
 }
 
-pub fn C.gtk_sorter_get_type() glib.GType
+pub fn C.gtk_sorter_get_type() int
 pub fn C.gtk_sorter_compare(self &GtkSorter, item1 voidptr, item2 voidptr) GtkOrdering
 pub fn C.gtk_sorter_get_order(self &GtkSorter) GtkSorterOrder
 pub fn C.gtk_sorter_changed(self &GtkSorter, change GtkSorterChange)
@@ -30,7 +28,7 @@ pub struct C.GtkSorter {}
 
 pub type GtkSorter = C.GtkSorter
 
-pub fn (self &GtkSorter) get_type() glib.GType {
+pub fn (self &GtkSorter) get_type() int {
 	return C.gtk_sorter_get_type()
 }
 

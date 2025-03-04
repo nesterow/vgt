@@ -2,7 +2,7 @@ module gtk
 
 import glib
 
-pub fn C.gtk_label_get_type() glib.GType
+pub fn C.gtk_label_get_type() int
 pub fn C.gtk_label_new(str &char) &GtkWidget
 pub fn C.gtk_label_new_with_mnemonic(str &char) &GtkWidget
 pub fn C.gtk_label_set_text(self &GtkLabel, str &char)
@@ -58,7 +58,7 @@ pub struct C.GtkLabel {}
 
 pub type GtkLabel = C.GtkLabel
 
-pub fn (self &GtkLabel) get_type() glib.GType {
+pub fn (self &GtkLabel) get_type() int {
 	return C.gtk_label_get_type()
 }
 

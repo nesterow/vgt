@@ -7,7 +7,7 @@ pub struct C.GtkPasswordEntryClass {}
 
 pub type GtkPasswordEntryClass = C.GtkPasswordEntryClass
 
-pub fn C.gtk_password_entry_get_type() glib.GType
+pub fn C.gtk_password_entry_get_type() int
 pub fn C.gtk_password_entry_new() &GtkWidget
 pub fn C.gtk_password_entry_set_show_peek_icon(entry &GtkPasswordEntry, show_peek_icon bool)
 pub fn C.gtk_password_entry_get_show_peek_icon(entry &GtkPasswordEntry) bool
@@ -19,7 +19,7 @@ pub struct C.GtkPasswordEntry {}
 
 pub type GtkPasswordEntry = C.GtkPasswordEntry
 
-pub fn (self &GtkPasswordEntry) get_type() glib.GType {
+pub fn (self &GtkPasswordEntry) get_type() int {
 	return C.gtk_password_entry_get_type()
 }
 

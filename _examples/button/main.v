@@ -1,7 +1,7 @@
 module main
 
 import gtk { GtkAlign, GtkBuilder, GtkButton, GtkWidget, GtkWindow, gtk_init }
-import vtk { app, run_simple, signal, view }
+import vtk { App, signal, view }
 
 fn main() {
 	gtk_init()
@@ -14,8 +14,6 @@ fn main() {
 		}),
 	])
 
-	app := app(id: 'org.xyz.MyApp')
 	window := ctx.builder.get[GtkWindow]('MainWindow')
-
-	run_simple(app, window)
+	App.new('org.xyz.MyApp').run(window)
 }

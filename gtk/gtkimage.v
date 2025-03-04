@@ -9,7 +9,7 @@ pub enum GtkImageType {
 	gtk_image_paintable
 }
 
-pub fn C.gtk_image_get_type() glib.GType
+pub fn C.gtk_image_get_type() int
 pub fn C.gtk_image_new() &GtkWidget
 pub fn C.gtk_image_new_from_file(filename &char) &GtkWidget
 pub fn C.gtk_image_new_from_resource(resource_path &char) &GtkWidget
@@ -38,7 +38,7 @@ pub struct C.GtkImage {}
 
 pub type GtkImage = C.GtkImage
 
-pub fn (self &GtkImage) get_type() glib.GType {
+pub fn (self &GtkImage) get_type() int {
 	return C.gtk_image_get_type()
 }
 

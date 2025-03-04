@@ -1,13 +1,11 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkBitsetIter {}
 
 pub type GtkBitsetIter = C.GtkBitsetIter
 
-pub fn C.gtk_bitset_get_type() glib.GType
+pub fn C.gtk_bitset_get_type() int
 pub fn C.gtk_bitset_ref(self &GtkBitset) &GtkBitset
 pub fn C.gtk_bitset_unref(self &GtkBitset)
 pub fn C.gtk_bitset_contains(self &GtkBitset, value u64) bool
@@ -37,7 +35,7 @@ pub fn C.gtk_bitset_difference(self &GtkBitset, other &GtkBitset)
 pub fn C.gtk_bitset_shift_left(self &GtkBitset, amount u64)
 pub fn C.gtk_bitset_shift_right(self &GtkBitset, amount u64)
 pub fn C.gtk_bitset_splice(self &GtkBitset, position u64, removed u64, added u64)
-pub fn C.gtk_bitset_iter_get_type() glib.GType
+pub fn C.gtk_bitset_iter_get_type() int
 pub fn C.gtk_bitset_iter_init_first(iter &GtkBitsetIter, set &GtkBitset, value &u64) bool
 pub fn C.gtk_bitset_iter_init_last(iter &GtkBitsetIter, set &GtkBitset, value &u64) bool
 pub fn C.gtk_bitset_iter_init_at(iter &GtkBitsetIter, set &GtkBitset, target u64, value &u64) bool
@@ -51,7 +49,7 @@ pub struct C.GtkBitset {}
 
 pub type GtkBitset = C.GtkBitset
 
-pub fn (self &GtkBitset) get_type() glib.GType {
+pub fn (self &GtkBitset) get_type() int {
 	return C.gtk_bitset_get_type()
 }
 
@@ -171,7 +169,7 @@ pub fn (self &GtkBitset) splice(position u64, removed u64, added u64) {
 	C.gtk_bitset_splice(self, position, removed, added)
 }
 
-pub fn (self &GtkBitset) iter_get_type() glib.GType {
+pub fn (self &GtkBitset) iter_get_type() int {
 	return C.gtk_bitset_iter_get_type()
 }
 

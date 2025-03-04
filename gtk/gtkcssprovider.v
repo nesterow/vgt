@@ -7,7 +7,7 @@ pub struct C.GtkCssProviderClass {}
 
 pub type GtkCssProviderClass = C.GtkCssProviderClass
 
-pub fn C.gtk_css_provider_get_type() glib.GType
+pub fn C.gtk_css_provider_get_type() int
 pub fn C.gtk_css_provider_new() &GtkCssProvider
 pub fn C.gtk_css_provider_to_string(provider &GtkCssProvider) voidptr
 pub fn C.gtk_css_provider_load_from_data(css_provider &GtkCssProvider, data &char, length int)
@@ -21,7 +21,7 @@ pub struct C.GtkCssProvider {}
 
 pub type GtkCssProvider = C.GtkCssProvider
 
-pub fn (self &GtkCssProvider) get_type() glib.GType {
+pub fn (self &GtkCssProvider) get_type() int {
 	return C.gtk_css_provider_get_type()
 }
 

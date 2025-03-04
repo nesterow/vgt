@@ -28,7 +28,7 @@ pub struct C.GtkRecentManagerClass {}
 pub type GtkRecentManagerClass = C.GtkRecentManagerClass
 
 pub fn C.gtk_recent_manager_error_quark() glib.GQuark
-pub fn C.gtk_recent_manager_get_type() glib.GType
+pub fn C.gtk_recent_manager_get_type() int
 pub fn C.gtk_recent_manager_new() &GtkRecentManager
 pub fn C.gtk_recent_manager_get_default() &GtkRecentManager
 pub fn C.gtk_recent_manager_add_item(manager &GtkRecentManager, uri &char) bool
@@ -49,7 +49,7 @@ pub fn (self &GtkRecentManager) error_quark() glib.GQuark {
 	return C.gtk_recent_manager_error_quark()
 }
 
-pub fn (self &GtkRecentManager) get_type() glib.GType {
+pub fn (self &GtkRecentManager) get_type() int {
 	return C.gtk_recent_manager_get_type()
 }
 

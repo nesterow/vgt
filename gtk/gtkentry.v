@@ -32,7 +32,7 @@ pub enum GtkEntryIconPosition {
 	gtk_entry_icon_secondary
 }
 
-pub fn C.gtk_entry_buffer_get_type() glib.GType
+pub fn C.gtk_entry_buffer_get_type() int
 pub fn C.gtk_entry_buffer_new(initial_chars &char, n_initial_chars int) &GtkEntryBuffer
 pub fn C.gtk_entry_buffer_get_bytes(buffer &GtkEntryBuffer) int
 pub fn C.gtk_entry_buffer_get_length(buffer &GtkEntryBuffer) u64
@@ -44,7 +44,7 @@ pub fn C.gtk_entry_buffer_insert_text(buffer &GtkEntryBuffer, position u64, char
 pub fn C.gtk_entry_buffer_delete_text(buffer &GtkEntryBuffer, position u64, n_chars int) u64
 pub fn C.gtk_entry_buffer_emit_inserted_text(buffer &GtkEntryBuffer, position u64, chars &char, n_chars u64)
 pub fn C.gtk_entry_buffer_emit_deleted_text(buffer &GtkEntryBuffer, position u64, n_chars u64)
-pub fn C.gtk_entry_completion_get_type() glib.GType
+pub fn C.gtk_entry_completion_get_type() int
 pub fn C.gtk_entry_completion_new() &GtkEntryCompletion
 pub fn C.gtk_entry_completion_new_with_area(area &GtkCellArea) &GtkEntryCompletion
 pub fn C.gtk_entry_completion_get_entry(completion &GtkEntryCompletion) &GtkWidget
@@ -69,7 +69,7 @@ pub fn C.gtk_entry_completion_get_popup_single_match(completion &GtkEntryComplet
 pub fn C.gtk_entry_completion_get_completion_prefix(completion &GtkEntryCompletion) &char
 pub fn C.gtk_entry_completion_set_text_column(completion &GtkEntryCompletion, column int)
 pub fn C.gtk_entry_completion_get_text_column(completion &GtkEntryCompletion) int
-pub fn C.gtk_entry_get_type() glib.GType
+pub fn C.gtk_entry_get_type() int
 pub fn C.gtk_entry_new() &GtkWidget
 pub fn C.gtk_entry_new_with_buffer(buffer &GtkEntryBuffer) &GtkWidget
 pub fn C.gtk_entry_get_buffer(entry &GtkEntry) &GtkEntryBuffer
@@ -136,7 +136,7 @@ pub struct C.GtkEntry {}
 
 pub type GtkEntry = C.GtkEntry
 
-pub fn (self &GtkEntry) buffer_get_type() glib.GType {
+pub fn (self &GtkEntry) buffer_get_type() int {
 	return C.gtk_entry_buffer_get_type()
 }
 
@@ -184,7 +184,7 @@ pub fn (self &GtkEntry) buffer_emit_deleted_text(buffer &GtkEntryBuffer, positio
 	C.gtk_entry_buffer_emit_deleted_text(buffer, position, n_chars)
 }
 
-pub fn (self &GtkEntry) completion_get_type() glib.GType {
+pub fn (self &GtkEntry) completion_get_type() int {
 	return C.gtk_entry_completion_get_type()
 }
 
@@ -284,7 +284,7 @@ pub fn (self &GtkEntry) completion_get_text_column(completion &GtkEntryCompletio
 	return C.gtk_entry_completion_get_text_column(completion)
 }
 
-pub fn (self &GtkEntry) get_type() glib.GType {
+pub fn (self &GtkEntry) get_type() int {
 	return C.gtk_entry_get_type()
 }
 

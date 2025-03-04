@@ -5,6 +5,7 @@ $if linux {
 	#pkgconfig --libs gtk4
 	#flag -I/usr/lib/x86_64-linux-gnu/graphene-1.0/include
 	#flag -Wl,--export-dynamic
+	//#flag -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -DGTK_NO_CHECK_CASTS
 }
 
 $if macos {

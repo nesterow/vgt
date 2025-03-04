@@ -7,7 +7,7 @@ pub struct C.GtkGLAreaClass {}
 
 pub type GtkGLAreaClass = C.GtkGLAreaClass
 
-pub fn C.gtk_gl_area_get_type() glib.GType
+pub fn C.gtk_gl_area_get_type() int
 pub fn C.gtk_gl_area_new() &GtkWidget
 pub fn C.gtk_gl_area_set_use_es(area &GtkGLArea, use_es bool)
 pub fn C.gtk_gl_area_get_use_es(area &GtkGLArea) bool
@@ -31,7 +31,7 @@ pub struct C.GtkGLArea {}
 
 pub type GtkGLArea = C.GtkGLArea
 
-pub fn (self &GtkGLArea) get_type() glib.GType {
+pub fn (self &GtkGLArea) get_type() int {
 	return C.gtk_gl_area_get_type()
 }
 

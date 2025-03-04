@@ -1,13 +1,11 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkMultiFilterClass {}
 
 pub type GtkMultiFilterClass = C.GtkMultiFilterClass
 
-pub fn C.gtk_multi_filter_get_type() glib.GType
+pub fn C.gtk_multi_filter_get_type() int
 pub fn C.gtk_multi_filter_append(self &GtkMultiFilter, filter &GtkFilter)
 pub fn C.gtk_multi_filter_remove(self &GtkMultiFilter, position u64)
 
@@ -16,7 +14,7 @@ pub struct C.GtkMultiFilter {}
 
 pub type GtkMultiFilter = C.GtkMultiFilter
 
-pub fn (self &GtkMultiFilter) get_type() glib.GType {
+pub fn (self &GtkMultiFilter) get_type() int {
 	return C.gtk_multi_filter_get_type()
 }
 

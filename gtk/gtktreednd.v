@@ -7,7 +7,7 @@ pub struct C.GtkTreeDragSourceIface {}
 
 pub type GtkTreeDragSourceIface = C.GtkTreeDragSourceIface
 
-pub fn C.gtk_tree_drag_source_get_type() glib.GType
+pub fn C.gtk_tree_drag_source_get_type() int
 pub fn C.gtk_tree_drag_source_row_draggable(drag_source &GtkTreeDragSource, path &GtkTreePath) bool
 pub fn C.gtk_tree_drag_source_drag_data_delete(drag_source &GtkTreeDragSource, path &GtkTreePath) bool
 pub fn C.gtk_tree_drag_source_drag_data_get(drag_source &GtkTreeDragSource, path &GtkTreePath) voidptr
@@ -17,7 +17,7 @@ pub struct C.GtkTreeDragSource {}
 
 pub type GtkTreeDragSource = C.GtkTreeDragSource
 
-pub fn (self &GtkTreeDragSource) get_type() glib.GType {
+pub fn (self &GtkTreeDragSource) get_type() int {
 	return C.gtk_tree_drag_source_get_type()
 }
 
@@ -38,7 +38,7 @@ pub struct C.GtkTreeDragDestIface {}
 
 pub type GtkTreeDragDestIface = C.GtkTreeDragDestIface
 
-pub fn C.gtk_tree_drag_dest_get_type() glib.GType
+pub fn C.gtk_tree_drag_dest_get_type() int
 pub fn C.gtk_tree_drag_dest_drag_data_received(drag_dest &GtkTreeDragDest, dest &GtkTreePath, value &glib.GValue) bool
 pub fn C.gtk_tree_drag_dest_row_drop_possible(drag_dest &GtkTreeDragDest, dest_path &GtkTreePath, value &glib.GValue) bool
 
@@ -47,7 +47,7 @@ pub struct C.GtkTreeDragDest {}
 
 pub type GtkTreeDragDest = C.GtkTreeDragDest
 
-pub fn (self &GtkTreeDragDest) get_type() glib.GType {
+pub fn (self &GtkTreeDragDest) get_type() int {
 	return C.gtk_tree_drag_dest_get_type()
 }
 

@@ -1,7 +1,5 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkListItemFactory {}
 
@@ -12,7 +10,7 @@ pub struct C.GtkListItemClass {}
 
 pub type GtkListItemClass = C.GtkListItemClass
 
-pub fn C.gtk_list_item_get_type() glib.GType
+pub fn C.gtk_list_item_get_type() int
 pub fn C.gtk_list_item_get_item(self &GtkListItem) voidptr
 pub fn C.gtk_list_item_get_position(self &GtkListItem) u64
 pub fn C.gtk_list_item_get_selected(self &GtkListItem) bool
@@ -28,7 +26,7 @@ pub struct C.GtkListItem {}
 
 pub type GtkListItem = C.GtkListItem
 
-pub fn (self &GtkListItem) get_type() glib.GType {
+pub fn (self &GtkListItem) get_type() int {
 	return C.gtk_list_item_get_type()
 }
 

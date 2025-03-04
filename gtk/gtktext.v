@@ -2,7 +2,7 @@ module gtk
 
 import glib
 
-pub fn C.gtk_text_get_type() glib.GType
+pub fn C.gtk_text_get_type() int
 pub fn C.gtk_text_new() &GtkWidget
 pub fn C.gtk_text_new_with_buffer(buffer &GtkEntryBuffer) &GtkWidget
 pub fn C.gtk_text_get_buffer(self &GtkText) &GtkEntryBuffer
@@ -45,7 +45,7 @@ pub struct C.GtkText {}
 
 pub type GtkText = C.GtkText
 
-pub fn (self &GtkText) get_type() glib.GType {
+pub fn (self &GtkText) get_type() int {
 	return C.gtk_text_get_type()
 }
 

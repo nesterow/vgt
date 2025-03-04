@@ -1,7 +1,5 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkFontChooserIface {}
 
@@ -15,7 +13,7 @@ pub enum GtkFontChooserLevel {
 	gtk_font_chooser_level_features   = 1 << 3
 }
 
-pub fn C.gtk_font_chooser_get_type() glib.GType
+pub fn C.gtk_font_chooser_get_type() int
 pub fn C.gtk_font_chooser_get_font_family(fontchooser &GtkFontChooser) &i64
 pub fn C.gtk_font_chooser_get_font_face(fontchooser &GtkFontChooser) &i64
 pub fn C.gtk_font_chooser_get_font_size(fontchooser &GtkFontChooser) int
@@ -41,7 +39,7 @@ pub struct C.GtkFontChooser {}
 
 pub type GtkFontChooser = C.GtkFontChooser
 
-pub fn (self &GtkFontChooser) get_type() glib.GType {
+pub fn (self &GtkFontChooser) get_type() int {
 	return C.gtk_font_chooser_get_type()
 }
 

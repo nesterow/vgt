@@ -1,21 +1,19 @@
 module main
 
 import cairo { Cairo }
-import gtk { GtkAlign, GtkDrawingArea, GtkBuilder, GtkButton, GtkWidget, GtkWindow, gtk_init }
-import vtk { app, run_simple, signal, view }
+import gtk { GtkDrawingArea, GtkWindow, gtk_init }
+import vtk { App, view }
 
 fn main() {
 	gtk_init()
 
 	ctx := view($embed_file('_examples/drawing_area.ui').to_string(), [])
-
-	app := app(id: 'org.xyz.MyApp')
 	window := ctx.builder.get[GtkWindow]('MainWindow')
 
 	area := ctx.builder.get[GtkDrawingArea]('DrawingArea')
 	area.set_draw_func(draw_square_func, vtk.null, vtk.null)
 
-	run_simple(app, window)
+	App.new('org.xyz.Draw').run(window)
 }
 
 fn draw_square_func(area &GtkDrawingArea, cr &Cairo, width int, height int, user_data voidptr) {

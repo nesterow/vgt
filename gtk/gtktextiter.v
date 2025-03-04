@@ -1,7 +1,5 @@
 module gtk
 
-import glib
-
 pub enum GtkTextSearchFlags {
 	gtk_text_search_visible_only     = 1 << 0
 	gtk_text_search_text_only        = 1 << 1
@@ -13,7 +11,7 @@ pub fn C.gtk_text_iter_get_buffer(iter &GtkTextIter) &GtkTextBuffer
 pub fn C.gtk_text_iter_copy(iter &GtkTextIter) &GtkTextIter
 pub fn C.gtk_text_iter_free(iter &GtkTextIter)
 pub fn C.gtk_text_iter_assign(iter &GtkTextIter, other &GtkTextIter)
-pub fn C.gtk_text_iter_get_type() glib.GType
+pub fn C.gtk_text_iter_get_type() int
 pub fn C.gtk_text_iter_get_offset(iter &GtkTextIter) int
 pub fn C.gtk_text_iter_get_line(iter &GtkTextIter) int
 pub fn C.gtk_text_iter_get_line_offset(iter &GtkTextIter) int
@@ -122,7 +120,7 @@ pub fn (self &GtkTextIter) assign(other &GtkTextIter) {
 	C.gtk_text_iter_assign(self, other)
 }
 
-pub fn (self &GtkTextIter) get_type() glib.GType {
+pub fn (self &GtkTextIter) get_type() int {
 	return C.gtk_text_iter_get_type()
 }
 

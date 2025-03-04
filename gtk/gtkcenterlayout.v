@@ -1,13 +1,11 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkCenterLayoutClass {}
 
 pub type GtkCenterLayoutClass = C.GtkCenterLayoutClass
 
-pub fn C.gtk_center_layout_get_type() glib.GType
+pub fn C.gtk_center_layout_get_type() int
 pub fn C.gtk_center_layout_new() &GtkLayoutManager
 pub fn C.gtk_center_layout_set_orientation(self &GtkCenterLayout, orientation GtkOrientation)
 pub fn C.gtk_center_layout_get_orientation(self &GtkCenterLayout) GtkOrientation
@@ -25,7 +23,7 @@ pub struct C.GtkCenterLayout {}
 
 pub type GtkCenterLayout = C.GtkCenterLayout
 
-pub fn (self &GtkCenterLayout) get_type() glib.GType {
+pub fn (self &GtkCenterLayout) get_type() int {
 	return C.gtk_center_layout_get_type()
 }
 

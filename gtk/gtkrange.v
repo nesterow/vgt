@@ -1,13 +1,11 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkRangeClass {}
 
 pub type GtkRangeClass = C.GtkRangeClass
 
-pub fn C.gtk_range_get_type() glib.GType
+pub fn C.gtk_range_get_type() int
 pub fn C.gtk_range_set_adjustment(range &GtkRange, adjustment &GtkAdjustment)
 pub fn C.gtk_range_get_adjustment(range &GtkRange) &GtkAdjustment
 pub fn C.gtk_range_set_inverted(range &GtkRange, setting bool)
@@ -36,7 +34,7 @@ pub struct C.GtkRange {}
 
 pub type GtkRange = C.GtkRange
 
-pub fn (self &GtkRange) get_type() glib.GType {
+pub fn (self &GtkRange) get_type() int {
 	return C.gtk_range_get_type()
 }
 

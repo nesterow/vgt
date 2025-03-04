@@ -1,8 +1,6 @@
 module gtk
 
-import glib
-
-pub fn C.gtk_stack_sidebar_get_type() glib.GType
+pub fn C.gtk_stack_sidebar_get_type() int
 pub fn C.gtk_stack_sidebar_new() &GtkWidget
 pub fn C.gtk_stack_sidebar_set_stack(self &GtkStackSidebar, stack &GtkStack)
 pub fn C.gtk_stack_sidebar_get_stack(self &GtkStackSidebar) &GtkStack
@@ -12,7 +10,7 @@ pub struct C.GtkStackSidebar {}
 
 pub type GtkStackSidebar = C.GtkStackSidebar
 
-pub fn (self &GtkStackSidebar) get_type() glib.GType {
+pub fn (self &GtkStackSidebar) get_type() int {
 	return C.gtk_stack_sidebar_get_type()
 }
 

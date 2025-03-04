@@ -1,13 +1,11 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkScrollableInterface {}
 
 pub type GtkScrollableInterface = C.GtkScrollableInterface
 
-pub fn C.gtk_scrollable_get_type() glib.GType
+pub fn C.gtk_scrollable_get_type() int
 pub fn C.gtk_scrollable_get_hadjustment(scrollable &GtkScrollable) &GtkAdjustment
 pub fn C.gtk_scrollable_set_hadjustment(scrollable &GtkScrollable, hadjustment &GtkAdjustment)
 pub fn C.gtk_scrollable_get_vadjustment(scrollable &GtkScrollable) &GtkAdjustment
@@ -23,7 +21,7 @@ pub struct C.GtkScrollable {}
 
 pub type GtkScrollable = C.GtkScrollable
 
-pub fn (self &GtkScrollable) get_type() glib.GType {
+pub fn (self &GtkScrollable) get_type() int {
 	return C.gtk_scrollable_get_type()
 }
 

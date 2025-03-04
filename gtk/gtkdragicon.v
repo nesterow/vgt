@@ -7,7 +7,7 @@ pub struct C.GtkDragIconClass {}
 
 pub type GtkDragIconClass = C.GtkDragIconClass
 
-pub fn C.gtk_drag_icon_get_type() glib.GType
+pub fn C.gtk_drag_icon_get_type() int
 pub fn C.gtk_drag_icon_get_for_drag(drag voidptr) &GtkWidget
 pub fn C.gtk_drag_icon_set_child(self &GtkDragIcon, child &GtkWidget)
 pub fn C.gtk_drag_icon_get_child(self &GtkDragIcon) &GtkWidget
@@ -19,7 +19,7 @@ pub struct C.GtkDragIcon {}
 
 pub type GtkDragIcon = C.GtkDragIcon
 
-pub fn (self &GtkDragIcon) get_type() glib.GType {
+pub fn (self &GtkDragIcon) get_type() int {
 	return C.gtk_drag_icon_get_type()
 }
 

@@ -2,7 +2,7 @@ module gtk
 
 import glib
 
-pub fn C.gtk_page_setup_get_type() glib.GType
+pub fn C.gtk_page_setup_get_type() int
 pub fn C.gtk_page_setup_new() &GtkPageSetup
 pub fn C.gtk_page_setup_copy(other &GtkPageSetup) &GtkPageSetup
 pub fn C.gtk_page_setup_get_orientation(setup &GtkPageSetup) GtkPageOrientation
@@ -36,7 +36,7 @@ pub struct C.GtkPageSetup {}
 
 pub type GtkPageSetup = C.GtkPageSetup
 
-pub fn (self &GtkPageSetup) get_type() glib.GType {
+pub fn (self &GtkPageSetup) get_type() int {
 	return C.gtk_page_setup_get_type()
 }
 

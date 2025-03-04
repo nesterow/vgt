@@ -1,13 +1,11 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkFixedClass {}
 
 pub type GtkFixedClass = C.GtkFixedClass
 
-pub fn C.gtk_fixed_get_type() glib.GType
+pub fn C.gtk_fixed_get_type() int
 pub fn C.gtk_fixed_new() &GtkWidget
 pub fn C.gtk_fixed_put(fixed &GtkFixed, widget &GtkWidget, x f32, y f32)
 pub fn C.gtk_fixed_remove(fixed &GtkFixed, widget &GtkWidget)
@@ -21,7 +19,7 @@ pub struct C.GtkFixed {}
 
 pub type GtkFixed = C.GtkFixed
 
-pub fn (self &GtkFixed) get_type() glib.GType {
+pub fn (self &GtkFixed) get_type() int {
 	return C.gtk_fixed_get_type()
 }
 

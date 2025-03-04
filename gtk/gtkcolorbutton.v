@@ -1,8 +1,6 @@
 module gtk
 
-import glib
-
-pub fn C.gtk_color_button_get_type() glib.GType
+pub fn C.gtk_color_button_get_type() int
 pub fn C.gtk_color_button_new() &GtkWidget
 pub fn C.gtk_color_button_new_with_rgba(rgba voidptr) &GtkWidget
 pub fn C.gtk_color_button_set_title(button &GtkColorButton, title &char)
@@ -15,7 +13,7 @@ pub struct C.GtkColorButton {}
 
 pub type GtkColorButton = C.GtkColorButton
 
-pub fn (self &GtkColorButton) get_type() glib.GType {
+pub fn (self &GtkColorButton) get_type() int {
 	return C.gtk_color_button_get_type()
 }
 

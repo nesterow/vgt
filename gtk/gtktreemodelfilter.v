@@ -1,7 +1,5 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkTreeModelFilterVisibleFunc {}
 
@@ -17,7 +15,7 @@ pub struct C.GtkTreeModelFilterClass {}
 
 pub type GtkTreeModelFilterClass = C.GtkTreeModelFilterClass
 
-pub fn C.gtk_tree_model_filter_get_type() glib.GType
+pub fn C.gtk_tree_model_filter_get_type() int
 pub fn C.gtk_tree_model_filter_new(child_model &GtkTreeModel, root &GtkTreePath) &GtkTreeModel
 pub fn C.gtk_tree_model_filter_set_visible_func(filter &GtkTreeModelFilter, func voidptr, data voidptr, destroy voidptr)
 pub fn C.gtk_tree_model_filter_set_modify_func(filter &GtkTreeModelFilter, n_columns int, typs &int, func voidptr, data voidptr, destroy voidptr)
@@ -35,7 +33,7 @@ pub struct C.GtkTreeModelFilter {}
 
 pub type GtkTreeModelFilter = C.GtkTreeModelFilter
 
-pub fn (self &GtkTreeModelFilter) get_type() glib.GType {
+pub fn (self &GtkTreeModelFilter) get_type() int {
 	return C.gtk_tree_model_filter_get_type()
 }
 

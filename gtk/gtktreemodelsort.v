@@ -1,13 +1,11 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkTreeModelSortClass {}
 
 pub type GtkTreeModelSortClass = C.GtkTreeModelSortClass
 
-pub fn C.gtk_tree_model_sort_get_type() glib.GType
+pub fn C.gtk_tree_model_sort_get_type() int
 pub fn C.gtk_tree_model_sort_new_with_model(child_model &GtkTreeModel) &GtkTreeModel
 pub fn C.gtk_tree_model_sort_get_model(tree_model &GtkTreeModelSort) &GtkTreeModel
 pub fn C.gtk_tree_model_sort_convert_child_path_to_path(tree_model_sort &GtkTreeModelSort, child_path &GtkTreePath) &GtkTreePath
@@ -23,7 +21,7 @@ pub struct C.GtkTreeModelSort {}
 
 pub type GtkTreeModelSort = C.GtkTreeModelSort
 
-pub fn (self &GtkTreeModelSort) get_type() glib.GType {
+pub fn (self &GtkTreeModelSort) get_type() int {
 	return C.gtk_tree_model_sort_get_type()
 }
 

@@ -1,8 +1,6 @@
 module gtk
 
-import glib
-
-pub fn C.gtk_border_get_type() glib.GType
+pub fn C.gtk_border_get_type() int
 pub fn C.gtk_border_new() &GtkBorder
 pub fn C.gtk_border_copy(border_ &GtkBorder) &GtkBorder
 pub fn C.gtk_border_free(border_ &GtkBorder)
@@ -12,7 +10,7 @@ pub struct C.GtkBorder {}
 
 pub type GtkBorder = C.GtkBorder
 
-pub fn (self &GtkBorder) get_type() glib.GType {
+pub fn (self &GtkBorder) get_type() int {
 	return C.gtk_border_get_type()
 }
 

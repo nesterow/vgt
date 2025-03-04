@@ -1,13 +1,11 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkBookmarkListClass {}
 
 pub type GtkBookmarkListClass = C.GtkBookmarkListClass
 
-pub fn C.gtk_bookmark_list_get_type() glib.GType
+pub fn C.gtk_bookmark_list_get_type() int
 pub fn C.gtk_bookmark_list_new(filename &char, attributes &char) &GtkBookmarkList
 pub fn C.gtk_bookmark_list_get_filename(self &GtkBookmarkList) &char
 pub fn C.gtk_bookmark_list_set_attributes(self &GtkBookmarkList, attributes &char)
@@ -21,7 +19,7 @@ pub struct C.GtkBookmarkList {}
 
 pub type GtkBookmarkList = C.GtkBookmarkList
 
-pub fn (self &GtkBookmarkList) get_type() glib.GType {
+pub fn (self &GtkBookmarkList) get_type() int {
 	return C.gtk_bookmark_list_get_type()
 }
 

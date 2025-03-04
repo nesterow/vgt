@@ -1,8 +1,6 @@
 module gtk
 
-import glib
-
-pub fn C.gtk_action_bar_get_type() glib.GType
+pub fn C.gtk_action_bar_get_type() int
 pub fn C.gtk_action_bar_new() &GtkWidget
 pub fn C.gtk_action_bar_get_center_widget(action_bar &GtkActionBar) &GtkWidget
 pub fn C.gtk_action_bar_set_center_widget(action_bar &GtkActionBar, center_widget &GtkWidget)
@@ -17,7 +15,7 @@ pub struct C.GtkActionBar {}
 
 pub type GtkActionBar = C.GtkActionBar
 
-pub fn (self &GtkActionBar) get_type() glib.GType {
+pub fn (self &GtkActionBar) get_type() int {
 	return C.gtk_action_bar_get_type()
 }
 

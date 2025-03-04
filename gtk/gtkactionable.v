@@ -7,7 +7,7 @@ pub struct C.GtkActionableInterface {}
 
 pub type GtkActionableInterface = C.GtkActionableInterface
 
-pub fn C.gtk_actionable_get_type() glib.GType
+pub fn C.gtk_actionable_get_type() int
 pub fn C.gtk_actionable_get_action_name(actionable &GtkActionable) &char
 pub fn C.gtk_actionable_set_action_name(actionable &GtkActionable, action_name &char)
 pub fn C.gtk_actionable_get_action_target_value(actionable &GtkActionable) voidptr
@@ -20,7 +20,7 @@ pub struct C.GtkActionable {}
 
 pub type GtkActionable = C.GtkActionable
 
-pub fn (self &GtkActionable) get_type() glib.GType {
+pub fn (self &GtkActionable) get_type() int {
 	return C.gtk_actionable_get_type()
 }
 

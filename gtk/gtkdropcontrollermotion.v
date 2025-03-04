@@ -1,13 +1,11 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkDropControllerMotionClass {}
 
 pub type GtkDropControllerMotionClass = C.GtkDropControllerMotionClass
 
-pub fn C.gtk_drop_controller_motion_get_type() glib.GType
+pub fn C.gtk_drop_controller_motion_get_type() int
 pub fn C.gtk_drop_controller_motion_new() &GtkEventController
 pub fn C.gtk_drop_controller_motion_contains_pointer(self &GtkDropControllerMotion) bool
 pub fn C.gtk_drop_controller_motion_get_drop(self &GtkDropControllerMotion) voidptr
@@ -18,7 +16,7 @@ pub struct C.GtkDropControllerMotion {}
 
 pub type GtkDropControllerMotion = C.GtkDropControllerMotion
 
-pub fn (self &GtkDropControllerMotion) get_type() glib.GType {
+pub fn (self &GtkDropControllerMotion) get_type() int {
 	return C.gtk_drop_controller_motion_get_type()
 }
 

@@ -1,7 +1,5 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkCustomFilterFunc {}
 
@@ -12,7 +10,7 @@ pub struct C.GtkCustomFilterClass {}
 
 pub type GtkCustomFilterClass = C.GtkCustomFilterClass
 
-pub fn C.gtk_custom_filter_get_type() glib.GType
+pub fn C.gtk_custom_filter_get_type() int
 pub fn C.gtk_custom_filter_new(match_func voidptr, user_data voidptr, user_destroy voidptr) &GtkCustomFilter
 pub fn C.gtk_custom_filter_set_filter_func(self &GtkCustomFilter, match_func voidptr, user_data voidptr, user_destroy voidptr)
 
@@ -21,7 +19,7 @@ pub struct C.GtkCustomFilter {}
 
 pub type GtkCustomFilter = C.GtkCustomFilter
 
-pub fn (self &GtkCustomFilter) get_type() glib.GType {
+pub fn (self &GtkCustomFilter) get_type() int {
 	return C.gtk_custom_filter_get_type()
 }
 

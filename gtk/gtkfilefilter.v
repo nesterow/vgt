@@ -2,7 +2,7 @@ module gtk
 
 import glib
 
-pub fn C.gtk_file_filter_get_type() glib.GType
+pub fn C.gtk_file_filter_get_type() int
 pub fn C.gtk_file_filter_new() &GtkFileFilter
 pub fn C.gtk_file_filter_set_name(filter &GtkFileFilter, name &char)
 pub fn C.gtk_file_filter_get_name(filter &GtkFileFilter) &char
@@ -19,7 +19,7 @@ pub struct C.GtkFileFilter {}
 
 pub type GtkFileFilter = C.GtkFileFilter
 
-pub fn (self &GtkFileFilter) get_type() glib.GType {
+pub fn (self &GtkFileFilter) get_type() int {
 	return C.gtk_file_filter_get_type()
 }
 

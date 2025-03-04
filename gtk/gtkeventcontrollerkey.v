@@ -1,13 +1,11 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkEventControllerKeyClass {}
 
 pub type GtkEventControllerKeyClass = C.GtkEventControllerKeyClass
 
-pub fn C.gtk_event_controller_key_get_type() glib.GType
+pub fn C.gtk_event_controller_key_get_type() int
 pub fn C.gtk_event_controller_key_new() &GtkEventController
 pub fn C.gtk_event_controller_key_set_im_context(controller &GtkEventControllerKey, im_context &GtkIMContext)
 pub fn C.gtk_event_controller_key_get_im_context(controller &GtkEventControllerKey) &GtkIMContext
@@ -19,7 +17,7 @@ pub struct C.GtkEventControllerKey {}
 
 pub type GtkEventControllerKey = C.GtkEventControllerKey
 
-pub fn (self &GtkEventControllerKey) get_type() glib.GType {
+pub fn (self &GtkEventControllerKey) get_type() int {
 	return C.gtk_event_controller_key_get_type()
 }
 

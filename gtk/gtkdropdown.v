@@ -7,7 +7,7 @@ pub struct C.GtkDropDownClass {}
 
 pub type GtkDropDownClass = C.GtkDropDownClass
 
-pub fn C.gtk_drop_down_get_type() glib.GType
+pub fn C.gtk_drop_down_get_type() int
 pub fn C.gtk_drop_down_new(model &glib.GListModel, expression &GtkExpression) &GtkWidget
 pub fn C.gtk_drop_down_new_from_strings(strs voidptr) &GtkWidget
 pub fn C.gtk_drop_down_set_model(self &GtkDropDown, model &glib.GListModel)
@@ -31,7 +31,7 @@ pub struct C.GtkDropDown {}
 
 pub type GtkDropDown = C.GtkDropDown
 
-pub fn (self &GtkDropDown) get_type() glib.GType {
+pub fn (self &GtkDropDown) get_type() int {
 	return C.gtk_drop_down_get_type()
 }
 

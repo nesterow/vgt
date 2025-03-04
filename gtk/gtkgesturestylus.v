@@ -1,13 +1,11 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkGestureStylusClass {}
 
 pub type GtkGestureStylusClass = C.GtkGestureStylusClass
 
-pub fn C.gtk_gesture_stylus_get_type() glib.GType
+pub fn C.gtk_gesture_stylus_get_type() int
 pub fn C.gtk_gesture_stylus_new() &GtkGesture
 pub fn C.gtk_gesture_stylus_get_axis(gesture &GtkGestureStylus, axis voidptr, value &f32) bool
 pub fn C.gtk_gesture_stylus_get_axes(gesture &GtkGestureStylus, axes voidptr, values voidptr) bool
@@ -19,7 +17,7 @@ pub struct C.GtkGestureStylus {}
 
 pub type GtkGestureStylus = C.GtkGestureStylus
 
-pub fn (self &GtkGestureStylus) get_type() glib.GType {
+pub fn (self &GtkGestureStylus) get_type() int {
 	return C.gtk_gesture_stylus_get_type()
 }
 

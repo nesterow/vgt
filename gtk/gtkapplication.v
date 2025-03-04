@@ -14,7 +14,7 @@ pub enum GtkApplicationInhibitFlags {
 	gtk_application_inhibit_idle    = (1 << 3)
 }
 
-pub fn C.gtk_application_get_type() glib.GType
+pub fn C.gtk_application_get_type() int
 pub fn C.gtk_application_new(application_id &char, flags glib.GApplicationFlags) &GtkApplication
 pub fn C.gtk_application_add_window(application &GtkApplication, window &GtkWindow)
 pub fn C.gtk_application_remove_window(application &GtkApplication, window &GtkWindow)
@@ -36,7 +36,7 @@ pub struct C.GtkApplication {}
 
 pub type GtkApplication = C.GtkApplication
 
-pub fn (self &GtkApplication) get_type() glib.GType {
+pub fn (self &GtkApplication) get_type() int {
 	return C.gtk_application_get_type()
 }
 

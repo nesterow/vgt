@@ -1,8 +1,6 @@
 module gtk
 
-import glib
-
-pub fn C.gtk_switch_get_type() glib.GType
+pub fn C.gtk_switch_get_type() int
 pub fn C.gtk_switch_new() &GtkWidget
 pub fn C.gtk_switch_set_active(self &GtkSwitch, is_active bool)
 pub fn C.gtk_switch_get_active(self &GtkSwitch) bool
@@ -14,7 +12,7 @@ pub struct C.GtkSwitch {}
 
 pub type GtkSwitch = C.GtkSwitch
 
-pub fn (self &GtkSwitch) get_type() glib.GType {
+pub fn (self &GtkSwitch) get_type() int {
 	return C.gtk_switch_get_type()
 }
 

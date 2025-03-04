@@ -1,7 +1,5 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkGridLayoutClass {}
 
@@ -17,7 +15,7 @@ pub struct C.GtkGridLayoutChildClass {}
 
 pub type GtkGridLayoutChildClass = C.GtkGridLayoutChildClass
 
-pub fn C.gtk_grid_layout_get_type() glib.GType
+pub fn C.gtk_grid_layout_get_type() int
 pub fn C.gtk_grid_layout_new() &GtkLayoutManager
 pub fn C.gtk_grid_layout_set_row_homogeneous(grid &GtkGridLayout, homogeneous bool)
 pub fn C.gtk_grid_layout_get_row_homogeneous(grid &GtkGridLayout) bool
@@ -31,7 +29,7 @@ pub fn C.gtk_grid_layout_set_row_baseline_position(grid &GtkGridLayout, row int,
 pub fn C.gtk_grid_layout_get_row_baseline_position(grid &GtkGridLayout, row int) GtkBaselinePosition
 pub fn C.gtk_grid_layout_set_baseline_row(grid &GtkGridLayout, row int)
 pub fn C.gtk_grid_layout_get_baseline_row(grid &GtkGridLayout) int
-pub fn C.gtk_grid_layout_child_get_type() glib.GType
+pub fn C.gtk_grid_layout_child_get_type() int
 pub fn C.gtk_grid_layout_child_set_row(child &GtkGridLayoutChild, row int)
 pub fn C.gtk_grid_layout_child_get_row(child &GtkGridLayoutChild) int
 pub fn C.gtk_grid_layout_child_set_column(child &GtkGridLayoutChild, column int)
@@ -46,7 +44,7 @@ pub struct C.GtkGridLayout {}
 
 pub type GtkGridLayout = C.GtkGridLayout
 
-pub fn (self &GtkGridLayout) get_type() glib.GType {
+pub fn (self &GtkGridLayout) get_type() int {
 	return C.gtk_grid_layout_get_type()
 }
 
@@ -102,7 +100,7 @@ pub fn (self &GtkGridLayout) get_baseline_row() int {
 	return C.gtk_grid_layout_get_baseline_row(self)
 }
 
-pub fn (self &GtkGridLayout) child_get_type() glib.GType {
+pub fn (self &GtkGridLayout) child_get_type() int {
 	return C.gtk_grid_layout_child_get_type()
 }
 

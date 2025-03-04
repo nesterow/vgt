@@ -1,8 +1,6 @@
 module gtk
 
-import glib
-
-pub fn C.gtk_viewport_get_type() glib.GType
+pub fn C.gtk_viewport_get_type() int
 pub fn C.gtk_viewport_new(hadjustment &GtkAdjustment, vadjustment &GtkAdjustment) &GtkWidget
 pub fn C.gtk_viewport_get_scroll_to_focus(viewport &GtkViewport) bool
 pub fn C.gtk_viewport_set_scroll_to_focus(viewport &GtkViewport, scroll_to_focus bool)
@@ -14,7 +12,7 @@ pub struct C.GtkViewport {}
 
 pub type GtkViewport = C.GtkViewport
 
-pub fn (self &GtkViewport) get_type() glib.GType {
+pub fn (self &GtkViewport) get_type() int {
 	return C.gtk_viewport_get_type()
 }
 

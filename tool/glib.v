@@ -121,10 +121,12 @@ pub fn generate_glib() !GioIndex {
 					} else if node.type.qual_type.contains('(*)') {
 						mut cb_args := node.type.qual_type.all_after('(*)').replace('(',
 							'').replace(')', '').split(',')
-						args := cb_args.map(fn (typ string) string {
+						mut i := 0
+						args := cb_args.map(fn [mut i] (typ string) string {
+							i++
 							return
 								typ.trim_space().replace_each(['*', '_ptr', ' ', '_']).to_lower() +
-								'_typ' + ' voidptr'
+								'_typ${i}' + ' voidptr'
 						})
 						mut ret_type := ctov_type[node.type.qual_type.all_before('(*)').trim_space()]
 						mut typ := 'pub type ${node.name} = fn (${args.join(',')}) ${ret_type}\n'

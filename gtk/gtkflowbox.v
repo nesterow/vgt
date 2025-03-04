@@ -7,7 +7,7 @@ pub struct C.GtkFlowBoxChildClass {}
 
 pub type GtkFlowBoxChildClass = C.GtkFlowBoxChildClass
 
-pub fn C.gtk_flow_box_child_get_type() glib.GType
+pub fn C.gtk_flow_box_child_get_type() int
 pub fn C.gtk_flow_box_child_new() &GtkWidget
 pub fn C.gtk_flow_box_child_set_child(self &GtkFlowBoxChild, child &GtkWidget)
 pub fn C.gtk_flow_box_child_get_child(self &GtkFlowBoxChild) &GtkWidget
@@ -20,7 +20,7 @@ pub struct C.GtkFlowBoxChild {}
 
 pub type GtkFlowBoxChild = C.GtkFlowBoxChild
 
-pub fn (self &GtkFlowBoxChild) get_type() glib.GType {
+pub fn (self &GtkFlowBoxChild) get_type() int {
 	return C.gtk_flow_box_child_get_type()
 }
 
@@ -68,7 +68,7 @@ pub struct C.GtkFlowBoxSortFunc {}
 
 pub type GtkFlowBoxSortFunc = C.GtkFlowBoxSortFunc
 
-pub fn C.gtk_flow_box_get_type() glib.GType
+pub fn C.gtk_flow_box_get_type() int
 pub fn C.gtk_flow_box_new() &GtkWidget
 pub fn C.gtk_flow_box_bind_model(box &GtkFlowBox, model &glib.GListModel, create_widget_func voidptr, user_data voidptr, user_data_free_func voidptr)
 pub fn C.gtk_flow_box_set_homogeneous(box &GtkFlowBox, homogeneous bool)
@@ -109,7 +109,7 @@ pub struct C.GtkFlowBox {}
 
 pub type GtkFlowBox = C.GtkFlowBox
 
-pub fn (self &GtkFlowBox) get_type() glib.GType {
+pub fn (self &GtkFlowBox) get_type() int {
 	return C.gtk_flow_box_get_type()
 }
 

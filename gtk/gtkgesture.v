@@ -1,13 +1,11 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkGestureClass {}
 
 pub type GtkGestureClass = C.GtkGestureClass
 
-pub fn C.gtk_gesture_get_type() glib.GType
+pub fn C.gtk_gesture_get_type() int
 pub fn C.gtk_gesture_get_device(gesture &GtkGesture) voidptr
 pub fn C.gtk_gesture_set_state(gesture &GtkGesture, state GtkEventSequenceState) bool
 pub fn C.gtk_gesture_get_sequence_state(gesture &GtkGesture, sequence voidptr) GtkEventSequenceState
@@ -31,7 +29,7 @@ pub struct C.GtkGesture {}
 
 pub type GtkGesture = C.GtkGesture
 
-pub fn (self &GtkGesture) get_type() glib.GType {
+pub fn (self &GtkGesture) get_type() int {
 	return C.gtk_gesture_get_type()
 }
 

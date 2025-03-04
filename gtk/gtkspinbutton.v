@@ -1,7 +1,5 @@
 module gtk
 
-import glib
-
 pub enum GtkSpinButtonUpdatePolicy {
 	gtk_update_always
 	gtk_update_if_valid
@@ -17,7 +15,7 @@ pub enum GtkSpinType {
 	gtk_spin_user_defined
 }
 
-pub fn C.gtk_spin_button_get_type() glib.GType
+pub fn C.gtk_spin_button_get_type() int
 pub fn C.gtk_spin_button_configure(spin_button &GtkSpinButton, adjustment &GtkAdjustment, climb_rate f32, digits u64)
 pub fn C.gtk_spin_button_new(adjustment &GtkAdjustment, climb_rate f32, digits u64) &GtkWidget
 pub fn C.gtk_spin_button_new_with_range(min f32, max f32, step f32) &GtkWidget
@@ -50,7 +48,7 @@ pub struct C.GtkSpinButton {}
 
 pub type GtkSpinButton = C.GtkSpinButton
 
-pub fn (self &GtkSpinButton) get_type() glib.GType {
+pub fn (self &GtkSpinButton) get_type() int {
 	return C.gtk_spin_button_get_type()
 }
 

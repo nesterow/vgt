@@ -7,7 +7,7 @@ pub struct C.GtkDirectoryListClass {}
 
 pub type GtkDirectoryListClass = C.GtkDirectoryListClass
 
-pub fn C.gtk_directory_list_get_type() glib.GType
+pub fn C.gtk_directory_list_get_type() int
 pub fn C.gtk_directory_list_new(attributes &char, file &glib.GFile) &GtkDirectoryList
 pub fn C.gtk_directory_list_set_file(self &GtkDirectoryList, file &glib.GFile)
 pub fn C.gtk_directory_list_get_file(self &GtkDirectoryList) voidptr
@@ -25,7 +25,7 @@ pub struct C.GtkDirectoryList {}
 
 pub type GtkDirectoryList = C.GtkDirectoryList
 
-pub fn (self &GtkDirectoryList) get_type() glib.GType {
+pub fn (self &GtkDirectoryList) get_type() int {
 	return C.gtk_directory_list_get_type()
 }
 

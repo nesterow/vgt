@@ -1,7 +1,5 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkColumnViewClass {}
 
@@ -12,7 +10,7 @@ pub struct C.GtkColumnViewColumn {}
 
 pub type GtkColumnViewColumn = C.GtkColumnViewColumn
 
-pub fn C.gtk_column_view_get_type() glib.GType
+pub fn C.gtk_column_view_get_type() int
 pub fn C.gtk_column_view_new(model &GtkSelectionModel) &GtkWidget
 pub fn C.gtk_column_view_get_columns(self &GtkColumnView) voidptr
 pub fn C.gtk_column_view_append_column(self &GtkColumnView, column &GtkColumnViewColumn)
@@ -38,7 +36,7 @@ pub struct C.GtkColumnView {}
 
 pub type GtkColumnView = C.GtkColumnView
 
-pub fn (self &GtkColumnView) get_type() glib.GType {
+pub fn (self &GtkColumnView) get_type() int {
 	return C.gtk_column_view_get_type()
 }
 

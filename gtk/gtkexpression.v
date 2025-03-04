@@ -12,15 +12,15 @@ pub struct C.GtkExpressionNotify {}
 
 pub type GtkExpressionNotify = C.GtkExpressionNotify
 
-pub fn C.gtk_expression_get_type() glib.GType
+pub fn C.gtk_expression_get_type() int
 pub fn C.gtk_expression_ref(self &GtkExpression) &GtkExpression
 pub fn C.gtk_expression_unref(self &GtkExpression)
-pub fn C.gtk_expression_get_value_type(self &GtkExpression) glib.GType
+pub fn C.gtk_expression_get_value_type(self &GtkExpression) int
 pub fn C.gtk_expression_is_static(self &GtkExpression) bool
 pub fn C.gtk_expression_evaluate(self &GtkExpression, this_ voidptr, value &glib.GValue) bool
 pub fn C.gtk_expression_watch(self &GtkExpression, this_ voidptr, notify voidptr, user_data voidptr, user_destroy voidptr) &GtkExpressionWatch
 pub fn C.gtk_expression_bind(self &GtkExpression, target voidptr, property &char, this_ voidptr) &GtkExpressionWatch
-pub fn C.gtk_expression_watch_get_type() glib.GType
+pub fn C.gtk_expression_watch_get_type() int
 pub fn C.gtk_expression_watch_ref(watch &GtkExpressionWatch) &GtkExpressionWatch
 pub fn C.gtk_expression_watch_unref(watch &GtkExpressionWatch)
 pub fn C.gtk_expression_watch_evaluate(watch &GtkExpressionWatch, value &glib.GValue) bool
@@ -31,7 +31,7 @@ pub struct C.GtkExpression {}
 
 pub type GtkExpression = C.GtkExpression
 
-pub fn (self &GtkExpression) get_type() glib.GType {
+pub fn (self &GtkExpression) get_type() int {
 	return C.gtk_expression_get_type()
 }
 
@@ -43,7 +43,7 @@ pub fn (self &GtkExpression) unref() {
 	C.gtk_expression_unref(self)
 }
 
-pub fn (self &GtkExpression) get_value_type() glib.GType {
+pub fn (self &GtkExpression) get_value_type() int {
 	return C.gtk_expression_get_value_type(self)
 }
 
@@ -63,7 +63,7 @@ pub fn (self &GtkExpression) bind(target voidptr, property string, this_ voidptr
 	return C.gtk_expression_bind(self, target, property.str, this_)
 }
 
-pub fn (self &GtkExpression) watch_get_type() glib.GType {
+pub fn (self &GtkExpression) watch_get_type() int {
 	return C.gtk_expression_watch_get_type()
 }
 

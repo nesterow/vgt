@@ -1,13 +1,11 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkLayoutChildClass {}
 
 pub type GtkLayoutChildClass = C.GtkLayoutChildClass
 
-pub fn C.gtk_layout_child_get_type() glib.GType
+pub fn C.gtk_layout_child_get_type() int
 pub fn C.gtk_layout_child_get_layout_manager(layout_child &GtkLayoutChild) &GtkLayoutManager
 pub fn C.gtk_layout_child_get_child_widget(layout_child &GtkLayoutChild) &GtkWidget
 
@@ -16,7 +14,7 @@ pub struct C.GtkLayoutChild {}
 
 pub type GtkLayoutChild = C.GtkLayoutChild
 
-pub fn (self &GtkLayoutChild) get_type() glib.GType {
+pub fn (self &GtkLayoutChild) get_type() int {
 	return C.gtk_layout_child_get_type()
 }
 

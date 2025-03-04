@@ -1,7 +1,5 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkAssistantPage {}
 
@@ -21,8 +19,8 @@ pub enum GtkAssistantPageType {
 	gtk_assistant_page_custom
 }
 
-pub fn C.gtk_assistant_page_get_type() glib.GType
-pub fn C.gtk_assistant_get_type() glib.GType
+pub fn C.gtk_assistant_page_get_type() int
+pub fn C.gtk_assistant_get_type() int
 pub fn C.gtk_assistant_new() &GtkWidget
 pub fn C.gtk_assistant_next_page(assistant &GtkAssistant)
 pub fn C.gtk_assistant_previous_page(assistant &GtkAssistant)
@@ -54,11 +52,11 @@ pub struct C.GtkAssistant {}
 
 pub type GtkAssistant = C.GtkAssistant
 
-pub fn (self &GtkAssistant) page_get_type() glib.GType {
+pub fn (self &GtkAssistant) page_get_type() int {
 	return C.gtk_assistant_page_get_type()
 }
 
-pub fn (self &GtkAssistant) get_type() glib.GType {
+pub fn (self &GtkAssistant) get_type() int {
 	return C.gtk_assistant_get_type()
 }
 

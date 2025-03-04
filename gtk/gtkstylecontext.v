@@ -1,7 +1,5 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkStyleContextClass {}
 
@@ -14,7 +12,7 @@ pub enum GtkStyleContextPrintFlags {
 	gtk_style_context_print_show_change = 1 << 2
 }
 
-pub fn C.gtk_style_context_get_type() glib.GType
+pub fn C.gtk_style_context_get_type() int
 pub fn C.gtk_style_context_add_provider_for_display(display voidptr, provider &GtkStyleProvider, priority u64)
 pub fn C.gtk_style_context_remove_provider_for_display(display voidptr, provider &GtkStyleProvider)
 pub fn C.gtk_style_context_add_provider(context &GtkStyleContext, provider &GtkStyleProvider, priority u64)
@@ -42,7 +40,7 @@ pub struct C.GtkStyleContext {}
 
 pub type GtkStyleContext = C.GtkStyleContext
 
-pub fn (self &GtkStyleContext) get_type() glib.GType {
+pub fn (self &GtkStyleContext) get_type() int {
 	return C.gtk_style_context_get_type()
 }
 

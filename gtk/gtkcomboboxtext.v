@@ -1,8 +1,6 @@
 module gtk
 
-import glib
-
-pub fn C.gtk_combo_box_text_get_type() glib.GType
+pub fn C.gtk_combo_box_text_get_type() int
 pub fn C.gtk_combo_box_text_new() &GtkWidget
 pub fn C.gtk_combo_box_text_new_with_entry() &GtkWidget
 pub fn C.gtk_combo_box_text_append_text(combo_box &GtkComboBoxText, text &char)
@@ -20,7 +18,7 @@ pub struct C.GtkComboBoxText {}
 
 pub type GtkComboBoxText = C.GtkComboBoxText
 
-pub fn (self &GtkComboBoxText) get_type() glib.GType {
+pub fn (self &GtkComboBoxText) get_type() int {
 	return C.gtk_combo_box_text_get_type()
 }
 

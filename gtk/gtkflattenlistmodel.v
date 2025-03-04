@@ -7,7 +7,7 @@ pub struct C.GtkFlattenListModelClass {}
 
 pub type GtkFlattenListModelClass = C.GtkFlattenListModelClass
 
-pub fn C.gtk_flatten_list_model_get_type() glib.GType
+pub fn C.gtk_flatten_list_model_get_type() int
 pub fn C.gtk_flatten_list_model_new(model &glib.GListModel) &GtkFlattenListModel
 pub fn C.gtk_flatten_list_model_set_model(self &GtkFlattenListModel, model &glib.GListModel)
 pub fn C.gtk_flatten_list_model_get_model(self &GtkFlattenListModel) voidptr
@@ -18,7 +18,7 @@ pub struct C.GtkFlattenListModel {}
 
 pub type GtkFlattenListModel = C.GtkFlattenListModel
 
-pub fn (self &GtkFlattenListModel) get_type() glib.GType {
+pub fn (self &GtkFlattenListModel) get_type() int {
 	return C.gtk_flatten_list_model_get_type()
 }
 

@@ -7,7 +7,7 @@ pub struct C.GtkColumnViewColumnClass {}
 
 pub type GtkColumnViewColumnClass = C.GtkColumnViewColumnClass
 
-pub fn C.gtk_column_view_column_get_type() glib.GType
+pub fn C.gtk_column_view_column_get_type() int
 pub fn C.gtk_column_view_column_new(title &char, factory &GtkListItemFactory) &GtkColumnViewColumn
 pub fn C.gtk_column_view_column_get_column_view(self &GtkColumnViewColumn) &GtkColumnView
 pub fn C.gtk_column_view_column_set_factory(self &GtkColumnViewColumn, factory &GtkListItemFactory)
@@ -27,7 +27,7 @@ pub fn C.gtk_column_view_column_get_resizable(self &GtkColumnViewColumn) bool
 pub fn C.gtk_column_view_column_set_expand(self &GtkColumnViewColumn, expand bool)
 pub fn C.gtk_column_view_column_get_expand(self &GtkColumnViewColumn) bool
 
-pub fn (self &GtkColumnViewColumn) get_type() glib.GType {
+pub fn (self &GtkColumnViewColumn) get_type() int {
 	return C.gtk_column_view_column_get_type()
 }
 

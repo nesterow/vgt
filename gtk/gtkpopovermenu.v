@@ -6,7 +6,7 @@ pub enum GtkPopoverMenuFlags {
 	gtk_popover_menu_nested = 1 << 0
 }
 
-pub fn C.gtk_popover_menu_get_type() glib.GType
+pub fn C.gtk_popover_menu_get_type() int
 pub fn C.gtk_popover_menu_new_from_model(model &glib.GMenuModel) &GtkWidget
 pub fn C.gtk_popover_menu_new_from_model_full(model &glib.GMenuModel, flags GtkPopoverMenuFlags) &GtkWidget
 pub fn C.gtk_popover_menu_set_menu_model(popover &GtkPopoverMenu, model &glib.GMenuModel)
@@ -19,7 +19,7 @@ pub struct C.GtkPopoverMenu {}
 
 pub type GtkPopoverMenu = C.GtkPopoverMenu
 
-pub fn (self &GtkPopoverMenu) get_type() glib.GType {
+pub fn (self &GtkPopoverMenu) get_type() int {
 	return C.gtk_popover_menu_get_type()
 }
 

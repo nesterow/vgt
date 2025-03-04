@@ -1,13 +1,11 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkEditableLabelClass {}
 
 pub type GtkEditableLabelClass = C.GtkEditableLabelClass
 
-pub fn C.gtk_editable_label_get_type() glib.GType
+pub fn C.gtk_editable_label_get_type() int
 pub fn C.gtk_editable_label_new(str &char) &GtkWidget
 pub fn C.gtk_editable_label_get_editing(self &GtkEditableLabel) bool
 pub fn C.gtk_editable_label_start_editing(self &GtkEditableLabel)
@@ -18,7 +16,7 @@ pub struct C.GtkEditableLabel {}
 
 pub type GtkEditableLabel = C.GtkEditableLabel
 
-pub fn (self &GtkEditableLabel) get_type() glib.GType {
+pub fn (self &GtkEditableLabel) get_type() int {
 	return C.gtk_editable_label_get_type()
 }
 

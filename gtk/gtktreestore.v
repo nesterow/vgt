@@ -7,7 +7,7 @@ pub struct C.GtkTreeStoreClass {}
 
 pub type GtkTreeStoreClass = C.GtkTreeStoreClass
 
-pub fn C.gtk_tree_store_get_type() glib.GType
+pub fn C.gtk_tree_store_get_type() int
 pub fn C.gtk_tree_store_new(n_columns int) &GtkTreeStore
 pub fn C.gtk_tree_store_newv(n_columns int, typs &int) &GtkTreeStore
 pub fn C.gtk_tree_store_set_column_types(tree_store &GtkTreeStore, n_columns int, typs &int)
@@ -37,7 +37,7 @@ pub struct C.GtkTreeStore {}
 
 pub type GtkTreeStore = C.GtkTreeStore
 
-pub fn (self &GtkTreeStore) get_type() glib.GType {
+pub fn (self &GtkTreeStore) get_type() int {
 	return C.gtk_tree_store_get_type()
 }
 

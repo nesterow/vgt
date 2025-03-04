@@ -7,7 +7,7 @@ pub struct C.GtkNoSelectionClass {}
 
 pub type GtkNoSelectionClass = C.GtkNoSelectionClass
 
-pub fn C.gtk_no_selection_get_type() glib.GType
+pub fn C.gtk_no_selection_get_type() int
 pub fn C.gtk_no_selection_new(model &glib.GListModel) &GtkNoSelection
 pub fn C.gtk_no_selection_get_model(self &GtkNoSelection) voidptr
 pub fn C.gtk_no_selection_set_model(self &GtkNoSelection, model &glib.GListModel)
@@ -17,7 +17,7 @@ pub struct C.GtkNoSelection {}
 
 pub type GtkNoSelection = C.GtkNoSelection
 
-pub fn (self &GtkNoSelection) get_type() glib.GType {
+pub fn (self &GtkNoSelection) get_type() int {
 	return C.gtk_no_selection_get_type()
 }
 

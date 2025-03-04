@@ -7,7 +7,7 @@ pub struct C.GtkBuilderListItemFactoryClass {}
 
 pub type GtkBuilderListItemFactoryClass = C.GtkBuilderListItemFactoryClass
 
-pub fn C.gtk_builder_list_item_factory_get_type() glib.GType
+pub fn C.gtk_builder_list_item_factory_get_type() int
 pub fn C.gtk_builder_list_item_factory_new_from_bytes(scope &GtkBuilderScope, bytes &glib.GBytes) &GtkListItemFactory
 pub fn C.gtk_builder_list_item_factory_new_from_resource(scope &GtkBuilderScope, resource_path &char) &GtkListItemFactory
 pub fn C.gtk_builder_list_item_factory_get_bytes(self &GtkBuilderListItemFactory) voidptr
@@ -19,7 +19,7 @@ pub struct C.GtkBuilderListItemFactory {}
 
 pub type GtkBuilderListItemFactory = C.GtkBuilderListItemFactory
 
-pub fn (self &GtkBuilderListItemFactory) get_type() glib.GType {
+pub fn (self &GtkBuilderListItemFactory) get_type() int {
 	return C.gtk_builder_list_item_factory_get_type()
 }
 

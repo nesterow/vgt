@@ -1,13 +1,11 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkListViewClass {}
 
 pub type GtkListViewClass = C.GtkListViewClass
 
-pub fn C.gtk_list_view_get_type() glib.GType
+pub fn C.gtk_list_view_get_type() int
 pub fn C.gtk_list_view_new(model &GtkSelectionModel, factory &GtkListItemFactory) &GtkWidget
 pub fn C.gtk_list_view_get_model(self &GtkListView) &GtkSelectionModel
 pub fn C.gtk_list_view_set_model(self &GtkListView, model &GtkSelectionModel)
@@ -25,7 +23,7 @@ pub struct C.GtkListView {}
 
 pub type GtkListView = C.GtkListView
 
-pub fn (self &GtkListView) get_type() glib.GType {
+pub fn (self &GtkListView) get_type() int {
 	return C.gtk_list_view_get_type()
 }
 

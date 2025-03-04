@@ -7,7 +7,7 @@ pub struct C.GtkSliceListModelClass {}
 
 pub type GtkSliceListModelClass = C.GtkSliceListModelClass
 
-pub fn C.gtk_slice_list_model_get_type() glib.GType
+pub fn C.gtk_slice_list_model_get_type() int
 pub fn C.gtk_slice_list_model_new(model &glib.GListModel, offset u64, size u64) &GtkSliceListModel
 pub fn C.gtk_slice_list_model_set_model(self &GtkSliceListModel, model &glib.GListModel)
 pub fn C.gtk_slice_list_model_get_model(self &GtkSliceListModel) voidptr
@@ -21,7 +21,7 @@ pub struct C.GtkSliceListModel {}
 
 pub type GtkSliceListModel = C.GtkSliceListModel
 
-pub fn (self &GtkSliceListModel) get_type() glib.GType {
+pub fn (self &GtkSliceListModel) get_type() int {
 	return C.gtk_slice_list_model_get_type()
 }
 

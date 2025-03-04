@@ -1,13 +1,11 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkNativeDialogClass {}
 
 pub type GtkNativeDialogClass = C.GtkNativeDialogClass
 
-pub fn C.gtk_native_dialog_get_type() glib.GType
+pub fn C.gtk_native_dialog_get_type() int
 pub fn C.gtk_native_dialog_show(self &GtkNativeDialog)
 pub fn C.gtk_native_dialog_hide(self &GtkNativeDialog)
 pub fn C.gtk_native_dialog_destroy(self &GtkNativeDialog)
@@ -24,7 +22,7 @@ pub struct C.GtkNativeDialog {}
 
 pub type GtkNativeDialog = C.GtkNativeDialog
 
-pub fn (self &GtkNativeDialog) get_type() glib.GType {
+pub fn (self &GtkNativeDialog) get_type() int {
 	return C.gtk_native_dialog_get_type()
 }
 

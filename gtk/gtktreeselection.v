@@ -1,7 +1,5 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkTreeSelectionFunc {}
 
@@ -12,7 +10,7 @@ pub struct C.GtkTreeSelectionForeachFunc {}
 
 pub type GtkTreeSelectionForeachFunc = C.GtkTreeSelectionForeachFunc
 
-pub fn C.gtk_tree_selection_get_type() glib.GType
+pub fn C.gtk_tree_selection_get_type() int
 pub fn C.gtk_tree_selection_set_mode(selection &GtkTreeSelection, typ GtkSelectionMode)
 pub fn C.gtk_tree_selection_get_mode(selection &GtkTreeSelection) GtkSelectionMode
 pub fn C.gtk_tree_selection_set_select_function(selection &GtkTreeSelection, func voidptr, data voidptr, destroy voidptr)
@@ -39,7 +37,7 @@ pub struct C.GtkTreeSelection {}
 
 pub type GtkTreeSelection = C.GtkTreeSelection
 
-pub fn (self &GtkTreeSelection) get_type() glib.GType {
+pub fn (self &GtkTreeSelection) get_type() int {
 	return C.gtk_tree_selection_get_type()
 }
 

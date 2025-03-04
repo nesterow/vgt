@@ -17,8 +17,8 @@ pub struct C.GtkConstraintLayoutClass {}
 
 pub type GtkConstraintLayoutClass = C.GtkConstraintLayoutClass
 
-pub fn C.gtk_constraint_layout_child_get_type() glib.GType
-pub fn C.gtk_constraint_layout_get_type() glib.GType
+pub fn C.gtk_constraint_layout_child_get_type() int
+pub fn C.gtk_constraint_layout_get_type() int
 pub fn C.gtk_constraint_layout_new() &GtkLayoutManager
 pub fn C.gtk_constraint_layout_add_constraint(layout &GtkConstraintLayout, constraint &GtkConstraint)
 pub fn C.gtk_constraint_layout_remove_constraint(layout &GtkConstraintLayout, constraint &GtkConstraint)
@@ -35,11 +35,11 @@ pub struct C.GtkConstraintLayout {}
 
 pub type GtkConstraintLayout = C.GtkConstraintLayout
 
-pub fn (self &GtkConstraintLayout) child_get_type() glib.GType {
+pub fn (self &GtkConstraintLayout) child_get_type() int {
 	return C.gtk_constraint_layout_child_get_type()
 }
 
-pub fn (self &GtkConstraintLayout) get_type() glib.GType {
+pub fn (self &GtkConstraintLayout) get_type() int {
 	return C.gtk_constraint_layout_get_type()
 }
 

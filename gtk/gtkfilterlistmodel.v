@@ -7,7 +7,7 @@ pub struct C.GtkFilterListModelClass {}
 
 pub type GtkFilterListModelClass = C.GtkFilterListModelClass
 
-pub fn C.gtk_filter_list_model_get_type() glib.GType
+pub fn C.gtk_filter_list_model_get_type() int
 pub fn C.gtk_filter_list_model_new(model &glib.GListModel, filter &GtkFilter) &GtkFilterListModel
 pub fn C.gtk_filter_list_model_set_filter(self &GtkFilterListModel, filter &GtkFilter)
 pub fn C.gtk_filter_list_model_get_filter(self &GtkFilterListModel) &GtkFilter
@@ -22,7 +22,7 @@ pub struct C.GtkFilterListModel {}
 
 pub type GtkFilterListModel = C.GtkFilterListModel
 
-pub fn (self &GtkFilterListModel) get_type() glib.GType {
+pub fn (self &GtkFilterListModel) get_type() int {
 	return C.gtk_filter_list_model_get_type()
 }
 

@@ -1,8 +1,6 @@
 module gtk
 
-import glib
-
-pub fn C.gtk_aspect_frame_get_type() glib.GType
+pub fn C.gtk_aspect_frame_get_type() int
 pub fn C.gtk_aspect_frame_new(xalign f64, yalign f64, ratio f64, obey_child bool) &GtkWidget
 pub fn C.gtk_aspect_frame_set_xalign(self &GtkAspectFrame, xalign f64)
 pub fn C.gtk_aspect_frame_get_xalign(self &GtkAspectFrame) f64
@@ -20,7 +18,7 @@ pub struct C.GtkAspectFrame {}
 
 pub type GtkAspectFrame = C.GtkAspectFrame
 
-pub fn (self &GtkAspectFrame) get_type() glib.GType {
+pub fn (self &GtkAspectFrame) get_type() int {
 	return C.gtk_aspect_frame_get_type()
 }
 

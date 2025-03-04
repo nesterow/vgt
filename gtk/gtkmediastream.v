@@ -7,7 +7,7 @@ pub struct C.GtkMediaStreamClass {}
 
 pub type GtkMediaStreamClass = C.GtkMediaStreamClass
 
-pub fn C.gtk_media_stream_get_type() glib.GType
+pub fn C.gtk_media_stream_get_type() int
 pub fn C.gtk_media_stream_is_prepared(self &GtkMediaStream) bool
 pub fn C.gtk_media_stream_get_error(self &GtkMediaStream) voidptr
 pub fn C.gtk_media_stream_has_audio(self &GtkMediaStream) bool
@@ -48,7 +48,7 @@ pub struct C.GtkMediaStream {}
 
 pub type GtkMediaStream = C.GtkMediaStream
 
-pub fn (self &GtkMediaStream) get_type() glib.GType {
+pub fn (self &GtkMediaStream) get_type() int {
 	return C.gtk_media_stream_get_type()
 }
 

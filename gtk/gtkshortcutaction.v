@@ -11,13 +11,13 @@ pub enum GtkShortcutActionFlags {
 	gtk_shortcut_action_exclusive = 1 << 0
 }
 
-pub fn C.gtk_shortcut_action_get_type() glib.GType
+pub fn C.gtk_shortcut_action_get_type() int
 pub fn C.gtk_shortcut_action_to_string(self &GtkShortcutAction) voidptr
 pub fn C.gtk_shortcut_action_parse_string(str &char) &GtkShortcutAction
 pub fn C.gtk_shortcut_action_print(self &GtkShortcutAction, str &GString)
 pub fn C.gtk_shortcut_action_activate(self &GtkShortcutAction, flags GtkShortcutActionFlags, widget &GtkWidget, args &glib.GVariant) bool
 
-pub fn (self &GtkShortcutAction) get_type() glib.GType {
+pub fn (self &GtkShortcutAction) get_type() int {
 	return C.gtk_shortcut_action_get_type()
 }
 

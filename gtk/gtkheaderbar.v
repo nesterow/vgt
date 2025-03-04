@@ -1,8 +1,6 @@
 module gtk
 
-import glib
-
-pub fn C.gtk_header_bar_get_type() glib.GType
+pub fn C.gtk_header_bar_get_type() int
 pub fn C.gtk_header_bar_new() &GtkWidget
 pub fn C.gtk_header_bar_set_title_widget(bar &GtkHeaderBar, title_widget &GtkWidget)
 pub fn C.gtk_header_bar_get_title_widget(bar &GtkHeaderBar) &GtkWidget
@@ -19,7 +17,7 @@ pub struct C.GtkHeaderBar {}
 
 pub type GtkHeaderBar = C.GtkHeaderBar
 
-pub fn (self &GtkHeaderBar) get_type() glib.GType {
+pub fn (self &GtkHeaderBar) get_type() int {
 	return C.gtk_header_bar_get_type()
 }
 

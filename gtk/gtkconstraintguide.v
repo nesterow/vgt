@@ -1,13 +1,11 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkConstraintGuideClass {}
 
 pub type GtkConstraintGuideClass = C.GtkConstraintGuideClass
 
-pub fn C.gtk_constraint_guide_get_type() glib.GType
+pub fn C.gtk_constraint_guide_get_type() int
 pub fn C.gtk_constraint_guide_new() &GtkConstraintGuide
 pub fn C.gtk_constraint_guide_set_min_size(guide &GtkConstraintGuide, width int, height int)
 pub fn C.gtk_constraint_guide_get_min_size(guide &GtkConstraintGuide, width &i64, height &i64)
@@ -25,7 +23,7 @@ pub struct C.GtkConstraintGuide {}
 
 pub type GtkConstraintGuide = C.GtkConstraintGuide
 
-pub fn (self &GtkConstraintGuide) get_type() glib.GType {
+pub fn (self &GtkConstraintGuide) get_type() int {
 	return C.gtk_constraint_guide_get_type()
 }
 

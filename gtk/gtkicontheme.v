@@ -14,7 +14,7 @@ pub enum GtkIconThemeError {
 }
 
 pub fn C.gtk_icon_paintable_new_for_file(file &glib.GFile, size int, scale int) &GtkIconPaintable
-pub fn C.gtk_icon_paintable_get_type() glib.GType
+pub fn C.gtk_icon_paintable_get_type() int
 pub fn C.gtk_icon_paintable_get_file(self &GtkIconPaintable) voidptr
 pub fn C.gtk_icon_paintable_get_icon_name(self &GtkIconPaintable) &char
 pub fn C.gtk_icon_paintable_is_symbolic(self &GtkIconPaintable) bool
@@ -28,7 +28,7 @@ pub fn GtkIconPaintable.new_for_file(file &glib.GFile, size int, scale int) &Gtk
 	return C.gtk_icon_paintable_new_for_file(file, size, scale)
 }
 
-pub fn (self &GtkIconPaintable) get_type() glib.GType {
+pub fn (self &GtkIconPaintable) get_type() int {
 	return C.gtk_icon_paintable_get_type()
 }
 
@@ -45,7 +45,7 @@ pub fn (self &GtkIconPaintable) is_symbolic() bool {
 }
 
 pub fn C.gtk_icon_theme_error_quark() glib.GQuark
-pub fn C.gtk_icon_theme_get_type() glib.GType
+pub fn C.gtk_icon_theme_get_type() int
 pub fn C.gtk_icon_theme_new() &GtkIconTheme
 pub fn C.gtk_icon_theme_get_for_display(display voidptr) &GtkIconTheme
 pub fn C.gtk_icon_theme_get_display(self &GtkIconTheme) voidptr
@@ -73,7 +73,7 @@ pub fn (self &GtkIconTheme) error_quark() glib.GQuark {
 	return C.gtk_icon_theme_error_quark()
 }
 
-pub fn (self &GtkIconTheme) get_type() glib.GType {
+pub fn (self &GtkIconTheme) get_type() int {
 	return C.gtk_icon_theme_get_type()
 }
 

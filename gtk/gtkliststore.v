@@ -7,7 +7,7 @@ pub struct C.GtkListStoreClass {}
 
 pub type GtkListStoreClass = C.GtkListStoreClass
 
-pub fn C.gtk_list_store_get_type() glib.GType
+pub fn C.gtk_list_store_get_type() int
 pub fn C.gtk_list_store_new(n_columns int) &GtkListStore
 pub fn C.gtk_list_store_newv(n_columns int, typs &int) &GtkListStore
 pub fn C.gtk_list_store_set_column_types(list_store &GtkListStore, n_columns int, typs &int)
@@ -35,7 +35,7 @@ pub struct C.GtkListStore {}
 
 pub type GtkListStore = C.GtkListStore
 
-pub fn (self &GtkListStore) get_type() glib.GType {
+pub fn (self &GtkListStore) get_type() int {
 	return C.gtk_list_store_get_type()
 }
 

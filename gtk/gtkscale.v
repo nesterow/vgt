@@ -1,7 +1,5 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkScaleClass {}
 
@@ -12,7 +10,7 @@ pub struct C.GtkScaleFormatValueFunc {}
 
 pub type GtkScaleFormatValueFunc = C.GtkScaleFormatValueFunc
 
-pub fn C.gtk_scale_get_type() glib.GType
+pub fn C.gtk_scale_get_type() int
 pub fn C.gtk_scale_new(orientation GtkOrientation, adjustment &GtkAdjustment) &GtkWidget
 pub fn C.gtk_scale_new_with_range(orientation GtkOrientation, min f32, max f32, step f32) &GtkWidget
 pub fn C.gtk_scale_set_digits(scale &GtkScale, digits int)
@@ -34,7 +32,7 @@ pub struct C.GtkScale {}
 
 pub type GtkScale = C.GtkScale
 
-pub fn (self &GtkScale) get_type() glib.GType {
+pub fn (self &GtkScale) get_type() int {
 	return C.gtk_scale_get_type()
 }
 

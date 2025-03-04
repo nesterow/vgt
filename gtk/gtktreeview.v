@@ -1,7 +1,5 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkTreeViewClass {}
 
@@ -37,7 +35,7 @@ pub enum GtkTreeViewDropPosition { // drop before/after this row ///
 	gtk_tree_view_drop_into_or_after
 }
 
-pub fn C.gtk_tree_view_get_type() glib.GType
+pub fn C.gtk_tree_view_get_type() int
 pub fn C.gtk_tree_view_new() &GtkWidget
 pub fn C.gtk_tree_view_new_with_model(model &GtkTreeModel) &GtkWidget
 pub fn C.gtk_tree_view_get_model(tree_view &GtkTreeView) &GtkTreeModel
@@ -135,7 +133,7 @@ pub struct C.GtkTreeView {}
 
 pub type GtkTreeView = C.GtkTreeView
 
-pub fn (self &GtkTreeView) get_type() glib.GType {
+pub fn (self &GtkTreeView) get_type() int {
 	return C.gtk_tree_view_get_type()
 }
 

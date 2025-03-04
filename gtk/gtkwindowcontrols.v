@@ -1,13 +1,11 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkWindowControlsClass {}
 
 pub type GtkWindowControlsClass = C.GtkWindowControlsClass
 
-pub fn C.gtk_window_controls_get_type() glib.GType
+pub fn C.gtk_window_controls_get_type() int
 pub fn C.gtk_window_controls_new(side GtkPackType) &GtkWidget
 pub fn C.gtk_window_controls_get_side(self &GtkWindowControls) GtkPackType
 pub fn C.gtk_window_controls_set_side(self &GtkWindowControls, side GtkPackType)
@@ -20,7 +18,7 @@ pub struct C.GtkWindowControls {}
 
 pub type GtkWindowControls = C.GtkWindowControls
 
-pub fn (self &GtkWindowControls) get_type() glib.GType {
+pub fn (self &GtkWindowControls) get_type() int {
 	return C.gtk_window_controls_get_type()
 }
 

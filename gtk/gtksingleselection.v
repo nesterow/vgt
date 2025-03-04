@@ -7,7 +7,7 @@ pub struct C.GtkSingleSelectionClass {}
 
 pub type GtkSingleSelectionClass = C.GtkSingleSelectionClass
 
-pub fn C.gtk_single_selection_get_type() glib.GType
+pub fn C.gtk_single_selection_get_type() int
 pub fn C.gtk_single_selection_new(model &glib.GListModel) &GtkSingleSelection
 pub fn C.gtk_single_selection_get_model(self &GtkSingleSelection) voidptr
 pub fn C.gtk_single_selection_set_model(self &GtkSingleSelection, model &glib.GListModel)
@@ -24,7 +24,7 @@ pub struct C.GtkSingleSelection {}
 
 pub type GtkSingleSelection = C.GtkSingleSelection
 
-pub fn (self &GtkSingleSelection) get_type() glib.GType {
+pub fn (self &GtkSingleSelection) get_type() int {
 	return C.gtk_single_selection_get_type()
 }
 

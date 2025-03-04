@@ -2,7 +2,7 @@ module gtk
 
 import glib
 
-pub fn C.gtk_tooltip_get_type() glib.GType
+pub fn C.gtk_tooltip_get_type() int
 pub fn C.gtk_tooltip_set_markup(tooltip &GtkTooltip, markup &char)
 pub fn C.gtk_tooltip_set_text(tooltip &GtkTooltip, text &char)
 pub fn C.gtk_tooltip_set_icon(tooltip &GtkTooltip, paintable voidptr)
@@ -16,7 +16,7 @@ pub struct C.GtkTooltip {}
 
 pub type GtkTooltip = C.GtkTooltip
 
-pub fn (self &GtkTooltip) get_type() glib.GType {
+pub fn (self &GtkTooltip) get_type() int {
 	return C.gtk_tooltip_get_type()
 }
 

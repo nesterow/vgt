@@ -1,8 +1,6 @@
 module gtk
 
-import glib
-
-pub fn C.gtk_cell_view_get_type() glib.GType
+pub fn C.gtk_cell_view_get_type() int
 pub fn C.gtk_cell_view_new() &GtkWidget
 pub fn C.gtk_cell_view_new_with_context(area &GtkCellArea, context &GtkCellAreaContext) &GtkWidget
 pub fn C.gtk_cell_view_new_with_text(text &char) &GtkWidget
@@ -22,7 +20,7 @@ pub struct C.GtkCellView {}
 
 pub type GtkCellView = C.GtkCellView
 
-pub fn (self &GtkCellView) get_type() glib.GType {
+pub fn (self &GtkCellView) get_type() int {
 	return C.gtk_cell_view_get_type()
 }
 

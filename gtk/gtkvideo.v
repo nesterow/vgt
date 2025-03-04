@@ -7,7 +7,7 @@ pub struct C.GtkVideoClass {}
 
 pub type GtkVideoClass = C.GtkVideoClass
 
-pub fn C.gtk_video_get_type() glib.GType
+pub fn C.gtk_video_get_type() int
 pub fn C.gtk_video_new() &GtkWidget
 pub fn C.gtk_video_new_for_media_stream(stream &GtkMediaStream) &GtkWidget
 pub fn C.gtk_video_new_for_file(file &glib.GFile) &GtkWidget
@@ -29,7 +29,7 @@ pub struct C.GtkVideo {}
 
 pub type GtkVideo = C.GtkVideo
 
-pub fn (self &GtkVideo) get_type() glib.GType {
+pub fn (self &GtkVideo) get_type() int {
 	return C.gtk_video_get_type()
 }
 

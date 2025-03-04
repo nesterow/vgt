@@ -7,7 +7,7 @@ pub struct C.GtkPrintSettingsFunc {}
 
 pub type GtkPrintSettingsFunc = C.GtkPrintSettingsFunc
 
-pub fn C.gtk_print_settings_get_type() glib.GType
+pub fn C.gtk_print_settings_get_type() int
 pub fn C.gtk_print_settings_new() &GtkPrintSettings
 pub fn C.gtk_print_settings_copy(other &GtkPrintSettings) &GtkPrintSettings
 pub fn C.gtk_print_settings_new_from_file(file_name &char, error &&glib.GError) &GtkPrintSettings
@@ -90,7 +90,7 @@ pub struct C.GtkPrintSettings {}
 
 pub type GtkPrintSettings = C.GtkPrintSettings
 
-pub fn (self &GtkPrintSettings) get_type() glib.GType {
+pub fn (self &GtkPrintSettings) get_type() int {
 	return C.gtk_print_settings_get_type()
 }
 

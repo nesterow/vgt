@@ -7,7 +7,7 @@ pub struct C.GtkPictureClass {}
 
 pub type GtkPictureClass = C.GtkPictureClass
 
-pub fn C.gtk_picture_get_type() glib.GType
+pub fn C.gtk_picture_get_type() int
 pub fn C.gtk_picture_new() &GtkWidget
 pub fn C.gtk_picture_new_for_paintable(paintable voidptr) &GtkWidget
 pub fn C.gtk_picture_new_for_pixbuf(pixbuf &i64) &GtkWidget
@@ -33,7 +33,7 @@ pub struct C.GtkPicture {}
 
 pub type GtkPicture = C.GtkPicture
 
-pub fn (self &GtkPicture) get_type() glib.GType {
+pub fn (self &GtkPicture) get_type() int {
 	return C.gtk_picture_get_type()
 }
 

@@ -1,7 +1,5 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkNotebookPage {}
 
@@ -12,7 +10,7 @@ pub enum GtkNotebookTab {
 	gtk_notebook_tab_last
 }
 
-pub fn C.gtk_notebook_get_type() glib.GType
+pub fn C.gtk_notebook_get_type() int
 pub fn C.gtk_notebook_new() &GtkWidget
 pub fn C.gtk_notebook_append_page(notebook &GtkNotebook, child &GtkWidget, tab_label &GtkWidget) int
 pub fn C.gtk_notebook_append_page_menu(notebook &GtkNotebook, child &GtkWidget, tab_label &GtkWidget, menu_label &GtkWidget) int
@@ -56,7 +54,7 @@ pub fn C.gtk_notebook_set_tab_detachable(notebook &GtkNotebook, child &GtkWidget
 pub fn C.gtk_notebook_detach_tab(notebook &GtkNotebook, child &GtkWidget)
 pub fn C.gtk_notebook_get_action_widget(notebook &GtkNotebook, pack_typ GtkPackType) &GtkWidget
 pub fn C.gtk_notebook_set_action_widget(notebook &GtkNotebook, widget &GtkWidget, pack_typ GtkPackType)
-pub fn C.gtk_notebook_page_get_type() glib.GType
+pub fn C.gtk_notebook_page_get_type() int
 pub fn C.gtk_notebook_get_page(notebook &GtkNotebook, child &GtkWidget) &GtkNotebookPage
 pub fn C.gtk_notebook_page_get_child(page &GtkNotebookPage) &GtkWidget
 pub fn C.gtk_notebook_get_pages(notebook &GtkNotebook) voidptr
@@ -66,7 +64,7 @@ pub struct C.GtkNotebook {}
 
 pub type GtkNotebook = C.GtkNotebook
 
-pub fn (self &GtkNotebook) get_type() glib.GType {
+pub fn (self &GtkNotebook) get_type() int {
 	return C.gtk_notebook_get_type()
 }
 
@@ -242,7 +240,7 @@ pub fn (self &GtkNotebook) set_action_widget(widget &GtkWidget, pack_typ GtkPack
 	C.gtk_notebook_set_action_widget(self, widget, pack_typ)
 }
 
-pub fn (self &GtkNotebook) page_get_type() glib.GType {
+pub fn (self &GtkNotebook) page_get_type() int {
 	return C.gtk_notebook_page_get_type()
 }
 

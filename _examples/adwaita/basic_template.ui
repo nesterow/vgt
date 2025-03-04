@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+    <requires lib="gtk" version="4.0"/>
+    <requires lib="libadwaita" version="1.0"/>
+    <menu id="primary_menu">
+        <section>
+            <item>
+                <attribute name="label" translatable="yes">_Inspector</attribute>
+                <attribute name="action">app.inspector</attribute>
+            </item>
+            <item>
+                <attribute name="label" translatable="yes">A_daptive Preview</attribute>
+                <attribute name="action">window.adaptive-preview</attribute>
+            </item>
+        </section>
+        <section>
+            <item>
+                <attribute name="label" translatable="yes">_Preferences</attribute>
+                <attribute name="action">app.preferences</attribute>
+            </item>
+            <item>
+                <attribute name="label" translatable="yes">_About Adwaita Demo</attribute>
+                <attribute name="action">app.about</attribute>
+            </item>
+        </section>
+    </menu>
+    <template class="MyAdwWindow" parent="AdwApplicationWindow">
+        <property name="title" translatable="yes">Adwaita Demo</property>
+        <property name="default_width">800</property>
+        <property name="default_height">576</property>
+        <property name="content">
+
+        </property>
+    </template>
+</interface>

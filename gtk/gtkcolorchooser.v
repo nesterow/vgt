@@ -1,13 +1,11 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkColorChooserInterface {}
 
 pub type GtkColorChooserInterface = C.GtkColorChooserInterface
 
-pub fn C.gtk_color_chooser_get_type() glib.GType
+pub fn C.gtk_color_chooser_get_type() int
 pub fn C.gtk_color_chooser_get_rgba(chooser &GtkColorChooser, color voidptr)
 pub fn C.gtk_color_chooser_set_rgba(chooser &GtkColorChooser, color voidptr)
 pub fn C.gtk_color_chooser_get_use_alpha(chooser &GtkColorChooser) bool
@@ -19,7 +17,7 @@ pub struct C.GtkColorChooser {}
 
 pub type GtkColorChooser = C.GtkColorChooser
 
-pub fn (self &GtkColorChooser) get_type() glib.GType {
+pub fn (self &GtkColorChooser) get_type() int {
 	return C.gtk_color_chooser_get_type()
 }
 

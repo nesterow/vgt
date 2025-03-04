@@ -1,7 +1,5 @@
 module gtk
 
-import glib
-
 @[noinit; typedef]
 pub struct C.GtkShortcutsShortcutClass {}
 
@@ -20,13 +18,13 @@ pub enum GtkShortcutType {
 	gtk_shortcut_gesture_swipe_right
 }
 
-pub fn C.gtk_shortcuts_shortcut_get_type() glib.GType
+pub fn C.gtk_shortcuts_shortcut_get_type() int
 
 @[noinit; typedef]
 pub struct C.GtkShortcutsShortcut {}
 
 pub type GtkShortcutsShortcut = C.GtkShortcutsShortcut
 
-pub fn (self &GtkShortcutsShortcut) get_type() glib.GType {
+pub fn (self &GtkShortcutsShortcut) get_type() int {
 	return C.gtk_shortcuts_shortcut_get_type()
 }
