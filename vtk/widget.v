@@ -15,7 +15,9 @@ pub fn get_type[W, K](w &W) int {
 	return widget_type[W, K](w, sizeof(W), sizeof(K), w.parent.get_type())
 }
 
-pub fn new[W, K](w voidptr) &W {
+
+pub fn new[W, K]() &W {
+	w := &W{}
 	return unsafe { C.g_object_new(get_type[W, K](w), 0) }
 }
 

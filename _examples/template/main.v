@@ -33,7 +33,7 @@ pub fn (w &Window) build(widget &GtkWidget) {
 fn main() {
 	gtk_init()
 
-	window := new[Window, WindowClass](&Window{})
+	window := new[Window, WindowClass]()
 
 	App.new('org.xyz.MyApp').run(window)
 }

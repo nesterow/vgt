@@ -1,7 +1,7 @@
 module main
 
-import glib { GBytes }
-import gtk { GtkLabel, GtkWidget, GtkWidgetClass, gtk_init }
+import glib { GBytes, GApplicationFlags }
+import gtk { GtkApplication, GtkLabel, GtkWidget, GtkWidgetClass, gtk_init }
 import vtk { App, Widget, cast, new }
 
 #pkgconfig --cflags libadwaita-1
@@ -18,6 +18,8 @@ type AdwApplicationWindowClass = C.AdwApplicationWindowClass
 type AdwApplicationWindow = C.AdwApplicationWindow
 
 fn C.adw_application_window_get_type() int
+fn C.adw_application_new(id &char, flags GApplicationFlags) &GtkApplication
+
 
 pub fn (w &AdwApplicationWindow) get_type() int {
 	return C.adw_application_window_get_type()
@@ -53,7 +55,11 @@ pub fn (w &AdwWindow) build(widget &GtkWidget) {
 fn main() {
 	gtk_init()
 
-	window := new[AdwWindow, AdwWindowClass](&AdwWindow{})
+	window := new[AdwWindow, AdwWindowClass]()
 
-	App.new('org.xyz.MyApp').run(window)
+	adw_app := App {
+		id:  'org.xyz.AdwApp'
+		ref: C.adw_application_new(c'org.xyz.MyApp', GApplicationFlags.g_application_flags_none)
+	}
+	adw_app.run(window)
 }
