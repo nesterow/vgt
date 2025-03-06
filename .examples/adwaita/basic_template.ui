@@ -30,6 +30,15 @@
         <property name="default_height">576</property>
         <property name="content">
 
+            <object class="AdwHeaderBar">
+                <!-- <property name="title">Adwaita Demo</property> -->
+                <child>
+                    <object class="GtkMenuButton">
+
+                    </object>
+                </child>
+
+            </object>
         </property>
     </template>
 </interface>

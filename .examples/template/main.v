@@ -12,11 +12,11 @@ pub:
 struct Window implements Widget {
 pub:
 	parent GtkWindow
-	id     string      = 'MyWindow'
+	id     string = 'MyWindow'
 }
 
 pub fn (w &Window) init(widget_class &GtkWidgetClass) {
-	mut file := $embed_file('_examples/template/template_hello.ui')
+	mut file := $embed_file('.examples/template/template_hello.ui')
 	data := file.data()
 	template := GBytes.new(data, usize(file.len))
 	defer {

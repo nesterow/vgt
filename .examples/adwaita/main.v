@@ -1,8 +1,8 @@
 module main
 
-import glib { GBytes, GApplicationFlags }
-import gtk { GtkApplication, GtkLabel, GtkWidget, GtkWidgetClass, gtk_init }
-import vtk { App, Widget, cast, new }
+import glib { GBytes }
+import gtk { GtkLabel, GtkWidget, GtkWidgetClass }
+import vtk { App, Widget, new }
 
 #pkgconfig --cflags libadwaita-1
 #pkgconfig --libs libadwaita-1
@@ -18,8 +18,7 @@ type AdwApplicationWindowClass = C.AdwApplicationWindowClass
 type AdwApplicationWindow = C.AdwApplicationWindow
 
 fn C.adw_application_window_get_type() int
-fn C.adw_application_new(id &char, flags GApplicationFlags) &GtkApplication
-
+fn C.adw_init()
 
 pub fn (w &AdwApplicationWindow) get_type() int {
 	return C.adw_application_window_get_type()
@@ -33,12 +32,12 @@ pub:
 struct AdwWindow implements Widget {
 pub:
 	parent AdwApplicationWindow
-	id     string      = 'MyAdwWindow'
-	label  &GtkLabel   = vtk.null
+	id     string    = 'MyAdwWindow'
+	label  &GtkLabel = vtk.null
 }
 
 pub fn (w &AdwWindow) init(widget_class &GtkWidgetClass) {
-	mut file := $embed_file('_examples/adwaita/basic_template.ui')
+	mut file := $embed_file('.examples/adwaita/basic_template.ui')
 	data := file.data()
 	template := GBytes.new(data, usize(file.len))
 	defer {
@@ -53,13 +52,9 @@ pub fn (w &AdwWindow) build(widget &GtkWidget) {
 }
 
 fn main() {
-	gtk_init()
+	C.adw_init()
 
 	window := new[AdwWindow, AdwWindowClass]()
 
-	adw_app := App {
-		id:  'org.xyz.AdwApp'
-		ref: C.adw_application_new(c'org.xyz.MyApp', GApplicationFlags.g_application_flags_none)
-	}
-	adw_app.run(window)
+	App.new('org.xyz.Adw').run(window)
 }
