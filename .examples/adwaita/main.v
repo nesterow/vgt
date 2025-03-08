@@ -37,14 +37,13 @@ pub:
 }
 
 pub fn (w &AdwWindow) init(widget_class &GtkWidgetClass) {
-	mut file := $embed_file('.examples/adwaita/basic_template.ui')
-	data := file.data()
-	template := GBytes.new(data, usize(file.len))
+	template := GBytes.from_embed($embed_file('.examples/adwaita/basic_template.ui'))
 	defer {
 		template.unref()
 	}
 	widget_class.set_template(template)
-	widget_class.bind_template_child_full('MyAdwWindow', true, 0)
+	// widget_class.bind_template_child_full('MyAdwWindow', true, 0)
+	// widget_class.bind_template_child('label', __offsetof(AdwWindow, label))
 }
 
 pub fn (w &AdwWindow) build(widget &GtkWidget) {
